@@ -1,4 +1,4 @@
-module MIC_COMMON
+module github.com/Cicyer/MIC_COMMON
 
 go 1.14
 
