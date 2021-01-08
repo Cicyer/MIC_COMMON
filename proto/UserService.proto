@@ -38,6 +38,7 @@ message CreateUserReq {
     int64 organizationId = 6;
     string accountStatus = 7;
     int64 managerId = 8;
+    string email = 9;
 }
 message CreateUserResp {
     int64 userId = 1;
@@ -51,6 +52,7 @@ message UpdateUserReq {
     string nickname = 5;
     string accountStatus = 6;
     int64 managerId = 7;
+    string email = 8;
 }
 message UpdateUserResp {
     string platFormType = 1;
@@ -65,6 +67,7 @@ message ListUserReq {
     string platFormType = 6;
     int64 managerId = 7;
     Page page = 8;
+    string email = 9;
 }
 message ListUserResp {
     repeated UserDetail list = 1;
@@ -82,6 +85,7 @@ message UserDetail {
     int64 organizationId = 7;
     string organizationName = 8;
     google.protobuf.Timestamp createdAt = 9;
+    string email = 10;
 }
 
 
