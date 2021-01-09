@@ -19,9 +19,10 @@ message UserPassLoginResp {
     int64 userId = 1;
     string username = 2;
     string nickname = 3;
-    string role = 4;
-    int64 organizationId = 5;
-    repeated PermissionInfo permissions = 6;
+    string email = 4;
+    string role = 5;
+    int64 organizationId = 6;
+    repeated PermissionInfo permissions = 7;
 }
 
 message PermissionInfo {
