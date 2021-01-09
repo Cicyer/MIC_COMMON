@@ -87,6 +87,7 @@ message UserDetail {
     string organizationName = 8;
     google.protobuf.Timestamp createdAt = 9;
     string email = 10;
+    string roleName = 11;
 }
 
 
