@@ -18,7 +18,7 @@ message SendEmailsResp {
   string code = 1;
 }
 
-service UserService {
+service MessageService {
   rpc SendEmails(SendEmailsReq) returns (SendEmailsResp);
 
 }
