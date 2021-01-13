@@ -14,6 +14,7 @@ var (
 	LoginTooFast          = add(10109) // 触发登录限制
 	SendSmsTooFast        = add(10110) // 验证码发送过于频繁，请60s后重试
 	SendSmsIllegalRegion  = add(10111) // 目前短信发送尚不支持此地区
+	InvalidEmailSender    = add(10130) // 不存在的发送邮箱
 
 	UserBlocked          = New(10201) // 用户被封禁
 	UserNameDuplicate    = add(10202) // 重复的用户
