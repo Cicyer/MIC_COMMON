@@ -28,6 +28,7 @@ var CM = map[int]map[string]string{
 	10109: {"EN": "login fail too many times,please try again in 15 minutes", "CN": "登录太频繁，请15分钟后再试"},
 	10110: {"EN": "send sms too frequently,please try again in 60 seconds", "CN": "验证码发送过于频繁，请60s后重试"},
 	10111: {"EN": "sms service current not support this region", "CN": "目前短信发送尚不支持此地区"},
+	10130: {"EN": "invalid email sender", "CN": "不存在的发送邮箱"},
 
 	10201: {"EN": "frozen user", "CN": "用户被封禁"},
 	10202: {"EN": "duplicate user", "CN": "重复的用户"},

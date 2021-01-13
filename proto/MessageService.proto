@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package MessageService;
+option go_package = "service/MessageService;MessageService";
+
+import public "google/protobuf/timestamp.proto";
+
+message SendEmailsReq {
+  string subject = 1;
+  string content = 2;
+  //平台可选发送邮件账户，message配置时已经存在
+  string sender = 3;
+  bool isHtml = 4;
+  repeated string toEmails = 5;
+  repeated string ccEmails = 6;
+}
+message SendEmailsResp {
+  string code = 1;
+}
+
+service UserService {
+  rpc SendEmails(SendEmailsReq) returns (SendEmailsResp);
+
+}
