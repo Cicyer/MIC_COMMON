@@ -14,11 +14,11 @@ message SendEmailsReq {
   repeated string toEmails = 5;
   repeated string ccEmails = 6;
 }
+
 message SendEmailsResp {
   string code = 1;
 }
 
 service MessageService {
   rpc SendEmails(SendEmailsReq) returns (SendEmailsResp);
-
 }
