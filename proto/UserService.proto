@@ -58,7 +58,6 @@ message UpdateUserReq {
   int64 managerId = 7;
   string email = 8;
   string activeStatus = 9;
-  string emailVerifyCode = 10;
 }
 
 message UpdateUserResp {
