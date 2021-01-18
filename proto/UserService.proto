@@ -24,6 +24,7 @@ message UserPassLoginResp {
   string role = 5;
   int64 organizationId = 6;
   repeated PermissionInfo permissions = 7;
+  string activeStatus = 8;
 }
 
 message PermissionInfo {
@@ -80,6 +81,7 @@ message ListUserResp {
   int64 total = 2;
   int64 pageSize = 3;
   int64 pageNumber = 4;
+  string activeStatus = 5;
 }
 
 message UserDetail {
@@ -94,6 +96,7 @@ message UserDetail {
   google.protobuf.Timestamp createdAt = 9;
   string email = 10;
   string roleName = 11;
+  string activeStatus = 12;
 }
 
 message ListRoleReq {
@@ -106,6 +109,7 @@ message ListRoleResp {
   int64 total = 2;
   int64 pageSize = 3;
   int64 pageNumber = 4;
+  string activeStatus = 8;
 }
 
 message RoleDetail {
