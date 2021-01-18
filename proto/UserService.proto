@@ -108,7 +108,6 @@ message ListRoleResp {
   int64 total = 2;
   int64 pageSize = 3;
   int64 pageNumber = 4;
-  string activeStatus = 8;
 }
 
 message RoleDetail {
@@ -118,6 +117,7 @@ message RoleDetail {
   string platFormType = 4;
   string roleStatus = 5;
   google.protobuf.Timestamp createdAt = 6;
+  string activeStatus = 7;
 }
 
 message DeleteUserReq {
