@@ -56,17 +56,7 @@ message UpdateUserReq {
   string accountStatus = 6;
   int64 managerId = 7;
   string email = 8;
-  string verifyCode = 9;
-  string ActiveStatus = 10;
-}
-
-message UpdateActiveUserReq {
-  int64 userId = 1;
-  string password = 2;
-  string accountStatus = 3;
-  string email = 4;
-  string verifyCode = 5;
-  string ActiveStatus = 6;
+  string activeStatus = 9;
 }
 
 message UpdateUserResp {
@@ -145,7 +135,6 @@ service UserService {
   rpc PassLogin(UserPassLoginReq) returns (UserPassLoginResp);
   rpc CreateUser(CreateUserReq) returns (CreateUserResp);
   rpc UpdateUser(UpdateUserReq) returns (UpdateUserResp);
-  rpc UpdateActiveStatus(UpdateActiveUserReq) returns (UpdateUserResp);
   rpc ListUser(ListUserReq) returns (ListUserResp);
   rpc ListRole(ListRoleReq) returns (ListRoleResp);
   rpc DeleteUser(DeleteUserReq) returns (DeleteUserResp);

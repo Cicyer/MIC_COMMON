@@ -21,7 +21,6 @@ type UserServiceClient interface {
 	PassLogin(ctx context.Context, in *UserPassLoginReq, opts ...grpc.CallOption) (*UserPassLoginResp, error)
 	CreateUser(ctx context.Context, in *CreateUserReq, opts ...grpc.CallOption) (*CreateUserResp, error)
 	UpdateUser(ctx context.Context, in *UpdateUserReq, opts ...grpc.CallOption) (*UpdateUserResp, error)
-	UpdateActiveStatus(ctx context.Context, in *UpdateActiveUserReq, opts ...grpc.CallOption) (*UpdateUserResp, error)
 	ListUser(ctx context.Context, in *ListUserReq, opts ...grpc.CallOption) (*ListUserResp, error)
 	ListRole(ctx context.Context, in *ListRoleReq, opts ...grpc.CallOption) (*ListRoleResp, error)
 	DeleteUser(ctx context.Context, in *DeleteUserReq, opts ...grpc.CallOption) (*DeleteUserResp, error)
@@ -57,15 +56,6 @@ func (c *userServiceClient) CreateUser(ctx context.Context, in *CreateUserReq, o
 func (c *userServiceClient) UpdateUser(ctx context.Context, in *UpdateUserReq, opts ...grpc.CallOption) (*UpdateUserResp, error) {
 	out := new(UpdateUserResp)
 	err := c.cc.Invoke(ctx, "/UserService.UserService/UpdateUser", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *userServiceClient) UpdateActiveStatus(ctx context.Context, in *UpdateActiveUserReq, opts ...grpc.CallOption) (*UpdateUserResp, error) {
-	out := new(UpdateUserResp)
-	err := c.cc.Invoke(ctx, "/UserService.UserService/UpdateActiveStatus", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -115,7 +105,6 @@ type UserServiceServer interface {
 	PassLogin(context.Context, *UserPassLoginReq) (*UserPassLoginResp, error)
 	CreateUser(context.Context, *CreateUserReq) (*CreateUserResp, error)
 	UpdateUser(context.Context, *UpdateUserReq) (*UpdateUserResp, error)
-	UpdateActiveStatus(context.Context, *UpdateActiveUserReq) (*UpdateUserResp, error)
 	ListUser(context.Context, *ListUserReq) (*ListUserResp, error)
 	ListRole(context.Context, *ListRoleReq) (*ListRoleResp, error)
 	DeleteUser(context.Context, *DeleteUserReq) (*DeleteUserResp, error)
@@ -135,9 +124,6 @@ func (UnimplementedUserServiceServer) CreateUser(context.Context, *CreateUserReq
 }
 func (UnimplementedUserServiceServer) UpdateUser(context.Context, *UpdateUserReq) (*UpdateUserResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateUser not implemented")
-}
-func (UnimplementedUserServiceServer) UpdateActiveStatus(context.Context, *UpdateActiveUserReq) (*UpdateUserResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateActiveStatus not implemented")
 }
 func (UnimplementedUserServiceServer) ListUser(context.Context, *ListUserReq) (*ListUserResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListUser not implemented")
@@ -214,24 +200,6 @@ func _UserService_UpdateUser_Handler(srv interface{}, ctx context.Context, dec f
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(UserServiceServer).UpdateUser(ctx, req.(*UpdateUserReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _UserService_UpdateActiveStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateActiveUserReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(UserServiceServer).UpdateActiveStatus(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/UserService.UserService/UpdateActiveStatus",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).UpdateActiveStatus(ctx, req.(*UpdateActiveUserReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -326,10 +294,6 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateUser",
 			Handler:    _UserService_UpdateUser_Handler,
-		},
-		{
-			MethodName: "UpdateActiveStatus",
-			Handler:    _UserService_UpdateActiveStatus_Handler,
 		},
 		{
 			MethodName: "ListUser",
