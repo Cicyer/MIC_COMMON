@@ -81,7 +81,6 @@ message ListUserResp {
   int64 total = 2;
   int64 pageSize = 3;
   int64 pageNumber = 4;
-  string activeStatus = 5;
 }
 
 message UserDetail {
