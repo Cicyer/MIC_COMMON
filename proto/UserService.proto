@@ -117,7 +117,6 @@ message RoleDetail {
   string platFormType = 4;
   string roleStatus = 5;
   google.protobuf.Timestamp createdAt = 6;
-  string activeStatus = 7;
 }
 
 message DeleteUserReq {
