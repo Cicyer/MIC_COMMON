@@ -29,5 +29,5 @@ var (
 	IllegalIdCard        = add(10211) // 身份证号不合法
 	IllegalIdRole        = add(10212) // 角色不合法
 	IllegalIdRoleChange  = add(10213) // 角色不允许跨平台便跟
-
+	EmailVerifyCodeError = add(10214) // 邮箱验证码错误
 )
