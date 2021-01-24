@@ -13,7 +13,11 @@ import (
 
 var logger *zap.SugaredLogger
 
-func InitLog(applicationName string) {
+type LogConfig struct {
+	LogPath string
+}
+
+func InitLog(logPath string) {
 	//var core zapcore.Core
 	//var zapLevel zapcore.Level
 	//zapLevel.Set(level)
@@ -63,8 +67,8 @@ func InitLog(applicationName string) {
 		rootPath = "c:"
 	}
 	// 获取 info、warn日志文件的io.Writer 抽象 getWriter() 在下方实现
-	infoWriter := getWriter(rootPath+"/logs/"+applicationName+"/", "info.log")
-	warnWriter := getWriter(rootPath+"/logs/"+applicationName+"/", "error.log")
+	infoWriter := getWriter(rootPath+logPath, "info.log")
+	warnWriter := getWriter(rootPath+logPath, "error.log")
 
 	// 最后创建具体的Logger
 	core := zapcore.NewTee(
