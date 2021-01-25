@@ -25,7 +25,6 @@ message UserPassLoginResp {
   int64 organizationId = 6;
   repeated PermissionInfo permissions = 7;
   string activeStatus = 8;
-  int64 mibId = 9;
 }
 
 message PermissionInfo {
@@ -43,7 +42,6 @@ message CreateUserReq {
   string accountStatus = 7;
   int64 managerId = 8;
   string email = 9;
-  int64 mibId = 10;
 }
 
 message CreateUserResp {
@@ -76,7 +74,6 @@ message ListUserReq {
   int64 managerId = 7;
   Page page = 8;
   string email = 9;
-  int64 mibId = 10;
 }
 
 message ListUserResp {
@@ -99,7 +96,6 @@ message UserDetail {
   string email = 10;
   string roleName = 11;
   string activeStatus = 12;
-  int64 mibId = 13;
 }
 
 message ListRoleReq {
@@ -122,7 +118,6 @@ message RoleDetail {
   string platFormType = 4;
   string roleStatus = 5;
   google.protobuf.Timestamp createdAt = 6;
-  int64 mibId = 7;
 }
 
 message DeleteUserReq {
