@@ -101,6 +101,7 @@ message UserDetail {
 message ListRoleReq {
   Page page = 1;
   string platFormType = 2;
+  int64 mibId = 3;
 }
 
 message ListRoleResp {
