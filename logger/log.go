@@ -2,9 +2,9 @@ package logger
 
 import (
 	"fmt"
-	rotatelogs "github.com/lestrrat/go-file-rotatelogs"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
+	"gopkg.in/natefinch/lumberjack.v2"
 	"io"
 	"os"
 	"runtime"
@@ -52,7 +52,6 @@ func InitLog(logPath string) {
 			enc.AppendInt64(int64(d) / 1000000)
 		},
 	})
-
 	// 实现两个判断日志等级的interface (其实 zapcore.*Level 自身就是 interface)
 	infoLevel := zap.LevelEnablerFunc(func(lvl zapcore.Level) bool {
 		return lvl < zapcore.WarnLevel
@@ -69,7 +68,6 @@ func InitLog(logPath string) {
 	// 获取 info、warn日志文件的io.Writer 抽象 getWriter() 在下方实现
 	infoWriter := getWriter(rootPath+logPath, "info.log")
 	warnWriter := getWriter(rootPath+logPath, "error.log")
-
 	// 最后创建具体的Logger
 	core := zapcore.NewTee(
 		zapcore.NewCore(encoder, zapcore.AddSync(infoWriter), infoLevel),
@@ -79,22 +77,29 @@ func InitLog(logPath string) {
 }
 
 func getWriter(path string, filename string) io.Writer {
-	// 生成rotatelogs的Logger 实际生成的文件名 demo.log.YYmmddHH
-	// demo.log是指向最新日志的链接
-	// 保存30天内的日志，每12小时(整点)分割一次日志
 	err := os.MkdirAll(path, 0777)
 	if err != nil {
 		fmt.Printf("%s", err)
 	}
-	hook, err := rotatelogs.New(
-		path+filename+".%Y%m%d-%H", // 没有使用go风格反人类的format格式
-		rotatelogs.WithMaxAge(time.Hour*24*30),
-		rotatelogs.WithRotationTime(time.Hour*12),
-	)
-	if err != nil {
-		panic(err)
+	hook := lumberjack.Logger{
+		Filename:   path + filename, // 日志文件路径
+		MaxSize:    128,             // 每个日志文件保存的最大尺寸 单位：M
+		MaxBackups: 100,             // 日志文件最多保存多少个备份
+		MaxAge:     30,              // 文件最多保存多少天
+		Compress:   true,            // 是否压缩
 	}
-	return hook
+	// 生成rotatelogs的Logger 实际生成的文件名 demo.log.YYmmddHH
+	// demo.log是指向最新日志的链接
+	// 保存30天内的日志，每12小时(整点)分割一次日志
+	//hook, err := rotatelogs.New(
+	//	//	path+filename+".%Y%m%d-%H", // 没有使用go风格反人类的format格式
+	//	//	rotatelogs.WithMaxAge(time.Hour*24*30),
+	//	//	rotatelogs.WithRotationTime(time.Hour*12),
+	//	//)
+	//	//if err != nil {
+	//	//	panic(err)
+	//	//}
+	return io.Writer(&hook)
 }
 
 func NewEncoderConfig() zapcore.EncoderConfig {
