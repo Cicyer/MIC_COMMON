@@ -36,7 +36,7 @@ var CM = map[int]map[string]string{
 	10204: {"EN": "illegal phone number", "CN": "手机号不合法"},
 	10205: {"EN": "password too weak", "CN": "密码太弱"},
 	10206: {"EN": "username too long", "CN": "用户名长度超过限制"},
-	10207: {"EN": "request frequency too high", "CN": "触发频率限制"},
+	10207: {"EN": "request frequency too high", "CN": "请求发送频率过高"},
 	10208: {"EN": "new password is same as old one", "CN": "新密码与旧密码相同"},
 	10209: {"EN": "invalid invite code", "CN": "无效的邀请码"},
 	10210: {"EN": "your ID card cannot be updated,because you already have one,if you need help,please contact the staff", "CN": "已验证过身份证，修改需要联系工作人员进行核实"},
