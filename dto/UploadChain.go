@@ -151,8 +151,12 @@ type UploadChainShipment struct {
 	CompanyCode string `json:"companyCode"`
 	//招采同步时间
 	SyncAt time.Time `json:"syncAt"`
+}
 
-	//配送单相关
+//配送单相关
+type UploadChainShipmentOrder struct {
+	UploadChainType
+	Plans []UploadChainShipment `json:"plans"`
 	//配送单号
 	ShipmentNo       string    `json:"shipmentNo"`
 	InvoiceMd5       string    `json:"invoiceMd5"`
