@@ -14,7 +14,7 @@ message Page {
 message ListBankAccountReq {
   int64  organizationId = 1;
   string  accountType = 2;
-  int64 uid = 3;
+  int64 managerId = 3;
 }
 
 message ListBankAccountResp {
@@ -42,10 +42,19 @@ message AccountInfo {
   string  cardNo = 2;
   string accountType = 3;
   string bank = 4;
-  int64   uid = 5;
+  int64   managerId = 5;
+  int64   organizationId = 6;
 }
 
 message CreateOneAccountInfoResp {
+
+}
+//更新帐号信息
+message UpdateBankAccountListReq {
+  repeated AccountInfo list = 1;
+}
+
+message UpdateBankAccountListResp {
 
 }
 
@@ -53,7 +62,7 @@ message CreateOneAccountInfoResp {
 message UpdateBankAccountReq {
   string  cardNo = 1;
   string  validStatus = 2;
-  int64   uid = 3;
+  int64   managerId = 3;
 }
 
 message UpdateBankAccountResp {
@@ -64,4 +73,5 @@ service BankService {
   rpc ListBankAccount(ListBankAccountReq) returns(ListBankAccountResp);
   rpc CreateOneAccountInfo(CreateOneAccountInfoReq) returns(CreateOneAccountInfoResp);
   rpc UpdateBankAccount(UpdateBankAccountReq) returns(UpdateBankAccountResp);
+  rpc UpdateBankAccountList(UpdateBankAccountListReq) returns(UpdateBankAccountListResp);
 }

@@ -15,7 +15,7 @@ message Page {
 //根据招采单号查询合同信息
 message GetContractInfoReq {
   int64  shipmentPlanId = 1;
-  int64 uid = 2;
+  int64 managerId = 2;
 }
 
 message GetContractInfoResp {
@@ -25,7 +25,7 @@ message GetContractInfoResp {
 //合同详情
 message ContractDetailReq {
   int64 contractId =1;
-  int64 uid = 2;
+  int64 managerId = 2;
 
 }
 
@@ -52,7 +52,7 @@ message ContractListReq {
   string  contractNo = 7;
   string  contractStatus = 8;
   Page page = 9;
-  int64 uid = 10;
+  int64 managerId = 10;
   string  MedicineCode = 11;
 }
 
@@ -85,7 +85,7 @@ message ContractMiListReq {
   int64  contractId = 1;
   int64  contractMiId = 2;
   Page page = 3;
-  int64 uid = 4;
+  int64 managerId = 4;
 }
 
 message ContractMiListResp {
@@ -111,7 +111,7 @@ message CreateOneContractMIReq {
   int64  miId = 1;
   int64  contractId = 2;
   int64  medicineAmount = 3;
-  int64 uid = 4;
+  int64 managerId = 4;
 }
 
 message CreateOneContractMIResp {
@@ -122,7 +122,7 @@ message UpdateOneContractMIReq {
   int64  contractMiId = 1;
   int64  miId = 2;
   int64  medicineAmount = 3;
-  int64 uid = 4;
+  int64 managerId = 4;
 }
 
 message UpdateOneContractMIResp {
@@ -136,7 +136,7 @@ message UpdateOneContractReq {
   int64  medicinePrice = 4;
   google.protobuf.Timestamp startAt = 5;
   google.protobuf.Timestamp endAt = 6;
-  int64 uid = 7;
+  int64 managerId = 7;
 }
 
 message UpdateOneContractResp {
@@ -145,7 +145,7 @@ message UpdateOneContractResp {
 //删除主合同
 message DeleteOneContractReq {
   int64  contractId = 1;
-  int64 uid = 2;
+  int64 managerId = 2;
 }
 
 message DeleteOneContractResp {
@@ -154,7 +154,7 @@ message DeleteOneContractResp {
 //删除子合同
 message DeleteOneContractMiReq {
   int64  contractMiId = 1;
-  int64 uid = 2;
+  int64 managerId = 2;
 }
 
 message DeleteOneContractMiResp {
@@ -167,7 +167,7 @@ message MedicineListReq {
   int64  tagId = 3;
   string  manufacturer = 4;
   Page page = 5;
-  int64 uid = 6;
+  int64 managerId = 6;
 }
 
 message MedicineListResp {
@@ -194,7 +194,7 @@ message MedicineListVo {
 message MedicineListForQueryReq {
   string  medicineName = 1;
   string  medicineCode = 2;
-  int64 uid = 3;
+  int64 managerId = 3;
 }
 
 message MedicineListForQueryResp {
@@ -217,7 +217,7 @@ message CreateMedicineReq {
   int32  calculateRate = 6;
   string  manufacturer = 7;
   string  medicineUnit = 8;
-  int64 uid = 9;
+  int64 managerId = 9;
 }
 message CreateMedicineResp {
   //  int64  contractMiId = 1;
@@ -233,7 +233,7 @@ message UpdateMedicineReq {
   int32  calculateRate = 7;
   string  manufacturer = 8;
   string  medicineUnit = 9;
-  int64 uid = 10;
+  int64 managerId = 10;
 }
 message UpdateMedicineResp {
   //  int64  contractMiId = 1;
@@ -241,7 +241,7 @@ message UpdateMedicineResp {
 //删除药品
 message DeleteMedicineReq {
   string  medicineCode = 1;
-  int64 uid = 2;
+  int64 managerId = 2;
 }
 message DeleteMedicineResp {
   //  int64  contractMiId = 1;
@@ -249,7 +249,7 @@ message DeleteMedicineResp {
 //查询标签列表
 message TagListReq {
   string  tagType = 1;
-  int64 uid = 2;
+  int64 managerId = 2;
 }
 message TagListResp {
   repeated TagListVo list = 1;
@@ -263,7 +263,7 @@ message TagListVo {
 //查询标签详情列表
 message TagDetailListReq {
   int64  tagId = 1;
-  int64 uid = 2;
+  int64 managerId = 2;
 }
 
 message TagDetailListResp {
@@ -284,7 +284,7 @@ message TagDetailVo {
 message DeleteTagMedicineReq {
   int64  tagId = 1;
   int64  medicineId = 2;
-  int64 uid = 3;
+  int64 managerId = 3;
 }
 
 message DeleteTagMedicineResp {
@@ -294,7 +294,7 @@ message DeleteTagMedicineResp {
 message CreateTagMedicineReq {
   int64  tagId = 1;
   int64  medicineId = 2;
-  int64 uid = 3;
+  int64 managerId = 3;
 }
 
 message CreateTagMedicineResp {
@@ -307,7 +307,7 @@ message ListMiReq {
   string  miName = 2;
   string  validStatus = 3;
   Page page = 4;
-  int64 uid = 5;
+  int64 managerId = 5;
 }
 
 message ListMiResp {
@@ -332,7 +332,7 @@ message ListMiVo {
 //查询医疗机构 通用接口
 message CommonMIReq {
   string  miName = 1;
-  int64 uid = 2;
+  int64 managerId = 2;
 }
 
 message CommonMIResp {
@@ -354,7 +354,7 @@ message CreateOneMIReq {
   string province = 6;
   string city = 7;
   string zone = 8;
-  int64   uid = 9;
+  int64   managerId = 9;
 }
 
 message CreateOneMIResp {
@@ -371,8 +371,7 @@ message UpdateMiReq {
   string province = 6;
   string city = 7;
   string zone = 8;
-  int64   uid = 9;
-  repeated AccountInfo list = 10;
+  int64   managerId = 9;
 }
 
 message UpdateMiResp {
@@ -384,7 +383,7 @@ message ListCompanyReq {
   string companyCode = 2;
   string validStatus = 3;
   Page page = 4;
-  int64 uid = 5;
+  int64 managerId = 5;
 }
 
 message ListCompanyResp {
@@ -414,7 +413,7 @@ message CreateOneCompanyReq {
   string province = 5;
   string city = 6;
   string zone = 7;
-  int64   uid = 8;
+  int64   managerId = 8;
 }
 
 message CreateOneCompanyResp {
@@ -429,7 +428,7 @@ message ListTpPlanErrReq {
   google.protobuf.Timestamp stratDate = 4;
   google.protobuf.Timestamp endDate = 5;
   Page page = 6;
-  int64 uid = 7;
+  int64 managerId = 7;
 }
 
 message ListTpPlanErrResp {
@@ -453,7 +452,7 @@ message ListTpPlanErrVo {
 //异常招采单处理
 message UpdateErrShipmentPlanReq {
   int64  tpShipmentPlanId = 1;
-  int64  uid = 2;
+  int64  managerId = 2;
 }
 
 message UpdateErrShipmentPlanResp {
@@ -470,7 +469,7 @@ message ListShipmentPlanReq {
   google.protobuf.Timestamp stratDate = 7;
   google.protobuf.Timestamp endDate = 8;
   Page page = 9;
-  int64 uid = 10;
+  int64 managerId = 10;
 }
 
 message ListShipmentPlanResp {
@@ -507,7 +506,7 @@ message ListShipmentPlanrVo {
 //根据配送单号查询配送单详情
 message DetailShipmentOrderReq {
   string shipmentNo = 1;
-  int64 uid = 2;
+  int64 managerId = 2;
 }
 //先返回部分关键字段
 message DetailShipmentOrderResp {
@@ -534,7 +533,7 @@ message ListShipmentPlanForOrderReq {
   google.protobuf.Timestamp stratDate = 7;
   google.protobuf.Timestamp endDate = 8;
   Page page = 9;
-  int64 uid = 10;
+  int64 managerId = 10;
 }
 
 message ListShipmentPlanForOrderResp {
@@ -559,7 +558,7 @@ message CountShipmentPlanReq {
   google.protobuf.Timestamp endDate = 2;
   string miCode = 3;
   string companyCode = 4;
-  int64 uid = 5;
+  int64 managerId = 5;
 }
 
 message CountShipmentPlanResp {
@@ -585,7 +584,7 @@ message CreateShipmentOrderReq {
   string shipmentCode = 14;
   string shipmentCompany = 15;
   repeated string shipmentPlanIds = 16;
-  int64 uid = 17;
+  int64 managerId = 17;
 }
 
 message CreateShipmentOrderResp {
@@ -604,7 +603,7 @@ message ListShipmentOrderReq {
   google.protobuf.Timestamp startDate = 8;
   google.protobuf.Timestamp endDate = 9;
   Page page = 10;
-  int64 uid = 11;
+  int64 managerId = 11;
 }
 
 message ListShipmentOrderResp {
@@ -630,7 +629,7 @@ message ListShipmentOrderVo {
 message UpdateShipmentOrderReq {
   string shipmentNo = 1;
   string shipmentStatus =2;
-  int64 uid = 3;
+  int64 managerId = 3;
 }
 
 message UpdateShipmentOrderResp {
