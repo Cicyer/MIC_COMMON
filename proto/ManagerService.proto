@@ -207,7 +207,7 @@ message GetShipmentFactoringHashReq {
   //谁在请求 按照搜索账号控制显示范围
   int64 managerId = 1;
   repeated int64 factoringOrderIds = 2;
-  repeated int64 factoringOrderNos = 3;
+  repeated string factoringOrderNos = 3;
 }
 message ShipmentFactoringHash{
   int64 factoringOrderId = 1;
@@ -234,6 +234,8 @@ message GetConfigReq {
   string typeOne = 4;
   string typeTwo = 5;
   string typeThree = 6;
+  //是否检测时间段，此项传true，系统将会校验开始结束时间是否符合
+  bool checkTime =7;
 }
 message CommonConfig{
   int64 configId = 1;
@@ -262,7 +264,7 @@ service ManagerService {
   rpc GetMedicineHash(GetMedicineReq) returns (GetMedicineResp);
   rpc GetContractHash(GetContractHashReq) returns (GetContractHashResp);
   rpc GetContractMiHash(GetContractMiHashReq) returns (GetContractMiHashResp);
-  rpc GetConfigHashHash(GetConfigHashReq) returns (GetConfigHashResp);
+  rpc GetConfigHash(GetConfigHashReq) returns (GetConfigHashResp);
   rpc GetShipmentPlanHash(GetShipmentPlanHashReq) returns (GetShipmentPlanHashResp);
   rpc GetShipmentOrderHash(GetShipmentOrderHashReq) returns (GetShipmentOrderHashResp);
   rpc GetShipmentPayHash(GetShipmentPayHashReq) returns (GetShipmentPayHashResp);
