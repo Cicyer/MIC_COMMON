@@ -173,6 +173,8 @@ type UploadChainShipmentOrder struct {
 	SendOutAt       time.Time `json:"sendOutAt"`
 	ShipmentCode    string    `json:"shipmentCode"`
 	ShipmentCompany string    `json:"shipmentCompany"`
+	// 配送状态 WAITING SENDING  RECEIVED FAIL
+	ShipmentStatus string `json:"shipmentStatus"`
 
 	//扫码收货时间
 	ReceiveAt time.Time `json:"receiveAt"`
