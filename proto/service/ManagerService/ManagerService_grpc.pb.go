@@ -17,6 +17,7 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ManagerServiceClient interface {
+	//hash模块
 	GetCompanyHash(ctx context.Context, in *GetCompanyHashReq, opts ...grpc.CallOption) (*GetCompanyHashResp, error)
 	GetMiHash(ctx context.Context, in *GetMiHashReq, opts ...grpc.CallOption) (*GetMiHashResp, error)
 	GetMedicineHash(ctx context.Context, in *GetMedicineReq, opts ...grpc.CallOption) (*GetMedicineResp, error)
@@ -27,6 +28,8 @@ type ManagerServiceClient interface {
 	GetShipmentOrderHash(ctx context.Context, in *GetShipmentOrderHashReq, opts ...grpc.CallOption) (*GetShipmentOrderHashResp, error)
 	GetShipmentPayHash(ctx context.Context, in *GetShipmentPayHashReq, opts ...grpc.CallOption) (*GetShipmentPayHashResp, error)
 	GetShipmentFactoringHash(ctx context.Context, in *GetShipmentFactoringHashReq, opts ...grpc.CallOption) (*GetShipmentFactoringHashResp, error)
+	//通用配置查询
+	GetConfig(ctx context.Context, in *GetConfigReq, opts ...grpc.CallOption) (*GetConfigResp, error)
 }
 
 type managerServiceClient struct {
@@ -127,10 +130,20 @@ func (c *managerServiceClient) GetShipmentFactoringHash(ctx context.Context, in 
 	return out, nil
 }
 
+func (c *managerServiceClient) GetConfig(ctx context.Context, in *GetConfigReq, opts ...grpc.CallOption) (*GetConfigResp, error) {
+	out := new(GetConfigResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/GetConfig", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ManagerServiceServer is the server API for ManagerService service.
 // All implementations must embed UnimplementedManagerServiceServer
 // for forward compatibility
 type ManagerServiceServer interface {
+	//hash模块
 	GetCompanyHash(context.Context, *GetCompanyHashReq) (*GetCompanyHashResp, error)
 	GetMiHash(context.Context, *GetMiHashReq) (*GetMiHashResp, error)
 	GetMedicineHash(context.Context, *GetMedicineReq) (*GetMedicineResp, error)
@@ -141,6 +154,8 @@ type ManagerServiceServer interface {
 	GetShipmentOrderHash(context.Context, *GetShipmentOrderHashReq) (*GetShipmentOrderHashResp, error)
 	GetShipmentPayHash(context.Context, *GetShipmentPayHashReq) (*GetShipmentPayHashResp, error)
 	GetShipmentFactoringHash(context.Context, *GetShipmentFactoringHashReq) (*GetShipmentFactoringHashResp, error)
+	//通用配置查询
+	GetConfig(context.Context, *GetConfigReq) (*GetConfigResp, error)
 	mustEmbedUnimplementedManagerServiceServer()
 }
 
@@ -177,6 +192,9 @@ func (UnimplementedManagerServiceServer) GetShipmentPayHash(context.Context, *Ge
 }
 func (UnimplementedManagerServiceServer) GetShipmentFactoringHash(context.Context, *GetShipmentFactoringHashReq) (*GetShipmentFactoringHashResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetShipmentFactoringHash not implemented")
+}
+func (UnimplementedManagerServiceServer) GetConfig(context.Context, *GetConfigReq) (*GetConfigResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetConfig not implemented")
 }
 func (UnimplementedManagerServiceServer) mustEmbedUnimplementedManagerServiceServer() {}
 
@@ -371,6 +389,24 @@ func _ManagerService_GetShipmentFactoringHash_Handler(srv interface{}, ctx conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ManagerService_GetConfig_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetConfigReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).GetConfig(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/GetConfig",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).GetConfig(ctx, req.(*GetConfigReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ManagerService_ServiceDesc is the grpc.ServiceDesc for ManagerService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -417,6 +453,10 @@ var ManagerService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetShipmentFactoringHash",
 			Handler:    _ManagerService_GetShipmentFactoringHash_Handler,
+		},
+		{
+			MethodName: "GetConfig",
+			Handler:    _ManagerService_GetConfig_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
