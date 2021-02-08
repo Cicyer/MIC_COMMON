@@ -17,6 +17,51 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ManagerServiceClient interface {
+	//合同相关
+	ListContract(ctx context.Context, in *ContractListReq, opts ...grpc.CallOption) (*ContractListResp, error)
+	ListMiContract(ctx context.Context, in *ContractMiListReq, opts ...grpc.CallOption) (*ContractMiListResp, error)
+	CreateOneContractMI(ctx context.Context, in *CreateOneContractMIReq, opts ...grpc.CallOption) (*UpdateOneContractMIResp, error)
+	UpdateOneContract(ctx context.Context, in *UpdateOneContractReq, opts ...grpc.CallOption) (*UpdateOneContractResp, error)
+	DeleteOneContract(ctx context.Context, in *DeleteOneContractReq, opts ...grpc.CallOption) (*DeleteOneContractResp, error)
+	DeleteOneContractMi(ctx context.Context, in *DeleteOneContractMiReq, opts ...grpc.CallOption) (*DeleteOneContractMiResp, error)
+	GetContractInfo(ctx context.Context, in *GetContractInfoReq, opts ...grpc.CallOption) (*GetContractInfoResp, error)
+	ContractDetail(ctx context.Context, in *ContractDetailReq, opts ...grpc.CallOption) (*ContractDetailResp, error)
+	//药品相关
+	ListMedicine(ctx context.Context, in *MedicineListReq, opts ...grpc.CallOption) (*MedicineListResp, error)
+	MedicineListForQuery(ctx context.Context, in *MedicineListForQueryReq, opts ...grpc.CallOption) (*MedicineListForQueryResp, error)
+	CreateMedicine(ctx context.Context, in *CreateMedicineReq, opts ...grpc.CallOption) (*CreateMedicineResp, error)
+	UpdateMedicine(ctx context.Context, in *UpdateMedicineReq, opts ...grpc.CallOption) (*UpdateMedicineResp, error)
+	DeleteMedicine(ctx context.Context, in *DeleteMedicineReq, opts ...grpc.CallOption) (*DeleteMedicineResp, error)
+	//药品标签相关
+	TagList(ctx context.Context, in *TagListReq, opts ...grpc.CallOption) (*TagListResp, error)
+	TagDetailList(ctx context.Context, in *TagDetailListReq, opts ...grpc.CallOption) (*TagDetailListResp, error)
+	DeleteTagMedicine(ctx context.Context, in *DeleteTagMedicineReq, opts ...grpc.CallOption) (*DeleteTagMedicineResp, error)
+	CreateTagMedicine(ctx context.Context, in *CreateTagMedicineReq, opts ...grpc.CallOption) (*CreateTagMedicineResp, error)
+	//医疗机构相关
+	ListMi(ctx context.Context, in *ListMiReq, opts ...grpc.CallOption) (*ListMiResp, error)
+	CommonMI(ctx context.Context, in *CommonMIReq, opts ...grpc.CallOption) (*CommonMIResp, error)
+	CreateOneMI(ctx context.Context, in *CreateOneMIReq, opts ...grpc.CallOption) (*CreateOneMIResp, error)
+	//银行账号相关
+	ListBankAccount(ctx context.Context, in *ListBankAccountReq, opts ...grpc.CallOption) (*ListBankAccountResp, error)
+	CreateOneAccountInfo(ctx context.Context, in *CreateOneAccountInfoReq, opts ...grpc.CallOption) (*CreateOneAccountInfoResp, error)
+	UpdateBankAccount(ctx context.Context, in *UpdateBankAccountReq, opts ...grpc.CallOption) (*UpdateBankAccountResp, error)
+	//配送企业相关
+	ListCompany(ctx context.Context, in *ListCompanyReq, opts ...grpc.CallOption) (*ListCompanyResp, error)
+	//招采异常订单相关
+	ListTpPlanErr(ctx context.Context, in *ListTpPlanErrReq, opts ...grpc.CallOption) (*ListTpPlanErrResp, error)
+	UpdateErrShipmentPlan(ctx context.Context, in *UpdateErrShipmentPlanReq, opts ...grpc.CallOption) (*UpdateErrShipmentPlanResp, error)
+	//招采单(配送)相关
+	ListShipmentPlan(ctx context.Context, in *ListShipmentPlanReq, opts ...grpc.CallOption) (*ListShipmentPlanResp, error)
+	CountShipmentPlan(ctx context.Context, in *CountShipmentPlanReq, opts ...grpc.CallOption) (*CountShipmentPlanResp, error)
+	//配送单详情
+	DetailShipmentOrder(ctx context.Context, in *DetailShipmentOrderReq, opts ...grpc.CallOption) (*DetailShipmentOrderResp, error)
+	ListShipmentPlanForOrder(ctx context.Context, in *ListShipmentPlanForOrderReq, opts ...grpc.CallOption) (*ListShipmentPlanForOrderResp, error)
+	//配送单创建
+	CreateShipmentOrder(ctx context.Context, in *CreateShipmentOrderReq, opts ...grpc.CallOption) (*CreateShipmentOrderResp, error)
+	//配送单列表
+	ListShipmentOrder(ctx context.Context, in *ListShipmentOrderReq, opts ...grpc.CallOption) (*ListShipmentOrderResp, error)
+	//配送单修改
+	UpdateShipmentOrder(ctx context.Context, in *UpdateShipmentOrderReq, opts ...grpc.CallOption) (*UpdateShipmentOrderResp, error)
 	//hash模块
 	GetCompanyHash(ctx context.Context, in *GetCompanyHashReq, opts ...grpc.CallOption) (*GetCompanyHashResp, error)
 	GetMiHash(ctx context.Context, in *GetMiHashReq, opts ...grpc.CallOption) (*GetMiHashResp, error)
@@ -28,6 +73,8 @@ type ManagerServiceClient interface {
 	GetShipmentOrderHash(ctx context.Context, in *GetShipmentOrderHashReq, opts ...grpc.CallOption) (*GetShipmentOrderHashResp, error)
 	GetShipmentPayHash(ctx context.Context, in *GetShipmentPayHashReq, opts ...grpc.CallOption) (*GetShipmentPayHashResp, error)
 	GetShipmentFactoringHash(ctx context.Context, in *GetShipmentFactoringHashReq, opts ...grpc.CallOption) (*GetShipmentFactoringHashResp, error)
+	//根据哈希查询证书内容
+	GetHashContent(ctx context.Context, in *GetHashContentReq, opts ...grpc.CallOption) (*GetHashContentResp, error)
 	//通用配置查询
 	GetConfig(ctx context.Context, in *GetConfigReq, opts ...grpc.CallOption) (*GetConfigResp, error)
 }
@@ -38,6 +85,303 @@ type managerServiceClient struct {
 
 func NewManagerServiceClient(cc grpc.ClientConnInterface) ManagerServiceClient {
 	return &managerServiceClient{cc}
+}
+
+func (c *managerServiceClient) ListContract(ctx context.Context, in *ContractListReq, opts ...grpc.CallOption) (*ContractListResp, error) {
+	out := new(ContractListResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/ListContract", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) ListMiContract(ctx context.Context, in *ContractMiListReq, opts ...grpc.CallOption) (*ContractMiListResp, error) {
+	out := new(ContractMiListResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/ListMiContract", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) CreateOneContractMI(ctx context.Context, in *CreateOneContractMIReq, opts ...grpc.CallOption) (*UpdateOneContractMIResp, error) {
+	out := new(UpdateOneContractMIResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/CreateOneContractMI", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) UpdateOneContract(ctx context.Context, in *UpdateOneContractReq, opts ...grpc.CallOption) (*UpdateOneContractResp, error) {
+	out := new(UpdateOneContractResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/UpdateOneContract", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) DeleteOneContract(ctx context.Context, in *DeleteOneContractReq, opts ...grpc.CallOption) (*DeleteOneContractResp, error) {
+	out := new(DeleteOneContractResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/DeleteOneContract", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) DeleteOneContractMi(ctx context.Context, in *DeleteOneContractMiReq, opts ...grpc.CallOption) (*DeleteOneContractMiResp, error) {
+	out := new(DeleteOneContractMiResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/DeleteOneContractMi", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) GetContractInfo(ctx context.Context, in *GetContractInfoReq, opts ...grpc.CallOption) (*GetContractInfoResp, error) {
+	out := new(GetContractInfoResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/GetContractInfo", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) ContractDetail(ctx context.Context, in *ContractDetailReq, opts ...grpc.CallOption) (*ContractDetailResp, error) {
+	out := new(ContractDetailResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/ContractDetail", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) ListMedicine(ctx context.Context, in *MedicineListReq, opts ...grpc.CallOption) (*MedicineListResp, error) {
+	out := new(MedicineListResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/ListMedicine", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) MedicineListForQuery(ctx context.Context, in *MedicineListForQueryReq, opts ...grpc.CallOption) (*MedicineListForQueryResp, error) {
+	out := new(MedicineListForQueryResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/MedicineListForQuery", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) CreateMedicine(ctx context.Context, in *CreateMedicineReq, opts ...grpc.CallOption) (*CreateMedicineResp, error) {
+	out := new(CreateMedicineResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/CreateMedicine", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) UpdateMedicine(ctx context.Context, in *UpdateMedicineReq, opts ...grpc.CallOption) (*UpdateMedicineResp, error) {
+	out := new(UpdateMedicineResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/UpdateMedicine", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) DeleteMedicine(ctx context.Context, in *DeleteMedicineReq, opts ...grpc.CallOption) (*DeleteMedicineResp, error) {
+	out := new(DeleteMedicineResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/DeleteMedicine", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) TagList(ctx context.Context, in *TagListReq, opts ...grpc.CallOption) (*TagListResp, error) {
+	out := new(TagListResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/TagList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) TagDetailList(ctx context.Context, in *TagDetailListReq, opts ...grpc.CallOption) (*TagDetailListResp, error) {
+	out := new(TagDetailListResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/TagDetailList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) DeleteTagMedicine(ctx context.Context, in *DeleteTagMedicineReq, opts ...grpc.CallOption) (*DeleteTagMedicineResp, error) {
+	out := new(DeleteTagMedicineResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/DeleteTagMedicine", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) CreateTagMedicine(ctx context.Context, in *CreateTagMedicineReq, opts ...grpc.CallOption) (*CreateTagMedicineResp, error) {
+	out := new(CreateTagMedicineResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/CreateTagMedicine", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) ListMi(ctx context.Context, in *ListMiReq, opts ...grpc.CallOption) (*ListMiResp, error) {
+	out := new(ListMiResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/ListMi", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) CommonMI(ctx context.Context, in *CommonMIReq, opts ...grpc.CallOption) (*CommonMIResp, error) {
+	out := new(CommonMIResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/CommonMI", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) CreateOneMI(ctx context.Context, in *CreateOneMIReq, opts ...grpc.CallOption) (*CreateOneMIResp, error) {
+	out := new(CreateOneMIResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/CreateOneMI", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) ListBankAccount(ctx context.Context, in *ListBankAccountReq, opts ...grpc.CallOption) (*ListBankAccountResp, error) {
+	out := new(ListBankAccountResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/ListBankAccount", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) CreateOneAccountInfo(ctx context.Context, in *CreateOneAccountInfoReq, opts ...grpc.CallOption) (*CreateOneAccountInfoResp, error) {
+	out := new(CreateOneAccountInfoResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/CreateOneAccountInfo", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) UpdateBankAccount(ctx context.Context, in *UpdateBankAccountReq, opts ...grpc.CallOption) (*UpdateBankAccountResp, error) {
+	out := new(UpdateBankAccountResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/UpdateBankAccount", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) ListCompany(ctx context.Context, in *ListCompanyReq, opts ...grpc.CallOption) (*ListCompanyResp, error) {
+	out := new(ListCompanyResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/ListCompany", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) ListTpPlanErr(ctx context.Context, in *ListTpPlanErrReq, opts ...grpc.CallOption) (*ListTpPlanErrResp, error) {
+	out := new(ListTpPlanErrResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/ListTpPlanErr", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) UpdateErrShipmentPlan(ctx context.Context, in *UpdateErrShipmentPlanReq, opts ...grpc.CallOption) (*UpdateErrShipmentPlanResp, error) {
+	out := new(UpdateErrShipmentPlanResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/UpdateErrShipmentPlan", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) ListShipmentPlan(ctx context.Context, in *ListShipmentPlanReq, opts ...grpc.CallOption) (*ListShipmentPlanResp, error) {
+	out := new(ListShipmentPlanResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/ListShipmentPlan", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) CountShipmentPlan(ctx context.Context, in *CountShipmentPlanReq, opts ...grpc.CallOption) (*CountShipmentPlanResp, error) {
+	out := new(CountShipmentPlanResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/CountShipmentPlan", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) DetailShipmentOrder(ctx context.Context, in *DetailShipmentOrderReq, opts ...grpc.CallOption) (*DetailShipmentOrderResp, error) {
+	out := new(DetailShipmentOrderResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/DetailShipmentOrder", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) ListShipmentPlanForOrder(ctx context.Context, in *ListShipmentPlanForOrderReq, opts ...grpc.CallOption) (*ListShipmentPlanForOrderResp, error) {
+	out := new(ListShipmentPlanForOrderResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/ListShipmentPlanForOrder", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) CreateShipmentOrder(ctx context.Context, in *CreateShipmentOrderReq, opts ...grpc.CallOption) (*CreateShipmentOrderResp, error) {
+	out := new(CreateShipmentOrderResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/CreateShipmentOrder", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) ListShipmentOrder(ctx context.Context, in *ListShipmentOrderReq, opts ...grpc.CallOption) (*ListShipmentOrderResp, error) {
+	out := new(ListShipmentOrderResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/ListShipmentOrder", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) UpdateShipmentOrder(ctx context.Context, in *UpdateShipmentOrderReq, opts ...grpc.CallOption) (*UpdateShipmentOrderResp, error) {
+	out := new(UpdateShipmentOrderResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/UpdateShipmentOrder", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *managerServiceClient) GetCompanyHash(ctx context.Context, in *GetCompanyHashReq, opts ...grpc.CallOption) (*GetCompanyHashResp, error) {
@@ -130,6 +474,15 @@ func (c *managerServiceClient) GetShipmentFactoringHash(ctx context.Context, in 
 	return out, nil
 }
 
+func (c *managerServiceClient) GetHashContent(ctx context.Context, in *GetHashContentReq, opts ...grpc.CallOption) (*GetHashContentResp, error) {
+	out := new(GetHashContentResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/GetHashContent", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *managerServiceClient) GetConfig(ctx context.Context, in *GetConfigReq, opts ...grpc.CallOption) (*GetConfigResp, error) {
 	out := new(GetConfigResp)
 	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/GetConfig", in, out, opts...)
@@ -143,6 +496,51 @@ func (c *managerServiceClient) GetConfig(ctx context.Context, in *GetConfigReq, 
 // All implementations must embed UnimplementedManagerServiceServer
 // for forward compatibility
 type ManagerServiceServer interface {
+	//合同相关
+	ListContract(context.Context, *ContractListReq) (*ContractListResp, error)
+	ListMiContract(context.Context, *ContractMiListReq) (*ContractMiListResp, error)
+	CreateOneContractMI(context.Context, *CreateOneContractMIReq) (*UpdateOneContractMIResp, error)
+	UpdateOneContract(context.Context, *UpdateOneContractReq) (*UpdateOneContractResp, error)
+	DeleteOneContract(context.Context, *DeleteOneContractReq) (*DeleteOneContractResp, error)
+	DeleteOneContractMi(context.Context, *DeleteOneContractMiReq) (*DeleteOneContractMiResp, error)
+	GetContractInfo(context.Context, *GetContractInfoReq) (*GetContractInfoResp, error)
+	ContractDetail(context.Context, *ContractDetailReq) (*ContractDetailResp, error)
+	//药品相关
+	ListMedicine(context.Context, *MedicineListReq) (*MedicineListResp, error)
+	MedicineListForQuery(context.Context, *MedicineListForQueryReq) (*MedicineListForQueryResp, error)
+	CreateMedicine(context.Context, *CreateMedicineReq) (*CreateMedicineResp, error)
+	UpdateMedicine(context.Context, *UpdateMedicineReq) (*UpdateMedicineResp, error)
+	DeleteMedicine(context.Context, *DeleteMedicineReq) (*DeleteMedicineResp, error)
+	//药品标签相关
+	TagList(context.Context, *TagListReq) (*TagListResp, error)
+	TagDetailList(context.Context, *TagDetailListReq) (*TagDetailListResp, error)
+	DeleteTagMedicine(context.Context, *DeleteTagMedicineReq) (*DeleteTagMedicineResp, error)
+	CreateTagMedicine(context.Context, *CreateTagMedicineReq) (*CreateTagMedicineResp, error)
+	//医疗机构相关
+	ListMi(context.Context, *ListMiReq) (*ListMiResp, error)
+	CommonMI(context.Context, *CommonMIReq) (*CommonMIResp, error)
+	CreateOneMI(context.Context, *CreateOneMIReq) (*CreateOneMIResp, error)
+	//银行账号相关
+	ListBankAccount(context.Context, *ListBankAccountReq) (*ListBankAccountResp, error)
+	CreateOneAccountInfo(context.Context, *CreateOneAccountInfoReq) (*CreateOneAccountInfoResp, error)
+	UpdateBankAccount(context.Context, *UpdateBankAccountReq) (*UpdateBankAccountResp, error)
+	//配送企业相关
+	ListCompany(context.Context, *ListCompanyReq) (*ListCompanyResp, error)
+	//招采异常订单相关
+	ListTpPlanErr(context.Context, *ListTpPlanErrReq) (*ListTpPlanErrResp, error)
+	UpdateErrShipmentPlan(context.Context, *UpdateErrShipmentPlanReq) (*UpdateErrShipmentPlanResp, error)
+	//招采单(配送)相关
+	ListShipmentPlan(context.Context, *ListShipmentPlanReq) (*ListShipmentPlanResp, error)
+	CountShipmentPlan(context.Context, *CountShipmentPlanReq) (*CountShipmentPlanResp, error)
+	//配送单详情
+	DetailShipmentOrder(context.Context, *DetailShipmentOrderReq) (*DetailShipmentOrderResp, error)
+	ListShipmentPlanForOrder(context.Context, *ListShipmentPlanForOrderReq) (*ListShipmentPlanForOrderResp, error)
+	//配送单创建
+	CreateShipmentOrder(context.Context, *CreateShipmentOrderReq) (*CreateShipmentOrderResp, error)
+	//配送单列表
+	ListShipmentOrder(context.Context, *ListShipmentOrderReq) (*ListShipmentOrderResp, error)
+	//配送单修改
+	UpdateShipmentOrder(context.Context, *UpdateShipmentOrderReq) (*UpdateShipmentOrderResp, error)
 	//hash模块
 	GetCompanyHash(context.Context, *GetCompanyHashReq) (*GetCompanyHashResp, error)
 	GetMiHash(context.Context, *GetMiHashReq) (*GetMiHashResp, error)
@@ -154,6 +552,8 @@ type ManagerServiceServer interface {
 	GetShipmentOrderHash(context.Context, *GetShipmentOrderHashReq) (*GetShipmentOrderHashResp, error)
 	GetShipmentPayHash(context.Context, *GetShipmentPayHashReq) (*GetShipmentPayHashResp, error)
 	GetShipmentFactoringHash(context.Context, *GetShipmentFactoringHashReq) (*GetShipmentFactoringHashResp, error)
+	//根据哈希查询证书内容
+	GetHashContent(context.Context, *GetHashContentReq) (*GetHashContentResp, error)
 	//通用配置查询
 	GetConfig(context.Context, *GetConfigReq) (*GetConfigResp, error)
 	mustEmbedUnimplementedManagerServiceServer()
@@ -163,6 +563,105 @@ type ManagerServiceServer interface {
 type UnimplementedManagerServiceServer struct {
 }
 
+func (UnimplementedManagerServiceServer) ListContract(context.Context, *ContractListReq) (*ContractListResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListContract not implemented")
+}
+func (UnimplementedManagerServiceServer) ListMiContract(context.Context, *ContractMiListReq) (*ContractMiListResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListMiContract not implemented")
+}
+func (UnimplementedManagerServiceServer) CreateOneContractMI(context.Context, *CreateOneContractMIReq) (*UpdateOneContractMIResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateOneContractMI not implemented")
+}
+func (UnimplementedManagerServiceServer) UpdateOneContract(context.Context, *UpdateOneContractReq) (*UpdateOneContractResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateOneContract not implemented")
+}
+func (UnimplementedManagerServiceServer) DeleteOneContract(context.Context, *DeleteOneContractReq) (*DeleteOneContractResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteOneContract not implemented")
+}
+func (UnimplementedManagerServiceServer) DeleteOneContractMi(context.Context, *DeleteOneContractMiReq) (*DeleteOneContractMiResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteOneContractMi not implemented")
+}
+func (UnimplementedManagerServiceServer) GetContractInfo(context.Context, *GetContractInfoReq) (*GetContractInfoResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetContractInfo not implemented")
+}
+func (UnimplementedManagerServiceServer) ContractDetail(context.Context, *ContractDetailReq) (*ContractDetailResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ContractDetail not implemented")
+}
+func (UnimplementedManagerServiceServer) ListMedicine(context.Context, *MedicineListReq) (*MedicineListResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListMedicine not implemented")
+}
+func (UnimplementedManagerServiceServer) MedicineListForQuery(context.Context, *MedicineListForQueryReq) (*MedicineListForQueryResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MedicineListForQuery not implemented")
+}
+func (UnimplementedManagerServiceServer) CreateMedicine(context.Context, *CreateMedicineReq) (*CreateMedicineResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateMedicine not implemented")
+}
+func (UnimplementedManagerServiceServer) UpdateMedicine(context.Context, *UpdateMedicineReq) (*UpdateMedicineResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateMedicine not implemented")
+}
+func (UnimplementedManagerServiceServer) DeleteMedicine(context.Context, *DeleteMedicineReq) (*DeleteMedicineResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteMedicine not implemented")
+}
+func (UnimplementedManagerServiceServer) TagList(context.Context, *TagListReq) (*TagListResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TagList not implemented")
+}
+func (UnimplementedManagerServiceServer) TagDetailList(context.Context, *TagDetailListReq) (*TagDetailListResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TagDetailList not implemented")
+}
+func (UnimplementedManagerServiceServer) DeleteTagMedicine(context.Context, *DeleteTagMedicineReq) (*DeleteTagMedicineResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteTagMedicine not implemented")
+}
+func (UnimplementedManagerServiceServer) CreateTagMedicine(context.Context, *CreateTagMedicineReq) (*CreateTagMedicineResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateTagMedicine not implemented")
+}
+func (UnimplementedManagerServiceServer) ListMi(context.Context, *ListMiReq) (*ListMiResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListMi not implemented")
+}
+func (UnimplementedManagerServiceServer) CommonMI(context.Context, *CommonMIReq) (*CommonMIResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CommonMI not implemented")
+}
+func (UnimplementedManagerServiceServer) CreateOneMI(context.Context, *CreateOneMIReq) (*CreateOneMIResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateOneMI not implemented")
+}
+func (UnimplementedManagerServiceServer) ListBankAccount(context.Context, *ListBankAccountReq) (*ListBankAccountResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListBankAccount not implemented")
+}
+func (UnimplementedManagerServiceServer) CreateOneAccountInfo(context.Context, *CreateOneAccountInfoReq) (*CreateOneAccountInfoResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateOneAccountInfo not implemented")
+}
+func (UnimplementedManagerServiceServer) UpdateBankAccount(context.Context, *UpdateBankAccountReq) (*UpdateBankAccountResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateBankAccount not implemented")
+}
+func (UnimplementedManagerServiceServer) ListCompany(context.Context, *ListCompanyReq) (*ListCompanyResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListCompany not implemented")
+}
+func (UnimplementedManagerServiceServer) ListTpPlanErr(context.Context, *ListTpPlanErrReq) (*ListTpPlanErrResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListTpPlanErr not implemented")
+}
+func (UnimplementedManagerServiceServer) UpdateErrShipmentPlan(context.Context, *UpdateErrShipmentPlanReq) (*UpdateErrShipmentPlanResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateErrShipmentPlan not implemented")
+}
+func (UnimplementedManagerServiceServer) ListShipmentPlan(context.Context, *ListShipmentPlanReq) (*ListShipmentPlanResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListShipmentPlan not implemented")
+}
+func (UnimplementedManagerServiceServer) CountShipmentPlan(context.Context, *CountShipmentPlanReq) (*CountShipmentPlanResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CountShipmentPlan not implemented")
+}
+func (UnimplementedManagerServiceServer) DetailShipmentOrder(context.Context, *DetailShipmentOrderReq) (*DetailShipmentOrderResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DetailShipmentOrder not implemented")
+}
+func (UnimplementedManagerServiceServer) ListShipmentPlanForOrder(context.Context, *ListShipmentPlanForOrderReq) (*ListShipmentPlanForOrderResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListShipmentPlanForOrder not implemented")
+}
+func (UnimplementedManagerServiceServer) CreateShipmentOrder(context.Context, *CreateShipmentOrderReq) (*CreateShipmentOrderResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateShipmentOrder not implemented")
+}
+func (UnimplementedManagerServiceServer) ListShipmentOrder(context.Context, *ListShipmentOrderReq) (*ListShipmentOrderResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListShipmentOrder not implemented")
+}
+func (UnimplementedManagerServiceServer) UpdateShipmentOrder(context.Context, *UpdateShipmentOrderReq) (*UpdateShipmentOrderResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateShipmentOrder not implemented")
+}
 func (UnimplementedManagerServiceServer) GetCompanyHash(context.Context, *GetCompanyHashReq) (*GetCompanyHashResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetCompanyHash not implemented")
 }
@@ -193,6 +692,9 @@ func (UnimplementedManagerServiceServer) GetShipmentPayHash(context.Context, *Ge
 func (UnimplementedManagerServiceServer) GetShipmentFactoringHash(context.Context, *GetShipmentFactoringHashReq) (*GetShipmentFactoringHashResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetShipmentFactoringHash not implemented")
 }
+func (UnimplementedManagerServiceServer) GetHashContent(context.Context, *GetHashContentReq) (*GetHashContentResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetHashContent not implemented")
+}
 func (UnimplementedManagerServiceServer) GetConfig(context.Context, *GetConfigReq) (*GetConfigResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetConfig not implemented")
 }
@@ -207,6 +709,600 @@ type UnsafeManagerServiceServer interface {
 
 func RegisterManagerServiceServer(s grpc.ServiceRegistrar, srv ManagerServiceServer) {
 	s.RegisterService(&ManagerService_ServiceDesc, srv)
+}
+
+func _ManagerService_ListContract_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ContractListReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).ListContract(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/ListContract",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).ListContract(ctx, req.(*ContractListReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_ListMiContract_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ContractMiListReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).ListMiContract(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/ListMiContract",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).ListMiContract(ctx, req.(*ContractMiListReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_CreateOneContractMI_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateOneContractMIReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).CreateOneContractMI(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/CreateOneContractMI",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).CreateOneContractMI(ctx, req.(*CreateOneContractMIReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_UpdateOneContract_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateOneContractReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).UpdateOneContract(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/UpdateOneContract",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).UpdateOneContract(ctx, req.(*UpdateOneContractReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_DeleteOneContract_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteOneContractReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).DeleteOneContract(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/DeleteOneContract",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).DeleteOneContract(ctx, req.(*DeleteOneContractReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_DeleteOneContractMi_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteOneContractMiReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).DeleteOneContractMi(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/DeleteOneContractMi",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).DeleteOneContractMi(ctx, req.(*DeleteOneContractMiReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_GetContractInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetContractInfoReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).GetContractInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/GetContractInfo",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).GetContractInfo(ctx, req.(*GetContractInfoReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_ContractDetail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ContractDetailReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).ContractDetail(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/ContractDetail",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).ContractDetail(ctx, req.(*ContractDetailReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_ListMedicine_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MedicineListReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).ListMedicine(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/ListMedicine",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).ListMedicine(ctx, req.(*MedicineListReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_MedicineListForQuery_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MedicineListForQueryReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).MedicineListForQuery(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/MedicineListForQuery",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).MedicineListForQuery(ctx, req.(*MedicineListForQueryReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_CreateMedicine_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateMedicineReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).CreateMedicine(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/CreateMedicine",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).CreateMedicine(ctx, req.(*CreateMedicineReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_UpdateMedicine_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateMedicineReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).UpdateMedicine(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/UpdateMedicine",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).UpdateMedicine(ctx, req.(*UpdateMedicineReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_DeleteMedicine_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteMedicineReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).DeleteMedicine(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/DeleteMedicine",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).DeleteMedicine(ctx, req.(*DeleteMedicineReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_TagList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TagListReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).TagList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/TagList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).TagList(ctx, req.(*TagListReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_TagDetailList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TagDetailListReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).TagDetailList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/TagDetailList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).TagDetailList(ctx, req.(*TagDetailListReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_DeleteTagMedicine_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteTagMedicineReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).DeleteTagMedicine(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/DeleteTagMedicine",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).DeleteTagMedicine(ctx, req.(*DeleteTagMedicineReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_CreateTagMedicine_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateTagMedicineReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).CreateTagMedicine(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/CreateTagMedicine",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).CreateTagMedicine(ctx, req.(*CreateTagMedicineReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_ListMi_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListMiReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).ListMi(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/ListMi",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).ListMi(ctx, req.(*ListMiReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_CommonMI_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CommonMIReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).CommonMI(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/CommonMI",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).CommonMI(ctx, req.(*CommonMIReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_CreateOneMI_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateOneMIReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).CreateOneMI(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/CreateOneMI",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).CreateOneMI(ctx, req.(*CreateOneMIReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_ListBankAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListBankAccountReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).ListBankAccount(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/ListBankAccount",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).ListBankAccount(ctx, req.(*ListBankAccountReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_CreateOneAccountInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateOneAccountInfoReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).CreateOneAccountInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/CreateOneAccountInfo",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).CreateOneAccountInfo(ctx, req.(*CreateOneAccountInfoReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_UpdateBankAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateBankAccountReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).UpdateBankAccount(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/UpdateBankAccount",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).UpdateBankAccount(ctx, req.(*UpdateBankAccountReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_ListCompany_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListCompanyReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).ListCompany(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/ListCompany",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).ListCompany(ctx, req.(*ListCompanyReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_ListTpPlanErr_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListTpPlanErrReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).ListTpPlanErr(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/ListTpPlanErr",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).ListTpPlanErr(ctx, req.(*ListTpPlanErrReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_UpdateErrShipmentPlan_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateErrShipmentPlanReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).UpdateErrShipmentPlan(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/UpdateErrShipmentPlan",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).UpdateErrShipmentPlan(ctx, req.(*UpdateErrShipmentPlanReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_ListShipmentPlan_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListShipmentPlanReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).ListShipmentPlan(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/ListShipmentPlan",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).ListShipmentPlan(ctx, req.(*ListShipmentPlanReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_CountShipmentPlan_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CountShipmentPlanReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).CountShipmentPlan(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/CountShipmentPlan",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).CountShipmentPlan(ctx, req.(*CountShipmentPlanReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_DetailShipmentOrder_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DetailShipmentOrderReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).DetailShipmentOrder(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/DetailShipmentOrder",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).DetailShipmentOrder(ctx, req.(*DetailShipmentOrderReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_ListShipmentPlanForOrder_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListShipmentPlanForOrderReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).ListShipmentPlanForOrder(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/ListShipmentPlanForOrder",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).ListShipmentPlanForOrder(ctx, req.(*ListShipmentPlanForOrderReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_CreateShipmentOrder_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateShipmentOrderReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).CreateShipmentOrder(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/CreateShipmentOrder",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).CreateShipmentOrder(ctx, req.(*CreateShipmentOrderReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_ListShipmentOrder_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListShipmentOrderReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).ListShipmentOrder(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/ListShipmentOrder",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).ListShipmentOrder(ctx, req.(*ListShipmentOrderReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_UpdateShipmentOrder_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateShipmentOrderReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).UpdateShipmentOrder(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/UpdateShipmentOrder",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).UpdateShipmentOrder(ctx, req.(*UpdateShipmentOrderReq))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _ManagerService_GetCompanyHash_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -389,6 +1485,24 @@ func _ManagerService_GetShipmentFactoringHash_Handler(srv interface{}, ctx conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ManagerService_GetHashContent_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetHashContentReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).GetHashContent(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/GetHashContent",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).GetHashContent(ctx, req.(*GetHashContentReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _ManagerService_GetConfig_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetConfigReq)
 	if err := dec(in); err != nil {
@@ -414,6 +1528,138 @@ var ManagerService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "ManagerService.ManagerService",
 	HandlerType: (*ManagerServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "ListContract",
+			Handler:    _ManagerService_ListContract_Handler,
+		},
+		{
+			MethodName: "ListMiContract",
+			Handler:    _ManagerService_ListMiContract_Handler,
+		},
+		{
+			MethodName: "CreateOneContractMI",
+			Handler:    _ManagerService_CreateOneContractMI_Handler,
+		},
+		{
+			MethodName: "UpdateOneContract",
+			Handler:    _ManagerService_UpdateOneContract_Handler,
+		},
+		{
+			MethodName: "DeleteOneContract",
+			Handler:    _ManagerService_DeleteOneContract_Handler,
+		},
+		{
+			MethodName: "DeleteOneContractMi",
+			Handler:    _ManagerService_DeleteOneContractMi_Handler,
+		},
+		{
+			MethodName: "GetContractInfo",
+			Handler:    _ManagerService_GetContractInfo_Handler,
+		},
+		{
+			MethodName: "ContractDetail",
+			Handler:    _ManagerService_ContractDetail_Handler,
+		},
+		{
+			MethodName: "ListMedicine",
+			Handler:    _ManagerService_ListMedicine_Handler,
+		},
+		{
+			MethodName: "MedicineListForQuery",
+			Handler:    _ManagerService_MedicineListForQuery_Handler,
+		},
+		{
+			MethodName: "CreateMedicine",
+			Handler:    _ManagerService_CreateMedicine_Handler,
+		},
+		{
+			MethodName: "UpdateMedicine",
+			Handler:    _ManagerService_UpdateMedicine_Handler,
+		},
+		{
+			MethodName: "DeleteMedicine",
+			Handler:    _ManagerService_DeleteMedicine_Handler,
+		},
+		{
+			MethodName: "TagList",
+			Handler:    _ManagerService_TagList_Handler,
+		},
+		{
+			MethodName: "TagDetailList",
+			Handler:    _ManagerService_TagDetailList_Handler,
+		},
+		{
+			MethodName: "DeleteTagMedicine",
+			Handler:    _ManagerService_DeleteTagMedicine_Handler,
+		},
+		{
+			MethodName: "CreateTagMedicine",
+			Handler:    _ManagerService_CreateTagMedicine_Handler,
+		},
+		{
+			MethodName: "ListMi",
+			Handler:    _ManagerService_ListMi_Handler,
+		},
+		{
+			MethodName: "CommonMI",
+			Handler:    _ManagerService_CommonMI_Handler,
+		},
+		{
+			MethodName: "CreateOneMI",
+			Handler:    _ManagerService_CreateOneMI_Handler,
+		},
+		{
+			MethodName: "ListBankAccount",
+			Handler:    _ManagerService_ListBankAccount_Handler,
+		},
+		{
+			MethodName: "CreateOneAccountInfo",
+			Handler:    _ManagerService_CreateOneAccountInfo_Handler,
+		},
+		{
+			MethodName: "UpdateBankAccount",
+			Handler:    _ManagerService_UpdateBankAccount_Handler,
+		},
+		{
+			MethodName: "ListCompany",
+			Handler:    _ManagerService_ListCompany_Handler,
+		},
+		{
+			MethodName: "ListTpPlanErr",
+			Handler:    _ManagerService_ListTpPlanErr_Handler,
+		},
+		{
+			MethodName: "UpdateErrShipmentPlan",
+			Handler:    _ManagerService_UpdateErrShipmentPlan_Handler,
+		},
+		{
+			MethodName: "ListShipmentPlan",
+			Handler:    _ManagerService_ListShipmentPlan_Handler,
+		},
+		{
+			MethodName: "CountShipmentPlan",
+			Handler:    _ManagerService_CountShipmentPlan_Handler,
+		},
+		{
+			MethodName: "DetailShipmentOrder",
+			Handler:    _ManagerService_DetailShipmentOrder_Handler,
+		},
+		{
+			MethodName: "ListShipmentPlanForOrder",
+			Handler:    _ManagerService_ListShipmentPlanForOrder_Handler,
+		},
+		{
+			MethodName: "CreateShipmentOrder",
+			Handler:    _ManagerService_CreateShipmentOrder_Handler,
+		},
+		{
+			MethodName: "ListShipmentOrder",
+			Handler:    _ManagerService_ListShipmentOrder_Handler,
+		},
+		{
+			MethodName: "UpdateShipmentOrder",
+			Handler:    _ManagerService_UpdateShipmentOrder_Handler,
+		},
 		{
 			MethodName: "GetCompanyHash",
 			Handler:    _ManagerService_GetCompanyHash_Handler,
@@ -453,6 +1699,10 @@ var ManagerService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetShipmentFactoringHash",
 			Handler:    _ManagerService_GetShipmentFactoringHash_Handler,
+		},
+		{
+			MethodName: "GetHashContent",
+			Handler:    _ManagerService_GetHashContent_Handler,
 		},
 		{
 			MethodName: "GetConfig",
