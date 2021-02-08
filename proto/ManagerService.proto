@@ -329,28 +329,6 @@ message ListMiVo {
   string  zone = 9;
   string  hashInfo = 10;
 }
-//查询银行账号通用接口
-message ListBankAccountReq {
-  int64  organizationId = 1;
-  string  accountType = 2;
-  int64 uid = 3;
-}
-
-message ListBankAccountResp {
-  repeated ListBankAccountVo list = 1;
-}
-
-message ListBankAccountVo {
-  int64   organizationId = 1;
-  string  cardNo = 2;
-  string  accountType = 3;
-  string  bank = 4;
-  string  cardOwner = 5;
-  string  toibkn = 6;
-  int64  frozenAmount = 7;
-  string  cardStatus = 8;
-  string  validStatus = 9;
-}
 //查询医疗机构 通用接口
 message CommonMIReq {
   string  miName = 1;
@@ -382,22 +360,7 @@ message CreateOneMIReq {
 message CreateOneMIResp {
 
 }
-//创建医疗机构信息(银行账号部分)
-message CreateOneAccountInfoReq {
-  repeated AccountInfo list = 1;
-}
 
-message AccountInfo {
-  int64  miId = 1;
-  string  cardNo = 2;
-  string accountType = 3;
-  string bank = 4;
-  int64   uid = 5;
-}
-
-message CreateOneAccountInfoResp {
-
-}
 //更新医疗机构信息
 message UpdateMiReq {
   int64   miId = 1;
@@ -457,16 +420,7 @@ message CreateOneCompanyReq {
 message CreateOneCompanyResp {
 
 }
-//账号有效性操作
-message UpdateBankAccountReq {
-  string  cardNo = 1;
-  string  validStatus = 2;
-  int64   uid = 3;
-}
 
-message UpdateBankAccountResp {
-
-}
 //招采异常订单列表
 message ListTpPlanErrReq {
   string  tpOrderCode = 1;
@@ -975,10 +929,7 @@ service ManagerService {
   rpc ListMi(ListMiReq) returns(ListMiResp);
   rpc CommonMI(CommonMIReq) returns(CommonMIResp);
   rpc CreateOneMI(CreateOneMIReq) returns(CreateOneMIResp);
-  //银行账号相关
-  rpc ListBankAccount(ListBankAccountReq) returns(ListBankAccountResp);
-  rpc CreateOneAccountInfo(CreateOneAccountInfoReq) returns(CreateOneAccountInfoResp);
-  rpc UpdateBankAccount(UpdateBankAccountReq) returns(UpdateBankAccountResp);
+
   //配送企业相关
   rpc ListCompany(ListCompanyReq) returns(ListCompanyResp);
   //招采异常订单相关
