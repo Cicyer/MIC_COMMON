@@ -895,10 +895,11 @@ message GetHashContentResp {
   string uploadNode = 3;
   string uploaderName = 4;
   string uploaderRole = 5;
-  string uploaderAccount = 6;
-  string currentHash = 7;
+  string uploaderRoleName = 6;
+  string uploaderAccount = 7;
+  string currentHash = 8;
   //上链成功时间
-  google.protobuf.Timestamp uploadSuccessAt = 8;
+  google.protobuf.Timestamp uploadSuccessAt = 9;
 }
 //=======证书内容结构定义=========
 
