@@ -4,12 +4,295 @@ package ManagerService;
 option go_package = "service/ManagerService;ManagerService";
 
 import public "google/protobuf/timestamp.proto";
+import public "google/protobuf/any.proto";
 
 message Page {
   int64 pageNumber = 1;
   int64 pageSize = 2;
 }
 
+message GetCompanyHashReq {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 managerId = 1;
+  repeated int64 companyIds = 2;
+  repeated string companyCodes = 3;
+}
+message CompanyHash{
+  int64 companyId = 1;
+  string companyCode = 2;
+  string infoHash = 3;
+  google.protobuf.Timestamp infoUploadAt = 4;
+}
+message GetCompanyHashResp {
+  repeated CompanyHash list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
 
+message GetMiHashReq {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 managerId = 1;
+  repeated int64 miIds = 2;
+  repeated string miCodes = 3;
+}
+message MiHash{
+  int64 miId = 1;
+  string miCode = 2;
+  string infoHash = 3;
+  google.protobuf.Timestamp infoUploadAt = 4;
+}
+message GetMiHashResp {
+  repeated MiHash list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+message GetMedicineReq {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 managerId = 1;
+  repeated int64 medicineIds = 2;
+  repeated string medicineCodes = 3;
+}
+message MedicineHash{
+  int64 medicineId = 1;
+  string medicineCode = 2;
+  string infoHash = 3;
+  google.protobuf.Timestamp infoUploadAt = 4;
+}
+message GetMedicineResp {
+  repeated MedicineHash list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+message GetContractHashReq {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 managerId = 1;
+  repeated int64 contractIds = 2;
+  repeated string contractCodes = 3;
+}
+message ContractHash{
+  int64 contractId = 1;
+  string contractCode = 2;
+  string infoHash = 3;
+  google.protobuf.Timestamp infoUploadAt = 4;
+}
+message GetContractHashResp {
+  repeated ContractHash list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+
+message GetContractMiHashReq {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 managerId = 1;
+  repeated int64 contractMiIds = 2;
+  int64 contractId = 3;
+  string contractCode = 4;
+}
+message ContractMiHash{
+  int64 contractMiId = 1;
+  int64 miId = 2;
+  string miCode = 3;
+  string infoHash = 4;
+  google.protobuf.Timestamp infoUploadAt = 5;
+}
+message GetContractMiHashResp {
+  repeated ContractMiHash list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+
+message GetConfigHashReq {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 managerId = 1;
+  repeated int64 configIds = 2;
+  repeated string configKeys = 3;
+}
+message ConfigHash{
+  int64 configId = 1;
+  string configKey = 2;
+  string infoHash = 3;
+  google.protobuf.Timestamp infoUploadAt = 4;
+}
+message GetConfigHashResp {
+  repeated ConfigHash list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+
+message GetShipmentPlanHashReq {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 managerId = 1;
+  repeated int64 shipmentPlanIds = 2;
+  repeated string orderNos = 3;
+  string shipmentNo = 4;
+}
+message ShipmentPlanHash{
+  int64 shipmentPlanId = 1;
+  string orderNo = 2;
+  string infoHash = 3;
+  google.protobuf.Timestamp infoUploadAt = 4;
+  string qrCodeHash = 5;
+  google.protobuf.Timestamp qrCodeUploadAt = 6;
+  string shipmentStartHash = 7;
+  google.protobuf.Timestamp shipmentStartUploadAt = 8;
+  string shipmentReceiveHash = 9;
+  google.protobuf.Timestamp shipmentReceiveUploadAt = 10;
+  string shipmentEnterHash = 11;
+  google.protobuf.Timestamp shipmentEnterUploadAt = 12;
+}
+message GetShipmentPlanHashResp {
+  repeated ShipmentPlanHash list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+
+message GetShipmentOrderHashReq {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 managerId = 1;
+  repeated int64 shipmentOrderIds = 2;
+  repeated string shipmentNos = 3;
+}
+message ShipmentOrderHash{
+  int64 shipmentOrderId = 1;
+  string shipmentNo = 2;
+  string qrCodeHash = 3;
+  google.protobuf.Timestamp qrCodeUploadAt = 4;
+  string shipmentStartHash = 5;
+  google.protobuf.Timestamp shipmentStartUploadAt = 6;
+  string shipmentReceiveHash = 7;
+  google.protobuf.Timestamp shipmentReceiveUploadAt = 8;
+  string shipmentEnterHash = 9;
+  google.protobuf.Timestamp shipmentEnterUploadAt = 10;
+}
+message GetShipmentOrderHashResp {
+  repeated ShipmentOrderHash list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+
+message GetShipmentPayHashReq {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 managerId = 1;
+  repeated int64 shipmentOrderIds = 2;
+  repeated int64 shipmentPayOrderIds = 3;
+  repeated string shipmentNos = 4;
+}
+message ShipmentPayHash{
+  int64 shipmentOrderId = 1;
+  string shipmentNo = 2;
+  string qrCodeHash = 3;
+  google.protobuf.Timestamp qrCodeUploadAt = 4;
+  string shipmentStartHash = 5;
+  google.protobuf.Timestamp shipmentStartUploadAt = 6;
+  string shipmentReceiveHash = 7;
+  google.protobuf.Timestamp shipmentReceiveUploadAt = 8;
+  string shipmentEnterHash = 9;
+  google.protobuf.Timestamp shipmentEnterUploadAt = 10;
+}
+message GetShipmentPayHashResp {
+  repeated ShipmentPayHash list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+
+message GetShipmentFactoringHashReq {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 managerId = 1;
+  repeated int64 factoringOrderIds = 2;
+  repeated string factoringOrderNos = 3;
+}
+message ShipmentFactoringHash{
+  int64 factoringOrderId = 1;
+  string factoringOrderNo = 2;
+  string applyHash = 3;
+  google.protobuf.Timestamp applyUploadAt = 4;
+  string resultHash = 5;
+  google.protobuf.Timestamp resultUploadAt = 6;
+  string payBackHash = 7;
+  google.protobuf.Timestamp payBackUploadAt = 8;
+}
+message GetShipmentFactoringHashResp {
+  repeated ShipmentFactoringHash list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+
+message GetConfigReq {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 managerId = 1;
+  Page page = 2;
+  repeated string keys = 3;
+  string typeOne = 4;
+  string typeTwo = 5;
+  string typeThree = 6;
+  //是否检测时间段，此项传true，系统将会校验开始结束时间是否符合
+  bool checkTime = 7;
+}
+message CommonConfig{
+  int64 configId = 1;
+  string key = 2;
+  string typeOne = 3;
+  string typeTwo = 4;
+  string typeThree = 5;
+  string value = 6;
+  google.protobuf.Timestamp startAt = 7;
+  google.protobuf.Timestamp endAt = 8;
+  string explain = 9;
+  google.protobuf.Timestamp created = 10;
+}
+message GetConfigResp {
+  repeated CommonConfig list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+
+message GetHashContentReq {
+  int64 managerId = 1;
+  string hash = 2;
+}
+
+message GetHashContentResp {
+  //证书内容结构
+  google.protobuf.Any data = 1;
+  //向上追溯用的hash
+  string lastHash = 2;
+  string uploadNode = 3;
+  string uploaderName = 4;
+  string uploaderRole = 5;
+  string uploaderAccount = 6;
+  string currentHash = 7;
+  //上链成功时间
+  google.protobuf.Timestamp uploadSuccessAt = 8;
+}
+//=======证书内容结构定义=========
+
+//=========================
 service ManagerService {
+  //hash模块
+  rpc GetCompanyHash(GetCompanyHashReq) returns (GetCompanyHashResp);
+  rpc GetMiHash(GetMiHashReq) returns (GetMiHashResp);
+  rpc GetMedicineHash(GetMedicineReq) returns (GetMedicineResp);
+  rpc GetContractHash(GetContractHashReq) returns (GetContractHashResp);
+  rpc GetContractMiHash(GetContractMiHashReq) returns (GetContractMiHashResp);
+  rpc GetConfigHash(GetConfigHashReq) returns (GetConfigHashResp);
+  rpc GetShipmentPlanHash(GetShipmentPlanHashReq) returns (GetShipmentPlanHashResp);
+  rpc GetShipmentOrderHash(GetShipmentOrderHashReq) returns (GetShipmentOrderHashResp);
+  rpc GetShipmentPayHash(GetShipmentPayHashReq) returns (GetShipmentPayHashResp);
+  rpc GetShipmentFactoringHash(GetShipmentFactoringHashReq) returns (GetShipmentFactoringHashResp);
+  //根据哈希查询证书内容
+  rpc GetHashContent(GetHashContentReq) returns (GetHashContentResp);
+
+  //通用配置查询
+  rpc GetConfig(GetConfigReq) returns (GetConfigResp);
 }
