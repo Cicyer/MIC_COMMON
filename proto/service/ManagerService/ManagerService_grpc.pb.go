@@ -41,10 +41,6 @@ type ManagerServiceClient interface {
 	ListMi(ctx context.Context, in *ListMiReq, opts ...grpc.CallOption) (*ListMiResp, error)
 	CommonMI(ctx context.Context, in *CommonMIReq, opts ...grpc.CallOption) (*CommonMIResp, error)
 	CreateOneMI(ctx context.Context, in *CreateOneMIReq, opts ...grpc.CallOption) (*CreateOneMIResp, error)
-	//银行账号相关
-	ListBankAccount(ctx context.Context, in *ListBankAccountReq, opts ...grpc.CallOption) (*ListBankAccountResp, error)
-	CreateOneAccountInfo(ctx context.Context, in *CreateOneAccountInfoReq, opts ...grpc.CallOption) (*CreateOneAccountInfoResp, error)
-	UpdateBankAccount(ctx context.Context, in *UpdateBankAccountReq, opts ...grpc.CallOption) (*UpdateBankAccountResp, error)
 	//配送企业相关
 	ListCompany(ctx context.Context, in *ListCompanyReq, opts ...grpc.CallOption) (*ListCompanyResp, error)
 	//招采异常订单相关
@@ -261,33 +257,6 @@ func (c *managerServiceClient) CommonMI(ctx context.Context, in *CommonMIReq, op
 func (c *managerServiceClient) CreateOneMI(ctx context.Context, in *CreateOneMIReq, opts ...grpc.CallOption) (*CreateOneMIResp, error) {
 	out := new(CreateOneMIResp)
 	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/CreateOneMI", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *managerServiceClient) ListBankAccount(ctx context.Context, in *ListBankAccountReq, opts ...grpc.CallOption) (*ListBankAccountResp, error) {
-	out := new(ListBankAccountResp)
-	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/ListBankAccount", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *managerServiceClient) CreateOneAccountInfo(ctx context.Context, in *CreateOneAccountInfoReq, opts ...grpc.CallOption) (*CreateOneAccountInfoResp, error) {
-	out := new(CreateOneAccountInfoResp)
-	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/CreateOneAccountInfo", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *managerServiceClient) UpdateBankAccount(ctx context.Context, in *UpdateBankAccountReq, opts ...grpc.CallOption) (*UpdateBankAccountResp, error) {
-	out := new(UpdateBankAccountResp)
-	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/UpdateBankAccount", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -520,10 +489,6 @@ type ManagerServiceServer interface {
 	ListMi(context.Context, *ListMiReq) (*ListMiResp, error)
 	CommonMI(context.Context, *CommonMIReq) (*CommonMIResp, error)
 	CreateOneMI(context.Context, *CreateOneMIReq) (*CreateOneMIResp, error)
-	//银行账号相关
-	ListBankAccount(context.Context, *ListBankAccountReq) (*ListBankAccountResp, error)
-	CreateOneAccountInfo(context.Context, *CreateOneAccountInfoReq) (*CreateOneAccountInfoResp, error)
-	UpdateBankAccount(context.Context, *UpdateBankAccountReq) (*UpdateBankAccountResp, error)
 	//配送企业相关
 	ListCompany(context.Context, *ListCompanyReq) (*ListCompanyResp, error)
 	//招采异常订单相关
@@ -622,15 +587,6 @@ func (UnimplementedManagerServiceServer) CommonMI(context.Context, *CommonMIReq)
 }
 func (UnimplementedManagerServiceServer) CreateOneMI(context.Context, *CreateOneMIReq) (*CreateOneMIResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateOneMI not implemented")
-}
-func (UnimplementedManagerServiceServer) ListBankAccount(context.Context, *ListBankAccountReq) (*ListBankAccountResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListBankAccount not implemented")
-}
-func (UnimplementedManagerServiceServer) CreateOneAccountInfo(context.Context, *CreateOneAccountInfoReq) (*CreateOneAccountInfoResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateOneAccountInfo not implemented")
-}
-func (UnimplementedManagerServiceServer) UpdateBankAccount(context.Context, *UpdateBankAccountReq) (*UpdateBankAccountResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateBankAccount not implemented")
 }
 func (UnimplementedManagerServiceServer) ListCompany(context.Context, *ListCompanyReq) (*ListCompanyResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListCompany not implemented")
@@ -1067,60 +1023,6 @@ func _ManagerService_CreateOneMI_Handler(srv interface{}, ctx context.Context, d
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ManagerServiceServer).CreateOneMI(ctx, req.(*CreateOneMIReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ManagerService_ListBankAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListBankAccountReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ManagerServiceServer).ListBankAccount(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/ManagerService.ManagerService/ListBankAccount",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ManagerServiceServer).ListBankAccount(ctx, req.(*ListBankAccountReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ManagerService_CreateOneAccountInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateOneAccountInfoReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ManagerServiceServer).CreateOneAccountInfo(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/ManagerService.ManagerService/CreateOneAccountInfo",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ManagerServiceServer).CreateOneAccountInfo(ctx, req.(*CreateOneAccountInfoReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ManagerService_UpdateBankAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateBankAccountReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ManagerServiceServer).UpdateBankAccount(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/ManagerService.ManagerService/UpdateBankAccount",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ManagerServiceServer).UpdateBankAccount(ctx, req.(*UpdateBankAccountReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1607,18 +1509,6 @@ var ManagerService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreateOneMI",
 			Handler:    _ManagerService_CreateOneMI_Handler,
-		},
-		{
-			MethodName: "ListBankAccount",
-			Handler:    _ManagerService_ListBankAccount_Handler,
-		},
-		{
-			MethodName: "CreateOneAccountInfo",
-			Handler:    _ManagerService_CreateOneAccountInfo_Handler,
-		},
-		{
-			MethodName: "UpdateBankAccount",
-			Handler:    _ManagerService_UpdateBankAccount_Handler,
 		},
 		{
 			MethodName: "ListCompany",
