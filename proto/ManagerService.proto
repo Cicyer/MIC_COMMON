@@ -4,6 +4,7 @@ package ManagerService;
 option go_package = "service/ManagerService;ManagerService";
 
 import public "google/protobuf/timestamp.proto";
+import public "google/protobuf/any.proto";
 
 message Page {
   int64 pageNumber = 1;
@@ -235,7 +236,7 @@ message GetConfigReq {
   string typeTwo = 5;
   string typeThree = 6;
   //是否检测时间段，此项传true，系统将会校验开始结束时间是否符合
-  bool checkTime =7;
+  bool checkTime = 7;
 }
 message CommonConfig{
   int64 configId = 1;
@@ -256,7 +257,27 @@ message GetConfigResp {
   int64 pageNumber = 4;
 }
 
+message GetHashContentReq {
+  int64 managerId = 1;
+  string hash = 2;
+}
 
+message GetHashContentResp {
+  //证书内容结构
+  google.protobuf.Any data = 1;
+  //向上追溯用的hash
+  string lastHash = 2;
+  string uploadNode = 3;
+  string uploaderName = 4;
+  string uploaderRole = 5;
+  string uploaderAccount = 6;
+  string currentHash = 7;
+  //上链成功时间
+  google.protobuf.Timestamp uploadSuccessAt = 8;
+}
+//=======证书内容结构定义=========
+
+//=========================
 service ManagerService {
   //hash模块
   rpc GetCompanyHash(GetCompanyHashReq) returns (GetCompanyHashResp);
@@ -269,6 +290,9 @@ service ManagerService {
   rpc GetShipmentOrderHash(GetShipmentOrderHashReq) returns (GetShipmentOrderHashResp);
   rpc GetShipmentPayHash(GetShipmentPayHashReq) returns (GetShipmentPayHashResp);
   rpc GetShipmentFactoringHash(GetShipmentFactoringHashReq) returns (GetShipmentFactoringHashResp);
+  //根据哈希查询证书内容
+  rpc GetHashContent(GetHashContentReq) returns (GetHashContentResp);
+
   //通用配置查询
   rpc GetConfig(GetConfigReq) returns (GetConfigResp);
 }
