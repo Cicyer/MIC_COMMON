@@ -851,7 +851,23 @@ message GetShipmentFactoringHashResp {
   int64 pageSize = 3;
   int64 pageNumber = 4;
 }
-
+message InsertConfigsReq {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 managerId = 1;
+  repeated CommonConfig configs=2;
+}
+message UpdateConfigReq {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 managerId = 1;
+  //条件生效顺序 id>key> type 1,2,3
+  int64 configId = 2;
+  string key = 3;
+  string typeOne = 4;
+  string typeTwo = 5;
+  string typeThree = 6;
+  string oldValue = 7;
+  string value = 8;
+}
 message GetConfigReq {
   //谁在请求 按照搜索账号控制显示范围
   int64 managerId = 1;
@@ -874,6 +890,12 @@ message CommonConfig{
   google.protobuf.Timestamp endAt = 8;
   string explain = 9;
   google.protobuf.Timestamp created = 10;
+}
+message UpdateConfigResp {
+
+}
+message InsertConfigsResp {
+
 }
 message GetConfigResp {
   repeated CommonConfig list = 1;
@@ -901,7 +923,9 @@ message GetHashContentResp {
   //上链成功时间
   google.protobuf.Timestamp uploadSuccessAt = 9;
 }
-//=======证书内容结构定义=========
+
+
+//=======证书内容Any结构定义=========
 
 //=========================
 service ManagerService {
@@ -964,4 +988,11 @@ service ManagerService {
 
   //通用配置查询
   rpc GetConfig(GetConfigReq) returns (GetConfigResp);
+  //修改配置
+  rpc UpdateConfig(UpdateConfigReq) returns (UpdateConfigResp);
+  //批量插入配置
+  rpc InsertConfigs(InsertConfigsReq) returns (InsertConfigsResp);
+  //医院专户额度
+  rpc GetMiSpecialConfig(GetMiSpecialConfigReq) returns (GetMiSpecialConfigResp);
+  rpc UpdateMiSpecialConfig(UpdateMiSpecialConfigReq) returns (UpdateMiSpecialConfigResp);
 }
