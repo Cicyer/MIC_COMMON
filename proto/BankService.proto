@@ -32,18 +32,21 @@ message ListBankAccountVo {
   string  cardStatus = 8;
   string  validStatus = 9;
 }
-//创建医疗机构信息(银行账号部分)
+//创建银行账号部分
 message CreateOneAccountInfoReq {
   repeated AccountInfo list = 1;
+  int64 managerId = 2;
 }
 
 message AccountInfo {
-  int64  miId = 1;
+  int64  mibId = 1;
   string  cardNo = 2;
   string accountType = 3;
   string bank = 4;
-  int64   managerId = 5;
-  int64   organizationId = 6;
+  int64   organizationId = 5;
+  string   toibkn = 6;
+  string   cardOwner = 7;
+  int64  frozenAmount = 8;
 }
 
 message CreateOneAccountInfoResp {
