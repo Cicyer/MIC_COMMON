@@ -20,8 +20,10 @@ type ManagerServiceClient interface {
 	//合同相关
 	ListContract(ctx context.Context, in *ContractListReq, opts ...grpc.CallOption) (*ContractListResp, error)
 	ListMiContract(ctx context.Context, in *ContractMiListReq, opts ...grpc.CallOption) (*ContractMiListResp, error)
-	CreateOneContractMI(ctx context.Context, in *CreateOneContractMIReq, opts ...grpc.CallOption) (*UpdateOneContractMIResp, error)
+	CreateOneContractMI(ctx context.Context, in *CreateOneContractMIReq, opts ...grpc.CallOption) (*CreateOneContractMIResp, error)
+	UpdateOneContractMI(ctx context.Context, in *UpdateOneContractMIReq, opts ...grpc.CallOption) (*UpdateOneContractMIResp, error)
 	UpdateOneContract(ctx context.Context, in *UpdateOneContractReq, opts ...grpc.CallOption) (*UpdateOneContractResp, error)
+	UpdateContractActive(ctx context.Context, in *UpdateContractActiveReq, opts ...grpc.CallOption) (*UpdateContractActiveResp, error)
 	DeleteOneContract(ctx context.Context, in *DeleteOneContractReq, opts ...grpc.CallOption) (*DeleteOneContractResp, error)
 	DeleteOneContractMi(ctx context.Context, in *DeleteOneContractMiReq, opts ...grpc.CallOption) (*DeleteOneContractMiResp, error)
 	GetContractInfo(ctx context.Context, in *GetContractInfoReq, opts ...grpc.CallOption) (*GetContractInfoResp, error)
@@ -31,9 +33,13 @@ type ManagerServiceClient interface {
 	MedicineListForQuery(ctx context.Context, in *MedicineListForQueryReq, opts ...grpc.CallOption) (*MedicineListForQueryResp, error)
 	CreateMedicine(ctx context.Context, in *CreateMedicineReq, opts ...grpc.CallOption) (*CreateMedicineResp, error)
 	UpdateMedicine(ctx context.Context, in *UpdateMedicineReq, opts ...grpc.CallOption) (*UpdateMedicineResp, error)
+	UpdateMedicineActive(ctx context.Context, in *UpdateMedicineActiveReq, opts ...grpc.CallOption) (*UpdateMedicineActiveResp, error)
 	DeleteMedicine(ctx context.Context, in *DeleteMedicineReq, opts ...grpc.CallOption) (*DeleteMedicineResp, error)
 	//药品标签相关
 	TagList(ctx context.Context, in *TagListReq, opts ...grpc.CallOption) (*TagListResp, error)
+	CreateTag(ctx context.Context, in *CreateTagReq, opts ...grpc.CallOption) (*CreateTagResp, error)
+	UpdateTag(ctx context.Context, in *UpdateTagReq, opts ...grpc.CallOption) (*UpdateTagResp, error)
+	DeleteTag(ctx context.Context, in *DeleteTagReq, opts ...grpc.CallOption) (*DeleteTagResp, error)
 	TagDetailList(ctx context.Context, in *TagDetailListReq, opts ...grpc.CallOption) (*TagDetailListResp, error)
 	DeleteTagMedicine(ctx context.Context, in *DeleteTagMedicineReq, opts ...grpc.CallOption) (*DeleteTagMedicineResp, error)
 	CreateTagMedicine(ctx context.Context, in *CreateTagMedicineReq, opts ...grpc.CallOption) (*CreateTagMedicineResp, error)
@@ -41,8 +47,11 @@ type ManagerServiceClient interface {
 	ListMi(ctx context.Context, in *ListMiReq, opts ...grpc.CallOption) (*ListMiResp, error)
 	CommonMI(ctx context.Context, in *CommonMIReq, opts ...grpc.CallOption) (*CommonMIResp, error)
 	CreateOneMI(ctx context.Context, in *CreateOneMIReq, opts ...grpc.CallOption) (*CreateOneMIResp, error)
+	UpdateMi(ctx context.Context, in *UpdateMiReq, opts ...grpc.CallOption) (*UpdateMiResp, error)
 	//配送企业相关
 	ListCompany(ctx context.Context, in *ListCompanyReq, opts ...grpc.CallOption) (*ListCompanyResp, error)
+	CreateOneCompany(ctx context.Context, in *CreateOneCompanyReq, opts ...grpc.CallOption) (*CreateOneCompanyResp, error)
+	UpdateOneCompany(ctx context.Context, in *UpdateOneCompanyReq, opts ...grpc.CallOption) (*UpdateOneCompanyResp, error)
 	//招采异常订单相关
 	ListTpPlanErr(ctx context.Context, in *ListTpPlanErrReq, opts ...grpc.CallOption) (*ListTpPlanErrResp, error)
 	UpdateErrShipmentPlan(ctx context.Context, in *UpdateErrShipmentPlanReq, opts ...grpc.CallOption) (*UpdateErrShipmentPlanResp, error)
@@ -73,6 +82,13 @@ type ManagerServiceClient interface {
 	GetHashContent(ctx context.Context, in *GetHashContentReq, opts ...grpc.CallOption) (*GetHashContentResp, error)
 	//通用配置查询
 	GetConfig(ctx context.Context, in *GetConfigReq, opts ...grpc.CallOption) (*GetConfigResp, error)
+	//修改配置
+	UpdateConfig(ctx context.Context, in *UpdateConfigReq, opts ...grpc.CallOption) (*UpdateConfigResp, error)
+	//批量插入配置
+	InsertConfigs(ctx context.Context, in *InsertConfigsReq, opts ...grpc.CallOption) (*InsertConfigsResp, error)
+	//医院专户额度
+	GetMiSpecialConfig(ctx context.Context, in *GetMiSpecialConfigReq, opts ...grpc.CallOption) (*GetMiSpecialConfigResp, error)
+	UpdateMiSpecialConfig(ctx context.Context, in *UpdateMiSpecialConfigReq, opts ...grpc.CallOption) (*UpdateMiSpecialConfigResp, error)
 }
 
 type managerServiceClient struct {
@@ -101,9 +117,18 @@ func (c *managerServiceClient) ListMiContract(ctx context.Context, in *ContractM
 	return out, nil
 }
 
-func (c *managerServiceClient) CreateOneContractMI(ctx context.Context, in *CreateOneContractMIReq, opts ...grpc.CallOption) (*UpdateOneContractMIResp, error) {
-	out := new(UpdateOneContractMIResp)
+func (c *managerServiceClient) CreateOneContractMI(ctx context.Context, in *CreateOneContractMIReq, opts ...grpc.CallOption) (*CreateOneContractMIResp, error) {
+	out := new(CreateOneContractMIResp)
 	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/CreateOneContractMI", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) UpdateOneContractMI(ctx context.Context, in *UpdateOneContractMIReq, opts ...grpc.CallOption) (*UpdateOneContractMIResp, error) {
+	out := new(UpdateOneContractMIResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/UpdateOneContractMI", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -113,6 +138,15 @@ func (c *managerServiceClient) CreateOneContractMI(ctx context.Context, in *Crea
 func (c *managerServiceClient) UpdateOneContract(ctx context.Context, in *UpdateOneContractReq, opts ...grpc.CallOption) (*UpdateOneContractResp, error) {
 	out := new(UpdateOneContractResp)
 	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/UpdateOneContract", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) UpdateContractActive(ctx context.Context, in *UpdateContractActiveReq, opts ...grpc.CallOption) (*UpdateContractActiveResp, error) {
+	out := new(UpdateContractActiveResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/UpdateContractActive", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -191,6 +225,15 @@ func (c *managerServiceClient) UpdateMedicine(ctx context.Context, in *UpdateMed
 	return out, nil
 }
 
+func (c *managerServiceClient) UpdateMedicineActive(ctx context.Context, in *UpdateMedicineActiveReq, opts ...grpc.CallOption) (*UpdateMedicineActiveResp, error) {
+	out := new(UpdateMedicineActiveResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/UpdateMedicineActive", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *managerServiceClient) DeleteMedicine(ctx context.Context, in *DeleteMedicineReq, opts ...grpc.CallOption) (*DeleteMedicineResp, error) {
 	out := new(DeleteMedicineResp)
 	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/DeleteMedicine", in, out, opts...)
@@ -203,6 +246,33 @@ func (c *managerServiceClient) DeleteMedicine(ctx context.Context, in *DeleteMed
 func (c *managerServiceClient) TagList(ctx context.Context, in *TagListReq, opts ...grpc.CallOption) (*TagListResp, error) {
 	out := new(TagListResp)
 	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/TagList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) CreateTag(ctx context.Context, in *CreateTagReq, opts ...grpc.CallOption) (*CreateTagResp, error) {
+	out := new(CreateTagResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/CreateTag", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) UpdateTag(ctx context.Context, in *UpdateTagReq, opts ...grpc.CallOption) (*UpdateTagResp, error) {
+	out := new(UpdateTagResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/UpdateTag", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) DeleteTag(ctx context.Context, in *DeleteTagReq, opts ...grpc.CallOption) (*DeleteTagResp, error) {
+	out := new(DeleteTagResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/DeleteTag", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -263,9 +333,36 @@ func (c *managerServiceClient) CreateOneMI(ctx context.Context, in *CreateOneMIR
 	return out, nil
 }
 
+func (c *managerServiceClient) UpdateMi(ctx context.Context, in *UpdateMiReq, opts ...grpc.CallOption) (*UpdateMiResp, error) {
+	out := new(UpdateMiResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/UpdateMi", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *managerServiceClient) ListCompany(ctx context.Context, in *ListCompanyReq, opts ...grpc.CallOption) (*ListCompanyResp, error) {
 	out := new(ListCompanyResp)
 	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/ListCompany", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) CreateOneCompany(ctx context.Context, in *CreateOneCompanyReq, opts ...grpc.CallOption) (*CreateOneCompanyResp, error) {
+	out := new(CreateOneCompanyResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/CreateOneCompany", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) UpdateOneCompany(ctx context.Context, in *UpdateOneCompanyReq, opts ...grpc.CallOption) (*UpdateOneCompanyResp, error) {
+	out := new(UpdateOneCompanyResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/UpdateOneCompany", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -461,6 +558,42 @@ func (c *managerServiceClient) GetConfig(ctx context.Context, in *GetConfigReq, 
 	return out, nil
 }
 
+func (c *managerServiceClient) UpdateConfig(ctx context.Context, in *UpdateConfigReq, opts ...grpc.CallOption) (*UpdateConfigResp, error) {
+	out := new(UpdateConfigResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/UpdateConfig", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) InsertConfigs(ctx context.Context, in *InsertConfigsReq, opts ...grpc.CallOption) (*InsertConfigsResp, error) {
+	out := new(InsertConfigsResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/InsertConfigs", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) GetMiSpecialConfig(ctx context.Context, in *GetMiSpecialConfigReq, opts ...grpc.CallOption) (*GetMiSpecialConfigResp, error) {
+	out := new(GetMiSpecialConfigResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/GetMiSpecialConfig", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) UpdateMiSpecialConfig(ctx context.Context, in *UpdateMiSpecialConfigReq, opts ...grpc.CallOption) (*UpdateMiSpecialConfigResp, error) {
+	out := new(UpdateMiSpecialConfigResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/UpdateMiSpecialConfig", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ManagerServiceServer is the server API for ManagerService service.
 // All implementations must embed UnimplementedManagerServiceServer
 // for forward compatibility
@@ -468,8 +601,10 @@ type ManagerServiceServer interface {
 	//合同相关
 	ListContract(context.Context, *ContractListReq) (*ContractListResp, error)
 	ListMiContract(context.Context, *ContractMiListReq) (*ContractMiListResp, error)
-	CreateOneContractMI(context.Context, *CreateOneContractMIReq) (*UpdateOneContractMIResp, error)
+	CreateOneContractMI(context.Context, *CreateOneContractMIReq) (*CreateOneContractMIResp, error)
+	UpdateOneContractMI(context.Context, *UpdateOneContractMIReq) (*UpdateOneContractMIResp, error)
 	UpdateOneContract(context.Context, *UpdateOneContractReq) (*UpdateOneContractResp, error)
+	UpdateContractActive(context.Context, *UpdateContractActiveReq) (*UpdateContractActiveResp, error)
 	DeleteOneContract(context.Context, *DeleteOneContractReq) (*DeleteOneContractResp, error)
 	DeleteOneContractMi(context.Context, *DeleteOneContractMiReq) (*DeleteOneContractMiResp, error)
 	GetContractInfo(context.Context, *GetContractInfoReq) (*GetContractInfoResp, error)
@@ -479,9 +614,13 @@ type ManagerServiceServer interface {
 	MedicineListForQuery(context.Context, *MedicineListForQueryReq) (*MedicineListForQueryResp, error)
 	CreateMedicine(context.Context, *CreateMedicineReq) (*CreateMedicineResp, error)
 	UpdateMedicine(context.Context, *UpdateMedicineReq) (*UpdateMedicineResp, error)
+	UpdateMedicineActive(context.Context, *UpdateMedicineActiveReq) (*UpdateMedicineActiveResp, error)
 	DeleteMedicine(context.Context, *DeleteMedicineReq) (*DeleteMedicineResp, error)
 	//药品标签相关
 	TagList(context.Context, *TagListReq) (*TagListResp, error)
+	CreateTag(context.Context, *CreateTagReq) (*CreateTagResp, error)
+	UpdateTag(context.Context, *UpdateTagReq) (*UpdateTagResp, error)
+	DeleteTag(context.Context, *DeleteTagReq) (*DeleteTagResp, error)
 	TagDetailList(context.Context, *TagDetailListReq) (*TagDetailListResp, error)
 	DeleteTagMedicine(context.Context, *DeleteTagMedicineReq) (*DeleteTagMedicineResp, error)
 	CreateTagMedicine(context.Context, *CreateTagMedicineReq) (*CreateTagMedicineResp, error)
@@ -489,8 +628,11 @@ type ManagerServiceServer interface {
 	ListMi(context.Context, *ListMiReq) (*ListMiResp, error)
 	CommonMI(context.Context, *CommonMIReq) (*CommonMIResp, error)
 	CreateOneMI(context.Context, *CreateOneMIReq) (*CreateOneMIResp, error)
+	UpdateMi(context.Context, *UpdateMiReq) (*UpdateMiResp, error)
 	//配送企业相关
 	ListCompany(context.Context, *ListCompanyReq) (*ListCompanyResp, error)
+	CreateOneCompany(context.Context, *CreateOneCompanyReq) (*CreateOneCompanyResp, error)
+	UpdateOneCompany(context.Context, *UpdateOneCompanyReq) (*UpdateOneCompanyResp, error)
 	//招采异常订单相关
 	ListTpPlanErr(context.Context, *ListTpPlanErrReq) (*ListTpPlanErrResp, error)
 	UpdateErrShipmentPlan(context.Context, *UpdateErrShipmentPlanReq) (*UpdateErrShipmentPlanResp, error)
@@ -521,6 +663,13 @@ type ManagerServiceServer interface {
 	GetHashContent(context.Context, *GetHashContentReq) (*GetHashContentResp, error)
 	//通用配置查询
 	GetConfig(context.Context, *GetConfigReq) (*GetConfigResp, error)
+	//修改配置
+	UpdateConfig(context.Context, *UpdateConfigReq) (*UpdateConfigResp, error)
+	//批量插入配置
+	InsertConfigs(context.Context, *InsertConfigsReq) (*InsertConfigsResp, error)
+	//医院专户额度
+	GetMiSpecialConfig(context.Context, *GetMiSpecialConfigReq) (*GetMiSpecialConfigResp, error)
+	UpdateMiSpecialConfig(context.Context, *UpdateMiSpecialConfigReq) (*UpdateMiSpecialConfigResp, error)
 	mustEmbedUnimplementedManagerServiceServer()
 }
 
@@ -534,11 +683,17 @@ func (UnimplementedManagerServiceServer) ListContract(context.Context, *Contract
 func (UnimplementedManagerServiceServer) ListMiContract(context.Context, *ContractMiListReq) (*ContractMiListResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListMiContract not implemented")
 }
-func (UnimplementedManagerServiceServer) CreateOneContractMI(context.Context, *CreateOneContractMIReq) (*UpdateOneContractMIResp, error) {
+func (UnimplementedManagerServiceServer) CreateOneContractMI(context.Context, *CreateOneContractMIReq) (*CreateOneContractMIResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateOneContractMI not implemented")
+}
+func (UnimplementedManagerServiceServer) UpdateOneContractMI(context.Context, *UpdateOneContractMIReq) (*UpdateOneContractMIResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateOneContractMI not implemented")
 }
 func (UnimplementedManagerServiceServer) UpdateOneContract(context.Context, *UpdateOneContractReq) (*UpdateOneContractResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateOneContract not implemented")
+}
+func (UnimplementedManagerServiceServer) UpdateContractActive(context.Context, *UpdateContractActiveReq) (*UpdateContractActiveResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateContractActive not implemented")
 }
 func (UnimplementedManagerServiceServer) DeleteOneContract(context.Context, *DeleteOneContractReq) (*DeleteOneContractResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteOneContract not implemented")
@@ -564,11 +719,23 @@ func (UnimplementedManagerServiceServer) CreateMedicine(context.Context, *Create
 func (UnimplementedManagerServiceServer) UpdateMedicine(context.Context, *UpdateMedicineReq) (*UpdateMedicineResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateMedicine not implemented")
 }
+func (UnimplementedManagerServiceServer) UpdateMedicineActive(context.Context, *UpdateMedicineActiveReq) (*UpdateMedicineActiveResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateMedicineActive not implemented")
+}
 func (UnimplementedManagerServiceServer) DeleteMedicine(context.Context, *DeleteMedicineReq) (*DeleteMedicineResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteMedicine not implemented")
 }
 func (UnimplementedManagerServiceServer) TagList(context.Context, *TagListReq) (*TagListResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method TagList not implemented")
+}
+func (UnimplementedManagerServiceServer) CreateTag(context.Context, *CreateTagReq) (*CreateTagResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateTag not implemented")
+}
+func (UnimplementedManagerServiceServer) UpdateTag(context.Context, *UpdateTagReq) (*UpdateTagResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateTag not implemented")
+}
+func (UnimplementedManagerServiceServer) DeleteTag(context.Context, *DeleteTagReq) (*DeleteTagResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteTag not implemented")
 }
 func (UnimplementedManagerServiceServer) TagDetailList(context.Context, *TagDetailListReq) (*TagDetailListResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method TagDetailList not implemented")
@@ -588,8 +755,17 @@ func (UnimplementedManagerServiceServer) CommonMI(context.Context, *CommonMIReq)
 func (UnimplementedManagerServiceServer) CreateOneMI(context.Context, *CreateOneMIReq) (*CreateOneMIResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateOneMI not implemented")
 }
+func (UnimplementedManagerServiceServer) UpdateMi(context.Context, *UpdateMiReq) (*UpdateMiResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateMi not implemented")
+}
 func (UnimplementedManagerServiceServer) ListCompany(context.Context, *ListCompanyReq) (*ListCompanyResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListCompany not implemented")
+}
+func (UnimplementedManagerServiceServer) CreateOneCompany(context.Context, *CreateOneCompanyReq) (*CreateOneCompanyResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateOneCompany not implemented")
+}
+func (UnimplementedManagerServiceServer) UpdateOneCompany(context.Context, *UpdateOneCompanyReq) (*UpdateOneCompanyResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateOneCompany not implemented")
 }
 func (UnimplementedManagerServiceServer) ListTpPlanErr(context.Context, *ListTpPlanErrReq) (*ListTpPlanErrResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListTpPlanErr not implemented")
@@ -653,6 +829,18 @@ func (UnimplementedManagerServiceServer) GetHashContent(context.Context, *GetHas
 }
 func (UnimplementedManagerServiceServer) GetConfig(context.Context, *GetConfigReq) (*GetConfigResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetConfig not implemented")
+}
+func (UnimplementedManagerServiceServer) UpdateConfig(context.Context, *UpdateConfigReq) (*UpdateConfigResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateConfig not implemented")
+}
+func (UnimplementedManagerServiceServer) InsertConfigs(context.Context, *InsertConfigsReq) (*InsertConfigsResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method InsertConfigs not implemented")
+}
+func (UnimplementedManagerServiceServer) GetMiSpecialConfig(context.Context, *GetMiSpecialConfigReq) (*GetMiSpecialConfigResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetMiSpecialConfig not implemented")
+}
+func (UnimplementedManagerServiceServer) UpdateMiSpecialConfig(context.Context, *UpdateMiSpecialConfigReq) (*UpdateMiSpecialConfigResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateMiSpecialConfig not implemented")
 }
 func (UnimplementedManagerServiceServer) mustEmbedUnimplementedManagerServiceServer() {}
 
@@ -721,6 +909,24 @@ func _ManagerService_CreateOneContractMI_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ManagerService_UpdateOneContractMI_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateOneContractMIReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).UpdateOneContractMI(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/UpdateOneContractMI",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).UpdateOneContractMI(ctx, req.(*UpdateOneContractMIReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _ManagerService_UpdateOneContract_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateOneContractReq)
 	if err := dec(in); err != nil {
@@ -735,6 +941,24 @@ func _ManagerService_UpdateOneContract_Handler(srv interface{}, ctx context.Cont
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ManagerServiceServer).UpdateOneContract(ctx, req.(*UpdateOneContractReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_UpdateContractActive_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateContractActiveReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).UpdateContractActive(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/UpdateContractActive",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).UpdateContractActive(ctx, req.(*UpdateContractActiveReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -883,6 +1107,24 @@ func _ManagerService_UpdateMedicine_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ManagerService_UpdateMedicineActive_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateMedicineActiveReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).UpdateMedicineActive(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/UpdateMedicineActive",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).UpdateMedicineActive(ctx, req.(*UpdateMedicineActiveReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _ManagerService_DeleteMedicine_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DeleteMedicineReq)
 	if err := dec(in); err != nil {
@@ -915,6 +1157,60 @@ func _ManagerService_TagList_Handler(srv interface{}, ctx context.Context, dec f
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ManagerServiceServer).TagList(ctx, req.(*TagListReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_CreateTag_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateTagReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).CreateTag(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/CreateTag",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).CreateTag(ctx, req.(*CreateTagReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_UpdateTag_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateTagReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).UpdateTag(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/UpdateTag",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).UpdateTag(ctx, req.(*UpdateTagReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_DeleteTag_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteTagReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).DeleteTag(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/DeleteTag",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).DeleteTag(ctx, req.(*DeleteTagReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1027,6 +1323,24 @@ func _ManagerService_CreateOneMI_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ManagerService_UpdateMi_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateMiReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).UpdateMi(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/UpdateMi",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).UpdateMi(ctx, req.(*UpdateMiReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _ManagerService_ListCompany_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListCompanyReq)
 	if err := dec(in); err != nil {
@@ -1041,6 +1355,42 @@ func _ManagerService_ListCompany_Handler(srv interface{}, ctx context.Context, d
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ManagerServiceServer).ListCompany(ctx, req.(*ListCompanyReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_CreateOneCompany_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateOneCompanyReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).CreateOneCompany(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/CreateOneCompany",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).CreateOneCompany(ctx, req.(*CreateOneCompanyReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_UpdateOneCompany_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateOneCompanyReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).UpdateOneCompany(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/UpdateOneCompany",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).UpdateOneCompany(ctx, req.(*UpdateOneCompanyReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1423,6 +1773,78 @@ func _ManagerService_GetConfig_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ManagerService_UpdateConfig_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateConfigReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).UpdateConfig(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/UpdateConfig",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).UpdateConfig(ctx, req.(*UpdateConfigReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_InsertConfigs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(InsertConfigsReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).InsertConfigs(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/InsertConfigs",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).InsertConfigs(ctx, req.(*InsertConfigsReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_GetMiSpecialConfig_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetMiSpecialConfigReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).GetMiSpecialConfig(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/GetMiSpecialConfig",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).GetMiSpecialConfig(ctx, req.(*GetMiSpecialConfigReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_UpdateMiSpecialConfig_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateMiSpecialConfigReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).UpdateMiSpecialConfig(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/UpdateMiSpecialConfig",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).UpdateMiSpecialConfig(ctx, req.(*UpdateMiSpecialConfigReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ManagerService_ServiceDesc is the grpc.ServiceDesc for ManagerService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -1443,8 +1865,16 @@ var ManagerService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _ManagerService_CreateOneContractMI_Handler,
 		},
 		{
+			MethodName: "UpdateOneContractMI",
+			Handler:    _ManagerService_UpdateOneContractMI_Handler,
+		},
+		{
 			MethodName: "UpdateOneContract",
 			Handler:    _ManagerService_UpdateOneContract_Handler,
+		},
+		{
+			MethodName: "UpdateContractActive",
+			Handler:    _ManagerService_UpdateContractActive_Handler,
 		},
 		{
 			MethodName: "DeleteOneContract",
@@ -1479,12 +1909,28 @@ var ManagerService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _ManagerService_UpdateMedicine_Handler,
 		},
 		{
+			MethodName: "UpdateMedicineActive",
+			Handler:    _ManagerService_UpdateMedicineActive_Handler,
+		},
+		{
 			MethodName: "DeleteMedicine",
 			Handler:    _ManagerService_DeleteMedicine_Handler,
 		},
 		{
 			MethodName: "TagList",
 			Handler:    _ManagerService_TagList_Handler,
+		},
+		{
+			MethodName: "CreateTag",
+			Handler:    _ManagerService_CreateTag_Handler,
+		},
+		{
+			MethodName: "UpdateTag",
+			Handler:    _ManagerService_UpdateTag_Handler,
+		},
+		{
+			MethodName: "DeleteTag",
+			Handler:    _ManagerService_DeleteTag_Handler,
 		},
 		{
 			MethodName: "TagDetailList",
@@ -1511,8 +1957,20 @@ var ManagerService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _ManagerService_CreateOneMI_Handler,
 		},
 		{
+			MethodName: "UpdateMi",
+			Handler:    _ManagerService_UpdateMi_Handler,
+		},
+		{
 			MethodName: "ListCompany",
 			Handler:    _ManagerService_ListCompany_Handler,
+		},
+		{
+			MethodName: "CreateOneCompany",
+			Handler:    _ManagerService_CreateOneCompany_Handler,
+		},
+		{
+			MethodName: "UpdateOneCompany",
+			Handler:    _ManagerService_UpdateOneCompany_Handler,
 		},
 		{
 			MethodName: "ListTpPlanErr",
@@ -1597,6 +2055,22 @@ var ManagerService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetConfig",
 			Handler:    _ManagerService_GetConfig_Handler,
+		},
+		{
+			MethodName: "UpdateConfig",
+			Handler:    _ManagerService_UpdateConfig_Handler,
+		},
+		{
+			MethodName: "InsertConfigs",
+			Handler:    _ManagerService_InsertConfigs_Handler,
+		},
+		{
+			MethodName: "GetMiSpecialConfig",
+			Handler:    _ManagerService_GetMiSpecialConfig_Handler,
+		},
+		{
+			MethodName: "UpdateMiSpecialConfig",
+			Handler:    _ManagerService_UpdateMiSpecialConfig_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
