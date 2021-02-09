@@ -22,6 +22,7 @@ type BankAccount struct {
 }
 
 //配送企业上链信息记录 生效时上链 企业社会识别编码不可修改 其他内容更新可重复上链
+// key: MibCode + CompanyCode
 type UploadChainCompany struct {
 	UploadChainType
 	CompanyName string `json:"companyName"`
@@ -41,6 +42,7 @@ type UploadChainCompany struct {
 }
 
 //医疗机构上链信息记录 生效时上链 企业社会识别编码不可修改 其他内容更新可重复上链
+// key : MibCode + MiCode
 type UploadChainMi struct {
 	UploadChainType
 	//授权所属医保局code
@@ -61,6 +63,7 @@ type UploadChainMi struct {
 }
 
 //药品信息上链 药品通用code 不可修改
+// key : MedicineCode
 type UploadChainMedicine struct {
 	UploadChainType
 	MedicineName string `json:"medicineName"`
@@ -95,6 +98,7 @@ type UploadChainConfig struct {
 }
 
 //目前合同上的金额不作为限制依据了， 主合同在生效后 即为敲定，不可修改
+// key: ContractNo
 type UploadChainContract struct {
 	UploadChainType
 	ContractNo    string `json:"contractNo"`
@@ -115,6 +119,7 @@ type UploadChainContract struct {
 }
 
 //子合同信息 主合同在生效后可生效 生效即为敲定，不可修改，需要校验主合同已经存在
+// key: ContractNo + MiCode
 type UploadChainContractMi struct {
 	UploadChainType
 	ContractNo string `json:"contractNo"`
@@ -128,7 +133,7 @@ type UploadChainContractMi struct {
 	ContractUrl string `json:"contractUrl"`
 }
 
-//配送计划上链
+//配送计划上链 // key: OrderNo
 type UploadChainShipment struct {
 	UploadChainType
 	//招采单号
@@ -154,7 +159,7 @@ type UploadChainShipment struct {
 	SyncAt time.Time `json:"syncAt"`
 }
 
-//配送单相关
+//配送单相关 // key: "Shipment"+ShipmentNo
 type UploadChainShipmentOrder struct {
 	UploadChainType
 	Plans []UploadChainShipment `json:"plans"`
@@ -182,7 +187,7 @@ type UploadChainShipmentOrder struct {
 	ConfirmAt time.Time `json:"confirmAt"`
 }
 
-//支付信息上链
+//支付信息上链 // key: "Pay" + ShipmentNo
 type UploadChainPayOrder struct {
 	UploadChainType
 	//支付的配送单号
@@ -204,7 +209,7 @@ type PayOrder struct {
 	ShipmentNo string `json:"shipmentNo"`
 }
 
-//保理信息上链
+//保理信息上链 // key: "Factoring"+FactoringOrderNo
 type UploadChainFactoringOrder struct {
 	UploadChainType
 	//申请节点（基本信息节点）
