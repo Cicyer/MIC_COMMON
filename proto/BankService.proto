@@ -36,7 +36,7 @@ message ListBankAccountVo {
   int64  frozenAmount = 7;
   string  cardStatus = 8;
   string  validStatus = 9;
-  string  bankAccountId = 10;
+  int64  bankAccountId = 10;
   google.protobuf.Timestamp createdAt = 11;
 }
 //创建银行账号部分
