@@ -86,9 +86,10 @@ type ListBankAccountReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	OrganizationId int64  `protobuf:"varint,1,opt,name=organizationId,proto3" json:"organizationId,omitempty"`
-	AccountType    string `protobuf:"bytes,2,opt,name=accountType,proto3" json:"accountType,omitempty"`
-	ManagerId      int64  `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	OrganizationId int64 `protobuf:"varint,1,opt,name=organizationId,proto3" json:"organizationId,omitempty"`
+	//
+	AccountType string `protobuf:"bytes,2,opt,name=accountType,proto3" json:"accountType,omitempty"`
+	ManagerId   int64  `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId,omitempty"`
 	//指定获取哪些账户
 	BankAccountIds []int64 `protobuf:"varint,4,rep,packed,name=bankAccountIds,proto3" json:"bankAccountIds,omitempty"`
 }

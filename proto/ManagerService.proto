@@ -350,7 +350,6 @@ message CreateTagMedicineResp {
 //医疗机构列表
 message ListMiReq {
   string  miCode = 1;
-  string  miCode = 1;
   string  miName = 2;
   string  validStatus = 3;
   Page page = 4;

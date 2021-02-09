@@ -52,6 +52,7 @@ type ManagerServiceClient interface {
 	ListCompany(ctx context.Context, in *ListCompanyReq, opts ...grpc.CallOption) (*ListCompanyResp, error)
 	CreateOneCompany(ctx context.Context, in *CreateOneCompanyReq, opts ...grpc.CallOption) (*CreateOneCompanyResp, error)
 	UpdateOneCompany(ctx context.Context, in *UpdateOneCompanyReq, opts ...grpc.CallOption) (*UpdateOneCompanyResp, error)
+	CommonCompany(ctx context.Context, in *CommonCompanyReq, opts ...grpc.CallOption) (*CommonCompanyResp, error)
 	//招采异常订单相关
 	ListTpPlanErr(ctx context.Context, in *ListTpPlanErrReq, opts ...grpc.CallOption) (*ListTpPlanErrResp, error)
 	UpdateErrShipmentPlan(ctx context.Context, in *UpdateErrShipmentPlanReq, opts ...grpc.CallOption) (*UpdateErrShipmentPlanResp, error)
@@ -369,6 +370,15 @@ func (c *managerServiceClient) UpdateOneCompany(ctx context.Context, in *UpdateO
 	return out, nil
 }
 
+func (c *managerServiceClient) CommonCompany(ctx context.Context, in *CommonCompanyReq, opts ...grpc.CallOption) (*CommonCompanyResp, error) {
+	out := new(CommonCompanyResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/CommonCompany", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *managerServiceClient) ListTpPlanErr(ctx context.Context, in *ListTpPlanErrReq, opts ...grpc.CallOption) (*ListTpPlanErrResp, error) {
 	out := new(ListTpPlanErrResp)
 	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/ListTpPlanErr", in, out, opts...)
@@ -633,6 +643,7 @@ type ManagerServiceServer interface {
 	ListCompany(context.Context, *ListCompanyReq) (*ListCompanyResp, error)
 	CreateOneCompany(context.Context, *CreateOneCompanyReq) (*CreateOneCompanyResp, error)
 	UpdateOneCompany(context.Context, *UpdateOneCompanyReq) (*UpdateOneCompanyResp, error)
+	CommonCompany(context.Context, *CommonCompanyReq) (*CommonCompanyResp, error)
 	//招采异常订单相关
 	ListTpPlanErr(context.Context, *ListTpPlanErrReq) (*ListTpPlanErrResp, error)
 	UpdateErrShipmentPlan(context.Context, *UpdateErrShipmentPlanReq) (*UpdateErrShipmentPlanResp, error)
@@ -766,6 +777,9 @@ func (UnimplementedManagerServiceServer) CreateOneCompany(context.Context, *Crea
 }
 func (UnimplementedManagerServiceServer) UpdateOneCompany(context.Context, *UpdateOneCompanyReq) (*UpdateOneCompanyResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateOneCompany not implemented")
+}
+func (UnimplementedManagerServiceServer) CommonCompany(context.Context, *CommonCompanyReq) (*CommonCompanyResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CommonCompany not implemented")
 }
 func (UnimplementedManagerServiceServer) ListTpPlanErr(context.Context, *ListTpPlanErrReq) (*ListTpPlanErrResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListTpPlanErr not implemented")
@@ -1395,6 +1409,24 @@ func _ManagerService_UpdateOneCompany_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ManagerService_CommonCompany_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CommonCompanyReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).CommonCompany(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/CommonCompany",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).CommonCompany(ctx, req.(*CommonCompanyReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _ManagerService_ListTpPlanErr_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListTpPlanErrReq)
 	if err := dec(in); err != nil {
@@ -1971,6 +2003,10 @@ var ManagerService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateOneCompany",
 			Handler:    _ManagerService_UpdateOneCompany_Handler,
+		},
+		{
+			MethodName: "CommonCompany",
+			Handler:    _ManagerService_CommonCompany_Handler,
 		},
 		{
 			MethodName: "ListTpPlanErr",
