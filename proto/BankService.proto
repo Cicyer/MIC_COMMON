@@ -15,10 +15,15 @@ message ListBankAccountReq {
   int64  organizationId = 1;
   string  accountType = 2;
   int64 managerId = 3;
+  //指定获取哪些账户
+  repeated int64  bankAccountIds = 4;
 }
 
 message ListBankAccountResp {
   repeated ListBankAccountVo list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
 }
 
 message ListBankAccountVo {
@@ -31,6 +36,8 @@ message ListBankAccountVo {
   int64  frozenAmount = 7;
   string  cardStatus = 8;
   string  validStatus = 9;
+  string  bankAccountId = 10;
+  google.protobuf.Timestamp createdAt = 11;
 }
 //创建银行账号部分
 message CreateOneAccountInfoReq {
@@ -116,7 +123,6 @@ service BankService {
   rpc CreateOneAccountInfo(CreateOneAccountInfoReq) returns(CreateOneAccountInfoResp);
   rpc UpdateBankAccount(UpdateBankAccountReq) returns(UpdateBankAccountResp);
   rpc UpdateBankAccountList(UpdateBankAccountListReq) returns(UpdateBankAccountListResp);
-
   //配送企业授信额度设置
   rpc GetCompanyCreditConfigs(GetCompanyCreditConfigsReq) returns (GetCompanyCreditConfigsResp);
   rpc UpdateCompanyCreditConfig(UpdateMiSpecialConfigReq) returns (UpdateMiSpecialConfigResp);
