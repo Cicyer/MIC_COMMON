@@ -106,7 +106,7 @@ message GetCompanyCreditConfigsResp {
   int64 pageNumber = 4;
 }
 
-message UpdateCompanySpecialConfigReq {
+message UpdateCompanyCreditConfigReq {
   int64   managerId = 1;
   string   companyCode = 2;
   int64   creditAmount = 3;
@@ -114,7 +114,7 @@ message UpdateCompanySpecialConfigReq {
   google.protobuf.Timestamp startAt = 5;
   google.protobuf.Timestamp endAt = 6;
 }
-message UpdateCompanySpecialConfigResp {
+message UpdateCompanyCreditConfigResp {
 
 }
 
@@ -126,5 +126,5 @@ service BankService {
   rpc UpdateBankAccountList(UpdateBankAccountListReq) returns(UpdateBankAccountListResp);
   //配送企业授信额度设置
   rpc GetCompanyCreditConfigs(GetCompanyCreditConfigsReq) returns (GetCompanyCreditConfigsResp);
-  rpc UpdateCompanyCreditConfig(UpdateCompanySpecialConfigReq) returns (UpdateCompanySpecialConfigResp);
+  rpc UpdateCompanyCreditConfig(UpdateCompanyCreditConfigReq) returns (UpdateCompanyCreditConfigResp);
 }
