@@ -916,7 +916,7 @@ message GetShipmentFactoringHashResp {
 message InsertConfigsReq {
   //谁在请求 按照搜索账号控制显示范围
   int64 managerId = 1;
-  repeated CommonConfig configs=2;
+  repeated CommonConfig configs = 2;
 }
 message UpdateConfigReq {
   //谁在请求 按照搜索账号控制显示范围
@@ -991,6 +991,7 @@ message GetMiSpecialConfigReq {
   string miCode = 2;
   int64 miId = 3;
   string miName = 4;
+  Page page = 5;
 }
 message MiSpecialConfig {
   int64 miId = 1;
