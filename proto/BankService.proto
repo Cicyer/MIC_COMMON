@@ -71,10 +71,53 @@ message UpdateBankAccountReq {
 message UpdateBankAccountResp {
 
 }
+
+message GetCompanyCreditConfigsReq {
+  int64   managerId = 1;
+  Page   page = 2;
+  string   companyCode = 3;
+  string   companyName = 4;
+}
+
+message CompanyCredit {
+  int64   companyId = 1;
+  string   companyName = 2;
+  string   companyCode = 3;
+  int64   creditUsed = 4;
+  int64   creditAmount = 5;
+  string   creditType = 6;
+  google.protobuf.Timestamp startAt = 7;
+  google.protobuf.Timestamp endAt = 8;
+  int64   updaterId = 9;
+  string   updaterUserName = 10;
+}
+message GetCompanyCreditConfigsResp {
+  repeated CompanyCredit list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+
+message UpdateMiSpecialConfigReq {
+  int64   managerId = 1;
+  string   companyCode = 2;
+  int64   creditAmount = 3;
+  string   creditType = 4;
+  google.protobuf.Timestamp startAt = 5;
+  google.protobuf.Timestamp endAt = 6;
+}
+message UpdateMiSpecialConfigResp {
+
+}
+
 service BankService {
   //银行账号相关
   rpc ListBankAccount(ListBankAccountReq) returns(ListBankAccountResp);
   rpc CreateOneAccountInfo(CreateOneAccountInfoReq) returns(CreateOneAccountInfoResp);
   rpc UpdateBankAccount(UpdateBankAccountReq) returns(UpdateBankAccountResp);
   rpc UpdateBankAccountList(UpdateBankAccountListReq) returns(UpdateBankAccountListResp);
+
+  //配送企业授信额度设置
+  rpc GetCompanyCreditConfigs(GetCompanyCreditConfigsReq) returns (GetCompanyCreditConfigsResp);
+  rpc UpdateCompanyCreditConfig(UpdateMiSpecialConfigReq) returns (UpdateMiSpecialConfigResp);
 }
