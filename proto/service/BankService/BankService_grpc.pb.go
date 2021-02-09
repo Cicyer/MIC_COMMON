@@ -24,7 +24,7 @@ type BankServiceClient interface {
 	UpdateBankAccountList(ctx context.Context, in *UpdateBankAccountListReq, opts ...grpc.CallOption) (*UpdateBankAccountListResp, error)
 	//配送企业授信额度设置
 	GetCompanyCreditConfigs(ctx context.Context, in *GetCompanyCreditConfigsReq, opts ...grpc.CallOption) (*GetCompanyCreditConfigsResp, error)
-	UpdateCompanyCreditConfig(ctx context.Context, in *UpdateMiSpecialConfigReq, opts ...grpc.CallOption) (*UpdateMiSpecialConfigResp, error)
+	UpdateCompanyCreditConfig(ctx context.Context, in *UpdateCompanySpecialConfigReq, opts ...grpc.CallOption) (*UpdateCompanySpecialConfigResp, error)
 }
 
 type bankServiceClient struct {
@@ -80,8 +80,8 @@ func (c *bankServiceClient) GetCompanyCreditConfigs(ctx context.Context, in *Get
 	return out, nil
 }
 
-func (c *bankServiceClient) UpdateCompanyCreditConfig(ctx context.Context, in *UpdateMiSpecialConfigReq, opts ...grpc.CallOption) (*UpdateMiSpecialConfigResp, error) {
-	out := new(UpdateMiSpecialConfigResp)
+func (c *bankServiceClient) UpdateCompanyCreditConfig(ctx context.Context, in *UpdateCompanySpecialConfigReq, opts ...grpc.CallOption) (*UpdateCompanySpecialConfigResp, error) {
+	out := new(UpdateCompanySpecialConfigResp)
 	err := c.cc.Invoke(ctx, "/BankService.BankService/UpdateCompanyCreditConfig", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -100,7 +100,7 @@ type BankServiceServer interface {
 	UpdateBankAccountList(context.Context, *UpdateBankAccountListReq) (*UpdateBankAccountListResp, error)
 	//配送企业授信额度设置
 	GetCompanyCreditConfigs(context.Context, *GetCompanyCreditConfigsReq) (*GetCompanyCreditConfigsResp, error)
-	UpdateCompanyCreditConfig(context.Context, *UpdateMiSpecialConfigReq) (*UpdateMiSpecialConfigResp, error)
+	UpdateCompanyCreditConfig(context.Context, *UpdateCompanySpecialConfigReq) (*UpdateCompanySpecialConfigResp, error)
 	mustEmbedUnimplementedBankServiceServer()
 }
 
@@ -123,7 +123,7 @@ func (UnimplementedBankServiceServer) UpdateBankAccountList(context.Context, *Up
 func (UnimplementedBankServiceServer) GetCompanyCreditConfigs(context.Context, *GetCompanyCreditConfigsReq) (*GetCompanyCreditConfigsResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetCompanyCreditConfigs not implemented")
 }
-func (UnimplementedBankServiceServer) UpdateCompanyCreditConfig(context.Context, *UpdateMiSpecialConfigReq) (*UpdateMiSpecialConfigResp, error) {
+func (UnimplementedBankServiceServer) UpdateCompanyCreditConfig(context.Context, *UpdateCompanySpecialConfigReq) (*UpdateCompanySpecialConfigResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateCompanyCreditConfig not implemented")
 }
 func (UnimplementedBankServiceServer) mustEmbedUnimplementedBankServiceServer() {}
@@ -230,7 +230,7 @@ func _BankService_GetCompanyCreditConfigs_Handler(srv interface{}, ctx context.C
 }
 
 func _BankService_UpdateCompanyCreditConfig_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateMiSpecialConfigReq)
+	in := new(UpdateCompanySpecialConfigReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -242,7 +242,7 @@ func _BankService_UpdateCompanyCreditConfig_Handler(srv interface{}, ctx context
 		FullMethod: "/BankService.BankService/UpdateCompanyCreditConfig",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BankServiceServer).UpdateCompanyCreditConfig(ctx, req.(*UpdateMiSpecialConfigReq))
+		return srv.(BankServiceServer).UpdateCompanyCreditConfig(ctx, req.(*UpdateCompanySpecialConfigReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
