@@ -952,13 +952,15 @@ message UpdateConfigReq {
 message GetConfigReq {
   //谁在请求 按照搜索账号控制显示范围
   int64 managerId = 1;
+  //不指定page默认为20个
   Page page = 2;
   repeated string keys = 3;
   string typeOne = 4;
   string typeTwo = 5;
   string typeThree = 6;
-  //是否检测时间段，此项传true，系统将会校验开始结束时间是否符合
-  bool checkTime = 7;
+  //可以获取该区间正在生效的所有配置
+  google.protobuf.Timestamp startAt = 7;
+  google.protobuf.Timestamp endAt = 8;
 }
 message CommonConfig{
   int64 configId = 1;
