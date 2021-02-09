@@ -13,6 +13,7 @@ message Page {
 //查询银行账号通用接口
 message ListBankAccountReq {
   int64  organizationId = 1;
+  //
   string  accountType = 2;
   int64 managerId = 3;
   //指定获取哪些账户

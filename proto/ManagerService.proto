@@ -350,6 +350,7 @@ message CreateTagMedicineResp {
 //医疗机构列表
 message ListMiReq {
   string  miCode = 1;
+  string  miCode = 1;
   string  miName = 2;
   string  validStatus = 3;
   Page page = 4;
@@ -374,6 +375,7 @@ message ListMiVo {
   string  city = 8;
   string  zone = 9;
   string  hashInfo = 10;
+  google.protobuf.Timestamp  createdAt = 11;
 }
 //查询医疗机构 通用接口
 message CommonMIReq {
@@ -423,6 +425,22 @@ message UpdateMiReq {
 message UpdateMiResp {
 
 }
+//配送企业通用查询
+message CommonCompanyReq {
+  string  companyName = 1;
+  int64 managerId = 5;
+}
+
+message CommonCompanyResp {
+  repeated CommonCompanyVo list = 1;
+}
+
+message CommonCompanyVo {
+  int64 companyId = 1;
+  string companyName = 2;
+  string companyCode = 3;
+}
+
 //配送企业列表查询
 message ListCompanyReq {
   string  companyName = 1;
@@ -449,6 +467,7 @@ message ListCompanyVo {
   string city = 7;
   string zone = 8;
   string hashInfo = 9;
+  google.protobuf.Timestamp createdAt = 10;
 }
 //配送企业基础信息创建
 message CreateOneCompanyReq {
@@ -522,7 +541,7 @@ message UpdateErrShipmentPlanResp {
 }
 //招采单列表
 message ListShipmentPlanReq {
-  string  tpOrderCode = 1;
+  string  tpOrderNo = 1;
   string  shipmentNo = 2;
   string medicineName = 3;
   string medicineCode = 4;
@@ -586,21 +605,22 @@ message DetailShipmentOrderResp {
 }
 //招采单列表(根据配送编号查询)
 message ListShipmentPlanForOrderReq {
-  string  tpOrderCode = 1;
-  string  shipmentNo = 2;
-  string medicineName = 3;
-  string medicineCode = 4;
-  string companyCode = 5;
-  string planStatus = 6;
-  google.protobuf.Timestamp stratDate = 7;
-  google.protobuf.Timestamp endDate = 8;
-  Page page = 9;
-  int64 managerId = 10;
+//  string  tpOrderCode = 1;
+  string  shipmentNo = 1;
+//  string medicineName = 3;
+//  string medicineCode = 4;
+//  string companyCode = 5;
+//  string planStatus = 6;
+//  google.protobuf.Timestamp stratDate = 7;
+//  google.protobuf.Timestamp endDate = 8;
+//  Page page = 9;
+  int64 managerId = 2;
 }
 
 message ListShipmentPlanForOrderResp {
   repeated ListShipmentPlanForOrderVo list = 1;
 }
+
 
 message ListShipmentPlanForOrderVo {
   string orderNo = 1;
@@ -1055,6 +1075,7 @@ service ManagerService {
   rpc ListCompany(ListCompanyReq) returns(ListCompanyResp);
   rpc CreateOneCompany(CreateOneCompanyReq) returns(CreateOneCompanyResp);
   rpc UpdateOneCompany(UpdateOneCompanyReq) returns(UpdateOneCompanyResp);
+  rpc CommonCompany(CommonCompanyReq) returns(CommonCompanyResp);
   //招采异常订单相关
   rpc ListTpPlanErr(ListTpPlanErrReq) returns(ListTpPlanErrResp);
   rpc UpdateErrShipmentPlan(UpdateErrShipmentPlanReq) returns(UpdateErrShipmentPlanResp);
