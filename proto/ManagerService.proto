@@ -24,7 +24,7 @@ message GetContractInfoResp {
 }
 //合同详情
 message ContractDetailReq {
-  int64 contractId =1;
+  int64 contractId = 1;
   int64 managerId = 2;
 
 }
@@ -43,17 +43,17 @@ message ContractDetailVo {
 
 //合同列表
 message ContractListReq {
-  string  MedicineName = 1;
+  string  medicineName = 1;
   string  TenderCompany = 2;
   google.protobuf.Timestamp  StartAt = 3;
   google.protobuf.Timestamp   EndAt = 4;
   string  companyName = 5;
-  string  tagId = 6;
+  int64  tagId = 6;
   string  contractNo = 7;
   string  contractStatus = 8;
   Page page = 9;
   int64 managerId = 10;
-  string  MedicineCode = 11;
+  string  medicineCode = 11;
 }
 
 message ContractListResp {
@@ -79,12 +79,12 @@ message ContractListVo {
   google.protobuf.Timestamp endAt = 13;
   google.protobuf.Timestamp createdAt = 14;
   string hashInfo = 15;
+  string activeStatus = 16;
 }
 //子合同列表
 message ContractMiListReq {
   int64  contractId = 1;
   int64  contractMiId = 2;
-  Page page = 3;
   int64 managerId = 4;
 }
 
@@ -132,14 +132,24 @@ message UpdateOneContractMIResp {
 message UpdateOneContractReq {
   int64  contractId = 1;
   int64  medicineId = 2;
-  int64  miId = 3;
-  int64  medicinePrice = 4;
-  google.protobuf.Timestamp startAt = 5;
-  google.protobuf.Timestamp endAt = 6;
-  int64 managerId = 7;
+  int64  medicinePrice = 3;
+  google.protobuf.Timestamp startAt = 4;
+  google.protobuf.Timestamp endAt = 5;
+  int64 managerId = 6;
+  int64 companyId = 7;
 }
 
 message UpdateOneContractResp {
+  //  int64  contractMiId = 1;
+}
+//主合同更新状态
+message UpdateContractActiveReq {
+  int64  contractId = 1;
+  string  activeStatus = 2;
+  int64 managerId = 6;
+}
+
+message UpdateContractActiveResp {
   //  int64  contractMiId = 1;
 }
 //删除主合同
@@ -238,6 +248,15 @@ message UpdateMedicineReq {
 message UpdateMedicineResp {
   //  int64  contractMiId = 1;
 }
+//编辑药品生效状态
+message UpdateMedicineActiveReq {
+  int64  medicineId = 1;
+  string activeStatus = 2;
+  int64 managerId = 3;
+}
+message UpdateMedicineActiveResp {
+  //  int64  contractMiId = 1;
+}
 //删除药品
 message DeleteMedicineReq {
   string  medicineCode = 1;
@@ -260,6 +279,33 @@ message TagListVo {
   string tagName = 2;
   string tagType = 3;
 }
+//创建标签
+message CreateTagReq {
+  string  tagType = 1;
+  string  tagName = 2;
+  int64 managerId = 3;
+}
+message CreateTagResp {
+
+}
+//编辑标签
+message UpdateTagReq {
+  int64 tagId = 1;
+  string  tagName = 2;
+  int64 managerId = 3;
+}
+message UpdateTagResp {
+
+}
+//删除标签
+message DeleteTagReq {
+  int64 tagId = 1;
+  int64 managerId = 2;
+}
+message DeleteTagResp {
+
+}
+
 //查询标签详情列表
 message TagDetailListReq {
   int64  tagId = 1;
@@ -420,6 +466,22 @@ message CreateOneCompanyResp {
 
 }
 
+//配送企业基础信息更新
+message UpdateOneCompanyReq {
+  string  companyName = 1;
+  string  companyCode = 2;
+  string managerName = 3;
+  string managerPhone = 4;
+  string province = 5;
+  string city = 6;
+  string zone = 7;
+  int64   managerId = 8;
+}
+
+message UpdateOneCompanyResp {
+
+}
+
 //招采异常订单列表
 message ListTpPlanErrReq {
   string  tpOrderCode = 1;
@@ -562,9 +624,9 @@ message CountShipmentPlanReq {
 }
 
 message CountShipmentPlanResp {
-  int64 waitNum =1;
-  int64 failNum =2;
-  int64 completeNum =3;
+  int64 waitNum = 1;
+  int64 failNum = 2;
+  int64 completeNum = 3;
 }
 //配送单创建
 message CreateShipmentOrderReq {
@@ -628,7 +690,7 @@ message ListShipmentOrderVo {
 //配送单修改
 message UpdateShipmentOrderReq {
   string shipmentNo = 1;
-  string shipmentStatus =2;
+  string shipmentStatus = 2;
   int64 managerId = 3;
 }
 
@@ -908,8 +970,10 @@ service ManagerService {
   //合同相关
   rpc ListContract(ContractListReq) returns(ContractListResp);
   rpc ListMiContract(ContractMiListReq) returns(ContractMiListResp);
-  rpc CreateOneContractMI(CreateOneContractMIReq) returns(UpdateOneContractMIResp);
+  rpc CreateOneContractMI(CreateOneContractMIReq) returns(CreateOneContractMIResp);
+  rpc UpdateOneContractMI(UpdateOneContractMIReq) returns(UpdateOneContractMIResp);
   rpc UpdateOneContract(UpdateOneContractReq) returns(UpdateOneContractResp);
+  rpc UpdateContractActive(UpdateContractActiveReq) returns(UpdateContractActiveResp);
   rpc DeleteOneContract(DeleteOneContractReq) returns(DeleteOneContractResp);
   rpc DeleteOneContractMi(DeleteOneContractMiReq) returns(DeleteOneContractMiResp);
   rpc GetContractInfo(GetContractInfoReq) returns(GetContractInfoResp);
@@ -919,9 +983,13 @@ service ManagerService {
   rpc MedicineListForQuery(MedicineListForQueryReq) returns(MedicineListForQueryResp);
   rpc CreateMedicine(CreateMedicineReq) returns(CreateMedicineResp);
   rpc UpdateMedicine(UpdateMedicineReq) returns(UpdateMedicineResp);
+  rpc UpdateMedicineActive(UpdateMedicineActiveReq) returns(UpdateMedicineActiveResp);
   rpc DeleteMedicine(DeleteMedicineReq) returns(DeleteMedicineResp);
   //药品标签相关
   rpc TagList(TagListReq) returns(TagListResp);
+  rpc CreateTag(CreateTagReq) returns(CreateTagResp);
+  rpc UpdateTag(UpdateTagReq) returns(UpdateTagResp);
+  rpc DeleteTag(DeleteTagReq) returns(DeleteTagResp);
   rpc TagDetailList(TagDetailListReq) returns(TagDetailListResp);
   rpc DeleteTagMedicine(DeleteTagMedicineReq) returns(DeleteTagMedicineResp);
   rpc CreateTagMedicine(CreateTagMedicineReq) returns(CreateTagMedicineResp);
@@ -929,9 +997,12 @@ service ManagerService {
   rpc ListMi(ListMiReq) returns(ListMiResp);
   rpc CommonMI(CommonMIReq) returns(CommonMIResp);
   rpc CreateOneMI(CreateOneMIReq) returns(CreateOneMIResp);
+  rpc UpdateMi(UpdateMiReq) returns(UpdateMiResp);
 
   //配送企业相关
   rpc ListCompany(ListCompanyReq) returns(ListCompanyResp);
+  rpc CreateOneCompany(CreateOneCompanyReq) returns(CreateOneCompanyResp);
+  rpc UpdateOneCompany(UpdateOneCompanyReq) returns(UpdateOneCompanyResp);
   //招采异常订单相关
   rpc ListTpPlanErr(ListTpPlanErrReq) returns(ListTpPlanErrResp);
   rpc UpdateErrShipmentPlan(UpdateErrShipmentPlanReq) returns(UpdateErrShipmentPlanResp);
