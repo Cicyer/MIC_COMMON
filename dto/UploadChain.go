@@ -6,9 +6,11 @@ type UploadChainType struct {
 	//上一次的上链hash，首次上链为空
 	LastHash string `json:"lastHash"`
 	//上链流程节点,每个节点不可跳跃，同一节点可以反复更新，进入下一个节点，不可返回上一节点
-	UploadNode      string `json:"uploadNode"`
-	UploaderName    string `json:"uploaderName"`
-	UploaderAccount string `json:"uploaderAccount"`
+	UploadNode       string `json:"uploadNode"`
+	UploaderName     string `json:"uploaderName"`
+	UploaderRole     string `json:"uploaderRole"`
+	UploaderRoleName string `json:"uploaderRoleName"`
+	UploaderAccount  string `json:"uploaderAccount"`
 }
 type BankAccount struct {
 	CardNo      string `json:"cardNo"`
@@ -21,6 +23,7 @@ type BankAccount struct {
 }
 
 //配送企业上链信息记录 生效时上链 企业社会识别编码不可修改 其他内容更新可重复上链
+// key: "company" + MibCode + CompanyCode
 type UploadChainCompany struct {
 	UploadChainType
 	CompanyName string `json:"companyName"`
@@ -40,6 +43,7 @@ type UploadChainCompany struct {
 }
 
 //医疗机构上链信息记录 生效时上链 企业社会识别编码不可修改 其他内容更新可重复上链
+// key : "mi"+ MibCode + MiCode
 type UploadChainMi struct {
 	UploadChainType
 	//授权所属医保局code
@@ -60,6 +64,7 @@ type UploadChainMi struct {
 }
 
 //药品信息上链 药品通用code 不可修改
+// key : "med" + MedicineCode
 type UploadChainMedicine struct {
 	UploadChainType
 	MedicineName string `json:"medicineName"`
@@ -94,6 +99,7 @@ type UploadChainConfig struct {
 }
 
 //目前合同上的金额不作为限制依据了， 主合同在生效后 即为敲定，不可修改
+// key: "contract" + ContractNo
 type UploadChainContract struct {
 	UploadChainType
 	ContractNo    string `json:"contractNo"`
@@ -114,6 +120,7 @@ type UploadChainContract struct {
 }
 
 //子合同信息 主合同在生效后可生效 生效即为敲定，不可修改，需要校验主合同已经存在
+// key: "contractMi"+ ContractNo + MiCode
 type UploadChainContractMi struct {
 	UploadChainType
 	ContractNo string `json:"contractNo"`
@@ -127,7 +134,7 @@ type UploadChainContractMi struct {
 	ContractUrl string `json:"contractUrl"`
 }
 
-//配送计划上链
+//配送计划上链 // key: "shipPlan"+OrderNo
 type UploadChainShipment struct {
 	UploadChainType
 	//招采单号
@@ -151,8 +158,12 @@ type UploadChainShipment struct {
 	CompanyCode string `json:"companyCode"`
 	//招采同步时间
 	SyncAt time.Time `json:"syncAt"`
+}
 
-	//配送单相关
+//配送单相关 // key: "shipment"+ShipmentNo
+type UploadChainShipmentOrder struct {
+	UploadChainType
+	Plans []UploadChainShipment `json:"plans"`
 	//配送单号
 	ShipmentNo       string    `json:"shipmentNo"`
 	InvoiceMd5       string    `json:"invoiceMd5"`
@@ -168,6 +179,8 @@ type UploadChainShipment struct {
 	SendOutAt       time.Time `json:"sendOutAt"`
 	ShipmentCode    string    `json:"shipmentCode"`
 	ShipmentCompany string    `json:"shipmentCompany"`
+	// 配送状态 WAITING SENDING  RECEIVED FAIL
+	ShipmentStatus string `json:"shipmentStatus"`
 
 	//扫码收货时间
 	ReceiveAt time.Time `json:"receiveAt"`
@@ -175,7 +188,7 @@ type UploadChainShipment struct {
 	ConfirmAt time.Time `json:"confirmAt"`
 }
 
-//支付信息上链
+//支付信息上链 // key: "Pay" + ShipmentNo
 type UploadChainPayOrder struct {
 	UploadChainType
 	//支付的配送单号
@@ -197,7 +210,7 @@ type PayOrder struct {
 	ShipmentNo string `json:"shipmentNo"`
 }
 
-//保理信息上链
+//保理信息上链 // key: "Factoring"+FactoringOrderNo
 type UploadChainFactoringOrder struct {
 	UploadChainType
 	//申请节点（基本信息节点）
