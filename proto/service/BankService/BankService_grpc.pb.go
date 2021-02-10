@@ -3,7 +3,10 @@
 package BankService
 
 import (
+	context "context"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // This is a compile-time assertion to ensure that this generated file
@@ -14,6 +17,14 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type BankServiceClient interface {
+	//银行账号相关
+	ListBankAccount(ctx context.Context, in *ListBankAccountReq, opts ...grpc.CallOption) (*ListBankAccountResp, error)
+	CreateOneAccountInfo(ctx context.Context, in *CreateOneAccountInfoReq, opts ...grpc.CallOption) (*CreateOneAccountInfoResp, error)
+	UpdateBankAccount(ctx context.Context, in *UpdateBankAccountReq, opts ...grpc.CallOption) (*UpdateBankAccountResp, error)
+	UpdateBankAccountList(ctx context.Context, in *UpdateBankAccountListReq, opts ...grpc.CallOption) (*UpdateBankAccountListResp, error)
+	//配送企业授信额度设置
+	GetCompanyCreditConfigs(ctx context.Context, in *GetCompanyCreditConfigsReq, opts ...grpc.CallOption) (*GetCompanyCreditConfigsResp, error)
+	UpdateCompanyCreditConfig(ctx context.Context, in *UpdateCompanyCreditConfigReq, opts ...grpc.CallOption) (*UpdateCompanyCreditConfigResp, error)
 }
 
 type bankServiceClient struct {
@@ -24,10 +35,72 @@ func NewBankServiceClient(cc grpc.ClientConnInterface) BankServiceClient {
 	return &bankServiceClient{cc}
 }
 
+func (c *bankServiceClient) ListBankAccount(ctx context.Context, in *ListBankAccountReq, opts ...grpc.CallOption) (*ListBankAccountResp, error) {
+	out := new(ListBankAccountResp)
+	err := c.cc.Invoke(ctx, "/BankService.BankService/ListBankAccount", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *bankServiceClient) CreateOneAccountInfo(ctx context.Context, in *CreateOneAccountInfoReq, opts ...grpc.CallOption) (*CreateOneAccountInfoResp, error) {
+	out := new(CreateOneAccountInfoResp)
+	err := c.cc.Invoke(ctx, "/BankService.BankService/CreateOneAccountInfo", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *bankServiceClient) UpdateBankAccount(ctx context.Context, in *UpdateBankAccountReq, opts ...grpc.CallOption) (*UpdateBankAccountResp, error) {
+	out := new(UpdateBankAccountResp)
+	err := c.cc.Invoke(ctx, "/BankService.BankService/UpdateBankAccount", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *bankServiceClient) UpdateBankAccountList(ctx context.Context, in *UpdateBankAccountListReq, opts ...grpc.CallOption) (*UpdateBankAccountListResp, error) {
+	out := new(UpdateBankAccountListResp)
+	err := c.cc.Invoke(ctx, "/BankService.BankService/UpdateBankAccountList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *bankServiceClient) GetCompanyCreditConfigs(ctx context.Context, in *GetCompanyCreditConfigsReq, opts ...grpc.CallOption) (*GetCompanyCreditConfigsResp, error) {
+	out := new(GetCompanyCreditConfigsResp)
+	err := c.cc.Invoke(ctx, "/BankService.BankService/GetCompanyCreditConfigs", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *bankServiceClient) UpdateCompanyCreditConfig(ctx context.Context, in *UpdateCompanyCreditConfigReq, opts ...grpc.CallOption) (*UpdateCompanyCreditConfigResp, error) {
+	out := new(UpdateCompanyCreditConfigResp)
+	err := c.cc.Invoke(ctx, "/BankService.BankService/UpdateCompanyCreditConfig", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // BankServiceServer is the server API for BankService service.
 // All implementations must embed UnimplementedBankServiceServer
 // for forward compatibility
 type BankServiceServer interface {
+	//银行账号相关
+	ListBankAccount(context.Context, *ListBankAccountReq) (*ListBankAccountResp, error)
+	CreateOneAccountInfo(context.Context, *CreateOneAccountInfoReq) (*CreateOneAccountInfoResp, error)
+	UpdateBankAccount(context.Context, *UpdateBankAccountReq) (*UpdateBankAccountResp, error)
+	UpdateBankAccountList(context.Context, *UpdateBankAccountListReq) (*UpdateBankAccountListResp, error)
+	//配送企业授信额度设置
+	GetCompanyCreditConfigs(context.Context, *GetCompanyCreditConfigsReq) (*GetCompanyCreditConfigsResp, error)
+	UpdateCompanyCreditConfig(context.Context, *UpdateCompanyCreditConfigReq) (*UpdateCompanyCreditConfigResp, error)
 	mustEmbedUnimplementedBankServiceServer()
 }
 
@@ -35,6 +108,24 @@ type BankServiceServer interface {
 type UnimplementedBankServiceServer struct {
 }
 
+func (UnimplementedBankServiceServer) ListBankAccount(context.Context, *ListBankAccountReq) (*ListBankAccountResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListBankAccount not implemented")
+}
+func (UnimplementedBankServiceServer) CreateOneAccountInfo(context.Context, *CreateOneAccountInfoReq) (*CreateOneAccountInfoResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateOneAccountInfo not implemented")
+}
+func (UnimplementedBankServiceServer) UpdateBankAccount(context.Context, *UpdateBankAccountReq) (*UpdateBankAccountResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateBankAccount not implemented")
+}
+func (UnimplementedBankServiceServer) UpdateBankAccountList(context.Context, *UpdateBankAccountListReq) (*UpdateBankAccountListResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateBankAccountList not implemented")
+}
+func (UnimplementedBankServiceServer) GetCompanyCreditConfigs(context.Context, *GetCompanyCreditConfigsReq) (*GetCompanyCreditConfigsResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCompanyCreditConfigs not implemented")
+}
+func (UnimplementedBankServiceServer) UpdateCompanyCreditConfig(context.Context, *UpdateCompanyCreditConfigReq) (*UpdateCompanyCreditConfigResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateCompanyCreditConfig not implemented")
+}
 func (UnimplementedBankServiceServer) mustEmbedUnimplementedBankServiceServer() {}
 
 // UnsafeBankServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -48,13 +139,146 @@ func RegisterBankServiceServer(s grpc.ServiceRegistrar, srv BankServiceServer) {
 	s.RegisterService(&BankService_ServiceDesc, srv)
 }
 
+func _BankService_ListBankAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListBankAccountReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BankServiceServer).ListBankAccount(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/BankService.BankService/ListBankAccount",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BankServiceServer).ListBankAccount(ctx, req.(*ListBankAccountReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BankService_CreateOneAccountInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateOneAccountInfoReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BankServiceServer).CreateOneAccountInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/BankService.BankService/CreateOneAccountInfo",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BankServiceServer).CreateOneAccountInfo(ctx, req.(*CreateOneAccountInfoReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BankService_UpdateBankAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateBankAccountReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BankServiceServer).UpdateBankAccount(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/BankService.BankService/UpdateBankAccount",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BankServiceServer).UpdateBankAccount(ctx, req.(*UpdateBankAccountReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BankService_UpdateBankAccountList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateBankAccountListReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BankServiceServer).UpdateBankAccountList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/BankService.BankService/UpdateBankAccountList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BankServiceServer).UpdateBankAccountList(ctx, req.(*UpdateBankAccountListReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BankService_GetCompanyCreditConfigs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCompanyCreditConfigsReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BankServiceServer).GetCompanyCreditConfigs(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/BankService.BankService/GetCompanyCreditConfigs",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BankServiceServer).GetCompanyCreditConfigs(ctx, req.(*GetCompanyCreditConfigsReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BankService_UpdateCompanyCreditConfig_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateCompanyCreditConfigReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BankServiceServer).UpdateCompanyCreditConfig(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/BankService.BankService/UpdateCompanyCreditConfig",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BankServiceServer).UpdateCompanyCreditConfig(ctx, req.(*UpdateCompanyCreditConfigReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // BankService_ServiceDesc is the grpc.ServiceDesc for BankService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var BankService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "BankService.BankService",
 	HandlerType: (*BankServiceServer)(nil),
-	Methods:     []grpc.MethodDesc{},
-	Streams:     []grpc.StreamDesc{},
-	Metadata:    "BankService.proto",
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "ListBankAccount",
+			Handler:    _BankService_ListBankAccount_Handler,
+		},
+		{
+			MethodName: "CreateOneAccountInfo",
+			Handler:    _BankService_CreateOneAccountInfo_Handler,
+		},
+		{
+			MethodName: "UpdateBankAccount",
+			Handler:    _BankService_UpdateBankAccount_Handler,
+		},
+		{
+			MethodName: "UpdateBankAccountList",
+			Handler:    _BankService_UpdateBankAccountList_Handler,
+		},
+		{
+			MethodName: "GetCompanyCreditConfigs",
+			Handler:    _BankService_GetCompanyCreditConfigs_Handler,
+		},
+		{
+			MethodName: "UpdateCompanyCreditConfig",
+			Handler:    _BankService_UpdateCompanyCreditConfig_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "BankService.proto",
 }

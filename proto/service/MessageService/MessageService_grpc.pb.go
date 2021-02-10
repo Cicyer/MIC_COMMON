@@ -17,8 +17,10 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type MessageServiceClient interface {
+	//平台消息发送
 	SendEmails(ctx context.Context, in *SendEmailsReq, opts ...grpc.CallOption) (*SendEmailsResp, error)
 	SendSms(ctx context.Context, in *SendEmailsReq, opts ...grpc.CallOption) (*SendSmsResp, error)
+	SendMessage(ctx context.Context, in *SendMessageReq, opts ...grpc.CallOption) (*SendMessageResp, error)
 	//平台消息管理
 	GetMessageRecords(ctx context.Context, in *GetMessageRecordsReq, opts ...grpc.CallOption) (*MessageListResp, error)
 	GetMessageBusiness(ctx context.Context, in *GetMessageBusinessReq, opts ...grpc.CallOption) (*MessageBusinessResp, error)
@@ -46,6 +48,15 @@ func (c *messageServiceClient) SendEmails(ctx context.Context, in *SendEmailsReq
 func (c *messageServiceClient) SendSms(ctx context.Context, in *SendEmailsReq, opts ...grpc.CallOption) (*SendSmsResp, error) {
 	out := new(SendSmsResp)
 	err := c.cc.Invoke(ctx, "/MessageService.MessageService/SendSms", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *messageServiceClient) SendMessage(ctx context.Context, in *SendMessageReq, opts ...grpc.CallOption) (*SendMessageResp, error) {
+	out := new(SendMessageResp)
+	err := c.cc.Invoke(ctx, "/MessageService.MessageService/SendMessage", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -92,8 +103,10 @@ func (c *messageServiceClient) UnreadCount(ctx context.Context, in *GetUnreadCou
 // All implementations must embed UnimplementedMessageServiceServer
 // for forward compatibility
 type MessageServiceServer interface {
+	//平台消息发送
 	SendEmails(context.Context, *SendEmailsReq) (*SendEmailsResp, error)
 	SendSms(context.Context, *SendEmailsReq) (*SendSmsResp, error)
+	SendMessage(context.Context, *SendMessageReq) (*SendMessageResp, error)
 	//平台消息管理
 	GetMessageRecords(context.Context, *GetMessageRecordsReq) (*MessageListResp, error)
 	GetMessageBusiness(context.Context, *GetMessageBusinessReq) (*MessageBusinessResp, error)
@@ -111,6 +124,9 @@ func (UnimplementedMessageServiceServer) SendEmails(context.Context, *SendEmails
 }
 func (UnimplementedMessageServiceServer) SendSms(context.Context, *SendEmailsReq) (*SendSmsResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SendSms not implemented")
+}
+func (UnimplementedMessageServiceServer) SendMessage(context.Context, *SendMessageReq) (*SendMessageResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SendMessage not implemented")
 }
 func (UnimplementedMessageServiceServer) GetMessageRecords(context.Context, *GetMessageRecordsReq) (*MessageListResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetMessageRecords not implemented")
@@ -169,6 +185,24 @@ func _MessageService_SendSms_Handler(srv interface{}, ctx context.Context, dec f
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MessageServiceServer).SendSms(ctx, req.(*SendEmailsReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _MessageService_SendMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SendMessageReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MessageServiceServer).SendMessage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/MessageService.MessageService/SendMessage",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MessageServiceServer).SendMessage(ctx, req.(*SendMessageReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -259,6 +293,10 @@ var MessageService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SendSms",
 			Handler:    _MessageService_SendSms_Handler,
+		},
+		{
+			MethodName: "SendMessage",
+			Handler:    _MessageService_SendMessage_Handler,
 		},
 		{
 			MethodName: "GetMessageRecords",

@@ -6,10 +6,11 @@ type UploadChainType struct {
 	//上一次的上链hash，首次上链为空
 	LastHash string `json:"lastHash"`
 	//上链流程节点,每个节点不可跳跃，同一节点可以反复更新，进入下一个节点，不可返回上一节点
-	UploadNode      string `json:"uploadNode"`
-	UploaderName    string `json:"uploaderName"`
-	UploaderRole    string `json:"uploaderRole"`
-	UploaderAccount string `json:"uploaderAccount"`
+	UploadNode       string `json:"uploadNode"`
+	UploaderName     string `json:"uploaderName"`
+	UploaderRole     string `json:"uploaderRole"`
+	UploaderRoleName string `json:"uploaderRoleName"`
+	UploaderAccount  string `json:"uploaderAccount"`
 }
 type BankAccount struct {
 	CardNo      string `json:"cardNo"`
