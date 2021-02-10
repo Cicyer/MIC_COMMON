@@ -7,14 +7,35 @@ type NodeStatus interface {
 	GetStatusInt(node string) int
 }
 
-// 配送单
-// 配送节点
-var ChainShipmentOrderNodeMap = map[string]int{
+// shipment 节点
+var ChainShipmentNodeMap = map[string]int{
 	"info_hash":             0,
 	"qr_code_hash":          1,
 	"shipment_start_hash":   2,
 	"shipment_receive_hash": 3,
 	"shipment_enter_hash":   4,
+}
+
+// shipment
+func (u *UploadChainShipment) IsNextOK(nextNode string) bool {
+	if u.UploadNode == "" {
+		// 新建
+		return true
+	}
+	return u.GetStatusInt(u.UploadNode) == u.GetStatusInt(nextNode) ||
+		u.GetStatusInt(u.UploadNode)+1 == u.GetStatusInt(nextNode)
+}
+
+func (u *UploadChainShipment) GetStatusInt(node string) int {
+	return ChainShipmentNodeMap[node]
+}
+
+// shipmentOrder node
+var ChainShipmentOrderNodeMap = map[string]int{
+	"qr_code_hash":          0,
+	"shipment_start_hash":   1,
+	"shipment_receive_hash": 2,
+	"shipment_enter_hash":   3,
 }
 
 func (u *UploadChainShipmentOrder) IsNextOK(nextNode string) bool {
