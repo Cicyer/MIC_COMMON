@@ -654,7 +654,7 @@ message CreateShipmentOrderReq {
   string invoiceMd5 = 3;
   string invoiceUrl = 4;
   string invoiceType = 5;
-  string invoiceTotal = 6;
+  int64 invoiceTotal = 6;
   int64 invoiceTax = 7;
   string invoiceCheckCode = 8;
   string invoiceNo = 9;
