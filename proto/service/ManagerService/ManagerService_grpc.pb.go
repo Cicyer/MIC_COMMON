@@ -66,6 +66,8 @@ type ManagerServiceClient interface {
 	CreateShipmentOrder(ctx context.Context, in *CreateShipmentOrderReq, opts ...grpc.CallOption) (*CreateShipmentOrderResp, error)
 	//配送单列表
 	ListShipmentOrder(ctx context.Context, in *ListShipmentOrderReq, opts ...grpc.CallOption) (*ListShipmentOrderResp, error)
+	//配送单表头汇总
+	CountShipmentOrder(ctx context.Context, in *CountShipmentOrderReq, opts ...grpc.CallOption) (*CountShipmentOrderResp, error)
 	//配送单修改
 	UpdateShipmentOrder(ctx context.Context, in *UpdateShipmentOrderReq, opts ...grpc.CallOption) (*UpdateShipmentOrderResp, error)
 	//hash模块
@@ -451,6 +453,15 @@ func (c *managerServiceClient) ListShipmentOrder(ctx context.Context, in *ListSh
 	return out, nil
 }
 
+func (c *managerServiceClient) CountShipmentOrder(ctx context.Context, in *CountShipmentOrderReq, opts ...grpc.CallOption) (*CountShipmentOrderResp, error) {
+	out := new(CountShipmentOrderResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/CountShipmentOrder", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *managerServiceClient) UpdateShipmentOrder(ctx context.Context, in *UpdateShipmentOrderReq, opts ...grpc.CallOption) (*UpdateShipmentOrderResp, error) {
 	out := new(UpdateShipmentOrderResp)
 	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/UpdateShipmentOrder", in, out, opts...)
@@ -657,6 +668,8 @@ type ManagerServiceServer interface {
 	CreateShipmentOrder(context.Context, *CreateShipmentOrderReq) (*CreateShipmentOrderResp, error)
 	//配送单列表
 	ListShipmentOrder(context.Context, *ListShipmentOrderReq) (*ListShipmentOrderResp, error)
+	//配送单表头汇总
+	CountShipmentOrder(context.Context, *CountShipmentOrderReq) (*CountShipmentOrderResp, error)
 	//配送单修改
 	UpdateShipmentOrder(context.Context, *UpdateShipmentOrderReq) (*UpdateShipmentOrderResp, error)
 	//hash模块
@@ -804,6 +817,9 @@ func (UnimplementedManagerServiceServer) CreateShipmentOrder(context.Context, *C
 }
 func (UnimplementedManagerServiceServer) ListShipmentOrder(context.Context, *ListShipmentOrderReq) (*ListShipmentOrderResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListShipmentOrder not implemented")
+}
+func (UnimplementedManagerServiceServer) CountShipmentOrder(context.Context, *CountShipmentOrderReq) (*CountShipmentOrderResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CountShipmentOrder not implemented")
 }
 func (UnimplementedManagerServiceServer) UpdateShipmentOrder(context.Context, *UpdateShipmentOrderReq) (*UpdateShipmentOrderResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateShipmentOrder not implemented")
@@ -1571,6 +1587,24 @@ func _ManagerService_ListShipmentOrder_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ManagerService_CountShipmentOrder_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CountShipmentOrderReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).CountShipmentOrder(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/CountShipmentOrder",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).CountShipmentOrder(ctx, req.(*CountShipmentOrderReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _ManagerService_UpdateShipmentOrder_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateShipmentOrderReq)
 	if err := dec(in); err != nil {
@@ -2039,6 +2073,10 @@ var ManagerService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListShipmentOrder",
 			Handler:    _ManagerService_ListShipmentOrder_Handler,
+		},
+		{
+			MethodName: "CountShipmentOrder",
+			Handler:    _ManagerService_CountShipmentOrder_Handler,
 		},
 		{
 			MethodName: "UpdateShipmentOrder",
