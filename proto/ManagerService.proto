@@ -90,9 +90,6 @@ message ContractMiListReq {
 
 message ContractMiListResp {
   repeated ContractListVo list = 1;
-  int64 total = 2;
-  int64 pageSize = 3;
-  int64 pageNumber = 4;
 }
 
 message ContractMiListVo {
@@ -105,6 +102,9 @@ message ContractMiListVo {
   int64  medicineAmountMoney = 7;
   string  hashInfo = 8;
   google.protobuf.Timestamp infoUploadAt = 9;
+  string  medicineSpecification = 10;
+  string  contractMd5 = 11;
+  string  contractUrl = 12;
 }
 //子合同补录
 message CreateOneContractMIReq {
@@ -604,15 +604,15 @@ message DetailShipmentOrderResp {
 }
 //招采单列表(根据配送编号查询)
 message ListShipmentPlanForOrderReq {
-//  string  tpOrderCode = 1;
+  //  string  tpOrderCode = 1;
   string  shipmentNo = 1;
-//  string medicineName = 3;
-//  string medicineCode = 4;
-//  string companyCode = 5;
-//  string planStatus = 6;
-//  google.protobuf.Timestamp stratDate = 7;
-//  google.protobuf.Timestamp endDate = 8;
-//  Page page = 9;
+  //  string medicineName = 3;
+  //  string medicineCode = 4;
+  //  string companyCode = 5;
+  //  string planStatus = 6;
+  //  google.protobuf.Timestamp stratDate = 7;
+  //  google.protobuf.Timestamp endDate = 8;
+  //  Page page = 9;
   int64 managerId = 2;
 }
 
@@ -649,22 +649,22 @@ message CountShipmentPlanResp {
 }
 //配送单创建
 message CreateShipmentOrderReq {
-  int64 miId = 1;
-  int64 companyId = 2;
+  string miCode = 1;
+  string companyCode = 2;
   string invoiceMd5 = 3;
   string invoiceUrl = 4;
   string invoiceType = 5;
   string invoiceTotal = 6;
-  string invoiceTax = 7;
+  int64 invoiceTax = 7;
   string invoiceCheckCode = 8;
   string invoiceNo = 9;
   string invoiceCode = 10;
   google.protobuf.Timestamp invoiceDate = 11;
   google.protobuf.Timestamp sendOutAt = 12;
-  string orderAmount = 13;
+  int64 orderAmount = 13;
   string shipmentCode = 14;
   string shipmentCompany = 15;
-  repeated string shipmentPlanIds = 16;
+  repeated int64 shipmentPlanIds = 16;
   int64 managerId = 17;
 }
 
@@ -705,6 +705,19 @@ message ListShipmentOrderVo {
   google.protobuf.Timestamp sendOutAt = 8;
   google.protobuf.Timestamp receiveDeadline = 9;
   string shipmentStatus = 10;
+}
+
+//配送单表头汇总
+message CountShipmentOrderReq {
+  string companyCode = 1;
+  google.protobuf.Timestamp startDate = 2;
+  google.protobuf.Timestamp endDate = 3;
+  int64 managerId = 4;
+}
+
+message CountShipmentOrderResp {
+  int64 shipmentOrderCount = 1;
+  int64 shipmentPlanCount = 2;
 }
 //配送单修改
 message UpdateShipmentOrderReq {
@@ -1090,8 +1103,10 @@ service ManagerService {
   rpc CreateShipmentOrder(CreateShipmentOrderReq) returns(CreateShipmentOrderResp);
   //配送单列表
   rpc ListShipmentOrder(ListShipmentOrderReq) returns(ListShipmentOrderResp);
+  //配送单表头汇总
+  rpc CountShipmentOrder(CountShipmentOrderReq) returns(CountShipmentOrderResp);
   //配送单修改
-  rpc UpdateShipmentOrder(UpdateShipmentOrderReq) returns(UpdateShipmentOrderResp);
+    rpc UpdateShipmentOrder(UpdateShipmentOrderReq) returns(UpdateShipmentOrderResp);
 
   //hash模块
   rpc GetCompanyHash(GetCompanyHashReq) returns (GetCompanyHashResp);
