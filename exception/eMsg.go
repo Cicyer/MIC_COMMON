@@ -43,4 +43,5 @@ var CM = map[int]map[string]string{
 	10211: {"EN": "illegal IdCard", "CN": "身份证号不合法"},
 	10212: {"EN": "illegal role", "CN": "无效的角色"},
 	10213: {"EN": "illegal role change", "CN": "无法跨平台变更角色"},
+	10214: {"EN": "email verify code error", "CN": "邮箱验证码错误"},
 }
