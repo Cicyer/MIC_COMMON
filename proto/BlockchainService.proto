@@ -1,6 +1,0 @@
-syntax = "proto3";
-
-package BlockchainService;
-option go_package = "service/BlockchainService;BlockchainService";
-
-import public "google/protobuf/timestamp.proto";

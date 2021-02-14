@@ -2,6 +2,7 @@ package dto
 
 import "time"
 
+// base -------------- start
 type UploadChainType struct {
 	//上一次的上链hash，首次上链为空
 	LastHash string `json:"lastHash"`
@@ -21,6 +22,8 @@ type BankAccount struct {
 	//银行卡医保局是否列为黑名单，此时不允许支付
 	ValidStatus string `json:"validStatus"`
 }
+
+// base -------------- end
 
 //配送企业上链信息记录 生效时上链 企业社会识别编码不可修改 其他内容更新可重复上链
 // key: "company" + MibCode + CompanyCode
@@ -188,7 +191,7 @@ type UploadChainShipmentOrder struct {
 	ConfirmAt time.Time `json:"confirmAt"`
 }
 
-//支付信息上链 // key: "Pay" + ShipmentNo
+//支付单 上链 // key: "Pay" + ShipmentNo
 type UploadChainPayOrder struct {
 	UploadChainType
 	//支付的配送单号
@@ -204,13 +207,15 @@ type UploadChainPayOrder struct {
 	PayAt      time.Time `json:"payAt"`
 	//支付状态 理论上只有支付失败时，平台会告知线下处置完毕
 	PayStatus string `json:"payStatus"`
+	// 支付单下层私有状态, 记录是否有保理信息(有保理信息则处于保理中, 没有则不管)
+	FactoringStatus string `json:"factoringStatus"`
 }
 
 type PayOrder struct {
 	ShipmentNo string `json:"shipmentNo"`
 }
 
-//保理信息上链 // key: "Factoring"+FactoringOrderNo
+//保理单 上链 // key: "Factoring"+FactoringOrderNo
 type UploadChainFactoringOrder struct {
 	UploadChainType
 	//申请节点（基本信息节点）
