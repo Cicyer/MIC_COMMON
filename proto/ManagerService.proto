@@ -194,11 +194,13 @@ message MedicineListVo {
   string  medicineSpecification = 4;
   string  medicineForm = 5;
   string  medicinePackage = 6;
-  int32  calculateRate = 7;
+  int64  calculateRate = 7;
   string  manufacturer = 8;
   google.protobuf.Timestamp createdAt = 9;
   string  medicineUnit = 10;
   string hashInfo = 11;
+  string tagName = 12;
+  string activeStatus = 13;
 }
 //药品列表用于查询 通用接口
 message MedicineListForQueryReq {
@@ -224,13 +226,13 @@ message CreateMedicineReq {
   string  medicineSpecification = 3;
   string  medicineForm = 4;
   string  medicinePackage = 5;
-  int32  calculateRate = 6;
+  int64  calculateRate = 6;
   string  manufacturer = 7;
   string  medicineUnit = 8;
   int64 managerId = 9;
 }
 message CreateMedicineResp {
-  //  int64  contractMiId = 1;
+  int64  result = 1;
 }
 //编辑药品
 message UpdateMedicineReq {
@@ -240,13 +242,13 @@ message UpdateMedicineReq {
   string  medicineSpecification = 4;
   string  medicineForm = 5;
   string  medicinePackage = 6;
-  int32  calculateRate = 7;
+  int64  calculateRate = 7;
   string  manufacturer = 8;
   string  medicineUnit = 9;
   int64 managerId = 10;
 }
 message UpdateMedicineResp {
-  //  int64  contractMiId = 1;
+  int64  result = 1;
 }
 //编辑药品生效状态
 message UpdateMedicineActiveReq {
@@ -255,7 +257,7 @@ message UpdateMedicineActiveReq {
   int64 managerId = 3;
 }
 message UpdateMedicineActiveResp {
-  //  int64  contractMiId = 1;
+  int64  Result = 1;
 }
 //删除药品
 message DeleteMedicineReq {
@@ -263,8 +265,18 @@ message DeleteMedicineReq {
   int64 managerId = 2;
 }
 message DeleteMedicineResp {
-  //  int64  contractMiId = 1;
+  bool Result = 1;
 }
+//根据药品id查询tagName字符串组
+message SelectTagByMCodeReq {
+  int64  medicineId = 1;
+  int64 managerId = 2;
+}
+message SelectTagByMCodeResp {
+  string tagNames = 1;
+}
+
+
 //查询标签列表
 message TagListReq {
   string  tagType = 1;
@@ -1071,6 +1083,7 @@ service ManagerService {
   rpc UpdateMedicine(UpdateMedicineReq) returns(UpdateMedicineResp);
   rpc UpdateMedicineActive(UpdateMedicineActiveReq) returns(UpdateMedicineActiveResp);
   rpc DeleteMedicine(DeleteMedicineReq) returns(DeleteMedicineResp);
+  rpc SelectTagByMCode(SelectTagByMCodeReq) returns(SelectTagByMCodeResp);
   //药品标签相关
   rpc TagList(TagListReq) returns(TagListResp);
   rpc CreateTag(CreateTagReq) returns(CreateTagResp);
@@ -1106,7 +1119,7 @@ service ManagerService {
   //配送单表头汇总
   rpc CountShipmentOrder(CountShipmentOrderReq) returns(CountShipmentOrderResp);
   //配送单修改
-    rpc UpdateShipmentOrder(UpdateShipmentOrderReq) returns(UpdateShipmentOrderResp);
+  rpc UpdateShipmentOrder(UpdateShipmentOrderReq) returns(UpdateShipmentOrderResp);
 
   //hash模块
   rpc GetCompanyHash(GetCompanyHashReq) returns (GetCompanyHashResp);
