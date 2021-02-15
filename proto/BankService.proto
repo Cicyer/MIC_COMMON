@@ -118,6 +118,69 @@ message UpdateCompanyCreditConfigResp {
 
 }
 
+message GetCompanyBankAccountDetailReq {
+  int64   managerId = 1;
+  int64   companyId = 2;
+}
+
+message GetCompanyBankAccountDetailResp {
+  int64   comId = 1;
+  string   comName = 2;
+  string   cardNo = 3;
+  string   bank = 4;
+  string   toibkn = 5;
+  string   cardOwner = 6;
+  string   validStatus = 7;
+  int64   frozenAmount = 8;
+  int64   bokbal = 9;
+  int64   avabal = 10;
+  int64   ovramt = 11;
+  int64   stpamt = 12;
+  google.protobuf.Timestamp createAt = 13;
+}
+message CompanyWithdrawReq {
+    int64   managerId = 1;
+    int64   companyId = 2;
+    string   toAcc = 3;
+    string   toAccName = 4;
+    string   tobknm = 5;
+    string   toibkn = 6;
+    string   furinfo = 7;
+    int64   withdrawMoney = 8;
+}
+message CompanyWithdrawResp {
+
+}
+message ListCompanyWithdrawReq {
+    int64   managerId = 1;
+    Page   page = 2;
+    string   accountType = 3;
+    google.protobuf.Timestamp payStartAt = 4;
+    google.protobuf.Timestamp payEndAt = 5;
+}
+message CompanyWithdraw{
+    string   outTradeNo = 1;
+    int64   withdrawMoney = 2;
+    string   toAcc = 3;
+    string   toAccName = 4;
+    string   tobknm = 5;
+    string   toibkn = 6;
+    string   furinfo = 7;
+    google.protobuf.Timestamp payAt = 8;
+    string   payType = 9;
+    string   payStatus = 10;
+    string   errMsg = 11;
+    string   receiptUrl = 12;
+    google.protobuf.Timestamp createAt = 13;
+    string   userName = 14;
+}
+
+message ListCompanyWithdrawResp {
+  repeated CompanyCredit list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
 service BankService {
   //银行账号相关
   rpc ListBankAccount(ListBankAccountReq) returns(ListBankAccountResp);
@@ -127,4 +190,19 @@ service BankService {
   //配送企业授信额度设置
   rpc GetCompanyCreditConfigs(GetCompanyCreditConfigsReq) returns (GetCompanyCreditConfigsResp);
   rpc UpdateCompanyCreditConfig(UpdateCompanyCreditConfigReq) returns (UpdateCompanyCreditConfigResp);
+  //企业账户操作相关
+  rpc GetCompanyBankAccountDetail(GetCompanyBankAccountDetailReq) returns (GetCompanyBankAccountDetailResp);
+  rpc CompanyWithdraw(CompanyWithdrawReq) returns (CompanyWithdrawResp);
+  rpc ListCompanyWithdraw(ListCompanyWithdrawReq) returns (ListCompanyWithdrawResp);
+
+}
+//支付单相关业务
+service ShipmentPayOrderService {
+
+  rpc ListBankAccount(ListBankAccountReq) returns(ListBankAccountResp);
+}
+//保理单相关业务
+service FactoringOrderService {
+
+  rpc ListBankAccount(ListBankAccountReq) returns(ListBankAccountResp);
 }
