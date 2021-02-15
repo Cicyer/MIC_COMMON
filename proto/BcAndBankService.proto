@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 // 外挂用 - 综合 bankSDK 和 fabricSDK 调用
+// blockchain and bank plugin
 package BcAndBankService;
 option go_package = "service/BcAndBankService;BcAndBankService";
 
