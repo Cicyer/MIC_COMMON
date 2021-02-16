@@ -302,7 +302,7 @@ type UnsafeBcAndBankServiceServer interface {
 }
 
 func RegisterBcAndBankServiceServer(s grpc.ServiceRegistrar, srv BcAndBankServiceServer) {
-	s.RegisterService(&_BcAndBankService_serviceDesc, srv)
+	s.RegisterService(&BcAndBankService_ServiceDesc, srv)
 }
 
 func _BcAndBankService_BcUploadConfigs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -575,7 +575,10 @@ func _BcAndBankService_BcForceUploadFactoring_Handler(srv interface{}, ctx conte
 	return interceptor(ctx, in, info, handler)
 }
 
-var _BcAndBankService_serviceDesc = grpc.ServiceDesc{
+// BcAndBankService_ServiceDesc is the grpc.ServiceDesc for BcAndBankService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var BcAndBankService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "BcAndBankService.BcAndBankService",
 	HandlerType: (*BcAndBankServiceServer)(nil),
 	Methods: []grpc.MethodDesc{

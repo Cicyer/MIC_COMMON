@@ -118,6 +118,276 @@ message UpdateCompanyCreditConfigResp {
 
 }
 
+message GetCompanyBankAccountDetailReq {
+  int64   managerId = 1;
+  int64   companyId = 2;
+}
+
+message GetCompanyBankAccountDetailResp {
+  int64   comId = 1;
+  string   comName = 2;
+  string   cardNo = 3;
+  string   bank = 4;
+  string   toibkn = 5;
+  string   cardOwner = 6;
+  string   validStatus = 7;
+  int64   frozenAmount = 8;
+  int64   bokbal = 9;
+  int64   avabal = 10;
+  int64   ovramt = 11;
+  int64   stpamt = 12;
+  google.protobuf.Timestamp createAt = 13;
+}
+message CompanyWithdrawReq {
+  int64   managerId = 1;
+  int64   companyId = 2;
+  string   toAcc = 3;
+  string   toAccName = 4;
+  string   tobknm = 5;
+  string   toibkn = 6;
+  string   furinfo = 7;
+  int64   withdrawMoney = 8;
+}
+message CompanyWithdrawResp {
+
+}
+message ListCompanyWithdrawReq {
+  int64   managerId = 1;
+  Page   page = 2;
+  string   accountType = 3;
+  google.protobuf.Timestamp payStartAt = 4;
+  google.protobuf.Timestamp payEndAt = 5;
+}
+message CompanyWithdraw{
+  string   outTradeNo = 1;
+  int64   withdrawMoney = 2;
+  string   toAcc = 3;
+  string   toAccName = 4;
+  string   tobknm = 5;
+  string   toibkn = 6;
+  string   furinfo = 7;
+  google.protobuf.Timestamp payAt = 8;
+  string   payType = 9;
+  string   payStatus = 10;
+  string   errMsg = 11;
+  string   receiptUrl = 12;
+  google.protobuf.Timestamp createAt = 13;
+  string   userName = 14;
+}
+
+message ListCompanyWithdrawResp {
+  repeated CompanyCredit list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+
+message ListPayOrderReq {
+  int64   managerId = 1;
+  Page   page = 2;
+  string invoiceNo = 3;
+  string invoiceCode = 4;
+  string shipmentNo = 5;
+  repeated string payStatus = 6;
+  repeated string payType = 7;
+  string miName = 8;
+  string comName = 9;
+  string comCode = 10;
+  google.protobuf.Timestamp payDeadlineStartAt = 11;
+  google.protobuf.Timestamp payDeadlineEndAt = 12;
+  google.protobuf.Timestamp receiveStartAt = 13;
+  google.protobuf.Timestamp receiveEndAt = 14;
+}
+
+
+message PayOrder{
+  int64   shipmentOrderId = 1;
+  string   shipmentNo = 2;
+  string   invoiceNo = 3;
+  string   invoiceCode = 4;
+  string   shipmentCode = 5;
+  int64   shipmentOrderAmount = 6;
+  string   errMsg = 7;
+  google.protobuf.Timestamp payAt = 8;
+  string   payType = 9;
+  string   payStatus = 10;
+  google.protobuf.Timestamp    receiveAt = 11;
+  string   receiptUrl = 12;
+  google.protobuf.Timestamp payDeadline = 13;
+  string   miName = 14;
+  int64   miId = 15;
+  string   miCode = 16;
+  string   comName = 17;
+  int64   comId = 18;
+  string   comCode = 19;
+}
+
+message ListPayOrderResp {
+  repeated PayOrder list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+
+message ListPayOrderPlanReq {
+  int64   managerId = 1;
+  Page   page = 2;
+  repeated string shipmentNos = 3;
+}
+
+message PayOrderPlan{
+  string   tpOrderNo = 1;
+  string   orderNo = 2;
+  string   tpCode = 3;
+  int64   shipmentAmount = 4;
+  int64   orderAmount = 5;
+  int64   shipmentOrderId = 6;
+  string   shipmentNo = 7;
+  string   invoiceNo = 8;
+  string   invoiceCode = 9;
+  string   shipmentCode = 10;
+  string   medicineName = 11;
+  string   medicineCode = 12;
+  string   medicineSpecification = 13;
+  string   tagName = 14;
+  int64   shipmentOrderAmount = 15;
+  google.protobuf.Timestamp tpCreatedAt = 16;
+  google.protobuf.Timestamp payDeadline = 17;
+  string   shipmentStatus = 18;
+  string   payStatus = 19;
+  string   errMsg = 20;
+  int64   miId = 21;
+  string   miName = 22;
+  string   miCode = 23;
+  string   comName = 24;
+  int64   comId = 25;
+  string   comCode = 26;
+}
+
+message ListPayOrderPlanResp {
+  repeated PayOrderPlan list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+
+message FinishPayOrderErrorReq {
+  int64   managerId = 1;
+  Page   page = 2;
+  string shipmentNo = 3;
+}
+message FinishPayOrderErrorResp {
+
+}
+
+message ListFactoringOrderReq {
+  int64   managerId = 1;
+  Page   page = 2;
+  string factoringOrderNo = 3;
+  string factoringBankNo = 4;
+  string miName = 5;
+  string comName = 6;
+  repeated string factoringStatus = 7;
+  google.protobuf.Timestamp applyResultStartAt = 8;
+  google.protobuf.Timestamp applyResultEndAt = 9;
+  repeated string  refundStatus = 10;
+}
+
+
+message FactoringOrder{
+  string   factoringOrderNo = 1;
+  string   factoringBankNo = 2;
+  string   miName = 3;
+  int64   miId = 4;
+  string   miCode = 5;
+  int64   companyId = 6;
+  string   companyName = 7;
+  string   companyCode = 8;
+  int64   factoringMoney = 9;
+  int64   actualReceiveMoney = 10;
+  int64   platformFee = 11;
+  google.protobuf.Timestamp   applyAt = 12;
+  google.protobuf.Timestamp   applyResultAt = 13;
+  string   tagName = 14;
+  int64   shipmentOrderAmount = 15;
+  google.protobuf.Timestamp tpCreatedAt = 16;
+  google.protobuf.Timestamp payDeadline = 17;
+  string   factoringStatus = 18;
+  google.protobuf.Timestamp   refundAt = 19;
+  string   refundStatus = 20;
+  string   errMsg = 21;
+}
+
+message ListFactoringOrderResp {
+  repeated FactoringOrder list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+message GetTransferReceiptReq {
+  int64   managerId = 1;
+  Page   page = 2;
+  //转账操作类别 SHIPMENT_PAY 医院货款 COM_WITHDRAW 企业提现
+  string transferType = 3;
+  //操作类别对应的联络号码，对于医院货款就是shipmentNo
+  string linkNo = 4;
+}
+message GetTransferReceiptResp {
+  string receiptUrl = 1;
+}
+message ListFactoringOrderPlanReq {
+  int64   managerId = 1;
+  Page   page = 2;
+  string factoringOrderNo = 3;
+}
+
+message FactoringOrderPlan{
+  int64   shipmentPlanId = 1;
+  string   tpOrderNo = 2;
+  string   orderNo = 3;
+  int64   shipmentAmount = 4;
+  int64   orderAmount = 5;
+  int64   shipmentOrderId = 6;
+  string   shipmentNo = 7;
+  string   invoiceNo = 8;
+  string   invoiceCode = 9;
+  string   shipmentCode = 10;
+  int64   shipmentOrderAmount = 11;
+  string   shipmentStatus = 12;
+  string   errMsg = 13;
+  string   factoringOrderNo = 14;
+  string   factoringBankNo = 15;
+  google.protobuf.Timestamp   sendOutAt = 16;
+  google.protobuf.Timestamp   receiveDeadline = 17;
+  string   tagName = 18;
+  google.protobuf.Timestamp tpCreatedAt = 19;
+  google.protobuf.Timestamp payDeadline = 20;
+  string   factoringStatus = 21;
+  google.protobuf.Timestamp   refundAt = 22;
+  string   refundStatus = 23;
+  string   miName = 25;
+  int64   miId = 26;
+  string   miCode = 27;
+  int64   companyId = 28;
+  string   companyName = 29;
+  string   companyCode = 30;
+}
+
+message ListFactoringOrderPlanResp {
+  repeated FactoringOrderPlan list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+
+message FinishFactoringOrderErrorReq {
+  int64   managerId = 1;
+  Page   page = 2;
+  string factoringOrderNo = 3;
+}
+message FinishFactoringOrderErrorResp {
+
+}
 service BankService {
   //银行账号相关
   rpc ListBankAccount(ListBankAccountReq) returns(ListBankAccountResp);
@@ -127,4 +397,30 @@ service BankService {
   //配送企业授信额度设置
   rpc GetCompanyCreditConfigs(GetCompanyCreditConfigsReq) returns (GetCompanyCreditConfigsResp);
   rpc UpdateCompanyCreditConfig(UpdateCompanyCreditConfigReq) returns (UpdateCompanyCreditConfigResp);
+  //企业账户操作相关
+  rpc GetCompanyBankAccountDetail(GetCompanyBankAccountDetailReq) returns (GetCompanyBankAccountDetailResp);
+  rpc CompanyWithdraw(CompanyWithdrawReq) returns (CompanyWithdrawResp);
+  rpc ListCompanyWithdraw(ListCompanyWithdrawReq) returns (ListCompanyWithdrawResp);
+
+}
+//支付单相关业务
+service ShipmentPayOrderService {
+  //获取支付相关的支付单
+  rpc ListPayOrder(ListPayOrderReq) returns(ListPayOrderResp);
+  //获取支付相关的支付计划信息
+  rpc ListPayOrderPlan(ListPayOrderPlanReq) returns(ListPayOrderPlanResp);
+  //线下处置支付单
+  rpc FinishPayOrderError(FinishPayOrderErrorReq) returns(FinishPayOrderErrorResp);
+  //获取支付回单
+  rpc GetTransferReceipt(GetTransferReceiptReq) returns(GetTransferReceiptResp);
+
+}
+//保理单相关业务
+service FactoringOrderService {
+  //获取保理单一般信息
+  rpc ListFactoringOrder(ListFactoringOrderReq) returns(ListFactoringOrderResp);
+  //获取保理单下的支付单信息
+  rpc ListFactoringOrderPlan(ListFactoringOrderPlanReq) returns(ListFactoringOrderPlanResp);
+  //线下处置保理单
+  rpc FinishFactoringOrderError(FinishFactoringOrderErrorReq) returns(FinishFactoringOrderErrorResp);
 }

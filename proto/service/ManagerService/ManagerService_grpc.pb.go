@@ -35,6 +35,7 @@ type ManagerServiceClient interface {
 	UpdateMedicine(ctx context.Context, in *UpdateMedicineReq, opts ...grpc.CallOption) (*UpdateMedicineResp, error)
 	UpdateMedicineActive(ctx context.Context, in *UpdateMedicineActiveReq, opts ...grpc.CallOption) (*UpdateMedicineActiveResp, error)
 	DeleteMedicine(ctx context.Context, in *DeleteMedicineReq, opts ...grpc.CallOption) (*DeleteMedicineResp, error)
+	SelectTagByMedicineId(ctx context.Context, in *SelectTagByMedicineIdReq, opts ...grpc.CallOption) (*SelectTagByMedicineIdResp, error)
 	//药品标签相关
 	TagList(ctx context.Context, in *TagListReq, opts ...grpc.CallOption) (*TagListResp, error)
 	CreateTag(ctx context.Context, in *CreateTagReq, opts ...grpc.CallOption) (*CreateTagResp, error)
@@ -240,6 +241,15 @@ func (c *managerServiceClient) UpdateMedicineActive(ctx context.Context, in *Upd
 func (c *managerServiceClient) DeleteMedicine(ctx context.Context, in *DeleteMedicineReq, opts ...grpc.CallOption) (*DeleteMedicineResp, error) {
 	out := new(DeleteMedicineResp)
 	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/DeleteMedicine", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) SelectTagByMedicineId(ctx context.Context, in *SelectTagByMedicineIdReq, opts ...grpc.CallOption) (*SelectTagByMedicineIdResp, error) {
+	out := new(SelectTagByMedicineIdResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/SelectTagByMedicineId", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -637,6 +647,7 @@ type ManagerServiceServer interface {
 	UpdateMedicine(context.Context, *UpdateMedicineReq) (*UpdateMedicineResp, error)
 	UpdateMedicineActive(context.Context, *UpdateMedicineActiveReq) (*UpdateMedicineActiveResp, error)
 	DeleteMedicine(context.Context, *DeleteMedicineReq) (*DeleteMedicineResp, error)
+	SelectTagByMedicineId(context.Context, *SelectTagByMedicineIdReq) (*SelectTagByMedicineIdResp, error)
 	//药品标签相关
 	TagList(context.Context, *TagListReq) (*TagListResp, error)
 	CreateTag(context.Context, *CreateTagReq) (*CreateTagResp, error)
@@ -748,6 +759,9 @@ func (UnimplementedManagerServiceServer) UpdateMedicineActive(context.Context, *
 }
 func (UnimplementedManagerServiceServer) DeleteMedicine(context.Context, *DeleteMedicineReq) (*DeleteMedicineResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteMedicine not implemented")
+}
+func (UnimplementedManagerServiceServer) SelectTagByMedicineId(context.Context, *SelectTagByMedicineIdReq) (*SelectTagByMedicineIdResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SelectTagByMedicineId not implemented")
 }
 func (UnimplementedManagerServiceServer) TagList(context.Context, *TagListReq) (*TagListResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method TagList not implemented")
@@ -1169,6 +1183,24 @@ func _ManagerService_DeleteMedicine_Handler(srv interface{}, ctx context.Context
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ManagerServiceServer).DeleteMedicine(ctx, req.(*DeleteMedicineReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_SelectTagByMedicineId_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SelectTagByMedicineIdReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).SelectTagByMedicineId(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/SelectTagByMedicineId",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).SelectTagByMedicineId(ctx, req.(*SelectTagByMedicineIdReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1981,6 +2013,10 @@ var ManagerService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeleteMedicine",
 			Handler:    _ManagerService_DeleteMedicine_Handler,
+		},
+		{
+			MethodName: "SelectTagByMedicineId",
+			Handler:    _ManagerService_SelectTagByMedicineId_Handler,
 		},
 		{
 			MethodName: "TagList",
