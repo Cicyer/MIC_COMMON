@@ -267,6 +267,7 @@ message UploadChainPayOrder {
   string payType = 7;
   google.protobuf.Timestamp payAt = 8;
   string payStatus = 9;
+  string factoringStatus = 10;
 }
 
 message UploadChainPayOrders {
