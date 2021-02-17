@@ -2,6 +2,7 @@ package dto
 
 import "time"
 
+// base -------------- start
 type UploadChainType struct {
 	//上一次的上链hash，首次上链为空
 	LastHash string `json:"lastHash"`
@@ -22,7 +23,10 @@ type BankAccount struct {
 	ValidStatus string `json:"validStatus"`
 }
 
+// base -------------- end
+
 //配送企业上链信息记录 生效时上链 企业社会识别编码不可修改 其他内容更新可重复上链
+// key: "company" + MibCode + CompanyCode
 type UploadChainCompany struct {
 	UploadChainType
 	CompanyName string `json:"companyName"`
@@ -42,6 +46,7 @@ type UploadChainCompany struct {
 }
 
 //医疗机构上链信息记录 生效时上链 企业社会识别编码不可修改 其他内容更新可重复上链
+// key : "mi"+ MibCode + MiCode
 type UploadChainMi struct {
 	UploadChainType
 	//授权所属医保局code
@@ -62,6 +67,7 @@ type UploadChainMi struct {
 }
 
 //药品信息上链 药品通用code 不可修改
+// key : "med" + MedicineCode
 type UploadChainMedicine struct {
 	UploadChainType
 	MedicineName string `json:"medicineName"`
@@ -96,6 +102,7 @@ type UploadChainConfig struct {
 }
 
 //目前合同上的金额不作为限制依据了， 主合同在生效后 即为敲定，不可修改
+// key: "contract" + ContractNo
 type UploadChainContract struct {
 	UploadChainType
 	ContractNo    string `json:"contractNo"`
@@ -116,6 +123,7 @@ type UploadChainContract struct {
 }
 
 //子合同信息 主合同在生效后可生效 生效即为敲定，不可修改，需要校验主合同已经存在
+// key: "contractMi"+ ContractNo + MiCode
 type UploadChainContractMi struct {
 	UploadChainType
 	ContractNo string `json:"contractNo"`
@@ -129,7 +137,7 @@ type UploadChainContractMi struct {
 	ContractUrl string `json:"contractUrl"`
 }
 
-//配送计划上链
+//配送计划上链 // key: "shipPlan"+OrderNo
 type UploadChainShipment struct {
 	UploadChainType
 	//招采单号
@@ -155,7 +163,7 @@ type UploadChainShipment struct {
 	SyncAt time.Time `json:"syncAt"`
 }
 
-//配送单相关
+//配送单相关 // key: "shipment"+ShipmentNo
 type UploadChainShipmentOrder struct {
 	UploadChainType
 	Plans []UploadChainShipment `json:"plans"`
@@ -174,6 +182,8 @@ type UploadChainShipmentOrder struct {
 	SendOutAt       time.Time `json:"sendOutAt"`
 	ShipmentCode    string    `json:"shipmentCode"`
 	ShipmentCompany string    `json:"shipmentCompany"`
+	// 配送状态 WAITING SENDING  RECEIVED FAIL
+	ShipmentStatus string `json:"shipmentStatus"`
 
 	//扫码收货时间
 	ReceiveAt time.Time `json:"receiveAt"`
@@ -181,7 +191,7 @@ type UploadChainShipmentOrder struct {
 	ConfirmAt time.Time `json:"confirmAt"`
 }
 
-//支付信息上链
+//支付单 上链 // key: "Pay" + ShipmentNo
 type UploadChainPayOrder struct {
 	UploadChainType
 	//支付的配送单号
@@ -197,13 +207,15 @@ type UploadChainPayOrder struct {
 	PayAt      time.Time `json:"payAt"`
 	//支付状态 理论上只有支付失败时，平台会告知线下处置完毕
 	PayStatus string `json:"payStatus"`
+	// 支付单下层私有状态, 记录是否有保理信息(有保理信息则处于保理中, 没有则不管)
+	FactoringStatus string `json:"factoringStatus"`
 }
 
 type PayOrder struct {
 	ShipmentNo string `json:"shipmentNo"`
 }
 
-//保理信息上链
+//保理单 上链 // key: "Factoring"+FactoringOrderNo
 type UploadChainFactoringOrder struct {
 	UploadChainType
 	//申请节点（基本信息节点）

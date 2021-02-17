@@ -4,3 +4,4 @@ vendor/
 target/
 config.cc.toml
 ./main.go
+proto/google
