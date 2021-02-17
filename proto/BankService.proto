@@ -290,6 +290,8 @@ message ListFactoringOrderReq {
   google.protobuf.Timestamp applyResultStartAt = 8;
   google.protobuf.Timestamp applyResultEndAt = 9;
   repeated string  refundStatus = 10;
+  google.protobuf.Timestamp applyStartAt = 11;
+  google.protobuf.Timestamp applyEndAt = 12;
 }
 
 
