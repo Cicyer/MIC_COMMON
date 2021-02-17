@@ -272,8 +272,7 @@ message ListPayOrderPlanResp {
 
 message FinishPayOrderErrorReq {
   int64   managerId = 1;
-  Page   page = 2;
-  string shipmentNo = 3;
+  string shipmentNo = 2;
 }
 message FinishPayOrderErrorResp {
 
@@ -379,8 +378,7 @@ message ListFactoringOrderPlanResp {
 
 message FinishFactoringOrderErrorReq {
   int64   managerId = 1;
-  Page   page = 2;
-  string factoringOrderNo = 3;
+  string factoringOrderNo = 2;
 }
 message FinishFactoringOrderErrorResp {
 
