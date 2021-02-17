@@ -30,9 +30,9 @@ service BcAndBankService {
   // --------单纯上链接口 end---------
 
   // --------上链 + 银行 组合接口 start---------
-  // 发起付款 一笔付款单内可以包含多笔 支付单(接收参数: 一笔 payOrder + 银行请求)
+  // 发起付款 一笔付款单内可以包含多笔 支付单(接收参数: 多笔 payOrder + 一个 银行请求)
   // 查所有的支付单, 看是否符合要求
-  // 返回:: 链上数据hash 加 银行返回
+  // 返回:: 链上数据hash集合 加 银行返回
   rpc BcAndBankPayOrderAction(BcAndBankPayOrderActionRequest) returns (BcAndBankActionResp);
 
   // 发起保理(多笔支付单)
@@ -54,10 +54,22 @@ service BcAndBankService {
   // 强制Factoring上链
   rpc BcForceUploadFactoring(UploadChainFactoringOrders) returns (BcResponses);
   // --------危险动作: 强制上链接口 end---------
+
+  // 根据 txID 查询 链上交易, 返回 解密后的 json.Marshal 字符串
+  rpc BcQueryByTxID(QueryTxIDReq) returns (QueryTxIDRsp);
+
+}
+
+message QueryTxIDReq {
+  string TxID = 1;
+}
+
+message QueryTxIDRsp {
+  string Rst = 1;
 }
 
 message BcAndBankPayOrderActionRequest {
-  UploadChainPayOrder payOrder = 1;
+  repeated UploadChainPayOrder payOrder = 1;
   BankRequest bankRequest = 2;
 }
 
@@ -72,7 +84,7 @@ message BcAndBankFactoringRepayActionRequest {
 }
 
 message BcAndBankActionResp {
-  BcResponse bcResponse = 1; // string hash
+  repeated BcResponse bcResponse = 1; // string hash
   BankResponse bankResponse = 2; // xml marshal
 }
 
@@ -107,10 +119,6 @@ message CommonResponse {
   BankResponse bankRsp = 1;
   // 可能会返回多个 hash
   repeated BcResponse bcRsp = 2;
-}
-
-message BcAndBankPayOrdersAction {
-
 }
 
 // dto/UploadChain.go generated
