@@ -326,11 +326,7 @@ message ListFactoringOrderResp {
 }
 message GetTransferReceiptReq {
   int64   managerId = 1;
-  Page   page = 2;
-  //转账操作类别 SHIPMENT_PAY 医院货款 COM_WITHDRAW 企业提现
-  string transferType = 3;
-  //操作类别对应的联络号码，对于医院货款就是shipmentNo
-  string linkNo = 4;
+  string shipmentNo = 2;
 }
 message GetTransferReceiptResp {
   string receiptUrl = 1;
@@ -388,14 +384,19 @@ message FinishFactoringOrderErrorReq {
 message FinishFactoringOrderErrorResp {
 
 }
-//'申请财务操作时使用的幂等',req:{'shipmentNos':['配送单号']}}"
-
 message PayShipmentOrdersReq {
   int64   managerId = 1;
   repeated string shipmentNos = 2;
 }
 message PayShipmentOrdersResp {
 
+}
+message GetWithdrawReceiptReq {
+  int64   managerId = 1;
+  string outTradeNo = 2;
+}
+message GetWithdrawReceiptResp {
+  string receiptUrl = 1;
 }
 service BankService {
   //银行账号相关
@@ -409,6 +410,7 @@ service BankService {
   //企业账户操作相关
   rpc GetCompanyBankAccountDetail(GetCompanyBankAccountDetailReq) returns (GetCompanyBankAccountDetailResp);
   rpc CompanyWithdraw(CompanyWithdrawReq) returns (CompanyWithdrawResp);
+  rpc GetWithdrawReceipt(GetWithdrawReceiptReq) returns (GetWithdrawReceiptResp);
   rpc ListCompanyWithdraw(ListCompanyWithdrawReq) returns (ListCompanyWithdrawResp);
 
 }

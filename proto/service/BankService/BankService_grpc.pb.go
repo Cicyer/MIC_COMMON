@@ -28,6 +28,7 @@ type BankServiceClient interface {
 	//企业账户操作相关
 	GetCompanyBankAccountDetail(ctx context.Context, in *GetCompanyBankAccountDetailReq, opts ...grpc.CallOption) (*GetCompanyBankAccountDetailResp, error)
 	CompanyWithdraw(ctx context.Context, in *CompanyWithdrawReq, opts ...grpc.CallOption) (*CompanyWithdrawResp, error)
+	GetWithdrawReceipt(ctx context.Context, in *GetWithdrawReceiptReq, opts ...grpc.CallOption) (*GetWithdrawReceiptResp, error)
 	ListCompanyWithdraw(ctx context.Context, in *ListCompanyWithdrawReq, opts ...grpc.CallOption) (*ListCompanyWithdrawResp, error)
 }
 
@@ -111,6 +112,15 @@ func (c *bankServiceClient) CompanyWithdraw(ctx context.Context, in *CompanyWith
 	return out, nil
 }
 
+func (c *bankServiceClient) GetWithdrawReceipt(ctx context.Context, in *GetWithdrawReceiptReq, opts ...grpc.CallOption) (*GetWithdrawReceiptResp, error) {
+	out := new(GetWithdrawReceiptResp)
+	err := c.cc.Invoke(ctx, "/BankService.BankService/GetWithdrawReceipt", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *bankServiceClient) ListCompanyWithdraw(ctx context.Context, in *ListCompanyWithdrawReq, opts ...grpc.CallOption) (*ListCompanyWithdrawResp, error) {
 	out := new(ListCompanyWithdrawResp)
 	err := c.cc.Invoke(ctx, "/BankService.BankService/ListCompanyWithdraw", in, out, opts...)
@@ -135,6 +145,7 @@ type BankServiceServer interface {
 	//企业账户操作相关
 	GetCompanyBankAccountDetail(context.Context, *GetCompanyBankAccountDetailReq) (*GetCompanyBankAccountDetailResp, error)
 	CompanyWithdraw(context.Context, *CompanyWithdrawReq) (*CompanyWithdrawResp, error)
+	GetWithdrawReceipt(context.Context, *GetWithdrawReceiptReq) (*GetWithdrawReceiptResp, error)
 	ListCompanyWithdraw(context.Context, *ListCompanyWithdrawReq) (*ListCompanyWithdrawResp, error)
 	mustEmbedUnimplementedBankServiceServer()
 }
@@ -166,6 +177,9 @@ func (UnimplementedBankServiceServer) GetCompanyBankAccountDetail(context.Contex
 }
 func (UnimplementedBankServiceServer) CompanyWithdraw(context.Context, *CompanyWithdrawReq) (*CompanyWithdrawResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CompanyWithdraw not implemented")
+}
+func (UnimplementedBankServiceServer) GetWithdrawReceipt(context.Context, *GetWithdrawReceiptReq) (*GetWithdrawReceiptResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetWithdrawReceipt not implemented")
 }
 func (UnimplementedBankServiceServer) ListCompanyWithdraw(context.Context, *ListCompanyWithdrawReq) (*ListCompanyWithdrawResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListCompanyWithdraw not implemented")
@@ -327,6 +341,24 @@ func _BankService_CompanyWithdraw_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _BankService_GetWithdrawReceipt_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetWithdrawReceiptReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BankServiceServer).GetWithdrawReceipt(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/BankService.BankService/GetWithdrawReceipt",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BankServiceServer).GetWithdrawReceipt(ctx, req.(*GetWithdrawReceiptReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _BankService_ListCompanyWithdraw_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListCompanyWithdrawReq)
 	if err := dec(in); err != nil {
@@ -383,6 +415,10 @@ var BankService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CompanyWithdraw",
 			Handler:    _BankService_CompanyWithdraw_Handler,
+		},
+		{
+			MethodName: "GetWithdrawReceipt",
+			Handler:    _BankService_GetWithdrawReceipt_Handler,
 		},
 		{
 			MethodName: "ListCompanyWithdraw",
