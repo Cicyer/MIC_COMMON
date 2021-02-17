@@ -44,4 +44,8 @@ var CM = map[int]map[string]string{
 	10212: {"EN": "illegal role", "CN": "无效的角色"},
 	10213: {"EN": "illegal role change", "CN": "无法跨平台变更角色"},
 	10214: {"EN": "email verify code error", "CN": "邮箱验证码错误"},
+
+	20001: {"EN": "blockchain upload error", "CN": "区块链上传错误"},
+	20002: {"EN": "blockchain error", "CN": "区块链端错误"},
+	20003: {"EN": "bank sdk error", "CN": "银行端接口错误"},
 }

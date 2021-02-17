@@ -30,4 +30,9 @@ var (
 	IllegalIdRole        = add(10212) // 角色不合法
 	IllegalIdRoleChange  = add(10213) // 角色不允许跨平台便跟
 	EmailVerifyCodeError = add(10214) // 邮箱验证码错误
+
+	BlockchainUploadError = add(20001) // 区块链上传错误
+	BlockchainError       = add(20002) // 区块链错误
+	BankSDKError          = add(20003) // 银行端接口错误
+
 )
