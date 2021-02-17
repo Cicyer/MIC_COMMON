@@ -181,7 +181,6 @@ message ListCompanyWithdrawResp {
   int64 pageSize = 3;
   int64 pageNumber = 4;
 }
-
 message ListPayOrderReq {
   int64   managerId = 1;
   Page   page = 2;
@@ -398,6 +397,53 @@ message GetWithdrawReceiptReq {
 message GetWithdrawReceiptResp {
   string receiptUrl = 1;
 }
+
+message ListFactoringPayOrderReq {
+  int64   managerId = 1;
+  Page   page = 2;
+  string invoiceNo = 3;
+  string invoiceCode = 4;
+  string shipmentNo = 5;
+  repeated string payStatus = 6;
+  repeated string payType = 7;
+  string miName = 8;
+  string comName = 9;
+  string comCode = 10;
+  google.protobuf.Timestamp payDeadlineStartAt = 11;
+  google.protobuf.Timestamp payDeadlineEndAt = 12;
+  google.protobuf.Timestamp receiveStartAt = 13;
+  google.protobuf.Timestamp receiveEndAt = 14;
+  //数据库列并无此项，仅用于区分已发起和未发起保理的支付单
+  string factoringApplyStatus = 15;
+}
+message FactoringPayOrder{
+  int64   shipmentOrderId = 1;
+  string   shipmentNo = 2;
+  string   invoiceNo = 3;
+  string   invoiceCode = 4;
+  string   shipmentCode = 5;
+  int64   shipmentOrderAmount = 6;
+  string   errMsg = 7;
+  google.protobuf.Timestamp payAt = 8;
+  string   payType = 9;
+  string   payStatus = 10;
+  google.protobuf.Timestamp    receiveAt = 11;
+  string   receiptUrl = 12;
+  google.protobuf.Timestamp payDeadline = 13;
+  string   miName = 14;
+  int64   miId = 15;
+  string   miCode = 16;
+  string   companyName = 17;
+  int64   companyId = 18;
+  string   companyCode = 19;
+  google.protobuf.Timestamp factoringDeadline = 20;
+}
+message ListFactoringPayOrderResp {
+  repeated FactoringPayOrder list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
 service BankService {
   //银行账号相关
   rpc ListBankAccount(ListBankAccountReq) returns(ListBankAccountResp);
@@ -433,6 +479,8 @@ service FactoringOrderService {
   //获取保理单一般信息
   rpc ListFactoringOrder(ListFactoringOrderReq) returns(ListFactoringOrderResp);
   //获取保理单下的支付单信息
+  rpc ListFactoringPayOrder(ListFactoringPayOrderReq) returns(ListFactoringPayOrderResp);
+  //获取保理单下的配送计划信息
   rpc ListFactoringOrderPlan(ListFactoringOrderPlanReq) returns(ListFactoringOrderPlanResp);
   //线下处置保理单
   rpc FinishFactoringOrderError(FinishFactoringOrderErrorReq) returns(FinishFactoringOrderErrorResp);

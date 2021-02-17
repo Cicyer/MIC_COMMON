@@ -677,6 +677,8 @@ type FactoringOrderServiceClient interface {
 	//获取保理单一般信息
 	ListFactoringOrder(ctx context.Context, in *ListFactoringOrderReq, opts ...grpc.CallOption) (*ListFactoringOrderResp, error)
 	//获取保理单下的支付单信息
+	ListFactoringPayOrder(ctx context.Context, in *ListFactoringPayOrderReq, opts ...grpc.CallOption) (*ListFactoringPayOrderResp, error)
+	//获取保理单下的配送计划信息
 	ListFactoringOrderPlan(ctx context.Context, in *ListFactoringOrderPlanReq, opts ...grpc.CallOption) (*ListFactoringOrderPlanResp, error)
 	//线下处置保理单
 	FinishFactoringOrderError(ctx context.Context, in *FinishFactoringOrderErrorReq, opts ...grpc.CallOption) (*FinishFactoringOrderErrorResp, error)
@@ -693,6 +695,15 @@ func NewFactoringOrderServiceClient(cc grpc.ClientConnInterface) FactoringOrderS
 func (c *factoringOrderServiceClient) ListFactoringOrder(ctx context.Context, in *ListFactoringOrderReq, opts ...grpc.CallOption) (*ListFactoringOrderResp, error) {
 	out := new(ListFactoringOrderResp)
 	err := c.cc.Invoke(ctx, "/BankService.FactoringOrderService/ListFactoringOrder", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *factoringOrderServiceClient) ListFactoringPayOrder(ctx context.Context, in *ListFactoringPayOrderReq, opts ...grpc.CallOption) (*ListFactoringPayOrderResp, error) {
+	out := new(ListFactoringPayOrderResp)
+	err := c.cc.Invoke(ctx, "/BankService.FactoringOrderService/ListFactoringPayOrder", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -724,6 +735,8 @@ type FactoringOrderServiceServer interface {
 	//获取保理单一般信息
 	ListFactoringOrder(context.Context, *ListFactoringOrderReq) (*ListFactoringOrderResp, error)
 	//获取保理单下的支付单信息
+	ListFactoringPayOrder(context.Context, *ListFactoringPayOrderReq) (*ListFactoringPayOrderResp, error)
+	//获取保理单下的配送计划信息
 	ListFactoringOrderPlan(context.Context, *ListFactoringOrderPlanReq) (*ListFactoringOrderPlanResp, error)
 	//线下处置保理单
 	FinishFactoringOrderError(context.Context, *FinishFactoringOrderErrorReq) (*FinishFactoringOrderErrorResp, error)
@@ -736,6 +749,9 @@ type UnimplementedFactoringOrderServiceServer struct {
 
 func (UnimplementedFactoringOrderServiceServer) ListFactoringOrder(context.Context, *ListFactoringOrderReq) (*ListFactoringOrderResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListFactoringOrder not implemented")
+}
+func (UnimplementedFactoringOrderServiceServer) ListFactoringPayOrder(context.Context, *ListFactoringPayOrderReq) (*ListFactoringPayOrderResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListFactoringPayOrder not implemented")
 }
 func (UnimplementedFactoringOrderServiceServer) ListFactoringOrderPlan(context.Context, *ListFactoringOrderPlanReq) (*ListFactoringOrderPlanResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListFactoringOrderPlan not implemented")
@@ -770,6 +786,24 @@ func _FactoringOrderService_ListFactoringOrder_Handler(srv interface{}, ctx cont
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(FactoringOrderServiceServer).ListFactoringOrder(ctx, req.(*ListFactoringOrderReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FactoringOrderService_ListFactoringPayOrder_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListFactoringPayOrderReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FactoringOrderServiceServer).ListFactoringPayOrder(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/BankService.FactoringOrderService/ListFactoringPayOrder",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FactoringOrderServiceServer).ListFactoringPayOrder(ctx, req.(*ListFactoringPayOrderReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -820,6 +854,10 @@ var FactoringOrderService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListFactoringOrder",
 			Handler:    _FactoringOrderService_ListFactoringOrder_Handler,
+		},
+		{
+			MethodName: "ListFactoringPayOrder",
+			Handler:    _FactoringOrderService_ListFactoringPayOrder_Handler,
 		},
 		{
 			MethodName: "ListFactoringOrderPlan",
