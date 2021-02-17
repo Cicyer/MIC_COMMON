@@ -35,9 +35,9 @@ type BcAndBankServiceClient interface {
 	// 支付单上链, 确权
 	BcUploadPayOrders(ctx context.Context, in *UploadChainPayOrders, opts ...grpc.CallOption) (*BcResponses, error)
 	// --------上链 + 银行 组合接口 start---------
-	// 发起付款 一笔付款单内可以包含多笔 支付单(接收参数: 一笔 payOrder + 银行请求)
+	// 发起付款 一笔付款单内可以包含多笔 支付单(接收参数: 多笔 payOrder + 一个 银行请求)
 	// 查所有的支付单, 看是否符合要求
-	// 返回:: 链上数据hash 加 银行返回
+	// 返回:: 链上数据hash集合 加 银行返回
 	BcAndBankPayOrderAction(ctx context.Context, in *BcAndBankPayOrderActionRequest, opts ...grpc.CallOption) (*BcAndBankActionResp, error)
 	// 发起保理(多笔支付单)
 	// 保理单上链, 支付单上链后才上链, 查所有的支付单: 确认 支付单 处于 待支付/失败/(私有状态 未保理) 中; 调银行
@@ -54,6 +54,8 @@ type BcAndBankServiceClient interface {
 	BcForceUploadPayOrders(ctx context.Context, in *UploadChainPayOrders, opts ...grpc.CallOption) (*BcResponses, error)
 	// 强制Factoring上链
 	BcForceUploadFactoring(ctx context.Context, in *UploadChainFactoringOrders, opts ...grpc.CallOption) (*BcResponses, error)
+	// 根据 txID 查询 链上交易, 返回 解密后的 json.Marshal 字符串
+	BcQueryByTxID(ctx context.Context, in *QueryTxIDReq, opts ...grpc.CallOption) (*QueryTxIDRsp, error)
 }
 
 type bcAndBankServiceClient struct {
@@ -199,6 +201,15 @@ func (c *bcAndBankServiceClient) BcForceUploadFactoring(ctx context.Context, in 
 	return out, nil
 }
 
+func (c *bcAndBankServiceClient) BcQueryByTxID(ctx context.Context, in *QueryTxIDReq, opts ...grpc.CallOption) (*QueryTxIDRsp, error) {
+	out := new(QueryTxIDRsp)
+	err := c.cc.Invoke(ctx, "/BcAndBankService.BcAndBankService/BcQueryByTxID", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // BcAndBankServiceServer is the server API for BcAndBankService service.
 // All implementations must embed UnimplementedBcAndBankServiceServer
 // for forward compatibility
@@ -221,9 +232,9 @@ type BcAndBankServiceServer interface {
 	// 支付单上链, 确权
 	BcUploadPayOrders(context.Context, *UploadChainPayOrders) (*BcResponses, error)
 	// --------上链 + 银行 组合接口 start---------
-	// 发起付款 一笔付款单内可以包含多笔 支付单(接收参数: 一笔 payOrder + 银行请求)
+	// 发起付款 一笔付款单内可以包含多笔 支付单(接收参数: 多笔 payOrder + 一个 银行请求)
 	// 查所有的支付单, 看是否符合要求
-	// 返回:: 链上数据hash 加 银行返回
+	// 返回:: 链上数据hash集合 加 银行返回
 	BcAndBankPayOrderAction(context.Context, *BcAndBankPayOrderActionRequest) (*BcAndBankActionResp, error)
 	// 发起保理(多笔支付单)
 	// 保理单上链, 支付单上链后才上链, 查所有的支付单: 确认 支付单 处于 待支付/失败/(私有状态 未保理) 中; 调银行
@@ -240,6 +251,8 @@ type BcAndBankServiceServer interface {
 	BcForceUploadPayOrders(context.Context, *UploadChainPayOrders) (*BcResponses, error)
 	// 强制Factoring上链
 	BcForceUploadFactoring(context.Context, *UploadChainFactoringOrders) (*BcResponses, error)
+	// 根据 txID 查询 链上交易, 返回 解密后的 json.Marshal 字符串
+	BcQueryByTxID(context.Context, *QueryTxIDReq) (*QueryTxIDRsp, error)
 	mustEmbedUnimplementedBcAndBankServiceServer()
 }
 
@@ -291,6 +304,9 @@ func (UnimplementedBcAndBankServiceServer) BcForceUploadPayOrders(context.Contex
 }
 func (UnimplementedBcAndBankServiceServer) BcForceUploadFactoring(context.Context, *UploadChainFactoringOrders) (*BcResponses, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BcForceUploadFactoring not implemented")
+}
+func (UnimplementedBcAndBankServiceServer) BcQueryByTxID(context.Context, *QueryTxIDReq) (*QueryTxIDRsp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BcQueryByTxID not implemented")
 }
 func (UnimplementedBcAndBankServiceServer) mustEmbedUnimplementedBcAndBankServiceServer() {}
 
@@ -575,6 +591,24 @@ func _BcAndBankService_BcForceUploadFactoring_Handler(srv interface{}, ctx conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _BcAndBankService_BcQueryByTxID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryTxIDReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BcAndBankServiceServer).BcQueryByTxID(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/BcAndBankService.BcAndBankService/BcQueryByTxID",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BcAndBankServiceServer).BcQueryByTxID(ctx, req.(*QueryTxIDReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // BcAndBankService_ServiceDesc is the grpc.ServiceDesc for BcAndBankService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -641,6 +675,10 @@ var BcAndBankService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "BcForceUploadFactoring",
 			Handler:    _BcAndBankService_BcForceUploadFactoring_Handler,
+		},
+		{
+			MethodName: "BcQueryByTxID",
+			Handler:    _BcAndBankService_BcQueryByTxID_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
