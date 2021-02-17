@@ -444,6 +444,15 @@ message ListFactoringPayOrderResp {
   int64 pageSize = 3;
   int64 pageNumber = 4;
 }
+message ApplyReq {
+  int64   managerId = 1;
+  repeated string shipmentNos = 2;
+  //需要重试发起的保理订单
+  repeated string factoringOrderNos = 3;
+}
+message ApplyResp {
+
+}
 service BankService {
   //银行账号相关
   rpc ListBankAccount(ListBankAccountReq) returns(ListBankAccountResp);
@@ -484,4 +493,6 @@ service FactoringOrderService {
   rpc ListFactoringOrderPlan(ListFactoringOrderPlanReq) returns(ListFactoringOrderPlanResp);
   //线下处置保理单
   rpc FinishFactoringOrderError(FinishFactoringOrderErrorReq) returns(FinishFactoringOrderErrorResp);
+  //发起保理请求
+  rpc Apply(ApplyReq) returns(ApplyResp);
 }

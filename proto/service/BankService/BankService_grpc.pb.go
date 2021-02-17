@@ -682,6 +682,8 @@ type FactoringOrderServiceClient interface {
 	ListFactoringOrderPlan(ctx context.Context, in *ListFactoringOrderPlanReq, opts ...grpc.CallOption) (*ListFactoringOrderPlanResp, error)
 	//线下处置保理单
 	FinishFactoringOrderError(ctx context.Context, in *FinishFactoringOrderErrorReq, opts ...grpc.CallOption) (*FinishFactoringOrderErrorResp, error)
+	//发起保理请求
+	Apply(ctx context.Context, in *ApplyReq, opts ...grpc.CallOption) (*ApplyResp, error)
 }
 
 type factoringOrderServiceClient struct {
@@ -728,6 +730,15 @@ func (c *factoringOrderServiceClient) FinishFactoringOrderError(ctx context.Cont
 	return out, nil
 }
 
+func (c *factoringOrderServiceClient) Apply(ctx context.Context, in *ApplyReq, opts ...grpc.CallOption) (*ApplyResp, error) {
+	out := new(ApplyResp)
+	err := c.cc.Invoke(ctx, "/BankService.FactoringOrderService/Apply", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // FactoringOrderServiceServer is the server API for FactoringOrderService service.
 // All implementations must embed UnimplementedFactoringOrderServiceServer
 // for forward compatibility
@@ -740,6 +751,8 @@ type FactoringOrderServiceServer interface {
 	ListFactoringOrderPlan(context.Context, *ListFactoringOrderPlanReq) (*ListFactoringOrderPlanResp, error)
 	//线下处置保理单
 	FinishFactoringOrderError(context.Context, *FinishFactoringOrderErrorReq) (*FinishFactoringOrderErrorResp, error)
+	//发起保理请求
+	Apply(context.Context, *ApplyReq) (*ApplyResp, error)
 	mustEmbedUnimplementedFactoringOrderServiceServer()
 }
 
@@ -758,6 +771,9 @@ func (UnimplementedFactoringOrderServiceServer) ListFactoringOrderPlan(context.C
 }
 func (UnimplementedFactoringOrderServiceServer) FinishFactoringOrderError(context.Context, *FinishFactoringOrderErrorReq) (*FinishFactoringOrderErrorResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FinishFactoringOrderError not implemented")
+}
+func (UnimplementedFactoringOrderServiceServer) Apply(context.Context, *ApplyReq) (*ApplyResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Apply not implemented")
 }
 func (UnimplementedFactoringOrderServiceServer) mustEmbedUnimplementedFactoringOrderServiceServer() {}
 
@@ -844,6 +860,24 @@ func _FactoringOrderService_FinishFactoringOrderError_Handler(srv interface{}, c
 	return interceptor(ctx, in, info, handler)
 }
 
+func _FactoringOrderService_Apply_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ApplyReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FactoringOrderServiceServer).Apply(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/BankService.FactoringOrderService/Apply",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FactoringOrderServiceServer).Apply(ctx, req.(*ApplyReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // FactoringOrderService_ServiceDesc is the grpc.ServiceDesc for FactoringOrderService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -866,6 +900,10 @@ var FactoringOrderService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "FinishFactoringOrderError",
 			Handler:    _FactoringOrderService_FinishFactoringOrderError_Handler,
+		},
+		{
+			MethodName: "Apply",
+			Handler:    _FactoringOrderService_Apply_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
