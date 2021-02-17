@@ -388,6 +388,15 @@ message FinishFactoringOrderErrorReq {
 message FinishFactoringOrderErrorResp {
 
 }
+//'申请财务操作时使用的幂等',req:{'shipmentNos':['配送单号']}}"
+
+message PayShipmentOrdersReq {
+  int64   managerId = 1;
+  repeated string shipmentNos = 2;
+}
+message PayShipmentOrdersResp {
+
+}
 service BankService {
   //银行账号相关
   rpc ListBankAccount(ListBankAccountReq) returns(ListBankAccountResp);
@@ -413,6 +422,8 @@ service ShipmentPayOrderService {
   rpc FinishPayOrderError(FinishPayOrderErrorReq) returns(FinishPayOrderErrorResp);
   //获取支付回单
   rpc GetTransferReceipt(GetTransferReceiptReq) returns(GetTransferReceiptResp);
+  //医院主动批量支付订单，自动按照配送企业进行拆单
+  rpc PayShipmentOrders(PayShipmentOrdersReq) returns(PayShipmentOrdersResp);
 
 }
 //保理单相关业务
