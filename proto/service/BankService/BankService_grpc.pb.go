@@ -28,6 +28,7 @@ type BankServiceClient interface {
 	//企业账户操作相关
 	GetCompanyBankAccountDetail(ctx context.Context, in *GetCompanyBankAccountDetailReq, opts ...grpc.CallOption) (*GetCompanyBankAccountDetailResp, error)
 	CompanyWithdraw(ctx context.Context, in *CompanyWithdrawReq, opts ...grpc.CallOption) (*CompanyWithdrawResp, error)
+	GetWithdrawReceipt(ctx context.Context, in *GetWithdrawReceiptReq, opts ...grpc.CallOption) (*GetWithdrawReceiptResp, error)
 	ListCompanyWithdraw(ctx context.Context, in *ListCompanyWithdrawReq, opts ...grpc.CallOption) (*ListCompanyWithdrawResp, error)
 }
 
@@ -111,6 +112,15 @@ func (c *bankServiceClient) CompanyWithdraw(ctx context.Context, in *CompanyWith
 	return out, nil
 }
 
+func (c *bankServiceClient) GetWithdrawReceipt(ctx context.Context, in *GetWithdrawReceiptReq, opts ...grpc.CallOption) (*GetWithdrawReceiptResp, error) {
+	out := new(GetWithdrawReceiptResp)
+	err := c.cc.Invoke(ctx, "/BankService.BankService/GetWithdrawReceipt", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *bankServiceClient) ListCompanyWithdraw(ctx context.Context, in *ListCompanyWithdrawReq, opts ...grpc.CallOption) (*ListCompanyWithdrawResp, error) {
 	out := new(ListCompanyWithdrawResp)
 	err := c.cc.Invoke(ctx, "/BankService.BankService/ListCompanyWithdraw", in, out, opts...)
@@ -135,6 +145,7 @@ type BankServiceServer interface {
 	//企业账户操作相关
 	GetCompanyBankAccountDetail(context.Context, *GetCompanyBankAccountDetailReq) (*GetCompanyBankAccountDetailResp, error)
 	CompanyWithdraw(context.Context, *CompanyWithdrawReq) (*CompanyWithdrawResp, error)
+	GetWithdrawReceipt(context.Context, *GetWithdrawReceiptReq) (*GetWithdrawReceiptResp, error)
 	ListCompanyWithdraw(context.Context, *ListCompanyWithdrawReq) (*ListCompanyWithdrawResp, error)
 	mustEmbedUnimplementedBankServiceServer()
 }
@@ -166,6 +177,9 @@ func (UnimplementedBankServiceServer) GetCompanyBankAccountDetail(context.Contex
 }
 func (UnimplementedBankServiceServer) CompanyWithdraw(context.Context, *CompanyWithdrawReq) (*CompanyWithdrawResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CompanyWithdraw not implemented")
+}
+func (UnimplementedBankServiceServer) GetWithdrawReceipt(context.Context, *GetWithdrawReceiptReq) (*GetWithdrawReceiptResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetWithdrawReceipt not implemented")
 }
 func (UnimplementedBankServiceServer) ListCompanyWithdraw(context.Context, *ListCompanyWithdrawReq) (*ListCompanyWithdrawResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListCompanyWithdraw not implemented")
@@ -327,6 +341,24 @@ func _BankService_CompanyWithdraw_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _BankService_GetWithdrawReceipt_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetWithdrawReceiptReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BankServiceServer).GetWithdrawReceipt(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/BankService.BankService/GetWithdrawReceipt",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BankServiceServer).GetWithdrawReceipt(ctx, req.(*GetWithdrawReceiptReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _BankService_ListCompanyWithdraw_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListCompanyWithdrawReq)
 	if err := dec(in); err != nil {
@@ -385,6 +417,10 @@ var BankService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _BankService_CompanyWithdraw_Handler,
 		},
 		{
+			MethodName: "GetWithdrawReceipt",
+			Handler:    _BankService_GetWithdrawReceipt_Handler,
+		},
+		{
 			MethodName: "ListCompanyWithdraw",
 			Handler:    _BankService_ListCompanyWithdraw_Handler,
 		},
@@ -405,6 +441,8 @@ type ShipmentPayOrderServiceClient interface {
 	FinishPayOrderError(ctx context.Context, in *FinishPayOrderErrorReq, opts ...grpc.CallOption) (*FinishPayOrderErrorResp, error)
 	//获取支付回单
 	GetTransferReceipt(ctx context.Context, in *GetTransferReceiptReq, opts ...grpc.CallOption) (*GetTransferReceiptResp, error)
+	//医院主动批量支付订单，自动按照配送企业进行拆单
+	PayShipmentOrders(ctx context.Context, in *PayShipmentOrdersReq, opts ...grpc.CallOption) (*PayShipmentOrdersResp, error)
 }
 
 type shipmentPayOrderServiceClient struct {
@@ -451,6 +489,15 @@ func (c *shipmentPayOrderServiceClient) GetTransferReceipt(ctx context.Context, 
 	return out, nil
 }
 
+func (c *shipmentPayOrderServiceClient) PayShipmentOrders(ctx context.Context, in *PayShipmentOrdersReq, opts ...grpc.CallOption) (*PayShipmentOrdersResp, error) {
+	out := new(PayShipmentOrdersResp)
+	err := c.cc.Invoke(ctx, "/BankService.ShipmentPayOrderService/PayShipmentOrders", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ShipmentPayOrderServiceServer is the server API for ShipmentPayOrderService service.
 // All implementations must embed UnimplementedShipmentPayOrderServiceServer
 // for forward compatibility
@@ -463,6 +510,8 @@ type ShipmentPayOrderServiceServer interface {
 	FinishPayOrderError(context.Context, *FinishPayOrderErrorReq) (*FinishPayOrderErrorResp, error)
 	//获取支付回单
 	GetTransferReceipt(context.Context, *GetTransferReceiptReq) (*GetTransferReceiptResp, error)
+	//医院主动批量支付订单，自动按照配送企业进行拆单
+	PayShipmentOrders(context.Context, *PayShipmentOrdersReq) (*PayShipmentOrdersResp, error)
 	mustEmbedUnimplementedShipmentPayOrderServiceServer()
 }
 
@@ -481,6 +530,9 @@ func (UnimplementedShipmentPayOrderServiceServer) FinishPayOrderError(context.Co
 }
 func (UnimplementedShipmentPayOrderServiceServer) GetTransferReceipt(context.Context, *GetTransferReceiptReq) (*GetTransferReceiptResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTransferReceipt not implemented")
+}
+func (UnimplementedShipmentPayOrderServiceServer) PayShipmentOrders(context.Context, *PayShipmentOrdersReq) (*PayShipmentOrdersResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PayShipmentOrders not implemented")
 }
 func (UnimplementedShipmentPayOrderServiceServer) mustEmbedUnimplementedShipmentPayOrderServiceServer() {
 }
@@ -568,6 +620,24 @@ func _ShipmentPayOrderService_GetTransferReceipt_Handler(srv interface{}, ctx co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ShipmentPayOrderService_PayShipmentOrders_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PayShipmentOrdersReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ShipmentPayOrderServiceServer).PayShipmentOrders(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/BankService.ShipmentPayOrderService/PayShipmentOrders",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ShipmentPayOrderServiceServer).PayShipmentOrders(ctx, req.(*PayShipmentOrdersReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ShipmentPayOrderService_ServiceDesc is the grpc.ServiceDesc for ShipmentPayOrderService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -591,6 +661,10 @@ var ShipmentPayOrderService_ServiceDesc = grpc.ServiceDesc{
 			MethodName: "GetTransferReceipt",
 			Handler:    _ShipmentPayOrderService_GetTransferReceipt_Handler,
 		},
+		{
+			MethodName: "PayShipmentOrders",
+			Handler:    _ShipmentPayOrderService_PayShipmentOrders_Handler,
+		},
 	},
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "BankService.proto",
@@ -603,9 +677,13 @@ type FactoringOrderServiceClient interface {
 	//获取保理单一般信息
 	ListFactoringOrder(ctx context.Context, in *ListFactoringOrderReq, opts ...grpc.CallOption) (*ListFactoringOrderResp, error)
 	//获取保理单下的支付单信息
+	ListFactoringPayOrder(ctx context.Context, in *ListFactoringPayOrderReq, opts ...grpc.CallOption) (*ListFactoringPayOrderResp, error)
+	//获取保理单下的配送计划信息
 	ListFactoringOrderPlan(ctx context.Context, in *ListFactoringOrderPlanReq, opts ...grpc.CallOption) (*ListFactoringOrderPlanResp, error)
 	//线下处置保理单
 	FinishFactoringOrderError(ctx context.Context, in *FinishFactoringOrderErrorReq, opts ...grpc.CallOption) (*FinishFactoringOrderErrorResp, error)
+	//发起保理请求
+	Apply(ctx context.Context, in *ApplyReq, opts ...grpc.CallOption) (*ApplyResp, error)
 }
 
 type factoringOrderServiceClient struct {
@@ -619,6 +697,15 @@ func NewFactoringOrderServiceClient(cc grpc.ClientConnInterface) FactoringOrderS
 func (c *factoringOrderServiceClient) ListFactoringOrder(ctx context.Context, in *ListFactoringOrderReq, opts ...grpc.CallOption) (*ListFactoringOrderResp, error) {
 	out := new(ListFactoringOrderResp)
 	err := c.cc.Invoke(ctx, "/BankService.FactoringOrderService/ListFactoringOrder", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *factoringOrderServiceClient) ListFactoringPayOrder(ctx context.Context, in *ListFactoringPayOrderReq, opts ...grpc.CallOption) (*ListFactoringPayOrderResp, error) {
+	out := new(ListFactoringPayOrderResp)
+	err := c.cc.Invoke(ctx, "/BankService.FactoringOrderService/ListFactoringPayOrder", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -643,6 +730,15 @@ func (c *factoringOrderServiceClient) FinishFactoringOrderError(ctx context.Cont
 	return out, nil
 }
 
+func (c *factoringOrderServiceClient) Apply(ctx context.Context, in *ApplyReq, opts ...grpc.CallOption) (*ApplyResp, error) {
+	out := new(ApplyResp)
+	err := c.cc.Invoke(ctx, "/BankService.FactoringOrderService/Apply", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // FactoringOrderServiceServer is the server API for FactoringOrderService service.
 // All implementations must embed UnimplementedFactoringOrderServiceServer
 // for forward compatibility
@@ -650,9 +746,13 @@ type FactoringOrderServiceServer interface {
 	//获取保理单一般信息
 	ListFactoringOrder(context.Context, *ListFactoringOrderReq) (*ListFactoringOrderResp, error)
 	//获取保理单下的支付单信息
+	ListFactoringPayOrder(context.Context, *ListFactoringPayOrderReq) (*ListFactoringPayOrderResp, error)
+	//获取保理单下的配送计划信息
 	ListFactoringOrderPlan(context.Context, *ListFactoringOrderPlanReq) (*ListFactoringOrderPlanResp, error)
 	//线下处置保理单
 	FinishFactoringOrderError(context.Context, *FinishFactoringOrderErrorReq) (*FinishFactoringOrderErrorResp, error)
+	//发起保理请求
+	Apply(context.Context, *ApplyReq) (*ApplyResp, error)
 	mustEmbedUnimplementedFactoringOrderServiceServer()
 }
 
@@ -663,11 +763,17 @@ type UnimplementedFactoringOrderServiceServer struct {
 func (UnimplementedFactoringOrderServiceServer) ListFactoringOrder(context.Context, *ListFactoringOrderReq) (*ListFactoringOrderResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListFactoringOrder not implemented")
 }
+func (UnimplementedFactoringOrderServiceServer) ListFactoringPayOrder(context.Context, *ListFactoringPayOrderReq) (*ListFactoringPayOrderResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListFactoringPayOrder not implemented")
+}
 func (UnimplementedFactoringOrderServiceServer) ListFactoringOrderPlan(context.Context, *ListFactoringOrderPlanReq) (*ListFactoringOrderPlanResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListFactoringOrderPlan not implemented")
 }
 func (UnimplementedFactoringOrderServiceServer) FinishFactoringOrderError(context.Context, *FinishFactoringOrderErrorReq) (*FinishFactoringOrderErrorResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FinishFactoringOrderError not implemented")
+}
+func (UnimplementedFactoringOrderServiceServer) Apply(context.Context, *ApplyReq) (*ApplyResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Apply not implemented")
 }
 func (UnimplementedFactoringOrderServiceServer) mustEmbedUnimplementedFactoringOrderServiceServer() {}
 
@@ -696,6 +802,24 @@ func _FactoringOrderService_ListFactoringOrder_Handler(srv interface{}, ctx cont
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(FactoringOrderServiceServer).ListFactoringOrder(ctx, req.(*ListFactoringOrderReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FactoringOrderService_ListFactoringPayOrder_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListFactoringPayOrderReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FactoringOrderServiceServer).ListFactoringPayOrder(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/BankService.FactoringOrderService/ListFactoringPayOrder",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FactoringOrderServiceServer).ListFactoringPayOrder(ctx, req.(*ListFactoringPayOrderReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -736,6 +860,24 @@ func _FactoringOrderService_FinishFactoringOrderError_Handler(srv interface{}, c
 	return interceptor(ctx, in, info, handler)
 }
 
+func _FactoringOrderService_Apply_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ApplyReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FactoringOrderServiceServer).Apply(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/BankService.FactoringOrderService/Apply",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FactoringOrderServiceServer).Apply(ctx, req.(*ApplyReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // FactoringOrderService_ServiceDesc is the grpc.ServiceDesc for FactoringOrderService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -748,12 +890,20 @@ var FactoringOrderService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _FactoringOrderService_ListFactoringOrder_Handler,
 		},
 		{
+			MethodName: "ListFactoringPayOrder",
+			Handler:    _FactoringOrderService_ListFactoringPayOrder_Handler,
+		},
+		{
 			MethodName: "ListFactoringOrderPlan",
 			Handler:    _FactoringOrderService_ListFactoringOrderPlan_Handler,
 		},
 		{
 			MethodName: "FinishFactoringOrderError",
 			Handler:    _FactoringOrderService_FinishFactoringOrderError_Handler,
+		},
+		{
+			MethodName: "Apply",
+			Handler:    _FactoringOrderService_Apply_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

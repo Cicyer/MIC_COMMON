@@ -181,7 +181,6 @@ message ListCompanyWithdrawResp {
   int64 pageSize = 3;
   int64 pageNumber = 4;
 }
-
 message ListPayOrderReq {
   int64   managerId = 1;
   Page   page = 2;
@@ -273,8 +272,7 @@ message ListPayOrderPlanResp {
 
 message FinishPayOrderErrorReq {
   int64   managerId = 1;
-  Page   page = 2;
-  string shipmentNo = 3;
+  string shipmentNo = 2;
 }
 message FinishPayOrderErrorResp {
 
@@ -291,6 +289,8 @@ message ListFactoringOrderReq {
   google.protobuf.Timestamp applyResultStartAt = 8;
   google.protobuf.Timestamp applyResultEndAt = 9;
   repeated string  refundStatus = 10;
+  google.protobuf.Timestamp applyStartAt = 11;
+  google.protobuf.Timestamp applyEndAt = 12;
 }
 
 
@@ -326,11 +326,7 @@ message ListFactoringOrderResp {
 }
 message GetTransferReceiptReq {
   int64   managerId = 1;
-  Page   page = 2;
-  //转账操作类别 SHIPMENT_PAY 医院货款 COM_WITHDRAW 企业提现
-  string transferType = 3;
-  //操作类别对应的联络号码，对于医院货款就是shipmentNo
-  string linkNo = 4;
+  string shipmentNo = 2;
 }
 message GetTransferReceiptResp {
   string receiptUrl = 1;
@@ -382,10 +378,79 @@ message ListFactoringOrderPlanResp {
 
 message FinishFactoringOrderErrorReq {
   int64   managerId = 1;
-  Page   page = 2;
-  string factoringOrderNo = 3;
+  string factoringOrderNo = 2;
 }
 message FinishFactoringOrderErrorResp {
+
+}
+message PayShipmentOrdersReq {
+  int64   managerId = 1;
+  repeated string shipmentNos = 2;
+}
+message PayShipmentOrdersResp {
+
+}
+message GetWithdrawReceiptReq {
+  int64   managerId = 1;
+  string outTradeNo = 2;
+}
+message GetWithdrawReceiptResp {
+  string receiptUrl = 1;
+}
+
+message ListFactoringPayOrderReq {
+  int64   managerId = 1;
+  Page   page = 2;
+  string invoiceNo = 3;
+  string invoiceCode = 4;
+  string shipmentNo = 5;
+  repeated string payStatus = 6;
+  repeated string payType = 7;
+  string miName = 8;
+  string comName = 9;
+  string comCode = 10;
+  google.protobuf.Timestamp payDeadlineStartAt = 11;
+  google.protobuf.Timestamp payDeadlineEndAt = 12;
+  google.protobuf.Timestamp receiveStartAt = 13;
+  google.protobuf.Timestamp receiveEndAt = 14;
+  //数据库列并无此项，仅用于区分已发起和未发起保理的支付单
+  string factoringApplyStatus = 15;
+}
+message FactoringPayOrder{
+  int64   shipmentOrderId = 1;
+  string   shipmentNo = 2;
+  string   invoiceNo = 3;
+  string   invoiceCode = 4;
+  string   shipmentCode = 5;
+  int64   shipmentOrderAmount = 6;
+  string   errMsg = 7;
+  google.protobuf.Timestamp payAt = 8;
+  string   payType = 9;
+  string   payStatus = 10;
+  google.protobuf.Timestamp    receiveAt = 11;
+  string   receiptUrl = 12;
+  google.protobuf.Timestamp payDeadline = 13;
+  string   miName = 14;
+  int64   miId = 15;
+  string   miCode = 16;
+  string   companyName = 17;
+  int64   companyId = 18;
+  string   companyCode = 19;
+  google.protobuf.Timestamp factoringDeadline = 20;
+}
+message ListFactoringPayOrderResp {
+  repeated FactoringPayOrder list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+message ApplyReq {
+  int64   managerId = 1;
+  repeated string shipmentNos = 2;
+  //需要重试发起的保理订单
+  repeated string factoringOrderNos = 3;
+}
+message ApplyResp {
 
 }
 service BankService {
@@ -400,6 +465,7 @@ service BankService {
   //企业账户操作相关
   rpc GetCompanyBankAccountDetail(GetCompanyBankAccountDetailReq) returns (GetCompanyBankAccountDetailResp);
   rpc CompanyWithdraw(CompanyWithdrawReq) returns (CompanyWithdrawResp);
+  rpc GetWithdrawReceipt(GetWithdrawReceiptReq) returns (GetWithdrawReceiptResp);
   rpc ListCompanyWithdraw(ListCompanyWithdrawReq) returns (ListCompanyWithdrawResp);
 
 }
@@ -413,6 +479,8 @@ service ShipmentPayOrderService {
   rpc FinishPayOrderError(FinishPayOrderErrorReq) returns(FinishPayOrderErrorResp);
   //获取支付回单
   rpc GetTransferReceipt(GetTransferReceiptReq) returns(GetTransferReceiptResp);
+  //医院主动批量支付订单，自动按照配送企业进行拆单
+  rpc PayShipmentOrders(PayShipmentOrdersReq) returns(PayShipmentOrdersResp);
 
 }
 //保理单相关业务
@@ -420,7 +488,11 @@ service FactoringOrderService {
   //获取保理单一般信息
   rpc ListFactoringOrder(ListFactoringOrderReq) returns(ListFactoringOrderResp);
   //获取保理单下的支付单信息
+  rpc ListFactoringPayOrder(ListFactoringPayOrderReq) returns(ListFactoringPayOrderResp);
+  //获取保理单下的配送计划信息
   rpc ListFactoringOrderPlan(ListFactoringOrderPlanReq) returns(ListFactoringOrderPlanResp);
   //线下处置保理单
   rpc FinishFactoringOrderError(FinishFactoringOrderErrorReq) returns(FinishFactoringOrderErrorResp);
+  //发起保理请求
+  rpc Apply(ApplyReq) returns(ApplyResp);
 }

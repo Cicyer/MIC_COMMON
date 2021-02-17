@@ -32,6 +32,7 @@ type ManagerServiceClient interface {
 	ListMedicine(ctx context.Context, in *MedicineListReq, opts ...grpc.CallOption) (*MedicineListResp, error)
 	MedicineListForQuery(ctx context.Context, in *MedicineListForQueryReq, opts ...grpc.CallOption) (*MedicineListForQueryResp, error)
 	CreateMedicine(ctx context.Context, in *CreateMedicineReq, opts ...grpc.CallOption) (*CreateMedicineResp, error)
+	CreateBatchMedicine(ctx context.Context, in *CreateBatchMedicineReq, opts ...grpc.CallOption) (*CreateBatchMedicineResp, error)
 	UpdateMedicine(ctx context.Context, in *UpdateMedicineReq, opts ...grpc.CallOption) (*UpdateMedicineResp, error)
 	UpdateMedicineActive(ctx context.Context, in *UpdateMedicineActiveReq, opts ...grpc.CallOption) (*UpdateMedicineActiveResp, error)
 	DeleteMedicine(ctx context.Context, in *DeleteMedicineReq, opts ...grpc.CallOption) (*DeleteMedicineResp, error)
@@ -214,6 +215,15 @@ func (c *managerServiceClient) MedicineListForQuery(ctx context.Context, in *Med
 func (c *managerServiceClient) CreateMedicine(ctx context.Context, in *CreateMedicineReq, opts ...grpc.CallOption) (*CreateMedicineResp, error) {
 	out := new(CreateMedicineResp)
 	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/CreateMedicine", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) CreateBatchMedicine(ctx context.Context, in *CreateBatchMedicineReq, opts ...grpc.CallOption) (*CreateBatchMedicineResp, error) {
+	out := new(CreateBatchMedicineResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/CreateBatchMedicine", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -644,6 +654,7 @@ type ManagerServiceServer interface {
 	ListMedicine(context.Context, *MedicineListReq) (*MedicineListResp, error)
 	MedicineListForQuery(context.Context, *MedicineListForQueryReq) (*MedicineListForQueryResp, error)
 	CreateMedicine(context.Context, *CreateMedicineReq) (*CreateMedicineResp, error)
+	CreateBatchMedicine(context.Context, *CreateBatchMedicineReq) (*CreateBatchMedicineResp, error)
 	UpdateMedicine(context.Context, *UpdateMedicineReq) (*UpdateMedicineResp, error)
 	UpdateMedicineActive(context.Context, *UpdateMedicineActiveReq) (*UpdateMedicineActiveResp, error)
 	DeleteMedicine(context.Context, *DeleteMedicineReq) (*DeleteMedicineResp, error)
@@ -750,6 +761,9 @@ func (UnimplementedManagerServiceServer) MedicineListForQuery(context.Context, *
 }
 func (UnimplementedManagerServiceServer) CreateMedicine(context.Context, *CreateMedicineReq) (*CreateMedicineResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateMedicine not implemented")
+}
+func (UnimplementedManagerServiceServer) CreateBatchMedicine(context.Context, *CreateBatchMedicineReq) (*CreateBatchMedicineResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateBatchMedicine not implemented")
 }
 func (UnimplementedManagerServiceServer) UpdateMedicine(context.Context, *UpdateMedicineReq) (*UpdateMedicineResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateMedicine not implemented")
@@ -1129,6 +1143,24 @@ func _ManagerService_CreateMedicine_Handler(srv interface{}, ctx context.Context
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ManagerServiceServer).CreateMedicine(ctx, req.(*CreateMedicineReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_CreateBatchMedicine_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateBatchMedicineReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).CreateBatchMedicine(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/CreateBatchMedicine",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).CreateBatchMedicine(ctx, req.(*CreateBatchMedicineReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2001,6 +2033,10 @@ var ManagerService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreateMedicine",
 			Handler:    _ManagerService_CreateMedicine_Handler,
+		},
+		{
+			MethodName: "CreateBatchMedicine",
+			Handler:    _ManagerService_CreateBatchMedicine_Handler,
 		},
 		{
 			MethodName: "UpdateMedicine",

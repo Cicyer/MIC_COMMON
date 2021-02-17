@@ -54,6 +54,8 @@ message ContractListReq {
   Page page = 9;
   int64 managerId = 10;
   string  medicineCode = 11;
+  //备用
+  string  companyCode = 12;
 }
 
 message ContractListResp {
@@ -235,6 +237,16 @@ message CreateMedicineReq {
 message CreateMedicineResp {
   int64  result = 1;
 }
+
+//批量创建药品
+message CreateBatchMedicineReq {
+  repeated CreateMedicineReq list = 1;
+  int64 managerId = 9;
+}
+message CreateBatchMedicineResp {
+  int64  result = 1;
+}
+
 //编辑药品
 message UpdateMedicineReq {
   int64  medicineId = 1;
@@ -299,7 +311,7 @@ message CreateTagReq {
   int64 managerId = 3;
 }
 message CreateTagResp {
-
+  int64 result = 1;
 }
 //编辑标签
 message UpdateTagReq {
@@ -308,7 +320,7 @@ message UpdateTagReq {
   int64 managerId = 3;
 }
 message UpdateTagResp {
-
+  int64 result = 1;
 }
 //删除标签
 message DeleteTagReq {
@@ -347,7 +359,7 @@ message DeleteTagMedicineReq {
 }
 
 message DeleteTagMedicineResp {
-
+  int64 result = 1;
 }
 //创建药品标签信息
 message CreateTagMedicineReq {
@@ -357,7 +369,7 @@ message CreateTagMedicineReq {
 }
 
 message CreateTagMedicineResp {
-
+  int64 result = 1;
 }
 
 //医疗机构列表
@@ -418,7 +430,7 @@ message CreateOneMIReq {
 }
 
 message CreateOneMIResp {
-
+  int64 result = 1;
 }
 
 //更新医疗机构信息
@@ -435,7 +447,7 @@ message UpdateMiReq {
 }
 
 message UpdateMiResp {
-
+  int64 result = 1;
 }
 //配送企业通用查询
 message CommonCompanyReq {
@@ -494,7 +506,7 @@ message CreateOneCompanyReq {
 }
 
 message CreateOneCompanyResp {
-
+  int64 result = 1;
 }
 
 //配送企业基础信息更新
@@ -507,10 +519,11 @@ message UpdateOneCompanyReq {
   string city = 6;
   string zone = 7;
   int64   managerId = 8;
+  int64  companyId = 9;
 }
 
 message UpdateOneCompanyResp {
-
+  int64 result = 1;
 }
 
 //招采异常订单列表
@@ -549,7 +562,7 @@ message UpdateErrShipmentPlanReq {
 }
 
 message UpdateErrShipmentPlanResp {
-
+  int64 result = 1;
 }
 //招采单列表
 message ListShipmentPlanReq {
@@ -1081,6 +1094,7 @@ service ManagerService {
   rpc ListMedicine(MedicineListReq) returns(MedicineListResp);
   rpc MedicineListForQuery(MedicineListForQueryReq) returns(MedicineListForQueryResp);
   rpc CreateMedicine(CreateMedicineReq) returns(CreateMedicineResp);
+  rpc CreateBatchMedicine(CreateBatchMedicineReq) returns(CreateBatchMedicineResp);
   rpc UpdateMedicine(UpdateMedicineReq) returns(UpdateMedicineResp);
   rpc UpdateMedicineActive(UpdateMedicineActiveReq) returns(UpdateMedicineActiveResp);
   rpc DeleteMedicine(DeleteMedicineReq) returns(DeleteMedicineResp);
@@ -1104,6 +1118,7 @@ service ManagerService {
   rpc CreateOneCompany(CreateOneCompanyReq) returns(CreateOneCompanyResp);
   rpc UpdateOneCompany(UpdateOneCompanyReq) returns(UpdateOneCompanyResp);
   rpc CommonCompany(CommonCompanyReq) returns(CommonCompanyResp);
+
   //招采异常订单相关
   rpc ListTpPlanErr(ListTpPlanErrReq) returns(ListTpPlanErrResp);
   rpc UpdateErrShipmentPlan(UpdateErrShipmentPlanReq) returns(UpdateErrShipmentPlanResp);
