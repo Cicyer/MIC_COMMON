@@ -34,5 +34,5 @@ var (
 	BlockchainUploadError = add(20001) // 区块链上传错误
 	BlockchainError       = add(20002) // 区块链错误
 	BankSDKError          = add(20003) // 银行端接口错误
-
+	BAndBInternalError    = add(20004)
 )

@@ -48,4 +48,5 @@ var CM = map[int]map[string]string{
 	20001: {"EN": "blockchain upload error", "CN": "区块链上传错误"},
 	20002: {"EN": "blockchain error", "CN": "区块链端错误"},
 	20003: {"EN": "bank sdk error", "CN": "银行端接口错误"},
+	20004: {"EN": "bAndB sdk logic error", "CN": "plugin外挂程序内部错误"},
 }
