@@ -23,6 +23,8 @@ type ManagerServiceClient interface {
 	CreateOneContractMI(ctx context.Context, in *CreateOneContractMIReq, opts ...grpc.CallOption) (*CreateOneContractMIResp, error)
 	UpdateOneContractMI(ctx context.Context, in *UpdateOneContractMIReq, opts ...grpc.CallOption) (*UpdateOneContractMIResp, error)
 	UpdateOneContract(ctx context.Context, in *UpdateOneContractReq, opts ...grpc.CallOption) (*UpdateOneContractResp, error)
+	UpdateBatchContract(ctx context.Context, in *UpdateBatchContractReq, opts ...grpc.CallOption) (*UpdateBatchContractResp, error)
+	CreateBatchContract(ctx context.Context, in *CreateBatchContractReq, opts ...grpc.CallOption) (*CreateBatchContractResp, error)
 	UpdateContractActive(ctx context.Context, in *UpdateContractActiveReq, opts ...grpc.CallOption) (*UpdateContractActiveResp, error)
 	DeleteOneContract(ctx context.Context, in *DeleteOneContractReq, opts ...grpc.CallOption) (*DeleteOneContractResp, error)
 	DeleteOneContractMi(ctx context.Context, in *DeleteOneContractMiReq, opts ...grpc.CallOption) (*DeleteOneContractMiResp, error)
@@ -146,6 +148,24 @@ func (c *managerServiceClient) UpdateOneContractMI(ctx context.Context, in *Upda
 func (c *managerServiceClient) UpdateOneContract(ctx context.Context, in *UpdateOneContractReq, opts ...grpc.CallOption) (*UpdateOneContractResp, error) {
 	out := new(UpdateOneContractResp)
 	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/UpdateOneContract", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) UpdateBatchContract(ctx context.Context, in *UpdateBatchContractReq, opts ...grpc.CallOption) (*UpdateBatchContractResp, error) {
+	out := new(UpdateBatchContractResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/UpdateBatchContract", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) CreateBatchContract(ctx context.Context, in *CreateBatchContractReq, opts ...grpc.CallOption) (*CreateBatchContractResp, error) {
+	out := new(CreateBatchContractResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/CreateBatchContract", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -675,6 +695,8 @@ type ManagerServiceServer interface {
 	CreateOneContractMI(context.Context, *CreateOneContractMIReq) (*CreateOneContractMIResp, error)
 	UpdateOneContractMI(context.Context, *UpdateOneContractMIReq) (*UpdateOneContractMIResp, error)
 	UpdateOneContract(context.Context, *UpdateOneContractReq) (*UpdateOneContractResp, error)
+	UpdateBatchContract(context.Context, *UpdateBatchContractReq) (*UpdateBatchContractResp, error)
+	CreateBatchContract(context.Context, *CreateBatchContractReq) (*CreateBatchContractResp, error)
 	UpdateContractActive(context.Context, *UpdateContractActiveReq) (*UpdateContractActiveResp, error)
 	DeleteOneContract(context.Context, *DeleteOneContractReq) (*DeleteOneContractResp, error)
 	DeleteOneContractMi(context.Context, *DeleteOneContractMiReq) (*DeleteOneContractMiResp, error)
@@ -770,6 +792,12 @@ func (UnimplementedManagerServiceServer) UpdateOneContractMI(context.Context, *U
 }
 func (UnimplementedManagerServiceServer) UpdateOneContract(context.Context, *UpdateOneContractReq) (*UpdateOneContractResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateOneContract not implemented")
+}
+func (UnimplementedManagerServiceServer) UpdateBatchContract(context.Context, *UpdateBatchContractReq) (*UpdateBatchContractResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateBatchContract not implemented")
+}
+func (UnimplementedManagerServiceServer) CreateBatchContract(context.Context, *CreateBatchContractReq) (*CreateBatchContractResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateBatchContract not implemented")
 }
 func (UnimplementedManagerServiceServer) UpdateContractActive(context.Context, *UpdateContractActiveReq) (*UpdateContractActiveResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateContractActive not implemented")
@@ -1041,6 +1069,42 @@ func _ManagerService_UpdateOneContract_Handler(srv interface{}, ctx context.Cont
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ManagerServiceServer).UpdateOneContract(ctx, req.(*UpdateOneContractReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_UpdateBatchContract_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateBatchContractReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).UpdateBatchContract(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/UpdateBatchContract",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).UpdateBatchContract(ctx, req.(*UpdateBatchContractReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_CreateBatchContract_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateBatchContractReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).CreateBatchContract(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/CreateBatchContract",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).CreateBatchContract(ctx, req.(*CreateBatchContractReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2097,6 +2161,14 @@ var ManagerService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateOneContract",
 			Handler:    _ManagerService_UpdateOneContract_Handler,
+		},
+		{
+			MethodName: "UpdateBatchContract",
+			Handler:    _ManagerService_UpdateBatchContract_Handler,
+		},
+		{
+			MethodName: "CreateBatchContract",
+			Handler:    _ManagerService_CreateBatchContract_Handler,
 		},
 		{
 			MethodName: "UpdateContractActive",
