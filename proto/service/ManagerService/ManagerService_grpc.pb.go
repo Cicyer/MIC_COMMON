@@ -37,6 +37,7 @@ type ManagerServiceClient interface {
 	UpdateMedicineActive(ctx context.Context, in *UpdateMedicineActiveReq, opts ...grpc.CallOption) (*UpdateMedicineActiveResp, error)
 	DeleteMedicine(ctx context.Context, in *DeleteMedicineReq, opts ...grpc.CallOption) (*DeleteMedicineResp, error)
 	SelectTagByMedicineId(ctx context.Context, in *SelectTagByMedicineIdReq, opts ...grpc.CallOption) (*SelectTagByMedicineIdResp, error)
+	SelectInfoByMedicineNames(ctx context.Context, in *SelectInfoByMedicineNamesReq, opts ...grpc.CallOption) (*SelectInfoByMedicineNamesResp, error)
 	//药品标签相关
 	TagList(ctx context.Context, in *TagListReq, opts ...grpc.CallOption) (*TagListResp, error)
 	CreateTag(ctx context.Context, in *CreateTagReq, opts ...grpc.CallOption) (*CreateTagResp, error)
@@ -55,6 +56,7 @@ type ManagerServiceClient interface {
 	CreateOneCompany(ctx context.Context, in *CreateOneCompanyReq, opts ...grpc.CallOption) (*CreateOneCompanyResp, error)
 	UpdateOneCompany(ctx context.Context, in *UpdateOneCompanyReq, opts ...grpc.CallOption) (*UpdateOneCompanyResp, error)
 	CommonCompany(ctx context.Context, in *CommonCompanyReq, opts ...grpc.CallOption) (*CommonCompanyResp, error)
+	SelCompanyByNames(ctx context.Context, in *SelCompanyByNamesReq, opts ...grpc.CallOption) (*SelCompanyByNamesResp, error)
 	//招采异常订单相关
 	ListTpPlanErr(ctx context.Context, in *ListTpPlanErrReq, opts ...grpc.CallOption) (*ListTpPlanErrResp, error)
 	UpdateErrShipmentPlan(ctx context.Context, in *UpdateErrShipmentPlanReq, opts ...grpc.CallOption) (*UpdateErrShipmentPlanResp, error)
@@ -266,6 +268,15 @@ func (c *managerServiceClient) SelectTagByMedicineId(ctx context.Context, in *Se
 	return out, nil
 }
 
+func (c *managerServiceClient) SelectInfoByMedicineNames(ctx context.Context, in *SelectInfoByMedicineNamesReq, opts ...grpc.CallOption) (*SelectInfoByMedicineNamesResp, error) {
+	out := new(SelectInfoByMedicineNamesResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/SelectInfoByMedicineNames", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *managerServiceClient) TagList(ctx context.Context, in *TagListReq, opts ...grpc.CallOption) (*TagListResp, error) {
 	out := new(TagListResp)
 	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/TagList", in, out, opts...)
@@ -395,6 +406,15 @@ func (c *managerServiceClient) UpdateOneCompany(ctx context.Context, in *UpdateO
 func (c *managerServiceClient) CommonCompany(ctx context.Context, in *CommonCompanyReq, opts ...grpc.CallOption) (*CommonCompanyResp, error) {
 	out := new(CommonCompanyResp)
 	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/CommonCompany", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) SelCompanyByNames(ctx context.Context, in *SelCompanyByNamesReq, opts ...grpc.CallOption) (*SelCompanyByNamesResp, error) {
+	out := new(SelCompanyByNamesResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/SelCompanyByNames", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -659,6 +679,7 @@ type ManagerServiceServer interface {
 	UpdateMedicineActive(context.Context, *UpdateMedicineActiveReq) (*UpdateMedicineActiveResp, error)
 	DeleteMedicine(context.Context, *DeleteMedicineReq) (*DeleteMedicineResp, error)
 	SelectTagByMedicineId(context.Context, *SelectTagByMedicineIdReq) (*SelectTagByMedicineIdResp, error)
+	SelectInfoByMedicineNames(context.Context, *SelectInfoByMedicineNamesReq) (*SelectInfoByMedicineNamesResp, error)
 	//药品标签相关
 	TagList(context.Context, *TagListReq) (*TagListResp, error)
 	CreateTag(context.Context, *CreateTagReq) (*CreateTagResp, error)
@@ -677,6 +698,7 @@ type ManagerServiceServer interface {
 	CreateOneCompany(context.Context, *CreateOneCompanyReq) (*CreateOneCompanyResp, error)
 	UpdateOneCompany(context.Context, *UpdateOneCompanyReq) (*UpdateOneCompanyResp, error)
 	CommonCompany(context.Context, *CommonCompanyReq) (*CommonCompanyResp, error)
+	SelCompanyByNames(context.Context, *SelCompanyByNamesReq) (*SelCompanyByNamesResp, error)
 	//招采异常订单相关
 	ListTpPlanErr(context.Context, *ListTpPlanErrReq) (*ListTpPlanErrResp, error)
 	UpdateErrShipmentPlan(context.Context, *UpdateErrShipmentPlanReq) (*UpdateErrShipmentPlanResp, error)
@@ -777,6 +799,9 @@ func (UnimplementedManagerServiceServer) DeleteMedicine(context.Context, *Delete
 func (UnimplementedManagerServiceServer) SelectTagByMedicineId(context.Context, *SelectTagByMedicineIdReq) (*SelectTagByMedicineIdResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SelectTagByMedicineId not implemented")
 }
+func (UnimplementedManagerServiceServer) SelectInfoByMedicineNames(context.Context, *SelectInfoByMedicineNamesReq) (*SelectInfoByMedicineNamesResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SelectInfoByMedicineNames not implemented")
+}
 func (UnimplementedManagerServiceServer) TagList(context.Context, *TagListReq) (*TagListResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method TagList not implemented")
 }
@@ -821,6 +846,9 @@ func (UnimplementedManagerServiceServer) UpdateOneCompany(context.Context, *Upda
 }
 func (UnimplementedManagerServiceServer) CommonCompany(context.Context, *CommonCompanyReq) (*CommonCompanyResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CommonCompany not implemented")
+}
+func (UnimplementedManagerServiceServer) SelCompanyByNames(context.Context, *SelCompanyByNamesReq) (*SelCompanyByNamesResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SelCompanyByNames not implemented")
 }
 func (UnimplementedManagerServiceServer) ListTpPlanErr(context.Context, *ListTpPlanErrReq) (*ListTpPlanErrResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListTpPlanErr not implemented")
@@ -1237,6 +1265,24 @@ func _ManagerService_SelectTagByMedicineId_Handler(srv interface{}, ctx context.
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ManagerService_SelectInfoByMedicineNames_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SelectInfoByMedicineNamesReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).SelectInfoByMedicineNames(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/SelectInfoByMedicineNames",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).SelectInfoByMedicineNames(ctx, req.(*SelectInfoByMedicineNamesReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _ManagerService_TagList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TagListReq)
 	if err := dec(in); err != nil {
@@ -1503,6 +1549,24 @@ func _ManagerService_CommonCompany_Handler(srv interface{}, ctx context.Context,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ManagerServiceServer).CommonCompany(ctx, req.(*CommonCompanyReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_SelCompanyByNames_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SelCompanyByNamesReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).SelCompanyByNames(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/SelCompanyByNames",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).SelCompanyByNames(ctx, req.(*SelCompanyByNamesReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2055,6 +2119,10 @@ var ManagerService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _ManagerService_SelectTagByMedicineId_Handler,
 		},
 		{
+			MethodName: "SelectInfoByMedicineNames",
+			Handler:    _ManagerService_SelectInfoByMedicineNames_Handler,
+		},
+		{
 			MethodName: "TagList",
 			Handler:    _ManagerService_TagList_Handler,
 		},
@@ -2113,6 +2181,10 @@ var ManagerService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CommonCompany",
 			Handler:    _ManagerService_CommonCompany_Handler,
+		},
+		{
+			MethodName: "SelCompanyByNames",
+			Handler:    _ManagerService_SelCompanyByNames_Handler,
 		},
 		{
 			MethodName: "ListTpPlanErr",

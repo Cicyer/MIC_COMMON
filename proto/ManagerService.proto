@@ -83,7 +83,25 @@ message ContractListVo {
   string hashInfo = 15;
   string activeStatus = 16;
   int64  medicineId = 17;
+  int64  companyId = 18;
 }
+//根据药品id 配送企业id 起始时间 查询合同列表
+message UpCheckContractReq {
+  repeated  CheckContractParam reqs = 1;
+  int64 managerId = 2;
+}
+
+message CheckContractParam {
+  int64  medicineId = 1;
+  int64  companyId = 2;
+  google.protobuf.Timestamp startAt = 3;
+  google.protobuf.Timestamp endAt = 4;
+}
+
+message CheckContractListResp {
+  repeated ContractListVo list = 1;
+}
+
 //子合同列表
 message ContractMiListReq {
   int64  contractId = 1;
@@ -278,7 +296,7 @@ message DeleteMedicineReq {
   int64 managerId = 2;
 }
 message DeleteMedicineResp {
-  bool Result = 1;
+  int64 Result = 1;
 }
 //根据药品id查询tagName字符串组
 message SelectTagByMedicineIdReq {
@@ -287,6 +305,15 @@ message SelectTagByMedicineIdReq {
 }
 message SelectTagByMedicineIdResp {
   string tagNames = 1;
+}
+
+//根据药品names查询药品列表信息
+message SelectInfoByMedicineNamesReq {
+  repeated string  medicineNames = 1;
+  int64 managerId = 2;
+}
+message SelectInfoByMedicineNamesResp {
+  repeated MedicineListForQueryVo list = 1;
 }
 
 
@@ -452,7 +479,7 @@ message UpdateMiResp {
 //配送企业通用查询
 message CommonCompanyReq {
   string  companyName = 1;
-  int64 managerId = 5;
+  int64 managerId = 2;
 }
 
 message CommonCompanyResp {
@@ -463,6 +490,16 @@ message CommonCompanyVo {
   int64 companyId = 1;
   string companyName = 2;
   string companyCode = 3;
+}
+
+//配送企业列表根据name查询
+message SelCompanyByNamesReq {
+  repeated string companyNames = 1;
+  int64 managerId = 2;
+}
+
+message SelCompanyByNamesResp {
+  repeated CommonCompanyVo list = 1;
 }
 
 //配送企业列表查询
@@ -1099,6 +1136,7 @@ service ManagerService {
   rpc UpdateMedicineActive(UpdateMedicineActiveReq) returns(UpdateMedicineActiveResp);
   rpc DeleteMedicine(DeleteMedicineReq) returns(DeleteMedicineResp);
   rpc SelectTagByMedicineId(SelectTagByMedicineIdReq) returns(SelectTagByMedicineIdResp);
+  rpc SelectInfoByMedicineNames(SelectInfoByMedicineNamesReq) returns(SelectInfoByMedicineNamesResp);
   //药品标签相关
   rpc TagList(TagListReq) returns(TagListResp);
   rpc CreateTag(CreateTagReq) returns(CreateTagResp);
@@ -1118,6 +1156,7 @@ service ManagerService {
   rpc CreateOneCompany(CreateOneCompanyReq) returns(CreateOneCompanyResp);
   rpc UpdateOneCompany(UpdateOneCompanyReq) returns(UpdateOneCompanyResp);
   rpc CommonCompany(CommonCompanyReq) returns(CommonCompanyResp);
+  rpc SelCompanyByNames(SelCompanyByNamesReq) returns(SelCompanyByNamesResp);
 
   //招采异常订单相关
   rpc ListTpPlanErr(ListTpPlanErrReq) returns(ListTpPlanErrResp);
