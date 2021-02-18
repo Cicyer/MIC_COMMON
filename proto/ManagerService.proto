@@ -147,7 +147,7 @@ message UpdateOneContractMIReq {
 }
 
 message UpdateOneContractMIResp {
-  //  int64  contractMiId = 1;
+    int64  result = 1;
 }
 //主合同更新
 message UpdateOneContractReq {
@@ -158,11 +158,42 @@ message UpdateOneContractReq {
   google.protobuf.Timestamp endAt = 5;
   int64 managerId = 6;
   int64 companyId = 7;
+  int64 tenderCompany = 8;
 }
 
 message UpdateOneContractResp {
-  //  int64  contractMiId = 1;
+    int64  result = 1;
 }
+
+//主合同批量更新
+message UpdateBatchContractReq {
+  repeated UpdateOneContractReq param = 1;
+  int64 managerId = 6;
+}
+
+message UpdateBatchContractResp {
+  int64  result = 1;
+}
+//主合同批量新增
+message CreateBatchContractReq {
+  repeated CreateContractReq param = 1;
+  int64 managerId = 6;
+}
+
+message CreateBatchContractResp {
+  int64  result = 1;
+}
+
+message CreateContractReq {
+  int64  medicineId = 2;
+  int64  medicinePrice = 3;
+  google.protobuf.Timestamp startAt = 4;
+  google.protobuf.Timestamp endAt = 5;
+  int64 companyId = 7;
+  int64 tenderCompany = 8;
+}
+
+
 //主合同更新状态
 message UpdateContractActiveReq {
   int64  contractId = 1;
@@ -1122,6 +1153,8 @@ service ManagerService {
   rpc CreateOneContractMI(CreateOneContractMIReq) returns(CreateOneContractMIResp);
   rpc UpdateOneContractMI(UpdateOneContractMIReq) returns(UpdateOneContractMIResp);
   rpc UpdateOneContract(UpdateOneContractReq) returns(UpdateOneContractResp);
+  rpc UpdateBatchContract(UpdateBatchContractReq) returns(UpdateBatchContractResp);
+  rpc CreateBatchContract(CreateBatchContractReq) returns(CreateBatchContractResp);
   rpc UpdateContractActive(UpdateContractActiveReq) returns(UpdateContractActiveResp);
   rpc DeleteOneContract(DeleteOneContractReq) returns(DeleteOneContractResp);
   rpc DeleteOneContractMi(DeleteOneContractMiReq) returns(DeleteOneContractMiResp);
