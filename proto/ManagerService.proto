@@ -1127,6 +1127,7 @@ service ManagerService {
   rpc DeleteOneContractMi(DeleteOneContractMiReq) returns(DeleteOneContractMiResp);
   rpc GetContractInfo(GetContractInfoReq) returns(GetContractInfoResp);
   rpc ContractDetail(ContractDetailReq) returns(ContractDetailResp);
+  rpc CheckContractList(UpCheckContractReq) returns(CheckContractListResp);
   //药品相关
   rpc ListMedicine(MedicineListReq) returns(MedicineListResp);
   rpc MedicineListForQuery(MedicineListForQueryReq) returns(MedicineListForQueryResp);
