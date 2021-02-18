@@ -28,6 +28,7 @@ type ManagerServiceClient interface {
 	DeleteOneContractMi(ctx context.Context, in *DeleteOneContractMiReq, opts ...grpc.CallOption) (*DeleteOneContractMiResp, error)
 	GetContractInfo(ctx context.Context, in *GetContractInfoReq, opts ...grpc.CallOption) (*GetContractInfoResp, error)
 	ContractDetail(ctx context.Context, in *ContractDetailReq, opts ...grpc.CallOption) (*ContractDetailResp, error)
+	CheckContractList(ctx context.Context, in *UpCheckContractReq, opts ...grpc.CallOption) (*CheckContractListResp, error)
 	//药品相关
 	ListMedicine(ctx context.Context, in *MedicineListReq, opts ...grpc.CallOption) (*MedicineListResp, error)
 	MedicineListForQuery(ctx context.Context, in *MedicineListForQueryReq, opts ...grpc.CallOption) (*MedicineListForQueryResp, error)
@@ -190,6 +191,15 @@ func (c *managerServiceClient) GetContractInfo(ctx context.Context, in *GetContr
 func (c *managerServiceClient) ContractDetail(ctx context.Context, in *ContractDetailReq, opts ...grpc.CallOption) (*ContractDetailResp, error) {
 	out := new(ContractDetailResp)
 	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/ContractDetail", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) CheckContractList(ctx context.Context, in *UpCheckContractReq, opts ...grpc.CallOption) (*CheckContractListResp, error) {
+	out := new(CheckContractListResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/CheckContractList", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -670,6 +680,7 @@ type ManagerServiceServer interface {
 	DeleteOneContractMi(context.Context, *DeleteOneContractMiReq) (*DeleteOneContractMiResp, error)
 	GetContractInfo(context.Context, *GetContractInfoReq) (*GetContractInfoResp, error)
 	ContractDetail(context.Context, *ContractDetailReq) (*ContractDetailResp, error)
+	CheckContractList(context.Context, *UpCheckContractReq) (*CheckContractListResp, error)
 	//药品相关
 	ListMedicine(context.Context, *MedicineListReq) (*MedicineListResp, error)
 	MedicineListForQuery(context.Context, *MedicineListForQueryReq) (*MedicineListForQueryResp, error)
@@ -774,6 +785,9 @@ func (UnimplementedManagerServiceServer) GetContractInfo(context.Context, *GetCo
 }
 func (UnimplementedManagerServiceServer) ContractDetail(context.Context, *ContractDetailReq) (*ContractDetailResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ContractDetail not implemented")
+}
+func (UnimplementedManagerServiceServer) CheckContractList(context.Context, *UpCheckContractReq) (*CheckContractListResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CheckContractList not implemented")
 }
 func (UnimplementedManagerServiceServer) ListMedicine(context.Context, *MedicineListReq) (*MedicineListResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListMedicine not implemented")
@@ -1117,6 +1131,24 @@ func _ManagerService_ContractDetail_Handler(srv interface{}, ctx context.Context
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ManagerServiceServer).ContractDetail(ctx, req.(*ContractDetailReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_CheckContractList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpCheckContractReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).CheckContractList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/CheckContractList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).CheckContractList(ctx, req.(*UpCheckContractReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2085,6 +2117,10 @@ var ManagerService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ContractDetail",
 			Handler:    _ManagerService_ContractDetail_Handler,
+		},
+		{
+			MethodName: "CheckContractList",
+			Handler:    _ManagerService_CheckContractList_Handler,
 		},
 		{
 			MethodName: "ListMedicine",

@@ -12739,7 +12739,7 @@ var file_ManagerService_proto_rawDesc = []byte{
 	0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0f, 0x6f, 0x6c,
 	0x64, 0x4c, 0x69, 0x6d, 0x69, 0x74, 0x42, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x22, 0x1b, 0x0a,
 	0x19, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4d, 0x69, 0x53, 0x70, 0x65, 0x63, 0x69, 0x61, 0x6c,
-	0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65, 0x73, 0x70, 0x32, 0xd1, 0x2c, 0x0a, 0x0e, 0x4d,
+	0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65, 0x73, 0x70, 0x32, 0xb1, 0x2d, 0x0a, 0x0e, 0x4d,
 	0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x51, 0x0a,
 	0x0c, 0x4c, 0x69, 0x73, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x12, 0x1f, 0x2e,
 	0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43,
@@ -12801,7 +12801,13 @@ var file_ManagerService_proto_rawDesc = []byte{
 	0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x44, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x52, 0x65,
 	0x71, 0x1a, 0x22, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69,
 	0x63, 0x65, 0x2e, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x44, 0x65, 0x74, 0x61, 0x69,
-	0x6c, 0x52, 0x65, 0x73, 0x70, 0x12, 0x51, 0x0a, 0x0c, 0x4c, 0x69, 0x73, 0x74, 0x4d, 0x65, 0x64,
+	0x6c, 0x52, 0x65, 0x73, 0x70, 0x12, 0x5e, 0x0a, 0x11, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x43, 0x6f,
+	0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x22, 0x2e, 0x4d, 0x61, 0x6e,
+	0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x55, 0x70, 0x43, 0x68,
+	0x65, 0x63, 0x6b, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x25,
+	0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e,
+	0x43, 0x68, 0x65, 0x63, 0x6b, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x4c, 0x69, 0x73,
+	0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x51, 0x0a, 0x0c, 0x4c, 0x69, 0x73, 0x74, 0x4d, 0x65, 0x64,
 	0x69, 0x63, 0x69, 0x6e, 0x65, 0x12, 0x1f, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53,
 	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x4c,
 	0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x20, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72,
@@ -13383,120 +13389,122 @@ var file_ManagerService_proto_depIdxs = []int32{
 	25,  // 106: ManagerService.ManagerService.DeleteOneContractMi:input_type -> ManagerService.DeleteOneContractMiReq
 	1,   // 107: ManagerService.ManagerService.GetContractInfo:input_type -> ManagerService.GetContractInfoReq
 	3,   // 108: ManagerService.ManagerService.ContractDetail:input_type -> ManagerService.ContractDetailReq
-	27,  // 109: ManagerService.ManagerService.ListMedicine:input_type -> ManagerService.MedicineListReq
-	30,  // 110: ManagerService.ManagerService.MedicineListForQuery:input_type -> ManagerService.MedicineListForQueryReq
-	33,  // 111: ManagerService.ManagerService.CreateMedicine:input_type -> ManagerService.CreateMedicineReq
-	35,  // 112: ManagerService.ManagerService.CreateBatchMedicine:input_type -> ManagerService.CreateBatchMedicineReq
-	37,  // 113: ManagerService.ManagerService.UpdateMedicine:input_type -> ManagerService.UpdateMedicineReq
-	39,  // 114: ManagerService.ManagerService.UpdateMedicineActive:input_type -> ManagerService.UpdateMedicineActiveReq
-	41,  // 115: ManagerService.ManagerService.DeleteMedicine:input_type -> ManagerService.DeleteMedicineReq
-	43,  // 116: ManagerService.ManagerService.SelectTagByMedicineId:input_type -> ManagerService.SelectTagByMedicineIdReq
-	45,  // 117: ManagerService.ManagerService.SelectInfoByMedicineNames:input_type -> ManagerService.SelectInfoByMedicineNamesReq
-	47,  // 118: ManagerService.ManagerService.TagList:input_type -> ManagerService.TagListReq
-	50,  // 119: ManagerService.ManagerService.CreateTag:input_type -> ManagerService.CreateTagReq
-	52,  // 120: ManagerService.ManagerService.UpdateTag:input_type -> ManagerService.UpdateTagReq
-	54,  // 121: ManagerService.ManagerService.DeleteTag:input_type -> ManagerService.DeleteTagReq
-	56,  // 122: ManagerService.ManagerService.TagDetailList:input_type -> ManagerService.TagDetailListReq
-	59,  // 123: ManagerService.ManagerService.DeleteTagMedicine:input_type -> ManagerService.DeleteTagMedicineReq
-	61,  // 124: ManagerService.ManagerService.CreateTagMedicine:input_type -> ManagerService.CreateTagMedicineReq
-	63,  // 125: ManagerService.ManagerService.ListMi:input_type -> ManagerService.ListMiReq
-	66,  // 126: ManagerService.ManagerService.CommonMI:input_type -> ManagerService.CommonMIReq
-	69,  // 127: ManagerService.ManagerService.CreateOneMI:input_type -> ManagerService.CreateOneMIReq
-	71,  // 128: ManagerService.ManagerService.UpdateMi:input_type -> ManagerService.UpdateMiReq
-	78,  // 129: ManagerService.ManagerService.ListCompany:input_type -> ManagerService.ListCompanyReq
-	81,  // 130: ManagerService.ManagerService.CreateOneCompany:input_type -> ManagerService.CreateOneCompanyReq
-	83,  // 131: ManagerService.ManagerService.UpdateOneCompany:input_type -> ManagerService.UpdateOneCompanyReq
-	73,  // 132: ManagerService.ManagerService.CommonCompany:input_type -> ManagerService.CommonCompanyReq
-	76,  // 133: ManagerService.ManagerService.SelCompanyByNames:input_type -> ManagerService.SelCompanyByNamesReq
-	85,  // 134: ManagerService.ManagerService.ListTpPlanErr:input_type -> ManagerService.ListTpPlanErrReq
-	88,  // 135: ManagerService.ManagerService.UpdateErrShipmentPlan:input_type -> ManagerService.UpdateErrShipmentPlanReq
-	90,  // 136: ManagerService.ManagerService.ListShipmentPlan:input_type -> ManagerService.ListShipmentPlanReq
-	98,  // 137: ManagerService.ManagerService.CountShipmentPlan:input_type -> ManagerService.CountShipmentPlanReq
-	93,  // 138: ManagerService.ManagerService.DetailShipmentOrder:input_type -> ManagerService.DetailShipmentOrderReq
-	95,  // 139: ManagerService.ManagerService.ListShipmentPlanForOrder:input_type -> ManagerService.ListShipmentPlanForOrderReq
-	100, // 140: ManagerService.ManagerService.CreateShipmentOrder:input_type -> ManagerService.CreateShipmentOrderReq
-	102, // 141: ManagerService.ManagerService.ListShipmentOrder:input_type -> ManagerService.ListShipmentOrderReq
-	105, // 142: ManagerService.ManagerService.CountShipmentOrder:input_type -> ManagerService.CountShipmentOrderReq
-	107, // 143: ManagerService.ManagerService.UpdateShipmentOrder:input_type -> ManagerService.UpdateShipmentOrderReq
-	109, // 144: ManagerService.ManagerService.GetCompanyHash:input_type -> ManagerService.GetCompanyHashReq
-	112, // 145: ManagerService.ManagerService.GetMiHash:input_type -> ManagerService.GetMiHashReq
-	115, // 146: ManagerService.ManagerService.GetMedicineHash:input_type -> ManagerService.GetMedicineReq
-	118, // 147: ManagerService.ManagerService.GetContractHash:input_type -> ManagerService.GetContractHashReq
-	121, // 148: ManagerService.ManagerService.GetContractMiHash:input_type -> ManagerService.GetContractMiHashReq
-	124, // 149: ManagerService.ManagerService.GetConfigHash:input_type -> ManagerService.GetConfigHashReq
-	127, // 150: ManagerService.ManagerService.GetShipmentPlanHash:input_type -> ManagerService.GetShipmentPlanHashReq
-	130, // 151: ManagerService.ManagerService.GetShipmentOrderHash:input_type -> ManagerService.GetShipmentOrderHashReq
-	133, // 152: ManagerService.ManagerService.GetShipmentPayHash:input_type -> ManagerService.GetShipmentPayHashReq
-	136, // 153: ManagerService.ManagerService.GetShipmentFactoringHash:input_type -> ManagerService.GetShipmentFactoringHashReq
-	146, // 154: ManagerService.ManagerService.GetHashContent:input_type -> ManagerService.GetHashContentReq
-	141, // 155: ManagerService.ManagerService.GetConfig:input_type -> ManagerService.GetConfigReq
-	140, // 156: ManagerService.ManagerService.UpdateConfig:input_type -> ManagerService.UpdateConfigReq
-	139, // 157: ManagerService.ManagerService.InsertConfigs:input_type -> ManagerService.InsertConfigsReq
-	148, // 158: ManagerService.ManagerService.GetMiSpecialConfig:input_type -> ManagerService.GetMiSpecialConfigReq
-	151, // 159: ManagerService.ManagerService.UpdateMiSpecialConfig:input_type -> ManagerService.UpdateMiSpecialConfigReq
-	7,   // 160: ManagerService.ManagerService.ListContract:output_type -> ManagerService.ContractListResp
-	13,  // 161: ManagerService.ManagerService.ListMiContract:output_type -> ManagerService.ContractMiListResp
-	16,  // 162: ManagerService.ManagerService.CreateOneContractMI:output_type -> ManagerService.CreateOneContractMIResp
-	18,  // 163: ManagerService.ManagerService.UpdateOneContractMI:output_type -> ManagerService.UpdateOneContractMIResp
-	20,  // 164: ManagerService.ManagerService.UpdateOneContract:output_type -> ManagerService.UpdateOneContractResp
-	22,  // 165: ManagerService.ManagerService.UpdateContractActive:output_type -> ManagerService.UpdateContractActiveResp
-	24,  // 166: ManagerService.ManagerService.DeleteOneContract:output_type -> ManagerService.DeleteOneContractResp
-	26,  // 167: ManagerService.ManagerService.DeleteOneContractMi:output_type -> ManagerService.DeleteOneContractMiResp
-	2,   // 168: ManagerService.ManagerService.GetContractInfo:output_type -> ManagerService.GetContractInfoResp
-	4,   // 169: ManagerService.ManagerService.ContractDetail:output_type -> ManagerService.ContractDetailResp
-	28,  // 170: ManagerService.ManagerService.ListMedicine:output_type -> ManagerService.MedicineListResp
-	31,  // 171: ManagerService.ManagerService.MedicineListForQuery:output_type -> ManagerService.MedicineListForQueryResp
-	34,  // 172: ManagerService.ManagerService.CreateMedicine:output_type -> ManagerService.CreateMedicineResp
-	36,  // 173: ManagerService.ManagerService.CreateBatchMedicine:output_type -> ManagerService.CreateBatchMedicineResp
-	38,  // 174: ManagerService.ManagerService.UpdateMedicine:output_type -> ManagerService.UpdateMedicineResp
-	40,  // 175: ManagerService.ManagerService.UpdateMedicineActive:output_type -> ManagerService.UpdateMedicineActiveResp
-	42,  // 176: ManagerService.ManagerService.DeleteMedicine:output_type -> ManagerService.DeleteMedicineResp
-	44,  // 177: ManagerService.ManagerService.SelectTagByMedicineId:output_type -> ManagerService.SelectTagByMedicineIdResp
-	46,  // 178: ManagerService.ManagerService.SelectInfoByMedicineNames:output_type -> ManagerService.SelectInfoByMedicineNamesResp
-	48,  // 179: ManagerService.ManagerService.TagList:output_type -> ManagerService.TagListResp
-	51,  // 180: ManagerService.ManagerService.CreateTag:output_type -> ManagerService.CreateTagResp
-	53,  // 181: ManagerService.ManagerService.UpdateTag:output_type -> ManagerService.UpdateTagResp
-	55,  // 182: ManagerService.ManagerService.DeleteTag:output_type -> ManagerService.DeleteTagResp
-	57,  // 183: ManagerService.ManagerService.TagDetailList:output_type -> ManagerService.TagDetailListResp
-	60,  // 184: ManagerService.ManagerService.DeleteTagMedicine:output_type -> ManagerService.DeleteTagMedicineResp
-	62,  // 185: ManagerService.ManagerService.CreateTagMedicine:output_type -> ManagerService.CreateTagMedicineResp
-	64,  // 186: ManagerService.ManagerService.ListMi:output_type -> ManagerService.ListMiResp
-	67,  // 187: ManagerService.ManagerService.CommonMI:output_type -> ManagerService.CommonMIResp
-	70,  // 188: ManagerService.ManagerService.CreateOneMI:output_type -> ManagerService.CreateOneMIResp
-	72,  // 189: ManagerService.ManagerService.UpdateMi:output_type -> ManagerService.UpdateMiResp
-	79,  // 190: ManagerService.ManagerService.ListCompany:output_type -> ManagerService.ListCompanyResp
-	82,  // 191: ManagerService.ManagerService.CreateOneCompany:output_type -> ManagerService.CreateOneCompanyResp
-	84,  // 192: ManagerService.ManagerService.UpdateOneCompany:output_type -> ManagerService.UpdateOneCompanyResp
-	74,  // 193: ManagerService.ManagerService.CommonCompany:output_type -> ManagerService.CommonCompanyResp
-	77,  // 194: ManagerService.ManagerService.SelCompanyByNames:output_type -> ManagerService.SelCompanyByNamesResp
-	86,  // 195: ManagerService.ManagerService.ListTpPlanErr:output_type -> ManagerService.ListTpPlanErrResp
-	89,  // 196: ManagerService.ManagerService.UpdateErrShipmentPlan:output_type -> ManagerService.UpdateErrShipmentPlanResp
-	91,  // 197: ManagerService.ManagerService.ListShipmentPlan:output_type -> ManagerService.ListShipmentPlanResp
-	99,  // 198: ManagerService.ManagerService.CountShipmentPlan:output_type -> ManagerService.CountShipmentPlanResp
-	94,  // 199: ManagerService.ManagerService.DetailShipmentOrder:output_type -> ManagerService.DetailShipmentOrderResp
-	96,  // 200: ManagerService.ManagerService.ListShipmentPlanForOrder:output_type -> ManagerService.ListShipmentPlanForOrderResp
-	101, // 201: ManagerService.ManagerService.CreateShipmentOrder:output_type -> ManagerService.CreateShipmentOrderResp
-	103, // 202: ManagerService.ManagerService.ListShipmentOrder:output_type -> ManagerService.ListShipmentOrderResp
-	106, // 203: ManagerService.ManagerService.CountShipmentOrder:output_type -> ManagerService.CountShipmentOrderResp
-	108, // 204: ManagerService.ManagerService.UpdateShipmentOrder:output_type -> ManagerService.UpdateShipmentOrderResp
-	111, // 205: ManagerService.ManagerService.GetCompanyHash:output_type -> ManagerService.GetCompanyHashResp
-	114, // 206: ManagerService.ManagerService.GetMiHash:output_type -> ManagerService.GetMiHashResp
-	117, // 207: ManagerService.ManagerService.GetMedicineHash:output_type -> ManagerService.GetMedicineResp
-	120, // 208: ManagerService.ManagerService.GetContractHash:output_type -> ManagerService.GetContractHashResp
-	123, // 209: ManagerService.ManagerService.GetContractMiHash:output_type -> ManagerService.GetContractMiHashResp
-	126, // 210: ManagerService.ManagerService.GetConfigHash:output_type -> ManagerService.GetConfigHashResp
-	129, // 211: ManagerService.ManagerService.GetShipmentPlanHash:output_type -> ManagerService.GetShipmentPlanHashResp
-	132, // 212: ManagerService.ManagerService.GetShipmentOrderHash:output_type -> ManagerService.GetShipmentOrderHashResp
-	135, // 213: ManagerService.ManagerService.GetShipmentPayHash:output_type -> ManagerService.GetShipmentPayHashResp
-	138, // 214: ManagerService.ManagerService.GetShipmentFactoringHash:output_type -> ManagerService.GetShipmentFactoringHashResp
-	147, // 215: ManagerService.ManagerService.GetHashContent:output_type -> ManagerService.GetHashContentResp
-	145, // 216: ManagerService.ManagerService.GetConfig:output_type -> ManagerService.GetConfigResp
-	143, // 217: ManagerService.ManagerService.UpdateConfig:output_type -> ManagerService.UpdateConfigResp
-	144, // 218: ManagerService.ManagerService.InsertConfigs:output_type -> ManagerService.InsertConfigsResp
-	150, // 219: ManagerService.ManagerService.GetMiSpecialConfig:output_type -> ManagerService.GetMiSpecialConfigResp
-	152, // 220: ManagerService.ManagerService.UpdateMiSpecialConfig:output_type -> ManagerService.UpdateMiSpecialConfigResp
-	160, // [160:221] is the sub-list for method output_type
-	99,  // [99:160] is the sub-list for method input_type
+	9,   // 109: ManagerService.ManagerService.CheckContractList:input_type -> ManagerService.UpCheckContractReq
+	27,  // 110: ManagerService.ManagerService.ListMedicine:input_type -> ManagerService.MedicineListReq
+	30,  // 111: ManagerService.ManagerService.MedicineListForQuery:input_type -> ManagerService.MedicineListForQueryReq
+	33,  // 112: ManagerService.ManagerService.CreateMedicine:input_type -> ManagerService.CreateMedicineReq
+	35,  // 113: ManagerService.ManagerService.CreateBatchMedicine:input_type -> ManagerService.CreateBatchMedicineReq
+	37,  // 114: ManagerService.ManagerService.UpdateMedicine:input_type -> ManagerService.UpdateMedicineReq
+	39,  // 115: ManagerService.ManagerService.UpdateMedicineActive:input_type -> ManagerService.UpdateMedicineActiveReq
+	41,  // 116: ManagerService.ManagerService.DeleteMedicine:input_type -> ManagerService.DeleteMedicineReq
+	43,  // 117: ManagerService.ManagerService.SelectTagByMedicineId:input_type -> ManagerService.SelectTagByMedicineIdReq
+	45,  // 118: ManagerService.ManagerService.SelectInfoByMedicineNames:input_type -> ManagerService.SelectInfoByMedicineNamesReq
+	47,  // 119: ManagerService.ManagerService.TagList:input_type -> ManagerService.TagListReq
+	50,  // 120: ManagerService.ManagerService.CreateTag:input_type -> ManagerService.CreateTagReq
+	52,  // 121: ManagerService.ManagerService.UpdateTag:input_type -> ManagerService.UpdateTagReq
+	54,  // 122: ManagerService.ManagerService.DeleteTag:input_type -> ManagerService.DeleteTagReq
+	56,  // 123: ManagerService.ManagerService.TagDetailList:input_type -> ManagerService.TagDetailListReq
+	59,  // 124: ManagerService.ManagerService.DeleteTagMedicine:input_type -> ManagerService.DeleteTagMedicineReq
+	61,  // 125: ManagerService.ManagerService.CreateTagMedicine:input_type -> ManagerService.CreateTagMedicineReq
+	63,  // 126: ManagerService.ManagerService.ListMi:input_type -> ManagerService.ListMiReq
+	66,  // 127: ManagerService.ManagerService.CommonMI:input_type -> ManagerService.CommonMIReq
+	69,  // 128: ManagerService.ManagerService.CreateOneMI:input_type -> ManagerService.CreateOneMIReq
+	71,  // 129: ManagerService.ManagerService.UpdateMi:input_type -> ManagerService.UpdateMiReq
+	78,  // 130: ManagerService.ManagerService.ListCompany:input_type -> ManagerService.ListCompanyReq
+	81,  // 131: ManagerService.ManagerService.CreateOneCompany:input_type -> ManagerService.CreateOneCompanyReq
+	83,  // 132: ManagerService.ManagerService.UpdateOneCompany:input_type -> ManagerService.UpdateOneCompanyReq
+	73,  // 133: ManagerService.ManagerService.CommonCompany:input_type -> ManagerService.CommonCompanyReq
+	76,  // 134: ManagerService.ManagerService.SelCompanyByNames:input_type -> ManagerService.SelCompanyByNamesReq
+	85,  // 135: ManagerService.ManagerService.ListTpPlanErr:input_type -> ManagerService.ListTpPlanErrReq
+	88,  // 136: ManagerService.ManagerService.UpdateErrShipmentPlan:input_type -> ManagerService.UpdateErrShipmentPlanReq
+	90,  // 137: ManagerService.ManagerService.ListShipmentPlan:input_type -> ManagerService.ListShipmentPlanReq
+	98,  // 138: ManagerService.ManagerService.CountShipmentPlan:input_type -> ManagerService.CountShipmentPlanReq
+	93,  // 139: ManagerService.ManagerService.DetailShipmentOrder:input_type -> ManagerService.DetailShipmentOrderReq
+	95,  // 140: ManagerService.ManagerService.ListShipmentPlanForOrder:input_type -> ManagerService.ListShipmentPlanForOrderReq
+	100, // 141: ManagerService.ManagerService.CreateShipmentOrder:input_type -> ManagerService.CreateShipmentOrderReq
+	102, // 142: ManagerService.ManagerService.ListShipmentOrder:input_type -> ManagerService.ListShipmentOrderReq
+	105, // 143: ManagerService.ManagerService.CountShipmentOrder:input_type -> ManagerService.CountShipmentOrderReq
+	107, // 144: ManagerService.ManagerService.UpdateShipmentOrder:input_type -> ManagerService.UpdateShipmentOrderReq
+	109, // 145: ManagerService.ManagerService.GetCompanyHash:input_type -> ManagerService.GetCompanyHashReq
+	112, // 146: ManagerService.ManagerService.GetMiHash:input_type -> ManagerService.GetMiHashReq
+	115, // 147: ManagerService.ManagerService.GetMedicineHash:input_type -> ManagerService.GetMedicineReq
+	118, // 148: ManagerService.ManagerService.GetContractHash:input_type -> ManagerService.GetContractHashReq
+	121, // 149: ManagerService.ManagerService.GetContractMiHash:input_type -> ManagerService.GetContractMiHashReq
+	124, // 150: ManagerService.ManagerService.GetConfigHash:input_type -> ManagerService.GetConfigHashReq
+	127, // 151: ManagerService.ManagerService.GetShipmentPlanHash:input_type -> ManagerService.GetShipmentPlanHashReq
+	130, // 152: ManagerService.ManagerService.GetShipmentOrderHash:input_type -> ManagerService.GetShipmentOrderHashReq
+	133, // 153: ManagerService.ManagerService.GetShipmentPayHash:input_type -> ManagerService.GetShipmentPayHashReq
+	136, // 154: ManagerService.ManagerService.GetShipmentFactoringHash:input_type -> ManagerService.GetShipmentFactoringHashReq
+	146, // 155: ManagerService.ManagerService.GetHashContent:input_type -> ManagerService.GetHashContentReq
+	141, // 156: ManagerService.ManagerService.GetConfig:input_type -> ManagerService.GetConfigReq
+	140, // 157: ManagerService.ManagerService.UpdateConfig:input_type -> ManagerService.UpdateConfigReq
+	139, // 158: ManagerService.ManagerService.InsertConfigs:input_type -> ManagerService.InsertConfigsReq
+	148, // 159: ManagerService.ManagerService.GetMiSpecialConfig:input_type -> ManagerService.GetMiSpecialConfigReq
+	151, // 160: ManagerService.ManagerService.UpdateMiSpecialConfig:input_type -> ManagerService.UpdateMiSpecialConfigReq
+	7,   // 161: ManagerService.ManagerService.ListContract:output_type -> ManagerService.ContractListResp
+	13,  // 162: ManagerService.ManagerService.ListMiContract:output_type -> ManagerService.ContractMiListResp
+	16,  // 163: ManagerService.ManagerService.CreateOneContractMI:output_type -> ManagerService.CreateOneContractMIResp
+	18,  // 164: ManagerService.ManagerService.UpdateOneContractMI:output_type -> ManagerService.UpdateOneContractMIResp
+	20,  // 165: ManagerService.ManagerService.UpdateOneContract:output_type -> ManagerService.UpdateOneContractResp
+	22,  // 166: ManagerService.ManagerService.UpdateContractActive:output_type -> ManagerService.UpdateContractActiveResp
+	24,  // 167: ManagerService.ManagerService.DeleteOneContract:output_type -> ManagerService.DeleteOneContractResp
+	26,  // 168: ManagerService.ManagerService.DeleteOneContractMi:output_type -> ManagerService.DeleteOneContractMiResp
+	2,   // 169: ManagerService.ManagerService.GetContractInfo:output_type -> ManagerService.GetContractInfoResp
+	4,   // 170: ManagerService.ManagerService.ContractDetail:output_type -> ManagerService.ContractDetailResp
+	11,  // 171: ManagerService.ManagerService.CheckContractList:output_type -> ManagerService.CheckContractListResp
+	28,  // 172: ManagerService.ManagerService.ListMedicine:output_type -> ManagerService.MedicineListResp
+	31,  // 173: ManagerService.ManagerService.MedicineListForQuery:output_type -> ManagerService.MedicineListForQueryResp
+	34,  // 174: ManagerService.ManagerService.CreateMedicine:output_type -> ManagerService.CreateMedicineResp
+	36,  // 175: ManagerService.ManagerService.CreateBatchMedicine:output_type -> ManagerService.CreateBatchMedicineResp
+	38,  // 176: ManagerService.ManagerService.UpdateMedicine:output_type -> ManagerService.UpdateMedicineResp
+	40,  // 177: ManagerService.ManagerService.UpdateMedicineActive:output_type -> ManagerService.UpdateMedicineActiveResp
+	42,  // 178: ManagerService.ManagerService.DeleteMedicine:output_type -> ManagerService.DeleteMedicineResp
+	44,  // 179: ManagerService.ManagerService.SelectTagByMedicineId:output_type -> ManagerService.SelectTagByMedicineIdResp
+	46,  // 180: ManagerService.ManagerService.SelectInfoByMedicineNames:output_type -> ManagerService.SelectInfoByMedicineNamesResp
+	48,  // 181: ManagerService.ManagerService.TagList:output_type -> ManagerService.TagListResp
+	51,  // 182: ManagerService.ManagerService.CreateTag:output_type -> ManagerService.CreateTagResp
+	53,  // 183: ManagerService.ManagerService.UpdateTag:output_type -> ManagerService.UpdateTagResp
+	55,  // 184: ManagerService.ManagerService.DeleteTag:output_type -> ManagerService.DeleteTagResp
+	57,  // 185: ManagerService.ManagerService.TagDetailList:output_type -> ManagerService.TagDetailListResp
+	60,  // 186: ManagerService.ManagerService.DeleteTagMedicine:output_type -> ManagerService.DeleteTagMedicineResp
+	62,  // 187: ManagerService.ManagerService.CreateTagMedicine:output_type -> ManagerService.CreateTagMedicineResp
+	64,  // 188: ManagerService.ManagerService.ListMi:output_type -> ManagerService.ListMiResp
+	67,  // 189: ManagerService.ManagerService.CommonMI:output_type -> ManagerService.CommonMIResp
+	70,  // 190: ManagerService.ManagerService.CreateOneMI:output_type -> ManagerService.CreateOneMIResp
+	72,  // 191: ManagerService.ManagerService.UpdateMi:output_type -> ManagerService.UpdateMiResp
+	79,  // 192: ManagerService.ManagerService.ListCompany:output_type -> ManagerService.ListCompanyResp
+	82,  // 193: ManagerService.ManagerService.CreateOneCompany:output_type -> ManagerService.CreateOneCompanyResp
+	84,  // 194: ManagerService.ManagerService.UpdateOneCompany:output_type -> ManagerService.UpdateOneCompanyResp
+	74,  // 195: ManagerService.ManagerService.CommonCompany:output_type -> ManagerService.CommonCompanyResp
+	77,  // 196: ManagerService.ManagerService.SelCompanyByNames:output_type -> ManagerService.SelCompanyByNamesResp
+	86,  // 197: ManagerService.ManagerService.ListTpPlanErr:output_type -> ManagerService.ListTpPlanErrResp
+	89,  // 198: ManagerService.ManagerService.UpdateErrShipmentPlan:output_type -> ManagerService.UpdateErrShipmentPlanResp
+	91,  // 199: ManagerService.ManagerService.ListShipmentPlan:output_type -> ManagerService.ListShipmentPlanResp
+	99,  // 200: ManagerService.ManagerService.CountShipmentPlan:output_type -> ManagerService.CountShipmentPlanResp
+	94,  // 201: ManagerService.ManagerService.DetailShipmentOrder:output_type -> ManagerService.DetailShipmentOrderResp
+	96,  // 202: ManagerService.ManagerService.ListShipmentPlanForOrder:output_type -> ManagerService.ListShipmentPlanForOrderResp
+	101, // 203: ManagerService.ManagerService.CreateShipmentOrder:output_type -> ManagerService.CreateShipmentOrderResp
+	103, // 204: ManagerService.ManagerService.ListShipmentOrder:output_type -> ManagerService.ListShipmentOrderResp
+	106, // 205: ManagerService.ManagerService.CountShipmentOrder:output_type -> ManagerService.CountShipmentOrderResp
+	108, // 206: ManagerService.ManagerService.UpdateShipmentOrder:output_type -> ManagerService.UpdateShipmentOrderResp
+	111, // 207: ManagerService.ManagerService.GetCompanyHash:output_type -> ManagerService.GetCompanyHashResp
+	114, // 208: ManagerService.ManagerService.GetMiHash:output_type -> ManagerService.GetMiHashResp
+	117, // 209: ManagerService.ManagerService.GetMedicineHash:output_type -> ManagerService.GetMedicineResp
+	120, // 210: ManagerService.ManagerService.GetContractHash:output_type -> ManagerService.GetContractHashResp
+	123, // 211: ManagerService.ManagerService.GetContractMiHash:output_type -> ManagerService.GetContractMiHashResp
+	126, // 212: ManagerService.ManagerService.GetConfigHash:output_type -> ManagerService.GetConfigHashResp
+	129, // 213: ManagerService.ManagerService.GetShipmentPlanHash:output_type -> ManagerService.GetShipmentPlanHashResp
+	132, // 214: ManagerService.ManagerService.GetShipmentOrderHash:output_type -> ManagerService.GetShipmentOrderHashResp
+	135, // 215: ManagerService.ManagerService.GetShipmentPayHash:output_type -> ManagerService.GetShipmentPayHashResp
+	138, // 216: ManagerService.ManagerService.GetShipmentFactoringHash:output_type -> ManagerService.GetShipmentFactoringHashResp
+	147, // 217: ManagerService.ManagerService.GetHashContent:output_type -> ManagerService.GetHashContentResp
+	145, // 218: ManagerService.ManagerService.GetConfig:output_type -> ManagerService.GetConfigResp
+	143, // 219: ManagerService.ManagerService.UpdateConfig:output_type -> ManagerService.UpdateConfigResp
+	144, // 220: ManagerService.ManagerService.InsertConfigs:output_type -> ManagerService.InsertConfigsResp
+	150, // 221: ManagerService.ManagerService.GetMiSpecialConfig:output_type -> ManagerService.GetMiSpecialConfigResp
+	152, // 222: ManagerService.ManagerService.UpdateMiSpecialConfig:output_type -> ManagerService.UpdateMiSpecialConfigResp
+	161, // [161:223] is the sub-list for method output_type
+	99,  // [99:161] is the sub-list for method input_type
 	99,  // [99:99] is the sub-list for extension type_name
 	99,  // [99:99] is the sub-list for extension extendee
 	0,   // [0:99] is the sub-list for field type_name
