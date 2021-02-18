@@ -23,8 +23,7 @@ type ManagerServiceClient interface {
 	CreateOneContractMI(ctx context.Context, in *CreateOneContractMIReq, opts ...grpc.CallOption) (*CreateOneContractMIResp, error)
 	UpdateOneContractMI(ctx context.Context, in *UpdateOneContractMIReq, opts ...grpc.CallOption) (*UpdateOneContractMIResp, error)
 	UpdateOneContract(ctx context.Context, in *UpdateOneContractReq, opts ...grpc.CallOption) (*UpdateOneContractResp, error)
-	UpdateBatchContract(ctx context.Context, in *UpdateBatchContractReq, opts ...grpc.CallOption) (*UpdateBatchContractResp, error)
-	CreateBatchContract(ctx context.Context, in *CreateBatchContractReq, opts ...grpc.CallOption) (*CreateBatchContractResp, error)
+	BatchOperateContract(ctx context.Context, in *BatchOperateContractReq, opts ...grpc.CallOption) (*BatchOperateContractResp, error)
 	UpdateContractActive(ctx context.Context, in *UpdateContractActiveReq, opts ...grpc.CallOption) (*UpdateContractActiveResp, error)
 	DeleteOneContract(ctx context.Context, in *DeleteOneContractReq, opts ...grpc.CallOption) (*DeleteOneContractResp, error)
 	DeleteOneContractMi(ctx context.Context, in *DeleteOneContractMiReq, opts ...grpc.CallOption) (*DeleteOneContractMiResp, error)
@@ -154,18 +153,9 @@ func (c *managerServiceClient) UpdateOneContract(ctx context.Context, in *Update
 	return out, nil
 }
 
-func (c *managerServiceClient) UpdateBatchContract(ctx context.Context, in *UpdateBatchContractReq, opts ...grpc.CallOption) (*UpdateBatchContractResp, error) {
-	out := new(UpdateBatchContractResp)
-	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/UpdateBatchContract", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *managerServiceClient) CreateBatchContract(ctx context.Context, in *CreateBatchContractReq, opts ...grpc.CallOption) (*CreateBatchContractResp, error) {
-	out := new(CreateBatchContractResp)
-	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/CreateBatchContract", in, out, opts...)
+func (c *managerServiceClient) BatchOperateContract(ctx context.Context, in *BatchOperateContractReq, opts ...grpc.CallOption) (*BatchOperateContractResp, error) {
+	out := new(BatchOperateContractResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/BatchOperateContract", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -695,8 +685,7 @@ type ManagerServiceServer interface {
 	CreateOneContractMI(context.Context, *CreateOneContractMIReq) (*CreateOneContractMIResp, error)
 	UpdateOneContractMI(context.Context, *UpdateOneContractMIReq) (*UpdateOneContractMIResp, error)
 	UpdateOneContract(context.Context, *UpdateOneContractReq) (*UpdateOneContractResp, error)
-	UpdateBatchContract(context.Context, *UpdateBatchContractReq) (*UpdateBatchContractResp, error)
-	CreateBatchContract(context.Context, *CreateBatchContractReq) (*CreateBatchContractResp, error)
+	BatchOperateContract(context.Context, *BatchOperateContractReq) (*BatchOperateContractResp, error)
 	UpdateContractActive(context.Context, *UpdateContractActiveReq) (*UpdateContractActiveResp, error)
 	DeleteOneContract(context.Context, *DeleteOneContractReq) (*DeleteOneContractResp, error)
 	DeleteOneContractMi(context.Context, *DeleteOneContractMiReq) (*DeleteOneContractMiResp, error)
@@ -793,11 +782,8 @@ func (UnimplementedManagerServiceServer) UpdateOneContractMI(context.Context, *U
 func (UnimplementedManagerServiceServer) UpdateOneContract(context.Context, *UpdateOneContractReq) (*UpdateOneContractResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateOneContract not implemented")
 }
-func (UnimplementedManagerServiceServer) UpdateBatchContract(context.Context, *UpdateBatchContractReq) (*UpdateBatchContractResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateBatchContract not implemented")
-}
-func (UnimplementedManagerServiceServer) CreateBatchContract(context.Context, *CreateBatchContractReq) (*CreateBatchContractResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateBatchContract not implemented")
+func (UnimplementedManagerServiceServer) BatchOperateContract(context.Context, *BatchOperateContractReq) (*BatchOperateContractResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BatchOperateContract not implemented")
 }
 func (UnimplementedManagerServiceServer) UpdateContractActive(context.Context, *UpdateContractActiveReq) (*UpdateContractActiveResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateContractActive not implemented")
@@ -1073,38 +1059,20 @@ func _ManagerService_UpdateOneContract_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ManagerService_UpdateBatchContract_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateBatchContractReq)
+func _ManagerService_BatchOperateContract_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(BatchOperateContractReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ManagerServiceServer).UpdateBatchContract(ctx, in)
+		return srv.(ManagerServiceServer).BatchOperateContract(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/ManagerService.ManagerService/UpdateBatchContract",
+		FullMethod: "/ManagerService.ManagerService/BatchOperateContract",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ManagerServiceServer).UpdateBatchContract(ctx, req.(*UpdateBatchContractReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ManagerService_CreateBatchContract_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateBatchContractReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ManagerServiceServer).CreateBatchContract(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/ManagerService.ManagerService/CreateBatchContract",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ManagerServiceServer).CreateBatchContract(ctx, req.(*CreateBatchContractReq))
+		return srv.(ManagerServiceServer).BatchOperateContract(ctx, req.(*BatchOperateContractReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2163,12 +2131,8 @@ var ManagerService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _ManagerService_UpdateOneContract_Handler,
 		},
 		{
-			MethodName: "UpdateBatchContract",
-			Handler:    _ManagerService_UpdateBatchContract_Handler,
-		},
-		{
-			MethodName: "CreateBatchContract",
-			Handler:    _ManagerService_CreateBatchContract_Handler,
+			MethodName: "BatchOperateContract",
+			Handler:    _ManagerService_BatchOperateContract_Handler,
 		},
 		{
 			MethodName: "UpdateContractActive",
