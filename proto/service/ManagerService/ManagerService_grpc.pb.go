@@ -2366,3 +2366,319 @@ var ManagerService_ServiceDesc = grpc.ServiceDesc{
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "ManagerService.proto",
 }
+
+// DataReportServiceClient is the client API for DataReportService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type DataReportServiceClient interface {
+	//查询日配送单聚合数据(依然保持按日)
+	SumShipmentOrderDayReports(ctx context.Context, in *SumShipmentOrderDayReportsReq, opts ...grpc.CallOption) (*SumShipmentOrderDayReportsResp, error)
+	//查询月配送单报表聚合数据
+	SumShipmentOrderMonthReports(ctx context.Context, in *SumShipmentOrderReportsReq, opts ...grpc.CallOption) (*SumShipmentOrderReportsResp, error)
+	//查询日支付单聚合数据(依然保持按日)
+	SumShipmentPayDayReports(ctx context.Context, in *SumShipmentPayDayReportsReq, opts ...grpc.CallOption) (*SumShipmentPayDayReportsResp, error)
+	//查询月支付单报表聚合数据
+	SumShipmentPayMonthReports(ctx context.Context, in *SumShipmentPayMonthReportsReq, opts ...grpc.CallOption) (*SumShipmentPayMonthReportsResp, error)
+	//查询日保理单聚合数据(依然保持按日)
+	SumFactoringDayReports(ctx context.Context, in *SumFactoringDayReportsReq, opts ...grpc.CallOption) (*SumFactoringDayReportsResp, error)
+	//查询月保理单报表聚合数据
+	SumFactoringMonthReports(ctx context.Context, in *SumFactoringMonthReportsReq, opts ...grpc.CallOption) (*SumFactoringMonthReportsResp, error)
+	//查询某医保局下生效合同的统计数据
+	GetValidContractInfo(ctx context.Context, in *GetValidContractInfoReq, opts ...grpc.CallOption) (*GetValidContractInfoResp, error)
+}
+
+type dataReportServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewDataReportServiceClient(cc grpc.ClientConnInterface) DataReportServiceClient {
+	return &dataReportServiceClient{cc}
+}
+
+func (c *dataReportServiceClient) SumShipmentOrderDayReports(ctx context.Context, in *SumShipmentOrderDayReportsReq, opts ...grpc.CallOption) (*SumShipmentOrderDayReportsResp, error) {
+	out := new(SumShipmentOrderDayReportsResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.DataReportService/SumShipmentOrderDayReports", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *dataReportServiceClient) SumShipmentOrderMonthReports(ctx context.Context, in *SumShipmentOrderReportsReq, opts ...grpc.CallOption) (*SumShipmentOrderReportsResp, error) {
+	out := new(SumShipmentOrderReportsResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.DataReportService/SumShipmentOrderMonthReports", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *dataReportServiceClient) SumShipmentPayDayReports(ctx context.Context, in *SumShipmentPayDayReportsReq, opts ...grpc.CallOption) (*SumShipmentPayDayReportsResp, error) {
+	out := new(SumShipmentPayDayReportsResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.DataReportService/SumShipmentPayDayReports", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *dataReportServiceClient) SumShipmentPayMonthReports(ctx context.Context, in *SumShipmentPayMonthReportsReq, opts ...grpc.CallOption) (*SumShipmentPayMonthReportsResp, error) {
+	out := new(SumShipmentPayMonthReportsResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.DataReportService/SumShipmentPayMonthReports", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *dataReportServiceClient) SumFactoringDayReports(ctx context.Context, in *SumFactoringDayReportsReq, opts ...grpc.CallOption) (*SumFactoringDayReportsResp, error) {
+	out := new(SumFactoringDayReportsResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.DataReportService/SumFactoringDayReports", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *dataReportServiceClient) SumFactoringMonthReports(ctx context.Context, in *SumFactoringMonthReportsReq, opts ...grpc.CallOption) (*SumFactoringMonthReportsResp, error) {
+	out := new(SumFactoringMonthReportsResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.DataReportService/SumFactoringMonthReports", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *dataReportServiceClient) GetValidContractInfo(ctx context.Context, in *GetValidContractInfoReq, opts ...grpc.CallOption) (*GetValidContractInfoResp, error) {
+	out := new(GetValidContractInfoResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.DataReportService/GetValidContractInfo", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// DataReportServiceServer is the server API for DataReportService service.
+// All implementations must embed UnimplementedDataReportServiceServer
+// for forward compatibility
+type DataReportServiceServer interface {
+	//查询日配送单聚合数据(依然保持按日)
+	SumShipmentOrderDayReports(context.Context, *SumShipmentOrderDayReportsReq) (*SumShipmentOrderDayReportsResp, error)
+	//查询月配送单报表聚合数据
+	SumShipmentOrderMonthReports(context.Context, *SumShipmentOrderReportsReq) (*SumShipmentOrderReportsResp, error)
+	//查询日支付单聚合数据(依然保持按日)
+	SumShipmentPayDayReports(context.Context, *SumShipmentPayDayReportsReq) (*SumShipmentPayDayReportsResp, error)
+	//查询月支付单报表聚合数据
+	SumShipmentPayMonthReports(context.Context, *SumShipmentPayMonthReportsReq) (*SumShipmentPayMonthReportsResp, error)
+	//查询日保理单聚合数据(依然保持按日)
+	SumFactoringDayReports(context.Context, *SumFactoringDayReportsReq) (*SumFactoringDayReportsResp, error)
+	//查询月保理单报表聚合数据
+	SumFactoringMonthReports(context.Context, *SumFactoringMonthReportsReq) (*SumFactoringMonthReportsResp, error)
+	//查询某医保局下生效合同的统计数据
+	GetValidContractInfo(context.Context, *GetValidContractInfoReq) (*GetValidContractInfoResp, error)
+	mustEmbedUnimplementedDataReportServiceServer()
+}
+
+// UnimplementedDataReportServiceServer must be embedded to have forward compatible implementations.
+type UnimplementedDataReportServiceServer struct {
+}
+
+func (UnimplementedDataReportServiceServer) SumShipmentOrderDayReports(context.Context, *SumShipmentOrderDayReportsReq) (*SumShipmentOrderDayReportsResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SumShipmentOrderDayReports not implemented")
+}
+func (UnimplementedDataReportServiceServer) SumShipmentOrderMonthReports(context.Context, *SumShipmentOrderReportsReq) (*SumShipmentOrderReportsResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SumShipmentOrderMonthReports not implemented")
+}
+func (UnimplementedDataReportServiceServer) SumShipmentPayDayReports(context.Context, *SumShipmentPayDayReportsReq) (*SumShipmentPayDayReportsResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SumShipmentPayDayReports not implemented")
+}
+func (UnimplementedDataReportServiceServer) SumShipmentPayMonthReports(context.Context, *SumShipmentPayMonthReportsReq) (*SumShipmentPayMonthReportsResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SumShipmentPayMonthReports not implemented")
+}
+func (UnimplementedDataReportServiceServer) SumFactoringDayReports(context.Context, *SumFactoringDayReportsReq) (*SumFactoringDayReportsResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SumFactoringDayReports not implemented")
+}
+func (UnimplementedDataReportServiceServer) SumFactoringMonthReports(context.Context, *SumFactoringMonthReportsReq) (*SumFactoringMonthReportsResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SumFactoringMonthReports not implemented")
+}
+func (UnimplementedDataReportServiceServer) GetValidContractInfo(context.Context, *GetValidContractInfoReq) (*GetValidContractInfoResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetValidContractInfo not implemented")
+}
+func (UnimplementedDataReportServiceServer) mustEmbedUnimplementedDataReportServiceServer() {}
+
+// UnsafeDataReportServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to DataReportServiceServer will
+// result in compilation errors.
+type UnsafeDataReportServiceServer interface {
+	mustEmbedUnimplementedDataReportServiceServer()
+}
+
+func RegisterDataReportServiceServer(s grpc.ServiceRegistrar, srv DataReportServiceServer) {
+	s.RegisterService(&DataReportService_ServiceDesc, srv)
+}
+
+func _DataReportService_SumShipmentOrderDayReports_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SumShipmentOrderDayReportsReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DataReportServiceServer).SumShipmentOrderDayReports(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.DataReportService/SumShipmentOrderDayReports",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DataReportServiceServer).SumShipmentOrderDayReports(ctx, req.(*SumShipmentOrderDayReportsReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DataReportService_SumShipmentOrderMonthReports_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SumShipmentOrderReportsReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DataReportServiceServer).SumShipmentOrderMonthReports(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.DataReportService/SumShipmentOrderMonthReports",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DataReportServiceServer).SumShipmentOrderMonthReports(ctx, req.(*SumShipmentOrderReportsReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DataReportService_SumShipmentPayDayReports_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SumShipmentPayDayReportsReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DataReportServiceServer).SumShipmentPayDayReports(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.DataReportService/SumShipmentPayDayReports",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DataReportServiceServer).SumShipmentPayDayReports(ctx, req.(*SumShipmentPayDayReportsReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DataReportService_SumShipmentPayMonthReports_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SumShipmentPayMonthReportsReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DataReportServiceServer).SumShipmentPayMonthReports(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.DataReportService/SumShipmentPayMonthReports",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DataReportServiceServer).SumShipmentPayMonthReports(ctx, req.(*SumShipmentPayMonthReportsReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DataReportService_SumFactoringDayReports_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SumFactoringDayReportsReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DataReportServiceServer).SumFactoringDayReports(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.DataReportService/SumFactoringDayReports",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DataReportServiceServer).SumFactoringDayReports(ctx, req.(*SumFactoringDayReportsReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DataReportService_SumFactoringMonthReports_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SumFactoringMonthReportsReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DataReportServiceServer).SumFactoringMonthReports(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.DataReportService/SumFactoringMonthReports",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DataReportServiceServer).SumFactoringMonthReports(ctx, req.(*SumFactoringMonthReportsReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DataReportService_GetValidContractInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetValidContractInfoReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DataReportServiceServer).GetValidContractInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.DataReportService/GetValidContractInfo",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DataReportServiceServer).GetValidContractInfo(ctx, req.(*GetValidContractInfoReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// DataReportService_ServiceDesc is the grpc.ServiceDesc for DataReportService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var DataReportService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "ManagerService.DataReportService",
+	HandlerType: (*DataReportServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "SumShipmentOrderDayReports",
+			Handler:    _DataReportService_SumShipmentOrderDayReports_Handler,
+		},
+		{
+			MethodName: "SumShipmentOrderMonthReports",
+			Handler:    _DataReportService_SumShipmentOrderMonthReports_Handler,
+		},
+		{
+			MethodName: "SumShipmentPayDayReports",
+			Handler:    _DataReportService_SumShipmentPayDayReports_Handler,
+		},
+		{
+			MethodName: "SumShipmentPayMonthReports",
+			Handler:    _DataReportService_SumShipmentPayMonthReports_Handler,
+		},
+		{
+			MethodName: "SumFactoringDayReports",
+			Handler:    _DataReportService_SumFactoringDayReports_Handler,
+		},
+		{
+			MethodName: "SumFactoringMonthReports",
+			Handler:    _DataReportService_SumFactoringMonthReports_Handler,
+		},
+		{
+			MethodName: "GetValidContractInfo",
+			Handler:    _DataReportService_GetValidContractInfo_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "ManagerService.proto",
+}
