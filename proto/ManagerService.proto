@@ -1135,6 +1135,21 @@ message UpdateMiSpecialConfigReq {
 }
 message UpdateMiSpecialConfigResp {
 }
+// @Param object body request.GetBusinessDataMonthReq true "{'startAt':'起始时间 包含 使用月份第一天即可','endAt':'结束时间  不包含 使用下个月第一天即可'}"
+message GetShipmentOrderDayReportsReq {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 managerId = 1;
+  string miCode = 2;
+  int64 miId = 3;
+  string miName = 4;
+  Page page = 5;
+}
+message GetShipmentOrderDayReportsResp {
+  repeated MiSpecialConfig list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
 //=======证书内容Any结构定义=========
 
 //=========================
@@ -1224,4 +1239,23 @@ service ManagerService {
   //医院专户额度
   rpc GetMiSpecialConfig(GetMiSpecialConfigReq) returns (GetMiSpecialConfigResp);
   rpc UpdateMiSpecialConfig(UpdateMiSpecialConfigReq) returns (UpdateMiSpecialConfigResp);
+}
+
+//=========数据报表服务================
+service DataReportService {
+  //查询日配送单统计数据
+  rpc GetShipmentOrderDayReports(GetShipmentOrderDayReportsReq) returns (GetShipmentOrderDayReportsResp);
+  //查询月配送单统计数据
+  rpc GetShipmentOrderMonthReports(GetShipmentOrderReportsReq) returns (GetShipmentOrderReportsResp);
+  //查询日支付单统计数据
+  rpc GetShipmentPayDayReports(GetShipmentPayDayReportsReq) returns (GetShipmentPayDayReportsResp);
+  //查询月支付单统计数据
+  rpc GetShipmentPayMonthReports(GetShipmentPayMonthReportsReq) returns (GetShipmentPayMonthReportsResp);
+  //查询日保理单统计数据
+  rpc GetFactoringDayReports(GetFactoringDayReportsReq) returns (GetFactoringDayReportsResp);
+  //查询月保理单统计数据
+  rpc GetFactoringMonthReports(GetFactoringMonthReportsReq) returns (GetFactoringMonthReportsResp);
+
+  //查询某医保局下生效合同的统计数据
+  rpc GetValidContractInfo(GetValidContractInfoReq) returns (GetValidContractInfoResp);
 }
