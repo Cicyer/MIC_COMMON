@@ -74,9 +74,9 @@ message ContractListVo {
   string  medicineSpecification = 6;
   string  tenderCompany = 7;
   string  companyName = 8;
-  string  medicinePrice = 9;
-  string  totalAmount = 10;
-  string  totalMoney = 11;
+  int64  medicinePrice = 9;
+  int64  totalAmount = 10;
+  int64  totalMoney = 11;
   google.protobuf.Timestamp startAt = 12;
   google.protobuf.Timestamp endAt = 13;
   google.protobuf.Timestamp createdAt = 14;
@@ -166,7 +166,7 @@ message UpdateOneContractResp {
 }
 //主合同批量更新和新增
 message BatchOperateContractReq {
-  repeated BatchOperateContract uodateParam = 1;
+  repeated BatchOperateContract updateParam = 1;
   repeated BatchOperateContract createParam = 2;
   int64 managerId = 3;
 }
