@@ -1135,16 +1135,41 @@ message UpdateMiSpecialConfigReq {
 }
 message UpdateMiSpecialConfigResp {
 }
+message ReportBlurFilter {
+  //需要先进行模糊搜索的条件
+  string medicineName = 1;
+  string miName = 2;
+  string comName = 3;
+}
+message ReportFilter {
+  //指定获取哪家医院的数据
+  repeated int64 miIds = 1;
+  repeated string miCodes = 2;
+  //指定获取哪家配送企业的数据
+  repeated int64 comIds = 3;
+  repeated string comCodes = 4;
+  //指定获取哪个药品的数据
+  repeated int64 medicineIds = 5;
+  repeated string medicineCode = 6;
+  //指定tag
+  repeated int64 tagIds = 7;
+}
 message SumShipmentOrderDayReportsReq {
   //谁在请求 按照搜索账号控制显示范围
   int64 managerId = 1;
   google.protobuf.Timestamp startAt = 2;
   google.protobuf.Timestamp endAt = 3;
-  //指定获取哪家医院的数据
-  int64 miId = 4;
-  //指定获取哪家配送企业的数据
-  int64 comId = 5;
+  ReportFilter filter = 4;
+  ReportBlurFilter blurFilter = 5;
+  //是否以指定维度聚合,如果不指定,会将全部数据聚合为单行
+  bool groupByMi = 6;
+  bool groupByCom = 7;
+  bool groupByMedicine = 8;
+  bool groupByMonth = 9;
+  bool groupByYear = 10;
+  bool groupByDay = 11;
 }
+
 message ShipmentOrderDayReport {
   //谁在请求 按照搜索账号控制显示范围
   int64 year = 1;
@@ -1162,16 +1187,20 @@ message SumShipmentOrderDayReportsResp {
   int64 pageSize = 3;
   int64 pageNumber = 4;
 }
-message SumShipmentOrderReportsReq {
+message SumShipmentOrderMonthReportsReq {
   //谁在请求 按照搜索账号控制显示范围
   int64 managerId = 1;
   //聚合报表范围
   google.protobuf.Timestamp startAt = 2;
   google.protobuf.Timestamp endAt = 3;
-  //指定获取哪家医院的聚合数据
-  int64 miId = 4;
-  //指定获取哪家配送企业的聚合数据 不可同时指定
-  int64 comId = 5;
+  ReportFilter filter = 4;
+  ReportBlurFilter blurFilter = 5;
+  //是否以指定维度聚合,如果不指定,会将全部数据聚合为单行
+  bool groupByMi = 6;
+  bool groupByCom = 7;
+  bool groupByMedicine = 8;
+  bool groupByMonth = 9;
+  bool groupByYear = 10;
 }
 
 message ShipmentOrderMonthReport {
@@ -1192,7 +1221,7 @@ message ShipmentOrderMonthReport {
   int64 shipmentOrderTotalCount = 8;
 }
 
-message SumShipmentOrderReportsResp {
+message SumShipmentOrderMonthReportsResp {
   repeated ShipmentOrderMonthReport list = 1;
   int64 total = 2;
   int64 pageSize = 3;
@@ -1204,10 +1233,15 @@ message SumShipmentPayDayReportsReq {
   int64 managerId = 1;
   google.protobuf.Timestamp startAt = 2;
   google.protobuf.Timestamp endAt = 3;
-  //指定获取哪家医院的数据
-  int64 miId = 4;
-  //指定获取哪家配送企业的数据
-  int64 comId = 5;
+  ReportFilter filter = 4;
+  ReportBlurFilter blurFilter = 5;
+  //是否以指定维度聚合,如果不指定,会将全部数据聚合为单行
+  bool groupByMi = 6;
+  bool groupByCom = 7;
+  bool groupByMedicine = 8;
+  bool groupByMonth = 9;
+  bool groupByYear = 10;
+  bool groupByDay = 11;
 }
 
 message ShipmentPayDayReport {
@@ -1235,11 +1269,17 @@ message SumShipmentPayMonthReportsReq {
   int64 managerId = 1;
   google.protobuf.Timestamp startAt = 2;
   google.protobuf.Timestamp endAt = 3;
-  //指定获取哪家医院的聚合数据
-  int64 miId = 4;
-  //指定获取哪家配送企业的聚合数据 不可同时指定
-  int64 comId = 5;
+  ReportFilter filter = 4;
+  ReportBlurFilter blurFilter = 5;
+  //是否以指定维度聚合,如果不指定,会将全部数据聚合为单行
+  bool groupByMi = 6;
+  bool groupByCom = 7;
+  bool groupByMedicine = 8;
+  bool groupByMonth = 9;
+  bool groupByYear = 10;
+
 }
+
 message ShipmentPayMonthReport {
   //谁在请求 按照搜索账号控制显示范围
   int64 year = 1;
@@ -1268,10 +1308,15 @@ message SumFactoringDayReportsReq {
   int64 managerId = 1;
   google.protobuf.Timestamp startAt = 2;
   google.protobuf.Timestamp endAt = 3;
-  //指定获取哪家医院的数据
-  int64 miId = 4;
-  //指定获取哪家配送企业的数据
-  int64 comId = 5;
+  ReportFilter filter = 4;
+  ReportBlurFilter blurFilter = 5;
+  //是否以指定维度聚合,如果不指定,会将全部数据聚合为单行
+  bool groupByMi = 6;
+  bool groupByCom = 7;
+  bool groupByMedicine = 8;
+  bool groupByMonth = 9;
+  bool groupByYear = 10;
+  bool groupByDay = 11;
 }
 
 message FactoringDayReport {
@@ -1299,10 +1344,14 @@ message SumFactoringMonthReportsReq {
   int64 managerId = 1;
   google.protobuf.Timestamp startAt = 2;
   google.protobuf.Timestamp endAt = 3;
-  //指定获取哪家医院的聚合数据
-  int64 miId = 4;
-  //指定获取哪家配送企业的聚合数据 不可同时指定
-  int64 comId = 5;
+  ReportFilter filter = 4;
+  ReportBlurFilter blurFilter = 5;
+  //是否以指定维度聚合,如果不指定,会将全部数据聚合为单行
+  bool groupByMi = 6;
+  bool groupByCom = 7;
+  bool groupByMedicine = 8;
+  bool groupByMonth = 9;
+  bool groupByYear = 10;
 }
 
 message FactoringMonthReport {
@@ -1342,6 +1391,8 @@ message GetValidContractInfoReq {
   int64 miId = 2;
   //指定获取哪家配送企业的聚合数据 不可同时指定
   int64 comId = 3;
+
+  ReportBlurFilter blurFilter = 4;
 }
 
 message GetValidContractInfoResp {
@@ -1448,7 +1499,7 @@ service DataReportService {
   //查询日配送单聚合数据(依然保持按日)
   rpc SumShipmentOrderDayReports(SumShipmentOrderDayReportsReq) returns (SumShipmentOrderDayReportsResp);
   //查询月配送单报表聚合数据
-  rpc SumShipmentOrderMonthReports(SumShipmentOrderReportsReq) returns (SumShipmentOrderReportsResp);
+  rpc SumShipmentOrderMonthReports(SumShipmentOrderMonthReportsReq) returns (SumShipmentOrderMonthReportsResp);
   //查询日支付单聚合数据(依然保持按日)
   rpc SumShipmentPayDayReports(SumShipmentPayDayReportsReq) returns (SumShipmentPayDayReportsResp);
   //查询月支付单报表聚合数据
