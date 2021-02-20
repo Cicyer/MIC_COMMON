@@ -62,6 +62,7 @@ service BcAndBankService {
 
 message QueryTxIDReq {
   string TxID = 1;
+  string Key = 2;
 }
 
 message QueryTxIDRsp {
@@ -91,11 +92,11 @@ message BcAndBankActionResp {
 // 银行相关参数
 // 银行参数基于 XML, 对应的 struct 中有很多标签和无用字段, 使用 xml.Marshal 传 string
 message BankRequest {
-  // 请求头 marshal
+  // 请求头 xml.marshal
   string head = 1;
-  // 请求体 marshal
+  // 请求体 xml.marshal
   string body = 2;
-  // 请求方法
+  // 请求方法 <- 按照 bankSDK 内定义的 constant opts 来
   string function = 3;
 }
 
