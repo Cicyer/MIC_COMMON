@@ -47,6 +47,7 @@ var CM = map[int]map[string]string{
 	10301: {"EN": "Invalid Mi", "CN": "无效的医疗机构信息"},
 	10401: {"EN": "Invalid Company", "CN": "无效的企业信息"},
 	10501: {"EN": "Invalid Bank", "CN": "无效的银行信息"},
+	10601: {"EN": "Invalid Mib", "CN": "无效的医保局信息"},
 
 	20001: {"EN": "blockchain upload error", "CN": "区块链上传错误"},
 	20002: {"EN": "blockchain error", "CN": "区块链端错误"},

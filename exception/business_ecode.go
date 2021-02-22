@@ -34,6 +34,7 @@ var (
 	InvalidMi      = add(10301) // 无效的医院信息
 	InvalidCompany = add(10401) // 无效的企业信息
 	InvalidBank    = add(10501) // 无效的银行信息
+	InvalidMib     = add(10601) // 无效的医保局信息
 
 	BlockchainUploadError = add(20001) // 区块链上传错误
 	BlockchainError       = add(20002) // 区块链错误
