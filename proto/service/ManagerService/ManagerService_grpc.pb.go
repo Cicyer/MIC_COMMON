@@ -28,6 +28,8 @@ type ManagerServiceClient interface {
 	DeleteOneContract(ctx context.Context, in *DeleteOneContractReq, opts ...grpc.CallOption) (*DeleteOneContractResp, error)
 	DeleteOneContractMi(ctx context.Context, in *DeleteOneContractMiReq, opts ...grpc.CallOption) (*DeleteOneContractMiResp, error)
 	GetContractInfo(ctx context.Context, in *GetContractInfoReq, opts ...grpc.CallOption) (*GetContractInfoResp, error)
+	CountContract(ctx context.Context, in *CountContractReq, opts ...grpc.CallOption) (*CountContractResp, error)
+	//暂未使用 后期删除
 	ContractDetail(ctx context.Context, in *ContractDetailReq, opts ...grpc.CallOption) (*ContractDetailResp, error)
 	CheckContractList(ctx context.Context, in *UpCheckContractReq, opts ...grpc.CallOption) (*CheckContractListResp, error)
 	//药品相关
@@ -192,6 +194,15 @@ func (c *managerServiceClient) DeleteOneContractMi(ctx context.Context, in *Dele
 func (c *managerServiceClient) GetContractInfo(ctx context.Context, in *GetContractInfoReq, opts ...grpc.CallOption) (*GetContractInfoResp, error) {
 	out := new(GetContractInfoResp)
 	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/GetContractInfo", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) CountContract(ctx context.Context, in *CountContractReq, opts ...grpc.CallOption) (*CountContractResp, error) {
+	out := new(CountContractResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/CountContract", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -690,6 +701,8 @@ type ManagerServiceServer interface {
 	DeleteOneContract(context.Context, *DeleteOneContractReq) (*DeleteOneContractResp, error)
 	DeleteOneContractMi(context.Context, *DeleteOneContractMiReq) (*DeleteOneContractMiResp, error)
 	GetContractInfo(context.Context, *GetContractInfoReq) (*GetContractInfoResp, error)
+	CountContract(context.Context, *CountContractReq) (*CountContractResp, error)
+	//暂未使用 后期删除
 	ContractDetail(context.Context, *ContractDetailReq) (*ContractDetailResp, error)
 	CheckContractList(context.Context, *UpCheckContractReq) (*CheckContractListResp, error)
 	//药品相关
@@ -796,6 +809,9 @@ func (UnimplementedManagerServiceServer) DeleteOneContractMi(context.Context, *D
 }
 func (UnimplementedManagerServiceServer) GetContractInfo(context.Context, *GetContractInfoReq) (*GetContractInfoResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetContractInfo not implemented")
+}
+func (UnimplementedManagerServiceServer) CountContract(context.Context, *CountContractReq) (*CountContractResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CountContract not implemented")
 }
 func (UnimplementedManagerServiceServer) ContractDetail(context.Context, *ContractDetailReq) (*ContractDetailResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ContractDetail not implemented")
@@ -1145,6 +1161,24 @@ func _ManagerService_GetContractInfo_Handler(srv interface{}, ctx context.Contex
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ManagerServiceServer).GetContractInfo(ctx, req.(*GetContractInfoReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_CountContract_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CountContractReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).CountContract(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/CountContract",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).CountContract(ctx, req.(*CountContractReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2149,6 +2183,10 @@ var ManagerService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetContractInfo",
 			Handler:    _ManagerService_GetContractInfo_Handler,
+		},
+		{
+			MethodName: "CountContract",
+			Handler:    _ManagerService_CountContract_Handler,
 		},
 		{
 			MethodName: "ContractDetail",
