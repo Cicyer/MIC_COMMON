@@ -55,10 +55,11 @@ message AccountInfo {
   string   toibkn = 6;
   string   cardOwner = 7;
   int64  frozenAmount = 8;
+  string  cardStatus = 9;
 }
 
 message CreateOneAccountInfoResp {
-
+  int64 result = 1;
 }
 //更新帐号信息
 message UpdateBankAccountListReq {
@@ -66,7 +67,7 @@ message UpdateBankAccountListReq {
 }
 
 message UpdateBankAccountListResp {
-
+  int64 result = 1;
 }
 
 //账号有效性操作
@@ -77,7 +78,7 @@ message UpdateBankAccountReq {
 }
 
 message UpdateBankAccountResp {
-
+  int64 result = 1;
 }
 
 message GetCompanyCreditConfigsReq {
