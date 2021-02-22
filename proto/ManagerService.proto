@@ -22,6 +22,18 @@ message GetContractInfoResp {
   int64  contractId = 1;
   string  contractNo = 2;
 }
+
+//查询当前合同汇总
+message CountContractReq {
+  int64  mibId = 1;
+  int64 managerId = 2;
+}
+
+message CountContractResp {
+  int64  countContract = 1;
+  int64  countMoney = 2;
+}
+
 //合同详情
 message ContractDetailReq {
   int64 contractId = 1;
@@ -1154,6 +1166,7 @@ service ManagerService {
   rpc DeleteOneContract(DeleteOneContractReq) returns(DeleteOneContractResp);
   rpc DeleteOneContractMi(DeleteOneContractMiReq) returns(DeleteOneContractMiResp);
   rpc GetContractInfo(GetContractInfoReq) returns(GetContractInfoResp);
+  rpc CountContract(CountContractReq) returns(CountContractResp);
   //暂未使用 后期删除
   rpc ContractDetail(ContractDetailReq) returns(ContractDetailResp);
   rpc CheckContractList(UpCheckContractReq) returns(CheckContractListResp);
