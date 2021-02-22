@@ -20,7 +20,7 @@ message GetContractInfoReq {
 
 message GetContractInfoResp {
   int64  contractId = 1;
-  int64  contractNo = 2;
+  string  contractNo = 2;
 }
 //合同详情
 message ContractDetailReq {
@@ -110,7 +110,7 @@ message ContractMiListReq {
 }
 
 message ContractMiListResp {
-  repeated ContractListVo list = 1;
+  repeated ContractMiListVo list = 1;
 }
 
 message ContractMiListVo {
@@ -126,6 +126,7 @@ message ContractMiListVo {
   string  medicineSpecification = 10;
   string  contractMd5 = 11;
   string  contractUrl = 12;
+  string  activeStatus = 13;
 }
 //子合同补录
 message CreateOneContractMIReq {
@@ -136,7 +137,7 @@ message CreateOneContractMIReq {
 }
 
 message CreateOneContractMIResp {
-  int64  contractMiId = 1;
+  int64  result = 1;
 }
 //子合同更新
 message UpdateOneContractMIReq {
@@ -147,7 +148,7 @@ message UpdateOneContractMIReq {
 }
 
 message UpdateOneContractMIResp {
-    int64  result = 1;
+  int64  result = 1;
 }
 //主合同更新
 message UpdateOneContractReq {
@@ -162,7 +163,7 @@ message UpdateOneContractReq {
 }
 
 message UpdateOneContractResp {
-    int64  result = 1;
+  int64  result = 1;
 }
 //主合同批量更新和新增
 message BatchOperateContractReq {
@@ -194,7 +195,7 @@ message UpdateContractActiveReq {
 }
 
 message UpdateContractActiveResp {
-  //  int64  contractMiId = 1;
+  int64  result = 1;
 }
 //删除主合同
 message DeleteOneContractReq {
@@ -203,7 +204,7 @@ message DeleteOneContractReq {
 }
 
 message DeleteOneContractResp {
-  //  int64  contractMiId = 1;
+  int64  result = 1;
 }
 //删除子合同
 message DeleteOneContractMiReq {
@@ -212,7 +213,7 @@ message DeleteOneContractMiReq {
 }
 
 message DeleteOneContractMiResp {
-  //  int64  contractMiId = 1;
+  int64  result = 1;
 }
 //药品列表
 message MedicineListReq {
@@ -605,15 +606,18 @@ message ListTpPlanErrResp {
 }
 
 message ListTpPlanErrVo {
-  int64 companyId = 1;
-  string companyName = 2;
-  string companyCode = 3;
-  string managerName = 4;
-  string managerPhone = 5;
-  string province = 6;
-  string city = 7;
-  string zone = 8;
-  string hashInfo = 9;
+  int64 tpSyncShipmentPlanId = 1;
+  string tpOrderCode = 2;
+  string tenderPlatformCode = 3;
+  string medicineName = 4;
+  string medicineCode = 5;
+  string medicineSpecification = 6;
+  int64 tpShipmentAmount = 7;
+  int64 tpPrice = 8;
+  string companyName = 9;
+  string miName = 10;
+  string errMsg = 11;
+  google.protobuf.Timestamp createdAt = 12;
 }
 //异常招采单处理
 message UpdateErrShipmentPlanReq {
@@ -1150,6 +1154,7 @@ service ManagerService {
   rpc DeleteOneContract(DeleteOneContractReq) returns(DeleteOneContractResp);
   rpc DeleteOneContractMi(DeleteOneContractMiReq) returns(DeleteOneContractMiResp);
   rpc GetContractInfo(GetContractInfoReq) returns(GetContractInfoResp);
+  //暂未使用 后期删除
   rpc ContractDetail(ContractDetailReq) returns(ContractDetailResp);
   rpc CheckContractList(UpCheckContractReq) returns(CheckContractListResp);
   //药品相关
