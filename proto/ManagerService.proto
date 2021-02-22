@@ -139,6 +139,8 @@ message ContractMiListVo {
   string  contractMd5 = 11;
   string  contractUrl = 12;
   string  activeStatus = 13;
+  string  manufacturer = 14;
+  int64  MedicineReceive = 15;
 }
 //子合同补录
 message CreateOneContractMIReq {
