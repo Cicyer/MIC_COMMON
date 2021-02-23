@@ -1460,21 +1460,6 @@ message GetFactoringOrderReportsReq {
   FactoringReportGetCondition optionalFilterCond = 5;
   FactoringReportGroupCondition optionalGroupCond = 6;
 }
-message ShipmentPayMonthReport {
-  //谁在请求 按照搜索账号控制显示范围
-  int64 year = 1;
-  int64 month = 2;
-  //当月已付/收金额 分
-  int64 paidAmount = 3;
-  //当月收货但是未付款的金额
-  int64 notPaidAmount = 4;
-  //当月总支付配送单数
-  int64 payCount = 5;
-  //当月代付配送单数
-  int64 specialPayCount = 6;
-  //医疗机构主动支付金额
-  int64 normalPaidAmount = 7;
-}
 
 message FactoringOrderDayReport {
   //谁在请求 按照搜索账号控制显示范围
@@ -1566,6 +1551,7 @@ message ContractPlanReportGetCondition {
   int64 tagId = 7;
   //按某份合同聚合
   string contractNo = 8;
+  //按子合同聚合等效于 按照 com,mi,medicine,contract聚合
   int64 contractId = 9;
 }
 //合同报表可选聚合维度
