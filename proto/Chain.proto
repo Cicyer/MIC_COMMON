@@ -1,7 +1,7 @@
 syntax = "proto3";
 
-package TestService;
-option go_package = "service/TestService;TestService";
+package ChainService;
+option go_package = "service/ChainService;ChainService";
 import public "google/protobuf/timestamp.proto";
 
 message GetCompanyHashReq {
