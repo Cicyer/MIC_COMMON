@@ -121,7 +121,7 @@ message UnreadCountResp {
 service MessageService {
   //平台消息发送
   rpc SendEmails(SendEmailsReq) returns (SendEmailsResp);
-  rpc SendSms(SendEmailsReq) returns (SendSmsResp);
+  rpc SendSms(SendSmsReq) returns (SendSmsResp);
   rpc SendMessage(SendMessageReq) returns (SendMessageResp);
   //平台消息管理
   rpc GetMessageRecords(GetMessageRecordsReq) returns (MessageListResp);
