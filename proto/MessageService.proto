@@ -26,11 +26,11 @@ message SendMessageReq {
   string infoType = 3;
   //发送操作人，不填为平台自主发送
   int64 managerId = 4;
-  //指定接收组织机构id
+  //指定接收组织机构id（如果操作的messagePermission处理不支持此项则此参数无效）
   repeated int64 toOrganizationIds = 5;
-  //指定接收人id
+  //指定接收人id（如果操作的messagePermission处理不支持此项则此参数无效）
   repeated int64 toUserIds = 6;
-  //该推送的业务权限类别
+  //该推送的业务权限类别- 此项决定如何将参数处理为推送结构
   string messagePermission = 7;
   //产生此业务推送的源头信息，根据permission不同连接对象不同
   int64 linkId = 8;

@@ -179,11 +179,11 @@ type SendMessageReq struct {
 	InfoType string `protobuf:"bytes,3,opt,name=infoType,proto3" json:"infoType,omitempty"`
 	//发送操作人，不填为平台自主发送
 	ManagerId int64 `protobuf:"varint,4,opt,name=managerId,proto3" json:"managerId,omitempty"`
-	//指定接收组织机构id
+	//指定接收组织机构id（如果操作的messagePermission处理不支持此项则此参数无效）
 	ToOrganizationIds []int64 `protobuf:"varint,5,rep,packed,name=toOrganizationIds,proto3" json:"toOrganizationIds,omitempty"`
-	//指定接收人id
+	//指定接收人id（如果操作的messagePermission处理不支持此项则此参数无效）
 	ToUserIds []int64 `protobuf:"varint,6,rep,packed,name=toUserIds,proto3" json:"toUserIds,omitempty"`
-	//该推送的业务权限类别
+	//该推送的业务权限类别- 此项决定如何将参数处理为推送结构
 	MessagePermission string `protobuf:"bytes,7,opt,name=messagePermission,proto3" json:"messagePermission,omitempty"`
 	//产生此业务推送的源头信息，根据permission不同连接对象不同
 	LinkId   int64  `protobuf:"varint,8,opt,name=linkId,proto3" json:"linkId,omitempty"`
