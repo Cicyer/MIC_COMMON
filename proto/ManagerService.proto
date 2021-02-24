@@ -469,7 +469,8 @@ message ListMiVo {
 //查询医疗机构 通用接口
 message CommonMIReq {
   string  miName = 1;
-  int64 managerId = 2;
+  string  miCode = 2;
+  int64 managerId = 3;
 }
 
 message CommonMIResp {
@@ -517,7 +518,8 @@ message UpdateMiResp {
 //配送企业通用查询
 message CommonCompanyReq {
   string  companyName = 1;
-  int64 managerId = 2;
+  string  companyCode = 2;
+  int64 managerId = 3;
 }
 
 message CommonCompanyResp {
