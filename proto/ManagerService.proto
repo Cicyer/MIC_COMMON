@@ -673,19 +673,20 @@ message ListShipmentPlanrVo {
   string medicineName = 7;
   string medicineCode = 8;
   string medicineSpecification = 9;
-  string shipmentPrice = 10;
-  string shipmentAmount = 11;
-  string orderAmount = 12;
+  int64 shipmentPrice = 10;
+  int64 shipmentAmount = 11;
+  int64 orderAmount = 12;
   string companyName = 13;
   string miName = 14;
-  string tpCreatedAt = 15;
-  string receiveAt = 16;
+  google.protobuf.Timestamp tpCreatedAt = 15;
+  google.protobuf.Timestamp receiveAt = 16;
   string planStatus = 17;
   string manufacturer = 18;
   string tagName = 19;
   string medicineForm = 20;
   string medicineUnit = 21;
-  string calculateRate = 22;
+  int64 calculateRate = 22;
+  int64 medicineId = 23;
 }
 //根据配送单号查询配送单详情
 message DetailShipmentOrderReq {
@@ -739,10 +740,10 @@ message ListShipmentPlanForOrderVo {
 }
 //招采单汇总
 message CountShipmentPlanReq {
-  google.protobuf.Timestamp stratDate = 1;
+  google.protobuf.Timestamp startDate = 1;
   google.protobuf.Timestamp endDate = 2;
-  string miCode = 3;
-  string companyCode = 4;
+  int64 miId = 3;
+  int64 companyId = 4;
   int64 managerId = 5;
 }
 
@@ -809,6 +810,7 @@ message ListShipmentOrderVo {
   google.protobuf.Timestamp sendOutAt = 8;
   google.protobuf.Timestamp receiveDeadline = 9;
   string shipmentStatus = 10;
+  string companyName = 11;
 }
 
 //配送单表头汇总
