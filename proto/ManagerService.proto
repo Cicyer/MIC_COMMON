@@ -471,10 +471,14 @@ message CommonMIReq {
   string  miName = 1;
   string  miCode = 2;
   int64 managerId = 3;
+  Page page = 4;
 }
 
 message CommonMIResp {
   repeated CommonMIVo list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
 }
 
 message CommonMIVo {
@@ -520,10 +524,14 @@ message CommonCompanyReq {
   string  companyName = 1;
   string  companyCode = 2;
   int64 managerId = 3;
+  Page page = 4;
 }
 
 message CommonCompanyResp {
   repeated CommonCompanyVo list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
 }
 
 message CommonCompanyVo {
