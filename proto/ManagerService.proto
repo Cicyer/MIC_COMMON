@@ -266,10 +266,14 @@ message MedicineListForQueryReq {
   string  medicineName = 1;
   string  medicineCode = 2;
   int64 managerId = 3;
+  Page page = 4;
 }
 
 message MedicineListForQueryResp {
   repeated MedicineListVo list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
 }
 
 message MedicineListForQueryVo {
