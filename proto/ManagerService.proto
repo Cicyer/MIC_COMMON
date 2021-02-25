@@ -67,7 +67,9 @@ message ContractListReq {
   int64 managerId = 10;
   string  medicineCode = 11;
   //备用
-  string  companyCode = 12;
+  string companyCode = 12;
+  int64  companyId = 13;
+  int64  miId = 14;
 }
 
 message ContractListResp {
