@@ -454,7 +454,6 @@ message ListMiReq {
   Page page = 4;
   int64 managerId = 5;
   repeated int64 miIds = 6;
-  repeated int64 comIds = 7;
 }
 
 message ListMiResp {
