@@ -98,6 +98,9 @@ message ContractListVo {
   string activeStatus = 16;
   int64  medicineId = 17;
   int64  companyId = 18;
+  int64  contractMiAmount = 19;
+  int64  contractMiReceive = 20;
+  string  manufacturer = 21;
 }
 //根据药品id 配送企业id 起始时间 查询合同列表
 message UpCheckContractReq {
@@ -670,6 +673,8 @@ message ListShipmentPlanReq {
   google.protobuf.Timestamp endDate = 8;
   Page page = 9;
   int64 managerId = 10;
+  int64 miId = 11;
+  int64 companyId = 12;
 }
 
 message ListShipmentPlanResp {
