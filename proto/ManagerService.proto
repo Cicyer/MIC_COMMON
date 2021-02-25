@@ -453,6 +453,8 @@ message ListMiReq {
   string  validStatus = 3;
   Page page = 4;
   int64 managerId = 5;
+  repeated int64 miIds = 6;
+  repeated int64 comIds = 7;
 }
 
 message ListMiResp {
@@ -1626,4 +1628,6 @@ service DataReportService {
   rpc GetValidContractInfo(GetValidContractInfoReq) returns (GetValidContractInfoResp);
   //获取目前的待支付金额
   rpc GetCurrentNeedPay(GetCurrentNeedPayReq) returns (GetCurrentNeedPayResp);
+
 }
+
