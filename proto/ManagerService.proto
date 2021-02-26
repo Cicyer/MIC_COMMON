@@ -1176,110 +1176,312 @@ message UpdateMiSpecialConfigReq {
 }
 message UpdateMiSpecialConfigResp {
 }
-message SumShipmentOrderDayReportsReq {
+
+//招采单报表可选聚合维度
+message PlanReportGroupCondition {
+  //直接聚合为单行，使用此项则其他聚合条件不生效
+  bool byAll = 1;
+  //时间维度聚合,注意对于月报，按日聚合无效，年报类推
+  bool byMonth = 2;
+  bool byYear = 3;
+  bool byDay = 4;
+  //业务维度
+  bool byMi = 5;
+  bool byCom = 6;
+  bool byMedicine = 7;
+
+}
+//招采单报表可选数据筛选维度
+message PlanReportGetCondition {
+  //指定获取哪家医院的数据
+  repeated int64 miIds = 1;
+  //指定获取哪家配送企业的数据
+  repeated int64 comIds = 2;
+  repeated string medicineCodes = 3;
+  //用于药品名模糊搜索，只显示5个候选药品
+  string medicineName = 4;
+  //用于医院名模糊搜索，只显示5个候选医院
+  string miName = 5;
+  //用于企业名模糊搜索，只显示5个候选医院
+  string comName = 6;
+  //按某个标签显示
+  int64 tagId = 7;
+}
+message GetShipmentPlanReportsReq {
   //谁在请求 按照搜索账号控制显示范围
   int64 managerId = 1;
-  google.protobuf.Timestamp startAt = 2;
-  google.protobuf.Timestamp endAt = 3;
+  //指定获取哪个医保局的订单报表数据，目前不支持不同医保局混合统计
+  int64 mibId = 2;
+  //报表的起止日期必填
+  google.protobuf.Timestamp startAt = 3;
+  google.protobuf.Timestamp endAt = 4;
+  PlanReportGetCondition optionalFilterCond = 5;
+  PlanReportGroupCondition optionalGroupCond = 6;
+}
+message CompanyReportVo {
+  int64 companyId = 1;
+  string companyName = 2;
+  string companyCode = 3;
+  string managerName = 4;
+  string managerPhone = 5;
+  string province = 6;
+  string city = 7;
+  string zone = 8;
+}
+message MiReportVo {
+  int64   miId = 1;
+  string  miCode = 2;
+  string  miName = 3;
+  string  miType = 4;
+  string  managerName = 5;
+  string  managerPhone = 6;
+  string  province = 7;
+  string  city = 8;
+  string  zone = 9;
+}
+message MedicineReportVo {
+  int64   medicineId = 1;
+  string  medicineName = 2;
+  string  medicineCode = 3;
+  string  medicineSpecification = 4;
+  string  medicineForm = 5;
+  string  medicinePackage = 6;
+  int64  calculateRate = 7;
+  string  manufacturer = 8;
+  string  medicineUnit = 9;
+  string tagName = 10;
+}
+message ShipmentPlanDayReport {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 year = 1;
+  int64 month = 2;
+  int64 day = 3;
+  int64 mibId = 4;
+  //如果聚合时不含此列，则信息不存在
+  CompanyReportVo companyInfo = 5;
+  MiReportVo miInfo = 6;
+  MedicineReportVo medicineInfo = 7;
+  //本日配送计划同步金额
+  int64 shipmentPlanAmount = 8;
+  int64 shipmentPlanCount = 9;
+  int64 shipmentPlanUnitCount = 10;
+  int64 shipmentPlanReceiveAmount = 11;
+  int64 shipmentPlanReceiveCount = 12;
+  int64 shipmentPlanReceiveUnitCount = 13;
+  int64 shipmentPlanNotSentAmount = 14;
+  int64 shipmentPlanNotSentCount = 15;
+  int64 shipmentPlanNotSentUnitCount = 16;
+  google.protobuf.Timestamp reportDate = 17;
+}
+message ShipmentPlanMonthReport {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 year = 1;
+  int64 month = 2;
+  int64 mibId = 3;
+  //如果聚合时不含此列，则信息不存在
+  CompanyReportVo companyInfo = 4;
+  MiReportVo miInfo = 5;
+  MedicineReportVo medicineInfo = 6;
+  //本日配送计划同步金额
+  int64 shipmentPlanAmount = 7;
+  int64 shipmentPlanCount = 8;
+  int64 shipmentPlanUnitCount = 9;
+  int64 shipmentPlanReceiveAmount = 10;
+  int64 shipmentPlanReceiveCount = 11;
+  int64 shipmentPlanReceiveUnitCount = 12;
+  int64 shipmentPlanNotSentAmount = 13;
+  int64 shipmentPlanNotSentCount = 14;
+  int64 shipmentPlanNotSentUnitCount = 15;
+  google.protobuf.Timestamp reportDate = 16;
+}
+message ShipmentPlanYearReport {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 year = 1;
+  int64 mibId = 2;
+  //如果聚合时不含此列，则信息不存在
+  CompanyReportVo companyInfo = 3;
+  MiReportVo miInfo = 4;
+  MedicineReportVo medicineInfo = 5;
+  //本日配送计划同步金额
+  int64 shipmentPlanAmount = 6;
+  int64 shipmentPlanCount = 7;
+  int64 shipmentPlanUnitCount = 8;
+  int64 shipmentPlanReceiveAmount = 9;
+  int64 shipmentPlanReceiveCount = 10;
+  int64 shipmentPlanReceiveUnitCount = 11;
+  int64 shipmentPlanNotSentAmount = 12;
+  int64 shipmentPlanNotSentCount = 13;
+  int64 shipmentPlanNotSentUnitCount = 14;
+  google.protobuf.Timestamp reportDate = 15;
+}
+message GetShipmentPlanDayReportsResp {
+  repeated ShipmentPlanDayReport list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+
+message GetShipmentPlanMonthReportsResp {
+  repeated ShipmentPlanMonthReport list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+message GetShipmentPlanYearReportsResp {
+  repeated ShipmentPlanYearReport list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+
+//配送单报表可选聚合维度
+message OrderReportGroupCondition {
+  //直接聚合为单行，使用此项则其他聚合条件不生效
+  bool byAll = 1;
+  //时间维度聚合,注意对于月报，按日聚合无效，年报类推
+  bool byMonth = 2;
+  bool byYear = 3;
+  bool byDay = 4;
+  //业务维度
+  bool byMi = 5;
+  bool byCom = 6;
+}
+//配送单报表可选数据筛选维度
+message OrderReportGetCondition {
   //指定获取哪家医院的数据
-  int64 miId = 4;
+  repeated int64 miIds = 1;
   //指定获取哪家配送企业的数据
-  int64 comId = 5;
+  repeated int64 comIds = 2;
+  //用于医院名模糊搜索，只显示5个候选医院
+  string miName = 3;
+  //用于配送企业名模糊搜索，只显示5个候选
+  string comName = 4;
+}
+
+message GetShipmentOrderReportsReq {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 managerId = 1;
+  //指定获取哪个医保局的订单报表数据，目前不支持不同医保局混合统计
+  int64 mibId = 2;
+  //报表的起止日期必填
+  google.protobuf.Timestamp startAt = 3;
+  google.protobuf.Timestamp endAt = 4;
+  OrderReportGetCondition optionalFilterCond = 5;
+  OrderReportGroupCondition optionalGroupCond = 6;
 }
 message ShipmentOrderDayReport {
   //谁在请求 按照搜索账号控制显示范围
   int64 year = 1;
   int64 month = 2;
   int64 day = 3;
-  //完成配送金额
-  int64 receiveAmount = 4;
-  //配送计划流单金额
-  int64 notSentAmount = 5;
+  int64 mibId = 4;
+  //如果聚合时不含此列，则信息不存在
+  CompanyReportVo companyInfo = 5;
+  MiReportVo miInfo = 6;
+  int64 shipmentOrderPaidAmount = 7;
+  int64 shipmentOrderPaidCount = 8;
+  int64 shipmentOrderSpecialPayAmount = 9;
+  int64 shipmentOrderSpecialPayCount = 10;
+  int64 shipmentOrderNormalPayAmount = 11;
+  int64 shipmentOrderNormalPayCount = 12;
+  int64 shipmentOrderReceiveAmount = 13;
+  int64 shipmentOrderReceiveCount = 14;
+  int64 shipmentOrderTimeoutAmount = 15;
+  int64 shipmentOrderTimeoutCount = 16;
+  google.protobuf.Timestamp reportDate = 17;
 }
-
-message SumShipmentOrderDayReportsResp {
+message ShipmentOrderMonthReport {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 year = 1;
+  int64 month = 2;
+  google.protobuf.Timestamp reportDate = 3;
+  int64 mibId = 4;
+  //如果聚合时不含此列，则信息不存在
+  CompanyReportVo companyInfo = 5;
+  MiReportVo miInfo = 6;
+  int64 shipmentOrderPaidAmount = 7;
+  int64 shipmentOrderPaidCount = 8;
+  int64 shipmentOrderSpecialPayAmount = 9;
+  int64 shipmentOrderSpecialPayCount = 10;
+  int64 shipmentOrderNormalPayAmount = 11;
+  int64 shipmentOrderNormalPayCount = 12;
+  int64 shipmentOrderReceiveAmount = 13;
+  int64 shipmentOrderReceiveCount = 14;
+  int64 shipmentOrderTimeoutAmount = 15;
+  int64 shipmentOrderTimeoutCount = 16;
+}
+message ShipmentOrderYearReport {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 year = 1;
+  google.protobuf.Timestamp reportDate = 2;
+  int64 mibId = 3;
+  //如果聚合时不含此列，则信息不存在
+  CompanyReportVo companyInfo = 4;
+  MiReportVo miInfo = 5;
+  int64 shipmentOrderPaidAmount = 6;
+  int64 shipmentOrderPaidCount = 7;
+  int64 shipmentOrderSpecialPayAmount = 8;
+  int64 shipmentOrderSpecialPayCount = 9;
+  int64 shipmentOrderNormalPayAmount = 10;
+  int64 shipmentOrderNormalPayCount = 11;
+  int64 shipmentOrderReceiveAmount = 12;
+  int64 shipmentOrderReceiveCount = 13;
+  int64 shipmentOrderTimeoutAmount = 14;
+  int64 shipmentOrderTimeoutCount = 15;
+}
+message GetShipmentOrderDayReportsResp {
   repeated ShipmentOrderDayReport list = 1;
   int64 total = 2;
   int64 pageSize = 3;
   int64 pageNumber = 4;
 }
-message SumShipmentOrderReportsReq {
-  //谁在请求 按照搜索账号控制显示范围
-  int64 managerId = 1;
-  //聚合报表范围
-  google.protobuf.Timestamp startAt = 2;
-  google.protobuf.Timestamp endAt = 3;
-  //指定获取哪家医院的聚合数据
-  int64 miId = 4;
-  //指定获取哪家配送企业的聚合数据 不可同时指定
-  int64 comId = 5;
-}
-
-message ShipmentOrderMonthReport {
-  //谁在请求 按照搜索账号控制显示范围
-  int64 year = 1;
-  int64 month = 2;
-  //完成配送金额
-  int64 receiveAmount = 3;
-  //本月招采发布金额
-  int64 shipmentPlanAmount = 4;
-  //本月发布的配送计划单数
-  int64 shipmentPlanTotalCount = 5;
-  //配送计划流单数
-  int64 notSentCount = 6;
-  //超时配送单数
-  int64 shipmentOrderOutTimeCount = 7;
-  //总配送单数
-  int64 shipmentOrderTotalCount = 8;
-}
-
-message SumShipmentOrderReportsResp {
+message GetShipmentOrderMonthReportsResp {
   repeated ShipmentOrderMonthReport list = 1;
   int64 total = 2;
   int64 pageSize = 3;
   int64 pageNumber = 4;
 }
-
-message SumShipmentPayDayReportsReq {
-  //谁在请求 按照搜索账号控制显示范围
-  int64 managerId = 1;
-  google.protobuf.Timestamp startAt = 2;
-  google.protobuf.Timestamp endAt = 3;
-  //指定获取哪家医院的数据
-  int64 miId = 4;
-  //指定获取哪家配送企业的数据
-  int64 comId = 5;
-}
-
-message ShipmentPayDayReport {
-  //谁在请求 按照搜索账号控制显示范围
-  int64 year = 1;
-  int64 month = 2;
-  int64 day = 3;
-  //已收药款金额
-  int64 paidAmount = 4;
-  //代为支付金额
-  int64 specialPayAmount = 5;
-  //医疗机构主动支付金额
-  int64 normalPaidAmount = 6;
-}
-
-message SumShipmentPayDayReportsResp {
-  repeated ShipmentPayDayReport list = 1;
+message GetShipmentOrderYearReportsResp {
+  repeated ShipmentOrderYearReport list = 1;
   int64 total = 2;
   int64 pageSize = 3;
   int64 pageNumber = 4;
 }
 
-message SumShipmentPayMonthReportsReq {
+
+//配送单报表可选聚合维度
+message FactoringReportGroupCondition {
+  //直接聚合为单行，使用此项则其他聚合条件不生效
+  bool byAll = 1;
+  //时间维度聚合,注意对于月报，按日聚合无效，年报类推
+  bool byMonth = 2;
+  bool byYear = 3;
+  bool byDay = 4;
+  //业务维度
+  bool byMi = 5;
+  bool byCom = 6;
+}
+//配送单报表可选数据筛选维度
+message FactoringReportGetCondition {
+  //指定获取哪家医院的数据
+  repeated int64 miIds = 1;
+  //指定获取哪家配送企业的数据
+  repeated int64 comIds = 2;
+  //用于医院名模糊搜索，只显示5个候选医院
+  string miName = 3;
+  //用于配送企业名模糊搜索，只显示5个候选
+  string comName = 4;
+}
+message GetFactoringOrderReportsReq {
   //谁在请求 按照搜索账号控制显示范围
   int64 managerId = 1;
-  google.protobuf.Timestamp startAt = 2;
-  google.protobuf.Timestamp endAt = 3;
-  //指定获取哪家医院的聚合数据
-  int64 miId = 4;
-  //指定获取哪家配送企业的聚合数据 不可同时指定
-  int64 comId = 5;
+  //指定获取哪个医保局的订单报表数据，目前不支持不同医保局混合统计
+  int64 mibId = 2;
+  //报表的起止日期必填
+  google.protobuf.Timestamp startAt = 3;
+  google.protobuf.Timestamp endAt = 4;
+  FactoringReportGetCondition optionalFilterCond = 5;
+  FactoringReportGroupCondition optionalGroupCond = 6;
 }
 message ShipmentPayMonthReport {
   //谁在请求 按照搜索账号控制显示范围
@@ -1297,86 +1499,254 @@ message ShipmentPayMonthReport {
   int64 normalPaidAmount = 7;
 }
 
-message SumShipmentPayMonthReportsResp {
-  repeated ShipmentPayMonthReport list = 1;
-  int64 total = 2;
-  int64 pageSize = 3;
-  int64 pageNumber = 4;
-}
-
-message SumFactoringDayReportsReq {
-  //谁在请求 按照搜索账号控制显示范围
-  int64 managerId = 1;
-  google.protobuf.Timestamp startAt = 2;
-  google.protobuf.Timestamp endAt = 3;
-  //指定获取哪家医院的数据
-  int64 miId = 4;
-  //指定获取哪家配送企业的数据
-  int64 comId = 5;
-}
-
-message FactoringDayReport {
+message FactoringOrderDayReport {
   //谁在请求 按照搜索账号控制显示范围
   int64 year = 1;
   int64 month = 2;
   int64 day = 3;
-  //保理放款金额
-  int64 factoringAmount = 4;
-  //保理待审核金额
-  int64 factoringApplyingAmount = 5;
-  //保理驳回金额
-  int64 factoringFailAmount = 6;
+  int64 mibId = 4;
+  //如果聚合时不含此列，则信息不存在
+  CompanyReportVo companyInfo = 5;
+  MiReportVo miInfo = 6;
+  int64 factoringAmount = 7;
+  int64 factoringCount = 8;
+  int64 factoringFailAmount = 9;
+  int64 factoringFailCount = 10;
+  int64 factoringApplyAmount = 11;
+  int64 factoringApplyCount = 12;
+  int64 shipmentOrderFactoringNotApplyAmount = 13;
+  int64 shipmentOrderFactoringNotApplyCount = 14;
+  google.protobuf.Timestamp reportDate = 15;
 }
-
-message SumFactoringDayReportsResp {
-  repeated FactoringDayReport list = 1;
+message GetFactoringOrderDayReportsResp {
+  repeated FactoringOrderDayReport list = 1;
   int64 total = 2;
   int64 pageSize = 3;
   int64 pageNumber = 4;
 }
-
-message SumFactoringMonthReportsReq {
-  //谁在请求 按照搜索账号控制显示范围
-  int64 managerId = 1;
-  google.protobuf.Timestamp startAt = 2;
-  google.protobuf.Timestamp endAt = 3;
-  //指定获取哪家医院的聚合数据
-  int64 miId = 4;
-  //指定获取哪家配送企业的聚合数据 不可同时指定
-  int64 comId = 5;
-}
-
-message FactoringMonthReport {
+message FactoringOrderMonthReport {
   //谁在请求 按照搜索账号控制显示范围
   int64 year = 1;
   int64 month = 2;
-  //放款金额 分
-  int64 factoringAmount = 3;
-  //保理成功单数
-  int64 factoringSuccessCount = 4;
-  //保理申请总单数
-  int64 factoringTotalCount = 5;
-  //配送单数
-  int64 shipmentOrderTotalCount = 6;
-  //配送单申请保理数量
-  int64 shipmentFactoringCount = 7;
-  //保理待审核金额
-  int64 factoringApplyingAmount = 8;
-  //保理驳回金额
-  int64 factoringFailAmount = 9;
-
+  int64 mibId = 3;
+  //如果聚合时不含此列，则信息不存在
+  CompanyReportVo companyInfo = 4;
+  MiReportVo miInfo = 5;
+  int64 factoringAmount = 6;
+  int64 factoringCount = 7;
+  int64 factoringFailAmount = 8;
+  int64 factoringFailCount = 9;
+  int64 factoringApplyAmount = 10;
+  int64 factoringApplyCount = 11;
+  int64 shipmentOrderFactoringNotApplyAmount = 12;
+  int64 shipmentOrderFactoringNotApplyCount = 13;
+  google.protobuf.Timestamp reportDate = 14;
 }
-
-message SumFactoringMonthReportsResp {
-  repeated FactoringMonthReport list = 1;
+message GetFactoringOrderMonthReportsResp {
+  repeated FactoringOrderMonthReport list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+message FactoringOrderYearReport {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 year = 1;
+  google.protobuf.Timestamp reportDate = 2;
+  int64 mibId = 3;
+  //如果聚合时不含此列，则信息不存在
+  CompanyReportVo companyInfo = 4;
+  MiReportVo miInfo = 5;
+  int64 factoringAmount = 6;
+  int64 factoringCount = 7;
+  int64 factoringFailAmount = 8;
+  int64 factoringFailCount = 9;
+  int64 factoringApplyAmount = 10;
+  int64 factoringApplyCount = 11;
+  int64 shipmentOrderFactoringNotApplyAmount = 12;
+  int64 shipmentOrderFactoringNotApplyCount = 13;
+}
+message GetFactoringOrderYearReportsResp {
+  repeated FactoringOrderYearReport list = 1;
   int64 total = 2;
   int64 pageSize = 3;
   int64 pageNumber = 4;
 }
 
+//合同报表可选数据筛选维度
+message ContractPlanReportGetCondition {
+  //指定获取哪家医院的数据
+  repeated int64 miIds = 1;
+  //指定获取哪家配送企业的数据
+  repeated int64 comIds = 2;
+  repeated string medicineCodes = 3;
+  //用于药品名模糊搜索，只显示5个候选药品
+  string medicineName = 4;
+  //用于医院名模糊搜索，只显示5个候选医院
+  string miName = 5;
+  //用于企业名模糊搜索，只显示5个候选医院
+  string comName = 6;
+  //按某个标签显示
+  int64 tagId = 7;
+  //按某份合同聚合
+  string contractNo = 8;
+  int64 contractId = 9;
+}
+//合同报表可选聚合维度
+message ContractPlanReportGroupCondition {
+  //直接聚合为单行，使用此项则其他聚合条件不生效
+  bool byAll = 1;
+  //时间维度聚合,注意对于月报，按日聚合无效，年报类推
+  bool byMonth = 2;
+  bool byYear = 3;
+  bool byDay = 4;
+  //业务维度
+  bool byMi = 5;
+  bool byCom = 6;
+  bool byMedicine = 7;
+  bool byContract = 8;
+  //按照子合同聚合
+  bool byContractMi = 9;
+}
+message GetContractPlanReportsReq {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 managerId = 1;
+  //指定获取哪个医保局的订单报表数据，目前不支持不同医保局混合统计
+  int64 mibId = 2;
+  //报表的起止日期必填
+  google.protobuf.Timestamp startAt = 3;
+  google.protobuf.Timestamp endAt = 4;
+  ContractPlanReportGetCondition optionalFilterCond = 5;
+  ContractPlanReportGroupCondition optionalGroupCond = 6;
+}
+
+
+message ContractReportVo {
+  string contractNo = 1;
+  //投标企业名
+  string tenderCompany = 2;
+  //中标价格 单位分/包装
+  int64  medicinePrice = 3;
+  //已确认收货的数量
+  int64  medicineReceive = 4;
+  //预计采购量
+  int64  totalAmount = 5;
+  google.protobuf.Timestamp startAt = 6;
+  google.protobuf.Timestamp endAt = 7;
+}
+message ContractMiReportVo {
+  int64   miContractId = 1;
+  int64  medicinePrice = 2;
+  int64  medicineAmount = 3;
+  int64  medicineSent = 4;
+  int64  medicineReceive = 5;
+}
+message ContractPlanDayReport {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 year = 1;
+  int64 month = 2;
+  int64 day = 3;
+  int64 mibId = 4;
+  //如果聚合时不含此列，则信息不存在
+  CompanyReportVo companyInfo = 5;
+  MiReportVo miInfo = 6;
+  MedicineReportVo medicineInfo = 7;
+  //本日配送计划同步金额
+  int64 shipmentPlanAmount = 8;
+  int64 shipmentPlanCount = 9;
+  int64 shipmentPlanUnitCount = 10;
+  int64 shipmentPlanReceiveAmount = 11;
+  int64 shipmentPlanReceiveCount = 12;
+  int64 shipmentPlanReceiveUnitCount = 13;
+  int64 shipmentPlanNotSentAmount = 14;
+  int64 shipmentPlanNotSentCount = 15;
+  int64 shipmentPlanNotSentUnitCount = 16;
+  int64 factoringAmount = 17;
+  google.protobuf.Timestamp reportDate = 18;
+  ContractReportVo contractInfo = 19;
+  ContractMiReportVo contractMiInfo = 20;
+}
+
+message GetContractPlanDayReportsResp {
+  repeated ContractPlanDayReport list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+
+message ContractPlanMonthReport {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 year = 1;
+  int64 month = 2;
+  ContractMiReportVo contractMiInfo = 3;
+  int64 mibId = 4;
+  //如果聚合时不含此列，则信息不存在
+  CompanyReportVo companyInfo = 5;
+  MiReportVo miInfo = 6;
+  MedicineReportVo medicineInfo = 7;
+  //本日配送计划同步金额
+  int64 shipmentPlanAmount = 8;
+  int64 shipmentPlanCount = 9;
+  int64 shipmentPlanUnitCount = 10;
+  int64 shipmentPlanReceiveAmount = 11;
+  int64 shipmentPlanReceiveCount = 12;
+  int64 shipmentPlanReceiveUnitCount = 13;
+  int64 shipmentPlanNotSentAmount = 14;
+  int64 shipmentPlanNotSentCount = 15;
+  int64 shipmentPlanNotSentUnitCount = 16;
+  int64 factoringAmount = 17;
+  google.protobuf.Timestamp reportDate = 18;
+  ContractReportVo contractInfo = 19;
+}
+
+message GetContractPlanMonthReportsResp {
+  repeated ContractPlanMonthReport list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+
+message ContractPlanYearReport {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 year = 1;
+  ContractReportVo contractInfo = 2;
+  ContractMiReportVo contractMiInfo = 3;
+  int64 mibId = 4;
+  //如果聚合时不含此列，则信息不存在
+  CompanyReportVo companyInfo = 5;
+  MiReportVo miInfo = 6;
+  MedicineReportVo medicineInfo = 7;
+  //本日配送计划同步金额
+  int64 shipmentPlanAmount = 8;
+  int64 shipmentPlanCount = 9;
+  int64 shipmentPlanUnitCount = 10;
+  int64 shipmentPlanReceiveAmount = 11;
+  int64 shipmentPlanReceiveCount = 12;
+  int64 shipmentPlanReceiveUnitCount = 13;
+  int64 shipmentPlanNotSentAmount = 14;
+  int64 shipmentPlanNotSentCount = 15;
+  int64 shipmentPlanNotSentUnitCount = 16;
+  int64 factoringAmount = 17;
+  google.protobuf.Timestamp reportDate = 18;
+}
+
+message GetContractPlanYearReportsResp {
+  repeated ContractPlanYearReport list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
 
 //查询当前时间点生效的合同信息
 message GetValidContractInfoReq {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 managerId = 1;
+  //指定获取哪家医院的聚合数据
+  int64 miId = 2;
+  //指定获取哪家配送企业的聚合数据 不可同时指定
+  int64 comId = 3;
+}
+//查询当前时间点需要支付的金额
+message GetCurrentNeedPayReq {
   //谁在请求 按照搜索账号控制显示范围
   int64 managerId = 1;
   //指定获取哪家医院的聚合数据
@@ -1392,7 +1762,10 @@ message GetValidContractInfoResp {
   int64 validContractCount = 2;
 }
 
-
+message GetCurrentNeedPayResp {
+  //待支付金额
+  int64 needPayAmount = 1;
+}
 //=======证书内容Any结构定义=========
 
 //=========================
@@ -1488,19 +1861,33 @@ service ManagerService {
 
 //=========数据报表服务================
 service DataReportService {
-  //查询日配送单聚合数据(依然保持按日)
-  rpc SumShipmentOrderDayReports(SumShipmentOrderDayReportsReq) returns (SumShipmentOrderDayReportsResp);
-  //查询月配送单报表聚合数据
-  rpc SumShipmentOrderMonthReports(SumShipmentOrderReportsReq) returns (SumShipmentOrderReportsResp);
-  //查询日支付单聚合数据(依然保持按日)
-  rpc SumShipmentPayDayReports(SumShipmentPayDayReportsReq) returns (SumShipmentPayDayReportsResp);
-  //查询月支付单报表聚合数据
-  rpc SumShipmentPayMonthReports(SumShipmentPayMonthReportsReq) returns (SumShipmentPayMonthReportsResp);
-  //查询日保理单聚合数据(依然保持按日)
-  rpc SumFactoringDayReports(SumFactoringDayReportsReq) returns (SumFactoringDayReportsResp);
-  //查询月保理单报表聚合数据
-  rpc SumFactoringMonthReports(SumFactoringMonthReportsReq) returns (SumFactoringMonthReportsResp);
+  //查询招采计划 日报数据
+  rpc GetShipmentPlanDayReports(GetShipmentPlanReportsReq) returns (GetShipmentPlanDayReportsResp);
+  //查询招采计划 月报数据
+  rpc GetShipmentPlanMonthReports(GetShipmentPlanReportsReq) returns (GetShipmentPlanMonthReportsResp);
+  //查询招采计划 年报数据
+  rpc GetShipmentPlanYearReports(GetShipmentPlanReportsReq) returns (GetShipmentPlanYearReportsResp);
+  //查询配送单 日报数据
+  rpc GetShipmentOrderDayReports(GetShipmentOrderReportsReq) returns (GetShipmentOrderDayReportsResp);
+  //查询配送单 月报数据
+  rpc GetShipmentOrderMonthReports(GetShipmentOrderReportsReq) returns (GetShipmentOrderMonthReportsResp);
+  //查询配送单 年报数据
+  rpc GetShipmentOrderYearReports(GetShipmentOrderReportsReq) returns (GetShipmentOrderYearReportsResp);
+  //查询保理订单 日报数据
+  rpc GetFactoringOrderDayReports(GetFactoringOrderReportsReq) returns (GetFactoringOrderDayReportsResp);
+  //查询保理订单 月报数据
+  rpc GetFactoringOrderMonthReports(GetFactoringOrderReportsReq) returns (GetFactoringOrderMonthReportsResp);
+  //查询保理订单 年报数据
+  rpc GetFactoringOrderYearReports(GetFactoringOrderReportsReq) returns (GetFactoringOrderYearReportsResp);
+  //查询合同信息 日报数据
+  rpc GetContractPlanDayReports(GetContractPlanReportsReq) returns (GetContractPlanDayReportsResp);
+  //查询合同信息 月报数据
+  rpc GetContractPlanMonthReports(GetContractPlanReportsReq) returns (GetContractPlanMonthReportsResp);
+  //查询合同信息 年报数据
+  rpc GetContractPlanYearReports(GetContractPlanReportsReq) returns (GetContractPlanYearReportsResp);
 
   //查询某医保局下生效合同的统计数据
   rpc GetValidContractInfo(GetValidContractInfoReq) returns (GetValidContractInfoResp);
+  //获取目前的待支付金额
+  rpc GetCurrentNeedPay(GetCurrentNeedPayReq) returns (GetCurrentNeedPayResp);
 }

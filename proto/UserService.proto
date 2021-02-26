@@ -96,6 +96,7 @@ message UserDetail {
   string email = 10;
   string roleName = 11;
   string activeStatus = 12;
+  string accountStatus = 13;
 }
 
 message ListRoleReq {
