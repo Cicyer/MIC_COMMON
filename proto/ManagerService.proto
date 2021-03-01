@@ -1738,6 +1738,64 @@ message GetShipmentFactoringHashResp {
   int64 pageNumber = 4;
 }
 
+
+message GetShipmentRankMedicineDataYearReq {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 managerId = 1;
+  //指定获取哪个医保局的订单报表数据，目前不支持不同医保局混合统计
+  int64 mibId = 2;
+  //报表的起止日期必填
+  google.protobuf.Timestamp startAt = 3;
+  google.protobuf.Timestamp endAt = 4;
+  int64 rankCount = 5;
+}
+
+message ShipmentRankMedicineDataYear {
+  int64 rank = 1;
+  //本年配送计划同步金额 分
+  int64 shipmentPlanAmount = 2;
+  string medicineName = 3;
+}
+message GetShipmentRankMedicineDataYearResp {
+  repeated ShipmentRankMedicineDataYear list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+
+
+message GetShipmentRankCompanyDataYearReq {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 managerId = 1;
+  //指定获取哪个医保局的订单报表数据，目前不支持不同医保局混合统计
+  int64 mibId = 2;
+  //报表的起止日期必填
+  google.protobuf.Timestamp startAt = 3;
+  google.protobuf.Timestamp endAt = 4;
+  int64 rankCount = 5;
+  //需要展示的药品数量
+  int64 medicineCount = 6;
+}
+
+message ShipmentRankCompanyMedicine {
+  string medicineName = 1;
+}
+message ShipmentRankCompanyDataYear {
+  int64 rank = 1;
+  string comName = 2;
+  string comCode = 3;
+  int64 shipmentPlanAmount = 4;
+  string province = 5;
+  string city = 6;
+  string zone = 7;
+  repeated ShipmentRankCompanyMedicine medicines = 8;
+}
+message GetShipmentRankCompanyDataYearResp {
+  repeated ShipmentRankCompanyDataYear list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
 service ManagerService {
   //合同相关
   rpc ListContract(ContractListReq) returns(ContractListResp);
@@ -1861,4 +1919,12 @@ service HashService {
   rpc GetShipmentOrderHash(GetShipmentOrderHashReq) returns (GetShipmentOrderHashResp);
   rpc GetShipmentPayHash(GetShipmentPayHashReq) returns (GetShipmentPayHashResp);
   rpc GetShipmentFactoringHash(GetShipmentFactoringHashReq) returns (GetShipmentFactoringHashResp);
+}
+
+//============排名服务==================================
+service RankService {
+  //按年查询药品履约率排名
+  rpc GetShipmentRankMedicineDataYear(GetShipmentRankMedicineDataYearReq) returns (GetShipmentRankMedicineDataYearResp);
+  rpc GetShipmentRankCompanyDataYear(GetShipmentRankCompanyDataYearReq) returns (GetShipmentRankCompanyDataYearResp);
+
 }

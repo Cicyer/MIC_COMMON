@@ -2998,3 +2998,127 @@ var HashService_ServiceDesc = grpc.ServiceDesc{
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "ManagerService.proto",
 }
+
+// RankServiceClient is the client API for RankService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type RankServiceClient interface {
+	//按年查询药品履约率排名
+	GetShipmentRankMedicineDataYear(ctx context.Context, in *GetShipmentRankMedicineDataYearReq, opts ...grpc.CallOption) (*GetShipmentRankMedicineDataYearResp, error)
+	GetShipmentRankCompanyDataYear(ctx context.Context, in *GetShipmentRankCompanyDataYearReq, opts ...grpc.CallOption) (*GetShipmentRankCompanyDataYearResp, error)
+}
+
+type rankServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewRankServiceClient(cc grpc.ClientConnInterface) RankServiceClient {
+	return &rankServiceClient{cc}
+}
+
+func (c *rankServiceClient) GetShipmentRankMedicineDataYear(ctx context.Context, in *GetShipmentRankMedicineDataYearReq, opts ...grpc.CallOption) (*GetShipmentRankMedicineDataYearResp, error) {
+	out := new(GetShipmentRankMedicineDataYearResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.RankService/GetShipmentRankMedicineDataYear", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rankServiceClient) GetShipmentRankCompanyDataYear(ctx context.Context, in *GetShipmentRankCompanyDataYearReq, opts ...grpc.CallOption) (*GetShipmentRankCompanyDataYearResp, error) {
+	out := new(GetShipmentRankCompanyDataYearResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.RankService/GetShipmentRankCompanyDataYear", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// RankServiceServer is the server API for RankService service.
+// All implementations must embed UnimplementedRankServiceServer
+// for forward compatibility
+type RankServiceServer interface {
+	//按年查询药品履约率排名
+	GetShipmentRankMedicineDataYear(context.Context, *GetShipmentRankMedicineDataYearReq) (*GetShipmentRankMedicineDataYearResp, error)
+	GetShipmentRankCompanyDataYear(context.Context, *GetShipmentRankCompanyDataYearReq) (*GetShipmentRankCompanyDataYearResp, error)
+	mustEmbedUnimplementedRankServiceServer()
+}
+
+// UnimplementedRankServiceServer must be embedded to have forward compatible implementations.
+type UnimplementedRankServiceServer struct {
+}
+
+func (UnimplementedRankServiceServer) GetShipmentRankMedicineDataYear(context.Context, *GetShipmentRankMedicineDataYearReq) (*GetShipmentRankMedicineDataYearResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetShipmentRankMedicineDataYear not implemented")
+}
+func (UnimplementedRankServiceServer) GetShipmentRankCompanyDataYear(context.Context, *GetShipmentRankCompanyDataYearReq) (*GetShipmentRankCompanyDataYearResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetShipmentRankCompanyDataYear not implemented")
+}
+func (UnimplementedRankServiceServer) mustEmbedUnimplementedRankServiceServer() {}
+
+// UnsafeRankServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to RankServiceServer will
+// result in compilation errors.
+type UnsafeRankServiceServer interface {
+	mustEmbedUnimplementedRankServiceServer()
+}
+
+func RegisterRankServiceServer(s grpc.ServiceRegistrar, srv RankServiceServer) {
+	s.RegisterService(&RankService_ServiceDesc, srv)
+}
+
+func _RankService_GetShipmentRankMedicineDataYear_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetShipmentRankMedicineDataYearReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RankServiceServer).GetShipmentRankMedicineDataYear(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.RankService/GetShipmentRankMedicineDataYear",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RankServiceServer).GetShipmentRankMedicineDataYear(ctx, req.(*GetShipmentRankMedicineDataYearReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RankService_GetShipmentRankCompanyDataYear_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetShipmentRankCompanyDataYearReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RankServiceServer).GetShipmentRankCompanyDataYear(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.RankService/GetShipmentRankCompanyDataYear",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RankServiceServer).GetShipmentRankCompanyDataYear(ctx, req.(*GetShipmentRankCompanyDataYearReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// RankService_ServiceDesc is the grpc.ServiceDesc for RankService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var RankService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "ManagerService.RankService",
+	HandlerType: (*RankServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "GetShipmentRankMedicineDataYear",
+			Handler:    _RankService_GetShipmentRankMedicineDataYear_Handler,
+		},
+		{
+			MethodName: "GetShipmentRankCompanyDataYear",
+			Handler:    _RankService_GetShipmentRankCompanyDataYear_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "ManagerService.proto",
+}

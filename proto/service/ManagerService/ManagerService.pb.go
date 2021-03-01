@@ -16359,6 +16359,535 @@ func (x *GetShipmentFactoringHashResp) GetPageNumber() int64 {
 	return 0
 }
 
+type GetShipmentRankMedicineDataYearReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	//谁在请求 按照搜索账号控制显示范围
+	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	//指定获取哪个医保局的订单报表数据，目前不支持不同医保局混合统计
+	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId,omitempty"`
+	//报表的起止日期必填
+	StartAt   *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=startAt,proto3" json:"startAt,omitempty"`
+	EndAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=endAt,proto3" json:"endAt,omitempty"`
+	RankCount int64                  `protobuf:"varint,5,opt,name=rankCount,proto3" json:"rankCount,omitempty"`
+}
+
+func (x *GetShipmentRankMedicineDataYearReq) Reset() {
+	*x = GetShipmentRankMedicineDataYearReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_ManagerService_proto_msgTypes[201]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetShipmentRankMedicineDataYearReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetShipmentRankMedicineDataYearReq) ProtoMessage() {}
+
+func (x *GetShipmentRankMedicineDataYearReq) ProtoReflect() protoreflect.Message {
+	mi := &file_ManagerService_proto_msgTypes[201]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetShipmentRankMedicineDataYearReq.ProtoReflect.Descriptor instead.
+func (*GetShipmentRankMedicineDataYearReq) Descriptor() ([]byte, []int) {
+	return file_ManagerService_proto_rawDescGZIP(), []int{201}
+}
+
+func (x *GetShipmentRankMedicineDataYearReq) GetManagerId() int64 {
+	if x != nil {
+		return x.ManagerId
+	}
+	return 0
+}
+
+func (x *GetShipmentRankMedicineDataYearReq) GetMibId() int64 {
+	if x != nil {
+		return x.MibId
+	}
+	return 0
+}
+
+func (x *GetShipmentRankMedicineDataYearReq) GetStartAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.StartAt
+	}
+	return nil
+}
+
+func (x *GetShipmentRankMedicineDataYearReq) GetEndAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.EndAt
+	}
+	return nil
+}
+
+func (x *GetShipmentRankMedicineDataYearReq) GetRankCount() int64 {
+	if x != nil {
+		return x.RankCount
+	}
+	return 0
+}
+
+type ShipmentRankMedicineDataYear struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Rank int64 `protobuf:"varint,1,opt,name=rank,proto3" json:"rank,omitempty"`
+	//本年配送计划同步金额 分
+	ShipmentPlanAmount int64  `protobuf:"varint,2,opt,name=shipmentPlanAmount,proto3" json:"shipmentPlanAmount,omitempty"`
+	MedicineName       string `protobuf:"bytes,3,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
+}
+
+func (x *ShipmentRankMedicineDataYear) Reset() {
+	*x = ShipmentRankMedicineDataYear{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_ManagerService_proto_msgTypes[202]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ShipmentRankMedicineDataYear) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ShipmentRankMedicineDataYear) ProtoMessage() {}
+
+func (x *ShipmentRankMedicineDataYear) ProtoReflect() protoreflect.Message {
+	mi := &file_ManagerService_proto_msgTypes[202]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ShipmentRankMedicineDataYear.ProtoReflect.Descriptor instead.
+func (*ShipmentRankMedicineDataYear) Descriptor() ([]byte, []int) {
+	return file_ManagerService_proto_rawDescGZIP(), []int{202}
+}
+
+func (x *ShipmentRankMedicineDataYear) GetRank() int64 {
+	if x != nil {
+		return x.Rank
+	}
+	return 0
+}
+
+func (x *ShipmentRankMedicineDataYear) GetShipmentPlanAmount() int64 {
+	if x != nil {
+		return x.ShipmentPlanAmount
+	}
+	return 0
+}
+
+func (x *ShipmentRankMedicineDataYear) GetMedicineName() string {
+	if x != nil {
+		return x.MedicineName
+	}
+	return ""
+}
+
+type GetShipmentRankMedicineDataYearResp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	List       []*ShipmentRankMedicineDataYear `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64                           `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64                           `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64                           `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+}
+
+func (x *GetShipmentRankMedicineDataYearResp) Reset() {
+	*x = GetShipmentRankMedicineDataYearResp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_ManagerService_proto_msgTypes[203]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetShipmentRankMedicineDataYearResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetShipmentRankMedicineDataYearResp) ProtoMessage() {}
+
+func (x *GetShipmentRankMedicineDataYearResp) ProtoReflect() protoreflect.Message {
+	mi := &file_ManagerService_proto_msgTypes[203]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetShipmentRankMedicineDataYearResp.ProtoReflect.Descriptor instead.
+func (*GetShipmentRankMedicineDataYearResp) Descriptor() ([]byte, []int) {
+	return file_ManagerService_proto_rawDescGZIP(), []int{203}
+}
+
+func (x *GetShipmentRankMedicineDataYearResp) GetList() []*ShipmentRankMedicineDataYear {
+	if x != nil {
+		return x.List
+	}
+	return nil
+}
+
+func (x *GetShipmentRankMedicineDataYearResp) GetTotal() int64 {
+	if x != nil {
+		return x.Total
+	}
+	return 0
+}
+
+func (x *GetShipmentRankMedicineDataYearResp) GetPageSize() int64 {
+	if x != nil {
+		return x.PageSize
+	}
+	return 0
+}
+
+func (x *GetShipmentRankMedicineDataYearResp) GetPageNumber() int64 {
+	if x != nil {
+		return x.PageNumber
+	}
+	return 0
+}
+
+type GetShipmentRankCompanyDataYearReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	//谁在请求 按照搜索账号控制显示范围
+	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	//指定获取哪个医保局的订单报表数据，目前不支持不同医保局混合统计
+	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId,omitempty"`
+	//报表的起止日期必填
+	StartAt   *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=startAt,proto3" json:"startAt,omitempty"`
+	EndAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=endAt,proto3" json:"endAt,omitempty"`
+	RankCount int64                  `protobuf:"varint,5,opt,name=rankCount,proto3" json:"rankCount,omitempty"`
+	//需要展示的药品数量
+	MedicineCount int64 `protobuf:"varint,6,opt,name=medicineCount,proto3" json:"medicineCount,omitempty"`
+}
+
+func (x *GetShipmentRankCompanyDataYearReq) Reset() {
+	*x = GetShipmentRankCompanyDataYearReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_ManagerService_proto_msgTypes[204]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetShipmentRankCompanyDataYearReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetShipmentRankCompanyDataYearReq) ProtoMessage() {}
+
+func (x *GetShipmentRankCompanyDataYearReq) ProtoReflect() protoreflect.Message {
+	mi := &file_ManagerService_proto_msgTypes[204]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetShipmentRankCompanyDataYearReq.ProtoReflect.Descriptor instead.
+func (*GetShipmentRankCompanyDataYearReq) Descriptor() ([]byte, []int) {
+	return file_ManagerService_proto_rawDescGZIP(), []int{204}
+}
+
+func (x *GetShipmentRankCompanyDataYearReq) GetManagerId() int64 {
+	if x != nil {
+		return x.ManagerId
+	}
+	return 0
+}
+
+func (x *GetShipmentRankCompanyDataYearReq) GetMibId() int64 {
+	if x != nil {
+		return x.MibId
+	}
+	return 0
+}
+
+func (x *GetShipmentRankCompanyDataYearReq) GetStartAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.StartAt
+	}
+	return nil
+}
+
+func (x *GetShipmentRankCompanyDataYearReq) GetEndAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.EndAt
+	}
+	return nil
+}
+
+func (x *GetShipmentRankCompanyDataYearReq) GetRankCount() int64 {
+	if x != nil {
+		return x.RankCount
+	}
+	return 0
+}
+
+func (x *GetShipmentRankCompanyDataYearReq) GetMedicineCount() int64 {
+	if x != nil {
+		return x.MedicineCount
+	}
+	return 0
+}
+
+type ShipmentRankCompanyMedicine struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	MedicineName string `protobuf:"bytes,1,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
+}
+
+func (x *ShipmentRankCompanyMedicine) Reset() {
+	*x = ShipmentRankCompanyMedicine{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_ManagerService_proto_msgTypes[205]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ShipmentRankCompanyMedicine) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ShipmentRankCompanyMedicine) ProtoMessage() {}
+
+func (x *ShipmentRankCompanyMedicine) ProtoReflect() protoreflect.Message {
+	mi := &file_ManagerService_proto_msgTypes[205]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ShipmentRankCompanyMedicine.ProtoReflect.Descriptor instead.
+func (*ShipmentRankCompanyMedicine) Descriptor() ([]byte, []int) {
+	return file_ManagerService_proto_rawDescGZIP(), []int{205}
+}
+
+func (x *ShipmentRankCompanyMedicine) GetMedicineName() string {
+	if x != nil {
+		return x.MedicineName
+	}
+	return ""
+}
+
+type ShipmentRankCompanyDataYear struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Rank               int64                          `protobuf:"varint,1,opt,name=rank,proto3" json:"rank,omitempty"`
+	ComName            string                         `protobuf:"bytes,2,opt,name=comName,proto3" json:"comName,omitempty"`
+	ComCode            string                         `protobuf:"bytes,3,opt,name=comCode,proto3" json:"comCode,omitempty"`
+	ShipmentPlanAmount int64                          `protobuf:"varint,4,opt,name=shipmentPlanAmount,proto3" json:"shipmentPlanAmount,omitempty"`
+	Province           string                         `protobuf:"bytes,5,opt,name=province,proto3" json:"province,omitempty"`
+	City               string                         `protobuf:"bytes,6,opt,name=city,proto3" json:"city,omitempty"`
+	Zone               string                         `protobuf:"bytes,7,opt,name=zone,proto3" json:"zone,omitempty"`
+	Medicines          []*ShipmentRankCompanyMedicine `protobuf:"bytes,8,rep,name=medicines,proto3" json:"medicines,omitempty"`
+}
+
+func (x *ShipmentRankCompanyDataYear) Reset() {
+	*x = ShipmentRankCompanyDataYear{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_ManagerService_proto_msgTypes[206]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ShipmentRankCompanyDataYear) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ShipmentRankCompanyDataYear) ProtoMessage() {}
+
+func (x *ShipmentRankCompanyDataYear) ProtoReflect() protoreflect.Message {
+	mi := &file_ManagerService_proto_msgTypes[206]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ShipmentRankCompanyDataYear.ProtoReflect.Descriptor instead.
+func (*ShipmentRankCompanyDataYear) Descriptor() ([]byte, []int) {
+	return file_ManagerService_proto_rawDescGZIP(), []int{206}
+}
+
+func (x *ShipmentRankCompanyDataYear) GetRank() int64 {
+	if x != nil {
+		return x.Rank
+	}
+	return 0
+}
+
+func (x *ShipmentRankCompanyDataYear) GetComName() string {
+	if x != nil {
+		return x.ComName
+	}
+	return ""
+}
+
+func (x *ShipmentRankCompanyDataYear) GetComCode() string {
+	if x != nil {
+		return x.ComCode
+	}
+	return ""
+}
+
+func (x *ShipmentRankCompanyDataYear) GetShipmentPlanAmount() int64 {
+	if x != nil {
+		return x.ShipmentPlanAmount
+	}
+	return 0
+}
+
+func (x *ShipmentRankCompanyDataYear) GetProvince() string {
+	if x != nil {
+		return x.Province
+	}
+	return ""
+}
+
+func (x *ShipmentRankCompanyDataYear) GetCity() string {
+	if x != nil {
+		return x.City
+	}
+	return ""
+}
+
+func (x *ShipmentRankCompanyDataYear) GetZone() string {
+	if x != nil {
+		return x.Zone
+	}
+	return ""
+}
+
+func (x *ShipmentRankCompanyDataYear) GetMedicines() []*ShipmentRankCompanyMedicine {
+	if x != nil {
+		return x.Medicines
+	}
+	return nil
+}
+
+type GetShipmentRankCompanyDataYearResp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	List       []*ShipmentRankCompanyDataYear `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64                          `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64                          `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64                          `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+}
+
+func (x *GetShipmentRankCompanyDataYearResp) Reset() {
+	*x = GetShipmentRankCompanyDataYearResp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_ManagerService_proto_msgTypes[207]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetShipmentRankCompanyDataYearResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetShipmentRankCompanyDataYearResp) ProtoMessage() {}
+
+func (x *GetShipmentRankCompanyDataYearResp) ProtoReflect() protoreflect.Message {
+	mi := &file_ManagerService_proto_msgTypes[207]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetShipmentRankCompanyDataYearResp.ProtoReflect.Descriptor instead.
+func (*GetShipmentRankCompanyDataYearResp) Descriptor() ([]byte, []int) {
+	return file_ManagerService_proto_rawDescGZIP(), []int{207}
+}
+
+func (x *GetShipmentRankCompanyDataYearResp) GetList() []*ShipmentRankCompanyDataYear {
+	if x != nil {
+		return x.List
+	}
+	return nil
+}
+
+func (x *GetShipmentRankCompanyDataYearResp) GetTotal() int64 {
+	if x != nil {
+		return x.Total
+	}
+	return 0
+}
+
+func (x *GetShipmentRankCompanyDataYearResp) GetPageSize() int64 {
+	if x != nil {
+		return x.PageSize
+	}
+	return 0
+}
+
+func (x *GetShipmentRankCompanyDataYearResp) GetPageNumber() int64 {
+	if x != nil {
+		return x.PageNumber
+	}
+	return 0
+}
+
 var File_ManagerService_proto protoreflect.FileDescriptor
 
 var file_ManagerService_proto_rawDesc = []byte{
@@ -19191,6 +19720,91 @@ var file_ManagerService_proto_rawDesc = []byte{
 	0x7a, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x08, 0x70, 0x61, 0x67, 0x65, 0x53, 0x69,
 	0x7a, 0x65, 0x12, 0x1e, 0x0a, 0x0a, 0x70, 0x61, 0x67, 0x65, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72,
 	0x18, 0x04, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0a, 0x70, 0x61, 0x67, 0x65, 0x4e, 0x75, 0x6d, 0x62,
+	0x65, 0x72, 0x22, 0xde, 0x01, 0x0a, 0x22, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65,
+	0x6e, 0x74, 0x52, 0x61, 0x6e, 0x6b, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x44, 0x61,
+	0x74, 0x61, 0x59, 0x65, 0x61, 0x72, 0x52, 0x65, 0x71, 0x12, 0x1c, 0x0a, 0x09, 0x6d, 0x61, 0x6e,
+	0x61, 0x67, 0x65, 0x72, 0x49, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x6d, 0x61,
+	0x6e, 0x61, 0x67, 0x65, 0x72, 0x49, 0x64, 0x12, 0x14, 0x0a, 0x05, 0x6d, 0x69, 0x62, 0x49, 0x64,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05, 0x6d, 0x69, 0x62, 0x49, 0x64, 0x12, 0x34, 0x0a,
+	0x07, 0x73, 0x74, 0x61, 0x72, 0x74, 0x41, 0x74, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a,
+	0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66,
+	0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x52, 0x07, 0x73, 0x74, 0x61, 0x72,
+	0x74, 0x41, 0x74, 0x12, 0x30, 0x0a, 0x05, 0x65, 0x6e, 0x64, 0x41, 0x74, 0x18, 0x04, 0x20, 0x01,
+	0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x52, 0x05,
+	0x65, 0x6e, 0x64, 0x41, 0x74, 0x12, 0x1c, 0x0a, 0x09, 0x72, 0x61, 0x6e, 0x6b, 0x43, 0x6f, 0x75,
+	0x6e, 0x74, 0x18, 0x05, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x72, 0x61, 0x6e, 0x6b, 0x43, 0x6f,
+	0x75, 0x6e, 0x74, 0x22, 0x86, 0x01, 0x0a, 0x1c, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74,
+	0x52, 0x61, 0x6e, 0x6b, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x44, 0x61, 0x74, 0x61,
+	0x59, 0x65, 0x61, 0x72, 0x12, 0x12, 0x0a, 0x04, 0x72, 0x61, 0x6e, 0x6b, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x03, 0x52, 0x04, 0x72, 0x61, 0x6e, 0x6b, 0x12, 0x2e, 0x0a, 0x12, 0x73, 0x68, 0x69, 0x70,
+	0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x41, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x02,
+	0x20, 0x01, 0x28, 0x03, 0x52, 0x12, 0x73, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c,
+	0x61, 0x6e, 0x41, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x22, 0x0a, 0x0c, 0x6d, 0x65, 0x64, 0x69,
+	0x63, 0x69, 0x6e, 0x65, 0x4e, 0x61, 0x6d, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c,
+	0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x4e, 0x61, 0x6d, 0x65, 0x22, 0xb9, 0x01, 0x0a,
+	0x23, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x61, 0x6e, 0x6b,
+	0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x44, 0x61, 0x74, 0x61, 0x59, 0x65, 0x61, 0x72,
+	0x52, 0x65, 0x73, 0x70, 0x12, 0x40, 0x0a, 0x04, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x01, 0x20, 0x03,
+	0x28, 0x0b, 0x32, 0x2c, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76,
+	0x69, 0x63, 0x65, 0x2e, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x61, 0x6e, 0x6b,
+	0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x44, 0x61, 0x74, 0x61, 0x59, 0x65, 0x61, 0x72,
+	0x52, 0x04, 0x6c, 0x69, 0x73, 0x74, 0x12, 0x14, 0x0a, 0x05, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x18,
+	0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x12, 0x1a, 0x0a, 0x08,
+	0x70, 0x61, 0x67, 0x65, 0x53, 0x69, 0x7a, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x08,
+	0x70, 0x61, 0x67, 0x65, 0x53, 0x69, 0x7a, 0x65, 0x12, 0x1e, 0x0a, 0x0a, 0x70, 0x61, 0x67, 0x65,
+	0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x18, 0x04, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0a, 0x70, 0x61,
+	0x67, 0x65, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x22, 0x83, 0x02, 0x0a, 0x21, 0x47, 0x65, 0x74,
+	0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x61, 0x6e, 0x6b, 0x43, 0x6f, 0x6d, 0x70,
+	0x61, 0x6e, 0x79, 0x44, 0x61, 0x74, 0x61, 0x59, 0x65, 0x61, 0x72, 0x52, 0x65, 0x71, 0x12, 0x1c,
+	0x0a, 0x09, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x49, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x03, 0x52, 0x09, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x49, 0x64, 0x12, 0x14, 0x0a, 0x05,
+	0x6d, 0x69, 0x62, 0x49, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05, 0x6d, 0x69, 0x62,
+	0x49, 0x64, 0x12, 0x34, 0x0a, 0x07, 0x73, 0x74, 0x61, 0x72, 0x74, 0x41, 0x74, 0x18, 0x03, 0x20,
+	0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x52,
+	0x07, 0x73, 0x74, 0x61, 0x72, 0x74, 0x41, 0x74, 0x12, 0x30, 0x0a, 0x05, 0x65, 0x6e, 0x64, 0x41,
+	0x74, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
+	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74,
+	0x61, 0x6d, 0x70, 0x52, 0x05, 0x65, 0x6e, 0x64, 0x41, 0x74, 0x12, 0x1c, 0x0a, 0x09, 0x72, 0x61,
+	0x6e, 0x6b, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x05, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x72,
+	0x61, 0x6e, 0x6b, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x24, 0x0a, 0x0d, 0x6d, 0x65, 0x64, 0x69,
+	0x63, 0x69, 0x6e, 0x65, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x06, 0x20, 0x01, 0x28, 0x03, 0x52,
+	0x0d, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x22, 0x41,
+	0x0a, 0x1b, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x61, 0x6e, 0x6b, 0x43, 0x6f,
+	0x6d, 0x70, 0x61, 0x6e, 0x79, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x12, 0x22, 0x0a,
+	0x0c, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x4e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x0c, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x4e, 0x61, 0x6d,
+	0x65, 0x22, 0xa4, 0x02, 0x0a, 0x1b, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x61,
+	0x6e, 0x6b, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x44, 0x61, 0x74, 0x61, 0x59, 0x65, 0x61,
+	0x72, 0x12, 0x12, 0x0a, 0x04, 0x72, 0x61, 0x6e, 0x6b, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52,
+	0x04, 0x72, 0x61, 0x6e, 0x6b, 0x12, 0x18, 0x0a, 0x07, 0x63, 0x6f, 0x6d, 0x4e, 0x61, 0x6d, 0x65,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x63, 0x6f, 0x6d, 0x4e, 0x61, 0x6d, 0x65, 0x12,
+	0x18, 0x0a, 0x07, 0x63, 0x6f, 0x6d, 0x43, 0x6f, 0x64, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x07, 0x63, 0x6f, 0x6d, 0x43, 0x6f, 0x64, 0x65, 0x12, 0x2e, 0x0a, 0x12, 0x73, 0x68, 0x69,
+	0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x41, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x18,
+	0x04, 0x20, 0x01, 0x28, 0x03, 0x52, 0x12, 0x73, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50,
+	0x6c, 0x61, 0x6e, 0x41, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x1a, 0x0a, 0x08, 0x70, 0x72, 0x6f,
+	0x76, 0x69, 0x6e, 0x63, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x70, 0x72, 0x6f,
+	0x76, 0x69, 0x6e, 0x63, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x63, 0x69, 0x74, 0x79, 0x18, 0x06, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x04, 0x63, 0x69, 0x74, 0x79, 0x12, 0x12, 0x0a, 0x04, 0x7a, 0x6f, 0x6e,
+	0x65, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x7a, 0x6f, 0x6e, 0x65, 0x12, 0x49, 0x0a,
+	0x09, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x73, 0x18, 0x08, 0x20, 0x03, 0x28, 0x0b,
+	0x32, 0x2b, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63,
+	0x65, 0x2e, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x61, 0x6e, 0x6b, 0x43, 0x6f,
+	0x6d, 0x70, 0x61, 0x6e, 0x79, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x52, 0x09, 0x6d,
+	0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x73, 0x22, 0xb7, 0x01, 0x0a, 0x22, 0x47, 0x65, 0x74,
+	0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x61, 0x6e, 0x6b, 0x43, 0x6f, 0x6d, 0x70,
+	0x61, 0x6e, 0x79, 0x44, 0x61, 0x74, 0x61, 0x59, 0x65, 0x61, 0x72, 0x52, 0x65, 0x73, 0x70, 0x12,
+	0x3f, 0x0a, 0x04, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x2b, 0x2e,
+	0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x53,
+	0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x61, 0x6e, 0x6b, 0x43, 0x6f, 0x6d, 0x70, 0x61,
+	0x6e, 0x79, 0x44, 0x61, 0x74, 0x61, 0x59, 0x65, 0x61, 0x72, 0x52, 0x04, 0x6c, 0x69, 0x73, 0x74,
+	0x12, 0x14, 0x0a, 0x05, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52,
+	0x05, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x12, 0x1a, 0x0a, 0x08, 0x70, 0x61, 0x67, 0x65, 0x53, 0x69,
+	0x7a, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x08, 0x70, 0x61, 0x67, 0x65, 0x53, 0x69,
+	0x7a, 0x65, 0x12, 0x1e, 0x0a, 0x0a, 0x70, 0x61, 0x67, 0x65, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72,
+	0x18, 0x04, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0a, 0x70, 0x61, 0x67, 0x65, 0x4e, 0x75, 0x6d, 0x62,
 	0x65, 0x72, 0x32, 0xdf, 0x26, 0x0a, 0x0e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65,
 	0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x51, 0x0a, 0x0c, 0x4c, 0x69, 0x73, 0x74, 0x43, 0x6f, 0x6e,
 	0x74, 0x72, 0x61, 0x63, 0x74, 0x12, 0x1f, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53,
@@ -19668,10 +20282,29 @@ var file_ManagerService_proto_rawDesc = []byte{
 	0x69, 0x6e, 0x67, 0x48, 0x61, 0x73, 0x68, 0x52, 0x65, 0x71, 0x1a, 0x2c, 0x2e, 0x4d, 0x61, 0x6e,
 	0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x53,
 	0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x46, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x69, 0x6e, 0x67,
-	0x48, 0x61, 0x73, 0x68, 0x52, 0x65, 0x73, 0x70, 0x42, 0x27, 0x5a, 0x25, 0x73, 0x65, 0x72, 0x76,
-	0x69, 0x63, 0x65, 0x2f, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69,
-	0x63, 0x65, 0x3b, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63,
-	0x65, 0x50, 0x00, 0x50, 0x01, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x48, 0x61, 0x73, 0x68, 0x52, 0x65, 0x73, 0x70, 0x32, 0xa4, 0x02, 0x0a, 0x0b, 0x52, 0x61, 0x6e,
+	0x6b, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x8a, 0x01, 0x0a, 0x1f, 0x47, 0x65, 0x74,
+	0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x61, 0x6e, 0x6b, 0x4d, 0x65, 0x64, 0x69,
+	0x63, 0x69, 0x6e, 0x65, 0x44, 0x61, 0x74, 0x61, 0x59, 0x65, 0x61, 0x72, 0x12, 0x32, 0x2e, 0x4d,
+	0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65,
+	0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x61, 0x6e, 0x6b, 0x4d, 0x65, 0x64,
+	0x69, 0x63, 0x69, 0x6e, 0x65, 0x44, 0x61, 0x74, 0x61, 0x59, 0x65, 0x61, 0x72, 0x52, 0x65, 0x71,
+	0x1a, 0x33, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63,
+	0x65, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x61, 0x6e,
+	0x6b, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x44, 0x61, 0x74, 0x61, 0x59, 0x65, 0x61,
+	0x72, 0x52, 0x65, 0x73, 0x70, 0x12, 0x87, 0x01, 0x0a, 0x1e, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69,
+	0x70, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x61, 0x6e, 0x6b, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79,
+	0x44, 0x61, 0x74, 0x61, 0x59, 0x65, 0x61, 0x72, 0x12, 0x31, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67,
+	0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69,
+	0x70, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x61, 0x6e, 0x6b, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79,
+	0x44, 0x61, 0x74, 0x61, 0x59, 0x65, 0x61, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x32, 0x2e, 0x4d, 0x61,
+	0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74,
+	0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x61, 0x6e, 0x6b, 0x43, 0x6f, 0x6d, 0x70,
+	0x61, 0x6e, 0x79, 0x44, 0x61, 0x74, 0x61, 0x59, 0x65, 0x61, 0x72, 0x52, 0x65, 0x73, 0x70, 0x42,
+	0x27, 0x5a, 0x25, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2f, 0x4d, 0x61, 0x6e, 0x61, 0x67,
+	0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x3b, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65,
+	0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x50, 0x00, 0x50, 0x01, 0x62, 0x06, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -19686,235 +20319,242 @@ func file_ManagerService_proto_rawDescGZIP() []byte {
 	return file_ManagerService_proto_rawDescData
 }
 
-var file_ManagerService_proto_msgTypes = make([]protoimpl.MessageInfo, 201)
+var file_ManagerService_proto_msgTypes = make([]protoimpl.MessageInfo, 208)
 var file_ManagerService_proto_goTypes = []interface{}{
-	(*Page)(nil),                              // 0: ManagerService.Page
-	(*GetContractInfoReq)(nil),                // 1: ManagerService.GetContractInfoReq
-	(*GetContractInfoResp)(nil),               // 2: ManagerService.GetContractInfoResp
-	(*CountContractReq)(nil),                  // 3: ManagerService.CountContractReq
-	(*CountContractResp)(nil),                 // 4: ManagerService.CountContractResp
-	(*ContractDetailReq)(nil),                 // 5: ManagerService.ContractDetailReq
-	(*ContractDetailResp)(nil),                // 6: ManagerService.ContractDetailResp
-	(*ContractDetailVo)(nil),                  // 7: ManagerService.ContractDetailVo
-	(*ContractListReq)(nil),                   // 8: ManagerService.ContractListReq
-	(*ContractListResp)(nil),                  // 9: ManagerService.ContractListResp
-	(*ContractListVo)(nil),                    // 10: ManagerService.ContractListVo
-	(*UpCheckContractReq)(nil),                // 11: ManagerService.UpCheckContractReq
-	(*CheckContractParam)(nil),                // 12: ManagerService.CheckContractParam
-	(*CheckContractListResp)(nil),             // 13: ManagerService.CheckContractListResp
-	(*ContractMiListReq)(nil),                 // 14: ManagerService.ContractMiListReq
-	(*ContractMiListResp)(nil),                // 15: ManagerService.ContractMiListResp
-	(*ContractMiListVo)(nil),                  // 16: ManagerService.ContractMiListVo
-	(*CreateOneContractMIReq)(nil),            // 17: ManagerService.CreateOneContractMIReq
-	(*CreateOneContractMIResp)(nil),           // 18: ManagerService.CreateOneContractMIResp
-	(*UpdateOneContractMIReq)(nil),            // 19: ManagerService.UpdateOneContractMIReq
-	(*UpdateOneContractMIResp)(nil),           // 20: ManagerService.UpdateOneContractMIResp
-	(*UpdateOneContractReq)(nil),              // 21: ManagerService.UpdateOneContractReq
-	(*UpdateOneContractResp)(nil),             // 22: ManagerService.UpdateOneContractResp
-	(*BatchOperateContractReq)(nil),           // 23: ManagerService.BatchOperateContractReq
-	(*BatchOperateContractResp)(nil),          // 24: ManagerService.BatchOperateContractResp
-	(*BatchOperateContract)(nil),              // 25: ManagerService.BatchOperateContract
-	(*UpdateContractActiveReq)(nil),           // 26: ManagerService.UpdateContractActiveReq
-	(*UpdateContractActiveResp)(nil),          // 27: ManagerService.UpdateContractActiveResp
-	(*DeleteOneContractReq)(nil),              // 28: ManagerService.DeleteOneContractReq
-	(*DeleteOneContractResp)(nil),             // 29: ManagerService.DeleteOneContractResp
-	(*DeleteOneContractMiReq)(nil),            // 30: ManagerService.DeleteOneContractMiReq
-	(*DeleteOneContractMiResp)(nil),           // 31: ManagerService.DeleteOneContractMiResp
-	(*MedicineListReq)(nil),                   // 32: ManagerService.MedicineListReq
-	(*MedicineListResp)(nil),                  // 33: ManagerService.MedicineListResp
-	(*MedicineListVo)(nil),                    // 34: ManagerService.MedicineListVo
-	(*MedicineListForQueryReq)(nil),           // 35: ManagerService.MedicineListForQueryReq
-	(*MedicineListForQueryResp)(nil),          // 36: ManagerService.MedicineListForQueryResp
-	(*MedicineListForQueryVo)(nil),            // 37: ManagerService.MedicineListForQueryVo
-	(*CreateMedicineReq)(nil),                 // 38: ManagerService.CreateMedicineReq
-	(*CreateMedicineResp)(nil),                // 39: ManagerService.CreateMedicineResp
-	(*CreateBatchMedicineReq)(nil),            // 40: ManagerService.CreateBatchMedicineReq
-	(*CreateBatchMedicineResp)(nil),           // 41: ManagerService.CreateBatchMedicineResp
-	(*UpdateMedicineReq)(nil),                 // 42: ManagerService.UpdateMedicineReq
-	(*UpdateMedicineResp)(nil),                // 43: ManagerService.UpdateMedicineResp
-	(*UpdateMedicineActiveReq)(nil),           // 44: ManagerService.UpdateMedicineActiveReq
-	(*UpdateMedicineActiveResp)(nil),          // 45: ManagerService.UpdateMedicineActiveResp
-	(*DeleteMedicineReq)(nil),                 // 46: ManagerService.DeleteMedicineReq
-	(*DeleteMedicineResp)(nil),                // 47: ManagerService.DeleteMedicineResp
-	(*SelectTagByMedicineIdReq)(nil),          // 48: ManagerService.SelectTagByMedicineIdReq
-	(*SelectTagByMedicineIdResp)(nil),         // 49: ManagerService.SelectTagByMedicineIdResp
-	(*SelectInfoByMedicineNamesReq)(nil),      // 50: ManagerService.SelectInfoByMedicineNamesReq
-	(*SelectInfoByMedicineNamesResp)(nil),     // 51: ManagerService.SelectInfoByMedicineNamesResp
-	(*TagListReq)(nil),                        // 52: ManagerService.TagListReq
-	(*TagListResp)(nil),                       // 53: ManagerService.TagListResp
-	(*TagListVo)(nil),                         // 54: ManagerService.TagListVo
-	(*CreateTagReq)(nil),                      // 55: ManagerService.CreateTagReq
-	(*CreateTagResp)(nil),                     // 56: ManagerService.CreateTagResp
-	(*UpdateTagReq)(nil),                      // 57: ManagerService.UpdateTagReq
-	(*UpdateTagResp)(nil),                     // 58: ManagerService.UpdateTagResp
-	(*DeleteTagReq)(nil),                      // 59: ManagerService.DeleteTagReq
-	(*DeleteTagResp)(nil),                     // 60: ManagerService.DeleteTagResp
-	(*TagDetailListReq)(nil),                  // 61: ManagerService.TagDetailListReq
-	(*TagDetailListResp)(nil),                 // 62: ManagerService.TagDetailListResp
-	(*TagDetailVo)(nil),                       // 63: ManagerService.TagDetailVo
-	(*DeleteTagMedicineReq)(nil),              // 64: ManagerService.DeleteTagMedicineReq
-	(*DeleteTagMedicineResp)(nil),             // 65: ManagerService.DeleteTagMedicineResp
-	(*CreateTagMedicineReq)(nil),              // 66: ManagerService.CreateTagMedicineReq
-	(*CreateTagMedicineResp)(nil),             // 67: ManagerService.CreateTagMedicineResp
-	(*ListMiReq)(nil),                         // 68: ManagerService.ListMiReq
-	(*ListMiResp)(nil),                        // 69: ManagerService.ListMiResp
-	(*ListMiVo)(nil),                          // 70: ManagerService.ListMiVo
-	(*CommonMIReq)(nil),                       // 71: ManagerService.CommonMIReq
-	(*CommonMIResp)(nil),                      // 72: ManagerService.CommonMIResp
-	(*CommonMIVo)(nil),                        // 73: ManagerService.CommonMIVo
-	(*CreateOneMIReq)(nil),                    // 74: ManagerService.CreateOneMIReq
-	(*CreateOneMIResp)(nil),                   // 75: ManagerService.CreateOneMIResp
-	(*UpdateMiReq)(nil),                       // 76: ManagerService.UpdateMiReq
-	(*UpdateMiResp)(nil),                      // 77: ManagerService.UpdateMiResp
-	(*CommonCompanyReq)(nil),                  // 78: ManagerService.CommonCompanyReq
-	(*CommonCompanyResp)(nil),                 // 79: ManagerService.CommonCompanyResp
-	(*CommonCompanyVo)(nil),                   // 80: ManagerService.CommonCompanyVo
-	(*SelCompanyByNamesReq)(nil),              // 81: ManagerService.SelCompanyByNamesReq
-	(*SelCompanyByNamesResp)(nil),             // 82: ManagerService.SelCompanyByNamesResp
-	(*ListCompanyReq)(nil),                    // 83: ManagerService.ListCompanyReq
-	(*ListCompanyResp)(nil),                   // 84: ManagerService.ListCompanyResp
-	(*ListCompanyVo)(nil),                     // 85: ManagerService.ListCompanyVo
-	(*CreateOneCompanyReq)(nil),               // 86: ManagerService.CreateOneCompanyReq
-	(*CreateOneCompanyResp)(nil),              // 87: ManagerService.CreateOneCompanyResp
-	(*UpdateOneCompanyReq)(nil),               // 88: ManagerService.UpdateOneCompanyReq
-	(*UpdateOneCompanyResp)(nil),              // 89: ManagerService.UpdateOneCompanyResp
-	(*ListTpPlanErrReq)(nil),                  // 90: ManagerService.ListTpPlanErrReq
-	(*ListTpPlanErrResp)(nil),                 // 91: ManagerService.ListTpPlanErrResp
-	(*ListTpPlanErrVo)(nil),                   // 92: ManagerService.ListTpPlanErrVo
-	(*UpdateErrShipmentPlanReq)(nil),          // 93: ManagerService.UpdateErrShipmentPlanReq
-	(*UpdateErrShipmentPlanResp)(nil),         // 94: ManagerService.UpdateErrShipmentPlanResp
-	(*ListShipmentPlanReq)(nil),               // 95: ManagerService.ListShipmentPlanReq
-	(*ListShipmentPlanResp)(nil),              // 96: ManagerService.ListShipmentPlanResp
-	(*ListShipmentPlanrVo)(nil),               // 97: ManagerService.ListShipmentPlanrVo
-	(*DetailShipmentOrderReq)(nil),            // 98: ManagerService.DetailShipmentOrderReq
-	(*DetailShipmentOrderResp)(nil),           // 99: ManagerService.DetailShipmentOrderResp
-	(*ListShipmentPlanForOrderReq)(nil),       // 100: ManagerService.ListShipmentPlanForOrderReq
-	(*ListShipmentPlanForOrderResp)(nil),      // 101: ManagerService.ListShipmentPlanForOrderResp
-	(*ListShipmentPlanForOrderVo)(nil),        // 102: ManagerService.ListShipmentPlanForOrderVo
-	(*CountShipmentPlanReq)(nil),              // 103: ManagerService.CountShipmentPlanReq
-	(*CountShipmentPlanResp)(nil),             // 104: ManagerService.CountShipmentPlanResp
-	(*CreateShipmentOrderReq)(nil),            // 105: ManagerService.CreateShipmentOrderReq
-	(*CreateShipmentOrderResp)(nil),           // 106: ManagerService.CreateShipmentOrderResp
-	(*ListShipmentOrderReq)(nil),              // 107: ManagerService.ListShipmentOrderReq
-	(*ListShipmentOrderResp)(nil),             // 108: ManagerService.ListShipmentOrderResp
-	(*ListShipmentOrderVo)(nil),               // 109: ManagerService.ListShipmentOrderVo
-	(*CountShipmentOrderReq)(nil),             // 110: ManagerService.CountShipmentOrderReq
-	(*CountShipmentOrderResp)(nil),            // 111: ManagerService.CountShipmentOrderResp
-	(*UpdateShipmentOrderReq)(nil),            // 112: ManagerService.UpdateShipmentOrderReq
-	(*UpdateShipmentOrderResp)(nil),           // 113: ManagerService.UpdateShipmentOrderResp
-	(*InsertConfigsReq)(nil),                  // 114: ManagerService.InsertConfigsReq
-	(*UpdateConfigReq)(nil),                   // 115: ManagerService.UpdateConfigReq
-	(*GetConfigReq)(nil),                      // 116: ManagerService.GetConfigReq
-	(*CommonConfig)(nil),                      // 117: ManagerService.CommonConfig
-	(*UpdateConfigResp)(nil),                  // 118: ManagerService.UpdateConfigResp
-	(*InsertConfigsResp)(nil),                 // 119: ManagerService.InsertConfigsResp
-	(*GetConfigResp)(nil),                     // 120: ManagerService.GetConfigResp
-	(*GetMiSpecialConfigReq)(nil),             // 121: ManagerService.GetMiSpecialConfigReq
-	(*MiSpecialConfig)(nil),                   // 122: ManagerService.MiSpecialConfig
-	(*GetMiSpecialConfigResp)(nil),            // 123: ManagerService.GetMiSpecialConfigResp
-	(*UpdateMiSpecialConfigReq)(nil),          // 124: ManagerService.UpdateMiSpecialConfigReq
-	(*UpdateMiSpecialConfigResp)(nil),         // 125: ManagerService.UpdateMiSpecialConfigResp
-	(*PlanReportGroupCondition)(nil),          // 126: ManagerService.PlanReportGroupCondition
-	(*PlanReportGetCondition)(nil),            // 127: ManagerService.PlanReportGetCondition
-	(*GetShipmentPlanReportsReq)(nil),         // 128: ManagerService.GetShipmentPlanReportsReq
-	(*CompanyReportVo)(nil),                   // 129: ManagerService.CompanyReportVo
-	(*MiReportVo)(nil),                        // 130: ManagerService.MiReportVo
-	(*MedicineReportVo)(nil),                  // 131: ManagerService.MedicineReportVo
-	(*ShipmentPlanDayReport)(nil),             // 132: ManagerService.ShipmentPlanDayReport
-	(*ShipmentPlanMonthReport)(nil),           // 133: ManagerService.ShipmentPlanMonthReport
-	(*ShipmentPlanYearReport)(nil),            // 134: ManagerService.ShipmentPlanYearReport
-	(*GetShipmentPlanDayReportsResp)(nil),     // 135: ManagerService.GetShipmentPlanDayReportsResp
-	(*GetShipmentPlanMonthReportsResp)(nil),   // 136: ManagerService.GetShipmentPlanMonthReportsResp
-	(*GetShipmentPlanYearReportsResp)(nil),    // 137: ManagerService.GetShipmentPlanYearReportsResp
-	(*OrderReportGroupCondition)(nil),         // 138: ManagerService.OrderReportGroupCondition
-	(*OrderReportGetCondition)(nil),           // 139: ManagerService.OrderReportGetCondition
-	(*GetShipmentOrderReportsReq)(nil),        // 140: ManagerService.GetShipmentOrderReportsReq
-	(*ShipmentOrderDayReport)(nil),            // 141: ManagerService.ShipmentOrderDayReport
-	(*ShipmentOrderMonthReport)(nil),          // 142: ManagerService.ShipmentOrderMonthReport
-	(*ShipmentOrderYearReport)(nil),           // 143: ManagerService.ShipmentOrderYearReport
-	(*GetShipmentOrderDayReportsResp)(nil),    // 144: ManagerService.GetShipmentOrderDayReportsResp
-	(*GetShipmentOrderMonthReportsResp)(nil),  // 145: ManagerService.GetShipmentOrderMonthReportsResp
-	(*GetShipmentOrderYearReportsResp)(nil),   // 146: ManagerService.GetShipmentOrderYearReportsResp
-	(*FactoringReportGroupCondition)(nil),     // 147: ManagerService.FactoringReportGroupCondition
-	(*FactoringReportGetCondition)(nil),       // 148: ManagerService.FactoringReportGetCondition
-	(*GetFactoringOrderReportsReq)(nil),       // 149: ManagerService.GetFactoringOrderReportsReq
-	(*FactoringOrderDayReport)(nil),           // 150: ManagerService.FactoringOrderDayReport
-	(*GetFactoringOrderDayReportsResp)(nil),   // 151: ManagerService.GetFactoringOrderDayReportsResp
-	(*FactoringOrderMonthReport)(nil),         // 152: ManagerService.FactoringOrderMonthReport
-	(*GetFactoringOrderMonthReportsResp)(nil), // 153: ManagerService.GetFactoringOrderMonthReportsResp
-	(*FactoringOrderYearReport)(nil),          // 154: ManagerService.FactoringOrderYearReport
-	(*GetFactoringOrderYearReportsResp)(nil),  // 155: ManagerService.GetFactoringOrderYearReportsResp
-	(*ContractPlanReportGetCondition)(nil),    // 156: ManagerService.ContractPlanReportGetCondition
-	(*ContractPlanReportGroupCondition)(nil),  // 157: ManagerService.ContractPlanReportGroupCondition
-	(*GetContractPlanReportsReq)(nil),         // 158: ManagerService.GetContractPlanReportsReq
-	(*ContractReportVo)(nil),                  // 159: ManagerService.ContractReportVo
-	(*ContractMiReportVo)(nil),                // 160: ManagerService.ContractMiReportVo
-	(*ContractPlanDayReport)(nil),             // 161: ManagerService.ContractPlanDayReport
-	(*GetContractPlanDayReportsResp)(nil),     // 162: ManagerService.GetContractPlanDayReportsResp
-	(*ContractPlanMonthReport)(nil),           // 163: ManagerService.ContractPlanMonthReport
-	(*GetContractPlanMonthReportsResp)(nil),   // 164: ManagerService.GetContractPlanMonthReportsResp
-	(*ContractPlanYearReport)(nil),            // 165: ManagerService.ContractPlanYearReport
-	(*GetContractPlanYearReportsResp)(nil),    // 166: ManagerService.GetContractPlanYearReportsResp
-	(*GetValidContractInfoReq)(nil),           // 167: ManagerService.GetValidContractInfoReq
-	(*GetCurrentNeedPayReq)(nil),              // 168: ManagerService.GetCurrentNeedPayReq
-	(*GetValidContractInfoResp)(nil),          // 169: ManagerService.GetValidContractInfoResp
-	(*GetCurrentNeedPayResp)(nil),             // 170: ManagerService.GetCurrentNeedPayResp
-	(*GetCompanyHashReq)(nil),                 // 171: ManagerService.GetCompanyHashReq
-	(*GetCompanyHashResp)(nil),                // 172: ManagerService.GetCompanyHashResp
-	(*CompanyHash)(nil),                       // 173: ManagerService.CompanyHash
-	(*GetMiHashReq)(nil),                      // 174: ManagerService.GetMiHashReq
-	(*MiHash)(nil),                            // 175: ManagerService.MiHash
-	(*GetMiHashResp)(nil),                     // 176: ManagerService.GetMiHashResp
-	(*GetMedicineReq)(nil),                    // 177: ManagerService.GetMedicineReq
-	(*MedicineHash)(nil),                      // 178: ManagerService.MedicineHash
-	(*GetMedicineResp)(nil),                   // 179: ManagerService.GetMedicineResp
-	(*GetContractHashReq)(nil),                // 180: ManagerService.GetContractHashReq
-	(*ContractHash)(nil),                      // 181: ManagerService.ContractHash
-	(*GetContractHashResp)(nil),               // 182: ManagerService.GetContractHashResp
-	(*GetContractMiHashReq)(nil),              // 183: ManagerService.GetContractMiHashReq
-	(*ContractMiHash)(nil),                    // 184: ManagerService.ContractMiHash
-	(*GetContractMiHashResp)(nil),             // 185: ManagerService.GetContractMiHashResp
-	(*GetConfigHashReq)(nil),                  // 186: ManagerService.GetConfigHashReq
-	(*ConfigHash)(nil),                        // 187: ManagerService.ConfigHash
-	(*GetConfigHashResp)(nil),                 // 188: ManagerService.GetConfigHashResp
-	(*GetShipmentPlanHashReq)(nil),            // 189: ManagerService.GetShipmentPlanHashReq
-	(*ShipmentPlanHash)(nil),                  // 190: ManagerService.ShipmentPlanHash
-	(*GetShipmentPlanHashResp)(nil),           // 191: ManagerService.GetShipmentPlanHashResp
-	(*GetShipmentOrderHashReq)(nil),           // 192: ManagerService.GetShipmentOrderHashReq
-	(*ShipmentOrderHash)(nil),                 // 193: ManagerService.ShipmentOrderHash
-	(*GetShipmentOrderHashResp)(nil),          // 194: ManagerService.GetShipmentOrderHashResp
-	(*GetShipmentPayHashReq)(nil),             // 195: ManagerService.GetShipmentPayHashReq
-	(*ShipmentPayHash)(nil),                   // 196: ManagerService.ShipmentPayHash
-	(*GetShipmentPayHashResp)(nil),            // 197: ManagerService.GetShipmentPayHashResp
-	(*GetShipmentFactoringHashReq)(nil),       // 198: ManagerService.GetShipmentFactoringHashReq
-	(*ShipmentFactoringHash)(nil),             // 199: ManagerService.ShipmentFactoringHash
-	(*GetShipmentFactoringHashResp)(nil),      // 200: ManagerService.GetShipmentFactoringHashResp
-	(*timestamppb.Timestamp)(nil),             // 201: google.protobuf.Timestamp
+	(*Page)(nil),                                // 0: ManagerService.Page
+	(*GetContractInfoReq)(nil),                  // 1: ManagerService.GetContractInfoReq
+	(*GetContractInfoResp)(nil),                 // 2: ManagerService.GetContractInfoResp
+	(*CountContractReq)(nil),                    // 3: ManagerService.CountContractReq
+	(*CountContractResp)(nil),                   // 4: ManagerService.CountContractResp
+	(*ContractDetailReq)(nil),                   // 5: ManagerService.ContractDetailReq
+	(*ContractDetailResp)(nil),                  // 6: ManagerService.ContractDetailResp
+	(*ContractDetailVo)(nil),                    // 7: ManagerService.ContractDetailVo
+	(*ContractListReq)(nil),                     // 8: ManagerService.ContractListReq
+	(*ContractListResp)(nil),                    // 9: ManagerService.ContractListResp
+	(*ContractListVo)(nil),                      // 10: ManagerService.ContractListVo
+	(*UpCheckContractReq)(nil),                  // 11: ManagerService.UpCheckContractReq
+	(*CheckContractParam)(nil),                  // 12: ManagerService.CheckContractParam
+	(*CheckContractListResp)(nil),               // 13: ManagerService.CheckContractListResp
+	(*ContractMiListReq)(nil),                   // 14: ManagerService.ContractMiListReq
+	(*ContractMiListResp)(nil),                  // 15: ManagerService.ContractMiListResp
+	(*ContractMiListVo)(nil),                    // 16: ManagerService.ContractMiListVo
+	(*CreateOneContractMIReq)(nil),              // 17: ManagerService.CreateOneContractMIReq
+	(*CreateOneContractMIResp)(nil),             // 18: ManagerService.CreateOneContractMIResp
+	(*UpdateOneContractMIReq)(nil),              // 19: ManagerService.UpdateOneContractMIReq
+	(*UpdateOneContractMIResp)(nil),             // 20: ManagerService.UpdateOneContractMIResp
+	(*UpdateOneContractReq)(nil),                // 21: ManagerService.UpdateOneContractReq
+	(*UpdateOneContractResp)(nil),               // 22: ManagerService.UpdateOneContractResp
+	(*BatchOperateContractReq)(nil),             // 23: ManagerService.BatchOperateContractReq
+	(*BatchOperateContractResp)(nil),            // 24: ManagerService.BatchOperateContractResp
+	(*BatchOperateContract)(nil),                // 25: ManagerService.BatchOperateContract
+	(*UpdateContractActiveReq)(nil),             // 26: ManagerService.UpdateContractActiveReq
+	(*UpdateContractActiveResp)(nil),            // 27: ManagerService.UpdateContractActiveResp
+	(*DeleteOneContractReq)(nil),                // 28: ManagerService.DeleteOneContractReq
+	(*DeleteOneContractResp)(nil),               // 29: ManagerService.DeleteOneContractResp
+	(*DeleteOneContractMiReq)(nil),              // 30: ManagerService.DeleteOneContractMiReq
+	(*DeleteOneContractMiResp)(nil),             // 31: ManagerService.DeleteOneContractMiResp
+	(*MedicineListReq)(nil),                     // 32: ManagerService.MedicineListReq
+	(*MedicineListResp)(nil),                    // 33: ManagerService.MedicineListResp
+	(*MedicineListVo)(nil),                      // 34: ManagerService.MedicineListVo
+	(*MedicineListForQueryReq)(nil),             // 35: ManagerService.MedicineListForQueryReq
+	(*MedicineListForQueryResp)(nil),            // 36: ManagerService.MedicineListForQueryResp
+	(*MedicineListForQueryVo)(nil),              // 37: ManagerService.MedicineListForQueryVo
+	(*CreateMedicineReq)(nil),                   // 38: ManagerService.CreateMedicineReq
+	(*CreateMedicineResp)(nil),                  // 39: ManagerService.CreateMedicineResp
+	(*CreateBatchMedicineReq)(nil),              // 40: ManagerService.CreateBatchMedicineReq
+	(*CreateBatchMedicineResp)(nil),             // 41: ManagerService.CreateBatchMedicineResp
+	(*UpdateMedicineReq)(nil),                   // 42: ManagerService.UpdateMedicineReq
+	(*UpdateMedicineResp)(nil),                  // 43: ManagerService.UpdateMedicineResp
+	(*UpdateMedicineActiveReq)(nil),             // 44: ManagerService.UpdateMedicineActiveReq
+	(*UpdateMedicineActiveResp)(nil),            // 45: ManagerService.UpdateMedicineActiveResp
+	(*DeleteMedicineReq)(nil),                   // 46: ManagerService.DeleteMedicineReq
+	(*DeleteMedicineResp)(nil),                  // 47: ManagerService.DeleteMedicineResp
+	(*SelectTagByMedicineIdReq)(nil),            // 48: ManagerService.SelectTagByMedicineIdReq
+	(*SelectTagByMedicineIdResp)(nil),           // 49: ManagerService.SelectTagByMedicineIdResp
+	(*SelectInfoByMedicineNamesReq)(nil),        // 50: ManagerService.SelectInfoByMedicineNamesReq
+	(*SelectInfoByMedicineNamesResp)(nil),       // 51: ManagerService.SelectInfoByMedicineNamesResp
+	(*TagListReq)(nil),                          // 52: ManagerService.TagListReq
+	(*TagListResp)(nil),                         // 53: ManagerService.TagListResp
+	(*TagListVo)(nil),                           // 54: ManagerService.TagListVo
+	(*CreateTagReq)(nil),                        // 55: ManagerService.CreateTagReq
+	(*CreateTagResp)(nil),                       // 56: ManagerService.CreateTagResp
+	(*UpdateTagReq)(nil),                        // 57: ManagerService.UpdateTagReq
+	(*UpdateTagResp)(nil),                       // 58: ManagerService.UpdateTagResp
+	(*DeleteTagReq)(nil),                        // 59: ManagerService.DeleteTagReq
+	(*DeleteTagResp)(nil),                       // 60: ManagerService.DeleteTagResp
+	(*TagDetailListReq)(nil),                    // 61: ManagerService.TagDetailListReq
+	(*TagDetailListResp)(nil),                   // 62: ManagerService.TagDetailListResp
+	(*TagDetailVo)(nil),                         // 63: ManagerService.TagDetailVo
+	(*DeleteTagMedicineReq)(nil),                // 64: ManagerService.DeleteTagMedicineReq
+	(*DeleteTagMedicineResp)(nil),               // 65: ManagerService.DeleteTagMedicineResp
+	(*CreateTagMedicineReq)(nil),                // 66: ManagerService.CreateTagMedicineReq
+	(*CreateTagMedicineResp)(nil),               // 67: ManagerService.CreateTagMedicineResp
+	(*ListMiReq)(nil),                           // 68: ManagerService.ListMiReq
+	(*ListMiResp)(nil),                          // 69: ManagerService.ListMiResp
+	(*ListMiVo)(nil),                            // 70: ManagerService.ListMiVo
+	(*CommonMIReq)(nil),                         // 71: ManagerService.CommonMIReq
+	(*CommonMIResp)(nil),                        // 72: ManagerService.CommonMIResp
+	(*CommonMIVo)(nil),                          // 73: ManagerService.CommonMIVo
+	(*CreateOneMIReq)(nil),                      // 74: ManagerService.CreateOneMIReq
+	(*CreateOneMIResp)(nil),                     // 75: ManagerService.CreateOneMIResp
+	(*UpdateMiReq)(nil),                         // 76: ManagerService.UpdateMiReq
+	(*UpdateMiResp)(nil),                        // 77: ManagerService.UpdateMiResp
+	(*CommonCompanyReq)(nil),                    // 78: ManagerService.CommonCompanyReq
+	(*CommonCompanyResp)(nil),                   // 79: ManagerService.CommonCompanyResp
+	(*CommonCompanyVo)(nil),                     // 80: ManagerService.CommonCompanyVo
+	(*SelCompanyByNamesReq)(nil),                // 81: ManagerService.SelCompanyByNamesReq
+	(*SelCompanyByNamesResp)(nil),               // 82: ManagerService.SelCompanyByNamesResp
+	(*ListCompanyReq)(nil),                      // 83: ManagerService.ListCompanyReq
+	(*ListCompanyResp)(nil),                     // 84: ManagerService.ListCompanyResp
+	(*ListCompanyVo)(nil),                       // 85: ManagerService.ListCompanyVo
+	(*CreateOneCompanyReq)(nil),                 // 86: ManagerService.CreateOneCompanyReq
+	(*CreateOneCompanyResp)(nil),                // 87: ManagerService.CreateOneCompanyResp
+	(*UpdateOneCompanyReq)(nil),                 // 88: ManagerService.UpdateOneCompanyReq
+	(*UpdateOneCompanyResp)(nil),                // 89: ManagerService.UpdateOneCompanyResp
+	(*ListTpPlanErrReq)(nil),                    // 90: ManagerService.ListTpPlanErrReq
+	(*ListTpPlanErrResp)(nil),                   // 91: ManagerService.ListTpPlanErrResp
+	(*ListTpPlanErrVo)(nil),                     // 92: ManagerService.ListTpPlanErrVo
+	(*UpdateErrShipmentPlanReq)(nil),            // 93: ManagerService.UpdateErrShipmentPlanReq
+	(*UpdateErrShipmentPlanResp)(nil),           // 94: ManagerService.UpdateErrShipmentPlanResp
+	(*ListShipmentPlanReq)(nil),                 // 95: ManagerService.ListShipmentPlanReq
+	(*ListShipmentPlanResp)(nil),                // 96: ManagerService.ListShipmentPlanResp
+	(*ListShipmentPlanrVo)(nil),                 // 97: ManagerService.ListShipmentPlanrVo
+	(*DetailShipmentOrderReq)(nil),              // 98: ManagerService.DetailShipmentOrderReq
+	(*DetailShipmentOrderResp)(nil),             // 99: ManagerService.DetailShipmentOrderResp
+	(*ListShipmentPlanForOrderReq)(nil),         // 100: ManagerService.ListShipmentPlanForOrderReq
+	(*ListShipmentPlanForOrderResp)(nil),        // 101: ManagerService.ListShipmentPlanForOrderResp
+	(*ListShipmentPlanForOrderVo)(nil),          // 102: ManagerService.ListShipmentPlanForOrderVo
+	(*CountShipmentPlanReq)(nil),                // 103: ManagerService.CountShipmentPlanReq
+	(*CountShipmentPlanResp)(nil),               // 104: ManagerService.CountShipmentPlanResp
+	(*CreateShipmentOrderReq)(nil),              // 105: ManagerService.CreateShipmentOrderReq
+	(*CreateShipmentOrderResp)(nil),             // 106: ManagerService.CreateShipmentOrderResp
+	(*ListShipmentOrderReq)(nil),                // 107: ManagerService.ListShipmentOrderReq
+	(*ListShipmentOrderResp)(nil),               // 108: ManagerService.ListShipmentOrderResp
+	(*ListShipmentOrderVo)(nil),                 // 109: ManagerService.ListShipmentOrderVo
+	(*CountShipmentOrderReq)(nil),               // 110: ManagerService.CountShipmentOrderReq
+	(*CountShipmentOrderResp)(nil),              // 111: ManagerService.CountShipmentOrderResp
+	(*UpdateShipmentOrderReq)(nil),              // 112: ManagerService.UpdateShipmentOrderReq
+	(*UpdateShipmentOrderResp)(nil),             // 113: ManagerService.UpdateShipmentOrderResp
+	(*InsertConfigsReq)(nil),                    // 114: ManagerService.InsertConfigsReq
+	(*UpdateConfigReq)(nil),                     // 115: ManagerService.UpdateConfigReq
+	(*GetConfigReq)(nil),                        // 116: ManagerService.GetConfigReq
+	(*CommonConfig)(nil),                        // 117: ManagerService.CommonConfig
+	(*UpdateConfigResp)(nil),                    // 118: ManagerService.UpdateConfigResp
+	(*InsertConfigsResp)(nil),                   // 119: ManagerService.InsertConfigsResp
+	(*GetConfigResp)(nil),                       // 120: ManagerService.GetConfigResp
+	(*GetMiSpecialConfigReq)(nil),               // 121: ManagerService.GetMiSpecialConfigReq
+	(*MiSpecialConfig)(nil),                     // 122: ManagerService.MiSpecialConfig
+	(*GetMiSpecialConfigResp)(nil),              // 123: ManagerService.GetMiSpecialConfigResp
+	(*UpdateMiSpecialConfigReq)(nil),            // 124: ManagerService.UpdateMiSpecialConfigReq
+	(*UpdateMiSpecialConfigResp)(nil),           // 125: ManagerService.UpdateMiSpecialConfigResp
+	(*PlanReportGroupCondition)(nil),            // 126: ManagerService.PlanReportGroupCondition
+	(*PlanReportGetCondition)(nil),              // 127: ManagerService.PlanReportGetCondition
+	(*GetShipmentPlanReportsReq)(nil),           // 128: ManagerService.GetShipmentPlanReportsReq
+	(*CompanyReportVo)(nil),                     // 129: ManagerService.CompanyReportVo
+	(*MiReportVo)(nil),                          // 130: ManagerService.MiReportVo
+	(*MedicineReportVo)(nil),                    // 131: ManagerService.MedicineReportVo
+	(*ShipmentPlanDayReport)(nil),               // 132: ManagerService.ShipmentPlanDayReport
+	(*ShipmentPlanMonthReport)(nil),             // 133: ManagerService.ShipmentPlanMonthReport
+	(*ShipmentPlanYearReport)(nil),              // 134: ManagerService.ShipmentPlanYearReport
+	(*GetShipmentPlanDayReportsResp)(nil),       // 135: ManagerService.GetShipmentPlanDayReportsResp
+	(*GetShipmentPlanMonthReportsResp)(nil),     // 136: ManagerService.GetShipmentPlanMonthReportsResp
+	(*GetShipmentPlanYearReportsResp)(nil),      // 137: ManagerService.GetShipmentPlanYearReportsResp
+	(*OrderReportGroupCondition)(nil),           // 138: ManagerService.OrderReportGroupCondition
+	(*OrderReportGetCondition)(nil),             // 139: ManagerService.OrderReportGetCondition
+	(*GetShipmentOrderReportsReq)(nil),          // 140: ManagerService.GetShipmentOrderReportsReq
+	(*ShipmentOrderDayReport)(nil),              // 141: ManagerService.ShipmentOrderDayReport
+	(*ShipmentOrderMonthReport)(nil),            // 142: ManagerService.ShipmentOrderMonthReport
+	(*ShipmentOrderYearReport)(nil),             // 143: ManagerService.ShipmentOrderYearReport
+	(*GetShipmentOrderDayReportsResp)(nil),      // 144: ManagerService.GetShipmentOrderDayReportsResp
+	(*GetShipmentOrderMonthReportsResp)(nil),    // 145: ManagerService.GetShipmentOrderMonthReportsResp
+	(*GetShipmentOrderYearReportsResp)(nil),     // 146: ManagerService.GetShipmentOrderYearReportsResp
+	(*FactoringReportGroupCondition)(nil),       // 147: ManagerService.FactoringReportGroupCondition
+	(*FactoringReportGetCondition)(nil),         // 148: ManagerService.FactoringReportGetCondition
+	(*GetFactoringOrderReportsReq)(nil),         // 149: ManagerService.GetFactoringOrderReportsReq
+	(*FactoringOrderDayReport)(nil),             // 150: ManagerService.FactoringOrderDayReport
+	(*GetFactoringOrderDayReportsResp)(nil),     // 151: ManagerService.GetFactoringOrderDayReportsResp
+	(*FactoringOrderMonthReport)(nil),           // 152: ManagerService.FactoringOrderMonthReport
+	(*GetFactoringOrderMonthReportsResp)(nil),   // 153: ManagerService.GetFactoringOrderMonthReportsResp
+	(*FactoringOrderYearReport)(nil),            // 154: ManagerService.FactoringOrderYearReport
+	(*GetFactoringOrderYearReportsResp)(nil),    // 155: ManagerService.GetFactoringOrderYearReportsResp
+	(*ContractPlanReportGetCondition)(nil),      // 156: ManagerService.ContractPlanReportGetCondition
+	(*ContractPlanReportGroupCondition)(nil),    // 157: ManagerService.ContractPlanReportGroupCondition
+	(*GetContractPlanReportsReq)(nil),           // 158: ManagerService.GetContractPlanReportsReq
+	(*ContractReportVo)(nil),                    // 159: ManagerService.ContractReportVo
+	(*ContractMiReportVo)(nil),                  // 160: ManagerService.ContractMiReportVo
+	(*ContractPlanDayReport)(nil),               // 161: ManagerService.ContractPlanDayReport
+	(*GetContractPlanDayReportsResp)(nil),       // 162: ManagerService.GetContractPlanDayReportsResp
+	(*ContractPlanMonthReport)(nil),             // 163: ManagerService.ContractPlanMonthReport
+	(*GetContractPlanMonthReportsResp)(nil),     // 164: ManagerService.GetContractPlanMonthReportsResp
+	(*ContractPlanYearReport)(nil),              // 165: ManagerService.ContractPlanYearReport
+	(*GetContractPlanYearReportsResp)(nil),      // 166: ManagerService.GetContractPlanYearReportsResp
+	(*GetValidContractInfoReq)(nil),             // 167: ManagerService.GetValidContractInfoReq
+	(*GetCurrentNeedPayReq)(nil),                // 168: ManagerService.GetCurrentNeedPayReq
+	(*GetValidContractInfoResp)(nil),            // 169: ManagerService.GetValidContractInfoResp
+	(*GetCurrentNeedPayResp)(nil),               // 170: ManagerService.GetCurrentNeedPayResp
+	(*GetCompanyHashReq)(nil),                   // 171: ManagerService.GetCompanyHashReq
+	(*GetCompanyHashResp)(nil),                  // 172: ManagerService.GetCompanyHashResp
+	(*CompanyHash)(nil),                         // 173: ManagerService.CompanyHash
+	(*GetMiHashReq)(nil),                        // 174: ManagerService.GetMiHashReq
+	(*MiHash)(nil),                              // 175: ManagerService.MiHash
+	(*GetMiHashResp)(nil),                       // 176: ManagerService.GetMiHashResp
+	(*GetMedicineReq)(nil),                      // 177: ManagerService.GetMedicineReq
+	(*MedicineHash)(nil),                        // 178: ManagerService.MedicineHash
+	(*GetMedicineResp)(nil),                     // 179: ManagerService.GetMedicineResp
+	(*GetContractHashReq)(nil),                  // 180: ManagerService.GetContractHashReq
+	(*ContractHash)(nil),                        // 181: ManagerService.ContractHash
+	(*GetContractHashResp)(nil),                 // 182: ManagerService.GetContractHashResp
+	(*GetContractMiHashReq)(nil),                // 183: ManagerService.GetContractMiHashReq
+	(*ContractMiHash)(nil),                      // 184: ManagerService.ContractMiHash
+	(*GetContractMiHashResp)(nil),               // 185: ManagerService.GetContractMiHashResp
+	(*GetConfigHashReq)(nil),                    // 186: ManagerService.GetConfigHashReq
+	(*ConfigHash)(nil),                          // 187: ManagerService.ConfigHash
+	(*GetConfigHashResp)(nil),                   // 188: ManagerService.GetConfigHashResp
+	(*GetShipmentPlanHashReq)(nil),              // 189: ManagerService.GetShipmentPlanHashReq
+	(*ShipmentPlanHash)(nil),                    // 190: ManagerService.ShipmentPlanHash
+	(*GetShipmentPlanHashResp)(nil),             // 191: ManagerService.GetShipmentPlanHashResp
+	(*GetShipmentOrderHashReq)(nil),             // 192: ManagerService.GetShipmentOrderHashReq
+	(*ShipmentOrderHash)(nil),                   // 193: ManagerService.ShipmentOrderHash
+	(*GetShipmentOrderHashResp)(nil),            // 194: ManagerService.GetShipmentOrderHashResp
+	(*GetShipmentPayHashReq)(nil),               // 195: ManagerService.GetShipmentPayHashReq
+	(*ShipmentPayHash)(nil),                     // 196: ManagerService.ShipmentPayHash
+	(*GetShipmentPayHashResp)(nil),              // 197: ManagerService.GetShipmentPayHashResp
+	(*GetShipmentFactoringHashReq)(nil),         // 198: ManagerService.GetShipmentFactoringHashReq
+	(*ShipmentFactoringHash)(nil),               // 199: ManagerService.ShipmentFactoringHash
+	(*GetShipmentFactoringHashResp)(nil),        // 200: ManagerService.GetShipmentFactoringHashResp
+	(*GetShipmentRankMedicineDataYearReq)(nil),  // 201: ManagerService.GetShipmentRankMedicineDataYearReq
+	(*ShipmentRankMedicineDataYear)(nil),        // 202: ManagerService.ShipmentRankMedicineDataYear
+	(*GetShipmentRankMedicineDataYearResp)(nil), // 203: ManagerService.GetShipmentRankMedicineDataYearResp
+	(*GetShipmentRankCompanyDataYearReq)(nil),   // 204: ManagerService.GetShipmentRankCompanyDataYearReq
+	(*ShipmentRankCompanyMedicine)(nil),         // 205: ManagerService.ShipmentRankCompanyMedicine
+	(*ShipmentRankCompanyDataYear)(nil),         // 206: ManagerService.ShipmentRankCompanyDataYear
+	(*GetShipmentRankCompanyDataYearResp)(nil),  // 207: ManagerService.GetShipmentRankCompanyDataYearResp
+	(*timestamppb.Timestamp)(nil),               // 208: google.protobuf.Timestamp
 }
 var file_ManagerService_proto_depIdxs = []int32{
 	7,   // 0: ManagerService.ContractDetailResp.list:type_name -> ManagerService.ContractDetailVo
-	201, // 1: ManagerService.ContractListReq.StartAt:type_name -> google.protobuf.Timestamp
-	201, // 2: ManagerService.ContractListReq.EndAt:type_name -> google.protobuf.Timestamp
+	208, // 1: ManagerService.ContractListReq.StartAt:type_name -> google.protobuf.Timestamp
+	208, // 2: ManagerService.ContractListReq.EndAt:type_name -> google.protobuf.Timestamp
 	0,   // 3: ManagerService.ContractListReq.page:type_name -> ManagerService.Page
 	10,  // 4: ManagerService.ContractListResp.list:type_name -> ManagerService.ContractListVo
-	201, // 5: ManagerService.ContractListVo.startAt:type_name -> google.protobuf.Timestamp
-	201, // 6: ManagerService.ContractListVo.endAt:type_name -> google.protobuf.Timestamp
-	201, // 7: ManagerService.ContractListVo.createdAt:type_name -> google.protobuf.Timestamp
+	208, // 5: ManagerService.ContractListVo.startAt:type_name -> google.protobuf.Timestamp
+	208, // 6: ManagerService.ContractListVo.endAt:type_name -> google.protobuf.Timestamp
+	208, // 7: ManagerService.ContractListVo.createdAt:type_name -> google.protobuf.Timestamp
 	12,  // 8: ManagerService.UpCheckContractReq.reqs:type_name -> ManagerService.CheckContractParam
-	201, // 9: ManagerService.CheckContractParam.startAt:type_name -> google.protobuf.Timestamp
-	201, // 10: ManagerService.CheckContractParam.endAt:type_name -> google.protobuf.Timestamp
+	208, // 9: ManagerService.CheckContractParam.startAt:type_name -> google.protobuf.Timestamp
+	208, // 10: ManagerService.CheckContractParam.endAt:type_name -> google.protobuf.Timestamp
 	10,  // 11: ManagerService.CheckContractListResp.list:type_name -> ManagerService.ContractListVo
 	16,  // 12: ManagerService.ContractMiListResp.list:type_name -> ManagerService.ContractMiListVo
-	201, // 13: ManagerService.ContractMiListVo.infoUploadAt:type_name -> google.protobuf.Timestamp
-	201, // 14: ManagerService.UpdateOneContractReq.startAt:type_name -> google.protobuf.Timestamp
-	201, // 15: ManagerService.UpdateOneContractReq.endAt:type_name -> google.protobuf.Timestamp
+	208, // 13: ManagerService.ContractMiListVo.infoUploadAt:type_name -> google.protobuf.Timestamp
+	208, // 14: ManagerService.UpdateOneContractReq.startAt:type_name -> google.protobuf.Timestamp
+	208, // 15: ManagerService.UpdateOneContractReq.endAt:type_name -> google.protobuf.Timestamp
 	25,  // 16: ManagerService.BatchOperateContractReq.updateParam:type_name -> ManagerService.BatchOperateContract
 	25,  // 17: ManagerService.BatchOperateContractReq.createParam:type_name -> ManagerService.BatchOperateContract
-	201, // 18: ManagerService.BatchOperateContract.startAt:type_name -> google.protobuf.Timestamp
-	201, // 19: ManagerService.BatchOperateContract.endAt:type_name -> google.protobuf.Timestamp
+	208, // 18: ManagerService.BatchOperateContract.startAt:type_name -> google.protobuf.Timestamp
+	208, // 19: ManagerService.BatchOperateContract.endAt:type_name -> google.protobuf.Timestamp
 	0,   // 20: ManagerService.MedicineListReq.page:type_name -> ManagerService.Page
 	34,  // 21: ManagerService.MedicineListResp.list:type_name -> ManagerService.MedicineListVo
-	201, // 22: ManagerService.MedicineListVo.createdAt:type_name -> google.protobuf.Timestamp
+	208, // 22: ManagerService.MedicineListVo.createdAt:type_name -> google.protobuf.Timestamp
 	0,   // 23: ManagerService.MedicineListForQueryReq.page:type_name -> ManagerService.Page
 	34,  // 24: ManagerService.MedicineListForQueryResp.list:type_name -> ManagerService.MedicineListVo
 	38,  // 25: ManagerService.CreateBatchMedicineReq.list:type_name -> ManagerService.CreateMedicineReq
@@ -19923,7 +20563,7 @@ var file_ManagerService_proto_depIdxs = []int32{
 	63,  // 28: ManagerService.TagDetailListResp.list:type_name -> ManagerService.TagDetailVo
 	0,   // 29: ManagerService.ListMiReq.page:type_name -> ManagerService.Page
 	70,  // 30: ManagerService.ListMiResp.list:type_name -> ManagerService.ListMiVo
-	201, // 31: ManagerService.ListMiVo.createdAt:type_name -> google.protobuf.Timestamp
+	208, // 31: ManagerService.ListMiVo.createdAt:type_name -> google.protobuf.Timestamp
 	0,   // 32: ManagerService.CommonMIReq.page:type_name -> ManagerService.Page
 	73,  // 33: ManagerService.CommonMIResp.list:type_name -> ManagerService.CommonMIVo
 	0,   // 34: ManagerService.CommonCompanyReq.page:type_name -> ManagerService.Page
@@ -19931,104 +20571,104 @@ var file_ManagerService_proto_depIdxs = []int32{
 	80,  // 36: ManagerService.SelCompanyByNamesResp.list:type_name -> ManagerService.CommonCompanyVo
 	0,   // 37: ManagerService.ListCompanyReq.page:type_name -> ManagerService.Page
 	85,  // 38: ManagerService.ListCompanyResp.list:type_name -> ManagerService.ListCompanyVo
-	201, // 39: ManagerService.ListCompanyVo.createdAt:type_name -> google.protobuf.Timestamp
-	201, // 40: ManagerService.ListTpPlanErrReq.stratDate:type_name -> google.protobuf.Timestamp
-	201, // 41: ManagerService.ListTpPlanErrReq.endDate:type_name -> google.protobuf.Timestamp
+	208, // 39: ManagerService.ListCompanyVo.createdAt:type_name -> google.protobuf.Timestamp
+	208, // 40: ManagerService.ListTpPlanErrReq.stratDate:type_name -> google.protobuf.Timestamp
+	208, // 41: ManagerService.ListTpPlanErrReq.endDate:type_name -> google.protobuf.Timestamp
 	0,   // 42: ManagerService.ListTpPlanErrReq.page:type_name -> ManagerService.Page
 	92,  // 43: ManagerService.ListTpPlanErrResp.list:type_name -> ManagerService.ListTpPlanErrVo
-	201, // 44: ManagerService.ListTpPlanErrVo.createdAt:type_name -> google.protobuf.Timestamp
-	201, // 45: ManagerService.ListShipmentPlanReq.stratDate:type_name -> google.protobuf.Timestamp
-	201, // 46: ManagerService.ListShipmentPlanReq.endDate:type_name -> google.protobuf.Timestamp
+	208, // 44: ManagerService.ListTpPlanErrVo.createdAt:type_name -> google.protobuf.Timestamp
+	208, // 45: ManagerService.ListShipmentPlanReq.stratDate:type_name -> google.protobuf.Timestamp
+	208, // 46: ManagerService.ListShipmentPlanReq.endDate:type_name -> google.protobuf.Timestamp
 	0,   // 47: ManagerService.ListShipmentPlanReq.page:type_name -> ManagerService.Page
 	97,  // 48: ManagerService.ListShipmentPlanResp.list:type_name -> ManagerService.ListShipmentPlanrVo
-	201, // 49: ManagerService.ListShipmentPlanrVo.tpCreatedAt:type_name -> google.protobuf.Timestamp
-	201, // 50: ManagerService.ListShipmentPlanrVo.receiveAt:type_name -> google.protobuf.Timestamp
+	208, // 49: ManagerService.ListShipmentPlanrVo.tpCreatedAt:type_name -> google.protobuf.Timestamp
+	208, // 50: ManagerService.ListShipmentPlanrVo.receiveAt:type_name -> google.protobuf.Timestamp
 	102, // 51: ManagerService.ListShipmentPlanForOrderResp.list:type_name -> ManagerService.ListShipmentPlanForOrderVo
-	201, // 52: ManagerService.ListShipmentPlanForOrderVo.tpCreatedAt:type_name -> google.protobuf.Timestamp
-	201, // 53: ManagerService.CountShipmentPlanReq.startDate:type_name -> google.protobuf.Timestamp
-	201, // 54: ManagerService.CountShipmentPlanReq.endDate:type_name -> google.protobuf.Timestamp
-	201, // 55: ManagerService.CreateShipmentOrderReq.invoiceDate:type_name -> google.protobuf.Timestamp
-	201, // 56: ManagerService.CreateShipmentOrderReq.sendOutAt:type_name -> google.protobuf.Timestamp
-	201, // 57: ManagerService.ListShipmentOrderReq.startDate:type_name -> google.protobuf.Timestamp
-	201, // 58: ManagerService.ListShipmentOrderReq.endDate:type_name -> google.protobuf.Timestamp
+	208, // 52: ManagerService.ListShipmentPlanForOrderVo.tpCreatedAt:type_name -> google.protobuf.Timestamp
+	208, // 53: ManagerService.CountShipmentPlanReq.startDate:type_name -> google.protobuf.Timestamp
+	208, // 54: ManagerService.CountShipmentPlanReq.endDate:type_name -> google.protobuf.Timestamp
+	208, // 55: ManagerService.CreateShipmentOrderReq.invoiceDate:type_name -> google.protobuf.Timestamp
+	208, // 56: ManagerService.CreateShipmentOrderReq.sendOutAt:type_name -> google.protobuf.Timestamp
+	208, // 57: ManagerService.ListShipmentOrderReq.startDate:type_name -> google.protobuf.Timestamp
+	208, // 58: ManagerService.ListShipmentOrderReq.endDate:type_name -> google.protobuf.Timestamp
 	0,   // 59: ManagerService.ListShipmentOrderReq.page:type_name -> ManagerService.Page
-	201, // 60: ManagerService.ListShipmentOrderReq.receiveDeadline:type_name -> google.protobuf.Timestamp
+	208, // 60: ManagerService.ListShipmentOrderReq.receiveDeadline:type_name -> google.protobuf.Timestamp
 	109, // 61: ManagerService.ListShipmentOrderResp.list:type_name -> ManagerService.ListShipmentOrderVo
-	201, // 62: ManagerService.ListShipmentOrderVo.sendOutAt:type_name -> google.protobuf.Timestamp
-	201, // 63: ManagerService.ListShipmentOrderVo.receiveDeadline:type_name -> google.protobuf.Timestamp
-	201, // 64: ManagerService.CountShipmentOrderReq.startDate:type_name -> google.protobuf.Timestamp
-	201, // 65: ManagerService.CountShipmentOrderReq.endDate:type_name -> google.protobuf.Timestamp
+	208, // 62: ManagerService.ListShipmentOrderVo.sendOutAt:type_name -> google.protobuf.Timestamp
+	208, // 63: ManagerService.ListShipmentOrderVo.receiveDeadline:type_name -> google.protobuf.Timestamp
+	208, // 64: ManagerService.CountShipmentOrderReq.startDate:type_name -> google.protobuf.Timestamp
+	208, // 65: ManagerService.CountShipmentOrderReq.endDate:type_name -> google.protobuf.Timestamp
 	117, // 66: ManagerService.InsertConfigsReq.configs:type_name -> ManagerService.CommonConfig
 	0,   // 67: ManagerService.GetConfigReq.page:type_name -> ManagerService.Page
-	201, // 68: ManagerService.GetConfigReq.startAt:type_name -> google.protobuf.Timestamp
-	201, // 69: ManagerService.GetConfigReq.endAt:type_name -> google.protobuf.Timestamp
-	201, // 70: ManagerService.CommonConfig.startAt:type_name -> google.protobuf.Timestamp
-	201, // 71: ManagerService.CommonConfig.endAt:type_name -> google.protobuf.Timestamp
-	201, // 72: ManagerService.CommonConfig.created:type_name -> google.protobuf.Timestamp
+	208, // 68: ManagerService.GetConfigReq.startAt:type_name -> google.protobuf.Timestamp
+	208, // 69: ManagerService.GetConfigReq.endAt:type_name -> google.protobuf.Timestamp
+	208, // 70: ManagerService.CommonConfig.startAt:type_name -> google.protobuf.Timestamp
+	208, // 71: ManagerService.CommonConfig.endAt:type_name -> google.protobuf.Timestamp
+	208, // 72: ManagerService.CommonConfig.created:type_name -> google.protobuf.Timestamp
 	117, // 73: ManagerService.GetConfigResp.list:type_name -> ManagerService.CommonConfig
 	0,   // 74: ManagerService.GetMiSpecialConfigReq.page:type_name -> ManagerService.Page
 	122, // 75: ManagerService.GetMiSpecialConfigResp.list:type_name -> ManagerService.MiSpecialConfig
-	201, // 76: ManagerService.GetShipmentPlanReportsReq.startAt:type_name -> google.protobuf.Timestamp
-	201, // 77: ManagerService.GetShipmentPlanReportsReq.endAt:type_name -> google.protobuf.Timestamp
+	208, // 76: ManagerService.GetShipmentPlanReportsReq.startAt:type_name -> google.protobuf.Timestamp
+	208, // 77: ManagerService.GetShipmentPlanReportsReq.endAt:type_name -> google.protobuf.Timestamp
 	127, // 78: ManagerService.GetShipmentPlanReportsReq.optionalFilterCond:type_name -> ManagerService.PlanReportGetCondition
 	126, // 79: ManagerService.GetShipmentPlanReportsReq.optionalGroupCond:type_name -> ManagerService.PlanReportGroupCondition
 	129, // 80: ManagerService.ShipmentPlanDayReport.companyInfo:type_name -> ManagerService.CompanyReportVo
 	130, // 81: ManagerService.ShipmentPlanDayReport.miInfo:type_name -> ManagerService.MiReportVo
 	131, // 82: ManagerService.ShipmentPlanDayReport.medicineInfo:type_name -> ManagerService.MedicineReportVo
-	201, // 83: ManagerService.ShipmentPlanDayReport.reportDate:type_name -> google.protobuf.Timestamp
+	208, // 83: ManagerService.ShipmentPlanDayReport.reportDate:type_name -> google.protobuf.Timestamp
 	129, // 84: ManagerService.ShipmentPlanMonthReport.companyInfo:type_name -> ManagerService.CompanyReportVo
 	130, // 85: ManagerService.ShipmentPlanMonthReport.miInfo:type_name -> ManagerService.MiReportVo
 	131, // 86: ManagerService.ShipmentPlanMonthReport.medicineInfo:type_name -> ManagerService.MedicineReportVo
-	201, // 87: ManagerService.ShipmentPlanMonthReport.reportDate:type_name -> google.protobuf.Timestamp
+	208, // 87: ManagerService.ShipmentPlanMonthReport.reportDate:type_name -> google.protobuf.Timestamp
 	129, // 88: ManagerService.ShipmentPlanYearReport.companyInfo:type_name -> ManagerService.CompanyReportVo
 	130, // 89: ManagerService.ShipmentPlanYearReport.miInfo:type_name -> ManagerService.MiReportVo
 	131, // 90: ManagerService.ShipmentPlanYearReport.medicineInfo:type_name -> ManagerService.MedicineReportVo
-	201, // 91: ManagerService.ShipmentPlanYearReport.reportDate:type_name -> google.protobuf.Timestamp
+	208, // 91: ManagerService.ShipmentPlanYearReport.reportDate:type_name -> google.protobuf.Timestamp
 	132, // 92: ManagerService.GetShipmentPlanDayReportsResp.list:type_name -> ManagerService.ShipmentPlanDayReport
 	133, // 93: ManagerService.GetShipmentPlanMonthReportsResp.list:type_name -> ManagerService.ShipmentPlanMonthReport
 	134, // 94: ManagerService.GetShipmentPlanYearReportsResp.list:type_name -> ManagerService.ShipmentPlanYearReport
-	201, // 95: ManagerService.GetShipmentOrderReportsReq.startAt:type_name -> google.protobuf.Timestamp
-	201, // 96: ManagerService.GetShipmentOrderReportsReq.endAt:type_name -> google.protobuf.Timestamp
+	208, // 95: ManagerService.GetShipmentOrderReportsReq.startAt:type_name -> google.protobuf.Timestamp
+	208, // 96: ManagerService.GetShipmentOrderReportsReq.endAt:type_name -> google.protobuf.Timestamp
 	139, // 97: ManagerService.GetShipmentOrderReportsReq.optionalFilterCond:type_name -> ManagerService.OrderReportGetCondition
 	138, // 98: ManagerService.GetShipmentOrderReportsReq.optionalGroupCond:type_name -> ManagerService.OrderReportGroupCondition
 	129, // 99: ManagerService.ShipmentOrderDayReport.companyInfo:type_name -> ManagerService.CompanyReportVo
 	130, // 100: ManagerService.ShipmentOrderDayReport.miInfo:type_name -> ManagerService.MiReportVo
-	201, // 101: ManagerService.ShipmentOrderDayReport.reportDate:type_name -> google.protobuf.Timestamp
-	201, // 102: ManagerService.ShipmentOrderMonthReport.reportDate:type_name -> google.protobuf.Timestamp
+	208, // 101: ManagerService.ShipmentOrderDayReport.reportDate:type_name -> google.protobuf.Timestamp
+	208, // 102: ManagerService.ShipmentOrderMonthReport.reportDate:type_name -> google.protobuf.Timestamp
 	129, // 103: ManagerService.ShipmentOrderMonthReport.companyInfo:type_name -> ManagerService.CompanyReportVo
 	130, // 104: ManagerService.ShipmentOrderMonthReport.miInfo:type_name -> ManagerService.MiReportVo
-	201, // 105: ManagerService.ShipmentOrderYearReport.reportDate:type_name -> google.protobuf.Timestamp
+	208, // 105: ManagerService.ShipmentOrderYearReport.reportDate:type_name -> google.protobuf.Timestamp
 	129, // 106: ManagerService.ShipmentOrderYearReport.companyInfo:type_name -> ManagerService.CompanyReportVo
 	130, // 107: ManagerService.ShipmentOrderYearReport.miInfo:type_name -> ManagerService.MiReportVo
 	141, // 108: ManagerService.GetShipmentOrderDayReportsResp.list:type_name -> ManagerService.ShipmentOrderDayReport
 	142, // 109: ManagerService.GetShipmentOrderMonthReportsResp.list:type_name -> ManagerService.ShipmentOrderMonthReport
 	143, // 110: ManagerService.GetShipmentOrderYearReportsResp.list:type_name -> ManagerService.ShipmentOrderYearReport
-	201, // 111: ManagerService.GetFactoringOrderReportsReq.startAt:type_name -> google.protobuf.Timestamp
-	201, // 112: ManagerService.GetFactoringOrderReportsReq.endAt:type_name -> google.protobuf.Timestamp
+	208, // 111: ManagerService.GetFactoringOrderReportsReq.startAt:type_name -> google.protobuf.Timestamp
+	208, // 112: ManagerService.GetFactoringOrderReportsReq.endAt:type_name -> google.protobuf.Timestamp
 	148, // 113: ManagerService.GetFactoringOrderReportsReq.optionalFilterCond:type_name -> ManagerService.FactoringReportGetCondition
 	147, // 114: ManagerService.GetFactoringOrderReportsReq.optionalGroupCond:type_name -> ManagerService.FactoringReportGroupCondition
 	129, // 115: ManagerService.FactoringOrderDayReport.companyInfo:type_name -> ManagerService.CompanyReportVo
 	130, // 116: ManagerService.FactoringOrderDayReport.miInfo:type_name -> ManagerService.MiReportVo
-	201, // 117: ManagerService.FactoringOrderDayReport.reportDate:type_name -> google.protobuf.Timestamp
+	208, // 117: ManagerService.FactoringOrderDayReport.reportDate:type_name -> google.protobuf.Timestamp
 	150, // 118: ManagerService.GetFactoringOrderDayReportsResp.list:type_name -> ManagerService.FactoringOrderDayReport
 	129, // 119: ManagerService.FactoringOrderMonthReport.companyInfo:type_name -> ManagerService.CompanyReportVo
 	130, // 120: ManagerService.FactoringOrderMonthReport.miInfo:type_name -> ManagerService.MiReportVo
-	201, // 121: ManagerService.FactoringOrderMonthReport.reportDate:type_name -> google.protobuf.Timestamp
+	208, // 121: ManagerService.FactoringOrderMonthReport.reportDate:type_name -> google.protobuf.Timestamp
 	152, // 122: ManagerService.GetFactoringOrderMonthReportsResp.list:type_name -> ManagerService.FactoringOrderMonthReport
-	201, // 123: ManagerService.FactoringOrderYearReport.reportDate:type_name -> google.protobuf.Timestamp
+	208, // 123: ManagerService.FactoringOrderYearReport.reportDate:type_name -> google.protobuf.Timestamp
 	129, // 124: ManagerService.FactoringOrderYearReport.companyInfo:type_name -> ManagerService.CompanyReportVo
 	130, // 125: ManagerService.FactoringOrderYearReport.miInfo:type_name -> ManagerService.MiReportVo
 	154, // 126: ManagerService.GetFactoringOrderYearReportsResp.list:type_name -> ManagerService.FactoringOrderYearReport
-	201, // 127: ManagerService.GetContractPlanReportsReq.startAt:type_name -> google.protobuf.Timestamp
-	201, // 128: ManagerService.GetContractPlanReportsReq.endAt:type_name -> google.protobuf.Timestamp
+	208, // 127: ManagerService.GetContractPlanReportsReq.startAt:type_name -> google.protobuf.Timestamp
+	208, // 128: ManagerService.GetContractPlanReportsReq.endAt:type_name -> google.protobuf.Timestamp
 	156, // 129: ManagerService.GetContractPlanReportsReq.optionalFilterCond:type_name -> ManagerService.ContractPlanReportGetCondition
 	157, // 130: ManagerService.GetContractPlanReportsReq.optionalGroupCond:type_name -> ManagerService.ContractPlanReportGroupCondition
-	201, // 131: ManagerService.ContractReportVo.startAt:type_name -> google.protobuf.Timestamp
-	201, // 132: ManagerService.ContractReportVo.endAt:type_name -> google.protobuf.Timestamp
+	208, // 131: ManagerService.ContractReportVo.startAt:type_name -> google.protobuf.Timestamp
+	208, // 132: ManagerService.ContractReportVo.endAt:type_name -> google.protobuf.Timestamp
 	129, // 133: ManagerService.ContractPlanDayReport.companyInfo:type_name -> ManagerService.CompanyReportVo
 	130, // 134: ManagerService.ContractPlanDayReport.miInfo:type_name -> ManagerService.MiReportVo
 	131, // 135: ManagerService.ContractPlanDayReport.medicineInfo:type_name -> ManagerService.MedicineReportVo
-	201, // 136: ManagerService.ContractPlanDayReport.reportDate:type_name -> google.protobuf.Timestamp
+	208, // 136: ManagerService.ContractPlanDayReport.reportDate:type_name -> google.protobuf.Timestamp
 	159, // 137: ManagerService.ContractPlanDayReport.contractInfo:type_name -> ManagerService.ContractReportVo
 	160, // 138: ManagerService.ContractPlanDayReport.contractMiInfo:type_name -> ManagerService.ContractMiReportVo
 	161, // 139: ManagerService.GetContractPlanDayReportsResp.list:type_name -> ManagerService.ContractPlanDayReport
@@ -20036,7 +20676,7 @@ var file_ManagerService_proto_depIdxs = []int32{
 	129, // 141: ManagerService.ContractPlanMonthReport.companyInfo:type_name -> ManagerService.CompanyReportVo
 	130, // 142: ManagerService.ContractPlanMonthReport.miInfo:type_name -> ManagerService.MiReportVo
 	131, // 143: ManagerService.ContractPlanMonthReport.medicineInfo:type_name -> ManagerService.MedicineReportVo
-	201, // 144: ManagerService.ContractPlanMonthReport.reportDate:type_name -> google.protobuf.Timestamp
+	208, // 144: ManagerService.ContractPlanMonthReport.reportDate:type_name -> google.protobuf.Timestamp
 	159, // 145: ManagerService.ContractPlanMonthReport.contractInfo:type_name -> ManagerService.ContractReportVo
 	163, // 146: ManagerService.GetContractPlanMonthReportsResp.list:type_name -> ManagerService.ContractPlanMonthReport
 	159, // 147: ManagerService.ContractPlanYearReport.contractInfo:type_name -> ManagerService.ContractReportVo
@@ -20044,199 +20684,210 @@ var file_ManagerService_proto_depIdxs = []int32{
 	129, // 149: ManagerService.ContractPlanYearReport.companyInfo:type_name -> ManagerService.CompanyReportVo
 	130, // 150: ManagerService.ContractPlanYearReport.miInfo:type_name -> ManagerService.MiReportVo
 	131, // 151: ManagerService.ContractPlanYearReport.medicineInfo:type_name -> ManagerService.MedicineReportVo
-	201, // 152: ManagerService.ContractPlanYearReport.reportDate:type_name -> google.protobuf.Timestamp
+	208, // 152: ManagerService.ContractPlanYearReport.reportDate:type_name -> google.protobuf.Timestamp
 	165, // 153: ManagerService.GetContractPlanYearReportsResp.list:type_name -> ManagerService.ContractPlanYearReport
 	173, // 154: ManagerService.GetCompanyHashResp.list:type_name -> ManagerService.CompanyHash
-	201, // 155: ManagerService.CompanyHash.infoUploadAt:type_name -> google.protobuf.Timestamp
-	201, // 156: ManagerService.MiHash.infoUploadAt:type_name -> google.protobuf.Timestamp
+	208, // 155: ManagerService.CompanyHash.infoUploadAt:type_name -> google.protobuf.Timestamp
+	208, // 156: ManagerService.MiHash.infoUploadAt:type_name -> google.protobuf.Timestamp
 	175, // 157: ManagerService.GetMiHashResp.list:type_name -> ManagerService.MiHash
-	201, // 158: ManagerService.MedicineHash.infoUploadAt:type_name -> google.protobuf.Timestamp
+	208, // 158: ManagerService.MedicineHash.infoUploadAt:type_name -> google.protobuf.Timestamp
 	178, // 159: ManagerService.GetMedicineResp.list:type_name -> ManagerService.MedicineHash
-	201, // 160: ManagerService.ContractHash.infoUploadAt:type_name -> google.protobuf.Timestamp
+	208, // 160: ManagerService.ContractHash.infoUploadAt:type_name -> google.protobuf.Timestamp
 	181, // 161: ManagerService.GetContractHashResp.list:type_name -> ManagerService.ContractHash
-	201, // 162: ManagerService.ContractMiHash.infoUploadAt:type_name -> google.protobuf.Timestamp
+	208, // 162: ManagerService.ContractMiHash.infoUploadAt:type_name -> google.protobuf.Timestamp
 	184, // 163: ManagerService.GetContractMiHashResp.list:type_name -> ManagerService.ContractMiHash
-	201, // 164: ManagerService.ConfigHash.infoUploadAt:type_name -> google.protobuf.Timestamp
+	208, // 164: ManagerService.ConfigHash.infoUploadAt:type_name -> google.protobuf.Timestamp
 	187, // 165: ManagerService.GetConfigHashResp.list:type_name -> ManagerService.ConfigHash
-	201, // 166: ManagerService.ShipmentPlanHash.infoUploadAt:type_name -> google.protobuf.Timestamp
-	201, // 167: ManagerService.ShipmentPlanHash.qrCodeUploadAt:type_name -> google.protobuf.Timestamp
-	201, // 168: ManagerService.ShipmentPlanHash.shipmentStartUploadAt:type_name -> google.protobuf.Timestamp
-	201, // 169: ManagerService.ShipmentPlanHash.shipmentReceiveUploadAt:type_name -> google.protobuf.Timestamp
-	201, // 170: ManagerService.ShipmentPlanHash.shipmentEnterUploadAt:type_name -> google.protobuf.Timestamp
+	208, // 166: ManagerService.ShipmentPlanHash.infoUploadAt:type_name -> google.protobuf.Timestamp
+	208, // 167: ManagerService.ShipmentPlanHash.qrCodeUploadAt:type_name -> google.protobuf.Timestamp
+	208, // 168: ManagerService.ShipmentPlanHash.shipmentStartUploadAt:type_name -> google.protobuf.Timestamp
+	208, // 169: ManagerService.ShipmentPlanHash.shipmentReceiveUploadAt:type_name -> google.protobuf.Timestamp
+	208, // 170: ManagerService.ShipmentPlanHash.shipmentEnterUploadAt:type_name -> google.protobuf.Timestamp
 	190, // 171: ManagerService.GetShipmentPlanHashResp.list:type_name -> ManagerService.ShipmentPlanHash
-	201, // 172: ManagerService.ShipmentOrderHash.qrCodeUploadAt:type_name -> google.protobuf.Timestamp
-	201, // 173: ManagerService.ShipmentOrderHash.shipmentStartUploadAt:type_name -> google.protobuf.Timestamp
-	201, // 174: ManagerService.ShipmentOrderHash.shipmentReceiveUploadAt:type_name -> google.protobuf.Timestamp
-	201, // 175: ManagerService.ShipmentOrderHash.shipmentEnterUploadAt:type_name -> google.protobuf.Timestamp
+	208, // 172: ManagerService.ShipmentOrderHash.qrCodeUploadAt:type_name -> google.protobuf.Timestamp
+	208, // 173: ManagerService.ShipmentOrderHash.shipmentStartUploadAt:type_name -> google.protobuf.Timestamp
+	208, // 174: ManagerService.ShipmentOrderHash.shipmentReceiveUploadAt:type_name -> google.protobuf.Timestamp
+	208, // 175: ManagerService.ShipmentOrderHash.shipmentEnterUploadAt:type_name -> google.protobuf.Timestamp
 	193, // 176: ManagerService.GetShipmentOrderHashResp.list:type_name -> ManagerService.ShipmentOrderHash
-	201, // 177: ManagerService.ShipmentPayHash.qrCodeUploadAt:type_name -> google.protobuf.Timestamp
-	201, // 178: ManagerService.ShipmentPayHash.shipmentStartUploadAt:type_name -> google.protobuf.Timestamp
-	201, // 179: ManagerService.ShipmentPayHash.shipmentReceiveUploadAt:type_name -> google.protobuf.Timestamp
-	201, // 180: ManagerService.ShipmentPayHash.shipmentEnterUploadAt:type_name -> google.protobuf.Timestamp
+	208, // 177: ManagerService.ShipmentPayHash.qrCodeUploadAt:type_name -> google.protobuf.Timestamp
+	208, // 178: ManagerService.ShipmentPayHash.shipmentStartUploadAt:type_name -> google.protobuf.Timestamp
+	208, // 179: ManagerService.ShipmentPayHash.shipmentReceiveUploadAt:type_name -> google.protobuf.Timestamp
+	208, // 180: ManagerService.ShipmentPayHash.shipmentEnterUploadAt:type_name -> google.protobuf.Timestamp
 	196, // 181: ManagerService.GetShipmentPayHashResp.list:type_name -> ManagerService.ShipmentPayHash
-	201, // 182: ManagerService.ShipmentFactoringHash.applyUploadAt:type_name -> google.protobuf.Timestamp
-	201, // 183: ManagerService.ShipmentFactoringHash.resultUploadAt:type_name -> google.protobuf.Timestamp
-	201, // 184: ManagerService.ShipmentFactoringHash.payBackUploadAt:type_name -> google.protobuf.Timestamp
+	208, // 182: ManagerService.ShipmentFactoringHash.applyUploadAt:type_name -> google.protobuf.Timestamp
+	208, // 183: ManagerService.ShipmentFactoringHash.resultUploadAt:type_name -> google.protobuf.Timestamp
+	208, // 184: ManagerService.ShipmentFactoringHash.payBackUploadAt:type_name -> google.protobuf.Timestamp
 	199, // 185: ManagerService.GetShipmentFactoringHashResp.list:type_name -> ManagerService.ShipmentFactoringHash
-	8,   // 186: ManagerService.ManagerService.ListContract:input_type -> ManagerService.ContractListReq
-	14,  // 187: ManagerService.ManagerService.ListMiContract:input_type -> ManagerService.ContractMiListReq
-	17,  // 188: ManagerService.ManagerService.CreateOneContractMI:input_type -> ManagerService.CreateOneContractMIReq
-	19,  // 189: ManagerService.ManagerService.UpdateOneContractMI:input_type -> ManagerService.UpdateOneContractMIReq
-	21,  // 190: ManagerService.ManagerService.UpdateOneContract:input_type -> ManagerService.UpdateOneContractReq
-	23,  // 191: ManagerService.ManagerService.BatchOperateContract:input_type -> ManagerService.BatchOperateContractReq
-	26,  // 192: ManagerService.ManagerService.UpdateContractActive:input_type -> ManagerService.UpdateContractActiveReq
-	28,  // 193: ManagerService.ManagerService.DeleteOneContract:input_type -> ManagerService.DeleteOneContractReq
-	30,  // 194: ManagerService.ManagerService.DeleteOneContractMi:input_type -> ManagerService.DeleteOneContractMiReq
-	1,   // 195: ManagerService.ManagerService.GetContractInfo:input_type -> ManagerService.GetContractInfoReq
-	3,   // 196: ManagerService.ManagerService.CountContract:input_type -> ManagerService.CountContractReq
-	5,   // 197: ManagerService.ManagerService.ContractDetail:input_type -> ManagerService.ContractDetailReq
-	11,  // 198: ManagerService.ManagerService.CheckContractList:input_type -> ManagerService.UpCheckContractReq
-	32,  // 199: ManagerService.ManagerService.ListMedicine:input_type -> ManagerService.MedicineListReq
-	35,  // 200: ManagerService.ManagerService.MedicineListForQuery:input_type -> ManagerService.MedicineListForQueryReq
-	38,  // 201: ManagerService.ManagerService.CreateMedicine:input_type -> ManagerService.CreateMedicineReq
-	40,  // 202: ManagerService.ManagerService.CreateBatchMedicine:input_type -> ManagerService.CreateBatchMedicineReq
-	42,  // 203: ManagerService.ManagerService.UpdateMedicine:input_type -> ManagerService.UpdateMedicineReq
-	44,  // 204: ManagerService.ManagerService.UpdateMedicineActive:input_type -> ManagerService.UpdateMedicineActiveReq
-	46,  // 205: ManagerService.ManagerService.DeleteMedicine:input_type -> ManagerService.DeleteMedicineReq
-	48,  // 206: ManagerService.ManagerService.SelectTagByMedicineId:input_type -> ManagerService.SelectTagByMedicineIdReq
-	50,  // 207: ManagerService.ManagerService.SelectInfoByMedicineNames:input_type -> ManagerService.SelectInfoByMedicineNamesReq
-	52,  // 208: ManagerService.ManagerService.TagList:input_type -> ManagerService.TagListReq
-	55,  // 209: ManagerService.ManagerService.CreateTag:input_type -> ManagerService.CreateTagReq
-	57,  // 210: ManagerService.ManagerService.UpdateTag:input_type -> ManagerService.UpdateTagReq
-	59,  // 211: ManagerService.ManagerService.DeleteTag:input_type -> ManagerService.DeleteTagReq
-	61,  // 212: ManagerService.ManagerService.TagDetailList:input_type -> ManagerService.TagDetailListReq
-	64,  // 213: ManagerService.ManagerService.DeleteTagMedicine:input_type -> ManagerService.DeleteTagMedicineReq
-	66,  // 214: ManagerService.ManagerService.CreateTagMedicine:input_type -> ManagerService.CreateTagMedicineReq
-	68,  // 215: ManagerService.ManagerService.ListMi:input_type -> ManagerService.ListMiReq
-	71,  // 216: ManagerService.ManagerService.CommonMI:input_type -> ManagerService.CommonMIReq
-	74,  // 217: ManagerService.ManagerService.CreateOneMI:input_type -> ManagerService.CreateOneMIReq
-	76,  // 218: ManagerService.ManagerService.UpdateMi:input_type -> ManagerService.UpdateMiReq
-	83,  // 219: ManagerService.ManagerService.ListCompany:input_type -> ManagerService.ListCompanyReq
-	86,  // 220: ManagerService.ManagerService.CreateOneCompany:input_type -> ManagerService.CreateOneCompanyReq
-	88,  // 221: ManagerService.ManagerService.UpdateOneCompany:input_type -> ManagerService.UpdateOneCompanyReq
-	78,  // 222: ManagerService.ManagerService.CommonCompany:input_type -> ManagerService.CommonCompanyReq
-	81,  // 223: ManagerService.ManagerService.SelCompanyByNames:input_type -> ManagerService.SelCompanyByNamesReq
-	90,  // 224: ManagerService.ManagerService.ListTpPlanErr:input_type -> ManagerService.ListTpPlanErrReq
-	93,  // 225: ManagerService.ManagerService.UpdateErrShipmentPlan:input_type -> ManagerService.UpdateErrShipmentPlanReq
-	95,  // 226: ManagerService.ManagerService.ListShipmentPlan:input_type -> ManagerService.ListShipmentPlanReq
-	103, // 227: ManagerService.ManagerService.CountShipmentPlan:input_type -> ManagerService.CountShipmentPlanReq
-	98,  // 228: ManagerService.ManagerService.DetailShipmentOrder:input_type -> ManagerService.DetailShipmentOrderReq
-	100, // 229: ManagerService.ManagerService.ListShipmentPlanForOrder:input_type -> ManagerService.ListShipmentPlanForOrderReq
-	105, // 230: ManagerService.ManagerService.CreateShipmentOrder:input_type -> ManagerService.CreateShipmentOrderReq
-	107, // 231: ManagerService.ManagerService.ListShipmentOrder:input_type -> ManagerService.ListShipmentOrderReq
-	110, // 232: ManagerService.ManagerService.CountShipmentOrder:input_type -> ManagerService.CountShipmentOrderReq
-	112, // 233: ManagerService.ManagerService.UpdateShipmentOrder:input_type -> ManagerService.UpdateShipmentOrderReq
-	116, // 234: ManagerService.ManagerService.GetConfig:input_type -> ManagerService.GetConfigReq
-	115, // 235: ManagerService.ManagerService.UpdateConfig:input_type -> ManagerService.UpdateConfigReq
-	114, // 236: ManagerService.ManagerService.InsertConfigs:input_type -> ManagerService.InsertConfigsReq
-	121, // 237: ManagerService.ManagerService.GetMiSpecialConfig:input_type -> ManagerService.GetMiSpecialConfigReq
-	124, // 238: ManagerService.ManagerService.UpdateMiSpecialConfig:input_type -> ManagerService.UpdateMiSpecialConfigReq
-	128, // 239: ManagerService.DataReportService.GetShipmentPlanDayReports:input_type -> ManagerService.GetShipmentPlanReportsReq
-	128, // 240: ManagerService.DataReportService.GetShipmentPlanMonthReports:input_type -> ManagerService.GetShipmentPlanReportsReq
-	128, // 241: ManagerService.DataReportService.GetShipmentPlanYearReports:input_type -> ManagerService.GetShipmentPlanReportsReq
-	140, // 242: ManagerService.DataReportService.GetShipmentOrderDayReports:input_type -> ManagerService.GetShipmentOrderReportsReq
-	140, // 243: ManagerService.DataReportService.GetShipmentOrderMonthReports:input_type -> ManagerService.GetShipmentOrderReportsReq
-	140, // 244: ManagerService.DataReportService.GetShipmentOrderYearReports:input_type -> ManagerService.GetShipmentOrderReportsReq
-	149, // 245: ManagerService.DataReportService.GetFactoringOrderDayReports:input_type -> ManagerService.GetFactoringOrderReportsReq
-	149, // 246: ManagerService.DataReportService.GetFactoringOrderMonthReports:input_type -> ManagerService.GetFactoringOrderReportsReq
-	149, // 247: ManagerService.DataReportService.GetFactoringOrderYearReports:input_type -> ManagerService.GetFactoringOrderReportsReq
-	158, // 248: ManagerService.DataReportService.GetContractPlanDayReports:input_type -> ManagerService.GetContractPlanReportsReq
-	158, // 249: ManagerService.DataReportService.GetContractPlanMonthReports:input_type -> ManagerService.GetContractPlanReportsReq
-	158, // 250: ManagerService.DataReportService.GetContractPlanYearReports:input_type -> ManagerService.GetContractPlanReportsReq
-	167, // 251: ManagerService.DataReportService.GetValidContractInfo:input_type -> ManagerService.GetValidContractInfoReq
-	168, // 252: ManagerService.DataReportService.GetCurrentNeedPay:input_type -> ManagerService.GetCurrentNeedPayReq
-	171, // 253: ManagerService.HashService.GetCompanyHash:input_type -> ManagerService.GetCompanyHashReq
-	174, // 254: ManagerService.HashService.GetMiHash:input_type -> ManagerService.GetMiHashReq
-	177, // 255: ManagerService.HashService.GetMedicineHash:input_type -> ManagerService.GetMedicineReq
-	180, // 256: ManagerService.HashService.GetContractHash:input_type -> ManagerService.GetContractHashReq
-	183, // 257: ManagerService.HashService.GetContractMiHash:input_type -> ManagerService.GetContractMiHashReq
-	186, // 258: ManagerService.HashService.GetConfigHash:input_type -> ManagerService.GetConfigHashReq
-	189, // 259: ManagerService.HashService.GetShipmentPlanHash:input_type -> ManagerService.GetShipmentPlanHashReq
-	192, // 260: ManagerService.HashService.GetShipmentOrderHash:input_type -> ManagerService.GetShipmentOrderHashReq
-	195, // 261: ManagerService.HashService.GetShipmentPayHash:input_type -> ManagerService.GetShipmentPayHashReq
-	198, // 262: ManagerService.HashService.GetShipmentFactoringHash:input_type -> ManagerService.GetShipmentFactoringHashReq
-	9,   // 263: ManagerService.ManagerService.ListContract:output_type -> ManagerService.ContractListResp
-	15,  // 264: ManagerService.ManagerService.ListMiContract:output_type -> ManagerService.ContractMiListResp
-	18,  // 265: ManagerService.ManagerService.CreateOneContractMI:output_type -> ManagerService.CreateOneContractMIResp
-	20,  // 266: ManagerService.ManagerService.UpdateOneContractMI:output_type -> ManagerService.UpdateOneContractMIResp
-	22,  // 267: ManagerService.ManagerService.UpdateOneContract:output_type -> ManagerService.UpdateOneContractResp
-	24,  // 268: ManagerService.ManagerService.BatchOperateContract:output_type -> ManagerService.BatchOperateContractResp
-	27,  // 269: ManagerService.ManagerService.UpdateContractActive:output_type -> ManagerService.UpdateContractActiveResp
-	29,  // 270: ManagerService.ManagerService.DeleteOneContract:output_type -> ManagerService.DeleteOneContractResp
-	31,  // 271: ManagerService.ManagerService.DeleteOneContractMi:output_type -> ManagerService.DeleteOneContractMiResp
-	2,   // 272: ManagerService.ManagerService.GetContractInfo:output_type -> ManagerService.GetContractInfoResp
-	4,   // 273: ManagerService.ManagerService.CountContract:output_type -> ManagerService.CountContractResp
-	6,   // 274: ManagerService.ManagerService.ContractDetail:output_type -> ManagerService.ContractDetailResp
-	13,  // 275: ManagerService.ManagerService.CheckContractList:output_type -> ManagerService.CheckContractListResp
-	33,  // 276: ManagerService.ManagerService.ListMedicine:output_type -> ManagerService.MedicineListResp
-	36,  // 277: ManagerService.ManagerService.MedicineListForQuery:output_type -> ManagerService.MedicineListForQueryResp
-	39,  // 278: ManagerService.ManagerService.CreateMedicine:output_type -> ManagerService.CreateMedicineResp
-	41,  // 279: ManagerService.ManagerService.CreateBatchMedicine:output_type -> ManagerService.CreateBatchMedicineResp
-	43,  // 280: ManagerService.ManagerService.UpdateMedicine:output_type -> ManagerService.UpdateMedicineResp
-	45,  // 281: ManagerService.ManagerService.UpdateMedicineActive:output_type -> ManagerService.UpdateMedicineActiveResp
-	47,  // 282: ManagerService.ManagerService.DeleteMedicine:output_type -> ManagerService.DeleteMedicineResp
-	49,  // 283: ManagerService.ManagerService.SelectTagByMedicineId:output_type -> ManagerService.SelectTagByMedicineIdResp
-	51,  // 284: ManagerService.ManagerService.SelectInfoByMedicineNames:output_type -> ManagerService.SelectInfoByMedicineNamesResp
-	53,  // 285: ManagerService.ManagerService.TagList:output_type -> ManagerService.TagListResp
-	56,  // 286: ManagerService.ManagerService.CreateTag:output_type -> ManagerService.CreateTagResp
-	58,  // 287: ManagerService.ManagerService.UpdateTag:output_type -> ManagerService.UpdateTagResp
-	60,  // 288: ManagerService.ManagerService.DeleteTag:output_type -> ManagerService.DeleteTagResp
-	62,  // 289: ManagerService.ManagerService.TagDetailList:output_type -> ManagerService.TagDetailListResp
-	65,  // 290: ManagerService.ManagerService.DeleteTagMedicine:output_type -> ManagerService.DeleteTagMedicineResp
-	67,  // 291: ManagerService.ManagerService.CreateTagMedicine:output_type -> ManagerService.CreateTagMedicineResp
-	69,  // 292: ManagerService.ManagerService.ListMi:output_type -> ManagerService.ListMiResp
-	72,  // 293: ManagerService.ManagerService.CommonMI:output_type -> ManagerService.CommonMIResp
-	75,  // 294: ManagerService.ManagerService.CreateOneMI:output_type -> ManagerService.CreateOneMIResp
-	77,  // 295: ManagerService.ManagerService.UpdateMi:output_type -> ManagerService.UpdateMiResp
-	84,  // 296: ManagerService.ManagerService.ListCompany:output_type -> ManagerService.ListCompanyResp
-	87,  // 297: ManagerService.ManagerService.CreateOneCompany:output_type -> ManagerService.CreateOneCompanyResp
-	89,  // 298: ManagerService.ManagerService.UpdateOneCompany:output_type -> ManagerService.UpdateOneCompanyResp
-	79,  // 299: ManagerService.ManagerService.CommonCompany:output_type -> ManagerService.CommonCompanyResp
-	82,  // 300: ManagerService.ManagerService.SelCompanyByNames:output_type -> ManagerService.SelCompanyByNamesResp
-	91,  // 301: ManagerService.ManagerService.ListTpPlanErr:output_type -> ManagerService.ListTpPlanErrResp
-	94,  // 302: ManagerService.ManagerService.UpdateErrShipmentPlan:output_type -> ManagerService.UpdateErrShipmentPlanResp
-	96,  // 303: ManagerService.ManagerService.ListShipmentPlan:output_type -> ManagerService.ListShipmentPlanResp
-	104, // 304: ManagerService.ManagerService.CountShipmentPlan:output_type -> ManagerService.CountShipmentPlanResp
-	99,  // 305: ManagerService.ManagerService.DetailShipmentOrder:output_type -> ManagerService.DetailShipmentOrderResp
-	101, // 306: ManagerService.ManagerService.ListShipmentPlanForOrder:output_type -> ManagerService.ListShipmentPlanForOrderResp
-	106, // 307: ManagerService.ManagerService.CreateShipmentOrder:output_type -> ManagerService.CreateShipmentOrderResp
-	108, // 308: ManagerService.ManagerService.ListShipmentOrder:output_type -> ManagerService.ListShipmentOrderResp
-	111, // 309: ManagerService.ManagerService.CountShipmentOrder:output_type -> ManagerService.CountShipmentOrderResp
-	113, // 310: ManagerService.ManagerService.UpdateShipmentOrder:output_type -> ManagerService.UpdateShipmentOrderResp
-	120, // 311: ManagerService.ManagerService.GetConfig:output_type -> ManagerService.GetConfigResp
-	118, // 312: ManagerService.ManagerService.UpdateConfig:output_type -> ManagerService.UpdateConfigResp
-	119, // 313: ManagerService.ManagerService.InsertConfigs:output_type -> ManagerService.InsertConfigsResp
-	123, // 314: ManagerService.ManagerService.GetMiSpecialConfig:output_type -> ManagerService.GetMiSpecialConfigResp
-	125, // 315: ManagerService.ManagerService.UpdateMiSpecialConfig:output_type -> ManagerService.UpdateMiSpecialConfigResp
-	135, // 316: ManagerService.DataReportService.GetShipmentPlanDayReports:output_type -> ManagerService.GetShipmentPlanDayReportsResp
-	136, // 317: ManagerService.DataReportService.GetShipmentPlanMonthReports:output_type -> ManagerService.GetShipmentPlanMonthReportsResp
-	137, // 318: ManagerService.DataReportService.GetShipmentPlanYearReports:output_type -> ManagerService.GetShipmentPlanYearReportsResp
-	144, // 319: ManagerService.DataReportService.GetShipmentOrderDayReports:output_type -> ManagerService.GetShipmentOrderDayReportsResp
-	145, // 320: ManagerService.DataReportService.GetShipmentOrderMonthReports:output_type -> ManagerService.GetShipmentOrderMonthReportsResp
-	146, // 321: ManagerService.DataReportService.GetShipmentOrderYearReports:output_type -> ManagerService.GetShipmentOrderYearReportsResp
-	151, // 322: ManagerService.DataReportService.GetFactoringOrderDayReports:output_type -> ManagerService.GetFactoringOrderDayReportsResp
-	153, // 323: ManagerService.DataReportService.GetFactoringOrderMonthReports:output_type -> ManagerService.GetFactoringOrderMonthReportsResp
-	155, // 324: ManagerService.DataReportService.GetFactoringOrderYearReports:output_type -> ManagerService.GetFactoringOrderYearReportsResp
-	162, // 325: ManagerService.DataReportService.GetContractPlanDayReports:output_type -> ManagerService.GetContractPlanDayReportsResp
-	164, // 326: ManagerService.DataReportService.GetContractPlanMonthReports:output_type -> ManagerService.GetContractPlanMonthReportsResp
-	166, // 327: ManagerService.DataReportService.GetContractPlanYearReports:output_type -> ManagerService.GetContractPlanYearReportsResp
-	169, // 328: ManagerService.DataReportService.GetValidContractInfo:output_type -> ManagerService.GetValidContractInfoResp
-	170, // 329: ManagerService.DataReportService.GetCurrentNeedPay:output_type -> ManagerService.GetCurrentNeedPayResp
-	172, // 330: ManagerService.HashService.GetCompanyHash:output_type -> ManagerService.GetCompanyHashResp
-	176, // 331: ManagerService.HashService.GetMiHash:output_type -> ManagerService.GetMiHashResp
-	179, // 332: ManagerService.HashService.GetMedicineHash:output_type -> ManagerService.GetMedicineResp
-	182, // 333: ManagerService.HashService.GetContractHash:output_type -> ManagerService.GetContractHashResp
-	185, // 334: ManagerService.HashService.GetContractMiHash:output_type -> ManagerService.GetContractMiHashResp
-	188, // 335: ManagerService.HashService.GetConfigHash:output_type -> ManagerService.GetConfigHashResp
-	191, // 336: ManagerService.HashService.GetShipmentPlanHash:output_type -> ManagerService.GetShipmentPlanHashResp
-	194, // 337: ManagerService.HashService.GetShipmentOrderHash:output_type -> ManagerService.GetShipmentOrderHashResp
-	197, // 338: ManagerService.HashService.GetShipmentPayHash:output_type -> ManagerService.GetShipmentPayHashResp
-	200, // 339: ManagerService.HashService.GetShipmentFactoringHash:output_type -> ManagerService.GetShipmentFactoringHashResp
-	263, // [263:340] is the sub-list for method output_type
-	186, // [186:263] is the sub-list for method input_type
-	186, // [186:186] is the sub-list for extension type_name
-	186, // [186:186] is the sub-list for extension extendee
-	0,   // [0:186] is the sub-list for field type_name
+	208, // 186: ManagerService.GetShipmentRankMedicineDataYearReq.startAt:type_name -> google.protobuf.Timestamp
+	208, // 187: ManagerService.GetShipmentRankMedicineDataYearReq.endAt:type_name -> google.protobuf.Timestamp
+	202, // 188: ManagerService.GetShipmentRankMedicineDataYearResp.list:type_name -> ManagerService.ShipmentRankMedicineDataYear
+	208, // 189: ManagerService.GetShipmentRankCompanyDataYearReq.startAt:type_name -> google.protobuf.Timestamp
+	208, // 190: ManagerService.GetShipmentRankCompanyDataYearReq.endAt:type_name -> google.protobuf.Timestamp
+	205, // 191: ManagerService.ShipmentRankCompanyDataYear.medicines:type_name -> ManagerService.ShipmentRankCompanyMedicine
+	206, // 192: ManagerService.GetShipmentRankCompanyDataYearResp.list:type_name -> ManagerService.ShipmentRankCompanyDataYear
+	8,   // 193: ManagerService.ManagerService.ListContract:input_type -> ManagerService.ContractListReq
+	14,  // 194: ManagerService.ManagerService.ListMiContract:input_type -> ManagerService.ContractMiListReq
+	17,  // 195: ManagerService.ManagerService.CreateOneContractMI:input_type -> ManagerService.CreateOneContractMIReq
+	19,  // 196: ManagerService.ManagerService.UpdateOneContractMI:input_type -> ManagerService.UpdateOneContractMIReq
+	21,  // 197: ManagerService.ManagerService.UpdateOneContract:input_type -> ManagerService.UpdateOneContractReq
+	23,  // 198: ManagerService.ManagerService.BatchOperateContract:input_type -> ManagerService.BatchOperateContractReq
+	26,  // 199: ManagerService.ManagerService.UpdateContractActive:input_type -> ManagerService.UpdateContractActiveReq
+	28,  // 200: ManagerService.ManagerService.DeleteOneContract:input_type -> ManagerService.DeleteOneContractReq
+	30,  // 201: ManagerService.ManagerService.DeleteOneContractMi:input_type -> ManagerService.DeleteOneContractMiReq
+	1,   // 202: ManagerService.ManagerService.GetContractInfo:input_type -> ManagerService.GetContractInfoReq
+	3,   // 203: ManagerService.ManagerService.CountContract:input_type -> ManagerService.CountContractReq
+	5,   // 204: ManagerService.ManagerService.ContractDetail:input_type -> ManagerService.ContractDetailReq
+	11,  // 205: ManagerService.ManagerService.CheckContractList:input_type -> ManagerService.UpCheckContractReq
+	32,  // 206: ManagerService.ManagerService.ListMedicine:input_type -> ManagerService.MedicineListReq
+	35,  // 207: ManagerService.ManagerService.MedicineListForQuery:input_type -> ManagerService.MedicineListForQueryReq
+	38,  // 208: ManagerService.ManagerService.CreateMedicine:input_type -> ManagerService.CreateMedicineReq
+	40,  // 209: ManagerService.ManagerService.CreateBatchMedicine:input_type -> ManagerService.CreateBatchMedicineReq
+	42,  // 210: ManagerService.ManagerService.UpdateMedicine:input_type -> ManagerService.UpdateMedicineReq
+	44,  // 211: ManagerService.ManagerService.UpdateMedicineActive:input_type -> ManagerService.UpdateMedicineActiveReq
+	46,  // 212: ManagerService.ManagerService.DeleteMedicine:input_type -> ManagerService.DeleteMedicineReq
+	48,  // 213: ManagerService.ManagerService.SelectTagByMedicineId:input_type -> ManagerService.SelectTagByMedicineIdReq
+	50,  // 214: ManagerService.ManagerService.SelectInfoByMedicineNames:input_type -> ManagerService.SelectInfoByMedicineNamesReq
+	52,  // 215: ManagerService.ManagerService.TagList:input_type -> ManagerService.TagListReq
+	55,  // 216: ManagerService.ManagerService.CreateTag:input_type -> ManagerService.CreateTagReq
+	57,  // 217: ManagerService.ManagerService.UpdateTag:input_type -> ManagerService.UpdateTagReq
+	59,  // 218: ManagerService.ManagerService.DeleteTag:input_type -> ManagerService.DeleteTagReq
+	61,  // 219: ManagerService.ManagerService.TagDetailList:input_type -> ManagerService.TagDetailListReq
+	64,  // 220: ManagerService.ManagerService.DeleteTagMedicine:input_type -> ManagerService.DeleteTagMedicineReq
+	66,  // 221: ManagerService.ManagerService.CreateTagMedicine:input_type -> ManagerService.CreateTagMedicineReq
+	68,  // 222: ManagerService.ManagerService.ListMi:input_type -> ManagerService.ListMiReq
+	71,  // 223: ManagerService.ManagerService.CommonMI:input_type -> ManagerService.CommonMIReq
+	74,  // 224: ManagerService.ManagerService.CreateOneMI:input_type -> ManagerService.CreateOneMIReq
+	76,  // 225: ManagerService.ManagerService.UpdateMi:input_type -> ManagerService.UpdateMiReq
+	83,  // 226: ManagerService.ManagerService.ListCompany:input_type -> ManagerService.ListCompanyReq
+	86,  // 227: ManagerService.ManagerService.CreateOneCompany:input_type -> ManagerService.CreateOneCompanyReq
+	88,  // 228: ManagerService.ManagerService.UpdateOneCompany:input_type -> ManagerService.UpdateOneCompanyReq
+	78,  // 229: ManagerService.ManagerService.CommonCompany:input_type -> ManagerService.CommonCompanyReq
+	81,  // 230: ManagerService.ManagerService.SelCompanyByNames:input_type -> ManagerService.SelCompanyByNamesReq
+	90,  // 231: ManagerService.ManagerService.ListTpPlanErr:input_type -> ManagerService.ListTpPlanErrReq
+	93,  // 232: ManagerService.ManagerService.UpdateErrShipmentPlan:input_type -> ManagerService.UpdateErrShipmentPlanReq
+	95,  // 233: ManagerService.ManagerService.ListShipmentPlan:input_type -> ManagerService.ListShipmentPlanReq
+	103, // 234: ManagerService.ManagerService.CountShipmentPlan:input_type -> ManagerService.CountShipmentPlanReq
+	98,  // 235: ManagerService.ManagerService.DetailShipmentOrder:input_type -> ManagerService.DetailShipmentOrderReq
+	100, // 236: ManagerService.ManagerService.ListShipmentPlanForOrder:input_type -> ManagerService.ListShipmentPlanForOrderReq
+	105, // 237: ManagerService.ManagerService.CreateShipmentOrder:input_type -> ManagerService.CreateShipmentOrderReq
+	107, // 238: ManagerService.ManagerService.ListShipmentOrder:input_type -> ManagerService.ListShipmentOrderReq
+	110, // 239: ManagerService.ManagerService.CountShipmentOrder:input_type -> ManagerService.CountShipmentOrderReq
+	112, // 240: ManagerService.ManagerService.UpdateShipmentOrder:input_type -> ManagerService.UpdateShipmentOrderReq
+	116, // 241: ManagerService.ManagerService.GetConfig:input_type -> ManagerService.GetConfigReq
+	115, // 242: ManagerService.ManagerService.UpdateConfig:input_type -> ManagerService.UpdateConfigReq
+	114, // 243: ManagerService.ManagerService.InsertConfigs:input_type -> ManagerService.InsertConfigsReq
+	121, // 244: ManagerService.ManagerService.GetMiSpecialConfig:input_type -> ManagerService.GetMiSpecialConfigReq
+	124, // 245: ManagerService.ManagerService.UpdateMiSpecialConfig:input_type -> ManagerService.UpdateMiSpecialConfigReq
+	128, // 246: ManagerService.DataReportService.GetShipmentPlanDayReports:input_type -> ManagerService.GetShipmentPlanReportsReq
+	128, // 247: ManagerService.DataReportService.GetShipmentPlanMonthReports:input_type -> ManagerService.GetShipmentPlanReportsReq
+	128, // 248: ManagerService.DataReportService.GetShipmentPlanYearReports:input_type -> ManagerService.GetShipmentPlanReportsReq
+	140, // 249: ManagerService.DataReportService.GetShipmentOrderDayReports:input_type -> ManagerService.GetShipmentOrderReportsReq
+	140, // 250: ManagerService.DataReportService.GetShipmentOrderMonthReports:input_type -> ManagerService.GetShipmentOrderReportsReq
+	140, // 251: ManagerService.DataReportService.GetShipmentOrderYearReports:input_type -> ManagerService.GetShipmentOrderReportsReq
+	149, // 252: ManagerService.DataReportService.GetFactoringOrderDayReports:input_type -> ManagerService.GetFactoringOrderReportsReq
+	149, // 253: ManagerService.DataReportService.GetFactoringOrderMonthReports:input_type -> ManagerService.GetFactoringOrderReportsReq
+	149, // 254: ManagerService.DataReportService.GetFactoringOrderYearReports:input_type -> ManagerService.GetFactoringOrderReportsReq
+	158, // 255: ManagerService.DataReportService.GetContractPlanDayReports:input_type -> ManagerService.GetContractPlanReportsReq
+	158, // 256: ManagerService.DataReportService.GetContractPlanMonthReports:input_type -> ManagerService.GetContractPlanReportsReq
+	158, // 257: ManagerService.DataReportService.GetContractPlanYearReports:input_type -> ManagerService.GetContractPlanReportsReq
+	167, // 258: ManagerService.DataReportService.GetValidContractInfo:input_type -> ManagerService.GetValidContractInfoReq
+	168, // 259: ManagerService.DataReportService.GetCurrentNeedPay:input_type -> ManagerService.GetCurrentNeedPayReq
+	171, // 260: ManagerService.HashService.GetCompanyHash:input_type -> ManagerService.GetCompanyHashReq
+	174, // 261: ManagerService.HashService.GetMiHash:input_type -> ManagerService.GetMiHashReq
+	177, // 262: ManagerService.HashService.GetMedicineHash:input_type -> ManagerService.GetMedicineReq
+	180, // 263: ManagerService.HashService.GetContractHash:input_type -> ManagerService.GetContractHashReq
+	183, // 264: ManagerService.HashService.GetContractMiHash:input_type -> ManagerService.GetContractMiHashReq
+	186, // 265: ManagerService.HashService.GetConfigHash:input_type -> ManagerService.GetConfigHashReq
+	189, // 266: ManagerService.HashService.GetShipmentPlanHash:input_type -> ManagerService.GetShipmentPlanHashReq
+	192, // 267: ManagerService.HashService.GetShipmentOrderHash:input_type -> ManagerService.GetShipmentOrderHashReq
+	195, // 268: ManagerService.HashService.GetShipmentPayHash:input_type -> ManagerService.GetShipmentPayHashReq
+	198, // 269: ManagerService.HashService.GetShipmentFactoringHash:input_type -> ManagerService.GetShipmentFactoringHashReq
+	201, // 270: ManagerService.RankService.GetShipmentRankMedicineDataYear:input_type -> ManagerService.GetShipmentRankMedicineDataYearReq
+	204, // 271: ManagerService.RankService.GetShipmentRankCompanyDataYear:input_type -> ManagerService.GetShipmentRankCompanyDataYearReq
+	9,   // 272: ManagerService.ManagerService.ListContract:output_type -> ManagerService.ContractListResp
+	15,  // 273: ManagerService.ManagerService.ListMiContract:output_type -> ManagerService.ContractMiListResp
+	18,  // 274: ManagerService.ManagerService.CreateOneContractMI:output_type -> ManagerService.CreateOneContractMIResp
+	20,  // 275: ManagerService.ManagerService.UpdateOneContractMI:output_type -> ManagerService.UpdateOneContractMIResp
+	22,  // 276: ManagerService.ManagerService.UpdateOneContract:output_type -> ManagerService.UpdateOneContractResp
+	24,  // 277: ManagerService.ManagerService.BatchOperateContract:output_type -> ManagerService.BatchOperateContractResp
+	27,  // 278: ManagerService.ManagerService.UpdateContractActive:output_type -> ManagerService.UpdateContractActiveResp
+	29,  // 279: ManagerService.ManagerService.DeleteOneContract:output_type -> ManagerService.DeleteOneContractResp
+	31,  // 280: ManagerService.ManagerService.DeleteOneContractMi:output_type -> ManagerService.DeleteOneContractMiResp
+	2,   // 281: ManagerService.ManagerService.GetContractInfo:output_type -> ManagerService.GetContractInfoResp
+	4,   // 282: ManagerService.ManagerService.CountContract:output_type -> ManagerService.CountContractResp
+	6,   // 283: ManagerService.ManagerService.ContractDetail:output_type -> ManagerService.ContractDetailResp
+	13,  // 284: ManagerService.ManagerService.CheckContractList:output_type -> ManagerService.CheckContractListResp
+	33,  // 285: ManagerService.ManagerService.ListMedicine:output_type -> ManagerService.MedicineListResp
+	36,  // 286: ManagerService.ManagerService.MedicineListForQuery:output_type -> ManagerService.MedicineListForQueryResp
+	39,  // 287: ManagerService.ManagerService.CreateMedicine:output_type -> ManagerService.CreateMedicineResp
+	41,  // 288: ManagerService.ManagerService.CreateBatchMedicine:output_type -> ManagerService.CreateBatchMedicineResp
+	43,  // 289: ManagerService.ManagerService.UpdateMedicine:output_type -> ManagerService.UpdateMedicineResp
+	45,  // 290: ManagerService.ManagerService.UpdateMedicineActive:output_type -> ManagerService.UpdateMedicineActiveResp
+	47,  // 291: ManagerService.ManagerService.DeleteMedicine:output_type -> ManagerService.DeleteMedicineResp
+	49,  // 292: ManagerService.ManagerService.SelectTagByMedicineId:output_type -> ManagerService.SelectTagByMedicineIdResp
+	51,  // 293: ManagerService.ManagerService.SelectInfoByMedicineNames:output_type -> ManagerService.SelectInfoByMedicineNamesResp
+	53,  // 294: ManagerService.ManagerService.TagList:output_type -> ManagerService.TagListResp
+	56,  // 295: ManagerService.ManagerService.CreateTag:output_type -> ManagerService.CreateTagResp
+	58,  // 296: ManagerService.ManagerService.UpdateTag:output_type -> ManagerService.UpdateTagResp
+	60,  // 297: ManagerService.ManagerService.DeleteTag:output_type -> ManagerService.DeleteTagResp
+	62,  // 298: ManagerService.ManagerService.TagDetailList:output_type -> ManagerService.TagDetailListResp
+	65,  // 299: ManagerService.ManagerService.DeleteTagMedicine:output_type -> ManagerService.DeleteTagMedicineResp
+	67,  // 300: ManagerService.ManagerService.CreateTagMedicine:output_type -> ManagerService.CreateTagMedicineResp
+	69,  // 301: ManagerService.ManagerService.ListMi:output_type -> ManagerService.ListMiResp
+	72,  // 302: ManagerService.ManagerService.CommonMI:output_type -> ManagerService.CommonMIResp
+	75,  // 303: ManagerService.ManagerService.CreateOneMI:output_type -> ManagerService.CreateOneMIResp
+	77,  // 304: ManagerService.ManagerService.UpdateMi:output_type -> ManagerService.UpdateMiResp
+	84,  // 305: ManagerService.ManagerService.ListCompany:output_type -> ManagerService.ListCompanyResp
+	87,  // 306: ManagerService.ManagerService.CreateOneCompany:output_type -> ManagerService.CreateOneCompanyResp
+	89,  // 307: ManagerService.ManagerService.UpdateOneCompany:output_type -> ManagerService.UpdateOneCompanyResp
+	79,  // 308: ManagerService.ManagerService.CommonCompany:output_type -> ManagerService.CommonCompanyResp
+	82,  // 309: ManagerService.ManagerService.SelCompanyByNames:output_type -> ManagerService.SelCompanyByNamesResp
+	91,  // 310: ManagerService.ManagerService.ListTpPlanErr:output_type -> ManagerService.ListTpPlanErrResp
+	94,  // 311: ManagerService.ManagerService.UpdateErrShipmentPlan:output_type -> ManagerService.UpdateErrShipmentPlanResp
+	96,  // 312: ManagerService.ManagerService.ListShipmentPlan:output_type -> ManagerService.ListShipmentPlanResp
+	104, // 313: ManagerService.ManagerService.CountShipmentPlan:output_type -> ManagerService.CountShipmentPlanResp
+	99,  // 314: ManagerService.ManagerService.DetailShipmentOrder:output_type -> ManagerService.DetailShipmentOrderResp
+	101, // 315: ManagerService.ManagerService.ListShipmentPlanForOrder:output_type -> ManagerService.ListShipmentPlanForOrderResp
+	106, // 316: ManagerService.ManagerService.CreateShipmentOrder:output_type -> ManagerService.CreateShipmentOrderResp
+	108, // 317: ManagerService.ManagerService.ListShipmentOrder:output_type -> ManagerService.ListShipmentOrderResp
+	111, // 318: ManagerService.ManagerService.CountShipmentOrder:output_type -> ManagerService.CountShipmentOrderResp
+	113, // 319: ManagerService.ManagerService.UpdateShipmentOrder:output_type -> ManagerService.UpdateShipmentOrderResp
+	120, // 320: ManagerService.ManagerService.GetConfig:output_type -> ManagerService.GetConfigResp
+	118, // 321: ManagerService.ManagerService.UpdateConfig:output_type -> ManagerService.UpdateConfigResp
+	119, // 322: ManagerService.ManagerService.InsertConfigs:output_type -> ManagerService.InsertConfigsResp
+	123, // 323: ManagerService.ManagerService.GetMiSpecialConfig:output_type -> ManagerService.GetMiSpecialConfigResp
+	125, // 324: ManagerService.ManagerService.UpdateMiSpecialConfig:output_type -> ManagerService.UpdateMiSpecialConfigResp
+	135, // 325: ManagerService.DataReportService.GetShipmentPlanDayReports:output_type -> ManagerService.GetShipmentPlanDayReportsResp
+	136, // 326: ManagerService.DataReportService.GetShipmentPlanMonthReports:output_type -> ManagerService.GetShipmentPlanMonthReportsResp
+	137, // 327: ManagerService.DataReportService.GetShipmentPlanYearReports:output_type -> ManagerService.GetShipmentPlanYearReportsResp
+	144, // 328: ManagerService.DataReportService.GetShipmentOrderDayReports:output_type -> ManagerService.GetShipmentOrderDayReportsResp
+	145, // 329: ManagerService.DataReportService.GetShipmentOrderMonthReports:output_type -> ManagerService.GetShipmentOrderMonthReportsResp
+	146, // 330: ManagerService.DataReportService.GetShipmentOrderYearReports:output_type -> ManagerService.GetShipmentOrderYearReportsResp
+	151, // 331: ManagerService.DataReportService.GetFactoringOrderDayReports:output_type -> ManagerService.GetFactoringOrderDayReportsResp
+	153, // 332: ManagerService.DataReportService.GetFactoringOrderMonthReports:output_type -> ManagerService.GetFactoringOrderMonthReportsResp
+	155, // 333: ManagerService.DataReportService.GetFactoringOrderYearReports:output_type -> ManagerService.GetFactoringOrderYearReportsResp
+	162, // 334: ManagerService.DataReportService.GetContractPlanDayReports:output_type -> ManagerService.GetContractPlanDayReportsResp
+	164, // 335: ManagerService.DataReportService.GetContractPlanMonthReports:output_type -> ManagerService.GetContractPlanMonthReportsResp
+	166, // 336: ManagerService.DataReportService.GetContractPlanYearReports:output_type -> ManagerService.GetContractPlanYearReportsResp
+	169, // 337: ManagerService.DataReportService.GetValidContractInfo:output_type -> ManagerService.GetValidContractInfoResp
+	170, // 338: ManagerService.DataReportService.GetCurrentNeedPay:output_type -> ManagerService.GetCurrentNeedPayResp
+	172, // 339: ManagerService.HashService.GetCompanyHash:output_type -> ManagerService.GetCompanyHashResp
+	176, // 340: ManagerService.HashService.GetMiHash:output_type -> ManagerService.GetMiHashResp
+	179, // 341: ManagerService.HashService.GetMedicineHash:output_type -> ManagerService.GetMedicineResp
+	182, // 342: ManagerService.HashService.GetContractHash:output_type -> ManagerService.GetContractHashResp
+	185, // 343: ManagerService.HashService.GetContractMiHash:output_type -> ManagerService.GetContractMiHashResp
+	188, // 344: ManagerService.HashService.GetConfigHash:output_type -> ManagerService.GetConfigHashResp
+	191, // 345: ManagerService.HashService.GetShipmentPlanHash:output_type -> ManagerService.GetShipmentPlanHashResp
+	194, // 346: ManagerService.HashService.GetShipmentOrderHash:output_type -> ManagerService.GetShipmentOrderHashResp
+	197, // 347: ManagerService.HashService.GetShipmentPayHash:output_type -> ManagerService.GetShipmentPayHashResp
+	200, // 348: ManagerService.HashService.GetShipmentFactoringHash:output_type -> ManagerService.GetShipmentFactoringHashResp
+	203, // 349: ManagerService.RankService.GetShipmentRankMedicineDataYear:output_type -> ManagerService.GetShipmentRankMedicineDataYearResp
+	207, // 350: ManagerService.RankService.GetShipmentRankCompanyDataYear:output_type -> ManagerService.GetShipmentRankCompanyDataYearResp
+	272, // [272:351] is the sub-list for method output_type
+	193, // [193:272] is the sub-list for method input_type
+	193, // [193:193] is the sub-list for extension type_name
+	193, // [193:193] is the sub-list for extension extendee
+	0,   // [0:193] is the sub-list for field type_name
 }
 
 func init() { file_ManagerService_proto_init() }
@@ -22657,6 +23308,90 @@ func file_ManagerService_proto_init() {
 				return nil
 			}
 		}
+		file_ManagerService_proto_msgTypes[201].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetShipmentRankMedicineDataYearReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_ManagerService_proto_msgTypes[202].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ShipmentRankMedicineDataYear); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_ManagerService_proto_msgTypes[203].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetShipmentRankMedicineDataYearResp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_ManagerService_proto_msgTypes[204].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetShipmentRankCompanyDataYearReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_ManagerService_proto_msgTypes[205].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ShipmentRankCompanyMedicine); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_ManagerService_proto_msgTypes[206].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ShipmentRankCompanyDataYear); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_ManagerService_proto_msgTypes[207].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetShipmentRankCompanyDataYearResp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -22664,9 +23399,9 @@ func file_ManagerService_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_ManagerService_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   201,
+			NumMessages:   208,
 			NumExtensions: 0,
-			NumServices:   3,
+			NumServices:   4,
 		},
 		GoTypes:           file_ManagerService_proto_goTypes,
 		DependencyIndexes: file_ManagerService_proto_depIdxs,
