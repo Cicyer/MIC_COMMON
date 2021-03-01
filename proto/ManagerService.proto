@@ -1521,6 +1521,281 @@ message GetCurrentNeedPayResp {
   int64 needPayAmount = 1;
 }
 
+message GetCompanyHashReq {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 managerId = 1;
+  repeated int64 companyIds = 2;
+  repeated string companyCodes = 3;
+}
+message GetCompanyHashResp {
+  repeated CompanyHash list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+message CompanyHash{
+  int64 companyId = 1;
+  string companyCode = 2;
+  string infoHash = 3;
+  google.protobuf.Timestamp infoUploadAt = 4;
+}
+message GetMiHashReq {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 managerId = 1;
+  repeated int64 miIds = 2;
+  repeated string miCodes = 3;
+}
+
+message MiHash{
+  int64 miId = 1;
+  string miCode = 2;
+  string infoHash = 3;
+  google.protobuf.Timestamp infoUploadAt = 4;
+}
+message GetMiHashResp {
+  repeated MiHash list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+
+message GetMedicineReq {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 managerId = 1;
+  repeated int64 medicineIds = 2;
+  repeated string medicineCodes = 3;
+}
+message MedicineHash{
+  int64 medicineId = 1;
+  string medicineCode = 2;
+  string infoHash = 3;
+  google.protobuf.Timestamp infoUploadAt = 4;
+}
+message GetMedicineResp {
+  repeated MedicineHash list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+message GetContractHashReq {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 managerId = 1;
+  repeated int64 contractIds = 2;
+  repeated string contractCodes = 3;
+}
+message ContractHash{
+  int64 contractId = 1;
+  string contractCode = 2;
+  string infoHash = 3;
+  google.protobuf.Timestamp infoUploadAt = 4;
+}
+message GetContractHashResp {
+  repeated ContractHash list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+
+message GetContractMiHashReq {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 managerId = 1;
+  repeated int64 contractMiIds = 2;
+  int64 contractId = 3;
+  string contractCode = 4;
+}
+message ContractMiHash{
+  int64 contractMiId = 1;
+  int64 miId = 2;
+  string miCode = 3;
+  string infoHash = 4;
+  google.protobuf.Timestamp infoUploadAt = 5;
+}
+message GetContractMiHashResp {
+  repeated ContractMiHash list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+
+message GetConfigHashReq {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 managerId = 1;
+  repeated int64 configIds = 2;
+  repeated string configKeys = 3;
+}
+message ConfigHash{
+  int64 configId = 1;
+  string configKey = 2;
+  string infoHash = 3;
+  google.protobuf.Timestamp infoUploadAt = 4;
+}
+message GetConfigHashResp {
+  repeated ConfigHash list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+
+message GetShipmentPlanHashReq {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 managerId = 1;
+  repeated int64 shipmentPlanIds = 2;
+  repeated string orderNos = 3;
+  string shipmentNo = 4;
+}
+message ShipmentPlanHash{
+  int64 shipmentPlanId = 1;
+  string orderNo = 2;
+  string infoHash = 3;
+  google.protobuf.Timestamp infoUploadAt = 4;
+  string qrCodeHash = 5;
+  google.protobuf.Timestamp qrCodeUploadAt = 6;
+  string shipmentStartHash = 7;
+  google.protobuf.Timestamp shipmentStartUploadAt = 8;
+  string shipmentReceiveHash = 9;
+  google.protobuf.Timestamp shipmentReceiveUploadAt = 10;
+  string shipmentEnterHash = 11;
+  google.protobuf.Timestamp shipmentEnterUploadAt = 12;
+}
+message GetShipmentPlanHashResp {
+  repeated ShipmentPlanHash list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+
+message GetShipmentOrderHashReq {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 managerId = 1;
+  repeated int64 shipmentOrderIds = 2;
+  repeated string shipmentNos = 3;
+}
+message ShipmentOrderHash{
+  int64 shipmentOrderId = 1;
+  string shipmentNo = 2;
+  string qrCodeHash = 3;
+  google.protobuf.Timestamp qrCodeUploadAt = 4;
+  string shipmentStartHash = 5;
+  google.protobuf.Timestamp shipmentStartUploadAt = 6;
+  string shipmentReceiveHash = 7;
+  google.protobuf.Timestamp shipmentReceiveUploadAt = 8;
+  string shipmentEnterHash = 9;
+  google.protobuf.Timestamp shipmentEnterUploadAt = 10;
+}
+message GetShipmentOrderHashResp {
+  repeated ShipmentOrderHash list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+
+message GetShipmentPayHashReq {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 managerId = 1;
+  repeated int64 shipmentOrderIds = 2;
+  repeated int64 shipmentPayOrderIds = 3;
+  repeated string shipmentNos = 4;
+}
+message ShipmentPayHash{
+  int64 shipmentOrderId = 1;
+  string shipmentNo = 2;
+  string qrCodeHash = 3;
+  google.protobuf.Timestamp qrCodeUploadAt = 4;
+  string shipmentStartHash = 5;
+  google.protobuf.Timestamp shipmentStartUploadAt = 6;
+  string shipmentReceiveHash = 7;
+  google.protobuf.Timestamp shipmentReceiveUploadAt = 8;
+  string shipmentEnterHash = 9;
+  google.protobuf.Timestamp shipmentEnterUploadAt = 10;
+}
+message GetShipmentPayHashResp {
+  repeated ShipmentPayHash list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+
+message GetShipmentFactoringHashReq {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 managerId = 1;
+  repeated int64 factoringOrderIds = 2;
+  repeated string factoringOrderNos = 3;
+}
+message ShipmentFactoringHash{
+  int64 factoringOrderId = 1;
+  string factoringOrderNo = 2;
+  string applyHash = 3;
+  google.protobuf.Timestamp applyUploadAt = 4;
+  string resultHash = 5;
+  google.protobuf.Timestamp resultUploadAt = 6;
+  string payBackHash = 7;
+  google.protobuf.Timestamp payBackUploadAt = 8;
+}
+message GetShipmentFactoringHashResp {
+  repeated ShipmentFactoringHash list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+
+
+message GetShipmentRankMedicineDataYearReq {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 managerId = 1;
+  //指定获取哪个医保局的订单报表数据，目前不支持不同医保局混合统计
+  int64 mibId = 2;
+  //报表的起止日期必填
+  google.protobuf.Timestamp startAt = 3;
+  google.protobuf.Timestamp endAt = 4;
+  int64 rankCount = 5;
+}
+
+message ShipmentRankMedicineDataYear {
+  int64 rank = 1;
+  //本年配送计划同步金额 分
+  int64 shipmentPlanAmount = 2;
+  string medicineName = 3;
+}
+message GetShipmentRankMedicineDataYearResp {
+  repeated ShipmentRankMedicineDataYear list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+
+
+message GetShipmentRankCompanyDataYearReq {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 managerId = 1;
+  //指定获取哪个医保局的订单报表数据，目前不支持不同医保局混合统计
+  int64 mibId = 2;
+  //报表的起止日期必填
+  google.protobuf.Timestamp startAt = 3;
+  google.protobuf.Timestamp endAt = 4;
+  int64 rankCount = 5;
+  //需要展示的药品数量
+  int64 medicineCount = 6;
+}
+
+message ShipmentRankCompanyMedicine {
+  string medicineName = 1;
+}
+message ShipmentRankCompanyDataYear {
+  int64 rank = 1;
+  string comName = 2;
+  string comCode = 3;
+  int64 shipmentPlanAmount = 4;
+  string province = 5;
+  string city = 6;
+  string zone = 7;
+  repeated ShipmentRankCompanyMedicine medicines = 8;
+}
+message GetShipmentRankCompanyDataYearResp {
+  repeated ShipmentRankCompanyDataYear list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
 service ManagerService {
   //合同相关
   rpc ListContract(ContractListReq) returns(ContractListResp);
@@ -1631,3 +1906,25 @@ service DataReportService {
 
 }
 
+//=======业务hash节点管理========================
+service HashService {
+  //hash模块
+  rpc GetCompanyHash(GetCompanyHashReq) returns (GetCompanyHashResp);
+  rpc GetMiHash(GetMiHashReq) returns (GetMiHashResp);
+  rpc GetMedicineHash(GetMedicineReq) returns (GetMedicineResp);
+  rpc GetContractHash(GetContractHashReq) returns (GetContractHashResp);
+  rpc GetContractMiHash(GetContractMiHashReq) returns (GetContractMiHashResp);
+  rpc GetConfigHash(GetConfigHashReq) returns (GetConfigHashResp);
+  rpc GetShipmentPlanHash(GetShipmentPlanHashReq) returns (GetShipmentPlanHashResp);
+  rpc GetShipmentOrderHash(GetShipmentOrderHashReq) returns (GetShipmentOrderHashResp);
+  rpc GetShipmentPayHash(GetShipmentPayHashReq) returns (GetShipmentPayHashResp);
+  rpc GetShipmentFactoringHash(GetShipmentFactoringHashReq) returns (GetShipmentFactoringHashResp);
+}
+
+//============排名服务==================================
+service RankService {
+  //按年查询药品履约率排名
+  rpc GetShipmentRankMedicineDataYear(GetShipmentRankMedicineDataYearReq) returns (GetShipmentRankMedicineDataYearResp);
+  rpc GetShipmentRankCompanyDataYear(GetShipmentRankCompanyDataYearReq) returns (GetShipmentRankCompanyDataYearResp);
+
+}

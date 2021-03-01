@@ -17,17 +17,6 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ChainServiceClient interface {
-	//hash模块
-	GetCompanyHash(ctx context.Context, in *GetCompanyHashReq, opts ...grpc.CallOption) (*GetCompanyHashResp, error)
-	GetMiHash(ctx context.Context, in *GetMiHashReq, opts ...grpc.CallOption) (*GetMiHashResp, error)
-	GetMedicineHash(ctx context.Context, in *GetMedicineReq, opts ...grpc.CallOption) (*GetMedicineResp, error)
-	GetContractHash(ctx context.Context, in *GetContractHashReq, opts ...grpc.CallOption) (*GetContractHashResp, error)
-	GetContractMiHash(ctx context.Context, in *GetContractMiHashReq, opts ...grpc.CallOption) (*GetContractMiHashResp, error)
-	GetConfigHash(ctx context.Context, in *GetConfigHashReq, opts ...grpc.CallOption) (*GetConfigHashResp, error)
-	GetShipmentPlanHash(ctx context.Context, in *GetShipmentPlanHashReq, opts ...grpc.CallOption) (*GetShipmentPlanHashResp, error)
-	GetShipmentOrderHash(ctx context.Context, in *GetShipmentOrderHashReq, opts ...grpc.CallOption) (*GetShipmentOrderHashResp, error)
-	GetShipmentPayHash(ctx context.Context, in *GetShipmentPayHashReq, opts ...grpc.CallOption) (*GetShipmentPayHashResp, error)
-	GetShipmentFactoringHash(ctx context.Context, in *GetShipmentFactoringHashReq, opts ...grpc.CallOption) (*GetShipmentFactoringHashResp, error)
 	//根据哈希查询证书内容
 	GetHashContent(ctx context.Context, in *GetHashContentReq, opts ...grpc.CallOption) (*GetHashContentResp, error)
 }
@@ -38,96 +27,6 @@ type chainServiceClient struct {
 
 func NewChainServiceClient(cc grpc.ClientConnInterface) ChainServiceClient {
 	return &chainServiceClient{cc}
-}
-
-func (c *chainServiceClient) GetCompanyHash(ctx context.Context, in *GetCompanyHashReq, opts ...grpc.CallOption) (*GetCompanyHashResp, error) {
-	out := new(GetCompanyHashResp)
-	err := c.cc.Invoke(ctx, "/ChainService.ChainService/GetCompanyHash", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *chainServiceClient) GetMiHash(ctx context.Context, in *GetMiHashReq, opts ...grpc.CallOption) (*GetMiHashResp, error) {
-	out := new(GetMiHashResp)
-	err := c.cc.Invoke(ctx, "/ChainService.ChainService/GetMiHash", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *chainServiceClient) GetMedicineHash(ctx context.Context, in *GetMedicineReq, opts ...grpc.CallOption) (*GetMedicineResp, error) {
-	out := new(GetMedicineResp)
-	err := c.cc.Invoke(ctx, "/ChainService.ChainService/GetMedicineHash", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *chainServiceClient) GetContractHash(ctx context.Context, in *GetContractHashReq, opts ...grpc.CallOption) (*GetContractHashResp, error) {
-	out := new(GetContractHashResp)
-	err := c.cc.Invoke(ctx, "/ChainService.ChainService/GetContractHash", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *chainServiceClient) GetContractMiHash(ctx context.Context, in *GetContractMiHashReq, opts ...grpc.CallOption) (*GetContractMiHashResp, error) {
-	out := new(GetContractMiHashResp)
-	err := c.cc.Invoke(ctx, "/ChainService.ChainService/GetContractMiHash", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *chainServiceClient) GetConfigHash(ctx context.Context, in *GetConfigHashReq, opts ...grpc.CallOption) (*GetConfigHashResp, error) {
-	out := new(GetConfigHashResp)
-	err := c.cc.Invoke(ctx, "/ChainService.ChainService/GetConfigHash", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *chainServiceClient) GetShipmentPlanHash(ctx context.Context, in *GetShipmentPlanHashReq, opts ...grpc.CallOption) (*GetShipmentPlanHashResp, error) {
-	out := new(GetShipmentPlanHashResp)
-	err := c.cc.Invoke(ctx, "/ChainService.ChainService/GetShipmentPlanHash", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *chainServiceClient) GetShipmentOrderHash(ctx context.Context, in *GetShipmentOrderHashReq, opts ...grpc.CallOption) (*GetShipmentOrderHashResp, error) {
-	out := new(GetShipmentOrderHashResp)
-	err := c.cc.Invoke(ctx, "/ChainService.ChainService/GetShipmentOrderHash", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *chainServiceClient) GetShipmentPayHash(ctx context.Context, in *GetShipmentPayHashReq, opts ...grpc.CallOption) (*GetShipmentPayHashResp, error) {
-	out := new(GetShipmentPayHashResp)
-	err := c.cc.Invoke(ctx, "/ChainService.ChainService/GetShipmentPayHash", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *chainServiceClient) GetShipmentFactoringHash(ctx context.Context, in *GetShipmentFactoringHashReq, opts ...grpc.CallOption) (*GetShipmentFactoringHashResp, error) {
-	out := new(GetShipmentFactoringHashResp)
-	err := c.cc.Invoke(ctx, "/ChainService.ChainService/GetShipmentFactoringHash", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
 }
 
 func (c *chainServiceClient) GetHashContent(ctx context.Context, in *GetHashContentReq, opts ...grpc.CallOption) (*GetHashContentResp, error) {
@@ -143,17 +42,6 @@ func (c *chainServiceClient) GetHashContent(ctx context.Context, in *GetHashCont
 // All implementations must embed UnimplementedChainServiceServer
 // for forward compatibility
 type ChainServiceServer interface {
-	//hash模块
-	GetCompanyHash(context.Context, *GetCompanyHashReq) (*GetCompanyHashResp, error)
-	GetMiHash(context.Context, *GetMiHashReq) (*GetMiHashResp, error)
-	GetMedicineHash(context.Context, *GetMedicineReq) (*GetMedicineResp, error)
-	GetContractHash(context.Context, *GetContractHashReq) (*GetContractHashResp, error)
-	GetContractMiHash(context.Context, *GetContractMiHashReq) (*GetContractMiHashResp, error)
-	GetConfigHash(context.Context, *GetConfigHashReq) (*GetConfigHashResp, error)
-	GetShipmentPlanHash(context.Context, *GetShipmentPlanHashReq) (*GetShipmentPlanHashResp, error)
-	GetShipmentOrderHash(context.Context, *GetShipmentOrderHashReq) (*GetShipmentOrderHashResp, error)
-	GetShipmentPayHash(context.Context, *GetShipmentPayHashReq) (*GetShipmentPayHashResp, error)
-	GetShipmentFactoringHash(context.Context, *GetShipmentFactoringHashReq) (*GetShipmentFactoringHashResp, error)
 	//根据哈希查询证书内容
 	GetHashContent(context.Context, *GetHashContentReq) (*GetHashContentResp, error)
 	mustEmbedUnimplementedChainServiceServer()
@@ -163,36 +51,6 @@ type ChainServiceServer interface {
 type UnimplementedChainServiceServer struct {
 }
 
-func (UnimplementedChainServiceServer) GetCompanyHash(context.Context, *GetCompanyHashReq) (*GetCompanyHashResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetCompanyHash not implemented")
-}
-func (UnimplementedChainServiceServer) GetMiHash(context.Context, *GetMiHashReq) (*GetMiHashResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetMiHash not implemented")
-}
-func (UnimplementedChainServiceServer) GetMedicineHash(context.Context, *GetMedicineReq) (*GetMedicineResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetMedicineHash not implemented")
-}
-func (UnimplementedChainServiceServer) GetContractHash(context.Context, *GetContractHashReq) (*GetContractHashResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetContractHash not implemented")
-}
-func (UnimplementedChainServiceServer) GetContractMiHash(context.Context, *GetContractMiHashReq) (*GetContractMiHashResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetContractMiHash not implemented")
-}
-func (UnimplementedChainServiceServer) GetConfigHash(context.Context, *GetConfigHashReq) (*GetConfigHashResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetConfigHash not implemented")
-}
-func (UnimplementedChainServiceServer) GetShipmentPlanHash(context.Context, *GetShipmentPlanHashReq) (*GetShipmentPlanHashResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetShipmentPlanHash not implemented")
-}
-func (UnimplementedChainServiceServer) GetShipmentOrderHash(context.Context, *GetShipmentOrderHashReq) (*GetShipmentOrderHashResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetShipmentOrderHash not implemented")
-}
-func (UnimplementedChainServiceServer) GetShipmentPayHash(context.Context, *GetShipmentPayHashReq) (*GetShipmentPayHashResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetShipmentPayHash not implemented")
-}
-func (UnimplementedChainServiceServer) GetShipmentFactoringHash(context.Context, *GetShipmentFactoringHashReq) (*GetShipmentFactoringHashResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetShipmentFactoringHash not implemented")
-}
 func (UnimplementedChainServiceServer) GetHashContent(context.Context, *GetHashContentReq) (*GetHashContentResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetHashContent not implemented")
 }
@@ -207,186 +65,6 @@ type UnsafeChainServiceServer interface {
 
 func RegisterChainServiceServer(s grpc.ServiceRegistrar, srv ChainServiceServer) {
 	s.RegisterService(&ChainService_ServiceDesc, srv)
-}
-
-func _ChainService_GetCompanyHash_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetCompanyHashReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ChainServiceServer).GetCompanyHash(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/ChainService.ChainService/GetCompanyHash",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ChainServiceServer).GetCompanyHash(ctx, req.(*GetCompanyHashReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ChainService_GetMiHash_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetMiHashReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ChainServiceServer).GetMiHash(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/ChainService.ChainService/GetMiHash",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ChainServiceServer).GetMiHash(ctx, req.(*GetMiHashReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ChainService_GetMedicineHash_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetMedicineReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ChainServiceServer).GetMedicineHash(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/ChainService.ChainService/GetMedicineHash",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ChainServiceServer).GetMedicineHash(ctx, req.(*GetMedicineReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ChainService_GetContractHash_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetContractHashReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ChainServiceServer).GetContractHash(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/ChainService.ChainService/GetContractHash",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ChainServiceServer).GetContractHash(ctx, req.(*GetContractHashReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ChainService_GetContractMiHash_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetContractMiHashReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ChainServiceServer).GetContractMiHash(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/ChainService.ChainService/GetContractMiHash",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ChainServiceServer).GetContractMiHash(ctx, req.(*GetContractMiHashReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ChainService_GetConfigHash_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetConfigHashReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ChainServiceServer).GetConfigHash(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/ChainService.ChainService/GetConfigHash",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ChainServiceServer).GetConfigHash(ctx, req.(*GetConfigHashReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ChainService_GetShipmentPlanHash_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetShipmentPlanHashReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ChainServiceServer).GetShipmentPlanHash(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/ChainService.ChainService/GetShipmentPlanHash",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ChainServiceServer).GetShipmentPlanHash(ctx, req.(*GetShipmentPlanHashReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ChainService_GetShipmentOrderHash_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetShipmentOrderHashReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ChainServiceServer).GetShipmentOrderHash(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/ChainService.ChainService/GetShipmentOrderHash",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ChainServiceServer).GetShipmentOrderHash(ctx, req.(*GetShipmentOrderHashReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ChainService_GetShipmentPayHash_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetShipmentPayHashReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ChainServiceServer).GetShipmentPayHash(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/ChainService.ChainService/GetShipmentPayHash",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ChainServiceServer).GetShipmentPayHash(ctx, req.(*GetShipmentPayHashReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ChainService_GetShipmentFactoringHash_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetShipmentFactoringHashReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ChainServiceServer).GetShipmentFactoringHash(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/ChainService.ChainService/GetShipmentFactoringHash",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ChainServiceServer).GetShipmentFactoringHash(ctx, req.(*GetShipmentFactoringHashReq))
-	}
-	return interceptor(ctx, in, info, handler)
 }
 
 func _ChainService_GetHashContent_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -414,46 +92,6 @@ var ChainService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "ChainService.ChainService",
 	HandlerType: (*ChainServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
-		{
-			MethodName: "GetCompanyHash",
-			Handler:    _ChainService_GetCompanyHash_Handler,
-		},
-		{
-			MethodName: "GetMiHash",
-			Handler:    _ChainService_GetMiHash_Handler,
-		},
-		{
-			MethodName: "GetMedicineHash",
-			Handler:    _ChainService_GetMedicineHash_Handler,
-		},
-		{
-			MethodName: "GetContractHash",
-			Handler:    _ChainService_GetContractHash_Handler,
-		},
-		{
-			MethodName: "GetContractMiHash",
-			Handler:    _ChainService_GetContractMiHash_Handler,
-		},
-		{
-			MethodName: "GetConfigHash",
-			Handler:    _ChainService_GetConfigHash_Handler,
-		},
-		{
-			MethodName: "GetShipmentPlanHash",
-			Handler:    _ChainService_GetShipmentPlanHash_Handler,
-		},
-		{
-			MethodName: "GetShipmentOrderHash",
-			Handler:    _ChainService_GetShipmentOrderHash_Handler,
-		},
-		{
-			MethodName: "GetShipmentPayHash",
-			Handler:    _ChainService_GetShipmentPayHash_Handler,
-		},
-		{
-			MethodName: "GetShipmentFactoringHash",
-			Handler:    _ChainService_GetShipmentFactoringHash_Handler,
-		},
 		{
 			MethodName: "GetHashContent",
 			Handler:    _ChainService_GetHashContent_Handler,

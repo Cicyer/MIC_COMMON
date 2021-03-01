@@ -2586,3 +2586,539 @@ var DataReportService_ServiceDesc = grpc.ServiceDesc{
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "ManagerService.proto",
 }
+
+// HashServiceClient is the client API for HashService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type HashServiceClient interface {
+	//hash模块
+	GetCompanyHash(ctx context.Context, in *GetCompanyHashReq, opts ...grpc.CallOption) (*GetCompanyHashResp, error)
+	GetMiHash(ctx context.Context, in *GetMiHashReq, opts ...grpc.CallOption) (*GetMiHashResp, error)
+	GetMedicineHash(ctx context.Context, in *GetMedicineReq, opts ...grpc.CallOption) (*GetMedicineResp, error)
+	GetContractHash(ctx context.Context, in *GetContractHashReq, opts ...grpc.CallOption) (*GetContractHashResp, error)
+	GetContractMiHash(ctx context.Context, in *GetContractMiHashReq, opts ...grpc.CallOption) (*GetContractMiHashResp, error)
+	GetConfigHash(ctx context.Context, in *GetConfigHashReq, opts ...grpc.CallOption) (*GetConfigHashResp, error)
+	GetShipmentPlanHash(ctx context.Context, in *GetShipmentPlanHashReq, opts ...grpc.CallOption) (*GetShipmentPlanHashResp, error)
+	GetShipmentOrderHash(ctx context.Context, in *GetShipmentOrderHashReq, opts ...grpc.CallOption) (*GetShipmentOrderHashResp, error)
+	GetShipmentPayHash(ctx context.Context, in *GetShipmentPayHashReq, opts ...grpc.CallOption) (*GetShipmentPayHashResp, error)
+	GetShipmentFactoringHash(ctx context.Context, in *GetShipmentFactoringHashReq, opts ...grpc.CallOption) (*GetShipmentFactoringHashResp, error)
+}
+
+type hashServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewHashServiceClient(cc grpc.ClientConnInterface) HashServiceClient {
+	return &hashServiceClient{cc}
+}
+
+func (c *hashServiceClient) GetCompanyHash(ctx context.Context, in *GetCompanyHashReq, opts ...grpc.CallOption) (*GetCompanyHashResp, error) {
+	out := new(GetCompanyHashResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.HashService/GetCompanyHash", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *hashServiceClient) GetMiHash(ctx context.Context, in *GetMiHashReq, opts ...grpc.CallOption) (*GetMiHashResp, error) {
+	out := new(GetMiHashResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.HashService/GetMiHash", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *hashServiceClient) GetMedicineHash(ctx context.Context, in *GetMedicineReq, opts ...grpc.CallOption) (*GetMedicineResp, error) {
+	out := new(GetMedicineResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.HashService/GetMedicineHash", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *hashServiceClient) GetContractHash(ctx context.Context, in *GetContractHashReq, opts ...grpc.CallOption) (*GetContractHashResp, error) {
+	out := new(GetContractHashResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.HashService/GetContractHash", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *hashServiceClient) GetContractMiHash(ctx context.Context, in *GetContractMiHashReq, opts ...grpc.CallOption) (*GetContractMiHashResp, error) {
+	out := new(GetContractMiHashResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.HashService/GetContractMiHash", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *hashServiceClient) GetConfigHash(ctx context.Context, in *GetConfigHashReq, opts ...grpc.CallOption) (*GetConfigHashResp, error) {
+	out := new(GetConfigHashResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.HashService/GetConfigHash", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *hashServiceClient) GetShipmentPlanHash(ctx context.Context, in *GetShipmentPlanHashReq, opts ...grpc.CallOption) (*GetShipmentPlanHashResp, error) {
+	out := new(GetShipmentPlanHashResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.HashService/GetShipmentPlanHash", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *hashServiceClient) GetShipmentOrderHash(ctx context.Context, in *GetShipmentOrderHashReq, opts ...grpc.CallOption) (*GetShipmentOrderHashResp, error) {
+	out := new(GetShipmentOrderHashResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.HashService/GetShipmentOrderHash", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *hashServiceClient) GetShipmentPayHash(ctx context.Context, in *GetShipmentPayHashReq, opts ...grpc.CallOption) (*GetShipmentPayHashResp, error) {
+	out := new(GetShipmentPayHashResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.HashService/GetShipmentPayHash", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *hashServiceClient) GetShipmentFactoringHash(ctx context.Context, in *GetShipmentFactoringHashReq, opts ...grpc.CallOption) (*GetShipmentFactoringHashResp, error) {
+	out := new(GetShipmentFactoringHashResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.HashService/GetShipmentFactoringHash", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// HashServiceServer is the server API for HashService service.
+// All implementations must embed UnimplementedHashServiceServer
+// for forward compatibility
+type HashServiceServer interface {
+	//hash模块
+	GetCompanyHash(context.Context, *GetCompanyHashReq) (*GetCompanyHashResp, error)
+	GetMiHash(context.Context, *GetMiHashReq) (*GetMiHashResp, error)
+	GetMedicineHash(context.Context, *GetMedicineReq) (*GetMedicineResp, error)
+	GetContractHash(context.Context, *GetContractHashReq) (*GetContractHashResp, error)
+	GetContractMiHash(context.Context, *GetContractMiHashReq) (*GetContractMiHashResp, error)
+	GetConfigHash(context.Context, *GetConfigHashReq) (*GetConfigHashResp, error)
+	GetShipmentPlanHash(context.Context, *GetShipmentPlanHashReq) (*GetShipmentPlanHashResp, error)
+	GetShipmentOrderHash(context.Context, *GetShipmentOrderHashReq) (*GetShipmentOrderHashResp, error)
+	GetShipmentPayHash(context.Context, *GetShipmentPayHashReq) (*GetShipmentPayHashResp, error)
+	GetShipmentFactoringHash(context.Context, *GetShipmentFactoringHashReq) (*GetShipmentFactoringHashResp, error)
+	mustEmbedUnimplementedHashServiceServer()
+}
+
+// UnimplementedHashServiceServer must be embedded to have forward compatible implementations.
+type UnimplementedHashServiceServer struct {
+}
+
+func (UnimplementedHashServiceServer) GetCompanyHash(context.Context, *GetCompanyHashReq) (*GetCompanyHashResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCompanyHash not implemented")
+}
+func (UnimplementedHashServiceServer) GetMiHash(context.Context, *GetMiHashReq) (*GetMiHashResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetMiHash not implemented")
+}
+func (UnimplementedHashServiceServer) GetMedicineHash(context.Context, *GetMedicineReq) (*GetMedicineResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetMedicineHash not implemented")
+}
+func (UnimplementedHashServiceServer) GetContractHash(context.Context, *GetContractHashReq) (*GetContractHashResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetContractHash not implemented")
+}
+func (UnimplementedHashServiceServer) GetContractMiHash(context.Context, *GetContractMiHashReq) (*GetContractMiHashResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetContractMiHash not implemented")
+}
+func (UnimplementedHashServiceServer) GetConfigHash(context.Context, *GetConfigHashReq) (*GetConfigHashResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetConfigHash not implemented")
+}
+func (UnimplementedHashServiceServer) GetShipmentPlanHash(context.Context, *GetShipmentPlanHashReq) (*GetShipmentPlanHashResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetShipmentPlanHash not implemented")
+}
+func (UnimplementedHashServiceServer) GetShipmentOrderHash(context.Context, *GetShipmentOrderHashReq) (*GetShipmentOrderHashResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetShipmentOrderHash not implemented")
+}
+func (UnimplementedHashServiceServer) GetShipmentPayHash(context.Context, *GetShipmentPayHashReq) (*GetShipmentPayHashResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetShipmentPayHash not implemented")
+}
+func (UnimplementedHashServiceServer) GetShipmentFactoringHash(context.Context, *GetShipmentFactoringHashReq) (*GetShipmentFactoringHashResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetShipmentFactoringHash not implemented")
+}
+func (UnimplementedHashServiceServer) mustEmbedUnimplementedHashServiceServer() {}
+
+// UnsafeHashServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to HashServiceServer will
+// result in compilation errors.
+type UnsafeHashServiceServer interface {
+	mustEmbedUnimplementedHashServiceServer()
+}
+
+func RegisterHashServiceServer(s grpc.ServiceRegistrar, srv HashServiceServer) {
+	s.RegisterService(&HashService_ServiceDesc, srv)
+}
+
+func _HashService_GetCompanyHash_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCompanyHashReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(HashServiceServer).GetCompanyHash(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.HashService/GetCompanyHash",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(HashServiceServer).GetCompanyHash(ctx, req.(*GetCompanyHashReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _HashService_GetMiHash_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetMiHashReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(HashServiceServer).GetMiHash(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.HashService/GetMiHash",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(HashServiceServer).GetMiHash(ctx, req.(*GetMiHashReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _HashService_GetMedicineHash_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetMedicineReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(HashServiceServer).GetMedicineHash(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.HashService/GetMedicineHash",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(HashServiceServer).GetMedicineHash(ctx, req.(*GetMedicineReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _HashService_GetContractHash_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetContractHashReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(HashServiceServer).GetContractHash(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.HashService/GetContractHash",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(HashServiceServer).GetContractHash(ctx, req.(*GetContractHashReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _HashService_GetContractMiHash_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetContractMiHashReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(HashServiceServer).GetContractMiHash(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.HashService/GetContractMiHash",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(HashServiceServer).GetContractMiHash(ctx, req.(*GetContractMiHashReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _HashService_GetConfigHash_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetConfigHashReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(HashServiceServer).GetConfigHash(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.HashService/GetConfigHash",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(HashServiceServer).GetConfigHash(ctx, req.(*GetConfigHashReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _HashService_GetShipmentPlanHash_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetShipmentPlanHashReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(HashServiceServer).GetShipmentPlanHash(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.HashService/GetShipmentPlanHash",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(HashServiceServer).GetShipmentPlanHash(ctx, req.(*GetShipmentPlanHashReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _HashService_GetShipmentOrderHash_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetShipmentOrderHashReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(HashServiceServer).GetShipmentOrderHash(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.HashService/GetShipmentOrderHash",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(HashServiceServer).GetShipmentOrderHash(ctx, req.(*GetShipmentOrderHashReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _HashService_GetShipmentPayHash_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetShipmentPayHashReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(HashServiceServer).GetShipmentPayHash(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.HashService/GetShipmentPayHash",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(HashServiceServer).GetShipmentPayHash(ctx, req.(*GetShipmentPayHashReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _HashService_GetShipmentFactoringHash_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetShipmentFactoringHashReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(HashServiceServer).GetShipmentFactoringHash(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.HashService/GetShipmentFactoringHash",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(HashServiceServer).GetShipmentFactoringHash(ctx, req.(*GetShipmentFactoringHashReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// HashService_ServiceDesc is the grpc.ServiceDesc for HashService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var HashService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "ManagerService.HashService",
+	HandlerType: (*HashServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "GetCompanyHash",
+			Handler:    _HashService_GetCompanyHash_Handler,
+		},
+		{
+			MethodName: "GetMiHash",
+			Handler:    _HashService_GetMiHash_Handler,
+		},
+		{
+			MethodName: "GetMedicineHash",
+			Handler:    _HashService_GetMedicineHash_Handler,
+		},
+		{
+			MethodName: "GetContractHash",
+			Handler:    _HashService_GetContractHash_Handler,
+		},
+		{
+			MethodName: "GetContractMiHash",
+			Handler:    _HashService_GetContractMiHash_Handler,
+		},
+		{
+			MethodName: "GetConfigHash",
+			Handler:    _HashService_GetConfigHash_Handler,
+		},
+		{
+			MethodName: "GetShipmentPlanHash",
+			Handler:    _HashService_GetShipmentPlanHash_Handler,
+		},
+		{
+			MethodName: "GetShipmentOrderHash",
+			Handler:    _HashService_GetShipmentOrderHash_Handler,
+		},
+		{
+			MethodName: "GetShipmentPayHash",
+			Handler:    _HashService_GetShipmentPayHash_Handler,
+		},
+		{
+			MethodName: "GetShipmentFactoringHash",
+			Handler:    _HashService_GetShipmentFactoringHash_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "ManagerService.proto",
+}
+
+// RankServiceClient is the client API for RankService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type RankServiceClient interface {
+	//按年查询药品履约率排名
+	GetShipmentRankMedicineDataYear(ctx context.Context, in *GetShipmentRankMedicineDataYearReq, opts ...grpc.CallOption) (*GetShipmentRankMedicineDataYearResp, error)
+	GetShipmentRankCompanyDataYear(ctx context.Context, in *GetShipmentRankCompanyDataYearReq, opts ...grpc.CallOption) (*GetShipmentRankCompanyDataYearResp, error)
+}
+
+type rankServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewRankServiceClient(cc grpc.ClientConnInterface) RankServiceClient {
+	return &rankServiceClient{cc}
+}
+
+func (c *rankServiceClient) GetShipmentRankMedicineDataYear(ctx context.Context, in *GetShipmentRankMedicineDataYearReq, opts ...grpc.CallOption) (*GetShipmentRankMedicineDataYearResp, error) {
+	out := new(GetShipmentRankMedicineDataYearResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.RankService/GetShipmentRankMedicineDataYear", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rankServiceClient) GetShipmentRankCompanyDataYear(ctx context.Context, in *GetShipmentRankCompanyDataYearReq, opts ...grpc.CallOption) (*GetShipmentRankCompanyDataYearResp, error) {
+	out := new(GetShipmentRankCompanyDataYearResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.RankService/GetShipmentRankCompanyDataYear", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// RankServiceServer is the server API for RankService service.
+// All implementations must embed UnimplementedRankServiceServer
+// for forward compatibility
+type RankServiceServer interface {
+	//按年查询药品履约率排名
+	GetShipmentRankMedicineDataYear(context.Context, *GetShipmentRankMedicineDataYearReq) (*GetShipmentRankMedicineDataYearResp, error)
+	GetShipmentRankCompanyDataYear(context.Context, *GetShipmentRankCompanyDataYearReq) (*GetShipmentRankCompanyDataYearResp, error)
+	mustEmbedUnimplementedRankServiceServer()
+}
+
+// UnimplementedRankServiceServer must be embedded to have forward compatible implementations.
+type UnimplementedRankServiceServer struct {
+}
+
+func (UnimplementedRankServiceServer) GetShipmentRankMedicineDataYear(context.Context, *GetShipmentRankMedicineDataYearReq) (*GetShipmentRankMedicineDataYearResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetShipmentRankMedicineDataYear not implemented")
+}
+func (UnimplementedRankServiceServer) GetShipmentRankCompanyDataYear(context.Context, *GetShipmentRankCompanyDataYearReq) (*GetShipmentRankCompanyDataYearResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetShipmentRankCompanyDataYear not implemented")
+}
+func (UnimplementedRankServiceServer) mustEmbedUnimplementedRankServiceServer() {}
+
+// UnsafeRankServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to RankServiceServer will
+// result in compilation errors.
+type UnsafeRankServiceServer interface {
+	mustEmbedUnimplementedRankServiceServer()
+}
+
+func RegisterRankServiceServer(s grpc.ServiceRegistrar, srv RankServiceServer) {
+	s.RegisterService(&RankService_ServiceDesc, srv)
+}
+
+func _RankService_GetShipmentRankMedicineDataYear_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetShipmentRankMedicineDataYearReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RankServiceServer).GetShipmentRankMedicineDataYear(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.RankService/GetShipmentRankMedicineDataYear",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RankServiceServer).GetShipmentRankMedicineDataYear(ctx, req.(*GetShipmentRankMedicineDataYearReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RankService_GetShipmentRankCompanyDataYear_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetShipmentRankCompanyDataYearReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RankServiceServer).GetShipmentRankCompanyDataYear(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.RankService/GetShipmentRankCompanyDataYear",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RankServiceServer).GetShipmentRankCompanyDataYear(ctx, req.(*GetShipmentRankCompanyDataYearReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// RankService_ServiceDesc is the grpc.ServiceDesc for RankService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var RankService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "ManagerService.RankService",
+	HandlerType: (*RankServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "GetShipmentRankMedicineDataYear",
+			Handler:    _RankService_GetShipmentRankMedicineDataYear_Handler,
+		},
+		{
+			MethodName: "GetShipmentRankCompanyDataYear",
+			Handler:    _RankService_GetShipmentRankCompanyDataYear_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "ManagerService.proto",
+}
