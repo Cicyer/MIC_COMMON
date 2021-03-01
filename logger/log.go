@@ -17,7 +17,7 @@ type LogConfig struct {
 	LogPath string
 }
 
-func InitLog(logPath string) {
+func InitLog(logPath string, logLevel ...string) {
 	//var core zapcore.Core
 	//var zapLevel zapcore.Level
 	//zapLevel.Set(level)
@@ -77,6 +77,9 @@ func InitLog(logPath string) {
 }
 
 func getWriter(path string, filename string) io.Writer {
+	if path == "" {
+		return os.Stdout
+	}
 	err := os.MkdirAll(path, 0777)
 	if err != nil {
 		fmt.Printf("%s", err)
