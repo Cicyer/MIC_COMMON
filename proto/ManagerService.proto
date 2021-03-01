@@ -1748,6 +1748,8 @@ message GetShipmentRankMedicineDataYearReq {
   google.protobuf.Timestamp startAt = 3;
   google.protobuf.Timestamp endAt = 4;
   int64 rankCount = 5;
+  //显示哪家医疗机构的排名数据
+  int64 miId = 6;
 }
 
 message ShipmentRankMedicineDataYear {
@@ -1775,6 +1777,8 @@ message GetShipmentRankCompanyDataYearReq {
   int64 rankCount = 5;
   //需要展示的药品数量
   int64 medicineCount = 6;
+  //显示哪家医疗机构的排名数据
+  int64 miId = 7;
 }
 
 message ShipmentRankCompanyMedicine {
@@ -1796,6 +1800,113 @@ message GetShipmentRankCompanyDataYearResp {
   int64 pageSize = 3;
   int64 pageNumber = 4;
 }
+
+
+message GetRankMiReceiveYearReq {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 managerId = 1;
+  //指定获取哪个医保局的订单报表数据，目前不支持不同医保局混合统计
+  int64 mibId = 2;
+  //0表示当前前年 -1为去年
+  int64 yearOffset = 3;
+  //报表的起止日期必填
+  int64 rankCount = 4;
+
+}
+message RankMiReceiveYear {
+  int64 rank = 1;
+  string miName = 2;
+  int64 shipmentOrderReceiveAmount = 3;
+  repeated ShipmentOrderMonthReport shipmentOrderMonthReports = 4;
+}
+message GetRankMiReceiveYearResp {
+  repeated RankMiReceiveYear list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+message GetRankComReceiveYearReq {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 managerId = 1;
+  //指定获取哪个医保局的订单报表数据，目前不支持不同医保局混合统计
+  int64 mibId = 2;
+  //0表示当前前年 -1为去年
+  int64 yearOffset = 3;
+  //报表的起止日期必填
+  int64 rankCount = 4;
+}
+message RankComReceiveYear {
+  int64 rank = 1;
+  string companyName = 2;
+  int64 shipmentPlanReceiveCount = 3;
+  int64 shipmentPlanNotSentCount = 4;
+}
+message GetRankComReceiveYearResp {
+  repeated RankComReceiveYear list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+
+message GetRankMiPaidYearReq {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 managerId = 1;
+  //指定获取哪个医保局的订单报表数据，目前不支持不同医保局混合统计
+  int64 mibId = 2;
+  //0表示当前前年 -1为去年
+  int64 yearOffset = 3;
+  //报表的起止日期必填
+  int64 rankCount = 4;
+}
+message RankMiPaidYear {
+  int64 rank = 1;
+  string miName = 2;
+  int64 shipmentOrderPaidAmount = 3;
+  int64 shipmentOrderNormalPayAmount = 4;
+  int64 shipmentOrderSpecialPayAmount = 5;
+}
+message GetRankMiPaidYearResp {
+  repeated RankMiPaidYear list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+
+message GetRankMedicineYearReq {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 managerId = 1;
+  //指定获取哪个医保局的订单报表数据，目前不支持不同医保局混合统计
+  int64 mibId = 2;
+  //0表示当前前年 -1为去年
+  int64 yearOffset = 3;
+  //报表的起止日期必填
+  int64 rankCount = 4;
+}
+
+message RankMedicineYear {
+  int64 rank = 1;
+  string medicineName = 2;
+  int64 shipmentPlanReceiveUnitCount = 3;
+}
+message GetRankMedicineYearResp {
+  repeated RankMedicineYear list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+message GetMIBDashboardBaseInfoReq {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 managerId = 1;
+  //指定获取哪个医保局的订单报表数据，目前不支持不同医保局混合统计
+  int64 mibId = 2;
+  string province = 3;
+  string city = 4;
+}
+message GetMIBDashboardBaseInfoResp {
+  int64 miCount = 1;
+  int64 companyCount = 2;
+}
+
 service ManagerService {
   //合同相关
   rpc ListContract(ContractListReq) returns(ContractListResp);
@@ -1923,8 +2034,13 @@ service HashService {
 
 //============排名服务==================================
 service RankService {
-  //按年查询药品履约率排名
+  //MI端使用按年查询药品履约率排名
   rpc GetShipmentRankMedicineDataYear(GetShipmentRankMedicineDataYearReq) returns (GetShipmentRankMedicineDataYearResp);
   rpc GetShipmentRankCompanyDataYear(GetShipmentRankCompanyDataYearReq) returns (GetShipmentRankCompanyDataYearResp);
-
+  //MIB端使用
+  rpc GetRankMiReceiveYear(GetRankMiReceiveYearReq) returns (GetRankMiReceiveYearResp);
+  rpc GetRankComReceiveYear(GetRankComReceiveYearReq) returns (GetRankComReceiveYearResp);
+  rpc GetRankMiPaidYear(GetRankMiPaidYearReq) returns (GetRankMiPaidYearResp);
+  rpc GetRankMedicineYear(GetRankMedicineYearReq) returns (GetRankMedicineYearResp);
+  rpc GetMIBDashboardBaseInfo(GetMIBDashboardBaseInfoReq) returns (GetMIBDashboardBaseInfoResp);
 }

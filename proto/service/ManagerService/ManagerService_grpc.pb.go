@@ -3003,9 +3003,15 @@ var HashService_ServiceDesc = grpc.ServiceDesc{
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type RankServiceClient interface {
-	//按年查询药品履约率排名
+	//MI端使用按年查询药品履约率排名
 	GetShipmentRankMedicineDataYear(ctx context.Context, in *GetShipmentRankMedicineDataYearReq, opts ...grpc.CallOption) (*GetShipmentRankMedicineDataYearResp, error)
 	GetShipmentRankCompanyDataYear(ctx context.Context, in *GetShipmentRankCompanyDataYearReq, opts ...grpc.CallOption) (*GetShipmentRankCompanyDataYearResp, error)
+	//MIB端使用
+	GetRankMiReceiveYear(ctx context.Context, in *GetRankMiReceiveYearReq, opts ...grpc.CallOption) (*GetRankMiReceiveYearResp, error)
+	GetRankComReceiveYear(ctx context.Context, in *GetRankComReceiveYearReq, opts ...grpc.CallOption) (*GetRankComReceiveYearResp, error)
+	GetRankMiPaidYear(ctx context.Context, in *GetRankMiPaidYearReq, opts ...grpc.CallOption) (*GetRankMiPaidYearResp, error)
+	GetRankMedicineYear(ctx context.Context, in *GetRankMedicineYearReq, opts ...grpc.CallOption) (*GetRankMedicineYearResp, error)
+	GetMIBDashboardBaseInfo(ctx context.Context, in *GetMIBDashboardBaseInfoReq, opts ...grpc.CallOption) (*GetMIBDashboardBaseInfoResp, error)
 }
 
 type rankServiceClient struct {
@@ -3034,13 +3040,64 @@ func (c *rankServiceClient) GetShipmentRankCompanyDataYear(ctx context.Context, 
 	return out, nil
 }
 
+func (c *rankServiceClient) GetRankMiReceiveYear(ctx context.Context, in *GetRankMiReceiveYearReq, opts ...grpc.CallOption) (*GetRankMiReceiveYearResp, error) {
+	out := new(GetRankMiReceiveYearResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.RankService/GetRankMiReceiveYear", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rankServiceClient) GetRankComReceiveYear(ctx context.Context, in *GetRankComReceiveYearReq, opts ...grpc.CallOption) (*GetRankComReceiveYearResp, error) {
+	out := new(GetRankComReceiveYearResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.RankService/GetRankComReceiveYear", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rankServiceClient) GetRankMiPaidYear(ctx context.Context, in *GetRankMiPaidYearReq, opts ...grpc.CallOption) (*GetRankMiPaidYearResp, error) {
+	out := new(GetRankMiPaidYearResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.RankService/GetRankMiPaidYear", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rankServiceClient) GetRankMedicineYear(ctx context.Context, in *GetRankMedicineYearReq, opts ...grpc.CallOption) (*GetRankMedicineYearResp, error) {
+	out := new(GetRankMedicineYearResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.RankService/GetRankMedicineYear", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rankServiceClient) GetMIBDashboardBaseInfo(ctx context.Context, in *GetMIBDashboardBaseInfoReq, opts ...grpc.CallOption) (*GetMIBDashboardBaseInfoResp, error) {
+	out := new(GetMIBDashboardBaseInfoResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.RankService/GetMIBDashboardBaseInfo", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // RankServiceServer is the server API for RankService service.
 // All implementations must embed UnimplementedRankServiceServer
 // for forward compatibility
 type RankServiceServer interface {
-	//按年查询药品履约率排名
+	//MI端使用按年查询药品履约率排名
 	GetShipmentRankMedicineDataYear(context.Context, *GetShipmentRankMedicineDataYearReq) (*GetShipmentRankMedicineDataYearResp, error)
 	GetShipmentRankCompanyDataYear(context.Context, *GetShipmentRankCompanyDataYearReq) (*GetShipmentRankCompanyDataYearResp, error)
+	//MIB端使用
+	GetRankMiReceiveYear(context.Context, *GetRankMiReceiveYearReq) (*GetRankMiReceiveYearResp, error)
+	GetRankComReceiveYear(context.Context, *GetRankComReceiveYearReq) (*GetRankComReceiveYearResp, error)
+	GetRankMiPaidYear(context.Context, *GetRankMiPaidYearReq) (*GetRankMiPaidYearResp, error)
+	GetRankMedicineYear(context.Context, *GetRankMedicineYearReq) (*GetRankMedicineYearResp, error)
+	GetMIBDashboardBaseInfo(context.Context, *GetMIBDashboardBaseInfoReq) (*GetMIBDashboardBaseInfoResp, error)
 	mustEmbedUnimplementedRankServiceServer()
 }
 
@@ -3053,6 +3110,21 @@ func (UnimplementedRankServiceServer) GetShipmentRankMedicineDataYear(context.Co
 }
 func (UnimplementedRankServiceServer) GetShipmentRankCompanyDataYear(context.Context, *GetShipmentRankCompanyDataYearReq) (*GetShipmentRankCompanyDataYearResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetShipmentRankCompanyDataYear not implemented")
+}
+func (UnimplementedRankServiceServer) GetRankMiReceiveYear(context.Context, *GetRankMiReceiveYearReq) (*GetRankMiReceiveYearResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetRankMiReceiveYear not implemented")
+}
+func (UnimplementedRankServiceServer) GetRankComReceiveYear(context.Context, *GetRankComReceiveYearReq) (*GetRankComReceiveYearResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetRankComReceiveYear not implemented")
+}
+func (UnimplementedRankServiceServer) GetRankMiPaidYear(context.Context, *GetRankMiPaidYearReq) (*GetRankMiPaidYearResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetRankMiPaidYear not implemented")
+}
+func (UnimplementedRankServiceServer) GetRankMedicineYear(context.Context, *GetRankMedicineYearReq) (*GetRankMedicineYearResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetRankMedicineYear not implemented")
+}
+func (UnimplementedRankServiceServer) GetMIBDashboardBaseInfo(context.Context, *GetMIBDashboardBaseInfoReq) (*GetMIBDashboardBaseInfoResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetMIBDashboardBaseInfo not implemented")
 }
 func (UnimplementedRankServiceServer) mustEmbedUnimplementedRankServiceServer() {}
 
@@ -3103,6 +3175,96 @@ func _RankService_GetShipmentRankCompanyDataYear_Handler(srv interface{}, ctx co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RankService_GetRankMiReceiveYear_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetRankMiReceiveYearReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RankServiceServer).GetRankMiReceiveYear(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.RankService/GetRankMiReceiveYear",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RankServiceServer).GetRankMiReceiveYear(ctx, req.(*GetRankMiReceiveYearReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RankService_GetRankComReceiveYear_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetRankComReceiveYearReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RankServiceServer).GetRankComReceiveYear(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.RankService/GetRankComReceiveYear",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RankServiceServer).GetRankComReceiveYear(ctx, req.(*GetRankComReceiveYearReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RankService_GetRankMiPaidYear_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetRankMiPaidYearReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RankServiceServer).GetRankMiPaidYear(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.RankService/GetRankMiPaidYear",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RankServiceServer).GetRankMiPaidYear(ctx, req.(*GetRankMiPaidYearReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RankService_GetRankMedicineYear_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetRankMedicineYearReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RankServiceServer).GetRankMedicineYear(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.RankService/GetRankMedicineYear",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RankServiceServer).GetRankMedicineYear(ctx, req.(*GetRankMedicineYearReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RankService_GetMIBDashboardBaseInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetMIBDashboardBaseInfoReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RankServiceServer).GetMIBDashboardBaseInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.RankService/GetMIBDashboardBaseInfo",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RankServiceServer).GetMIBDashboardBaseInfo(ctx, req.(*GetMIBDashboardBaseInfoReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // RankService_ServiceDesc is the grpc.ServiceDesc for RankService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -3117,6 +3279,26 @@ var RankService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetShipmentRankCompanyDataYear",
 			Handler:    _RankService_GetShipmentRankCompanyDataYear_Handler,
+		},
+		{
+			MethodName: "GetRankMiReceiveYear",
+			Handler:    _RankService_GetRankMiReceiveYear_Handler,
+		},
+		{
+			MethodName: "GetRankComReceiveYear",
+			Handler:    _RankService_GetRankComReceiveYear_Handler,
+		},
+		{
+			MethodName: "GetRankMiPaidYear",
+			Handler:    _RankService_GetRankMiPaidYear_Handler,
+		},
+		{
+			MethodName: "GetRankMedicineYear",
+			Handler:    _RankService_GetRankMedicineYear_Handler,
+		},
+		{
+			MethodName: "GetMIBDashboardBaseInfo",
+			Handler:    _RankService_GetMIBDashboardBaseInfo_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
