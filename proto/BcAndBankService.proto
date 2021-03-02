@@ -27,6 +27,8 @@ service BcAndBankService {
   rpc BcUploadShipmentOrders(UploadChainShipmentOrders) returns (BcResponses);
   // 支付单上链, 确权
   rpc BcUploadPayOrders(UploadChainPayOrders) returns (BcResponses);
+  // 保理单上链（更新）
+  rpc BcUploadFactoringOrders(UploadChainFactoringOrders) returns (BcResponses);
   // --------单纯上链接口 end---------
 
   // --------上链 + 银行 组合接口 start---------
@@ -92,12 +94,10 @@ message BcAndBankActionResp {
 // 银行相关参数
 // 银行参数基于 XML, 对应的 struct 中有很多标签和无用字段, 使用 xml.Marshal 传 string
 message BankRequest {
-  // 请求头 xml.marshal
-  string head = 1;
   // 请求体 xml.marshal
-  string body = 2;
+  string body = 1;
   // 请求方法 <- 按照 bankSDK 内定义的 constant opts 来
-  string function = 3;
+  string function = 2;
 }
 
 // 通用银行信息返回(返回对应结构体 xml marshal)
