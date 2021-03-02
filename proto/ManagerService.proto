@@ -1699,14 +1699,10 @@ message GetShipmentPayHashReq {
 message ShipmentPayHash{
   int64 shipmentOrderId = 1;
   string shipmentNo = 2;
-  string qrCodeHash = 3;
-  google.protobuf.Timestamp qrCodeUploadAt = 4;
-  string shipmentStartHash = 5;
-  google.protobuf.Timestamp shipmentStartUploadAt = 6;
-  string shipmentReceiveHash = 7;
-  google.protobuf.Timestamp shipmentReceiveUploadAt = 8;
-  string shipmentEnterHash = 9;
-  google.protobuf.Timestamp shipmentEnterUploadAt = 10;
+  string infoHash = 3;
+  google.protobuf.Timestamp infoUploadAt = 4;
+  string resultHash = 5;
+  google.protobuf.Timestamp resultUploadAt = 6;
 }
 message GetShipmentPayHashResp {
   repeated ShipmentPayHash list = 1;
