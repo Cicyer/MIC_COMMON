@@ -34,6 +34,8 @@ type BcAndBankServiceClient interface {
 	BcUploadShipmentOrders(ctx context.Context, in *UploadChainShipmentOrders, opts ...grpc.CallOption) (*BcResponses, error)
 	// 支付单上链, 确权
 	BcUploadPayOrders(ctx context.Context, in *UploadChainPayOrders, opts ...grpc.CallOption) (*BcResponses, error)
+	// 保理单上链（更新）
+	BcUploadFactoringOrders(ctx context.Context, in *UploadChainFactoringOrders, opts ...grpc.CallOption) (*BcResponses, error)
 	// --------上链 + 银行 组合接口 start---------
 	// 发起付款 一笔付款单内可以包含多笔 支付单(接收参数: 多笔 payOrder + 一个 银行请求)
 	// 查所有的支付单, 看是否符合要求
@@ -138,6 +140,15 @@ func (c *bcAndBankServiceClient) BcUploadPayOrders(ctx context.Context, in *Uplo
 	return out, nil
 }
 
+func (c *bcAndBankServiceClient) BcUploadFactoringOrders(ctx context.Context, in *UploadChainFactoringOrders, opts ...grpc.CallOption) (*BcResponses, error) {
+	out := new(BcResponses)
+	err := c.cc.Invoke(ctx, "/BcAndBankService.BcAndBankService/BcUploadFactoringOrders", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *bcAndBankServiceClient) BcAndBankPayOrderAction(ctx context.Context, in *BcAndBankPayOrderActionRequest, opts ...grpc.CallOption) (*BcAndBankActionResp, error) {
 	out := new(BcAndBankActionResp)
 	err := c.cc.Invoke(ctx, "/BcAndBankService.BcAndBankService/BcAndBankPayOrderAction", in, out, opts...)
@@ -231,6 +242,8 @@ type BcAndBankServiceServer interface {
 	BcUploadShipmentOrders(context.Context, *UploadChainShipmentOrders) (*BcResponses, error)
 	// 支付单上链, 确权
 	BcUploadPayOrders(context.Context, *UploadChainPayOrders) (*BcResponses, error)
+	// 保理单上链（更新）
+	BcUploadFactoringOrders(context.Context, *UploadChainFactoringOrders) (*BcResponses, error)
 	// --------上链 + 银行 组合接口 start---------
 	// 发起付款 一笔付款单内可以包含多笔 支付单(接收参数: 多笔 payOrder + 一个 银行请求)
 	// 查所有的支付单, 看是否符合要求
@@ -283,6 +296,9 @@ func (UnimplementedBcAndBankServiceServer) BcUploadShipmentOrders(context.Contex
 }
 func (UnimplementedBcAndBankServiceServer) BcUploadPayOrders(context.Context, *UploadChainPayOrders) (*BcResponses, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BcUploadPayOrders not implemented")
+}
+func (UnimplementedBcAndBankServiceServer) BcUploadFactoringOrders(context.Context, *UploadChainFactoringOrders) (*BcResponses, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BcUploadFactoringOrders not implemented")
 }
 func (UnimplementedBcAndBankServiceServer) BcAndBankPayOrderAction(context.Context, *BcAndBankPayOrderActionRequest) (*BcAndBankActionResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BcAndBankPayOrderAction not implemented")
@@ -461,6 +477,24 @@ func _BcAndBankService_BcUploadPayOrders_Handler(srv interface{}, ctx context.Co
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(BcAndBankServiceServer).BcUploadPayOrders(ctx, req.(*UploadChainPayOrders))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BcAndBankService_BcUploadFactoringOrders_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UploadChainFactoringOrders)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BcAndBankServiceServer).BcUploadFactoringOrders(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/BcAndBankService.BcAndBankService/BcUploadFactoringOrders",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BcAndBankServiceServer).BcUploadFactoringOrders(ctx, req.(*UploadChainFactoringOrders))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -647,6 +681,10 @@ var BcAndBankService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "BcUploadPayOrders",
 			Handler:    _BcAndBankService_BcUploadPayOrders_Handler,
+		},
+		{
+			MethodName: "BcUploadFactoringOrders",
+			Handler:    _BcAndBankService_BcUploadFactoringOrders_Handler,
 		},
 		{
 			MethodName: "BcAndBankPayOrderAction",
