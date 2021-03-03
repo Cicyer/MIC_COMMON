@@ -1,4 +1,4 @@
-module gitlab.koblitzdigital.com/lib/mic_common
+module github.com/Cicyer/MIC_COMMON
 
 go 1.15
 
