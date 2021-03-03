@@ -74,6 +74,10 @@ message ListUserReq {
   int64 managerId = 7;
   Page page = 8;
   string email = 9;
+  string username = 10;
+  string accountStatus = 11;
+  string activeStatus = 12;
+  string userPhone = 13;
 }
 
 message ListUserResp {

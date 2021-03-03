@@ -19,7 +19,7 @@ const _ = grpc.SupportPackageIsVersion7
 type MessageServiceClient interface {
 	//平台消息发送
 	SendEmails(ctx context.Context, in *SendEmailsReq, opts ...grpc.CallOption) (*SendEmailsResp, error)
-	SendSms(ctx context.Context, in *SendEmailsReq, opts ...grpc.CallOption) (*SendSmsResp, error)
+	SendSms(ctx context.Context, in *SendSmsReq, opts ...grpc.CallOption) (*SendSmsResp, error)
 	SendMessage(ctx context.Context, in *SendMessageReq, opts ...grpc.CallOption) (*SendMessageResp, error)
 	//平台消息管理
 	GetMessageRecords(ctx context.Context, in *GetMessageRecordsReq, opts ...grpc.CallOption) (*MessageListResp, error)
@@ -45,7 +45,7 @@ func (c *messageServiceClient) SendEmails(ctx context.Context, in *SendEmailsReq
 	return out, nil
 }
 
-func (c *messageServiceClient) SendSms(ctx context.Context, in *SendEmailsReq, opts ...grpc.CallOption) (*SendSmsResp, error) {
+func (c *messageServiceClient) SendSms(ctx context.Context, in *SendSmsReq, opts ...grpc.CallOption) (*SendSmsResp, error) {
 	out := new(SendSmsResp)
 	err := c.cc.Invoke(ctx, "/MessageService.MessageService/SendSms", in, out, opts...)
 	if err != nil {
@@ -105,7 +105,7 @@ func (c *messageServiceClient) UnreadCount(ctx context.Context, in *GetUnreadCou
 type MessageServiceServer interface {
 	//平台消息发送
 	SendEmails(context.Context, *SendEmailsReq) (*SendEmailsResp, error)
-	SendSms(context.Context, *SendEmailsReq) (*SendSmsResp, error)
+	SendSms(context.Context, *SendSmsReq) (*SendSmsResp, error)
 	SendMessage(context.Context, *SendMessageReq) (*SendMessageResp, error)
 	//平台消息管理
 	GetMessageRecords(context.Context, *GetMessageRecordsReq) (*MessageListResp, error)
@@ -122,7 +122,7 @@ type UnimplementedMessageServiceServer struct {
 func (UnimplementedMessageServiceServer) SendEmails(context.Context, *SendEmailsReq) (*SendEmailsResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SendEmails not implemented")
 }
-func (UnimplementedMessageServiceServer) SendSms(context.Context, *SendEmailsReq) (*SendSmsResp, error) {
+func (UnimplementedMessageServiceServer) SendSms(context.Context, *SendSmsReq) (*SendSmsResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SendSms not implemented")
 }
 func (UnimplementedMessageServiceServer) SendMessage(context.Context, *SendMessageReq) (*SendMessageResp, error) {
@@ -172,7 +172,7 @@ func _MessageService_SendEmails_Handler(srv interface{}, ctx context.Context, de
 }
 
 func _MessageService_SendSms_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SendEmailsReq)
+	in := new(SendSmsReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -184,7 +184,7 @@ func _MessageService_SendSms_Handler(srv interface{}, ctx context.Context, dec f
 		FullMethod: "/MessageService.MessageService/SendSms",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MessageServiceServer).SendSms(ctx, req.(*SendEmailsReq))
+		return srv.(MessageServiceServer).SendSms(ctx, req.(*SendSmsReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
