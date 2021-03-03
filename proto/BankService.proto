@@ -64,6 +64,7 @@ message CreateOneAccountInfoResp {
 //更新帐号信息
 message UpdateBankAccountListReq {
   repeated AccountInfo list = 1;
+  int64   managerId = 2;
 }
 
 message UpdateBankAccountListResp {
