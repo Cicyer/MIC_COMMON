@@ -709,6 +709,7 @@ message ListShipmentPlanrVo {
   string medicineUnit = 21;
   int64 calculateRate = 22;
   int64 medicineId = 23;
+  string shipmentNo = 24;
 }
 //根据配送单号查询配送单详情
 message DetailShipmentOrderReq {
