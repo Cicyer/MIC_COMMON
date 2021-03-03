@@ -316,14 +316,10 @@ message FactoringOrder{
   int64   platformFee = 11;
   google.protobuf.Timestamp   applyAt = 12;
   google.protobuf.Timestamp   applyResultAt = 13;
-  string   tagName = 14;
-  int64   shipmentOrderAmount = 15;
-  google.protobuf.Timestamp tpCreatedAt = 16;
-  google.protobuf.Timestamp payDeadline = 17;
-  string   factoringStatus = 18;
-  google.protobuf.Timestamp   refundAt = 19;
-  string   refundStatus = 20;
-  string   errMsg = 21;
+  string   factoringStatus = 14;
+  google.protobuf.Timestamp   refundAt = 15;
+  string   refundStatus = 16;
+  string   errMsg = 17;
 }
 
 message ListFactoringOrderResp {
