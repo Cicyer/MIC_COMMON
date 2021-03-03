@@ -198,6 +198,8 @@ message ListPayOrderReq {
   google.protobuf.Timestamp payDeadlineEndAt = 12;
   google.protobuf.Timestamp receiveStartAt = 13;
   google.protobuf.Timestamp receiveEndAt = 14;
+  repeated int64   comIds = 15;
+  repeated int64   miIds = 16;
 }
 
 
@@ -234,6 +236,8 @@ message ListPayOrderPlanReq {
   int64   managerId = 1;
   Page   page = 2;
   repeated string shipmentNos = 3;
+  repeated int64   comIds = 4;
+  repeated int64   miIds = 5;
 }
 
 message PayOrderPlan{
@@ -293,6 +297,8 @@ message ListFactoringOrderReq {
   repeated string  refundStatus = 10;
   google.protobuf.Timestamp applyStartAt = 11;
   google.protobuf.Timestamp applyEndAt = 12;
+  repeated int64   comIds = 13;
+  repeated int64   miIds = 14;
 }
 
 
@@ -329,6 +335,8 @@ message ListFactoringOrderResp {
 message GetTransferReceiptReq {
   int64   managerId = 1;
   string shipmentNo = 2;
+  repeated int64   comIds = 3;
+  repeated int64   miIds = 4;
 }
 message GetTransferReceiptResp {
   string receiptUrl = 1;
@@ -337,6 +345,8 @@ message ListFactoringOrderPlanReq {
   int64   managerId = 1;
   Page   page = 2;
   string factoringOrderNo = 3;
+  repeated int64   comIds = 4;
+  repeated int64   miIds = 5;
 }
 
 message FactoringOrderPlan{
@@ -417,6 +427,8 @@ message ListFactoringPayOrderReq {
   google.protobuf.Timestamp receiveEndAt = 14;
   //数据库列并无此项，仅用于区分已发起和未发起保理的支付单
   string factoringApplyStatus = 15;
+  repeated int64   comIds = 16;
+  repeated int64   miIds = 17;
 }
 message FactoringPayOrder{
   int64   shipmentOrderId = 1;
