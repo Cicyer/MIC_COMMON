@@ -421,7 +421,7 @@ message ListFactoringPayOrderReq {
   google.protobuf.Timestamp payDeadlineEndAt = 12;
   google.protobuf.Timestamp receiveStartAt = 13;
   google.protobuf.Timestamp receiveEndAt = 14;
-  //数据库列并无此项，仅用于区分已发起和未发起保理的支付单
+  //数据库列并无此项，仅用于区分已发起和未发起保理的支付单 WAITING APPLYING SUCCESS FAIL
   string factoringApplyStatus = 15;
   repeated int64   comIds = 16;
   repeated int64   miIds = 17;
