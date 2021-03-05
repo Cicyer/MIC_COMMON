@@ -860,6 +860,17 @@ message UpdateShipmentOrderResp {
 
 }
 
+//根据招采单(配送计划)id查询合同编号
+message GetContractByShipmentPlanIdReq {
+  int64 shipmentId = 1;
+  int64 managerId = 2;
+}
+
+message GetContractByShipmentPlanIdResp {
+  int64 contractId = 1;
+  string contractNo = 2;
+}
+
 message InsertConfigsReq {
   //谁在请求 按照搜索账号控制显示范围
   int64 managerId = 1;
@@ -1968,6 +1979,8 @@ service ManagerService {
   rpc CountShipmentOrder(CountShipmentOrderReq) returns(CountShipmentOrderResp);
   //配送单修改
   rpc UpdateShipmentOrder(UpdateShipmentOrderReq) returns(UpdateShipmentOrderResp);
+  //根据招采单(配送计划)id查询合同编号
+  rpc GetContractByShipmentPlanId(GetContractByShipmentPlanIdReq) returns(GetContractByShipmentPlanIdResp);
 
   //通用配置查询
   rpc GetConfig(GetConfigReq) returns (GetConfigResp);
