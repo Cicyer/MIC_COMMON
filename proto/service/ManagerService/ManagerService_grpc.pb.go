@@ -84,6 +84,8 @@ type ManagerServiceClient interface {
 	UpdateConfig(ctx context.Context, in *UpdateConfigReq, opts ...grpc.CallOption) (*UpdateConfigResp, error)
 	//批量插入配置
 	InsertConfigs(ctx context.Context, in *InsertConfigsReq, opts ...grpc.CallOption) (*InsertConfigsResp, error)
+	//删除配置
+	DeleteConfigs(ctx context.Context, in *DeleteConfigsReq, opts ...grpc.CallOption) (*DeleteConfigsResp, error)
 	//医院专户额度
 	GetMiSpecialConfig(ctx context.Context, in *GetMiSpecialConfigReq, opts ...grpc.CallOption) (*GetMiSpecialConfigResp, error)
 	UpdateMiSpecialConfig(ctx context.Context, in *UpdateMiSpecialConfigReq, opts ...grpc.CallOption) (*UpdateMiSpecialConfigResp, error)
@@ -556,6 +558,15 @@ func (c *managerServiceClient) InsertConfigs(ctx context.Context, in *InsertConf
 	return out, nil
 }
 
+func (c *managerServiceClient) DeleteConfigs(ctx context.Context, in *DeleteConfigsReq, opts ...grpc.CallOption) (*DeleteConfigsResp, error) {
+	out := new(DeleteConfigsResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/DeleteConfigs", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *managerServiceClient) GetMiSpecialConfig(ctx context.Context, in *GetMiSpecialConfigReq, opts ...grpc.CallOption) (*GetMiSpecialConfigResp, error) {
 	out := new(GetMiSpecialConfigResp)
 	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/GetMiSpecialConfig", in, out, opts...)
@@ -645,6 +656,8 @@ type ManagerServiceServer interface {
 	UpdateConfig(context.Context, *UpdateConfigReq) (*UpdateConfigResp, error)
 	//批量插入配置
 	InsertConfigs(context.Context, *InsertConfigsReq) (*InsertConfigsResp, error)
+	//删除配置
+	DeleteConfigs(context.Context, *DeleteConfigsReq) (*DeleteConfigsResp, error)
 	//医院专户额度
 	GetMiSpecialConfig(context.Context, *GetMiSpecialConfigReq) (*GetMiSpecialConfigResp, error)
 	UpdateMiSpecialConfig(context.Context, *UpdateMiSpecialConfigReq) (*UpdateMiSpecialConfigResp, error)
@@ -807,6 +820,9 @@ func (UnimplementedManagerServiceServer) UpdateConfig(context.Context, *UpdateCo
 }
 func (UnimplementedManagerServiceServer) InsertConfigs(context.Context, *InsertConfigsReq) (*InsertConfigsResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method InsertConfigs not implemented")
+}
+func (UnimplementedManagerServiceServer) DeleteConfigs(context.Context, *DeleteConfigsReq) (*DeleteConfigsResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteConfigs not implemented")
 }
 func (UnimplementedManagerServiceServer) GetMiSpecialConfig(context.Context, *GetMiSpecialConfigReq) (*GetMiSpecialConfigResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetMiSpecialConfig not implemented")
@@ -1745,6 +1761,24 @@ func _ManagerService_InsertConfigs_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ManagerService_DeleteConfigs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteConfigsReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).DeleteConfigs(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/DeleteConfigs",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).DeleteConfigs(ctx, req.(*DeleteConfigsReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _ManagerService_GetMiSpecialConfig_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetMiSpecialConfigReq)
 	if err := dec(in); err != nil {
@@ -1991,6 +2025,10 @@ var ManagerService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "InsertConfigs",
 			Handler:    _ManagerService_InsertConfigs_Handler,
+		},
+		{
+			MethodName: "DeleteConfigs",
+			Handler:    _ManagerService_DeleteConfigs_Handler,
 		},
 		{
 			MethodName: "GetMiSpecialConfig",

@@ -877,6 +877,17 @@ message UpdateConfigReq {
   string oldValue = 7;
   string value = 8;
 }
+message DeleteConfigsReq {
+  int64 managerId = 1;
+  //指定要删除的id，id必填
+  repeated int64 configIds = 2;
+  //以下为限制项目，
+  string key = 3;
+  string typeOne = 4;
+  string typeTwo = 5;
+  string typeThree = 6;
+}
+
 message GetConfigReq {
   //谁在请求 按照搜索账号控制显示范围
   int64 managerId = 1;
@@ -906,6 +917,9 @@ message UpdateConfigResp {
 
 }
 message InsertConfigsResp {
+
+}
+message DeleteConfigsResp {
 
 }
 message GetConfigResp {
@@ -1975,6 +1989,8 @@ service ManagerService {
   rpc UpdateConfig(UpdateConfigReq) returns (UpdateConfigResp);
   //批量插入配置
   rpc InsertConfigs(InsertConfigsReq) returns (InsertConfigsResp);
+  //删除配置
+  rpc DeleteConfigs(DeleteConfigsReq) returns (DeleteConfigsResp);
   //医院专户额度
   rpc GetMiSpecialConfig(GetMiSpecialConfigReq) returns (GetMiSpecialConfigResp);
   rpc UpdateMiSpecialConfig(UpdateMiSpecialConfigReq) returns (UpdateMiSpecialConfigResp);

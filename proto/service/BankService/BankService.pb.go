@@ -3968,7 +3968,7 @@ type ListFactoringPayOrderReq struct {
 	PayDeadlineEndAt   *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=payDeadlineEndAt,proto3" json:"payDeadlineEndAt,omitempty"`
 	ReceiveStartAt     *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=receiveStartAt,proto3" json:"receiveStartAt,omitempty"`
 	ReceiveEndAt       *timestamppb.Timestamp `protobuf:"bytes,14,opt,name=receiveEndAt,proto3" json:"receiveEndAt,omitempty"`
-	//数据库列并无此项，仅用于区分已发起和未发起保理的支付单
+	//数据库列并无此项，仅用于区分已发起和未发起保理的支付单 WAITING APPLYING SUCCESS FAIL
 	FactoringApplyStatus string  `protobuf:"bytes,15,opt,name=factoringApplyStatus,proto3" json:"factoringApplyStatus,omitempty"`
 	ComIds               []int64 `protobuf:"varint,16,rep,packed,name=comIds,proto3" json:"comIds,omitempty"`
 	MiIds                []int64 `protobuf:"varint,17,rep,packed,name=miIds,proto3" json:"miIds,omitempty"`
