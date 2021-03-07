@@ -100,6 +100,11 @@ message CompanyCredit {
   google.protobuf.Timestamp endAt = 8;
   int64   updaterId = 9;
   string   updaterUserName = 10;
+  string  managerName = 11;
+  string  managerPhone = 12;
+  string  province = 13;
+  string  city = 14;
+  string  zone = 15;
 }
 message GetCompanyCreditConfigsResp {
   repeated CompanyCredit list = 1;

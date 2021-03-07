@@ -50,6 +50,7 @@ type ManagerServiceClient interface {
 	TagDetailList(ctx context.Context, in *TagDetailListReq, opts ...grpc.CallOption) (*TagDetailListResp, error)
 	DeleteTagMedicine(ctx context.Context, in *DeleteTagMedicineReq, opts ...grpc.CallOption) (*DeleteTagMedicineResp, error)
 	CreateTagMedicine(ctx context.Context, in *CreateTagMedicineReq, opts ...grpc.CallOption) (*CreateTagMedicineResp, error)
+	CommonMedicineQuery(ctx context.Context, in *CommonMedicineQueryReq, opts ...grpc.CallOption) (*CommonMedicineQueryResp, error)
 	//医疗机构相关
 	ListMi(ctx context.Context, in *ListMiReq, opts ...grpc.CallOption) (*ListMiResp, error)
 	CommonMI(ctx context.Context, in *CommonMIReq, opts ...grpc.CallOption) (*CommonMIResp, error)
@@ -78,6 +79,8 @@ type ManagerServiceClient interface {
 	CountShipmentOrder(ctx context.Context, in *CountShipmentOrderReq, opts ...grpc.CallOption) (*CountShipmentOrderResp, error)
 	//配送单修改
 	UpdateShipmentOrder(ctx context.Context, in *UpdateShipmentOrderReq, opts ...grpc.CallOption) (*UpdateShipmentOrderResp, error)
+	//根据招采单(配送计划)id查询合同编号
+	GetContractByShipmentPlanId(ctx context.Context, in *GetContractByShipmentPlanIdReq, opts ...grpc.CallOption) (*GetContractByShipmentPlanIdResp, error)
 	//通用配置查询
 	GetConfig(ctx context.Context, in *GetConfigReq, opts ...grpc.CallOption) (*GetConfigResp, error)
 	//修改配置
@@ -360,6 +363,15 @@ func (c *managerServiceClient) CreateTagMedicine(ctx context.Context, in *Create
 	return out, nil
 }
 
+func (c *managerServiceClient) CommonMedicineQuery(ctx context.Context, in *CommonMedicineQueryReq, opts ...grpc.CallOption) (*CommonMedicineQueryResp, error) {
+	out := new(CommonMedicineQueryResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/CommonMedicineQuery", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *managerServiceClient) ListMi(ctx context.Context, in *ListMiReq, opts ...grpc.CallOption) (*ListMiResp, error) {
 	out := new(ListMiResp)
 	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/ListMi", in, out, opts...)
@@ -531,6 +543,15 @@ func (c *managerServiceClient) UpdateShipmentOrder(ctx context.Context, in *Upda
 	return out, nil
 }
 
+func (c *managerServiceClient) GetContractByShipmentPlanId(ctx context.Context, in *GetContractByShipmentPlanIdReq, opts ...grpc.CallOption) (*GetContractByShipmentPlanIdResp, error) {
+	out := new(GetContractByShipmentPlanIdResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/GetContractByShipmentPlanId", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *managerServiceClient) GetConfig(ctx context.Context, in *GetConfigReq, opts ...grpc.CallOption) (*GetConfigResp, error) {
 	out := new(GetConfigResp)
 	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/GetConfig", in, out, opts...)
@@ -622,6 +643,7 @@ type ManagerServiceServer interface {
 	TagDetailList(context.Context, *TagDetailListReq) (*TagDetailListResp, error)
 	DeleteTagMedicine(context.Context, *DeleteTagMedicineReq) (*DeleteTagMedicineResp, error)
 	CreateTagMedicine(context.Context, *CreateTagMedicineReq) (*CreateTagMedicineResp, error)
+	CommonMedicineQuery(context.Context, *CommonMedicineQueryReq) (*CommonMedicineQueryResp, error)
 	//医疗机构相关
 	ListMi(context.Context, *ListMiReq) (*ListMiResp, error)
 	CommonMI(context.Context, *CommonMIReq) (*CommonMIResp, error)
@@ -650,6 +672,8 @@ type ManagerServiceServer interface {
 	CountShipmentOrder(context.Context, *CountShipmentOrderReq) (*CountShipmentOrderResp, error)
 	//配送单修改
 	UpdateShipmentOrder(context.Context, *UpdateShipmentOrderReq) (*UpdateShipmentOrderResp, error)
+	//根据招采单(配送计划)id查询合同编号
+	GetContractByShipmentPlanId(context.Context, *GetContractByShipmentPlanIdReq) (*GetContractByShipmentPlanIdResp, error)
 	//通用配置查询
 	GetConfig(context.Context, *GetConfigReq) (*GetConfigResp, error)
 	//修改配置
@@ -755,6 +779,9 @@ func (UnimplementedManagerServiceServer) DeleteTagMedicine(context.Context, *Del
 func (UnimplementedManagerServiceServer) CreateTagMedicine(context.Context, *CreateTagMedicineReq) (*CreateTagMedicineResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateTagMedicine not implemented")
 }
+func (UnimplementedManagerServiceServer) CommonMedicineQuery(context.Context, *CommonMedicineQueryReq) (*CommonMedicineQueryResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CommonMedicineQuery not implemented")
+}
 func (UnimplementedManagerServiceServer) ListMi(context.Context, *ListMiReq) (*ListMiResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListMi not implemented")
 }
@@ -811,6 +838,9 @@ func (UnimplementedManagerServiceServer) CountShipmentOrder(context.Context, *Co
 }
 func (UnimplementedManagerServiceServer) UpdateShipmentOrder(context.Context, *UpdateShipmentOrderReq) (*UpdateShipmentOrderResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateShipmentOrder not implemented")
+}
+func (UnimplementedManagerServiceServer) GetContractByShipmentPlanId(context.Context, *GetContractByShipmentPlanIdReq) (*GetContractByShipmentPlanIdResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetContractByShipmentPlanId not implemented")
 }
 func (UnimplementedManagerServiceServer) GetConfig(context.Context, *GetConfigReq) (*GetConfigResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetConfig not implemented")
@@ -1365,6 +1395,24 @@ func _ManagerService_CreateTagMedicine_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ManagerService_CommonMedicineQuery_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CommonMedicineQueryReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).CommonMedicineQuery(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/CommonMedicineQuery",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).CommonMedicineQuery(ctx, req.(*CommonMedicineQueryReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _ManagerService_ListMi_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListMiReq)
 	if err := dec(in); err != nil {
@@ -1707,6 +1755,24 @@ func _ManagerService_UpdateShipmentOrder_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ManagerService_GetContractByShipmentPlanId_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetContractByShipmentPlanIdReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).GetContractByShipmentPlanId(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/GetContractByShipmentPlanId",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).GetContractByShipmentPlanId(ctx, req.(*GetContractByShipmentPlanIdReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _ManagerService_GetConfig_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetConfigReq)
 	if err := dec(in); err != nil {
@@ -1939,6 +2005,10 @@ var ManagerService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _ManagerService_CreateTagMedicine_Handler,
 		},
 		{
+			MethodName: "CommonMedicineQuery",
+			Handler:    _ManagerService_CommonMedicineQuery_Handler,
+		},
+		{
 			MethodName: "ListMi",
 			Handler:    _ManagerService_ListMi_Handler,
 		},
@@ -2013,6 +2083,10 @@ var ManagerService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateShipmentOrder",
 			Handler:    _ManagerService_UpdateShipmentOrder_Handler,
+		},
+		{
+			MethodName: "GetContractByShipmentPlanId",
+			Handler:    _ManagerService_GetContractByShipmentPlanId_Handler,
 		},
 		{
 			MethodName: "GetConfig",
