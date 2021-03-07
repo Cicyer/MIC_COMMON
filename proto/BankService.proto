@@ -430,6 +430,7 @@ message ListFactoringPayOrderReq {
   string factoringApplyStatus = 15;
   repeated int64   comIds = 16;
   repeated int64   miIds = 17;
+  string factoringOrderNo = 18;
 }
 message FactoringPayOrder{
   int64   shipmentOrderId = 1;
