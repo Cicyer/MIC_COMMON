@@ -448,9 +448,10 @@ message CreateTagMedicineResp {
 
 //查询药品列表信息（标签使用）
 message CommonMedicineQueryReq {
-  int64  medicineCode = 1;
-  int64  medicineName = 2;
-  int64 managerId = 3;
+  string  medicineCode = 1;
+  string  medicineName = 2;
+  int64  tagId = 3;
+  int64 managerId = 4;
 }
 
 message CommonMedicineQueryResp {
