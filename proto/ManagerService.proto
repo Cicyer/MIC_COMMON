@@ -446,6 +446,23 @@ message CreateTagMedicineResp {
   int64 result = 1;
 }
 
+//查询药品列表信息（标签使用）
+message CommonMedicineQueryReq {
+  int64  medicineCode = 1;
+  int64  medicineName = 2;
+  int64 managerId = 3;
+}
+
+message CommonMedicineQueryResp {
+  repeated TagMedicineVo list = 1;
+}
+
+message TagMedicineVo {
+  int64   medicineId = 1;
+  string  medicineName = 2;
+  string  medicineCode = 3;
+}
+
 //医疗机构列表
 message ListMiReq {
   string  miCode = 1;
@@ -858,6 +875,17 @@ message UpdateShipmentOrderReq {
 
 message UpdateShipmentOrderResp {
 
+}
+
+//根据招采单(配送计划)id查询合同编号
+message GetContractByShipmentPlanIdReq {
+  int64 shipmentId = 1;
+  int64 managerId = 2;
+}
+
+message GetContractByShipmentPlanIdResp {
+  int64 contractId = 1;
+  string contractNo = 2;
 }
 
 message InsertConfigsReq {
@@ -1952,6 +1980,7 @@ service ManagerService {
   rpc TagDetailList(TagDetailListReq) returns(TagDetailListResp);
   rpc DeleteTagMedicine(DeleteTagMedicineReq) returns(DeleteTagMedicineResp);
   rpc CreateTagMedicine(CreateTagMedicineReq) returns(CreateTagMedicineResp);
+  rpc CommonMedicineQuery(CommonMedicineQueryReq) returns(CommonMedicineQueryResp);
   //医疗机构相关
   rpc ListMi(ListMiReq) returns(ListMiResp);
   rpc CommonMI(CommonMIReq) returns(CommonMIResp);
@@ -1982,6 +2011,8 @@ service ManagerService {
   rpc CountShipmentOrder(CountShipmentOrderReq) returns(CountShipmentOrderResp);
   //配送单修改
   rpc UpdateShipmentOrder(UpdateShipmentOrderReq) returns(UpdateShipmentOrderResp);
+  //根据招采单(配送计划)id查询合同编号
+  rpc GetContractByShipmentPlanId(GetContractByShipmentPlanIdReq) returns(GetContractByShipmentPlanIdResp);
 
   //通用配置查询
   rpc GetConfig(GetConfigReq) returns (GetConfigResp);
