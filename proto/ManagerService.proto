@@ -1671,6 +1671,7 @@ message GetConfigHashReq {
   int64 managerId = 1;
   repeated int64 configIds = 2;
   repeated string configKeys = 3;
+  string configType = 4;
 }
 message ConfigHash{
   int64 configId = 1;
