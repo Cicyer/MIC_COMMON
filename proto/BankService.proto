@@ -183,7 +183,7 @@ message CompanyWithdraw{
 }
 
 message ListCompanyWithdrawResp {
-  repeated CompanyCredit list = 1;
+  repeated CompanyWithdraw list = 1;
   int64 total = 2;
   int64 pageSize = 3;
   int64 pageNumber = 4;
