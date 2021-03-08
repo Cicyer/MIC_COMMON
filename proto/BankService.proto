@@ -371,6 +371,7 @@ message FactoringOrderPlan{
   google.protobuf.Timestamp   receiveDeadline = 17;
   string   tagName = 18;
   google.protobuf.Timestamp tpCreatedAt = 19;
+  //发票到期日
   google.protobuf.Timestamp payDeadline = 20;
   string   factoringStatus = 21;
   google.protobuf.Timestamp   refundAt = 22;
@@ -381,6 +382,21 @@ message FactoringOrderPlan{
   int64   companyId = 28;
   string   companyName = 29;
   string   companyCode = 30;
+  int64   medicineId = 31;
+  string   medicineName = 32;
+  string invoiceMd5 = 33;
+  string invoiceUrl = 34;
+  string invoiceType = 35;
+  int64 invoiceTotal = 36;
+  int64 invoiceTax = 37;
+  string invoiceCheckCode = 38;
+  google.protobuf.Timestamp invoiceDate = 39;
+  //发票起算日
+  google.protobuf.Timestamp receiveAt = 40;
+  string   medicineCode = 41;
+  google.protobuf.Timestamp applyAt = 42;
+  google.protobuf.Timestamp applyResultAt = 43;
+  int64 factoringMoney = 44;
 }
 
 message ListFactoringOrderPlanResp {
@@ -454,6 +470,10 @@ message FactoringPayOrder{
   int64   companyId = 18;
   string   companyCode = 19;
   google.protobuf.Timestamp factoringDeadline = 20;
+  google.protobuf.Timestamp   applyAt = 21;
+  google.protobuf.Timestamp   applyResultAt = 22;
+  string   factoringStatus = 23;
+  google.protobuf.Timestamp   refundAt = 24;
 }
 message ListFactoringPayOrderResp {
   repeated FactoringPayOrder list = 1;
