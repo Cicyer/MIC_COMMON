@@ -162,8 +162,9 @@ message ListCompanyWithdrawReq {
   int64   managerId = 1;
   Page   page = 2;
   string   accountType = 3;
-  google.protobuf.Timestamp payStartAt = 4;
-  google.protobuf.Timestamp payEndAt = 5;
+  repeated int64   comIds = 4;
+  google.protobuf.Timestamp payStartAt = 5;
+  google.protobuf.Timestamp payEndAt = 6;
 }
 message CompanyWithdraw{
   string   outTradeNo = 1;
