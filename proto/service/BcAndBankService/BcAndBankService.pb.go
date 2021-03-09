@@ -33,8 +33,8 @@ type QueryTxIDReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	TxID string `protobuf:"bytes,1,opt,name=TxID,proto3" json:"TxID,omitempty"`
-	Key  string `protobuf:"bytes,2,opt,name=Key,proto3" json:"Key,omitempty"`
+	TxID string `protobuf:"bytes,1,opt,name=TxID,proto3" json:"TxID"`
+	Key  string `protobuf:"bytes,2,opt,name=Key,proto3" json:"Key"`
 }
 
 func (x *QueryTxIDReq) Reset() {
@@ -88,7 +88,7 @@ type QueryTxIDRsp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Rst string `protobuf:"bytes,1,opt,name=Rst,proto3" json:"Rst,omitempty"`
+	Rst string `protobuf:"bytes,1,opt,name=Rst,proto3" json:"Rst"`
 }
 
 func (x *QueryTxIDRsp) Reset() {
@@ -135,8 +135,8 @@ type BcAndBankPayOrderActionRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	PayOrder    []*UploadChainPayOrder `protobuf:"bytes,1,rep,name=payOrder,proto3" json:"payOrder,omitempty"`
-	BankRequest *BankRequest           `protobuf:"bytes,2,opt,name=bankRequest,proto3" json:"bankRequest,omitempty"`
+	PayOrder    []*UploadChainPayOrder `protobuf:"bytes,1,rep,name=payOrder,proto3" json:"payOrder"`
+	BankRequest *BankRequest           `protobuf:"bytes,2,opt,name=bankRequest,proto3" json:"bankRequest"`
 }
 
 func (x *BcAndBankPayOrderActionRequest) Reset() {
@@ -190,8 +190,8 @@ type BcAndBankFactoringActionRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	FactoringOrder *UploadChainFactoringOrder `protobuf:"bytes,1,opt,name=factoringOrder,proto3" json:"factoringOrder,omitempty"`
-	BankRequest    *BankRequest               `protobuf:"bytes,2,opt,name=bankRequest,proto3" json:"bankRequest,omitempty"`
+	FactoringOrder *UploadChainFactoringOrder `protobuf:"bytes,1,opt,name=factoringOrder,proto3" json:"factoringOrder"`
+	BankRequest    *BankRequest               `protobuf:"bytes,2,opt,name=bankRequest,proto3" json:"bankRequest"`
 }
 
 func (x *BcAndBankFactoringActionRequest) Reset() {
@@ -245,8 +245,8 @@ type BcAndBankFactoringRepayActionRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Repay       *UploadChainFactoringOrder `protobuf:"bytes,1,opt,name=repay,proto3" json:"repay,omitempty"`
-	BankRequest *BankRequest               `protobuf:"bytes,2,opt,name=bankRequest,proto3" json:"bankRequest,omitempty"`
+	Repay       *UploadChainFactoringOrder `protobuf:"bytes,1,opt,name=repay,proto3" json:"repay"`
+	BankRequest *BankRequest               `protobuf:"bytes,2,opt,name=bankRequest,proto3" json:"bankRequest"`
 }
 
 func (x *BcAndBankFactoringRepayActionRequest) Reset() {
@@ -300,8 +300,8 @@ type BcAndBankActionResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	BcResponse   []*BcResponse `protobuf:"bytes,1,rep,name=bcResponse,proto3" json:"bcResponse,omitempty"`     // string hash
-	BankResponse *BankResponse `protobuf:"bytes,2,opt,name=bankResponse,proto3" json:"bankResponse,omitempty"` // xml marshal
+	BcResponse   []*BcResponse `protobuf:"bytes,1,rep,name=bcResponse,proto3" json:"bcResponse"`     // string hash
+	BankResponse *BankResponse `protobuf:"bytes,2,opt,name=bankResponse,proto3" json:"bankResponse"` // xml marshal
 }
 
 func (x *BcAndBankActionResp) Reset() {
@@ -358,9 +358,9 @@ type BankRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 请求体 xml.marshal
-	Body string `protobuf:"bytes,1,opt,name=body,proto3" json:"body,omitempty"`
+	Body string `protobuf:"bytes,1,opt,name=body,proto3" json:"body"`
 	// 请求方法 <- 按照 bankSDK 内定义的 constant opts 来
-	Function string `protobuf:"bytes,2,opt,name=function,proto3" json:"function,omitempty"`
+	Function string `protobuf:"bytes,2,opt,name=function,proto3" json:"function"`
 }
 
 func (x *BankRequest) Reset() {
@@ -415,7 +415,7 @@ type BankResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Body string `protobuf:"bytes,1,opt,name=body,proto3" json:"body,omitempty"`
+	Body string `protobuf:"bytes,1,opt,name=body,proto3" json:"body"`
 }
 
 func (x *BankResponse) Reset() {
@@ -463,7 +463,7 @@ type BcResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Hash string `protobuf:"bytes,1,opt,name=hash,proto3" json:"hash,omitempty"`
+	Hash string `protobuf:"bytes,1,opt,name=hash,proto3" json:"hash"`
 }
 
 func (x *BcResponse) Reset() {
@@ -511,7 +511,7 @@ type BcResponses struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Hash []string `protobuf:"bytes,1,rep,name=hash,proto3" json:"hash,omitempty"`
+	Hash []string `protobuf:"bytes,1,rep,name=hash,proto3" json:"hash"`
 }
 
 func (x *BcResponses) Reset() {
@@ -559,9 +559,9 @@ type CommonResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	BankRsp *BankResponse `protobuf:"bytes,1,opt,name=bankRsp,proto3" json:"bankRsp,omitempty"`
+	BankRsp *BankResponse `protobuf:"bytes,1,opt,name=bankRsp,proto3" json:"bankRsp"`
 	// 可能会返回多个 hash
-	BcRsp []*BcResponse `protobuf:"bytes,2,rep,name=bcRsp,proto3" json:"bcRsp,omitempty"`
+	BcRsp []*BcResponse `protobuf:"bytes,2,rep,name=bcRsp,proto3" json:"bcRsp"`
 }
 
 func (x *CommonResponse) Reset() {
@@ -617,12 +617,12 @@ type BankAccount struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CardNo      string `protobuf:"bytes,1,opt,name=cardNo,proto3" json:"cardNo,omitempty"`
-	AccountType string `protobuf:"bytes,2,opt,name=accountType,proto3" json:"accountType,omitempty"`
-	Bank        string `protobuf:"bytes,3,opt,name=bank,proto3" json:"bank,omitempty"`
-	Toibkn      string `protobuf:"bytes,4,opt,name=toibkn,proto3" json:"toibkn,omitempty"`
-	CardOwner   string `protobuf:"bytes,5,opt,name=cardOwner,proto3" json:"cardOwner,omitempty"`
-	ValidStatus string `protobuf:"bytes,6,opt,name=validStatus,proto3" json:"validStatus,omitempty"`
+	CardNo      string `protobuf:"bytes,1,opt,name=cardNo,proto3" json:"cardNo"`
+	AccountType string `protobuf:"bytes,2,opt,name=accountType,proto3" json:"accountType"`
+	Bank        string `protobuf:"bytes,3,opt,name=bank,proto3" json:"bank"`
+	Toibkn      string `protobuf:"bytes,4,opt,name=toibkn,proto3" json:"toibkn"`
+	CardOwner   string `protobuf:"bytes,5,opt,name=cardOwner,proto3" json:"cardOwner"`
+	ValidStatus string `protobuf:"bytes,6,opt,name=validStatus,proto3" json:"validStatus"`
 }
 
 func (x *BankAccount) Reset() {
@@ -704,12 +704,12 @@ type UploadChainType struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	LastHash         string `protobuf:"bytes,1,opt,name=lastHash,proto3" json:"lastHash,omitempty"`
-	UploadNode       string `protobuf:"bytes,2,opt,name=uploadNode,proto3" json:"uploadNode,omitempty"`
-	UploaderName     string `protobuf:"bytes,3,opt,name=uploaderName,proto3" json:"uploaderName,omitempty"`
-	UploaderRole     string `protobuf:"bytes,4,opt,name=uploaderRole,proto3" json:"uploaderRole,omitempty"`
-	UploaderRoleName string `protobuf:"bytes,5,opt,name=uploaderRoleName,proto3" json:"uploaderRoleName,omitempty"`
-	UploaderAccount  string `protobuf:"bytes,6,opt,name=uploaderAccount,proto3" json:"uploaderAccount,omitempty"`
+	LastHash         string `protobuf:"bytes,1,opt,name=lastHash,proto3" json:"lastHash"`
+	UploadNode       string `protobuf:"bytes,2,opt,name=uploadNode,proto3" json:"uploadNode"`
+	UploaderName     string `protobuf:"bytes,3,opt,name=uploaderName,proto3" json:"uploaderName"`
+	UploaderRole     string `protobuf:"bytes,4,opt,name=uploaderRole,proto3" json:"uploaderRole"`
+	UploaderRoleName string `protobuf:"bytes,5,opt,name=uploaderRoleName,proto3" json:"uploaderRoleName"`
+	UploaderAccount  string `protobuf:"bytes,6,opt,name=uploaderAccount,proto3" json:"uploaderAccount"`
 }
 
 func (x *UploadChainType) Reset() {
@@ -791,7 +791,7 @@ type PayOrder struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ShipmentNo string `protobuf:"bytes,1,opt,name=shipmentNo,proto3" json:"shipmentNo,omitempty"`
+	ShipmentNo string `protobuf:"bytes,1,opt,name=shipmentNo,proto3" json:"shipmentNo"`
 }
 
 func (x *PayOrder) Reset() {
@@ -838,16 +838,16 @@ type UploadChainCompany struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	UploadChainType *UploadChainType       `protobuf:"bytes,1,opt,name=uploadChainType,proto3" json:"uploadChainType,omitempty"`
-	CompanyName     string                 `protobuf:"bytes,2,opt,name=companyName,proto3" json:"companyName,omitempty"`
-	CompanyCode     string                 `protobuf:"bytes,3,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
-	ManagerName     string                 `protobuf:"bytes,4,opt,name=managerName,proto3" json:"managerName,omitempty"`
-	ManagerPhone    string                 `protobuf:"bytes,5,opt,name=managerPhone,proto3" json:"managerPhone,omitempty"`
-	MibCode         string                 `protobuf:"bytes,6,opt,name=mibCode,proto3" json:"mibCode,omitempty"`
-	CreditAmount    int64                  `protobuf:"varint,7,opt,name=creditAmount,proto3" json:"creditAmount,omitempty"`
-	StartAt         *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=startAt,proto3" json:"startAt,omitempty"`
-	EndAt           *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=endAt,proto3" json:"endAt,omitempty"`
-	BankAccount     *BankAccount           `protobuf:"bytes,10,opt,name=bankAccount,proto3" json:"bankAccount,omitempty"`
+	UploadChainType *UploadChainType       `protobuf:"bytes,1,opt,name=uploadChainType,proto3" json:"uploadChainType"`
+	CompanyName     string                 `protobuf:"bytes,2,opt,name=companyName,proto3" json:"companyName"`
+	CompanyCode     string                 `protobuf:"bytes,3,opt,name=companyCode,proto3" json:"companyCode"`
+	ManagerName     string                 `protobuf:"bytes,4,opt,name=managerName,proto3" json:"managerName"`
+	ManagerPhone    string                 `protobuf:"bytes,5,opt,name=managerPhone,proto3" json:"managerPhone"`
+	MibCode         string                 `protobuf:"bytes,6,opt,name=mibCode,proto3" json:"mibCode"`
+	CreditAmount    int64                  `protobuf:"varint,7,opt,name=creditAmount,proto3" json:"creditAmount"`
+	StartAt         *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=startAt,proto3" json:"startAt"`
+	EndAt           *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=endAt,proto3" json:"endAt"`
+	BankAccount     *BankAccount           `protobuf:"bytes,10,opt,name=bankAccount,proto3" json:"bankAccount"`
 }
 
 func (x *UploadChainCompany) Reset() {
@@ -957,7 +957,7 @@ type UploadChainCompanies struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	UploadChainCompany []*UploadChainCompany `protobuf:"bytes,1,rep,name=uploadChainCompany,proto3" json:"uploadChainCompany,omitempty"`
+	UploadChainCompany []*UploadChainCompany `protobuf:"bytes,1,rep,name=uploadChainCompany,proto3" json:"uploadChainCompany"`
 }
 
 func (x *UploadChainCompanies) Reset() {
@@ -1004,15 +1004,15 @@ type UploadChainConfig struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	UploadChainType *UploadChainType       `protobuf:"bytes,1,opt,name=uploadChainType,proto3" json:"uploadChainType,omitempty"`
-	Key             string                 `protobuf:"bytes,2,opt,name=key,proto3" json:"key,omitempty"`
-	TypeOne         string                 `protobuf:"bytes,3,opt,name=typeOne,proto3" json:"typeOne,omitempty"`
-	TypeTwo         string                 `protobuf:"bytes,4,opt,name=typeTwo,proto3" json:"typeTwo,omitempty"`
-	TypeThree       string                 `protobuf:"bytes,5,opt,name=typeThree,proto3" json:"typeThree,omitempty"`
-	Value           string                 `protobuf:"bytes,6,opt,name=value,proto3" json:"value,omitempty"`
-	StartAt         *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=startAt,proto3" json:"startAt,omitempty"`
-	EndAt           *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=endAt,proto3" json:"endAt,omitempty"`
-	Explain         string                 `protobuf:"bytes,9,opt,name=explain,proto3" json:"explain,omitempty"`
+	UploadChainType *UploadChainType       `protobuf:"bytes,1,opt,name=uploadChainType,proto3" json:"uploadChainType"`
+	Key             string                 `protobuf:"bytes,2,opt,name=key,proto3" json:"key"`
+	TypeOne         string                 `protobuf:"bytes,3,opt,name=typeOne,proto3" json:"typeOne"`
+	TypeTwo         string                 `protobuf:"bytes,4,opt,name=typeTwo,proto3" json:"typeTwo"`
+	TypeThree       string                 `protobuf:"bytes,5,opt,name=typeThree,proto3" json:"typeThree"`
+	Value           string                 `protobuf:"bytes,6,opt,name=value,proto3" json:"value"`
+	StartAt         *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=startAt,proto3" json:"startAt"`
+	EndAt           *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=endAt,proto3" json:"endAt"`
+	Explain         string                 `protobuf:"bytes,9,opt,name=explain,proto3" json:"explain"`
 }
 
 func (x *UploadChainConfig) Reset() {
@@ -1115,7 +1115,7 @@ type UploadChainConfigs struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	UploadChainConfig []*UploadChainConfig `protobuf:"bytes,1,rep,name=uploadChainConfig,proto3" json:"uploadChainConfig,omitempty"`
+	UploadChainConfig []*UploadChainConfig `protobuf:"bytes,1,rep,name=uploadChainConfig,proto3" json:"uploadChainConfig"`
 }
 
 func (x *UploadChainConfigs) Reset() {
@@ -1162,17 +1162,17 @@ type UploadChainContract struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	UploadChainType *UploadChainType       `protobuf:"bytes,1,opt,name=uploadChainType,proto3" json:"uploadChainType,omitempty"`
-	ContractNo      string                 `protobuf:"bytes,2,opt,name=contractNo,proto3" json:"contractNo,omitempty"`
-	TenderCompany   string                 `protobuf:"bytes,3,opt,name=tenderCompany,proto3" json:"tenderCompany,omitempty"`
-	MedicineCode    string                 `protobuf:"bytes,4,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
-	MedicinePCode   string                 `protobuf:"bytes,5,opt,name=medicinePCode,proto3" json:"medicinePCode,omitempty"`
-	CompanyCode     string                 `protobuf:"bytes,6,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
-	MibCode         string                 `protobuf:"bytes,7,opt,name=mibCode,proto3" json:"mibCode,omitempty"`
-	MedicinePrice   int64                  `protobuf:"varint,8,opt,name=medicinePrice,proto3" json:"medicinePrice,omitempty"`
-	TotalAmount     int64                  `protobuf:"varint,9,opt,name=totalAmount,proto3" json:"totalAmount,omitempty"`
-	StartAt         *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=startAt,proto3" json:"startAt,omitempty"`
-	EndAt           *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=endAt,proto3" json:"endAt,omitempty"`
+	UploadChainType *UploadChainType       `protobuf:"bytes,1,opt,name=uploadChainType,proto3" json:"uploadChainType"`
+	ContractNo      string                 `protobuf:"bytes,2,opt,name=contractNo,proto3" json:"contractNo"`
+	TenderCompany   string                 `protobuf:"bytes,3,opt,name=tenderCompany,proto3" json:"tenderCompany"`
+	MedicineCode    string                 `protobuf:"bytes,4,opt,name=medicineCode,proto3" json:"medicineCode"`
+	MedicinePCode   string                 `protobuf:"bytes,5,opt,name=medicinePCode,proto3" json:"medicinePCode"`
+	CompanyCode     string                 `protobuf:"bytes,6,opt,name=companyCode,proto3" json:"companyCode"`
+	MibCode         string                 `protobuf:"bytes,7,opt,name=mibCode,proto3" json:"mibCode"`
+	MedicinePrice   int64                  `protobuf:"varint,8,opt,name=medicinePrice,proto3" json:"medicinePrice"`
+	TotalAmount     int64                  `protobuf:"varint,9,opt,name=totalAmount,proto3" json:"totalAmount"`
+	StartAt         *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=startAt,proto3" json:"startAt"`
+	EndAt           *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=endAt,proto3" json:"endAt"`
 }
 
 func (x *UploadChainContract) Reset() {
@@ -1289,7 +1289,7 @@ type UploadChainContracts struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	UploadChainContract []*UploadChainContract `protobuf:"bytes,1,rep,name=uploadChainContract,proto3" json:"uploadChainContract,omitempty"`
+	UploadChainContract []*UploadChainContract `protobuf:"bytes,1,rep,name=uploadChainContract,proto3" json:"uploadChainContract"`
 }
 
 func (x *UploadChainContracts) Reset() {
@@ -1336,12 +1336,12 @@ type UploadChainContractMi struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	UploadChainType *UploadChainType `protobuf:"bytes,1,opt,name=uploadChainType,proto3" json:"uploadChainType,omitempty"`
-	ContractNo      string           `protobuf:"bytes,2,opt,name=contractNo,proto3" json:"contractNo,omitempty"`
-	MiCode          string           `protobuf:"bytes,3,opt,name=miCode,proto3" json:"miCode,omitempty"`
-	MedicineAmount  int64            `protobuf:"varint,4,opt,name=medicineAmount,proto3" json:"medicineAmount,omitempty"`
-	ContractMd5     string           `protobuf:"bytes,5,opt,name=contractMd5,proto3" json:"contractMd5,omitempty"`
-	ContractUrl     string           `protobuf:"bytes,6,opt,name=contractUrl,proto3" json:"contractUrl,omitempty"`
+	UploadChainType *UploadChainType `protobuf:"bytes,1,opt,name=uploadChainType,proto3" json:"uploadChainType"`
+	ContractNo      string           `protobuf:"bytes,2,opt,name=contractNo,proto3" json:"contractNo"`
+	MiCode          string           `protobuf:"bytes,3,opt,name=miCode,proto3" json:"miCode"`
+	MedicineAmount  int64            `protobuf:"varint,4,opt,name=medicineAmount,proto3" json:"medicineAmount"`
+	ContractMd5     string           `protobuf:"bytes,5,opt,name=contractMd5,proto3" json:"contractMd5"`
+	ContractUrl     string           `protobuf:"bytes,6,opt,name=contractUrl,proto3" json:"contractUrl"`
 }
 
 func (x *UploadChainContractMi) Reset() {
@@ -1423,7 +1423,7 @@ type UploadChainContractMis struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	UploadChainContractMi []*UploadChainContractMi `protobuf:"bytes,1,rep,name=uploadChainContractMi,proto3" json:"uploadChainContractMi,omitempty"`
+	UploadChainContractMi []*UploadChainContractMi `protobuf:"bytes,1,rep,name=uploadChainContractMi,proto3" json:"uploadChainContractMi"`
 }
 
 func (x *UploadChainContractMis) Reset() {
@@ -1470,19 +1470,19 @@ type UploadChainFactoringOrder struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	UploadChainType    *UploadChainType       `protobuf:"bytes,1,opt,name=uploadChainType,proto3" json:"uploadChainType,omitempty"`
-	PayOrders          []*PayOrder            `protobuf:"bytes,2,rep,name=payOrders,proto3" json:"payOrders,omitempty"`
-	CompanyCode        string                 `protobuf:"bytes,3,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
-	FactoringMoney     int64                  `protobuf:"varint,4,opt,name=factoringMoney,proto3" json:"factoringMoney,omitempty"`
-	FactoringOrderNo   string                 `protobuf:"bytes,5,opt,name=factoringOrderNo,proto3" json:"factoringOrderNo,omitempty"`
-	ApplyDate          *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=applyDate,proto3" json:"applyDate,omitempty"`
-	ApplyAt            *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=applyAt,proto3" json:"applyAt,omitempty"`
-	RefundDate         *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=refundDate,proto3" json:"refundDate,omitempty"`
-	FactoringBankNo    string                 `protobuf:"bytes,9,opt,name=factoringBankNo,proto3" json:"factoringBankNo,omitempty"`
-	ActualReceiveMoney int64                  `protobuf:"varint,10,opt,name=actualReceiveMoney,proto3" json:"actualReceiveMoney,omitempty"`
-	FactoringStatus    string                 `protobuf:"bytes,11,opt,name=factoringStatus,proto3" json:"factoringStatus,omitempty"`
-	RefundAt           *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=refundAt,proto3" json:"refundAt,omitempty"`
-	RefundStatus       string                 `protobuf:"bytes,13,opt,name=refundStatus,proto3" json:"refundStatus,omitempty"`
+	UploadChainType    *UploadChainType       `protobuf:"bytes,1,opt,name=uploadChainType,proto3" json:"uploadChainType"`
+	PayOrders          []*PayOrder            `protobuf:"bytes,2,rep,name=payOrders,proto3" json:"payOrders"`
+	CompanyCode        string                 `protobuf:"bytes,3,opt,name=companyCode,proto3" json:"companyCode"`
+	FactoringMoney     int64                  `protobuf:"varint,4,opt,name=factoringMoney,proto3" json:"factoringMoney"`
+	FactoringOrderNo   string                 `protobuf:"bytes,5,opt,name=factoringOrderNo,proto3" json:"factoringOrderNo"`
+	ApplyDate          *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=applyDate,proto3" json:"applyDate"`
+	ApplyAt            *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=applyAt,proto3" json:"applyAt"`
+	RefundDate         *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=refundDate,proto3" json:"refundDate"`
+	FactoringBankNo    string                 `protobuf:"bytes,9,opt,name=factoringBankNo,proto3" json:"factoringBankNo"`
+	ActualReceiveMoney int64                  `protobuf:"varint,10,opt,name=actualReceiveMoney,proto3" json:"actualReceiveMoney"`
+	FactoringStatus    string                 `protobuf:"bytes,11,opt,name=factoringStatus,proto3" json:"factoringStatus"`
+	RefundAt           *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=refundAt,proto3" json:"refundAt"`
+	RefundStatus       string                 `protobuf:"bytes,13,opt,name=refundStatus,proto3" json:"refundStatus"`
 }
 
 func (x *UploadChainFactoringOrder) Reset() {
@@ -1613,7 +1613,7 @@ type UploadChainFactoringOrders struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	UploadChainFactoringOrder []*UploadChainFactoringOrder `protobuf:"bytes,1,rep,name=uploadChainFactoringOrder,proto3" json:"uploadChainFactoringOrder,omitempty"`
+	UploadChainFactoringOrder []*UploadChainFactoringOrder `protobuf:"bytes,1,rep,name=uploadChainFactoringOrder,proto3" json:"uploadChainFactoringOrder"`
 }
 
 func (x *UploadChainFactoringOrders) Reset() {
@@ -1660,16 +1660,16 @@ type UploadChainMedicine struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	UploadChainType       *UploadChainType `protobuf:"bytes,1,opt,name=uploadChainType,proto3" json:"uploadChainType,omitempty"`
-	MedicineName          string           `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
-	MedicineCode          string           `protobuf:"bytes,3,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
-	MedicinePCode         string           `protobuf:"bytes,4,opt,name=medicinePCode,proto3" json:"medicinePCode,omitempty"`
-	MedicineSpecification string           `protobuf:"bytes,5,opt,name=medicineSpecification,proto3" json:"medicineSpecification,omitempty"`
-	MedicineForm          string           `protobuf:"bytes,6,opt,name=medicineForm,proto3" json:"medicineForm,omitempty"`
-	MedicinePackage       string           `protobuf:"bytes,7,opt,name=medicinePackage,proto3" json:"medicinePackage,omitempty"`
-	MedicineUnit          string           `protobuf:"bytes,8,opt,name=medicineUnit,proto3" json:"medicineUnit,omitempty"`
-	CalculateRate         int64            `protobuf:"varint,9,opt,name=calculateRate,proto3" json:"calculateRate,omitempty"`
-	Manufacturer          string           `protobuf:"bytes,10,opt,name=manufacturer,proto3" json:"manufacturer,omitempty"`
+	UploadChainType       *UploadChainType `protobuf:"bytes,1,opt,name=uploadChainType,proto3" json:"uploadChainType"`
+	MedicineName          string           `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName"`
+	MedicineCode          string           `protobuf:"bytes,3,opt,name=medicineCode,proto3" json:"medicineCode"`
+	MedicinePCode         string           `protobuf:"bytes,4,opt,name=medicinePCode,proto3" json:"medicinePCode"`
+	MedicineSpecification string           `protobuf:"bytes,5,opt,name=medicineSpecification,proto3" json:"medicineSpecification"`
+	MedicineForm          string           `protobuf:"bytes,6,opt,name=medicineForm,proto3" json:"medicineForm"`
+	MedicinePackage       string           `protobuf:"bytes,7,opt,name=medicinePackage,proto3" json:"medicinePackage"`
+	MedicineUnit          string           `protobuf:"bytes,8,opt,name=medicineUnit,proto3" json:"medicineUnit"`
+	CalculateRate         int64            `protobuf:"varint,9,opt,name=calculateRate,proto3" json:"calculateRate"`
+	Manufacturer          string           `protobuf:"bytes,10,opt,name=manufacturer,proto3" json:"manufacturer"`
 }
 
 func (x *UploadChainMedicine) Reset() {
@@ -1779,7 +1779,7 @@ type UploadChainMedicines struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	UploadChainMedicine []*UploadChainMedicine `protobuf:"bytes,1,rep,name=uploadChainMedicine,proto3" json:"uploadChainMedicine,omitempty"`
+	UploadChainMedicine []*UploadChainMedicine `protobuf:"bytes,1,rep,name=uploadChainMedicine,proto3" json:"uploadChainMedicine"`
 }
 
 func (x *UploadChainMedicines) Reset() {
@@ -1826,16 +1826,16 @@ type UploadChainMi struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	UploadChainType *UploadChainType `protobuf:"bytes,1,opt,name=uploadChainType,proto3" json:"uploadChainType,omitempty"`
-	MibCode         string           `protobuf:"bytes,2,opt,name=mibCode,proto3" json:"mibCode,omitempty"`
-	MiName          string           `protobuf:"bytes,3,opt,name=miName,proto3" json:"miName,omitempty"`
-	MiCode          string           `protobuf:"bytes,4,opt,name=miCode,proto3" json:"miCode,omitempty"`
-	MiType          string           `protobuf:"bytes,5,opt,name=miType,proto3" json:"miType,omitempty"`
-	ManagerName     string           `protobuf:"bytes,6,opt,name=managerName,proto3" json:"managerName,omitempty"`
-	ManagerPhone    string           `protobuf:"bytes,7,opt,name=managerPhone,proto3" json:"managerPhone,omitempty"`
-	LimitBalance    int64            `protobuf:"varint,8,opt,name=limitBalance,proto3" json:"limitBalance,omitempty"`
-	SpecialAccount  *BankAccount     `protobuf:"bytes,9,opt,name=specialAccount,proto3" json:"specialAccount,omitempty"`
-	NormalAccount   *BankAccount     `protobuf:"bytes,10,opt,name=normalAccount,proto3" json:"normalAccount,omitempty"`
+	UploadChainType *UploadChainType `protobuf:"bytes,1,opt,name=uploadChainType,proto3" json:"uploadChainType"`
+	MibCode         string           `protobuf:"bytes,2,opt,name=mibCode,proto3" json:"mibCode"`
+	MiName          string           `protobuf:"bytes,3,opt,name=miName,proto3" json:"miName"`
+	MiCode          string           `protobuf:"bytes,4,opt,name=miCode,proto3" json:"miCode"`
+	MiType          string           `protobuf:"bytes,5,opt,name=miType,proto3" json:"miType"`
+	ManagerName     string           `protobuf:"bytes,6,opt,name=managerName,proto3" json:"managerName"`
+	ManagerPhone    string           `protobuf:"bytes,7,opt,name=managerPhone,proto3" json:"managerPhone"`
+	LimitBalance    int64            `protobuf:"varint,8,opt,name=limitBalance,proto3" json:"limitBalance"`
+	SpecialAccount  *BankAccount     `protobuf:"bytes,9,opt,name=specialAccount,proto3" json:"specialAccount"`
+	NormalAccount   *BankAccount     `protobuf:"bytes,10,opt,name=normalAccount,proto3" json:"normalAccount"`
 }
 
 func (x *UploadChainMi) Reset() {
@@ -1945,7 +1945,7 @@ type UploadChainMis struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	UploadChainMi []*UploadChainMi `protobuf:"bytes,1,rep,name=uploadChainMi,proto3" json:"uploadChainMi,omitempty"`
+	UploadChainMi []*UploadChainMi `protobuf:"bytes,1,rep,name=uploadChainMi,proto3" json:"uploadChainMi"`
 }
 
 func (x *UploadChainMis) Reset() {
@@ -1992,16 +1992,16 @@ type UploadChainPayOrder struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	UploadChainType *UploadChainType       `protobuf:"bytes,1,opt,name=uploadChainType,proto3" json:"uploadChainType,omitempty"`
-	ShipmentNo      string                 `protobuf:"bytes,2,opt,name=shipmentNo,proto3" json:"shipmentNo,omitempty"`
-	OrderAmount     int64                  `protobuf:"varint,3,opt,name=orderAmount,proto3" json:"orderAmount,omitempty"`
-	MiCode          string                 `protobuf:"bytes,4,opt,name=miCode,proto3" json:"miCode,omitempty"`
-	CompanyCode     string                 `protobuf:"bytes,5,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
-	OutTradeNo      string                 `protobuf:"bytes,6,opt,name=outTradeNo,proto3" json:"outTradeNo,omitempty"`
-	PayType         string                 `protobuf:"bytes,7,opt,name=payType,proto3" json:"payType,omitempty"`
-	PayAt           *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=payAt,proto3" json:"payAt,omitempty"`
-	PayStatus       string                 `protobuf:"bytes,9,opt,name=payStatus,proto3" json:"payStatus,omitempty"`
-	FactoringStatus string                 `protobuf:"bytes,10,opt,name=factoringStatus,proto3" json:"factoringStatus,omitempty"`
+	UploadChainType *UploadChainType       `protobuf:"bytes,1,opt,name=uploadChainType,proto3" json:"uploadChainType"`
+	ShipmentNo      string                 `protobuf:"bytes,2,opt,name=shipmentNo,proto3" json:"shipmentNo"`
+	OrderAmount     int64                  `protobuf:"varint,3,opt,name=orderAmount,proto3" json:"orderAmount"`
+	MiCode          string                 `protobuf:"bytes,4,opt,name=miCode,proto3" json:"miCode"`
+	CompanyCode     string                 `protobuf:"bytes,5,opt,name=companyCode,proto3" json:"companyCode"`
+	OutTradeNo      string                 `protobuf:"bytes,6,opt,name=outTradeNo,proto3" json:"outTradeNo"`
+	PayType         string                 `protobuf:"bytes,7,opt,name=payType,proto3" json:"payType"`
+	PayAt           *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=payAt,proto3" json:"payAt"`
+	PayStatus       string                 `protobuf:"bytes,9,opt,name=payStatus,proto3" json:"payStatus"`
+	FactoringStatus string                 `protobuf:"bytes,10,opt,name=factoringStatus,proto3" json:"factoringStatus"`
 }
 
 func (x *UploadChainPayOrder) Reset() {
@@ -2111,7 +2111,7 @@ type UploadChainPayOrders struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	UploadChainPayOrder []*UploadChainPayOrder `protobuf:"bytes,1,rep,name=uploadChainPayOrder,proto3" json:"uploadChainPayOrder,omitempty"`
+	UploadChainPayOrder []*UploadChainPayOrder `protobuf:"bytes,1,rep,name=uploadChainPayOrder,proto3" json:"uploadChainPayOrder"`
 }
 
 func (x *UploadChainPayOrders) Reset() {
@@ -2158,19 +2158,19 @@ type UploadChainShipment struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	UploadChainType *UploadChainType       `protobuf:"bytes,1,opt,name=uploadChainType,proto3" json:"uploadChainType,omitempty"`
-	TpOrderNo       string                 `protobuf:"bytes,2,opt,name=tpOrderNo,proto3" json:"tpOrderNo,omitempty"`
-	OrderNo         string                 `protobuf:"bytes,3,opt,name=orderNo,proto3" json:"orderNo,omitempty"`
-	TpCode          string                 `protobuf:"bytes,4,opt,name=tpCode,proto3" json:"tpCode,omitempty"`
-	MibCode         string                 `protobuf:"bytes,5,opt,name=mibCode,proto3" json:"mibCode,omitempty"`
-	ShipmentAmount  int64                  `protobuf:"varint,6,opt,name=shipmentAmount,proto3" json:"shipmentAmount,omitempty"`
-	OrderAmount     int64                  `protobuf:"varint,7,opt,name=orderAmount,proto3" json:"orderAmount,omitempty"`
-	ContractNo      string                 `protobuf:"bytes,8,opt,name=contractNo,proto3" json:"contractNo,omitempty"`
-	MiCode          string                 `protobuf:"bytes,9,opt,name=miCode,proto3" json:"miCode,omitempty"`
-	MedicineCode    string                 `protobuf:"bytes,10,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
-	MedicinePCode   string                 `protobuf:"bytes,11,opt,name=medicinePCode,proto3" json:"medicinePCode,omitempty"`
-	CompanyCode     string                 `protobuf:"bytes,12,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
-	SyncAt          *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=syncAt,proto3" json:"syncAt,omitempty"`
+	UploadChainType *UploadChainType       `protobuf:"bytes,1,opt,name=uploadChainType,proto3" json:"uploadChainType"`
+	TpOrderNo       string                 `protobuf:"bytes,2,opt,name=tpOrderNo,proto3" json:"tpOrderNo"`
+	OrderNo         string                 `protobuf:"bytes,3,opt,name=orderNo,proto3" json:"orderNo"`
+	TpCode          string                 `protobuf:"bytes,4,opt,name=tpCode,proto3" json:"tpCode"`
+	MibCode         string                 `protobuf:"bytes,5,opt,name=mibCode,proto3" json:"mibCode"`
+	ShipmentAmount  int64                  `protobuf:"varint,6,opt,name=shipmentAmount,proto3" json:"shipmentAmount"`
+	OrderAmount     int64                  `protobuf:"varint,7,opt,name=orderAmount,proto3" json:"orderAmount"`
+	ContractNo      string                 `protobuf:"bytes,8,opt,name=contractNo,proto3" json:"contractNo"`
+	MiCode          string                 `protobuf:"bytes,9,opt,name=miCode,proto3" json:"miCode"`
+	MedicineCode    string                 `protobuf:"bytes,10,opt,name=medicineCode,proto3" json:"medicineCode"`
+	MedicinePCode   string                 `protobuf:"bytes,11,opt,name=medicinePCode,proto3" json:"medicinePCode"`
+	CompanyCode     string                 `protobuf:"bytes,12,opt,name=companyCode,proto3" json:"companyCode"`
+	SyncAt          *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=syncAt,proto3" json:"syncAt"`
 }
 
 func (x *UploadChainShipment) Reset() {
@@ -2301,7 +2301,7 @@ type UploadChainShipments struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	UploadChainShipment []*UploadChainShipment `protobuf:"bytes,1,rep,name=uploadChainShipment,proto3" json:"uploadChainShipment,omitempty"`
+	UploadChainShipment []*UploadChainShipment `protobuf:"bytes,1,rep,name=uploadChainShipment,proto3" json:"uploadChainShipment"`
 }
 
 func (x *UploadChainShipments) Reset() {
@@ -2348,24 +2348,24 @@ type UploadChainShipmentOrder struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	UploadChainType  *UploadChainType       `protobuf:"bytes,1,opt,name=uploadChainType,proto3" json:"uploadChainType,omitempty"`
-	Plans            []*UploadChainShipment `protobuf:"bytes,2,rep,name=plans,proto3" json:"plans,omitempty"`
-	ShipmentNo       string                 `protobuf:"bytes,3,opt,name=shipmentNo,proto3" json:"shipmentNo,omitempty"`
-	InvoiceMd5       string                 `protobuf:"bytes,4,opt,name=invoiceMd5,proto3" json:"invoiceMd5,omitempty"`
-	InvoiceUrl       string                 `protobuf:"bytes,5,opt,name=invoiceUrl,proto3" json:"invoiceUrl,omitempty"`
-	InvoiceType      string                 `protobuf:"bytes,6,opt,name=invoiceType,proto3" json:"invoiceType,omitempty"`
-	InvoiceTotal     int64                  `protobuf:"varint,7,opt,name=invoiceTotal,proto3" json:"invoiceTotal,omitempty"`
-	InvoiceTax       int64                  `protobuf:"varint,8,opt,name=invoiceTax,proto3" json:"invoiceTax,omitempty"`
-	InvoiceCheckCode string                 `protobuf:"bytes,9,opt,name=invoiceCheckCode,proto3" json:"invoiceCheckCode,omitempty"`
-	InvoiceNo        string                 `protobuf:"bytes,10,opt,name=invoiceNo,proto3" json:"invoiceNo,omitempty"`
-	InvoiceCode      string                 `protobuf:"bytes,11,opt,name=invoiceCode,proto3" json:"invoiceCode,omitempty"`
-	InvoiceDate      *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=invoiceDate,proto3" json:"invoiceDate,omitempty"`
-	SendOutAt        *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=sendOutAt,proto3" json:"sendOutAt,omitempty"`
-	ShipmentCode     string                 `protobuf:"bytes,14,opt,name=shipmentCode,proto3" json:"shipmentCode,omitempty"`
-	ShipmentCompany  string                 `protobuf:"bytes,15,opt,name=shipmentCompany,proto3" json:"shipmentCompany,omitempty"`
-	ShipmentStatus   string                 `protobuf:"bytes,16,opt,name=shipmentStatus,proto3" json:"shipmentStatus,omitempty"`
-	ReceiveAt        *timestamppb.Timestamp `protobuf:"bytes,17,opt,name=receiveAt,proto3" json:"receiveAt,omitempty"`
-	ConfirmAt        *timestamppb.Timestamp `protobuf:"bytes,18,opt,name=confirmAt,proto3" json:"confirmAt,omitempty"`
+	UploadChainType  *UploadChainType       `protobuf:"bytes,1,opt,name=uploadChainType,proto3" json:"uploadChainType"`
+	Plans            []*UploadChainShipment `protobuf:"bytes,2,rep,name=plans,proto3" json:"plans"`
+	ShipmentNo       string                 `protobuf:"bytes,3,opt,name=shipmentNo,proto3" json:"shipmentNo"`
+	InvoiceMd5       string                 `protobuf:"bytes,4,opt,name=invoiceMd5,proto3" json:"invoiceMd5"`
+	InvoiceUrl       string                 `protobuf:"bytes,5,opt,name=invoiceUrl,proto3" json:"invoiceUrl"`
+	InvoiceType      string                 `protobuf:"bytes,6,opt,name=invoiceType,proto3" json:"invoiceType"`
+	InvoiceTotal     int64                  `protobuf:"varint,7,opt,name=invoiceTotal,proto3" json:"invoiceTotal"`
+	InvoiceTax       int64                  `protobuf:"varint,8,opt,name=invoiceTax,proto3" json:"invoiceTax"`
+	InvoiceCheckCode string                 `protobuf:"bytes,9,opt,name=invoiceCheckCode,proto3" json:"invoiceCheckCode"`
+	InvoiceNo        string                 `protobuf:"bytes,10,opt,name=invoiceNo,proto3" json:"invoiceNo"`
+	InvoiceCode      string                 `protobuf:"bytes,11,opt,name=invoiceCode,proto3" json:"invoiceCode"`
+	InvoiceDate      *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=invoiceDate,proto3" json:"invoiceDate"`
+	SendOutAt        *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=sendOutAt,proto3" json:"sendOutAt"`
+	ShipmentCode     string                 `protobuf:"bytes,14,opt,name=shipmentCode,proto3" json:"shipmentCode"`
+	ShipmentCompany  string                 `protobuf:"bytes,15,opt,name=shipmentCompany,proto3" json:"shipmentCompany"`
+	ShipmentStatus   string                 `protobuf:"bytes,16,opt,name=shipmentStatus,proto3" json:"shipmentStatus"`
+	ReceiveAt        *timestamppb.Timestamp `protobuf:"bytes,17,opt,name=receiveAt,proto3" json:"receiveAt"`
+	ConfirmAt        *timestamppb.Timestamp `protobuf:"bytes,18,opt,name=confirmAt,proto3" json:"confirmAt"`
 }
 
 func (x *UploadChainShipmentOrder) Reset() {
@@ -2531,7 +2531,7 @@ type UploadChainShipmentOrders struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	UploadChainShipmentOrder []*UploadChainShipmentOrder `protobuf:"bytes,1,rep,name=uploadChainShipmentOrder,proto3" json:"uploadChainShipmentOrder,omitempty"`
+	UploadChainShipmentOrder []*UploadChainShipmentOrder `protobuf:"bytes,1,rep,name=uploadChainShipmentOrder,proto3" json:"uploadChainShipmentOrder"`
 }
 
 func (x *UploadChainShipmentOrders) Reset() {
