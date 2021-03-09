@@ -1393,6 +1393,9 @@ message ContractPlanReportGetCondition {
   string contractNo = 8;
   //按子合同聚合等效于 按照 com,mi,medicine,contract聚合
   int64 contractId = 9;
+  //合同起止时间过滤
+  google.protobuf.Timestamp contractStartAt = 10;
+  google.protobuf.Timestamp contractEndAt = 11;
 }
 //合同报表可选聚合维度
 message ContractPlanReportGroupCondition {
