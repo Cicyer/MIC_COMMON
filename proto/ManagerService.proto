@@ -815,7 +815,8 @@ message CreateShipmentOrderReq {
 }
 
 message CreateShipmentOrderResp {
-
+  string code = 1;
+  string msg = 2;
 }
 
 //配送单列表
@@ -875,7 +876,8 @@ message ReceiveShipmentOrderReq {
 }
 
 message ReceiveShipmentOrderResp {
-
+  string code = 1;
+  string msg = 2;
 }
 
 //根据招采单(配送计划)id查询合同编号

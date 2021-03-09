@@ -287,7 +287,8 @@ message FinishPayOrderErrorReq {
   string shipmentNo = 2;
 }
 message FinishPayOrderErrorResp {
-
+  string code = 1;
+  string msg = 2;
 }
 
 message ListFactoringOrderReq {
@@ -411,14 +412,16 @@ message FinishFactoringOrderErrorReq {
   string factoringOrderNo = 2;
 }
 message FinishFactoringOrderErrorResp {
-
+  string code = 1;
+  string msg = 2;
 }
 message PayShipmentOrdersReq {
   int64   managerId = 1;
   repeated string shipmentNos = 2;
 }
 message PayShipmentOrdersResp {
-
+  string code = 1;
+  string msg = 2;
 }
 message GetWithdrawReceiptReq {
   int64   managerId = 1;
@@ -488,7 +491,8 @@ message ApplyReq {
   repeated string factoringOrderNos = 3;
 }
 message ApplyResp {
-
+  string code = 1;
+  string msg = 2;
 }
 service BankService {
   //银行账号相关
