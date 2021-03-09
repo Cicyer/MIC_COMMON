@@ -77,8 +77,8 @@ type ManagerServiceClient interface {
 	ListShipmentOrder(ctx context.Context, in *ListShipmentOrderReq, opts ...grpc.CallOption) (*ListShipmentOrderResp, error)
 	//配送单表头汇总
 	CountShipmentOrder(ctx context.Context, in *CountShipmentOrderReq, opts ...grpc.CallOption) (*CountShipmentOrderResp, error)
-	//配送单修改
-	UpdateShipmentOrder(ctx context.Context, in *UpdateShipmentOrderReq, opts ...grpc.CallOption) (*UpdateShipmentOrderResp, error)
+	//配送单收获
+	ReceiveShipmentOrder(ctx context.Context, in *ReceiveShipmentOrderReq, opts ...grpc.CallOption) (*ReceiveShipmentOrderResp, error)
 	//根据招采单(配送计划)id查询合同编号
 	GetContractByShipmentPlanId(ctx context.Context, in *GetContractByShipmentPlanIdReq, opts ...grpc.CallOption) (*GetContractByShipmentPlanIdResp, error)
 	//通用配置查询
@@ -534,9 +534,9 @@ func (c *managerServiceClient) CountShipmentOrder(ctx context.Context, in *Count
 	return out, nil
 }
 
-func (c *managerServiceClient) UpdateShipmentOrder(ctx context.Context, in *UpdateShipmentOrderReq, opts ...grpc.CallOption) (*UpdateShipmentOrderResp, error) {
-	out := new(UpdateShipmentOrderResp)
-	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/UpdateShipmentOrder", in, out, opts...)
+func (c *managerServiceClient) ReceiveShipmentOrder(ctx context.Context, in *ReceiveShipmentOrderReq, opts ...grpc.CallOption) (*ReceiveShipmentOrderResp, error) {
+	out := new(ReceiveShipmentOrderResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/ReceiveShipmentOrder", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -670,8 +670,8 @@ type ManagerServiceServer interface {
 	ListShipmentOrder(context.Context, *ListShipmentOrderReq) (*ListShipmentOrderResp, error)
 	//配送单表头汇总
 	CountShipmentOrder(context.Context, *CountShipmentOrderReq) (*CountShipmentOrderResp, error)
-	//配送单修改
-	UpdateShipmentOrder(context.Context, *UpdateShipmentOrderReq) (*UpdateShipmentOrderResp, error)
+	//配送单收获
+	ReceiveShipmentOrder(context.Context, *ReceiveShipmentOrderReq) (*ReceiveShipmentOrderResp, error)
 	//根据招采单(配送计划)id查询合同编号
 	GetContractByShipmentPlanId(context.Context, *GetContractByShipmentPlanIdReq) (*GetContractByShipmentPlanIdResp, error)
 	//通用配置查询
@@ -836,8 +836,8 @@ func (UnimplementedManagerServiceServer) ListShipmentOrder(context.Context, *Lis
 func (UnimplementedManagerServiceServer) CountShipmentOrder(context.Context, *CountShipmentOrderReq) (*CountShipmentOrderResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CountShipmentOrder not implemented")
 }
-func (UnimplementedManagerServiceServer) UpdateShipmentOrder(context.Context, *UpdateShipmentOrderReq) (*UpdateShipmentOrderResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateShipmentOrder not implemented")
+func (UnimplementedManagerServiceServer) ReceiveShipmentOrder(context.Context, *ReceiveShipmentOrderReq) (*ReceiveShipmentOrderResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ReceiveShipmentOrder not implemented")
 }
 func (UnimplementedManagerServiceServer) GetContractByShipmentPlanId(context.Context, *GetContractByShipmentPlanIdReq) (*GetContractByShipmentPlanIdResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetContractByShipmentPlanId not implemented")
@@ -1737,20 +1737,20 @@ func _ManagerService_CountShipmentOrder_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ManagerService_UpdateShipmentOrder_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateShipmentOrderReq)
+func _ManagerService_ReceiveShipmentOrder_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReceiveShipmentOrderReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ManagerServiceServer).UpdateShipmentOrder(ctx, in)
+		return srv.(ManagerServiceServer).ReceiveShipmentOrder(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/ManagerService.ManagerService/UpdateShipmentOrder",
+		FullMethod: "/ManagerService.ManagerService/ReceiveShipmentOrder",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ManagerServiceServer).UpdateShipmentOrder(ctx, req.(*UpdateShipmentOrderReq))
+		return srv.(ManagerServiceServer).ReceiveShipmentOrder(ctx, req.(*ReceiveShipmentOrderReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2081,8 +2081,8 @@ var ManagerService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _ManagerService_CountShipmentOrder_Handler,
 		},
 		{
-			MethodName: "UpdateShipmentOrder",
-			Handler:    _ManagerService_UpdateShipmentOrder_Handler,
+			MethodName: "ReceiveShipmentOrder",
+			Handler:    _ManagerService_ReceiveShipmentOrder_Handler,
 		},
 		{
 			MethodName: "GetContractByShipmentPlanId",

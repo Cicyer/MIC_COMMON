@@ -868,13 +868,13 @@ message CountShipmentOrderResp {
   int64 shipmentPlanCount = 2;
 }
 //配送单修改
-message UpdateShipmentOrderReq {
+message ReceiveShipmentOrderReq {
   string shipmentNo = 1;
-  string shipmentStatus = 2;
+  int64 miId = 2;
   int64 managerId = 3;
 }
 
-message UpdateShipmentOrderResp {
+message ReceiveShipmentOrderResp {
 
 }
 
@@ -2016,8 +2016,8 @@ service ManagerService {
   rpc ListShipmentOrder(ListShipmentOrderReq) returns(ListShipmentOrderResp);
   //配送单表头汇总
   rpc CountShipmentOrder(CountShipmentOrderReq) returns(CountShipmentOrderResp);
-  //配送单修改
-  rpc UpdateShipmentOrder(UpdateShipmentOrderReq) returns(UpdateShipmentOrderResp);
+  //配送单收获
+  rpc ReceiveShipmentOrder(ReceiveShipmentOrderReq) returns(ReceiveShipmentOrderResp);
   //根据招采单(配送计划)id查询合同编号
   rpc GetContractByShipmentPlanId(GetContractByShipmentPlanIdReq) returns(GetContractByShipmentPlanIdResp);
 
