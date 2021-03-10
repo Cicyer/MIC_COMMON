@@ -35,8 +35,8 @@ type Page struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	PageNumber int64 `protobuf:"varint,1,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
-	PageSize   int64 `protobuf:"varint,2,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64 `protobuf:"varint,1,opt,name=pageNumber,proto3" json:"pageNumber"`
+	PageSize   int64 `protobuf:"varint,2,opt,name=pageSize,proto3" json:"pageSize"`
 }
 
 func (x *Page) Reset() {
@@ -91,8 +91,8 @@ type GetContractInfoReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ShipmentPlanId int64 `protobuf:"varint,1,opt,name=shipmentPlanId,proto3" json:"shipmentPlanId,omitempty"`
-	ManagerId      int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	ShipmentPlanId int64 `protobuf:"varint,1,opt,name=shipmentPlanId,proto3" json:"shipmentPlanId"`
+	ManagerId      int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *GetContractInfoReq) Reset() {
@@ -146,8 +146,8 @@ type GetContractInfoResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ContractId int64  `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId,omitempty"`
-	ContractNo string `protobuf:"bytes,2,opt,name=contractNo,proto3" json:"contractNo,omitempty"`
+	ContractId int64  `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId"`
+	ContractNo string `protobuf:"bytes,2,opt,name=contractNo,proto3" json:"contractNo"`
 }
 
 func (x *GetContractInfoResp) Reset() {
@@ -202,8 +202,8 @@ type CountContractReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MibId     int64 `protobuf:"varint,1,opt,name=mibId,proto3" json:"mibId,omitempty"`
-	ManagerId int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	MibId     int64 `protobuf:"varint,1,opt,name=mibId,proto3" json:"mibId"`
+	ManagerId int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *CountContractReq) Reset() {
@@ -257,8 +257,8 @@ type CountContractResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CountContract int64 `protobuf:"varint,1,opt,name=countContract,proto3" json:"countContract,omitempty"`
-	CountMoney    int64 `protobuf:"varint,2,opt,name=countMoney,proto3" json:"countMoney,omitempty"`
+	CountContract int64 `protobuf:"varint,1,opt,name=countContract,proto3" json:"countContract"`
+	CountMoney    int64 `protobuf:"varint,2,opt,name=countMoney,proto3" json:"countMoney"`
 }
 
 func (x *CountContractResp) Reset() {
@@ -313,8 +313,8 @@ type ContractDetailReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ContractId int64 `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId,omitempty"`
-	ManagerId  int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	ContractId int64 `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId"`
+	ManagerId  int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *ContractDetailReq) Reset() {
@@ -368,7 +368,7 @@ type ContractDetailResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List []*ContractDetailVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	List []*ContractDetailVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
 }
 
 func (x *ContractDetailResp) Reset() {
@@ -415,11 +415,11 @@ type ContractDetailVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Manufacturer    string `protobuf:"bytes,1,opt,name=manufacturer,proto3" json:"manufacturer,omitempty"`
-	MiName          string `protobuf:"bytes,2,opt,name=miName,proto3" json:"miName,omitempty"`
-	MedicineAmount  string `protobuf:"bytes,3,opt,name=medicineAmount,proto3" json:"medicineAmount,omitempty"`
-	AllMoney        string `protobuf:"bytes,4,opt,name=allMoney,proto3" json:"allMoney,omitempty"`
-	MedicineReceive string `protobuf:"bytes,5,opt,name=medicineReceive,proto3" json:"medicineReceive,omitempty"`
+	Manufacturer    string `protobuf:"bytes,1,opt,name=manufacturer,proto3" json:"manufacturer"`
+	MiName          string `protobuf:"bytes,2,opt,name=miName,proto3" json:"miName"`
+	MedicineAmount  string `protobuf:"bytes,3,opt,name=medicineAmount,proto3" json:"medicineAmount"`
+	AllMoney        string `protobuf:"bytes,4,opt,name=allMoney,proto3" json:"allMoney"`
+	MedicineReceive string `protobuf:"bytes,5,opt,name=medicineReceive,proto3" json:"medicineReceive"`
 }
 
 func (x *ContractDetailVo) Reset() {
@@ -495,21 +495,21 @@ type ContractListReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MedicineName   string                 `protobuf:"bytes,1,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
-	TenderCompany  string                 `protobuf:"bytes,2,opt,name=TenderCompany,proto3" json:"TenderCompany,omitempty"`
-	StartAt        *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=StartAt,proto3" json:"StartAt,omitempty"`
-	EndAt          *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=EndAt,proto3" json:"EndAt,omitempty"`
-	CompanyName    string                 `protobuf:"bytes,5,opt,name=companyName,proto3" json:"companyName,omitempty"`
-	TagId          int64                  `protobuf:"varint,6,opt,name=tagId,proto3" json:"tagId,omitempty"`
-	ContractNo     string                 `protobuf:"bytes,7,opt,name=contractNo,proto3" json:"contractNo,omitempty"`
-	ContractStatus string                 `protobuf:"bytes,8,opt,name=contractStatus,proto3" json:"contractStatus,omitempty"`
-	Page           *Page                  `protobuf:"bytes,9,opt,name=page,proto3" json:"page,omitempty"`
-	ManagerId      int64                  `protobuf:"varint,10,opt,name=managerId,proto3" json:"managerId,omitempty"`
-	MedicineCode   string                 `protobuf:"bytes,11,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
+	MedicineName   string                 `protobuf:"bytes,1,opt,name=medicineName,proto3" json:"medicineName"`
+	TenderCompany  string                 `protobuf:"bytes,2,opt,name=TenderCompany,proto3" json:"TenderCompany"`
+	StartAt        *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=StartAt,proto3" json:"StartAt"`
+	EndAt          *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=EndAt,proto3" json:"EndAt"`
+	CompanyName    string                 `protobuf:"bytes,5,opt,name=companyName,proto3" json:"companyName"`
+	TagId          int64                  `protobuf:"varint,6,opt,name=tagId,proto3" json:"tagId"`
+	ContractNo     string                 `protobuf:"bytes,7,opt,name=contractNo,proto3" json:"contractNo"`
+	ContractStatus string                 `protobuf:"bytes,8,opt,name=contractStatus,proto3" json:"contractStatus"`
+	Page           *Page                  `protobuf:"bytes,9,opt,name=page,proto3" json:"page"`
+	ManagerId      int64                  `protobuf:"varint,10,opt,name=managerId,proto3" json:"managerId"`
+	MedicineCode   string                 `protobuf:"bytes,11,opt,name=medicineCode,proto3" json:"medicineCode"`
 	//备用
-	CompanyCode string `protobuf:"bytes,12,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
-	CompanyId   int64  `protobuf:"varint,13,opt,name=companyId,proto3" json:"companyId,omitempty"`
-	MiId        int64  `protobuf:"varint,14,opt,name=miId,proto3" json:"miId,omitempty"`
+	CompanyCode string `protobuf:"bytes,12,opt,name=companyCode,proto3" json:"companyCode"`
+	CompanyId   int64  `protobuf:"varint,13,opt,name=companyId,proto3" json:"companyId"`
+	MiId        int64  `protobuf:"varint,14,opt,name=miId,proto3" json:"miId"`
 }
 
 func (x *ContractListReq) Reset() {
@@ -647,10 +647,10 @@ type ContractListResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ContractListVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64             `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64             `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64             `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*ContractListVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64             `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64             `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64             `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *ContractListResp) Reset() {
@@ -718,27 +718,27 @@ type ContractListVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ContractId            int64                  `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId,omitempty"`
-	ContractNo            string                 `protobuf:"bytes,2,opt,name=contractNo,proto3" json:"contractNo,omitempty"`
-	MedicineName          string                 `protobuf:"bytes,3,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
-	MedicineCode          string                 `protobuf:"bytes,4,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
-	TagName               string                 `protobuf:"bytes,5,opt,name=tagName,proto3" json:"tagName,omitempty"`
-	MedicineSpecification string                 `protobuf:"bytes,6,opt,name=medicineSpecification,proto3" json:"medicineSpecification,omitempty"`
-	TenderCompany         string                 `protobuf:"bytes,7,opt,name=tenderCompany,proto3" json:"tenderCompany,omitempty"`
-	CompanyName           string                 `protobuf:"bytes,8,opt,name=companyName,proto3" json:"companyName,omitempty"`
-	MedicinePrice         int64                  `protobuf:"varint,9,opt,name=medicinePrice,proto3" json:"medicinePrice,omitempty"`
-	TotalAmount           int64                  `protobuf:"varint,10,opt,name=totalAmount,proto3" json:"totalAmount,omitempty"`
-	TotalMoney            int64                  `protobuf:"varint,11,opt,name=totalMoney,proto3" json:"totalMoney,omitempty"`
-	StartAt               *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=startAt,proto3" json:"startAt,omitempty"`
-	EndAt                 *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=endAt,proto3" json:"endAt,omitempty"`
-	CreatedAt             *timestamppb.Timestamp `protobuf:"bytes,14,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
-	HashInfo              string                 `protobuf:"bytes,15,opt,name=hashInfo,proto3" json:"hashInfo,omitempty"`
-	ActiveStatus          string                 `protobuf:"bytes,16,opt,name=activeStatus,proto3" json:"activeStatus,omitempty"`
-	MedicineId            int64                  `protobuf:"varint,17,opt,name=medicineId,proto3" json:"medicineId,omitempty"`
-	CompanyId             int64                  `protobuf:"varint,18,opt,name=companyId,proto3" json:"companyId,omitempty"`
-	ContractMiAmount      int64                  `protobuf:"varint,19,opt,name=contractMiAmount,proto3" json:"contractMiAmount,omitempty"`
-	ContractMiReceive     int64                  `protobuf:"varint,20,opt,name=contractMiReceive,proto3" json:"contractMiReceive,omitempty"`
-	Manufacturer          string                 `protobuf:"bytes,21,opt,name=manufacturer,proto3" json:"manufacturer,omitempty"`
+	ContractId            int64                  `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId"`
+	ContractNo            string                 `protobuf:"bytes,2,opt,name=contractNo,proto3" json:"contractNo"`
+	MedicineName          string                 `protobuf:"bytes,3,opt,name=medicineName,proto3" json:"medicineName"`
+	MedicineCode          string                 `protobuf:"bytes,4,opt,name=medicineCode,proto3" json:"medicineCode"`
+	TagName               string                 `protobuf:"bytes,5,opt,name=tagName,proto3" json:"tagName"`
+	MedicineSpecification string                 `protobuf:"bytes,6,opt,name=medicineSpecification,proto3" json:"medicineSpecification"`
+	TenderCompany         string                 `protobuf:"bytes,7,opt,name=tenderCompany,proto3" json:"tenderCompany"`
+	CompanyName           string                 `protobuf:"bytes,8,opt,name=companyName,proto3" json:"companyName"`
+	MedicinePrice         int64                  `protobuf:"varint,9,opt,name=medicinePrice,proto3" json:"medicinePrice"`
+	TotalAmount           int64                  `protobuf:"varint,10,opt,name=totalAmount,proto3" json:"totalAmount"`
+	TotalMoney            int64                  `protobuf:"varint,11,opt,name=totalMoney,proto3" json:"totalMoney"`
+	StartAt               *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=startAt,proto3" json:"startAt"`
+	EndAt                 *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=endAt,proto3" json:"endAt"`
+	CreatedAt             *timestamppb.Timestamp `protobuf:"bytes,14,opt,name=createdAt,proto3" json:"createdAt"`
+	HashInfo              string                 `protobuf:"bytes,15,opt,name=hashInfo,proto3" json:"hashInfo"`
+	ActiveStatus          string                 `protobuf:"bytes,16,opt,name=activeStatus,proto3" json:"activeStatus"`
+	MedicineId            int64                  `protobuf:"varint,17,opt,name=medicineId,proto3" json:"medicineId"`
+	CompanyId             int64                  `protobuf:"varint,18,opt,name=companyId,proto3" json:"companyId"`
+	ContractMiAmount      int64                  `protobuf:"varint,19,opt,name=contractMiAmount,proto3" json:"contractMiAmount"`
+	ContractMiReceive     int64                  `protobuf:"varint,20,opt,name=contractMiReceive,proto3" json:"contractMiReceive"`
+	Manufacturer          string                 `protobuf:"bytes,21,opt,name=manufacturer,proto3" json:"manufacturer"`
 }
 
 func (x *ContractListVo) Reset() {
@@ -926,8 +926,8 @@ type UpCheckContractReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Reqs      []*CheckContractParam `protobuf:"bytes,1,rep,name=reqs,proto3" json:"reqs,omitempty"`
-	ManagerId int64                 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	Reqs      []*CheckContractParam `protobuf:"bytes,1,rep,name=reqs,proto3" json:"reqs"`
+	ManagerId int64                 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *UpCheckContractReq) Reset() {
@@ -981,10 +981,10 @@ type CheckContractParam struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MedicineId int64                  `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId,omitempty"`
-	CompanyId  int64                  `protobuf:"varint,2,opt,name=companyId,proto3" json:"companyId,omitempty"`
-	StartAt    *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=startAt,proto3" json:"startAt,omitempty"`
-	EndAt      *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=endAt,proto3" json:"endAt,omitempty"`
+	MedicineId int64                  `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId"`
+	CompanyId  int64                  `protobuf:"varint,2,opt,name=companyId,proto3" json:"companyId"`
+	StartAt    *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=startAt,proto3" json:"startAt"`
+	EndAt      *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=endAt,proto3" json:"endAt"`
 }
 
 func (x *CheckContractParam) Reset() {
@@ -1052,7 +1052,7 @@ type CheckContractListResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List []*ContractListVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	List []*ContractListVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
 }
 
 func (x *CheckContractListResp) Reset() {
@@ -1100,9 +1100,9 @@ type ContractMiListReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ContractId   int64 `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId,omitempty"`
-	ContractMiId int64 `protobuf:"varint,2,opt,name=contractMiId,proto3" json:"contractMiId,omitempty"`
-	ManagerId    int64 `protobuf:"varint,4,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	ContractId   int64 `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId"`
+	ContractMiId int64 `protobuf:"varint,2,opt,name=contractMiId,proto3" json:"contractMiId"`
+	ManagerId    int64 `protobuf:"varint,4,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *ContractMiListReq) Reset() {
@@ -1163,7 +1163,7 @@ type ContractMiListResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List []*ContractMiListVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	List []*ContractMiListVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
 }
 
 func (x *ContractMiListResp) Reset() {
@@ -1210,21 +1210,21 @@ type ContractMiListVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MiContractId          int64                  `protobuf:"varint,1,opt,name=miContractId,proto3" json:"miContractId,omitempty"`
-	MedicineName          string                 `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
-	MedicineCode          string                 `protobuf:"bytes,3,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
-	MiName                string                 `protobuf:"bytes,4,opt,name=miName,proto3" json:"miName,omitempty"`
-	MedicinePrice         int64                  `protobuf:"varint,5,opt,name=medicinePrice,proto3" json:"medicinePrice,omitempty"`
-	MedicineAmount        int64                  `protobuf:"varint,6,opt,name=medicineAmount,proto3" json:"medicineAmount,omitempty"`
-	MedicineAmountMoney   int64                  `protobuf:"varint,7,opt,name=medicineAmountMoney,proto3" json:"medicineAmountMoney,omitempty"`
-	HashInfo              string                 `protobuf:"bytes,8,opt,name=hashInfo,proto3" json:"hashInfo,omitempty"`
-	InfoUploadAt          *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=infoUploadAt,proto3" json:"infoUploadAt,omitempty"`
-	MedicineSpecification string                 `protobuf:"bytes,10,opt,name=medicineSpecification,proto3" json:"medicineSpecification,omitempty"`
-	ContractMd5           string                 `protobuf:"bytes,11,opt,name=contractMd5,proto3" json:"contractMd5,omitempty"`
-	ContractUrl           string                 `protobuf:"bytes,12,opt,name=contractUrl,proto3" json:"contractUrl,omitempty"`
-	ActiveStatus          string                 `protobuf:"bytes,13,opt,name=activeStatus,proto3" json:"activeStatus,omitempty"`
-	Manufacturer          string                 `protobuf:"bytes,14,opt,name=manufacturer,proto3" json:"manufacturer,omitempty"`
-	MedicineReceive       int64                  `protobuf:"varint,15,opt,name=MedicineReceive,proto3" json:"MedicineReceive,omitempty"`
+	MiContractId          int64                  `protobuf:"varint,1,opt,name=miContractId,proto3" json:"miContractId"`
+	MedicineName          string                 `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName"`
+	MedicineCode          string                 `protobuf:"bytes,3,opt,name=medicineCode,proto3" json:"medicineCode"`
+	MiName                string                 `protobuf:"bytes,4,opt,name=miName,proto3" json:"miName"`
+	MedicinePrice         int64                  `protobuf:"varint,5,opt,name=medicinePrice,proto3" json:"medicinePrice"`
+	MedicineAmount        int64                  `protobuf:"varint,6,opt,name=medicineAmount,proto3" json:"medicineAmount"`
+	MedicineAmountMoney   int64                  `protobuf:"varint,7,opt,name=medicineAmountMoney,proto3" json:"medicineAmountMoney"`
+	HashInfo              string                 `protobuf:"bytes,8,opt,name=hashInfo,proto3" json:"hashInfo"`
+	InfoUploadAt          *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=infoUploadAt,proto3" json:"infoUploadAt"`
+	MedicineSpecification string                 `protobuf:"bytes,10,opt,name=medicineSpecification,proto3" json:"medicineSpecification"`
+	ContractMd5           string                 `protobuf:"bytes,11,opt,name=contractMd5,proto3" json:"contractMd5"`
+	ContractUrl           string                 `protobuf:"bytes,12,opt,name=contractUrl,proto3" json:"contractUrl"`
+	ActiveStatus          string                 `protobuf:"bytes,13,opt,name=activeStatus,proto3" json:"activeStatus"`
+	Manufacturer          string                 `protobuf:"bytes,14,opt,name=manufacturer,proto3" json:"manufacturer"`
+	MedicineReceive       int64                  `protobuf:"varint,15,opt,name=MedicineReceive,proto3" json:"MedicineReceive"`
 }
 
 func (x *ContractMiListVo) Reset() {
@@ -1370,10 +1370,10 @@ type CreateOneContractMIReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MiId           int64 `protobuf:"varint,1,opt,name=miId,proto3" json:"miId,omitempty"`
-	ContractId     int64 `protobuf:"varint,2,opt,name=contractId,proto3" json:"contractId,omitempty"`
-	MedicineAmount int64 `protobuf:"varint,3,opt,name=medicineAmount,proto3" json:"medicineAmount,omitempty"`
-	ManagerId      int64 `protobuf:"varint,4,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	MiId           int64 `protobuf:"varint,1,opt,name=miId,proto3" json:"miId"`
+	ContractId     int64 `protobuf:"varint,2,opt,name=contractId,proto3" json:"contractId"`
+	MedicineAmount int64 `protobuf:"varint,3,opt,name=medicineAmount,proto3" json:"medicineAmount"`
+	ManagerId      int64 `protobuf:"varint,4,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *CreateOneContractMIReq) Reset() {
@@ -1441,7 +1441,7 @@ type CreateOneContractMIResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
 }
 
 func (x *CreateOneContractMIResp) Reset() {
@@ -1489,10 +1489,10 @@ type UpdateOneContractMIReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ContractMiId   int64 `protobuf:"varint,1,opt,name=contractMiId,proto3" json:"contractMiId,omitempty"`
-	MiId           int64 `protobuf:"varint,2,opt,name=miId,proto3" json:"miId,omitempty"`
-	MedicineAmount int64 `protobuf:"varint,3,opt,name=medicineAmount,proto3" json:"medicineAmount,omitempty"`
-	ManagerId      int64 `protobuf:"varint,4,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	ContractMiId   int64 `protobuf:"varint,1,opt,name=contractMiId,proto3" json:"contractMiId"`
+	MiId           int64 `protobuf:"varint,2,opt,name=miId,proto3" json:"miId"`
+	MedicineAmount int64 `protobuf:"varint,3,opt,name=medicineAmount,proto3" json:"medicineAmount"`
+	ManagerId      int64 `protobuf:"varint,4,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *UpdateOneContractMIReq) Reset() {
@@ -1560,7 +1560,7 @@ type UpdateOneContractMIResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
 }
 
 func (x *UpdateOneContractMIResp) Reset() {
@@ -1608,14 +1608,14 @@ type UpdateOneContractReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ContractId    int64                  `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId,omitempty"`
-	MedicineId    int64                  `protobuf:"varint,2,opt,name=medicineId,proto3" json:"medicineId,omitempty"`
-	MedicinePrice int64                  `protobuf:"varint,3,opt,name=medicinePrice,proto3" json:"medicinePrice,omitempty"`
-	StartAt       *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=startAt,proto3" json:"startAt,omitempty"`
-	EndAt         *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=endAt,proto3" json:"endAt,omitempty"`
-	ManagerId     int64                  `protobuf:"varint,6,opt,name=managerId,proto3" json:"managerId,omitempty"`
-	CompanyId     int64                  `protobuf:"varint,7,opt,name=companyId,proto3" json:"companyId,omitempty"`
-	TenderCompany string                 `protobuf:"bytes,8,opt,name=tenderCompany,proto3" json:"tenderCompany,omitempty"`
+	ContractId    int64                  `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId"`
+	MedicineId    int64                  `protobuf:"varint,2,opt,name=medicineId,proto3" json:"medicineId"`
+	MedicinePrice int64                  `protobuf:"varint,3,opt,name=medicinePrice,proto3" json:"medicinePrice"`
+	StartAt       *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=startAt,proto3" json:"startAt"`
+	EndAt         *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=endAt,proto3" json:"endAt"`
+	ManagerId     int64                  `protobuf:"varint,6,opt,name=managerId,proto3" json:"managerId"`
+	CompanyId     int64                  `protobuf:"varint,7,opt,name=companyId,proto3" json:"companyId"`
+	TenderCompany string                 `protobuf:"bytes,8,opt,name=tenderCompany,proto3" json:"tenderCompany"`
 }
 
 func (x *UpdateOneContractReq) Reset() {
@@ -1711,7 +1711,7 @@ type UpdateOneContractResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
 }
 
 func (x *UpdateOneContractResp) Reset() {
@@ -1759,9 +1759,9 @@ type BatchOperateContractReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	UpdateParam []*BatchOperateContract `protobuf:"bytes,1,rep,name=updateParam,proto3" json:"updateParam,omitempty"`
-	CreateParam []*BatchOperateContract `protobuf:"bytes,2,rep,name=createParam,proto3" json:"createParam,omitempty"`
-	ManagerId   int64                   `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	UpdateParam []*BatchOperateContract `protobuf:"bytes,1,rep,name=updateParam,proto3" json:"updateParam"`
+	CreateParam []*BatchOperateContract `protobuf:"bytes,2,rep,name=createParam,proto3" json:"createParam"`
+	ManagerId   int64                   `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *BatchOperateContractReq) Reset() {
@@ -1822,7 +1822,7 @@ type BatchOperateContractResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
 }
 
 func (x *BatchOperateContractResp) Reset() {
@@ -1869,14 +1869,14 @@ type BatchOperateContract struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ContractId    int64                  `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId,omitempty"`
-	MedicineId    int64                  `protobuf:"varint,2,opt,name=medicineId,proto3" json:"medicineId,omitempty"`
-	MedicinePrice int64                  `protobuf:"varint,3,opt,name=medicinePrice,proto3" json:"medicinePrice,omitempty"`
-	StartAt       *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=startAt,proto3" json:"startAt,omitempty"`
-	EndAt         *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=endAt,proto3" json:"endAt,omitempty"`
-	ManagerId     int64                  `protobuf:"varint,6,opt,name=managerId,proto3" json:"managerId,omitempty"`
-	CompanyId     int64                  `protobuf:"varint,7,opt,name=companyId,proto3" json:"companyId,omitempty"`
-	TenderCompany string                 `protobuf:"bytes,8,opt,name=tenderCompany,proto3" json:"tenderCompany,omitempty"`
+	ContractId    int64                  `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId"`
+	MedicineId    int64                  `protobuf:"varint,2,opt,name=medicineId,proto3" json:"medicineId"`
+	MedicinePrice int64                  `protobuf:"varint,3,opt,name=medicinePrice,proto3" json:"medicinePrice"`
+	StartAt       *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=startAt,proto3" json:"startAt"`
+	EndAt         *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=endAt,proto3" json:"endAt"`
+	ManagerId     int64                  `protobuf:"varint,6,opt,name=managerId,proto3" json:"managerId"`
+	CompanyId     int64                  `protobuf:"varint,7,opt,name=companyId,proto3" json:"companyId"`
+	TenderCompany string                 `protobuf:"bytes,8,opt,name=tenderCompany,proto3" json:"tenderCompany"`
 }
 
 func (x *BatchOperateContract) Reset() {
@@ -1973,9 +1973,9 @@ type UpdateContractActiveReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ContractId   int64  `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId,omitempty"`
-	ActiveStatus string `protobuf:"bytes,2,opt,name=activeStatus,proto3" json:"activeStatus,omitempty"`
-	ManagerId    int64  `protobuf:"varint,6,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	ContractId   int64  `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId"`
+	ActiveStatus string `protobuf:"bytes,2,opt,name=activeStatus,proto3" json:"activeStatus"`
+	ManagerId    int64  `protobuf:"varint,6,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *UpdateContractActiveReq) Reset() {
@@ -2036,7 +2036,7 @@ type UpdateContractActiveResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
 }
 
 func (x *UpdateContractActiveResp) Reset() {
@@ -2084,8 +2084,8 @@ type DeleteOneContractReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ContractId int64 `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId,omitempty"`
-	ManagerId  int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	ContractId int64 `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId"`
+	ManagerId  int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *DeleteOneContractReq) Reset() {
@@ -2139,7 +2139,7 @@ type DeleteOneContractResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
 }
 
 func (x *DeleteOneContractResp) Reset() {
@@ -2187,8 +2187,8 @@ type DeleteOneContractMiReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ContractMiId int64 `protobuf:"varint,1,opt,name=contractMiId,proto3" json:"contractMiId,omitempty"`
-	ManagerId    int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	ContractMiId int64 `protobuf:"varint,1,opt,name=contractMiId,proto3" json:"contractMiId"`
+	ManagerId    int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *DeleteOneContractMiReq) Reset() {
@@ -2242,7 +2242,7 @@ type DeleteOneContractMiResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
 }
 
 func (x *DeleteOneContractMiResp) Reset() {
@@ -2290,12 +2290,12 @@ type MedicineListReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MedicineName string `protobuf:"bytes,1,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
-	MedicineCode string `protobuf:"bytes,2,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
-	TagId        int64  `protobuf:"varint,3,opt,name=tagId,proto3" json:"tagId,omitempty"`
-	Manufacturer string `protobuf:"bytes,4,opt,name=manufacturer,proto3" json:"manufacturer,omitempty"`
-	Page         *Page  `protobuf:"bytes,5,opt,name=page,proto3" json:"page,omitempty"`
-	ManagerId    int64  `protobuf:"varint,6,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	MedicineName string `protobuf:"bytes,1,opt,name=medicineName,proto3" json:"medicineName"`
+	MedicineCode string `protobuf:"bytes,2,opt,name=medicineCode,proto3" json:"medicineCode"`
+	TagId        int64  `protobuf:"varint,3,opt,name=tagId,proto3" json:"tagId"`
+	Manufacturer string `protobuf:"bytes,4,opt,name=manufacturer,proto3" json:"manufacturer"`
+	Page         *Page  `protobuf:"bytes,5,opt,name=page,proto3" json:"page"`
+	ManagerId    int64  `protobuf:"varint,6,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *MedicineListReq) Reset() {
@@ -2377,10 +2377,10 @@ type MedicineListResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*MedicineListVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64             `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64             `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64             `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*MedicineListVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64             `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64             `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64             `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *MedicineListResp) Reset() {
@@ -2448,19 +2448,19 @@ type MedicineListVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MedicineId            int64                  `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId,omitempty"`
-	MedicineName          string                 `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
-	MedicineCode          string                 `protobuf:"bytes,3,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
-	MedicineSpecification string                 `protobuf:"bytes,4,opt,name=medicineSpecification,proto3" json:"medicineSpecification,omitempty"`
-	MedicineForm          string                 `protobuf:"bytes,5,opt,name=medicineForm,proto3" json:"medicineForm,omitempty"`
-	MedicinePackage       string                 `protobuf:"bytes,6,opt,name=medicinePackage,proto3" json:"medicinePackage,omitempty"`
-	CalculateRate         int64                  `protobuf:"varint,7,opt,name=calculateRate,proto3" json:"calculateRate,omitempty"`
-	Manufacturer          string                 `protobuf:"bytes,8,opt,name=manufacturer,proto3" json:"manufacturer,omitempty"`
-	CreatedAt             *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
-	MedicineUnit          string                 `protobuf:"bytes,10,opt,name=medicineUnit,proto3" json:"medicineUnit,omitempty"`
-	HashInfo              string                 `protobuf:"bytes,11,opt,name=hashInfo,proto3" json:"hashInfo,omitempty"`
-	TagName               string                 `protobuf:"bytes,12,opt,name=tagName,proto3" json:"tagName,omitempty"`
-	ActiveStatus          string                 `protobuf:"bytes,13,opt,name=activeStatus,proto3" json:"activeStatus,omitempty"`
+	MedicineId            int64                  `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId"`
+	MedicineName          string                 `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName"`
+	MedicineCode          string                 `protobuf:"bytes,3,opt,name=medicineCode,proto3" json:"medicineCode"`
+	MedicineSpecification string                 `protobuf:"bytes,4,opt,name=medicineSpecification,proto3" json:"medicineSpecification"`
+	MedicineForm          string                 `protobuf:"bytes,5,opt,name=medicineForm,proto3" json:"medicineForm"`
+	MedicinePackage       string                 `protobuf:"bytes,6,opt,name=medicinePackage,proto3" json:"medicinePackage"`
+	CalculateRate         int64                  `protobuf:"varint,7,opt,name=calculateRate,proto3" json:"calculateRate"`
+	Manufacturer          string                 `protobuf:"bytes,8,opt,name=manufacturer,proto3" json:"manufacturer"`
+	CreatedAt             *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=createdAt,proto3" json:"createdAt"`
+	MedicineUnit          string                 `protobuf:"bytes,10,opt,name=medicineUnit,proto3" json:"medicineUnit"`
+	HashInfo              string                 `protobuf:"bytes,11,opt,name=hashInfo,proto3" json:"hashInfo"`
+	TagName               string                 `protobuf:"bytes,12,opt,name=tagName,proto3" json:"tagName"`
+	ActiveStatus          string                 `protobuf:"bytes,13,opt,name=activeStatus,proto3" json:"activeStatus"`
 }
 
 func (x *MedicineListVo) Reset() {
@@ -2592,10 +2592,10 @@ type MedicineListForQueryReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MedicineName string `protobuf:"bytes,1,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
-	MedicineCode string `protobuf:"bytes,2,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
-	ManagerId    int64  `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId,omitempty"`
-	Page         *Page  `protobuf:"bytes,4,opt,name=page,proto3" json:"page,omitempty"`
+	MedicineName string `protobuf:"bytes,1,opt,name=medicineName,proto3" json:"medicineName"`
+	MedicineCode string `protobuf:"bytes,2,opt,name=medicineCode,proto3" json:"medicineCode"`
+	ManagerId    int64  `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId"`
+	Page         *Page  `protobuf:"bytes,4,opt,name=page,proto3" json:"page"`
 }
 
 func (x *MedicineListForQueryReq) Reset() {
@@ -2663,10 +2663,10 @@ type MedicineListForQueryResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*MedicineListVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64             `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64             `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64             `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*MedicineListVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64             `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64             `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64             `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *MedicineListForQueryResp) Reset() {
@@ -2734,9 +2734,9 @@ type MedicineListForQueryVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MedicineId   int64  `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId,omitempty"`
-	MedicineName string `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
-	MedicineCode string `protobuf:"bytes,3,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
+	MedicineId   int64  `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId"`
+	MedicineName string `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName"`
+	MedicineCode string `protobuf:"bytes,3,opt,name=medicineCode,proto3" json:"medicineCode"`
 }
 
 func (x *MedicineListForQueryVo) Reset() {
@@ -2798,15 +2798,15 @@ type CreateMedicineReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MedicineName          string `protobuf:"bytes,1,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
-	MedicineCode          string `protobuf:"bytes,2,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
-	MedicineSpecification string `protobuf:"bytes,3,opt,name=medicineSpecification,proto3" json:"medicineSpecification,omitempty"`
-	MedicineForm          string `protobuf:"bytes,4,opt,name=medicineForm,proto3" json:"medicineForm,omitempty"`
-	MedicinePackage       string `protobuf:"bytes,5,opt,name=medicinePackage,proto3" json:"medicinePackage,omitempty"`
-	CalculateRate         int64  `protobuf:"varint,6,opt,name=calculateRate,proto3" json:"calculateRate,omitempty"`
-	Manufacturer          string `protobuf:"bytes,7,opt,name=manufacturer,proto3" json:"manufacturer,omitempty"`
-	MedicineUnit          string `protobuf:"bytes,8,opt,name=medicineUnit,proto3" json:"medicineUnit,omitempty"`
-	ManagerId             int64  `protobuf:"varint,9,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	MedicineName          string `protobuf:"bytes,1,opt,name=medicineName,proto3" json:"medicineName"`
+	MedicineCode          string `protobuf:"bytes,2,opt,name=medicineCode,proto3" json:"medicineCode"`
+	MedicineSpecification string `protobuf:"bytes,3,opt,name=medicineSpecification,proto3" json:"medicineSpecification"`
+	MedicineForm          string `protobuf:"bytes,4,opt,name=medicineForm,proto3" json:"medicineForm"`
+	MedicinePackage       string `protobuf:"bytes,5,opt,name=medicinePackage,proto3" json:"medicinePackage"`
+	CalculateRate         int64  `protobuf:"varint,6,opt,name=calculateRate,proto3" json:"calculateRate"`
+	Manufacturer          string `protobuf:"bytes,7,opt,name=manufacturer,proto3" json:"manufacturer"`
+	MedicineUnit          string `protobuf:"bytes,8,opt,name=medicineUnit,proto3" json:"medicineUnit"`
+	ManagerId             int64  `protobuf:"varint,9,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *CreateMedicineReq) Reset() {
@@ -2909,7 +2909,7 @@ type CreateMedicineResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
 }
 
 func (x *CreateMedicineResp) Reset() {
@@ -2957,8 +2957,8 @@ type CreateBatchMedicineReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List      []*CreateMedicineReq `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	ManagerId int64                `protobuf:"varint,9,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	List      []*CreateMedicineReq `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	ManagerId int64                `protobuf:"varint,9,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *CreateBatchMedicineReq) Reset() {
@@ -3012,7 +3012,7 @@ type CreateBatchMedicineResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
 }
 
 func (x *CreateBatchMedicineResp) Reset() {
@@ -3060,16 +3060,16 @@ type UpdateMedicineReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MedicineId            int64  `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId,omitempty"`
-	MedicineName          string `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
-	MedicineCode          string `protobuf:"bytes,3,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
-	MedicineSpecification string `protobuf:"bytes,4,opt,name=medicineSpecification,proto3" json:"medicineSpecification,omitempty"`
-	MedicineForm          string `protobuf:"bytes,5,opt,name=medicineForm,proto3" json:"medicineForm,omitempty"`
-	MedicinePackage       string `protobuf:"bytes,6,opt,name=medicinePackage,proto3" json:"medicinePackage,omitempty"`
-	CalculateRate         int64  `protobuf:"varint,7,opt,name=calculateRate,proto3" json:"calculateRate,omitempty"`
-	Manufacturer          string `protobuf:"bytes,8,opt,name=manufacturer,proto3" json:"manufacturer,omitempty"`
-	MedicineUnit          string `protobuf:"bytes,9,opt,name=medicineUnit,proto3" json:"medicineUnit,omitempty"`
-	ManagerId             int64  `protobuf:"varint,10,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	MedicineId            int64  `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId"`
+	MedicineName          string `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName"`
+	MedicineCode          string `protobuf:"bytes,3,opt,name=medicineCode,proto3" json:"medicineCode"`
+	MedicineSpecification string `protobuf:"bytes,4,opt,name=medicineSpecification,proto3" json:"medicineSpecification"`
+	MedicineForm          string `protobuf:"bytes,5,opt,name=medicineForm,proto3" json:"medicineForm"`
+	MedicinePackage       string `protobuf:"bytes,6,opt,name=medicinePackage,proto3" json:"medicinePackage"`
+	CalculateRate         int64  `protobuf:"varint,7,opt,name=calculateRate,proto3" json:"calculateRate"`
+	Manufacturer          string `protobuf:"bytes,8,opt,name=manufacturer,proto3" json:"manufacturer"`
+	MedicineUnit          string `protobuf:"bytes,9,opt,name=medicineUnit,proto3" json:"medicineUnit"`
+	ManagerId             int64  `protobuf:"varint,10,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *UpdateMedicineReq) Reset() {
@@ -3179,7 +3179,7 @@ type UpdateMedicineResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
 }
 
 func (x *UpdateMedicineResp) Reset() {
@@ -3227,9 +3227,9 @@ type UpdateMedicineActiveReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MedicineId   int64  `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId,omitempty"`
-	ActiveStatus string `protobuf:"bytes,2,opt,name=activeStatus,proto3" json:"activeStatus,omitempty"`
-	ManagerId    int64  `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	MedicineId   int64  `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId"`
+	ActiveStatus string `protobuf:"bytes,2,opt,name=activeStatus,proto3" json:"activeStatus"`
+	ManagerId    int64  `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *UpdateMedicineActiveReq) Reset() {
@@ -3290,7 +3290,7 @@ type UpdateMedicineActiveResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=Result,proto3" json:"Result,omitempty"`
+	Result int64 `protobuf:"varint,1,opt,name=Result,proto3" json:"Result"`
 }
 
 func (x *UpdateMedicineActiveResp) Reset() {
@@ -3338,8 +3338,8 @@ type DeleteMedicineReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MedicineCode string `protobuf:"bytes,1,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
-	ManagerId    int64  `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	MedicineCode string `protobuf:"bytes,1,opt,name=medicineCode,proto3" json:"medicineCode"`
+	ManagerId    int64  `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *DeleteMedicineReq) Reset() {
@@ -3393,7 +3393,7 @@ type DeleteMedicineResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=Result,proto3" json:"Result,omitempty"`
+	Result int64 `protobuf:"varint,1,opt,name=Result,proto3" json:"Result"`
 }
 
 func (x *DeleteMedicineResp) Reset() {
@@ -3441,8 +3441,8 @@ type SelectTagByMedicineIdReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MedicineId int64 `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId,omitempty"`
-	ManagerId  int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	MedicineId int64 `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId"`
+	ManagerId  int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *SelectTagByMedicineIdReq) Reset() {
@@ -3496,7 +3496,7 @@ type SelectTagByMedicineIdResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	TagNames string `protobuf:"bytes,1,opt,name=tagNames,proto3" json:"tagNames,omitempty"`
+	TagNames string `protobuf:"bytes,1,opt,name=tagNames,proto3" json:"tagNames"`
 }
 
 func (x *SelectTagByMedicineIdResp) Reset() {
@@ -3544,8 +3544,8 @@ type SelectInfoByMedicineNamesReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MedicineNames []string `protobuf:"bytes,1,rep,name=medicineNames,proto3" json:"medicineNames,omitempty"`
-	ManagerId     int64    `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	MedicineNames []string `protobuf:"bytes,1,rep,name=medicineNames,proto3" json:"medicineNames"`
+	ManagerId     int64    `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *SelectInfoByMedicineNamesReq) Reset() {
@@ -3599,7 +3599,7 @@ type SelectInfoByMedicineNamesResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List []*MedicineListForQueryVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	List []*MedicineListForQueryVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
 }
 
 func (x *SelectInfoByMedicineNamesResp) Reset() {
@@ -3647,8 +3647,8 @@ type TagListReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	TagType   string `protobuf:"bytes,1,opt,name=tagType,proto3" json:"tagType,omitempty"`
-	ManagerId int64  `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	TagType   string `protobuf:"bytes,1,opt,name=tagType,proto3" json:"tagType"`
+	ManagerId int64  `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *TagListReq) Reset() {
@@ -3702,7 +3702,7 @@ type TagListResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List []*TagListVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	List []*TagListVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
 }
 
 func (x *TagListResp) Reset() {
@@ -3749,9 +3749,9 @@ type TagListVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	TagId   int64  `protobuf:"varint,1,opt,name=tagId,proto3" json:"tagId,omitempty"`
-	TagName string `protobuf:"bytes,2,opt,name=tagName,proto3" json:"tagName,omitempty"`
-	TagType string `protobuf:"bytes,3,opt,name=tagType,proto3" json:"tagType,omitempty"`
+	TagId   int64  `protobuf:"varint,1,opt,name=tagId,proto3" json:"tagId"`
+	TagName string `protobuf:"bytes,2,opt,name=tagName,proto3" json:"tagName"`
+	TagType string `protobuf:"bytes,3,opt,name=tagType,proto3" json:"tagType"`
 }
 
 func (x *TagListVo) Reset() {
@@ -3813,9 +3813,9 @@ type CreateTagReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	TagType   string `protobuf:"bytes,1,opt,name=tagType,proto3" json:"tagType,omitempty"`
-	TagName   string `protobuf:"bytes,2,opt,name=tagName,proto3" json:"tagName,omitempty"`
-	ManagerId int64  `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	TagType   string `protobuf:"bytes,1,opt,name=tagType,proto3" json:"tagType"`
+	TagName   string `protobuf:"bytes,2,opt,name=tagName,proto3" json:"tagName"`
+	ManagerId int64  `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *CreateTagReq) Reset() {
@@ -3876,7 +3876,7 @@ type CreateTagResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
 }
 
 func (x *CreateTagResp) Reset() {
@@ -3924,9 +3924,9 @@ type UpdateTagReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	TagId     int64  `protobuf:"varint,1,opt,name=tagId,proto3" json:"tagId,omitempty"`
-	TagName   string `protobuf:"bytes,2,opt,name=tagName,proto3" json:"tagName,omitempty"`
-	ManagerId int64  `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	TagId     int64  `protobuf:"varint,1,opt,name=tagId,proto3" json:"tagId"`
+	TagName   string `protobuf:"bytes,2,opt,name=tagName,proto3" json:"tagName"`
+	ManagerId int64  `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *UpdateTagReq) Reset() {
@@ -3987,7 +3987,7 @@ type UpdateTagResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
 }
 
 func (x *UpdateTagResp) Reset() {
@@ -4035,8 +4035,8 @@ type DeleteTagReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	TagId     int64 `protobuf:"varint,1,opt,name=tagId,proto3" json:"tagId,omitempty"`
-	ManagerId int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	TagId     int64 `protobuf:"varint,1,opt,name=tagId,proto3" json:"tagId"`
+	ManagerId int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *DeleteTagReq) Reset() {
@@ -4129,8 +4129,8 @@ type TagDetailListReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	TagId     int64 `protobuf:"varint,1,opt,name=tagId,proto3" json:"tagId,omitempty"`
-	ManagerId int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	TagId     int64 `protobuf:"varint,1,opt,name=tagId,proto3" json:"tagId"`
+	ManagerId int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *TagDetailListReq) Reset() {
@@ -4184,7 +4184,7 @@ type TagDetailListResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List []*TagDetailVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	List []*TagDetailVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
 }
 
 func (x *TagDetailListResp) Reset() {
@@ -4231,13 +4231,13 @@ type TagDetailVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MedicineId            int64  `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId,omitempty"`
-	MedicineName          string `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
-	MedicineCode          string `protobuf:"bytes,3,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
-	MedicineUnit          string `protobuf:"bytes,4,opt,name=medicineUnit,proto3" json:"medicineUnit,omitempty"`
-	MedicineForm          string `protobuf:"bytes,5,opt,name=medicineForm,proto3" json:"medicineForm,omitempty"`
-	MedicineSpecification string `protobuf:"bytes,6,opt,name=medicineSpecification,proto3" json:"medicineSpecification,omitempty"`
-	Manufacturer          string `protobuf:"bytes,7,opt,name=manufacturer,proto3" json:"manufacturer,omitempty"`
+	MedicineId            int64  `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId"`
+	MedicineName          string `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName"`
+	MedicineCode          string `protobuf:"bytes,3,opt,name=medicineCode,proto3" json:"medicineCode"`
+	MedicineUnit          string `protobuf:"bytes,4,opt,name=medicineUnit,proto3" json:"medicineUnit"`
+	MedicineForm          string `protobuf:"bytes,5,opt,name=medicineForm,proto3" json:"medicineForm"`
+	MedicineSpecification string `protobuf:"bytes,6,opt,name=medicineSpecification,proto3" json:"medicineSpecification"`
+	Manufacturer          string `protobuf:"bytes,7,opt,name=manufacturer,proto3" json:"manufacturer"`
 }
 
 func (x *TagDetailVo) Reset() {
@@ -4327,9 +4327,9 @@ type DeleteTagMedicineReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	TagId      int64 `protobuf:"varint,1,opt,name=tagId,proto3" json:"tagId,omitempty"`
-	MedicineId int64 `protobuf:"varint,2,opt,name=medicineId,proto3" json:"medicineId,omitempty"`
-	ManagerId  int64 `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	TagId      int64 `protobuf:"varint,1,opt,name=tagId,proto3" json:"tagId"`
+	MedicineId int64 `protobuf:"varint,2,opt,name=medicineId,proto3" json:"medicineId"`
+	ManagerId  int64 `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *DeleteTagMedicineReq) Reset() {
@@ -4390,7 +4390,7 @@ type DeleteTagMedicineResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
 }
 
 func (x *DeleteTagMedicineResp) Reset() {
@@ -4438,9 +4438,9 @@ type CreateTagMedicineReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	TagId      int64 `protobuf:"varint,1,opt,name=tagId,proto3" json:"tagId,omitempty"`
-	MedicineId int64 `protobuf:"varint,2,opt,name=medicineId,proto3" json:"medicineId,omitempty"`
-	ManagerId  int64 `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	TagId      int64 `protobuf:"varint,1,opt,name=tagId,proto3" json:"tagId"`
+	MedicineId int64 `protobuf:"varint,2,opt,name=medicineId,proto3" json:"medicineId"`
+	ManagerId  int64 `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *CreateTagMedicineReq) Reset() {
@@ -4501,7 +4501,7 @@ type CreateTagMedicineResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
 }
 
 func (x *CreateTagMedicineResp) Reset() {
@@ -4549,10 +4549,10 @@ type CommonMedicineQueryReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MedicineCode string `protobuf:"bytes,1,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
-	MedicineName string `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
-	TagId        int64  `protobuf:"varint,3,opt,name=tagId,proto3" json:"tagId,omitempty"`
-	ManagerId    int64  `protobuf:"varint,4,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	MedicineCode string `protobuf:"bytes,1,opt,name=medicineCode,proto3" json:"medicineCode"`
+	MedicineName string `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName"`
+	TagId        int64  `protobuf:"varint,3,opt,name=tagId,proto3" json:"tagId"`
+	ManagerId    int64  `protobuf:"varint,4,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *CommonMedicineQueryReq) Reset() {
@@ -4620,7 +4620,7 @@ type CommonMedicineQueryResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List []*TagMedicineVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	List []*TagMedicineVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
 }
 
 func (x *CommonMedicineQueryResp) Reset() {
@@ -4667,9 +4667,9 @@ type TagMedicineVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MedicineId   int64  `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId,omitempty"`
-	MedicineName string `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
-	MedicineCode string `protobuf:"bytes,3,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
+	MedicineId   int64  `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId"`
+	MedicineName string `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName"`
+	MedicineCode string `protobuf:"bytes,3,opt,name=medicineCode,proto3" json:"medicineCode"`
 }
 
 func (x *TagMedicineVo) Reset() {
@@ -4731,12 +4731,12 @@ type ListMiReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MiCode      string  `protobuf:"bytes,1,opt,name=miCode,proto3" json:"miCode,omitempty"`
-	MiName      string  `protobuf:"bytes,2,opt,name=miName,proto3" json:"miName,omitempty"`
-	ValidStatus string  `protobuf:"bytes,3,opt,name=validStatus,proto3" json:"validStatus,omitempty"`
-	Page        *Page   `protobuf:"bytes,4,opt,name=page,proto3" json:"page,omitempty"`
-	ManagerId   int64   `protobuf:"varint,5,opt,name=managerId,proto3" json:"managerId,omitempty"`
-	MiIds       []int64 `protobuf:"varint,6,rep,packed,name=miIds,proto3" json:"miIds,omitempty"`
+	MiCode      string  `protobuf:"bytes,1,opt,name=miCode,proto3" json:"miCode"`
+	MiName      string  `protobuf:"bytes,2,opt,name=miName,proto3" json:"miName"`
+	ValidStatus string  `protobuf:"bytes,3,opt,name=validStatus,proto3" json:"validStatus"`
+	Page        *Page   `protobuf:"bytes,4,opt,name=page,proto3" json:"page"`
+	ManagerId   int64   `protobuf:"varint,5,opt,name=managerId,proto3" json:"managerId"`
+	MiIds       []int64 `protobuf:"varint,6,rep,packed,name=miIds,proto3" json:"miIds"`
 }
 
 func (x *ListMiReq) Reset() {
@@ -4818,10 +4818,10 @@ type ListMiResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ListMiVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64       `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64       `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64       `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*ListMiVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64       `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64       `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64       `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *ListMiResp) Reset() {
@@ -4889,17 +4889,17 @@ type ListMiVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MiId         int64                  `protobuf:"varint,1,opt,name=miId,proto3" json:"miId,omitempty"`
-	MiCode       string                 `protobuf:"bytes,2,opt,name=miCode,proto3" json:"miCode,omitempty"`
-	MiName       string                 `protobuf:"bytes,3,opt,name=miName,proto3" json:"miName,omitempty"`
-	MiType       string                 `protobuf:"bytes,4,opt,name=miType,proto3" json:"miType,omitempty"`
-	ManagerName  string                 `protobuf:"bytes,5,opt,name=managerName,proto3" json:"managerName,omitempty"`
-	ManagerPhone string                 `protobuf:"bytes,6,opt,name=managerPhone,proto3" json:"managerPhone,omitempty"`
-	Province     string                 `protobuf:"bytes,7,opt,name=province,proto3" json:"province,omitempty"`
-	City         string                 `protobuf:"bytes,8,opt,name=city,proto3" json:"city,omitempty"`
-	Zone         string                 `protobuf:"bytes,9,opt,name=zone,proto3" json:"zone,omitempty"`
-	HashInfo     string                 `protobuf:"bytes,10,opt,name=hashInfo,proto3" json:"hashInfo,omitempty"`
-	CreatedAt    *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	MiId         int64                  `protobuf:"varint,1,opt,name=miId,proto3" json:"miId"`
+	MiCode       string                 `protobuf:"bytes,2,opt,name=miCode,proto3" json:"miCode"`
+	MiName       string                 `protobuf:"bytes,3,opt,name=miName,proto3" json:"miName"`
+	MiType       string                 `protobuf:"bytes,4,opt,name=miType,proto3" json:"miType"`
+	ManagerName  string                 `protobuf:"bytes,5,opt,name=managerName,proto3" json:"managerName"`
+	ManagerPhone string                 `protobuf:"bytes,6,opt,name=managerPhone,proto3" json:"managerPhone"`
+	Province     string                 `protobuf:"bytes,7,opt,name=province,proto3" json:"province"`
+	City         string                 `protobuf:"bytes,8,opt,name=city,proto3" json:"city"`
+	Zone         string                 `protobuf:"bytes,9,opt,name=zone,proto3" json:"zone"`
+	HashInfo     string                 `protobuf:"bytes,10,opt,name=hashInfo,proto3" json:"hashInfo"`
+	CreatedAt    *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=createdAt,proto3" json:"createdAt"`
 }
 
 func (x *ListMiVo) Reset() {
@@ -5017,10 +5017,10 @@ type CommonMIReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MiName    string `protobuf:"bytes,1,opt,name=miName,proto3" json:"miName,omitempty"`
-	MiCode    string `protobuf:"bytes,2,opt,name=miCode,proto3" json:"miCode,omitempty"`
-	ManagerId int64  `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId,omitempty"`
-	Page      *Page  `protobuf:"bytes,4,opt,name=page,proto3" json:"page,omitempty"`
+	MiName    string `protobuf:"bytes,1,opt,name=miName,proto3" json:"miName"`
+	MiCode    string `protobuf:"bytes,2,opt,name=miCode,proto3" json:"miCode"`
+	ManagerId int64  `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId"`
+	Page      *Page  `protobuf:"bytes,4,opt,name=page,proto3" json:"page"`
 }
 
 func (x *CommonMIReq) Reset() {
@@ -5088,10 +5088,10 @@ type CommonMIResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*CommonMIVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64         `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64         `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64         `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*CommonMIVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64         `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64         `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64         `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *CommonMIResp) Reset() {
@@ -5159,9 +5159,9 @@ type CommonMIVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MiId   int64  `protobuf:"varint,1,opt,name=miId,proto3" json:"miId,omitempty"`
-	MiName string `protobuf:"bytes,2,opt,name=miName,proto3" json:"miName,omitempty"`
-	MiCode string `protobuf:"bytes,3,opt,name=miCode,proto3" json:"miCode,omitempty"`
+	MiId   int64  `protobuf:"varint,1,opt,name=miId,proto3" json:"miId"`
+	MiName string `protobuf:"bytes,2,opt,name=miName,proto3" json:"miName"`
+	MiCode string `protobuf:"bytes,3,opt,name=miCode,proto3" json:"miCode"`
 }
 
 func (x *CommonMIVo) Reset() {
@@ -5223,15 +5223,15 @@ type CreateOneMIReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MiName       string `protobuf:"bytes,1,opt,name=miName,proto3" json:"miName,omitempty"`
-	MiCode       string `protobuf:"bytes,2,opt,name=miCode,proto3" json:"miCode,omitempty"`
-	MiType       string `protobuf:"bytes,3,opt,name=miType,proto3" json:"miType,omitempty"`
-	ManagerName  string `protobuf:"bytes,4,opt,name=managerName,proto3" json:"managerName,omitempty"`
-	ManagerPhone string `protobuf:"bytes,5,opt,name=managerPhone,proto3" json:"managerPhone,omitempty"`
-	Province     string `protobuf:"bytes,6,opt,name=province,proto3" json:"province,omitempty"`
-	City         string `protobuf:"bytes,7,opt,name=city,proto3" json:"city,omitempty"`
-	Zone         string `protobuf:"bytes,8,opt,name=zone,proto3" json:"zone,omitempty"`
-	ManagerId    int64  `protobuf:"varint,9,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	MiName       string `protobuf:"bytes,1,opt,name=miName,proto3" json:"miName"`
+	MiCode       string `protobuf:"bytes,2,opt,name=miCode,proto3" json:"miCode"`
+	MiType       string `protobuf:"bytes,3,opt,name=miType,proto3" json:"miType"`
+	ManagerName  string `protobuf:"bytes,4,opt,name=managerName,proto3" json:"managerName"`
+	ManagerPhone string `protobuf:"bytes,5,opt,name=managerPhone,proto3" json:"managerPhone"`
+	Province     string `protobuf:"bytes,6,opt,name=province,proto3" json:"province"`
+	City         string `protobuf:"bytes,7,opt,name=city,proto3" json:"city"`
+	Zone         string `protobuf:"bytes,8,opt,name=zone,proto3" json:"zone"`
+	ManagerId    int64  `protobuf:"varint,9,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *CreateOneMIReq) Reset() {
@@ -5334,7 +5334,7 @@ type CreateOneMIResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
 }
 
 func (x *CreateOneMIResp) Reset() {
@@ -5382,15 +5382,15 @@ type UpdateMiReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MiId         int64  `protobuf:"varint,1,opt,name=miId,proto3" json:"miId,omitempty"`
-	MiName       string `protobuf:"bytes,2,opt,name=miName,proto3" json:"miName,omitempty"`
-	MiType       string `protobuf:"bytes,3,opt,name=miType,proto3" json:"miType,omitempty"`
-	ManagerName  string `protobuf:"bytes,4,opt,name=managerName,proto3" json:"managerName,omitempty"`
-	ManagerPhone string `protobuf:"bytes,5,opt,name=managerPhone,proto3" json:"managerPhone,omitempty"`
-	Province     string `protobuf:"bytes,6,opt,name=province,proto3" json:"province,omitempty"`
-	City         string `protobuf:"bytes,7,opt,name=city,proto3" json:"city,omitempty"`
-	Zone         string `protobuf:"bytes,8,opt,name=zone,proto3" json:"zone,omitempty"`
-	ManagerId    int64  `protobuf:"varint,9,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	MiId         int64  `protobuf:"varint,1,opt,name=miId,proto3" json:"miId"`
+	MiName       string `protobuf:"bytes,2,opt,name=miName,proto3" json:"miName"`
+	MiType       string `protobuf:"bytes,3,opt,name=miType,proto3" json:"miType"`
+	ManagerName  string `protobuf:"bytes,4,opt,name=managerName,proto3" json:"managerName"`
+	ManagerPhone string `protobuf:"bytes,5,opt,name=managerPhone,proto3" json:"managerPhone"`
+	Province     string `protobuf:"bytes,6,opt,name=province,proto3" json:"province"`
+	City         string `protobuf:"bytes,7,opt,name=city,proto3" json:"city"`
+	Zone         string `protobuf:"bytes,8,opt,name=zone,proto3" json:"zone"`
+	ManagerId    int64  `protobuf:"varint,9,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *UpdateMiReq) Reset() {
@@ -5493,7 +5493,7 @@ type UpdateMiResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
 }
 
 func (x *UpdateMiResp) Reset() {
@@ -5541,10 +5541,10 @@ type CommonCompanyReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CompanyName string `protobuf:"bytes,1,opt,name=companyName,proto3" json:"companyName,omitempty"`
-	CompanyCode string `protobuf:"bytes,2,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
-	ManagerId   int64  `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId,omitempty"`
-	Page        *Page  `protobuf:"bytes,4,opt,name=page,proto3" json:"page,omitempty"`
+	CompanyName string `protobuf:"bytes,1,opt,name=companyName,proto3" json:"companyName"`
+	CompanyCode string `protobuf:"bytes,2,opt,name=companyCode,proto3" json:"companyCode"`
+	ManagerId   int64  `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId"`
+	Page        *Page  `protobuf:"bytes,4,opt,name=page,proto3" json:"page"`
 }
 
 func (x *CommonCompanyReq) Reset() {
@@ -5612,10 +5612,10 @@ type CommonCompanyResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*CommonCompanyVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64              `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64              `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64              `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*CommonCompanyVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64              `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64              `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64              `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *CommonCompanyResp) Reset() {
@@ -5683,9 +5683,9 @@ type CommonCompanyVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CompanyId   int64  `protobuf:"varint,1,opt,name=companyId,proto3" json:"companyId,omitempty"`
-	CompanyName string `protobuf:"bytes,2,opt,name=companyName,proto3" json:"companyName,omitempty"`
-	CompanyCode string `protobuf:"bytes,3,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
+	CompanyId   int64  `protobuf:"varint,1,opt,name=companyId,proto3" json:"companyId"`
+	CompanyName string `protobuf:"bytes,2,opt,name=companyName,proto3" json:"companyName"`
+	CompanyCode string `protobuf:"bytes,3,opt,name=companyCode,proto3" json:"companyCode"`
 }
 
 func (x *CommonCompanyVo) Reset() {
@@ -5747,8 +5747,8 @@ type SelCompanyByNamesReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CompanyNames []string `protobuf:"bytes,1,rep,name=companyNames,proto3" json:"companyNames,omitempty"`
-	ManagerId    int64    `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	CompanyNames []string `protobuf:"bytes,1,rep,name=companyNames,proto3" json:"companyNames"`
+	ManagerId    int64    `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *SelCompanyByNamesReq) Reset() {
@@ -5802,7 +5802,7 @@ type SelCompanyByNamesResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List []*CommonCompanyVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	List []*CommonCompanyVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
 }
 
 func (x *SelCompanyByNamesResp) Reset() {
@@ -5850,11 +5850,11 @@ type ListCompanyReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CompanyName string `protobuf:"bytes,1,opt,name=companyName,proto3" json:"companyName,omitempty"`
-	CompanyCode string `protobuf:"bytes,2,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
-	ValidStatus string `protobuf:"bytes,3,opt,name=validStatus,proto3" json:"validStatus,omitempty"`
-	Page        *Page  `protobuf:"bytes,4,opt,name=page,proto3" json:"page,omitempty"`
-	ManagerId   int64  `protobuf:"varint,5,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	CompanyName string `protobuf:"bytes,1,opt,name=companyName,proto3" json:"companyName"`
+	CompanyCode string `protobuf:"bytes,2,opt,name=companyCode,proto3" json:"companyCode"`
+	ValidStatus string `protobuf:"bytes,3,opt,name=validStatus,proto3" json:"validStatus"`
+	Page        *Page  `protobuf:"bytes,4,opt,name=page,proto3" json:"page"`
+	ManagerId   int64  `protobuf:"varint,5,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *ListCompanyReq) Reset() {
@@ -5929,10 +5929,10 @@ type ListCompanyResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ListCompanyVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64            `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64            `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64            `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*ListCompanyVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64            `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64            `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64            `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *ListCompanyResp) Reset() {
@@ -6000,16 +6000,16 @@ type ListCompanyVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CompanyId    int64                  `protobuf:"varint,1,opt,name=companyId,proto3" json:"companyId,omitempty"`
-	CompanyName  string                 `protobuf:"bytes,2,opt,name=companyName,proto3" json:"companyName,omitempty"`
-	CompanyCode  string                 `protobuf:"bytes,3,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
-	ManagerName  string                 `protobuf:"bytes,4,opt,name=managerName,proto3" json:"managerName,omitempty"`
-	ManagerPhone string                 `protobuf:"bytes,5,opt,name=managerPhone,proto3" json:"managerPhone,omitempty"`
-	Province     string                 `protobuf:"bytes,6,opt,name=province,proto3" json:"province,omitempty"`
-	City         string                 `protobuf:"bytes,7,opt,name=city,proto3" json:"city,omitempty"`
-	Zone         string                 `protobuf:"bytes,8,opt,name=zone,proto3" json:"zone,omitempty"`
-	HashInfo     string                 `protobuf:"bytes,9,opt,name=hashInfo,proto3" json:"hashInfo,omitempty"`
-	CreatedAt    *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	CompanyId    int64                  `protobuf:"varint,1,opt,name=companyId,proto3" json:"companyId"`
+	CompanyName  string                 `protobuf:"bytes,2,opt,name=companyName,proto3" json:"companyName"`
+	CompanyCode  string                 `protobuf:"bytes,3,opt,name=companyCode,proto3" json:"companyCode"`
+	ManagerName  string                 `protobuf:"bytes,4,opt,name=managerName,proto3" json:"managerName"`
+	ManagerPhone string                 `protobuf:"bytes,5,opt,name=managerPhone,proto3" json:"managerPhone"`
+	Province     string                 `protobuf:"bytes,6,opt,name=province,proto3" json:"province"`
+	City         string                 `protobuf:"bytes,7,opt,name=city,proto3" json:"city"`
+	Zone         string                 `protobuf:"bytes,8,opt,name=zone,proto3" json:"zone"`
+	HashInfo     string                 `protobuf:"bytes,9,opt,name=hashInfo,proto3" json:"hashInfo"`
+	CreatedAt    *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=createdAt,proto3" json:"createdAt"`
 }
 
 func (x *ListCompanyVo) Reset() {
@@ -6120,14 +6120,14 @@ type CreateOneCompanyReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CompanyName  string `protobuf:"bytes,1,opt,name=companyName,proto3" json:"companyName,omitempty"`
-	CompanyCode  string `protobuf:"bytes,2,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
-	ManagerName  string `protobuf:"bytes,3,opt,name=managerName,proto3" json:"managerName,omitempty"`
-	ManagerPhone string `protobuf:"bytes,4,opt,name=managerPhone,proto3" json:"managerPhone,omitempty"`
-	Province     string `protobuf:"bytes,5,opt,name=province,proto3" json:"province,omitempty"`
-	City         string `protobuf:"bytes,6,opt,name=city,proto3" json:"city,omitempty"`
-	Zone         string `protobuf:"bytes,7,opt,name=zone,proto3" json:"zone,omitempty"`
-	ManagerId    int64  `protobuf:"varint,8,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	CompanyName  string `protobuf:"bytes,1,opt,name=companyName,proto3" json:"companyName"`
+	CompanyCode  string `protobuf:"bytes,2,opt,name=companyCode,proto3" json:"companyCode"`
+	ManagerName  string `protobuf:"bytes,3,opt,name=managerName,proto3" json:"managerName"`
+	ManagerPhone string `protobuf:"bytes,4,opt,name=managerPhone,proto3" json:"managerPhone"`
+	Province     string `protobuf:"bytes,5,opt,name=province,proto3" json:"province"`
+	City         string `protobuf:"bytes,6,opt,name=city,proto3" json:"city"`
+	Zone         string `protobuf:"bytes,7,opt,name=zone,proto3" json:"zone"`
+	ManagerId    int64  `protobuf:"varint,8,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *CreateOneCompanyReq) Reset() {
@@ -6223,7 +6223,7 @@ type CreateOneCompanyResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
 }
 
 func (x *CreateOneCompanyResp) Reset() {
@@ -6271,15 +6271,15 @@ type UpdateOneCompanyReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CompanyName  string `protobuf:"bytes,1,opt,name=companyName,proto3" json:"companyName,omitempty"`
-	CompanyCode  string `protobuf:"bytes,2,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
-	ManagerName  string `protobuf:"bytes,3,opt,name=managerName,proto3" json:"managerName,omitempty"`
-	ManagerPhone string `protobuf:"bytes,4,opt,name=managerPhone,proto3" json:"managerPhone,omitempty"`
-	Province     string `protobuf:"bytes,5,opt,name=province,proto3" json:"province,omitempty"`
-	City         string `protobuf:"bytes,6,opt,name=city,proto3" json:"city,omitempty"`
-	Zone         string `protobuf:"bytes,7,opt,name=zone,proto3" json:"zone,omitempty"`
-	ManagerId    int64  `protobuf:"varint,8,opt,name=managerId,proto3" json:"managerId,omitempty"`
-	CompanyId    int64  `protobuf:"varint,9,opt,name=companyId,proto3" json:"companyId,omitempty"`
+	CompanyName  string `protobuf:"bytes,1,opt,name=companyName,proto3" json:"companyName"`
+	CompanyCode  string `protobuf:"bytes,2,opt,name=companyCode,proto3" json:"companyCode"`
+	ManagerName  string `protobuf:"bytes,3,opt,name=managerName,proto3" json:"managerName"`
+	ManagerPhone string `protobuf:"bytes,4,opt,name=managerPhone,proto3" json:"managerPhone"`
+	Province     string `protobuf:"bytes,5,opt,name=province,proto3" json:"province"`
+	City         string `protobuf:"bytes,6,opt,name=city,proto3" json:"city"`
+	Zone         string `protobuf:"bytes,7,opt,name=zone,proto3" json:"zone"`
+	ManagerId    int64  `protobuf:"varint,8,opt,name=managerId,proto3" json:"managerId"`
+	CompanyId    int64  `protobuf:"varint,9,opt,name=companyId,proto3" json:"companyId"`
 }
 
 func (x *UpdateOneCompanyReq) Reset() {
@@ -6382,7 +6382,7 @@ type UpdateOneCompanyResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
 }
 
 func (x *UpdateOneCompanyResp) Reset() {
@@ -6430,13 +6430,13 @@ type ListTpPlanErrReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	TpOrderCode  string                 `protobuf:"bytes,1,opt,name=tpOrderCode,proto3" json:"tpOrderCode,omitempty"`
-	MedicineName string                 `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
-	MedicineCode string                 `protobuf:"bytes,3,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
-	StratDate    *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=stratDate,proto3" json:"stratDate,omitempty"`
-	EndDate      *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=endDate,proto3" json:"endDate,omitempty"`
-	Page         *Page                  `protobuf:"bytes,6,opt,name=page,proto3" json:"page,omitempty"`
-	ManagerId    int64                  `protobuf:"varint,7,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	TpOrderCode  string                 `protobuf:"bytes,1,opt,name=tpOrderCode,proto3" json:"tpOrderCode"`
+	MedicineName string                 `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName"`
+	MedicineCode string                 `protobuf:"bytes,3,opt,name=medicineCode,proto3" json:"medicineCode"`
+	StratDate    *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=stratDate,proto3" json:"stratDate"`
+	EndDate      *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=endDate,proto3" json:"endDate"`
+	Page         *Page                  `protobuf:"bytes,6,opt,name=page,proto3" json:"page"`
+	ManagerId    int64                  `protobuf:"varint,7,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *ListTpPlanErrReq) Reset() {
@@ -6525,10 +6525,10 @@ type ListTpPlanErrResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ListTpPlanErrVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64              `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64              `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64              `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*ListTpPlanErrVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64              `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64              `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64              `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *ListTpPlanErrResp) Reset() {
@@ -6596,18 +6596,18 @@ type ListTpPlanErrVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	TpSyncShipmentPlanId  int64                  `protobuf:"varint,1,opt,name=tpSyncShipmentPlanId,proto3" json:"tpSyncShipmentPlanId,omitempty"`
-	TpOrderCode           string                 `protobuf:"bytes,2,opt,name=tpOrderCode,proto3" json:"tpOrderCode,omitempty"`
-	TenderPlatformCode    string                 `protobuf:"bytes,3,opt,name=tenderPlatformCode,proto3" json:"tenderPlatformCode,omitempty"`
-	MedicineName          string                 `protobuf:"bytes,4,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
-	MedicineCode          string                 `protobuf:"bytes,5,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
-	MedicineSpecification string                 `protobuf:"bytes,6,opt,name=medicineSpecification,proto3" json:"medicineSpecification,omitempty"`
-	TpShipmentAmount      int64                  `protobuf:"varint,7,opt,name=tpShipmentAmount,proto3" json:"tpShipmentAmount,omitempty"`
-	TpPrice               int64                  `protobuf:"varint,8,opt,name=tpPrice,proto3" json:"tpPrice,omitempty"`
-	CompanyName           string                 `protobuf:"bytes,9,opt,name=companyName,proto3" json:"companyName,omitempty"`
-	MiName                string                 `protobuf:"bytes,10,opt,name=miName,proto3" json:"miName,omitempty"`
-	ErrMsg                string                 `protobuf:"bytes,11,opt,name=errMsg,proto3" json:"errMsg,omitempty"`
-	CreatedAt             *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	TpSyncShipmentPlanId  int64                  `protobuf:"varint,1,opt,name=tpSyncShipmentPlanId,proto3" json:"tpSyncShipmentPlanId"`
+	TpOrderCode           string                 `protobuf:"bytes,2,opt,name=tpOrderCode,proto3" json:"tpOrderCode"`
+	TenderPlatformCode    string                 `protobuf:"bytes,3,opt,name=tenderPlatformCode,proto3" json:"tenderPlatformCode"`
+	MedicineName          string                 `protobuf:"bytes,4,opt,name=medicineName,proto3" json:"medicineName"`
+	MedicineCode          string                 `protobuf:"bytes,5,opt,name=medicineCode,proto3" json:"medicineCode"`
+	MedicineSpecification string                 `protobuf:"bytes,6,opt,name=medicineSpecification,proto3" json:"medicineSpecification"`
+	TpShipmentAmount      int64                  `protobuf:"varint,7,opt,name=tpShipmentAmount,proto3" json:"tpShipmentAmount"`
+	TpPrice               int64                  `protobuf:"varint,8,opt,name=tpPrice,proto3" json:"tpPrice"`
+	CompanyName           string                 `protobuf:"bytes,9,opt,name=companyName,proto3" json:"companyName"`
+	MiName                string                 `protobuf:"bytes,10,opt,name=miName,proto3" json:"miName"`
+	ErrMsg                string                 `protobuf:"bytes,11,opt,name=errMsg,proto3" json:"errMsg"`
+	CreatedAt             *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=createdAt,proto3" json:"createdAt"`
 }
 
 func (x *ListTpPlanErrVo) Reset() {
@@ -6732,8 +6732,8 @@ type UpdateErrShipmentPlanReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	TpShipmentPlanId int64 `protobuf:"varint,1,opt,name=tpShipmentPlanId,proto3" json:"tpShipmentPlanId,omitempty"`
-	ManagerId        int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	TpShipmentPlanId int64 `protobuf:"varint,1,opt,name=tpShipmentPlanId,proto3" json:"tpShipmentPlanId"`
+	ManagerId        int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *UpdateErrShipmentPlanReq) Reset() {
@@ -6787,7 +6787,7 @@ type UpdateErrShipmentPlanResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
 }
 
 func (x *UpdateErrShipmentPlanResp) Reset() {
@@ -6835,18 +6835,19 @@ type ListShipmentPlanReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	TpOrderNo    string                 `protobuf:"bytes,1,opt,name=tpOrderNo,proto3" json:"tpOrderNo,omitempty"`
-	ShipmentNo   string                 `protobuf:"bytes,2,opt,name=shipmentNo,proto3" json:"shipmentNo,omitempty"`
-	MedicineName string                 `protobuf:"bytes,3,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
-	MedicineCode string                 `protobuf:"bytes,4,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
-	CompanyCode  string                 `protobuf:"bytes,5,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
-	PlanStatus   string                 `protobuf:"bytes,6,opt,name=planStatus,proto3" json:"planStatus,omitempty"`
-	StratDate    *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=stratDate,proto3" json:"stratDate,omitempty"`
-	EndDate      *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=endDate,proto3" json:"endDate,omitempty"`
-	Page         *Page                  `protobuf:"bytes,9,opt,name=page,proto3" json:"page,omitempty"`
-	ManagerId    int64                  `protobuf:"varint,10,opt,name=managerId,proto3" json:"managerId,omitempty"`
-	MiId         int64                  `protobuf:"varint,11,opt,name=miId,proto3" json:"miId,omitempty"`
-	CompanyId    int64                  `protobuf:"varint,12,opt,name=companyId,proto3" json:"companyId,omitempty"`
+	TpOrderNo    string                 `protobuf:"bytes,1,opt,name=tpOrderNo,proto3" json:"tpOrderNo"`
+	ShipmentNo   string                 `protobuf:"bytes,2,opt,name=shipmentNo,proto3" json:"shipmentNo"`
+	MedicineName string                 `protobuf:"bytes,3,opt,name=medicineName,proto3" json:"medicineName"`
+	MedicineCode string                 `protobuf:"bytes,4,opt,name=medicineCode,proto3" json:"medicineCode"`
+	CompanyCode  string                 `protobuf:"bytes,5,opt,name=companyCode,proto3" json:"companyCode"`
+	PlanStatus   string                 `protobuf:"bytes,6,opt,name=planStatus,proto3" json:"planStatus"`
+	StratDate    *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=stratDate,proto3" json:"stratDate"`
+	EndDate      *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=endDate,proto3" json:"endDate"`
+	Page         *Page                  `protobuf:"bytes,9,opt,name=page,proto3" json:"page"`
+	ManagerId    int64                  `protobuf:"varint,10,opt,name=managerId,proto3" json:"managerId"`
+	MiId         int64                  `protobuf:"varint,11,opt,name=miId,proto3" json:"miId"`
+	CompanyId    int64                  `protobuf:"varint,12,opt,name=companyId,proto3" json:"companyId"`
+	MiName       string                 `protobuf:"bytes,13,opt,name=miName,proto3" json:"miName"`
 }
 
 func (x *ListShipmentPlanReq) Reset() {
@@ -6965,15 +6966,22 @@ func (x *ListShipmentPlanReq) GetCompanyId() int64 {
 	return 0
 }
 
+func (x *ListShipmentPlanReq) GetMiName() string {
+	if x != nil {
+		return x.MiName
+	}
+	return ""
+}
+
 type ListShipmentPlanResp struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ListShipmentPlanrVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64                  `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64                  `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*ListShipmentPlanrVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64                  `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64                  `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64                  `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *ListShipmentPlanResp) Reset() {
@@ -7041,30 +7049,30 @@ type ListShipmentPlanrVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ShipmentPlanId        int64                  `protobuf:"varint,1,opt,name=shipmentPlanId,proto3" json:"shipmentPlanId,omitempty"`
-	TpOrderNo             string                 `protobuf:"bytes,2,opt,name=tpOrderNo,proto3" json:"tpOrderNo,omitempty"`
-	OrderNo               string                 `protobuf:"bytes,3,opt,name=orderNo,proto3" json:"orderNo,omitempty"`
-	InvoiceNo             string                 `protobuf:"bytes,4,opt,name=invoiceNo,proto3" json:"invoiceNo,omitempty"`
-	InvoiceCode           string                 `protobuf:"bytes,5,opt,name=invoiceCode,proto3" json:"invoiceCode,omitempty"`
-	TpCode                string                 `protobuf:"bytes,6,opt,name=tpCode,proto3" json:"tpCode,omitempty"`
-	MedicineName          string                 `protobuf:"bytes,7,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
-	MedicineCode          string                 `protobuf:"bytes,8,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
-	MedicineSpecification string                 `protobuf:"bytes,9,opt,name=medicineSpecification,proto3" json:"medicineSpecification,omitempty"`
-	ShipmentPrice         int64                  `protobuf:"varint,10,opt,name=shipmentPrice,proto3" json:"shipmentPrice,omitempty"`
-	ShipmentAmount        int64                  `protobuf:"varint,11,opt,name=shipmentAmount,proto3" json:"shipmentAmount,omitempty"`
-	OrderAmount           int64                  `protobuf:"varint,12,opt,name=orderAmount,proto3" json:"orderAmount,omitempty"`
-	CompanyName           string                 `protobuf:"bytes,13,opt,name=companyName,proto3" json:"companyName,omitempty"`
-	MiName                string                 `protobuf:"bytes,14,opt,name=miName,proto3" json:"miName,omitempty"`
-	TpCreatedAt           *timestamppb.Timestamp `protobuf:"bytes,15,opt,name=tpCreatedAt,proto3" json:"tpCreatedAt,omitempty"`
-	ReceiveAt             *timestamppb.Timestamp `protobuf:"bytes,16,opt,name=receiveAt,proto3" json:"receiveAt,omitempty"`
-	PlanStatus            string                 `protobuf:"bytes,17,opt,name=planStatus,proto3" json:"planStatus,omitempty"`
-	Manufacturer          string                 `protobuf:"bytes,18,opt,name=manufacturer,proto3" json:"manufacturer,omitempty"`
-	TagName               string                 `protobuf:"bytes,19,opt,name=tagName,proto3" json:"tagName,omitempty"`
-	MedicineForm          string                 `protobuf:"bytes,20,opt,name=medicineForm,proto3" json:"medicineForm,omitempty"`
-	MedicineUnit          string                 `protobuf:"bytes,21,opt,name=medicineUnit,proto3" json:"medicineUnit,omitempty"`
-	CalculateRate         int64                  `protobuf:"varint,22,opt,name=calculateRate,proto3" json:"calculateRate,omitempty"`
-	MedicineId            int64                  `protobuf:"varint,23,opt,name=medicineId,proto3" json:"medicineId,omitempty"`
-	ShipmentNo            string                 `protobuf:"bytes,24,opt,name=shipmentNo,proto3" json:"shipmentNo,omitempty"`
+	ShipmentPlanId        int64                  `protobuf:"varint,1,opt,name=shipmentPlanId,proto3" json:"shipmentPlanId"`
+	TpOrderNo             string                 `protobuf:"bytes,2,opt,name=tpOrderNo,proto3" json:"tpOrderNo"`
+	OrderNo               string                 `protobuf:"bytes,3,opt,name=orderNo,proto3" json:"orderNo"`
+	InvoiceNo             string                 `protobuf:"bytes,4,opt,name=invoiceNo,proto3" json:"invoiceNo"`
+	InvoiceCode           string                 `protobuf:"bytes,5,opt,name=invoiceCode,proto3" json:"invoiceCode"`
+	TpCode                string                 `protobuf:"bytes,6,opt,name=tpCode,proto3" json:"tpCode"`
+	MedicineName          string                 `protobuf:"bytes,7,opt,name=medicineName,proto3" json:"medicineName"`
+	MedicineCode          string                 `protobuf:"bytes,8,opt,name=medicineCode,proto3" json:"medicineCode"`
+	MedicineSpecification string                 `protobuf:"bytes,9,opt,name=medicineSpecification,proto3" json:"medicineSpecification"`
+	ShipmentPrice         int64                  `protobuf:"varint,10,opt,name=shipmentPrice,proto3" json:"shipmentPrice"`
+	ShipmentAmount        int64                  `protobuf:"varint,11,opt,name=shipmentAmount,proto3" json:"shipmentAmount"`
+	OrderAmount           int64                  `protobuf:"varint,12,opt,name=orderAmount,proto3" json:"orderAmount"`
+	CompanyName           string                 `protobuf:"bytes,13,opt,name=companyName,proto3" json:"companyName"`
+	MiName                string                 `protobuf:"bytes,14,opt,name=miName,proto3" json:"miName"`
+	TpCreatedAt           *timestamppb.Timestamp `protobuf:"bytes,15,opt,name=tpCreatedAt,proto3" json:"tpCreatedAt"`
+	ReceiveAt             *timestamppb.Timestamp `protobuf:"bytes,16,opt,name=receiveAt,proto3" json:"receiveAt"`
+	PlanStatus            string                 `protobuf:"bytes,17,opt,name=planStatus,proto3" json:"planStatus"`
+	Manufacturer          string                 `protobuf:"bytes,18,opt,name=manufacturer,proto3" json:"manufacturer"`
+	TagName               string                 `protobuf:"bytes,19,opt,name=tagName,proto3" json:"tagName"`
+	MedicineForm          string                 `protobuf:"bytes,20,opt,name=medicineForm,proto3" json:"medicineForm"`
+	MedicineUnit          string                 `protobuf:"bytes,21,opt,name=medicineUnit,proto3" json:"medicineUnit"`
+	CalculateRate         int64                  `protobuf:"varint,22,opt,name=calculateRate,proto3" json:"calculateRate"`
+	MedicineId            int64                  `protobuf:"varint,23,opt,name=medicineId,proto3" json:"medicineId"`
+	ShipmentNo            string                 `protobuf:"bytes,24,opt,name=shipmentNo,proto3" json:"shipmentNo"`
 }
 
 func (x *ListShipmentPlanrVo) Reset() {
@@ -7273,8 +7281,8 @@ type DetailShipmentOrderReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ShipmentNo string `protobuf:"bytes,1,opt,name=shipmentNo,proto3" json:"shipmentNo,omitempty"`
-	ManagerId  int64  `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	ShipmentNo string `protobuf:"bytes,1,opt,name=shipmentNo,proto3" json:"shipmentNo"`
+	ManagerId  int64  `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *DetailShipmentOrderReq) Reset() {
@@ -7329,17 +7337,17 @@ type DetailShipmentOrderResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MibId           int64  `protobuf:"varint,1,opt,name=mibId,proto3" json:"mibId,omitempty"`
-	ShipmentOrderId int64  `protobuf:"varint,2,opt,name=shipmentOrderId,proto3" json:"shipmentOrderId,omitempty"`
-	CompanyCode     string `protobuf:"bytes,3,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
-	CompanyName     string `protobuf:"bytes,4,opt,name=companyName,proto3" json:"companyName,omitempty"`
-	ShipmentNo      string `protobuf:"bytes,5,opt,name=shipmentNo,proto3" json:"shipmentNo,omitempty"`
-	ShipmentCode    string `protobuf:"bytes,6,opt,name=shipmentCode,proto3" json:"shipmentCode,omitempty"`
-	ShipmentCompany string `protobuf:"bytes,7,opt,name=shipmentCompany,proto3" json:"shipmentCompany,omitempty"`
-	InvoiceNo       string `protobuf:"bytes,8,opt,name=invoiceNo,proto3" json:"invoiceNo,omitempty"`
-	InvoiceCode     string `protobuf:"bytes,9,opt,name=invoiceCode,proto3" json:"invoiceCode,omitempty"`
-	OrderAmount     int64  `protobuf:"varint,10,opt,name=orderAmount,proto3" json:"orderAmount,omitempty"`
-	ShipmentStatus  string `protobuf:"bytes,11,opt,name=shipmentStatus,proto3" json:"shipmentStatus,omitempty"`
+	MibId           int64  `protobuf:"varint,1,opt,name=mibId,proto3" json:"mibId"`
+	ShipmentOrderId int64  `protobuf:"varint,2,opt,name=shipmentOrderId,proto3" json:"shipmentOrderId"`
+	CompanyCode     string `protobuf:"bytes,3,opt,name=companyCode,proto3" json:"companyCode"`
+	CompanyName     string `protobuf:"bytes,4,opt,name=companyName,proto3" json:"companyName"`
+	ShipmentNo      string `protobuf:"bytes,5,opt,name=shipmentNo,proto3" json:"shipmentNo"`
+	ShipmentCode    string `protobuf:"bytes,6,opt,name=shipmentCode,proto3" json:"shipmentCode"`
+	ShipmentCompany string `protobuf:"bytes,7,opt,name=shipmentCompany,proto3" json:"shipmentCompany"`
+	InvoiceNo       string `protobuf:"bytes,8,opt,name=invoiceNo,proto3" json:"invoiceNo"`
+	InvoiceCode     string `protobuf:"bytes,9,opt,name=invoiceCode,proto3" json:"invoiceCode"`
+	OrderAmount     int64  `protobuf:"varint,10,opt,name=orderAmount,proto3" json:"orderAmount"`
+	ShipmentStatus  string `protobuf:"bytes,11,opt,name=shipmentStatus,proto3" json:"shipmentStatus"`
 }
 
 func (x *DetailShipmentOrderResp) Reset() {
@@ -7458,7 +7466,7 @@ type ListShipmentPlanForOrderReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//  string  tpOrderCode = 1;
-	ShipmentNo string `protobuf:"bytes,1,opt,name=shipmentNo,proto3" json:"shipmentNo,omitempty"`
+	ShipmentNo string `protobuf:"bytes,1,opt,name=shipmentNo,proto3" json:"shipmentNo"`
 	//  string medicineName = 3;
 	//  string medicineCode = 4;
 	//  string companyCode = 5;
@@ -7466,7 +7474,7 @@ type ListShipmentPlanForOrderReq struct {
 	//  google.protobuf.Timestamp stratDate = 7;
 	//  google.protobuf.Timestamp endDate = 8;
 	//  Page page = 9;
-	ManagerId int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	ManagerId int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *ListShipmentPlanForOrderReq) Reset() {
@@ -7520,7 +7528,7 @@ type ListShipmentPlanForOrderResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List []*ListShipmentPlanForOrderVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	List []*ListShipmentPlanForOrderVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
 }
 
 func (x *ListShipmentPlanForOrderResp) Reset() {
@@ -7567,16 +7575,17 @@ type ListShipmentPlanForOrderVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	OrderNo               string                 `protobuf:"bytes,1,opt,name=orderNo,proto3" json:"orderNo,omitempty"`
-	TpOrderNo             string                 `protobuf:"bytes,2,opt,name=tpOrderNo,proto3" json:"tpOrderNo,omitempty"`
-	TpCode                string                 `protobuf:"bytes,3,opt,name=tpCode,proto3" json:"tpCode,omitempty"`
-	MedicineName          string                 `protobuf:"bytes,4,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
-	MedicineCode          string                 `protobuf:"bytes,5,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
-	TagName               string                 `protobuf:"bytes,6,opt,name=tagName,proto3" json:"tagName,omitempty"`
-	MedicineSpecification string                 `protobuf:"bytes,7,opt,name=medicineSpecification,proto3" json:"medicineSpecification,omitempty"`
-	ShipmentAmount        int64                  `protobuf:"varint,8,opt,name=shipmentAmount,proto3" json:"shipmentAmount,omitempty"`
-	OrderAmount           int64                  `protobuf:"varint,9,opt,name=orderAmount,proto3" json:"orderAmount,omitempty"`
-	TpCreatedAt           *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=tpCreatedAt,proto3" json:"tpCreatedAt,omitempty"`
+	OrderNo               string                 `protobuf:"bytes,1,opt,name=orderNo,proto3" json:"orderNo"`
+	TpOrderNo             string                 `protobuf:"bytes,2,opt,name=tpOrderNo,proto3" json:"tpOrderNo"`
+	TpCode                string                 `protobuf:"bytes,3,opt,name=tpCode,proto3" json:"tpCode"`
+	MedicineName          string                 `protobuf:"bytes,4,opt,name=medicineName,proto3" json:"medicineName"`
+	MedicineCode          string                 `protobuf:"bytes,5,opt,name=medicineCode,proto3" json:"medicineCode"`
+	TagName               string                 `protobuf:"bytes,6,opt,name=tagName,proto3" json:"tagName"`
+	MedicineSpecification string                 `protobuf:"bytes,7,opt,name=medicineSpecification,proto3" json:"medicineSpecification"`
+	ShipmentAmount        int64                  `protobuf:"varint,8,opt,name=shipmentAmount,proto3" json:"shipmentAmount"`
+	OrderAmount           int64                  `protobuf:"varint,9,opt,name=orderAmount,proto3" json:"orderAmount"`
+	TpCreatedAt           *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=tpCreatedAt,proto3" json:"tpCreatedAt"`
+	MiName                string                 `protobuf:"bytes,11,opt,name=miName,proto3" json:"miName"`
 }
 
 func (x *ListShipmentPlanForOrderVo) Reset() {
@@ -7681,17 +7690,24 @@ func (x *ListShipmentPlanForOrderVo) GetTpCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+func (x *ListShipmentPlanForOrderVo) GetMiName() string {
+	if x != nil {
+		return x.MiName
+	}
+	return ""
+}
+
 //招采单汇总
 type CountShipmentPlanReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	StartDate *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=startDate,proto3" json:"startDate,omitempty"`
-	EndDate   *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=endDate,proto3" json:"endDate,omitempty"`
-	MiId      int64                  `protobuf:"varint,3,opt,name=miId,proto3" json:"miId,omitempty"`
-	CompanyId int64                  `protobuf:"varint,4,opt,name=companyId,proto3" json:"companyId,omitempty"`
-	ManagerId int64                  `protobuf:"varint,5,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	StartDate *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=startDate,proto3" json:"startDate"`
+	EndDate   *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=endDate,proto3" json:"endDate"`
+	MiId      int64                  `protobuf:"varint,3,opt,name=miId,proto3" json:"miId"`
+	CompanyId int64                  `protobuf:"varint,4,opt,name=companyId,proto3" json:"companyId"`
+	ManagerId int64                  `protobuf:"varint,5,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *CountShipmentPlanReq) Reset() {
@@ -7766,9 +7782,9 @@ type CountShipmentPlanResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	WaitNum     int64 `protobuf:"varint,1,opt,name=waitNum,proto3" json:"waitNum,omitempty"`
-	FailNum     int64 `protobuf:"varint,2,opt,name=failNum,proto3" json:"failNum,omitempty"`
-	CompleteNum int64 `protobuf:"varint,3,opt,name=completeNum,proto3" json:"completeNum,omitempty"`
+	WaitNum     int64 `protobuf:"varint,1,opt,name=waitNum,proto3" json:"waitNum"`
+	FailNum     int64 `protobuf:"varint,2,opt,name=failNum,proto3" json:"failNum"`
+	CompleteNum int64 `protobuf:"varint,3,opt,name=completeNum,proto3" json:"completeNum"`
 }
 
 func (x *CountShipmentPlanResp) Reset() {
@@ -7830,23 +7846,23 @@ type CreateShipmentOrderReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MiCode           string                 `protobuf:"bytes,1,opt,name=miCode,proto3" json:"miCode,omitempty"`
-	CompanyCode      string                 `protobuf:"bytes,2,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
-	InvoiceMd5       string                 `protobuf:"bytes,3,opt,name=invoiceMd5,proto3" json:"invoiceMd5,omitempty"`
-	InvoiceUrl       string                 `protobuf:"bytes,4,opt,name=invoiceUrl,proto3" json:"invoiceUrl,omitempty"`
-	InvoiceType      string                 `protobuf:"bytes,5,opt,name=invoiceType,proto3" json:"invoiceType,omitempty"`
-	InvoiceTotal     int64                  `protobuf:"varint,6,opt,name=invoiceTotal,proto3" json:"invoiceTotal,omitempty"`
-	InvoiceTax       int64                  `protobuf:"varint,7,opt,name=invoiceTax,proto3" json:"invoiceTax,omitempty"`
-	InvoiceCheckCode string                 `protobuf:"bytes,8,opt,name=invoiceCheckCode,proto3" json:"invoiceCheckCode,omitempty"`
-	InvoiceNo        string                 `protobuf:"bytes,9,opt,name=invoiceNo,proto3" json:"invoiceNo,omitempty"`
-	InvoiceCode      string                 `protobuf:"bytes,10,opt,name=invoiceCode,proto3" json:"invoiceCode,omitempty"`
-	InvoiceDate      *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=invoiceDate,proto3" json:"invoiceDate,omitempty"`
-	SendOutAt        *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=sendOutAt,proto3" json:"sendOutAt,omitempty"`
-	OrderAmount      int64                  `protobuf:"varint,13,opt,name=orderAmount,proto3" json:"orderAmount,omitempty"`
-	ShipmentCode     string                 `protobuf:"bytes,14,opt,name=shipmentCode,proto3" json:"shipmentCode,omitempty"`
-	ShipmentCompany  string                 `protobuf:"bytes,15,opt,name=shipmentCompany,proto3" json:"shipmentCompany,omitempty"`
-	ShipmentPlanIds  []int64                `protobuf:"varint,16,rep,packed,name=shipmentPlanIds,proto3" json:"shipmentPlanIds,omitempty"`
-	ManagerId        int64                  `protobuf:"varint,17,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	MiCode           string                 `protobuf:"bytes,1,opt,name=miCode,proto3" json:"miCode"`
+	CompanyCode      string                 `protobuf:"bytes,2,opt,name=companyCode,proto3" json:"companyCode"`
+	InvoiceMd5       string                 `protobuf:"bytes,3,opt,name=invoiceMd5,proto3" json:"invoiceMd5"`
+	InvoiceUrl       string                 `protobuf:"bytes,4,opt,name=invoiceUrl,proto3" json:"invoiceUrl"`
+	InvoiceType      string                 `protobuf:"bytes,5,opt,name=invoiceType,proto3" json:"invoiceType"`
+	InvoiceTotal     int64                  `protobuf:"varint,6,opt,name=invoiceTotal,proto3" json:"invoiceTotal"`
+	InvoiceTax       int64                  `protobuf:"varint,7,opt,name=invoiceTax,proto3" json:"invoiceTax"`
+	InvoiceCheckCode string                 `protobuf:"bytes,8,opt,name=invoiceCheckCode,proto3" json:"invoiceCheckCode"`
+	InvoiceNo        string                 `protobuf:"bytes,9,opt,name=invoiceNo,proto3" json:"invoiceNo"`
+	InvoiceCode      string                 `protobuf:"bytes,10,opt,name=invoiceCode,proto3" json:"invoiceCode"`
+	InvoiceDate      *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=invoiceDate,proto3" json:"invoiceDate"`
+	SendOutAt        *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=sendOutAt,proto3" json:"sendOutAt"`
+	OrderAmount      int64                  `protobuf:"varint,13,opt,name=orderAmount,proto3" json:"orderAmount"`
+	ShipmentCode     string                 `protobuf:"bytes,14,opt,name=shipmentCode,proto3" json:"shipmentCode"`
+	ShipmentCompany  string                 `protobuf:"bytes,15,opt,name=shipmentCompany,proto3" json:"shipmentCompany"`
+	ShipmentPlanIds  []int64                `protobuf:"varint,16,rep,packed,name=shipmentPlanIds,proto3" json:"shipmentPlanIds"`
+	ManagerId        int64                  `protobuf:"varint,17,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *CreateShipmentOrderReq) Reset() {
@@ -8005,8 +8021,8 @@ type CreateShipmentOrderResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Code string `protobuf:"bytes,1,opt,name=code,proto3" json:"code,omitempty"`
-	Msg  string `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
+	Code string `protobuf:"bytes,1,opt,name=code,proto3" json:"code"`
+	Msg  string `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg"`
 }
 
 func (x *CreateShipmentOrderResp) Reset() {
@@ -8061,18 +8077,18 @@ type ListShipmentOrderReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CompanyId       int64                  `protobuf:"varint,1,opt,name=companyId,proto3" json:"companyId,omitempty"`
-	MiId            int64                  `protobuf:"varint,2,opt,name=miId,proto3" json:"miId,omitempty"`
-	ShipmentStatus  string                 `protobuf:"bytes,3,opt,name=shipmentStatus,proto3" json:"shipmentStatus,omitempty"`
-	ShipmentNo      string                 `protobuf:"bytes,4,opt,name=shipmentNo,proto3" json:"shipmentNo,omitempty"`
-	InvoiceNo       string                 `protobuf:"bytes,5,opt,name=invoiceNo,proto3" json:"invoiceNo,omitempty"`
-	InvoiceCode     string                 `protobuf:"bytes,6,opt,name=invoiceCode,proto3" json:"invoiceCode,omitempty"`
-	ShipmentCode    string                 `protobuf:"bytes,7,opt,name=shipmentCode,proto3" json:"shipmentCode,omitempty"`
-	StartDate       *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=startDate,proto3" json:"startDate,omitempty"`
-	EndDate         *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=endDate,proto3" json:"endDate,omitempty"`
-	Page            *Page                  `protobuf:"bytes,10,opt,name=page,proto3" json:"page,omitempty"`
-	ManagerId       int64                  `protobuf:"varint,11,opt,name=managerId,proto3" json:"managerId,omitempty"`
-	ReceiveDeadline *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=receiveDeadline,proto3" json:"receiveDeadline,omitempty"`
+	CompanyId       int64                  `protobuf:"varint,1,opt,name=companyId,proto3" json:"companyId"`
+	MiId            int64                  `protobuf:"varint,2,opt,name=miId,proto3" json:"miId"`
+	ShipmentStatus  string                 `protobuf:"bytes,3,opt,name=shipmentStatus,proto3" json:"shipmentStatus"`
+	ShipmentNo      string                 `protobuf:"bytes,4,opt,name=shipmentNo,proto3" json:"shipmentNo"`
+	InvoiceNo       string                 `protobuf:"bytes,5,opt,name=invoiceNo,proto3" json:"invoiceNo"`
+	InvoiceCode     string                 `protobuf:"bytes,6,opt,name=invoiceCode,proto3" json:"invoiceCode"`
+	ShipmentCode    string                 `protobuf:"bytes,7,opt,name=shipmentCode,proto3" json:"shipmentCode"`
+	StartDate       *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=startDate,proto3" json:"startDate"`
+	EndDate         *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=endDate,proto3" json:"endDate"`
+	Page            *Page                  `protobuf:"bytes,10,opt,name=page,proto3" json:"page"`
+	ManagerId       int64                  `protobuf:"varint,11,opt,name=managerId,proto3" json:"managerId"`
+	ReceiveDeadline *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=receiveDeadline,proto3" json:"receiveDeadline"`
 }
 
 func (x *ListShipmentOrderReq) Reset() {
@@ -8196,10 +8212,10 @@ type ListShipmentOrderResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ListShipmentOrderVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64                  `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64                  `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*ListShipmentOrderVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64                  `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64                  `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64                  `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *ListShipmentOrderResp) Reset() {
@@ -8267,17 +8283,17 @@ type ListShipmentOrderVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ShipmentOrderId int64                  `protobuf:"varint,1,opt,name=shipmentOrderId,proto3" json:"shipmentOrderId,omitempty"`
-	ShipmentNo      string                 `protobuf:"bytes,2,opt,name=shipmentNo,proto3" json:"shipmentNo,omitempty"`
-	InvoiceNo       string                 `protobuf:"bytes,3,opt,name=invoiceNo,proto3" json:"invoiceNo,omitempty"`
-	InvoiceCode     string                 `protobuf:"bytes,4,opt,name=invoiceCode,proto3" json:"invoiceCode,omitempty"`
-	ShipmentCode    string                 `protobuf:"bytes,5,opt,name=shipmentCode,proto3" json:"shipmentCode,omitempty"`
-	MiName          string                 `protobuf:"bytes,6,opt,name=miName,proto3" json:"miName,omitempty"`
-	OrderAmount     int64                  `protobuf:"varint,7,opt,name=orderAmount,proto3" json:"orderAmount,omitempty"`
-	SendOutAt       *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=sendOutAt,proto3" json:"sendOutAt,omitempty"`
-	ReceiveDeadline *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=receiveDeadline,proto3" json:"receiveDeadline,omitempty"`
-	ShipmentStatus  string                 `protobuf:"bytes,10,opt,name=shipmentStatus,proto3" json:"shipmentStatus,omitempty"`
-	CompanyName     string                 `protobuf:"bytes,11,opt,name=companyName,proto3" json:"companyName,omitempty"`
+	ShipmentOrderId int64                  `protobuf:"varint,1,opt,name=shipmentOrderId,proto3" json:"shipmentOrderId"`
+	ShipmentNo      string                 `protobuf:"bytes,2,opt,name=shipmentNo,proto3" json:"shipmentNo"`
+	InvoiceNo       string                 `protobuf:"bytes,3,opt,name=invoiceNo,proto3" json:"invoiceNo"`
+	InvoiceCode     string                 `protobuf:"bytes,4,opt,name=invoiceCode,proto3" json:"invoiceCode"`
+	ShipmentCode    string                 `protobuf:"bytes,5,opt,name=shipmentCode,proto3" json:"shipmentCode"`
+	MiName          string                 `protobuf:"bytes,6,opt,name=miName,proto3" json:"miName"`
+	OrderAmount     int64                  `protobuf:"varint,7,opt,name=orderAmount,proto3" json:"orderAmount"`
+	SendOutAt       *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=sendOutAt,proto3" json:"sendOutAt"`
+	ReceiveDeadline *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=receiveDeadline,proto3" json:"receiveDeadline"`
+	ShipmentStatus  string                 `protobuf:"bytes,10,opt,name=shipmentStatus,proto3" json:"shipmentStatus"`
+	CompanyName     string                 `protobuf:"bytes,11,opt,name=companyName,proto3" json:"companyName"`
 }
 
 func (x *ListShipmentOrderVo) Reset() {
@@ -8395,10 +8411,10 @@ type CountShipmentOrderReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CompanyCode string                 `protobuf:"bytes,1,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
-	StartDate   *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=startDate,proto3" json:"startDate,omitempty"`
-	EndDate     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=endDate,proto3" json:"endDate,omitempty"`
-	ManagerId   int64                  `protobuf:"varint,4,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	CompanyCode string                 `protobuf:"bytes,1,opt,name=companyCode,proto3" json:"companyCode"`
+	StartDate   *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=startDate,proto3" json:"startDate"`
+	EndDate     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=endDate,proto3" json:"endDate"`
+	ManagerId   int64                  `protobuf:"varint,4,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *CountShipmentOrderReq) Reset() {
@@ -8466,8 +8482,8 @@ type CountShipmentOrderResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ShipmentOrderCount int64 `protobuf:"varint,1,opt,name=shipmentOrderCount,proto3" json:"shipmentOrderCount,omitempty"`
-	ShipmentPlanCount  int64 `protobuf:"varint,2,opt,name=shipmentPlanCount,proto3" json:"shipmentPlanCount,omitempty"`
+	ShipmentOrderCount int64 `protobuf:"varint,1,opt,name=shipmentOrderCount,proto3" json:"shipmentOrderCount"`
+	ShipmentPlanCount  int64 `protobuf:"varint,2,opt,name=shipmentPlanCount,proto3" json:"shipmentPlanCount"`
 }
 
 func (x *CountShipmentOrderResp) Reset() {
@@ -8522,9 +8538,9 @@ type ReceiveShipmentOrderReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ShipmentNo string `protobuf:"bytes,1,opt,name=shipmentNo,proto3" json:"shipmentNo,omitempty"`
-	MiId       int64  `protobuf:"varint,2,opt,name=miId,proto3" json:"miId,omitempty"`
-	ManagerId  int64  `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	ShipmentNo string `protobuf:"bytes,1,opt,name=shipmentNo,proto3" json:"shipmentNo"`
+	MiId       int64  `protobuf:"varint,2,opt,name=miId,proto3" json:"miId"`
+	ManagerId  int64  `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *ReceiveShipmentOrderReq) Reset() {
@@ -8585,8 +8601,8 @@ type ReceiveShipmentOrderResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Code string `protobuf:"bytes,1,opt,name=code,proto3" json:"code,omitempty"`
-	Msg  string `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
+	Code string `protobuf:"bytes,1,opt,name=code,proto3" json:"code"`
+	Msg  string `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg"`
 }
 
 func (x *ReceiveShipmentOrderResp) Reset() {
@@ -8641,8 +8657,8 @@ type GetContractByShipmentPlanIdReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ShipmentId int64 `protobuf:"varint,1,opt,name=shipmentId,proto3" json:"shipmentId,omitempty"`
-	ManagerId  int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	ShipmentId int64 `protobuf:"varint,1,opt,name=shipmentId,proto3" json:"shipmentId"`
+	ManagerId  int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId"`
 }
 
 func (x *GetContractByShipmentPlanIdReq) Reset() {
@@ -8696,8 +8712,8 @@ type GetContractByShipmentPlanIdResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ContractId int64  `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId,omitempty"`
-	ContractNo string `protobuf:"bytes,2,opt,name=contractNo,proto3" json:"contractNo,omitempty"`
+	ContractId int64  `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId"`
+	ContractNo string `protobuf:"bytes,2,opt,name=contractNo,proto3" json:"contractNo"`
 }
 
 func (x *GetContractByShipmentPlanIdResp) Reset() {
@@ -8752,8 +8768,8 @@ type InsertConfigsReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64           `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
-	Configs   []*CommonConfig `protobuf:"bytes,2,rep,name=configs,proto3" json:"configs,omitempty"`
+	ManagerId int64           `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
+	Configs   []*CommonConfig `protobuf:"bytes,2,rep,name=configs,proto3" json:"configs"`
 }
 
 func (x *InsertConfigsReq) Reset() {
@@ -8808,15 +8824,15 @@ type UpdateConfigReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
 	//条件生效顺序 id>key> type 1,2,3
-	ConfigId  int64  `protobuf:"varint,2,opt,name=configId,proto3" json:"configId,omitempty"`
-	Key       string `protobuf:"bytes,3,opt,name=key,proto3" json:"key,omitempty"`
-	TypeOne   string `protobuf:"bytes,4,opt,name=typeOne,proto3" json:"typeOne,omitempty"`
-	TypeTwo   string `protobuf:"bytes,5,opt,name=typeTwo,proto3" json:"typeTwo,omitempty"`
-	TypeThree string `protobuf:"bytes,6,opt,name=typeThree,proto3" json:"typeThree,omitempty"`
-	OldValue  string `protobuf:"bytes,7,opt,name=oldValue,proto3" json:"oldValue,omitempty"`
-	Value     string `protobuf:"bytes,8,opt,name=value,proto3" json:"value,omitempty"`
+	ConfigId  int64  `protobuf:"varint,2,opt,name=configId,proto3" json:"configId"`
+	Key       string `protobuf:"bytes,3,opt,name=key,proto3" json:"key"`
+	TypeOne   string `protobuf:"bytes,4,opt,name=typeOne,proto3" json:"typeOne"`
+	TypeTwo   string `protobuf:"bytes,5,opt,name=typeTwo,proto3" json:"typeTwo"`
+	TypeThree string `protobuf:"bytes,6,opt,name=typeThree,proto3" json:"typeThree"`
+	OldValue  string `protobuf:"bytes,7,opt,name=oldValue,proto3" json:"oldValue"`
+	Value     string `protobuf:"bytes,8,opt,name=value,proto3" json:"value"`
 }
 
 func (x *UpdateConfigReq) Reset() {
@@ -8912,14 +8928,14 @@ type DeleteConfigsReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
 	//指定要删除的id，id必填
-	ConfigIds []int64 `protobuf:"varint,2,rep,packed,name=configIds,proto3" json:"configIds,omitempty"`
+	ConfigIds []int64 `protobuf:"varint,2,rep,packed,name=configIds,proto3" json:"configIds"`
 	//以下为限制项目，
-	Key       string `protobuf:"bytes,3,opt,name=key,proto3" json:"key,omitempty"`
-	TypeOne   string `protobuf:"bytes,4,opt,name=typeOne,proto3" json:"typeOne,omitempty"`
-	TypeTwo   string `protobuf:"bytes,5,opt,name=typeTwo,proto3" json:"typeTwo,omitempty"`
-	TypeThree string `protobuf:"bytes,6,opt,name=typeThree,proto3" json:"typeThree,omitempty"`
+	Key       string `protobuf:"bytes,3,opt,name=key,proto3" json:"key"`
+	TypeOne   string `protobuf:"bytes,4,opt,name=typeOne,proto3" json:"typeOne"`
+	TypeTwo   string `protobuf:"bytes,5,opt,name=typeTwo,proto3" json:"typeTwo"`
+	TypeThree string `protobuf:"bytes,6,opt,name=typeThree,proto3" json:"typeThree"`
 }
 
 func (x *DeleteConfigsReq) Reset() {
@@ -9002,16 +9018,16 @@ type GetConfigReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
 	//不指定page默认为20个
-	Page      *Page    `protobuf:"bytes,2,opt,name=page,proto3" json:"page,omitempty"`
-	Keys      []string `protobuf:"bytes,3,rep,name=keys,proto3" json:"keys,omitempty"`
-	TypeOne   string   `protobuf:"bytes,4,opt,name=typeOne,proto3" json:"typeOne,omitempty"`
-	TypeTwo   string   `protobuf:"bytes,5,opt,name=typeTwo,proto3" json:"typeTwo,omitempty"`
-	TypeThree string   `protobuf:"bytes,6,opt,name=typeThree,proto3" json:"typeThree,omitempty"`
+	Page      *Page    `protobuf:"bytes,2,opt,name=page,proto3" json:"page"`
+	Keys      []string `protobuf:"bytes,3,rep,name=keys,proto3" json:"keys"`
+	TypeOne   string   `protobuf:"bytes,4,opt,name=typeOne,proto3" json:"typeOne"`
+	TypeTwo   string   `protobuf:"bytes,5,opt,name=typeTwo,proto3" json:"typeTwo"`
+	TypeThree string   `protobuf:"bytes,6,opt,name=typeThree,proto3" json:"typeThree"`
 	//可以获取该区间正在生效的所有配置
-	StartAt *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=startAt,proto3" json:"startAt,omitempty"`
-	EndAt   *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=endAt,proto3" json:"endAt,omitempty"`
+	StartAt *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=startAt,proto3" json:"startAt"`
+	EndAt   *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=endAt,proto3" json:"endAt"`
 }
 
 func (x *GetConfigReq) Reset() {
@@ -9107,16 +9123,16 @@ type CommonConfig struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ConfigId  int64                  `protobuf:"varint,1,opt,name=configId,proto3" json:"configId,omitempty"`
-	Key       string                 `protobuf:"bytes,2,opt,name=key,proto3" json:"key,omitempty"`
-	TypeOne   string                 `protobuf:"bytes,3,opt,name=typeOne,proto3" json:"typeOne,omitempty"`
-	TypeTwo   string                 `protobuf:"bytes,4,opt,name=typeTwo,proto3" json:"typeTwo,omitempty"`
-	TypeThree string                 `protobuf:"bytes,5,opt,name=typeThree,proto3" json:"typeThree,omitempty"`
-	Value     string                 `protobuf:"bytes,6,opt,name=value,proto3" json:"value,omitempty"`
-	StartAt   *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=startAt,proto3" json:"startAt,omitempty"`
-	EndAt     *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=endAt,proto3" json:"endAt,omitempty"`
-	Explain   string                 `protobuf:"bytes,9,opt,name=explain,proto3" json:"explain,omitempty"`
-	Created   *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=created,proto3" json:"created,omitempty"`
+	ConfigId  int64                  `protobuf:"varint,1,opt,name=configId,proto3" json:"configId"`
+	Key       string                 `protobuf:"bytes,2,opt,name=key,proto3" json:"key"`
+	TypeOne   string                 `protobuf:"bytes,3,opt,name=typeOne,proto3" json:"typeOne"`
+	TypeTwo   string                 `protobuf:"bytes,4,opt,name=typeTwo,proto3" json:"typeTwo"`
+	TypeThree string                 `protobuf:"bytes,5,opt,name=typeThree,proto3" json:"typeThree"`
+	Value     string                 `protobuf:"bytes,6,opt,name=value,proto3" json:"value"`
+	StartAt   *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=startAt,proto3" json:"startAt"`
+	EndAt     *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=endAt,proto3" json:"endAt"`
+	Explain   string                 `protobuf:"bytes,9,opt,name=explain,proto3" json:"explain"`
+	Created   *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=created,proto3" json:"created"`
 }
 
 func (x *CommonConfig) Reset() {
@@ -9340,10 +9356,10 @@ type GetConfigResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*CommonConfig `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64           `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64           `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64           `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*CommonConfig `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64           `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64           `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64           `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *GetConfigResp) Reset() {
@@ -9412,11 +9428,11 @@ type GetMiSpecialConfigReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64  `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
-	MiCode    string `protobuf:"bytes,2,opt,name=miCode,proto3" json:"miCode,omitempty"`
-	MiId      int64  `protobuf:"varint,3,opt,name=miId,proto3" json:"miId,omitempty"`
-	MiName    string `protobuf:"bytes,4,opt,name=miName,proto3" json:"miName,omitempty"`
-	Page      *Page  `protobuf:"bytes,5,opt,name=page,proto3" json:"page,omitempty"`
+	ManagerId int64  `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
+	MiCode    string `protobuf:"bytes,2,opt,name=miCode,proto3" json:"miCode"`
+	MiId      int64  `protobuf:"varint,3,opt,name=miId,proto3" json:"miId"`
+	MiName    string `protobuf:"bytes,4,opt,name=miName,proto3" json:"miName"`
+	Page      *Page  `protobuf:"bytes,5,opt,name=page,proto3" json:"page"`
 }
 
 func (x *GetMiSpecialConfigReq) Reset() {
@@ -9491,16 +9507,16 @@ type MiSpecialConfig struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MiId          int64  `protobuf:"varint,1,opt,name=miId,proto3" json:"miId,omitempty"`
-	MiName        string `protobuf:"bytes,2,opt,name=miName,proto3" json:"miName,omitempty"`
-	MiCode        string `protobuf:"bytes,3,opt,name=miCode,proto3" json:"miCode,omitempty"`
-	LimitBalance  int64  `protobuf:"varint,4,opt,name=limitBalance,proto3" json:"limitBalance,omitempty"`
-	BankAccountId int64  `protobuf:"varint,5,opt,name=bankAccountId,proto3" json:"bankAccountId,omitempty"`
-	ManagerName   string `protobuf:"bytes,6,opt,name=managerName,proto3" json:"managerName,omitempty"`
-	ManagerPhone  string `protobuf:"bytes,7,opt,name=managerPhone,proto3" json:"managerPhone,omitempty"`
-	Province      string `protobuf:"bytes,8,opt,name=province,proto3" json:"province,omitempty"`
-	City          string `protobuf:"bytes,9,opt,name=city,proto3" json:"city,omitempty"`
-	Zone          string `protobuf:"bytes,10,opt,name=zone,proto3" json:"zone,omitempty"`
+	MiId          int64  `protobuf:"varint,1,opt,name=miId,proto3" json:"miId"`
+	MiName        string `protobuf:"bytes,2,opt,name=miName,proto3" json:"miName"`
+	MiCode        string `protobuf:"bytes,3,opt,name=miCode,proto3" json:"miCode"`
+	LimitBalance  int64  `protobuf:"varint,4,opt,name=limitBalance,proto3" json:"limitBalance"`
+	BankAccountId int64  `protobuf:"varint,5,opt,name=bankAccountId,proto3" json:"bankAccountId"`
+	ManagerName   string `protobuf:"bytes,6,opt,name=managerName,proto3" json:"managerName"`
+	ManagerPhone  string `protobuf:"bytes,7,opt,name=managerPhone,proto3" json:"managerPhone"`
+	Province      string `protobuf:"bytes,8,opt,name=province,proto3" json:"province"`
+	City          string `protobuf:"bytes,9,opt,name=city,proto3" json:"city"`
+	Zone          string `protobuf:"bytes,10,opt,name=zone,proto3" json:"zone"`
 }
 
 func (x *MiSpecialConfig) Reset() {
@@ -9610,10 +9626,10 @@ type GetMiSpecialConfigResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*MiSpecialConfig `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64              `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64              `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64              `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*MiSpecialConfig `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64              `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64              `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64              `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *GetMiSpecialConfigResp) Reset() {
@@ -9682,10 +9698,10 @@ type UpdateMiSpecialConfigReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId       int64  `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
-	MiCode          string `protobuf:"bytes,2,opt,name=miCode,proto3" json:"miCode,omitempty"`
-	LimitBalance    int64  `protobuf:"varint,3,opt,name=limitBalance,proto3" json:"limitBalance,omitempty"`
-	OldLimitBalance int64  `protobuf:"varint,4,opt,name=oldLimitBalance,proto3" json:"oldLimitBalance,omitempty"`
+	ManagerId       int64  `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
+	MiCode          string `protobuf:"bytes,2,opt,name=miCode,proto3" json:"miCode"`
+	LimitBalance    int64  `protobuf:"varint,3,opt,name=limitBalance,proto3" json:"limitBalance"`
+	OldLimitBalance int64  `protobuf:"varint,4,opt,name=oldLimitBalance,proto3" json:"oldLimitBalance"`
 }
 
 func (x *UpdateMiSpecialConfigReq) Reset() {
@@ -9793,15 +9809,15 @@ type PlanReportGroupCondition struct {
 	unknownFields protoimpl.UnknownFields
 
 	//直接聚合为单行，使用此项则其他聚合条件不生效
-	ByAll bool `protobuf:"varint,1,opt,name=byAll,proto3" json:"byAll,omitempty"`
+	ByAll bool `protobuf:"varint,1,opt,name=byAll,proto3" json:"byAll"`
 	//时间维度聚合,注意对于月报，按日聚合无效，年报类推
-	ByMonth bool `protobuf:"varint,2,opt,name=byMonth,proto3" json:"byMonth,omitempty"`
-	ByYear  bool `protobuf:"varint,3,opt,name=byYear,proto3" json:"byYear,omitempty"`
-	ByDay   bool `protobuf:"varint,4,opt,name=byDay,proto3" json:"byDay,omitempty"`
+	ByMonth bool `protobuf:"varint,2,opt,name=byMonth,proto3" json:"byMonth"`
+	ByYear  bool `protobuf:"varint,3,opt,name=byYear,proto3" json:"byYear"`
+	ByDay   bool `protobuf:"varint,4,opt,name=byDay,proto3" json:"byDay"`
 	//业务维度
-	ByMi       bool `protobuf:"varint,5,opt,name=byMi,proto3" json:"byMi,omitempty"`
-	ByCom      bool `protobuf:"varint,6,opt,name=byCom,proto3" json:"byCom,omitempty"`
-	ByMedicine bool `protobuf:"varint,7,opt,name=byMedicine,proto3" json:"byMedicine,omitempty"`
+	ByMi       bool `protobuf:"varint,5,opt,name=byMi,proto3" json:"byMi"`
+	ByCom      bool `protobuf:"varint,6,opt,name=byCom,proto3" json:"byCom"`
+	ByMedicine bool `protobuf:"varint,7,opt,name=byMedicine,proto3" json:"byMedicine"`
 }
 
 func (x *PlanReportGroupCondition) Reset() {
@@ -9892,18 +9908,18 @@ type PlanReportGetCondition struct {
 	unknownFields protoimpl.UnknownFields
 
 	//指定获取哪家医院的数据
-	MiIds []int64 `protobuf:"varint,1,rep,packed,name=miIds,proto3" json:"miIds,omitempty"`
+	MiIds []int64 `protobuf:"varint,1,rep,packed,name=miIds,proto3" json:"miIds"`
 	//指定获取哪家配送企业的数据
-	ComIds        []int64  `protobuf:"varint,2,rep,packed,name=comIds,proto3" json:"comIds,omitempty"`
-	MedicineCodes []string `protobuf:"bytes,3,rep,name=medicineCodes,proto3" json:"medicineCodes,omitempty"`
+	ComIds        []int64  `protobuf:"varint,2,rep,packed,name=comIds,proto3" json:"comIds"`
+	MedicineCodes []string `protobuf:"bytes,3,rep,name=medicineCodes,proto3" json:"medicineCodes"`
 	//用于药品名模糊搜索，只显示5个候选药品
-	MedicineName string `protobuf:"bytes,4,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
+	MedicineName string `protobuf:"bytes,4,opt,name=medicineName,proto3" json:"medicineName"`
 	//用于医院名模糊搜索，只显示5个候选医院
-	MiName string `protobuf:"bytes,5,opt,name=miName,proto3" json:"miName,omitempty"`
+	MiName string `protobuf:"bytes,5,opt,name=miName,proto3" json:"miName"`
 	//用于企业名模糊搜索，只显示5个候选医院
-	ComName string `protobuf:"bytes,6,opt,name=comName,proto3" json:"comName,omitempty"`
+	ComName string `protobuf:"bytes,6,opt,name=comName,proto3" json:"comName"`
 	//按某个标签显示
-	TagId int64 `protobuf:"varint,7,opt,name=tagId,proto3" json:"tagId,omitempty"`
+	TagId int64 `protobuf:"varint,7,opt,name=tagId,proto3" json:"tagId"`
 }
 
 func (x *PlanReportGetCondition) Reset() {
@@ -9993,14 +10009,14 @@ type GetShipmentPlanReportsReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
 	//指定获取哪个医保局的订单报表数据，目前不支持不同医保局混合统计
-	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId,omitempty"`
+	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId"`
 	//报表的起止日期必填
-	StartAt            *timestamppb.Timestamp    `protobuf:"bytes,3,opt,name=startAt,proto3" json:"startAt,omitempty"`
-	EndAt              *timestamppb.Timestamp    `protobuf:"bytes,4,opt,name=endAt,proto3" json:"endAt,omitempty"`
-	OptionalFilterCond *PlanReportGetCondition   `protobuf:"bytes,5,opt,name=optionalFilterCond,proto3" json:"optionalFilterCond,omitempty"`
-	OptionalGroupCond  *PlanReportGroupCondition `protobuf:"bytes,6,opt,name=optionalGroupCond,proto3" json:"optionalGroupCond,omitempty"`
+	StartAt            *timestamppb.Timestamp    `protobuf:"bytes,3,opt,name=startAt,proto3" json:"startAt"`
+	EndAt              *timestamppb.Timestamp    `protobuf:"bytes,4,opt,name=endAt,proto3" json:"endAt"`
+	OptionalFilterCond *PlanReportGetCondition   `protobuf:"bytes,5,opt,name=optionalFilterCond,proto3" json:"optionalFilterCond"`
+	OptionalGroupCond  *PlanReportGroupCondition `protobuf:"bytes,6,opt,name=optionalGroupCond,proto3" json:"optionalGroupCond"`
 }
 
 func (x *GetShipmentPlanReportsReq) Reset() {
@@ -10082,14 +10098,14 @@ type CompanyReportVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CompanyId    int64  `protobuf:"varint,1,opt,name=companyId,proto3" json:"companyId,omitempty"`
-	CompanyName  string `protobuf:"bytes,2,opt,name=companyName,proto3" json:"companyName,omitempty"`
-	CompanyCode  string `protobuf:"bytes,3,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
-	ManagerName  string `protobuf:"bytes,4,opt,name=managerName,proto3" json:"managerName,omitempty"`
-	ManagerPhone string `protobuf:"bytes,5,opt,name=managerPhone,proto3" json:"managerPhone,omitempty"`
-	Province     string `protobuf:"bytes,6,opt,name=province,proto3" json:"province,omitempty"`
-	City         string `protobuf:"bytes,7,opt,name=city,proto3" json:"city,omitempty"`
-	Zone         string `protobuf:"bytes,8,opt,name=zone,proto3" json:"zone,omitempty"`
+	CompanyId    int64  `protobuf:"varint,1,opt,name=companyId,proto3" json:"companyId"`
+	CompanyName  string `protobuf:"bytes,2,opt,name=companyName,proto3" json:"companyName"`
+	CompanyCode  string `protobuf:"bytes,3,opt,name=companyCode,proto3" json:"companyCode"`
+	ManagerName  string `protobuf:"bytes,4,opt,name=managerName,proto3" json:"managerName"`
+	ManagerPhone string `protobuf:"bytes,5,opt,name=managerPhone,proto3" json:"managerPhone"`
+	Province     string `protobuf:"bytes,6,opt,name=province,proto3" json:"province"`
+	City         string `protobuf:"bytes,7,opt,name=city,proto3" json:"city"`
+	Zone         string `protobuf:"bytes,8,opt,name=zone,proto3" json:"zone"`
 }
 
 func (x *CompanyReportVo) Reset() {
@@ -10185,15 +10201,15 @@ type MiReportVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MiId         int64  `protobuf:"varint,1,opt,name=miId,proto3" json:"miId,omitempty"`
-	MiCode       string `protobuf:"bytes,2,opt,name=miCode,proto3" json:"miCode,omitempty"`
-	MiName       string `protobuf:"bytes,3,opt,name=miName,proto3" json:"miName,omitempty"`
-	MiType       string `protobuf:"bytes,4,opt,name=miType,proto3" json:"miType,omitempty"`
-	ManagerName  string `protobuf:"bytes,5,opt,name=managerName,proto3" json:"managerName,omitempty"`
-	ManagerPhone string `protobuf:"bytes,6,opt,name=managerPhone,proto3" json:"managerPhone,omitempty"`
-	Province     string `protobuf:"bytes,7,opt,name=province,proto3" json:"province,omitempty"`
-	City         string `protobuf:"bytes,8,opt,name=city,proto3" json:"city,omitempty"`
-	Zone         string `protobuf:"bytes,9,opt,name=zone,proto3" json:"zone,omitempty"`
+	MiId         int64  `protobuf:"varint,1,opt,name=miId,proto3" json:"miId"`
+	MiCode       string `protobuf:"bytes,2,opt,name=miCode,proto3" json:"miCode"`
+	MiName       string `protobuf:"bytes,3,opt,name=miName,proto3" json:"miName"`
+	MiType       string `protobuf:"bytes,4,opt,name=miType,proto3" json:"miType"`
+	ManagerName  string `protobuf:"bytes,5,opt,name=managerName,proto3" json:"managerName"`
+	ManagerPhone string `protobuf:"bytes,6,opt,name=managerPhone,proto3" json:"managerPhone"`
+	Province     string `protobuf:"bytes,7,opt,name=province,proto3" json:"province"`
+	City         string `protobuf:"bytes,8,opt,name=city,proto3" json:"city"`
+	Zone         string `protobuf:"bytes,9,opt,name=zone,proto3" json:"zone"`
 }
 
 func (x *MiReportVo) Reset() {
@@ -10296,16 +10312,16 @@ type MedicineReportVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MedicineId            int64  `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId,omitempty"`
-	MedicineName          string `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
-	MedicineCode          string `protobuf:"bytes,3,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
-	MedicineSpecification string `protobuf:"bytes,4,opt,name=medicineSpecification,proto3" json:"medicineSpecification,omitempty"`
-	MedicineForm          string `protobuf:"bytes,5,opt,name=medicineForm,proto3" json:"medicineForm,omitempty"`
-	MedicinePackage       string `protobuf:"bytes,6,opt,name=medicinePackage,proto3" json:"medicinePackage,omitempty"`
-	CalculateRate         int64  `protobuf:"varint,7,opt,name=calculateRate,proto3" json:"calculateRate,omitempty"`
-	Manufacturer          string `protobuf:"bytes,8,opt,name=manufacturer,proto3" json:"manufacturer,omitempty"`
-	MedicineUnit          string `protobuf:"bytes,9,opt,name=medicineUnit,proto3" json:"medicineUnit,omitempty"`
-	TagName               string `protobuf:"bytes,10,opt,name=tagName,proto3" json:"tagName,omitempty"`
+	MedicineId            int64  `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId"`
+	MedicineName          string `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName"`
+	MedicineCode          string `protobuf:"bytes,3,opt,name=medicineCode,proto3" json:"medicineCode"`
+	MedicineSpecification string `protobuf:"bytes,4,opt,name=medicineSpecification,proto3" json:"medicineSpecification"`
+	MedicineForm          string `protobuf:"bytes,5,opt,name=medicineForm,proto3" json:"medicineForm"`
+	MedicinePackage       string `protobuf:"bytes,6,opt,name=medicinePackage,proto3" json:"medicinePackage"`
+	CalculateRate         int64  `protobuf:"varint,7,opt,name=calculateRate,proto3" json:"calculateRate"`
+	Manufacturer          string `protobuf:"bytes,8,opt,name=manufacturer,proto3" json:"manufacturer"`
+	MedicineUnit          string `protobuf:"bytes,9,opt,name=medicineUnit,proto3" json:"medicineUnit"`
+	TagName               string `protobuf:"bytes,10,opt,name=tagName,proto3" json:"tagName"`
 }
 
 func (x *MedicineReportVo) Reset() {
@@ -10416,25 +10432,25 @@ type ShipmentPlanDayReport struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	Year  int64 `protobuf:"varint,1,opt,name=year,proto3" json:"year,omitempty"`
-	Month int64 `protobuf:"varint,2,opt,name=month,proto3" json:"month,omitempty"`
-	Day   int64 `protobuf:"varint,3,opt,name=day,proto3" json:"day,omitempty"`
-	MibId int64 `protobuf:"varint,4,opt,name=mibId,proto3" json:"mibId,omitempty"`
+	Year  int64 `protobuf:"varint,1,opt,name=year,proto3" json:"year"`
+	Month int64 `protobuf:"varint,2,opt,name=month,proto3" json:"month"`
+	Day   int64 `protobuf:"varint,3,opt,name=day,proto3" json:"day"`
+	MibId int64 `protobuf:"varint,4,opt,name=mibId,proto3" json:"mibId"`
 	//如果聚合时不含此列，则信息不存在
-	CompanyInfo  *CompanyReportVo  `protobuf:"bytes,5,opt,name=companyInfo,proto3" json:"companyInfo,omitempty"`
-	MiInfo       *MiReportVo       `protobuf:"bytes,6,opt,name=miInfo,proto3" json:"miInfo,omitempty"`
-	MedicineInfo *MedicineReportVo `protobuf:"bytes,7,opt,name=medicineInfo,proto3" json:"medicineInfo,omitempty"`
+	CompanyInfo  *CompanyReportVo  `protobuf:"bytes,5,opt,name=companyInfo,proto3" json:"companyInfo"`
+	MiInfo       *MiReportVo       `protobuf:"bytes,6,opt,name=miInfo,proto3" json:"miInfo"`
+	MedicineInfo *MedicineReportVo `protobuf:"bytes,7,opt,name=medicineInfo,proto3" json:"medicineInfo"`
 	//本日配送计划同步金额
-	ShipmentPlanAmount           int64                  `protobuf:"varint,8,opt,name=shipmentPlanAmount,proto3" json:"shipmentPlanAmount,omitempty"`
-	ShipmentPlanCount            int64                  `protobuf:"varint,9,opt,name=shipmentPlanCount,proto3" json:"shipmentPlanCount,omitempty"`
-	ShipmentPlanUnitCount        int64                  `protobuf:"varint,10,opt,name=shipmentPlanUnitCount,proto3" json:"shipmentPlanUnitCount,omitempty"`
-	ShipmentPlanReceiveAmount    int64                  `protobuf:"varint,11,opt,name=shipmentPlanReceiveAmount,proto3" json:"shipmentPlanReceiveAmount,omitempty"`
-	ShipmentPlanReceiveCount     int64                  `protobuf:"varint,12,opt,name=shipmentPlanReceiveCount,proto3" json:"shipmentPlanReceiveCount,omitempty"`
-	ShipmentPlanReceiveUnitCount int64                  `protobuf:"varint,13,opt,name=shipmentPlanReceiveUnitCount,proto3" json:"shipmentPlanReceiveUnitCount,omitempty"`
-	ShipmentPlanNotSentAmount    int64                  `protobuf:"varint,14,opt,name=shipmentPlanNotSentAmount,proto3" json:"shipmentPlanNotSentAmount,omitempty"`
-	ShipmentPlanNotSentCount     int64                  `protobuf:"varint,15,opt,name=shipmentPlanNotSentCount,proto3" json:"shipmentPlanNotSentCount,omitempty"`
-	ShipmentPlanNotSentUnitCount int64                  `protobuf:"varint,16,opt,name=shipmentPlanNotSentUnitCount,proto3" json:"shipmentPlanNotSentUnitCount,omitempty"`
-	ReportDate                   *timestamppb.Timestamp `protobuf:"bytes,17,opt,name=reportDate,proto3" json:"reportDate,omitempty"`
+	ShipmentPlanAmount           int64                  `protobuf:"varint,8,opt,name=shipmentPlanAmount,proto3" json:"shipmentPlanAmount"`
+	ShipmentPlanCount            int64                  `protobuf:"varint,9,opt,name=shipmentPlanCount,proto3" json:"shipmentPlanCount"`
+	ShipmentPlanUnitCount        int64                  `protobuf:"varint,10,opt,name=shipmentPlanUnitCount,proto3" json:"shipmentPlanUnitCount"`
+	ShipmentPlanReceiveAmount    int64                  `protobuf:"varint,11,opt,name=shipmentPlanReceiveAmount,proto3" json:"shipmentPlanReceiveAmount"`
+	ShipmentPlanReceiveCount     int64                  `protobuf:"varint,12,opt,name=shipmentPlanReceiveCount,proto3" json:"shipmentPlanReceiveCount"`
+	ShipmentPlanReceiveUnitCount int64                  `protobuf:"varint,13,opt,name=shipmentPlanReceiveUnitCount,proto3" json:"shipmentPlanReceiveUnitCount"`
+	ShipmentPlanNotSentAmount    int64                  `protobuf:"varint,14,opt,name=shipmentPlanNotSentAmount,proto3" json:"shipmentPlanNotSentAmount"`
+	ShipmentPlanNotSentCount     int64                  `protobuf:"varint,15,opt,name=shipmentPlanNotSentCount,proto3" json:"shipmentPlanNotSentCount"`
+	ShipmentPlanNotSentUnitCount int64                  `protobuf:"varint,16,opt,name=shipmentPlanNotSentUnitCount,proto3" json:"shipmentPlanNotSentUnitCount"`
+	ReportDate                   *timestamppb.Timestamp `protobuf:"bytes,17,opt,name=reportDate,proto3" json:"reportDate"`
 }
 
 func (x *ShipmentPlanDayReport) Reset() {
@@ -10594,24 +10610,24 @@ type ShipmentPlanMonthReport struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	Year  int64 `protobuf:"varint,1,opt,name=year,proto3" json:"year,omitempty"`
-	Month int64 `protobuf:"varint,2,opt,name=month,proto3" json:"month,omitempty"`
-	MibId int64 `protobuf:"varint,3,opt,name=mibId,proto3" json:"mibId,omitempty"`
+	Year  int64 `protobuf:"varint,1,opt,name=year,proto3" json:"year"`
+	Month int64 `protobuf:"varint,2,opt,name=month,proto3" json:"month"`
+	MibId int64 `protobuf:"varint,3,opt,name=mibId,proto3" json:"mibId"`
 	//如果聚合时不含此列，则信息不存在
-	CompanyInfo  *CompanyReportVo  `protobuf:"bytes,4,opt,name=companyInfo,proto3" json:"companyInfo,omitempty"`
-	MiInfo       *MiReportVo       `protobuf:"bytes,5,opt,name=miInfo,proto3" json:"miInfo,omitempty"`
-	MedicineInfo *MedicineReportVo `protobuf:"bytes,6,opt,name=medicineInfo,proto3" json:"medicineInfo,omitempty"`
+	CompanyInfo  *CompanyReportVo  `protobuf:"bytes,4,opt,name=companyInfo,proto3" json:"companyInfo"`
+	MiInfo       *MiReportVo       `protobuf:"bytes,5,opt,name=miInfo,proto3" json:"miInfo"`
+	MedicineInfo *MedicineReportVo `protobuf:"bytes,6,opt,name=medicineInfo,proto3" json:"medicineInfo"`
 	//本日配送计划同步金额
-	ShipmentPlanAmount           int64                  `protobuf:"varint,7,opt,name=shipmentPlanAmount,proto3" json:"shipmentPlanAmount,omitempty"`
-	ShipmentPlanCount            int64                  `protobuf:"varint,8,opt,name=shipmentPlanCount,proto3" json:"shipmentPlanCount,omitempty"`
-	ShipmentPlanUnitCount        int64                  `protobuf:"varint,9,opt,name=shipmentPlanUnitCount,proto3" json:"shipmentPlanUnitCount,omitempty"`
-	ShipmentPlanReceiveAmount    int64                  `protobuf:"varint,10,opt,name=shipmentPlanReceiveAmount,proto3" json:"shipmentPlanReceiveAmount,omitempty"`
-	ShipmentPlanReceiveCount     int64                  `protobuf:"varint,11,opt,name=shipmentPlanReceiveCount,proto3" json:"shipmentPlanReceiveCount,omitempty"`
-	ShipmentPlanReceiveUnitCount int64                  `protobuf:"varint,12,opt,name=shipmentPlanReceiveUnitCount,proto3" json:"shipmentPlanReceiveUnitCount,omitempty"`
-	ShipmentPlanNotSentAmount    int64                  `protobuf:"varint,13,opt,name=shipmentPlanNotSentAmount,proto3" json:"shipmentPlanNotSentAmount,omitempty"`
-	ShipmentPlanNotSentCount     int64                  `protobuf:"varint,14,opt,name=shipmentPlanNotSentCount,proto3" json:"shipmentPlanNotSentCount,omitempty"`
-	ShipmentPlanNotSentUnitCount int64                  `protobuf:"varint,15,opt,name=shipmentPlanNotSentUnitCount,proto3" json:"shipmentPlanNotSentUnitCount,omitempty"`
-	ReportDate                   *timestamppb.Timestamp `protobuf:"bytes,16,opt,name=reportDate,proto3" json:"reportDate,omitempty"`
+	ShipmentPlanAmount           int64                  `protobuf:"varint,7,opt,name=shipmentPlanAmount,proto3" json:"shipmentPlanAmount"`
+	ShipmentPlanCount            int64                  `protobuf:"varint,8,opt,name=shipmentPlanCount,proto3" json:"shipmentPlanCount"`
+	ShipmentPlanUnitCount        int64                  `protobuf:"varint,9,opt,name=shipmentPlanUnitCount,proto3" json:"shipmentPlanUnitCount"`
+	ShipmentPlanReceiveAmount    int64                  `protobuf:"varint,10,opt,name=shipmentPlanReceiveAmount,proto3" json:"shipmentPlanReceiveAmount"`
+	ShipmentPlanReceiveCount     int64                  `protobuf:"varint,11,opt,name=shipmentPlanReceiveCount,proto3" json:"shipmentPlanReceiveCount"`
+	ShipmentPlanReceiveUnitCount int64                  `protobuf:"varint,12,opt,name=shipmentPlanReceiveUnitCount,proto3" json:"shipmentPlanReceiveUnitCount"`
+	ShipmentPlanNotSentAmount    int64                  `protobuf:"varint,13,opt,name=shipmentPlanNotSentAmount,proto3" json:"shipmentPlanNotSentAmount"`
+	ShipmentPlanNotSentCount     int64                  `protobuf:"varint,14,opt,name=shipmentPlanNotSentCount,proto3" json:"shipmentPlanNotSentCount"`
+	ShipmentPlanNotSentUnitCount int64                  `protobuf:"varint,15,opt,name=shipmentPlanNotSentUnitCount,proto3" json:"shipmentPlanNotSentUnitCount"`
+	ReportDate                   *timestamppb.Timestamp `protobuf:"bytes,16,opt,name=reportDate,proto3" json:"reportDate"`
 }
 
 func (x *ShipmentPlanMonthReport) Reset() {
@@ -10764,23 +10780,23 @@ type ShipmentPlanYearReport struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	Year  int64 `protobuf:"varint,1,opt,name=year,proto3" json:"year,omitempty"`
-	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId,omitempty"`
+	Year  int64 `protobuf:"varint,1,opt,name=year,proto3" json:"year"`
+	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId"`
 	//如果聚合时不含此列，则信息不存在
-	CompanyInfo  *CompanyReportVo  `protobuf:"bytes,3,opt,name=companyInfo,proto3" json:"companyInfo,omitempty"`
-	MiInfo       *MiReportVo       `protobuf:"bytes,4,opt,name=miInfo,proto3" json:"miInfo,omitempty"`
-	MedicineInfo *MedicineReportVo `protobuf:"bytes,5,opt,name=medicineInfo,proto3" json:"medicineInfo,omitempty"`
+	CompanyInfo  *CompanyReportVo  `protobuf:"bytes,3,opt,name=companyInfo,proto3" json:"companyInfo"`
+	MiInfo       *MiReportVo       `protobuf:"bytes,4,opt,name=miInfo,proto3" json:"miInfo"`
+	MedicineInfo *MedicineReportVo `protobuf:"bytes,5,opt,name=medicineInfo,proto3" json:"medicineInfo"`
 	//本日配送计划同步金额
-	ShipmentPlanAmount           int64                  `protobuf:"varint,6,opt,name=shipmentPlanAmount,proto3" json:"shipmentPlanAmount,omitempty"`
-	ShipmentPlanCount            int64                  `protobuf:"varint,7,opt,name=shipmentPlanCount,proto3" json:"shipmentPlanCount,omitempty"`
-	ShipmentPlanUnitCount        int64                  `protobuf:"varint,8,opt,name=shipmentPlanUnitCount,proto3" json:"shipmentPlanUnitCount,omitempty"`
-	ShipmentPlanReceiveAmount    int64                  `protobuf:"varint,9,opt,name=shipmentPlanReceiveAmount,proto3" json:"shipmentPlanReceiveAmount,omitempty"`
-	ShipmentPlanReceiveCount     int64                  `protobuf:"varint,10,opt,name=shipmentPlanReceiveCount,proto3" json:"shipmentPlanReceiveCount,omitempty"`
-	ShipmentPlanReceiveUnitCount int64                  `protobuf:"varint,11,opt,name=shipmentPlanReceiveUnitCount,proto3" json:"shipmentPlanReceiveUnitCount,omitempty"`
-	ShipmentPlanNotSentAmount    int64                  `protobuf:"varint,12,opt,name=shipmentPlanNotSentAmount,proto3" json:"shipmentPlanNotSentAmount,omitempty"`
-	ShipmentPlanNotSentCount     int64                  `protobuf:"varint,13,opt,name=shipmentPlanNotSentCount,proto3" json:"shipmentPlanNotSentCount,omitempty"`
-	ShipmentPlanNotSentUnitCount int64                  `protobuf:"varint,14,opt,name=shipmentPlanNotSentUnitCount,proto3" json:"shipmentPlanNotSentUnitCount,omitempty"`
-	ReportDate                   *timestamppb.Timestamp `protobuf:"bytes,15,opt,name=reportDate,proto3" json:"reportDate,omitempty"`
+	ShipmentPlanAmount           int64                  `protobuf:"varint,6,opt,name=shipmentPlanAmount,proto3" json:"shipmentPlanAmount"`
+	ShipmentPlanCount            int64                  `protobuf:"varint,7,opt,name=shipmentPlanCount,proto3" json:"shipmentPlanCount"`
+	ShipmentPlanUnitCount        int64                  `protobuf:"varint,8,opt,name=shipmentPlanUnitCount,proto3" json:"shipmentPlanUnitCount"`
+	ShipmentPlanReceiveAmount    int64                  `protobuf:"varint,9,opt,name=shipmentPlanReceiveAmount,proto3" json:"shipmentPlanReceiveAmount"`
+	ShipmentPlanReceiveCount     int64                  `protobuf:"varint,10,opt,name=shipmentPlanReceiveCount,proto3" json:"shipmentPlanReceiveCount"`
+	ShipmentPlanReceiveUnitCount int64                  `protobuf:"varint,11,opt,name=shipmentPlanReceiveUnitCount,proto3" json:"shipmentPlanReceiveUnitCount"`
+	ShipmentPlanNotSentAmount    int64                  `protobuf:"varint,12,opt,name=shipmentPlanNotSentAmount,proto3" json:"shipmentPlanNotSentAmount"`
+	ShipmentPlanNotSentCount     int64                  `protobuf:"varint,13,opt,name=shipmentPlanNotSentCount,proto3" json:"shipmentPlanNotSentCount"`
+	ShipmentPlanNotSentUnitCount int64                  `protobuf:"varint,14,opt,name=shipmentPlanNotSentUnitCount,proto3" json:"shipmentPlanNotSentUnitCount"`
+	ReportDate                   *timestamppb.Timestamp `protobuf:"bytes,15,opt,name=reportDate,proto3" json:"reportDate"`
 }
 
 func (x *ShipmentPlanYearReport) Reset() {
@@ -10925,10 +10941,10 @@ type GetShipmentPlanDayReportsResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ShipmentPlanDayReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64                    `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64                    `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64                    `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*ShipmentPlanDayReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64                    `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64                    `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64                    `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *GetShipmentPlanDayReportsResp) Reset() {
@@ -10996,10 +11012,10 @@ type GetShipmentPlanMonthReportsResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ShipmentPlanMonthReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64                      `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64                      `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64                      `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*ShipmentPlanMonthReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64                      `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64                      `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64                      `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *GetShipmentPlanMonthReportsResp) Reset() {
@@ -11067,10 +11083,10 @@ type GetShipmentPlanYearReportsResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ShipmentPlanYearReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64                     `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64                     `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64                     `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*ShipmentPlanYearReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64                     `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64                     `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64                     `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *GetShipmentPlanYearReportsResp) Reset() {
@@ -11140,14 +11156,14 @@ type OrderReportGroupCondition struct {
 	unknownFields protoimpl.UnknownFields
 
 	//直接聚合为单行，使用此项则其他聚合条件不生效
-	ByAll bool `protobuf:"varint,1,opt,name=byAll,proto3" json:"byAll,omitempty"`
+	ByAll bool `protobuf:"varint,1,opt,name=byAll,proto3" json:"byAll"`
 	//时间维度聚合,注意对于月报，按日聚合无效，年报类推
-	ByMonth bool `protobuf:"varint,2,opt,name=byMonth,proto3" json:"byMonth,omitempty"`
-	ByYear  bool `protobuf:"varint,3,opt,name=byYear,proto3" json:"byYear,omitempty"`
-	ByDay   bool `protobuf:"varint,4,opt,name=byDay,proto3" json:"byDay,omitempty"`
+	ByMonth bool `protobuf:"varint,2,opt,name=byMonth,proto3" json:"byMonth"`
+	ByYear  bool `protobuf:"varint,3,opt,name=byYear,proto3" json:"byYear"`
+	ByDay   bool `protobuf:"varint,4,opt,name=byDay,proto3" json:"byDay"`
 	//业务维度
-	ByMi  bool `protobuf:"varint,5,opt,name=byMi,proto3" json:"byMi,omitempty"`
-	ByCom bool `protobuf:"varint,6,opt,name=byCom,proto3" json:"byCom,omitempty"`
+	ByMi  bool `protobuf:"varint,5,opt,name=byMi,proto3" json:"byMi"`
+	ByCom bool `protobuf:"varint,6,opt,name=byCom,proto3" json:"byCom"`
 }
 
 func (x *OrderReportGroupCondition) Reset() {
@@ -11231,13 +11247,13 @@ type OrderReportGetCondition struct {
 	unknownFields protoimpl.UnknownFields
 
 	//指定获取哪家医院的数据
-	MiIds []int64 `protobuf:"varint,1,rep,packed,name=miIds,proto3" json:"miIds,omitempty"`
+	MiIds []int64 `protobuf:"varint,1,rep,packed,name=miIds,proto3" json:"miIds"`
 	//指定获取哪家配送企业的数据
-	ComIds []int64 `protobuf:"varint,2,rep,packed,name=comIds,proto3" json:"comIds,omitempty"`
+	ComIds []int64 `protobuf:"varint,2,rep,packed,name=comIds,proto3" json:"comIds"`
 	//用于医院名模糊搜索，只显示5个候选医院
-	MiName string `protobuf:"bytes,3,opt,name=miName,proto3" json:"miName,omitempty"`
+	MiName string `protobuf:"bytes,3,opt,name=miName,proto3" json:"miName"`
 	//用于配送企业名模糊搜索，只显示5个候选
-	ComName string `protobuf:"bytes,4,opt,name=comName,proto3" json:"comName,omitempty"`
+	ComName string `protobuf:"bytes,4,opt,name=comName,proto3" json:"comName"`
 }
 
 func (x *OrderReportGetCondition) Reset() {
@@ -11306,14 +11322,14 @@ type GetShipmentOrderReportsReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
 	//指定获取哪个医保局的订单报表数据，目前不支持不同医保局混合统计
-	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId,omitempty"`
+	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId"`
 	//报表的起止日期必填
-	StartAt            *timestamppb.Timestamp     `protobuf:"bytes,3,opt,name=startAt,proto3" json:"startAt,omitempty"`
-	EndAt              *timestamppb.Timestamp     `protobuf:"bytes,4,opt,name=endAt,proto3" json:"endAt,omitempty"`
-	OptionalFilterCond *OrderReportGetCondition   `protobuf:"bytes,5,opt,name=optionalFilterCond,proto3" json:"optionalFilterCond,omitempty"`
-	OptionalGroupCond  *OrderReportGroupCondition `protobuf:"bytes,6,opt,name=optionalGroupCond,proto3" json:"optionalGroupCond,omitempty"`
+	StartAt            *timestamppb.Timestamp     `protobuf:"bytes,3,opt,name=startAt,proto3" json:"startAt"`
+	EndAt              *timestamppb.Timestamp     `protobuf:"bytes,4,opt,name=endAt,proto3" json:"endAt"`
+	OptionalFilterCond *OrderReportGetCondition   `protobuf:"bytes,5,opt,name=optionalFilterCond,proto3" json:"optionalFilterCond"`
+	OptionalGroupCond  *OrderReportGroupCondition `protobuf:"bytes,6,opt,name=optionalGroupCond,proto3" json:"optionalGroupCond"`
 }
 
 func (x *GetShipmentOrderReportsReq) Reset() {
@@ -11396,24 +11412,24 @@ type ShipmentOrderDayReport struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	Year  int64 `protobuf:"varint,1,opt,name=year,proto3" json:"year,omitempty"`
-	Month int64 `protobuf:"varint,2,opt,name=month,proto3" json:"month,omitempty"`
-	Day   int64 `protobuf:"varint,3,opt,name=day,proto3" json:"day,omitempty"`
-	MibId int64 `protobuf:"varint,4,opt,name=mibId,proto3" json:"mibId,omitempty"`
+	Year  int64 `protobuf:"varint,1,opt,name=year,proto3" json:"year"`
+	Month int64 `protobuf:"varint,2,opt,name=month,proto3" json:"month"`
+	Day   int64 `protobuf:"varint,3,opt,name=day,proto3" json:"day"`
+	MibId int64 `protobuf:"varint,4,opt,name=mibId,proto3" json:"mibId"`
 	//如果聚合时不含此列，则信息不存在
-	CompanyInfo                   *CompanyReportVo       `protobuf:"bytes,5,opt,name=companyInfo,proto3" json:"companyInfo,omitempty"`
-	MiInfo                        *MiReportVo            `protobuf:"bytes,6,opt,name=miInfo,proto3" json:"miInfo,omitempty"`
-	ShipmentOrderPaidAmount       int64                  `protobuf:"varint,7,opt,name=shipmentOrderPaidAmount,proto3" json:"shipmentOrderPaidAmount,omitempty"`
-	ShipmentOrderPaidCount        int64                  `protobuf:"varint,8,opt,name=shipmentOrderPaidCount,proto3" json:"shipmentOrderPaidCount,omitempty"`
-	ShipmentOrderSpecialPayAmount int64                  `protobuf:"varint,9,opt,name=shipmentOrderSpecialPayAmount,proto3" json:"shipmentOrderSpecialPayAmount,omitempty"`
-	ShipmentOrderSpecialPayCount  int64                  `protobuf:"varint,10,opt,name=shipmentOrderSpecialPayCount,proto3" json:"shipmentOrderSpecialPayCount,omitempty"`
-	ShipmentOrderNormalPayAmount  int64                  `protobuf:"varint,11,opt,name=shipmentOrderNormalPayAmount,proto3" json:"shipmentOrderNormalPayAmount,omitempty"`
-	ShipmentOrderNormalPayCount   int64                  `protobuf:"varint,12,opt,name=shipmentOrderNormalPayCount,proto3" json:"shipmentOrderNormalPayCount,omitempty"`
-	ShipmentOrderReceiveAmount    int64                  `protobuf:"varint,13,opt,name=shipmentOrderReceiveAmount,proto3" json:"shipmentOrderReceiveAmount,omitempty"`
-	ShipmentOrderReceiveCount     int64                  `protobuf:"varint,14,opt,name=shipmentOrderReceiveCount,proto3" json:"shipmentOrderReceiveCount,omitempty"`
-	ShipmentOrderTimeoutAmount    int64                  `protobuf:"varint,15,opt,name=shipmentOrderTimeoutAmount,proto3" json:"shipmentOrderTimeoutAmount,omitempty"`
-	ShipmentOrderTimeoutCount     int64                  `protobuf:"varint,16,opt,name=shipmentOrderTimeoutCount,proto3" json:"shipmentOrderTimeoutCount,omitempty"`
-	ReportDate                    *timestamppb.Timestamp `protobuf:"bytes,17,opt,name=reportDate,proto3" json:"reportDate,omitempty"`
+	CompanyInfo                   *CompanyReportVo       `protobuf:"bytes,5,opt,name=companyInfo,proto3" json:"companyInfo"`
+	MiInfo                        *MiReportVo            `protobuf:"bytes,6,opt,name=miInfo,proto3" json:"miInfo"`
+	ShipmentOrderPaidAmount       int64                  `protobuf:"varint,7,opt,name=shipmentOrderPaidAmount,proto3" json:"shipmentOrderPaidAmount"`
+	ShipmentOrderPaidCount        int64                  `protobuf:"varint,8,opt,name=shipmentOrderPaidCount,proto3" json:"shipmentOrderPaidCount"`
+	ShipmentOrderSpecialPayAmount int64                  `protobuf:"varint,9,opt,name=shipmentOrderSpecialPayAmount,proto3" json:"shipmentOrderSpecialPayAmount"`
+	ShipmentOrderSpecialPayCount  int64                  `protobuf:"varint,10,opt,name=shipmentOrderSpecialPayCount,proto3" json:"shipmentOrderSpecialPayCount"`
+	ShipmentOrderNormalPayAmount  int64                  `protobuf:"varint,11,opt,name=shipmentOrderNormalPayAmount,proto3" json:"shipmentOrderNormalPayAmount"`
+	ShipmentOrderNormalPayCount   int64                  `protobuf:"varint,12,opt,name=shipmentOrderNormalPayCount,proto3" json:"shipmentOrderNormalPayCount"`
+	ShipmentOrderReceiveAmount    int64                  `protobuf:"varint,13,opt,name=shipmentOrderReceiveAmount,proto3" json:"shipmentOrderReceiveAmount"`
+	ShipmentOrderReceiveCount     int64                  `protobuf:"varint,14,opt,name=shipmentOrderReceiveCount,proto3" json:"shipmentOrderReceiveCount"`
+	ShipmentOrderTimeoutAmount    int64                  `protobuf:"varint,15,opt,name=shipmentOrderTimeoutAmount,proto3" json:"shipmentOrderTimeoutAmount"`
+	ShipmentOrderTimeoutCount     int64                  `protobuf:"varint,16,opt,name=shipmentOrderTimeoutCount,proto3" json:"shipmentOrderTimeoutCount"`
+	ReportDate                    *timestamppb.Timestamp `protobuf:"bytes,17,opt,name=reportDate,proto3" json:"reportDate"`
 }
 
 func (x *ShipmentOrderDayReport) Reset() {
@@ -11573,23 +11589,23 @@ type ShipmentOrderMonthReport struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	Year       int64                  `protobuf:"varint,1,opt,name=year,proto3" json:"year,omitempty"`
-	Month      int64                  `protobuf:"varint,2,opt,name=month,proto3" json:"month,omitempty"`
-	ReportDate *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=reportDate,proto3" json:"reportDate,omitempty"`
-	MibId      int64                  `protobuf:"varint,4,opt,name=mibId,proto3" json:"mibId,omitempty"`
+	Year       int64                  `protobuf:"varint,1,opt,name=year,proto3" json:"year"`
+	Month      int64                  `protobuf:"varint,2,opt,name=month,proto3" json:"month"`
+	ReportDate *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=reportDate,proto3" json:"reportDate"`
+	MibId      int64                  `protobuf:"varint,4,opt,name=mibId,proto3" json:"mibId"`
 	//如果聚合时不含此列，则信息不存在
-	CompanyInfo                   *CompanyReportVo `protobuf:"bytes,5,opt,name=companyInfo,proto3" json:"companyInfo,omitempty"`
-	MiInfo                        *MiReportVo      `protobuf:"bytes,6,opt,name=miInfo,proto3" json:"miInfo,omitempty"`
-	ShipmentOrderPaidAmount       int64            `protobuf:"varint,7,opt,name=shipmentOrderPaidAmount,proto3" json:"shipmentOrderPaidAmount,omitempty"`
-	ShipmentOrderPaidCount        int64            `protobuf:"varint,8,opt,name=shipmentOrderPaidCount,proto3" json:"shipmentOrderPaidCount,omitempty"`
-	ShipmentOrderSpecialPayAmount int64            `protobuf:"varint,9,opt,name=shipmentOrderSpecialPayAmount,proto3" json:"shipmentOrderSpecialPayAmount,omitempty"`
-	ShipmentOrderSpecialPayCount  int64            `protobuf:"varint,10,opt,name=shipmentOrderSpecialPayCount,proto3" json:"shipmentOrderSpecialPayCount,omitempty"`
-	ShipmentOrderNormalPayAmount  int64            `protobuf:"varint,11,opt,name=shipmentOrderNormalPayAmount,proto3" json:"shipmentOrderNormalPayAmount,omitempty"`
-	ShipmentOrderNormalPayCount   int64            `protobuf:"varint,12,opt,name=shipmentOrderNormalPayCount,proto3" json:"shipmentOrderNormalPayCount,omitempty"`
-	ShipmentOrderReceiveAmount    int64            `protobuf:"varint,13,opt,name=shipmentOrderReceiveAmount,proto3" json:"shipmentOrderReceiveAmount,omitempty"`
-	ShipmentOrderReceiveCount     int64            `protobuf:"varint,14,opt,name=shipmentOrderReceiveCount,proto3" json:"shipmentOrderReceiveCount,omitempty"`
-	ShipmentOrderTimeoutAmount    int64            `protobuf:"varint,15,opt,name=shipmentOrderTimeoutAmount,proto3" json:"shipmentOrderTimeoutAmount,omitempty"`
-	ShipmentOrderTimeoutCount     int64            `protobuf:"varint,16,opt,name=shipmentOrderTimeoutCount,proto3" json:"shipmentOrderTimeoutCount,omitempty"`
+	CompanyInfo                   *CompanyReportVo `protobuf:"bytes,5,opt,name=companyInfo,proto3" json:"companyInfo"`
+	MiInfo                        *MiReportVo      `protobuf:"bytes,6,opt,name=miInfo,proto3" json:"miInfo"`
+	ShipmentOrderPaidAmount       int64            `protobuf:"varint,7,opt,name=shipmentOrderPaidAmount,proto3" json:"shipmentOrderPaidAmount"`
+	ShipmentOrderPaidCount        int64            `protobuf:"varint,8,opt,name=shipmentOrderPaidCount,proto3" json:"shipmentOrderPaidCount"`
+	ShipmentOrderSpecialPayAmount int64            `protobuf:"varint,9,opt,name=shipmentOrderSpecialPayAmount,proto3" json:"shipmentOrderSpecialPayAmount"`
+	ShipmentOrderSpecialPayCount  int64            `protobuf:"varint,10,opt,name=shipmentOrderSpecialPayCount,proto3" json:"shipmentOrderSpecialPayCount"`
+	ShipmentOrderNormalPayAmount  int64            `protobuf:"varint,11,opt,name=shipmentOrderNormalPayAmount,proto3" json:"shipmentOrderNormalPayAmount"`
+	ShipmentOrderNormalPayCount   int64            `protobuf:"varint,12,opt,name=shipmentOrderNormalPayCount,proto3" json:"shipmentOrderNormalPayCount"`
+	ShipmentOrderReceiveAmount    int64            `protobuf:"varint,13,opt,name=shipmentOrderReceiveAmount,proto3" json:"shipmentOrderReceiveAmount"`
+	ShipmentOrderReceiveCount     int64            `protobuf:"varint,14,opt,name=shipmentOrderReceiveCount,proto3" json:"shipmentOrderReceiveCount"`
+	ShipmentOrderTimeoutAmount    int64            `protobuf:"varint,15,opt,name=shipmentOrderTimeoutAmount,proto3" json:"shipmentOrderTimeoutAmount"`
+	ShipmentOrderTimeoutCount     int64            `protobuf:"varint,16,opt,name=shipmentOrderTimeoutCount,proto3" json:"shipmentOrderTimeoutCount"`
 }
 
 func (x *ShipmentOrderMonthReport) Reset() {
@@ -11742,22 +11758,22 @@ type ShipmentOrderYearReport struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	Year       int64                  `protobuf:"varint,1,opt,name=year,proto3" json:"year,omitempty"`
-	ReportDate *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=reportDate,proto3" json:"reportDate,omitempty"`
-	MibId      int64                  `protobuf:"varint,3,opt,name=mibId,proto3" json:"mibId,omitempty"`
+	Year       int64                  `protobuf:"varint,1,opt,name=year,proto3" json:"year"`
+	ReportDate *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=reportDate,proto3" json:"reportDate"`
+	MibId      int64                  `protobuf:"varint,3,opt,name=mibId,proto3" json:"mibId"`
 	//如果聚合时不含此列，则信息不存在
-	CompanyInfo                   *CompanyReportVo `protobuf:"bytes,4,opt,name=companyInfo,proto3" json:"companyInfo,omitempty"`
-	MiInfo                        *MiReportVo      `protobuf:"bytes,5,opt,name=miInfo,proto3" json:"miInfo,omitempty"`
-	ShipmentOrderPaidAmount       int64            `protobuf:"varint,6,opt,name=shipmentOrderPaidAmount,proto3" json:"shipmentOrderPaidAmount,omitempty"`
-	ShipmentOrderPaidCount        int64            `protobuf:"varint,7,opt,name=shipmentOrderPaidCount,proto3" json:"shipmentOrderPaidCount,omitempty"`
-	ShipmentOrderSpecialPayAmount int64            `protobuf:"varint,8,opt,name=shipmentOrderSpecialPayAmount,proto3" json:"shipmentOrderSpecialPayAmount,omitempty"`
-	ShipmentOrderSpecialPayCount  int64            `protobuf:"varint,9,opt,name=shipmentOrderSpecialPayCount,proto3" json:"shipmentOrderSpecialPayCount,omitempty"`
-	ShipmentOrderNormalPayAmount  int64            `protobuf:"varint,10,opt,name=shipmentOrderNormalPayAmount,proto3" json:"shipmentOrderNormalPayAmount,omitempty"`
-	ShipmentOrderNormalPayCount   int64            `protobuf:"varint,11,opt,name=shipmentOrderNormalPayCount,proto3" json:"shipmentOrderNormalPayCount,omitempty"`
-	ShipmentOrderReceiveAmount    int64            `protobuf:"varint,12,opt,name=shipmentOrderReceiveAmount,proto3" json:"shipmentOrderReceiveAmount,omitempty"`
-	ShipmentOrderReceiveCount     int64            `protobuf:"varint,13,opt,name=shipmentOrderReceiveCount,proto3" json:"shipmentOrderReceiveCount,omitempty"`
-	ShipmentOrderTimeoutAmount    int64            `protobuf:"varint,14,opt,name=shipmentOrderTimeoutAmount,proto3" json:"shipmentOrderTimeoutAmount,omitempty"`
-	ShipmentOrderTimeoutCount     int64            `protobuf:"varint,15,opt,name=shipmentOrderTimeoutCount,proto3" json:"shipmentOrderTimeoutCount,omitempty"`
+	CompanyInfo                   *CompanyReportVo `protobuf:"bytes,4,opt,name=companyInfo,proto3" json:"companyInfo"`
+	MiInfo                        *MiReportVo      `protobuf:"bytes,5,opt,name=miInfo,proto3" json:"miInfo"`
+	ShipmentOrderPaidAmount       int64            `protobuf:"varint,6,opt,name=shipmentOrderPaidAmount,proto3" json:"shipmentOrderPaidAmount"`
+	ShipmentOrderPaidCount        int64            `protobuf:"varint,7,opt,name=shipmentOrderPaidCount,proto3" json:"shipmentOrderPaidCount"`
+	ShipmentOrderSpecialPayAmount int64            `protobuf:"varint,8,opt,name=shipmentOrderSpecialPayAmount,proto3" json:"shipmentOrderSpecialPayAmount"`
+	ShipmentOrderSpecialPayCount  int64            `protobuf:"varint,9,opt,name=shipmentOrderSpecialPayCount,proto3" json:"shipmentOrderSpecialPayCount"`
+	ShipmentOrderNormalPayAmount  int64            `protobuf:"varint,10,opt,name=shipmentOrderNormalPayAmount,proto3" json:"shipmentOrderNormalPayAmount"`
+	ShipmentOrderNormalPayCount   int64            `protobuf:"varint,11,opt,name=shipmentOrderNormalPayCount,proto3" json:"shipmentOrderNormalPayCount"`
+	ShipmentOrderReceiveAmount    int64            `protobuf:"varint,12,opt,name=shipmentOrderReceiveAmount,proto3" json:"shipmentOrderReceiveAmount"`
+	ShipmentOrderReceiveCount     int64            `protobuf:"varint,13,opt,name=shipmentOrderReceiveCount,proto3" json:"shipmentOrderReceiveCount"`
+	ShipmentOrderTimeoutAmount    int64            `protobuf:"varint,14,opt,name=shipmentOrderTimeoutAmount,proto3" json:"shipmentOrderTimeoutAmount"`
+	ShipmentOrderTimeoutCount     int64            `protobuf:"varint,15,opt,name=shipmentOrderTimeoutCount,proto3" json:"shipmentOrderTimeoutCount"`
 }
 
 func (x *ShipmentOrderYearReport) Reset() {
@@ -11902,10 +11918,10 @@ type GetShipmentOrderDayReportsResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ShipmentOrderDayReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64                     `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64                     `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64                     `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*ShipmentOrderDayReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64                     `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64                     `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64                     `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *GetShipmentOrderDayReportsResp) Reset() {
@@ -11973,10 +11989,10 @@ type GetShipmentOrderMonthReportsResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ShipmentOrderMonthReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64                       `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64                       `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64                       `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*ShipmentOrderMonthReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64                       `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64                       `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64                       `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *GetShipmentOrderMonthReportsResp) Reset() {
@@ -12044,10 +12060,10 @@ type GetShipmentOrderYearReportsResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ShipmentOrderYearReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64                      `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64                      `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64                      `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*ShipmentOrderYearReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64                      `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64                      `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64                      `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *GetShipmentOrderYearReportsResp) Reset() {
@@ -12117,14 +12133,14 @@ type FactoringReportGroupCondition struct {
 	unknownFields protoimpl.UnknownFields
 
 	//直接聚合为单行，使用此项则其他聚合条件不生效
-	ByAll bool `protobuf:"varint,1,opt,name=byAll,proto3" json:"byAll,omitempty"`
+	ByAll bool `protobuf:"varint,1,opt,name=byAll,proto3" json:"byAll"`
 	//时间维度聚合,注意对于月报，按日聚合无效，年报类推
-	ByMonth bool `protobuf:"varint,2,opt,name=byMonth,proto3" json:"byMonth,omitempty"`
-	ByYear  bool `protobuf:"varint,3,opt,name=byYear,proto3" json:"byYear,omitempty"`
-	ByDay   bool `protobuf:"varint,4,opt,name=byDay,proto3" json:"byDay,omitempty"`
+	ByMonth bool `protobuf:"varint,2,opt,name=byMonth,proto3" json:"byMonth"`
+	ByYear  bool `protobuf:"varint,3,opt,name=byYear,proto3" json:"byYear"`
+	ByDay   bool `protobuf:"varint,4,opt,name=byDay,proto3" json:"byDay"`
 	//业务维度
-	ByMi  bool `protobuf:"varint,5,opt,name=byMi,proto3" json:"byMi,omitempty"`
-	ByCom bool `protobuf:"varint,6,opt,name=byCom,proto3" json:"byCom,omitempty"`
+	ByMi  bool `protobuf:"varint,5,opt,name=byMi,proto3" json:"byMi"`
+	ByCom bool `protobuf:"varint,6,opt,name=byCom,proto3" json:"byCom"`
 }
 
 func (x *FactoringReportGroupCondition) Reset() {
@@ -12208,13 +12224,13 @@ type FactoringReportGetCondition struct {
 	unknownFields protoimpl.UnknownFields
 
 	//指定获取哪家医院的数据
-	MiIds []int64 `protobuf:"varint,1,rep,packed,name=miIds,proto3" json:"miIds,omitempty"`
+	MiIds []int64 `protobuf:"varint,1,rep,packed,name=miIds,proto3" json:"miIds"`
 	//指定获取哪家配送企业的数据
-	ComIds []int64 `protobuf:"varint,2,rep,packed,name=comIds,proto3" json:"comIds,omitempty"`
+	ComIds []int64 `protobuf:"varint,2,rep,packed,name=comIds,proto3" json:"comIds"`
 	//用于医院名模糊搜索，只显示5个候选医院
-	MiName string `protobuf:"bytes,3,opt,name=miName,proto3" json:"miName,omitempty"`
+	MiName string `protobuf:"bytes,3,opt,name=miName,proto3" json:"miName"`
 	//用于配送企业名模糊搜索，只显示5个候选
-	ComName string `protobuf:"bytes,4,opt,name=comName,proto3" json:"comName,omitempty"`
+	ComName string `protobuf:"bytes,4,opt,name=comName,proto3" json:"comName"`
 }
 
 func (x *FactoringReportGetCondition) Reset() {
@@ -12283,14 +12299,14 @@ type GetFactoringOrderReportsReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
 	//指定获取哪个医保局的订单报表数据，目前不支持不同医保局混合统计
-	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId,omitempty"`
+	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId"`
 	//报表的起止日期必填
-	StartAt            *timestamppb.Timestamp         `protobuf:"bytes,3,opt,name=startAt,proto3" json:"startAt,omitempty"`
-	EndAt              *timestamppb.Timestamp         `protobuf:"bytes,4,opt,name=endAt,proto3" json:"endAt,omitempty"`
-	OptionalFilterCond *FactoringReportGetCondition   `protobuf:"bytes,5,opt,name=optionalFilterCond,proto3" json:"optionalFilterCond,omitempty"`
-	OptionalGroupCond  *FactoringReportGroupCondition `protobuf:"bytes,6,opt,name=optionalGroupCond,proto3" json:"optionalGroupCond,omitempty"`
+	StartAt            *timestamppb.Timestamp         `protobuf:"bytes,3,opt,name=startAt,proto3" json:"startAt"`
+	EndAt              *timestamppb.Timestamp         `protobuf:"bytes,4,opt,name=endAt,proto3" json:"endAt"`
+	OptionalFilterCond *FactoringReportGetCondition   `protobuf:"bytes,5,opt,name=optionalFilterCond,proto3" json:"optionalFilterCond"`
+	OptionalGroupCond  *FactoringReportGroupCondition `protobuf:"bytes,6,opt,name=optionalGroupCond,proto3" json:"optionalGroupCond"`
 }
 
 func (x *GetFactoringOrderReportsReq) Reset() {
@@ -12373,22 +12389,22 @@ type FactoringOrderDayReport struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	Year  int64 `protobuf:"varint,1,opt,name=year,proto3" json:"year,omitempty"`
-	Month int64 `protobuf:"varint,2,opt,name=month,proto3" json:"month,omitempty"`
-	Day   int64 `protobuf:"varint,3,opt,name=day,proto3" json:"day,omitempty"`
-	MibId int64 `protobuf:"varint,4,opt,name=mibId,proto3" json:"mibId,omitempty"`
+	Year  int64 `protobuf:"varint,1,opt,name=year,proto3" json:"year"`
+	Month int64 `protobuf:"varint,2,opt,name=month,proto3" json:"month"`
+	Day   int64 `protobuf:"varint,3,opt,name=day,proto3" json:"day"`
+	MibId int64 `protobuf:"varint,4,opt,name=mibId,proto3" json:"mibId"`
 	//如果聚合时不含此列，则信息不存在
-	CompanyInfo                          *CompanyReportVo       `protobuf:"bytes,5,opt,name=companyInfo,proto3" json:"companyInfo,omitempty"`
-	MiInfo                               *MiReportVo            `protobuf:"bytes,6,opt,name=miInfo,proto3" json:"miInfo,omitempty"`
-	FactoringAmount                      int64                  `protobuf:"varint,7,opt,name=factoringAmount,proto3" json:"factoringAmount,omitempty"`
-	FactoringCount                       int64                  `protobuf:"varint,8,opt,name=factoringCount,proto3" json:"factoringCount,omitempty"`
-	FactoringFailAmount                  int64                  `protobuf:"varint,9,opt,name=factoringFailAmount,proto3" json:"factoringFailAmount,omitempty"`
-	FactoringFailCount                   int64                  `protobuf:"varint,10,opt,name=factoringFailCount,proto3" json:"factoringFailCount,omitempty"`
-	FactoringApplyAmount                 int64                  `protobuf:"varint,11,opt,name=factoringApplyAmount,proto3" json:"factoringApplyAmount,omitempty"`
-	FactoringApplyCount                  int64                  `protobuf:"varint,12,opt,name=factoringApplyCount,proto3" json:"factoringApplyCount,omitempty"`
-	ShipmentOrderFactoringNotApplyAmount int64                  `protobuf:"varint,13,opt,name=shipmentOrderFactoringNotApplyAmount,proto3" json:"shipmentOrderFactoringNotApplyAmount,omitempty"`
-	ShipmentOrderFactoringNotApplyCount  int64                  `protobuf:"varint,14,opt,name=shipmentOrderFactoringNotApplyCount,proto3" json:"shipmentOrderFactoringNotApplyCount,omitempty"`
-	ReportDate                           *timestamppb.Timestamp `protobuf:"bytes,15,opt,name=reportDate,proto3" json:"reportDate,omitempty"`
+	CompanyInfo                          *CompanyReportVo       `protobuf:"bytes,5,opt,name=companyInfo,proto3" json:"companyInfo"`
+	MiInfo                               *MiReportVo            `protobuf:"bytes,6,opt,name=miInfo,proto3" json:"miInfo"`
+	FactoringAmount                      int64                  `protobuf:"varint,7,opt,name=factoringAmount,proto3" json:"factoringAmount"`
+	FactoringCount                       int64                  `protobuf:"varint,8,opt,name=factoringCount,proto3" json:"factoringCount"`
+	FactoringFailAmount                  int64                  `protobuf:"varint,9,opt,name=factoringFailAmount,proto3" json:"factoringFailAmount"`
+	FactoringFailCount                   int64                  `protobuf:"varint,10,opt,name=factoringFailCount,proto3" json:"factoringFailCount"`
+	FactoringApplyAmount                 int64                  `protobuf:"varint,11,opt,name=factoringApplyAmount,proto3" json:"factoringApplyAmount"`
+	FactoringApplyCount                  int64                  `protobuf:"varint,12,opt,name=factoringApplyCount,proto3" json:"factoringApplyCount"`
+	ShipmentOrderFactoringNotApplyAmount int64                  `protobuf:"varint,13,opt,name=shipmentOrderFactoringNotApplyAmount,proto3" json:"shipmentOrderFactoringNotApplyAmount"`
+	ShipmentOrderFactoringNotApplyCount  int64                  `protobuf:"varint,14,opt,name=shipmentOrderFactoringNotApplyCount,proto3" json:"shipmentOrderFactoringNotApplyCount"`
+	ReportDate                           *timestamppb.Timestamp `protobuf:"bytes,15,opt,name=reportDate,proto3" json:"reportDate"`
 }
 
 func (x *FactoringOrderDayReport) Reset() {
@@ -12533,10 +12549,10 @@ type GetFactoringOrderDayReportsResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*FactoringOrderDayReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64                      `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64                      `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64                      `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*FactoringOrderDayReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64                      `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64                      `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64                      `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *GetFactoringOrderDayReportsResp) Reset() {
@@ -12605,21 +12621,21 @@ type FactoringOrderMonthReport struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	Year  int64 `protobuf:"varint,1,opt,name=year,proto3" json:"year,omitempty"`
-	Month int64 `protobuf:"varint,2,opt,name=month,proto3" json:"month,omitempty"`
-	MibId int64 `protobuf:"varint,3,opt,name=mibId,proto3" json:"mibId,omitempty"`
+	Year  int64 `protobuf:"varint,1,opt,name=year,proto3" json:"year"`
+	Month int64 `protobuf:"varint,2,opt,name=month,proto3" json:"month"`
+	MibId int64 `protobuf:"varint,3,opt,name=mibId,proto3" json:"mibId"`
 	//如果聚合时不含此列，则信息不存在
-	CompanyInfo                          *CompanyReportVo       `protobuf:"bytes,4,opt,name=companyInfo,proto3" json:"companyInfo,omitempty"`
-	MiInfo                               *MiReportVo            `protobuf:"bytes,5,opt,name=miInfo,proto3" json:"miInfo,omitempty"`
-	FactoringAmount                      int64                  `protobuf:"varint,6,opt,name=factoringAmount,proto3" json:"factoringAmount,omitempty"`
-	FactoringCount                       int64                  `protobuf:"varint,7,opt,name=factoringCount,proto3" json:"factoringCount,omitempty"`
-	FactoringFailAmount                  int64                  `protobuf:"varint,8,opt,name=factoringFailAmount,proto3" json:"factoringFailAmount,omitempty"`
-	FactoringFailCount                   int64                  `protobuf:"varint,9,opt,name=factoringFailCount,proto3" json:"factoringFailCount,omitempty"`
-	FactoringApplyAmount                 int64                  `protobuf:"varint,10,opt,name=factoringApplyAmount,proto3" json:"factoringApplyAmount,omitempty"`
-	FactoringApplyCount                  int64                  `protobuf:"varint,11,opt,name=factoringApplyCount,proto3" json:"factoringApplyCount,omitempty"`
-	ShipmentOrderFactoringNotApplyAmount int64                  `protobuf:"varint,12,opt,name=shipmentOrderFactoringNotApplyAmount,proto3" json:"shipmentOrderFactoringNotApplyAmount,omitempty"`
-	ShipmentOrderFactoringNotApplyCount  int64                  `protobuf:"varint,13,opt,name=shipmentOrderFactoringNotApplyCount,proto3" json:"shipmentOrderFactoringNotApplyCount,omitempty"`
-	ReportDate                           *timestamppb.Timestamp `protobuf:"bytes,14,opt,name=reportDate,proto3" json:"reportDate,omitempty"`
+	CompanyInfo                          *CompanyReportVo       `protobuf:"bytes,4,opt,name=companyInfo,proto3" json:"companyInfo"`
+	MiInfo                               *MiReportVo            `protobuf:"bytes,5,opt,name=miInfo,proto3" json:"miInfo"`
+	FactoringAmount                      int64                  `protobuf:"varint,6,opt,name=factoringAmount,proto3" json:"factoringAmount"`
+	FactoringCount                       int64                  `protobuf:"varint,7,opt,name=factoringCount,proto3" json:"factoringCount"`
+	FactoringFailAmount                  int64                  `protobuf:"varint,8,opt,name=factoringFailAmount,proto3" json:"factoringFailAmount"`
+	FactoringFailCount                   int64                  `protobuf:"varint,9,opt,name=factoringFailCount,proto3" json:"factoringFailCount"`
+	FactoringApplyAmount                 int64                  `protobuf:"varint,10,opt,name=factoringApplyAmount,proto3" json:"factoringApplyAmount"`
+	FactoringApplyCount                  int64                  `protobuf:"varint,11,opt,name=factoringApplyCount,proto3" json:"factoringApplyCount"`
+	ShipmentOrderFactoringNotApplyAmount int64                  `protobuf:"varint,12,opt,name=shipmentOrderFactoringNotApplyAmount,proto3" json:"shipmentOrderFactoringNotApplyAmount"`
+	ShipmentOrderFactoringNotApplyCount  int64                  `protobuf:"varint,13,opt,name=shipmentOrderFactoringNotApplyCount,proto3" json:"shipmentOrderFactoringNotApplyCount"`
+	ReportDate                           *timestamppb.Timestamp `protobuf:"bytes,14,opt,name=reportDate,proto3" json:"reportDate"`
 }
 
 func (x *FactoringOrderMonthReport) Reset() {
@@ -12757,10 +12773,10 @@ type GetFactoringOrderMonthReportsResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*FactoringOrderMonthReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64                        `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64                        `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64                        `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*FactoringOrderMonthReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64                        `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64                        `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64                        `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *GetFactoringOrderMonthReportsResp) Reset() {
@@ -12829,20 +12845,20 @@ type FactoringOrderYearReport struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	Year       int64                  `protobuf:"varint,1,opt,name=year,proto3" json:"year,omitempty"`
-	ReportDate *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=reportDate,proto3" json:"reportDate,omitempty"`
-	MibId      int64                  `protobuf:"varint,3,opt,name=mibId,proto3" json:"mibId,omitempty"`
+	Year       int64                  `protobuf:"varint,1,opt,name=year,proto3" json:"year"`
+	ReportDate *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=reportDate,proto3" json:"reportDate"`
+	MibId      int64                  `protobuf:"varint,3,opt,name=mibId,proto3" json:"mibId"`
 	//如果聚合时不含此列，则信息不存在
-	CompanyInfo                          *CompanyReportVo `protobuf:"bytes,4,opt,name=companyInfo,proto3" json:"companyInfo,omitempty"`
-	MiInfo                               *MiReportVo      `protobuf:"bytes,5,opt,name=miInfo,proto3" json:"miInfo,omitempty"`
-	FactoringAmount                      int64            `protobuf:"varint,6,opt,name=factoringAmount,proto3" json:"factoringAmount,omitempty"`
-	FactoringCount                       int64            `protobuf:"varint,7,opt,name=factoringCount,proto3" json:"factoringCount,omitempty"`
-	FactoringFailAmount                  int64            `protobuf:"varint,8,opt,name=factoringFailAmount,proto3" json:"factoringFailAmount,omitempty"`
-	FactoringFailCount                   int64            `protobuf:"varint,9,opt,name=factoringFailCount,proto3" json:"factoringFailCount,omitempty"`
-	FactoringApplyAmount                 int64            `protobuf:"varint,10,opt,name=factoringApplyAmount,proto3" json:"factoringApplyAmount,omitempty"`
-	FactoringApplyCount                  int64            `protobuf:"varint,11,opt,name=factoringApplyCount,proto3" json:"factoringApplyCount,omitempty"`
-	ShipmentOrderFactoringNotApplyAmount int64            `protobuf:"varint,12,opt,name=shipmentOrderFactoringNotApplyAmount,proto3" json:"shipmentOrderFactoringNotApplyAmount,omitempty"`
-	ShipmentOrderFactoringNotApplyCount  int64            `protobuf:"varint,13,opt,name=shipmentOrderFactoringNotApplyCount,proto3" json:"shipmentOrderFactoringNotApplyCount,omitempty"`
+	CompanyInfo                          *CompanyReportVo `protobuf:"bytes,4,opt,name=companyInfo,proto3" json:"companyInfo"`
+	MiInfo                               *MiReportVo      `protobuf:"bytes,5,opt,name=miInfo,proto3" json:"miInfo"`
+	FactoringAmount                      int64            `protobuf:"varint,6,opt,name=factoringAmount,proto3" json:"factoringAmount"`
+	FactoringCount                       int64            `protobuf:"varint,7,opt,name=factoringCount,proto3" json:"factoringCount"`
+	FactoringFailAmount                  int64            `protobuf:"varint,8,opt,name=factoringFailAmount,proto3" json:"factoringFailAmount"`
+	FactoringFailCount                   int64            `protobuf:"varint,9,opt,name=factoringFailCount,proto3" json:"factoringFailCount"`
+	FactoringApplyAmount                 int64            `protobuf:"varint,10,opt,name=factoringApplyAmount,proto3" json:"factoringApplyAmount"`
+	FactoringApplyCount                  int64            `protobuf:"varint,11,opt,name=factoringApplyCount,proto3" json:"factoringApplyCount"`
+	ShipmentOrderFactoringNotApplyAmount int64            `protobuf:"varint,12,opt,name=shipmentOrderFactoringNotApplyAmount,proto3" json:"shipmentOrderFactoringNotApplyAmount"`
+	ShipmentOrderFactoringNotApplyCount  int64            `protobuf:"varint,13,opt,name=shipmentOrderFactoringNotApplyCount,proto3" json:"shipmentOrderFactoringNotApplyCount"`
 }
 
 func (x *FactoringOrderYearReport) Reset() {
@@ -12973,10 +12989,10 @@ type GetFactoringOrderYearReportsResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*FactoringOrderYearReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64                       `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64                       `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64                       `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*FactoringOrderYearReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64                       `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64                       `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64                       `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *GetFactoringOrderYearReportsResp) Reset() {
@@ -13046,25 +13062,25 @@ type ContractPlanReportGetCondition struct {
 	unknownFields protoimpl.UnknownFields
 
 	//指定获取哪家医院的数据
-	MiIds []int64 `protobuf:"varint,1,rep,packed,name=miIds,proto3" json:"miIds,omitempty"`
+	MiIds []int64 `protobuf:"varint,1,rep,packed,name=miIds,proto3" json:"miIds"`
 	//指定获取哪家配送企业的数据
-	ComIds        []int64  `protobuf:"varint,2,rep,packed,name=comIds,proto3" json:"comIds,omitempty"`
-	MedicineCodes []string `protobuf:"bytes,3,rep,name=medicineCodes,proto3" json:"medicineCodes,omitempty"`
+	ComIds        []int64  `protobuf:"varint,2,rep,packed,name=comIds,proto3" json:"comIds"`
+	MedicineCodes []string `protobuf:"bytes,3,rep,name=medicineCodes,proto3" json:"medicineCodes"`
 	//用于药品名模糊搜索，只显示5个候选药品
-	MedicineName string `protobuf:"bytes,4,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
+	MedicineName string `protobuf:"bytes,4,opt,name=medicineName,proto3" json:"medicineName"`
 	//用于医院名模糊搜索，只显示5个候选医院
-	MiName string `protobuf:"bytes,5,opt,name=miName,proto3" json:"miName,omitempty"`
+	MiName string `protobuf:"bytes,5,opt,name=miName,proto3" json:"miName"`
 	//用于企业名模糊搜索，只显示5个候选医院
-	ComName string `protobuf:"bytes,6,opt,name=comName,proto3" json:"comName,omitempty"`
+	ComName string `protobuf:"bytes,6,opt,name=comName,proto3" json:"comName"`
 	//按某个标签显示
-	TagId int64 `protobuf:"varint,7,opt,name=tagId,proto3" json:"tagId,omitempty"`
+	TagId int64 `protobuf:"varint,7,opt,name=tagId,proto3" json:"tagId"`
 	//按某份合同聚合
-	ContractNo string `protobuf:"bytes,8,opt,name=contractNo,proto3" json:"contractNo,omitempty"`
+	ContractNo string `protobuf:"bytes,8,opt,name=contractNo,proto3" json:"contractNo"`
 	//按子合同聚合等效于 按照 com,mi,medicine,contract聚合
-	ContractId int64 `protobuf:"varint,9,opt,name=contractId,proto3" json:"contractId,omitempty"`
+	ContractId int64 `protobuf:"varint,9,opt,name=contractId,proto3" json:"contractId"`
 	//合同起止时间过滤
-	ContractStartAt *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=contractStartAt,proto3" json:"contractStartAt,omitempty"`
-	ContractEndAt   *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=contractEndAt,proto3" json:"contractEndAt,omitempty"`
+	ContractStartAt *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=contractStartAt,proto3" json:"contractStartAt"`
+	ContractEndAt   *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=contractEndAt,proto3" json:"contractEndAt"`
 }
 
 func (x *ContractPlanReportGetCondition) Reset() {
@@ -13183,18 +13199,18 @@ type ContractPlanReportGroupCondition struct {
 	unknownFields protoimpl.UnknownFields
 
 	//直接聚合为单行，使用此项则其他聚合条件不生效
-	ByAll bool `protobuf:"varint,1,opt,name=byAll,proto3" json:"byAll,omitempty"`
+	ByAll bool `protobuf:"varint,1,opt,name=byAll,proto3" json:"byAll"`
 	//时间维度聚合,注意对于月报，按日聚合无效，年报类推
-	ByMonth bool `protobuf:"varint,2,opt,name=byMonth,proto3" json:"byMonth,omitempty"`
-	ByYear  bool `protobuf:"varint,3,opt,name=byYear,proto3" json:"byYear,omitempty"`
-	ByDay   bool `protobuf:"varint,4,opt,name=byDay,proto3" json:"byDay,omitempty"`
+	ByMonth bool `protobuf:"varint,2,opt,name=byMonth,proto3" json:"byMonth"`
+	ByYear  bool `protobuf:"varint,3,opt,name=byYear,proto3" json:"byYear"`
+	ByDay   bool `protobuf:"varint,4,opt,name=byDay,proto3" json:"byDay"`
 	//业务维度
-	ByMi       bool `protobuf:"varint,5,opt,name=byMi,proto3" json:"byMi,omitempty"`
-	ByCom      bool `protobuf:"varint,6,opt,name=byCom,proto3" json:"byCom,omitempty"`
-	ByMedicine bool `protobuf:"varint,7,opt,name=byMedicine,proto3" json:"byMedicine,omitempty"`
-	ByContract bool `protobuf:"varint,8,opt,name=byContract,proto3" json:"byContract,omitempty"`
+	ByMi       bool `protobuf:"varint,5,opt,name=byMi,proto3" json:"byMi"`
+	ByCom      bool `protobuf:"varint,6,opt,name=byCom,proto3" json:"byCom"`
+	ByMedicine bool `protobuf:"varint,7,opt,name=byMedicine,proto3" json:"byMedicine"`
+	ByContract bool `protobuf:"varint,8,opt,name=byContract,proto3" json:"byContract"`
 	//按照子合同聚合
-	ByContractMi bool `protobuf:"varint,9,opt,name=byContractMi,proto3" json:"byContractMi,omitempty"`
+	ByContractMi bool `protobuf:"varint,9,opt,name=byContractMi,proto3" json:"byContractMi"`
 }
 
 func (x *ContractPlanReportGroupCondition) Reset() {
@@ -13298,14 +13314,14 @@ type GetContractPlanReportsReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
 	//指定获取哪个医保局的订单报表数据，目前不支持不同医保局混合统计
-	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId,omitempty"`
+	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId"`
 	//报表的起止日期必填
-	StartAt            *timestamppb.Timestamp            `protobuf:"bytes,3,opt,name=startAt,proto3" json:"startAt,omitempty"`
-	EndAt              *timestamppb.Timestamp            `protobuf:"bytes,4,opt,name=endAt,proto3" json:"endAt,omitempty"`
-	OptionalFilterCond *ContractPlanReportGetCondition   `protobuf:"bytes,5,opt,name=optionalFilterCond,proto3" json:"optionalFilterCond,omitempty"`
-	OptionalGroupCond  *ContractPlanReportGroupCondition `protobuf:"bytes,6,opt,name=optionalGroupCond,proto3" json:"optionalGroupCond,omitempty"`
+	StartAt            *timestamppb.Timestamp            `protobuf:"bytes,3,opt,name=startAt,proto3" json:"startAt"`
+	EndAt              *timestamppb.Timestamp            `protobuf:"bytes,4,opt,name=endAt,proto3" json:"endAt"`
+	OptionalFilterCond *ContractPlanReportGetCondition   `protobuf:"bytes,5,opt,name=optionalFilterCond,proto3" json:"optionalFilterCond"`
+	OptionalGroupCond  *ContractPlanReportGroupCondition `protobuf:"bytes,6,opt,name=optionalGroupCond,proto3" json:"optionalGroupCond"`
 }
 
 func (x *GetContractPlanReportsReq) Reset() {
@@ -13387,17 +13403,17 @@ type ContractReportVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ContractNo string `protobuf:"bytes,1,opt,name=contractNo,proto3" json:"contractNo,omitempty"`
+	ContractNo string `protobuf:"bytes,1,opt,name=contractNo,proto3" json:"contractNo"`
 	//投标企业名
-	TenderCompany string `protobuf:"bytes,2,opt,name=tenderCompany,proto3" json:"tenderCompany,omitempty"`
+	TenderCompany string `protobuf:"bytes,2,opt,name=tenderCompany,proto3" json:"tenderCompany"`
 	//中标价格 单位分/包装
-	MedicinePrice int64 `protobuf:"varint,3,opt,name=medicinePrice,proto3" json:"medicinePrice,omitempty"`
+	MedicinePrice int64 `protobuf:"varint,3,opt,name=medicinePrice,proto3" json:"medicinePrice"`
 	//已确认收货的数量
-	MedicineReceive int64 `protobuf:"varint,4,opt,name=medicineReceive,proto3" json:"medicineReceive,omitempty"`
+	MedicineReceive int64 `protobuf:"varint,4,opt,name=medicineReceive,proto3" json:"medicineReceive"`
 	//预计采购量
-	TotalAmount int64                  `protobuf:"varint,5,opt,name=totalAmount,proto3" json:"totalAmount,omitempty"`
-	StartAt     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=startAt,proto3" json:"startAt,omitempty"`
-	EndAt       *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=endAt,proto3" json:"endAt,omitempty"`
+	TotalAmount int64                  `protobuf:"varint,5,opt,name=totalAmount,proto3" json:"totalAmount"`
+	StartAt     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=startAt,proto3" json:"startAt"`
+	EndAt       *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=endAt,proto3" json:"endAt"`
 }
 
 func (x *ContractReportVo) Reset() {
@@ -13486,11 +13502,11 @@ type ContractMiReportVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MiContractId    int64 `protobuf:"varint,1,opt,name=miContractId,proto3" json:"miContractId,omitempty"`
-	MedicinePrice   int64 `protobuf:"varint,2,opt,name=medicinePrice,proto3" json:"medicinePrice,omitempty"`
-	MedicineAmount  int64 `protobuf:"varint,3,opt,name=medicineAmount,proto3" json:"medicineAmount,omitempty"`
-	MedicineSent    int64 `protobuf:"varint,4,opt,name=medicineSent,proto3" json:"medicineSent,omitempty"`
-	MedicineReceive int64 `protobuf:"varint,5,opt,name=medicineReceive,proto3" json:"medicineReceive,omitempty"`
+	MiContractId    int64 `protobuf:"varint,1,opt,name=miContractId,proto3" json:"miContractId"`
+	MedicinePrice   int64 `protobuf:"varint,2,opt,name=medicinePrice,proto3" json:"medicinePrice"`
+	MedicineAmount  int64 `protobuf:"varint,3,opt,name=medicineAmount,proto3" json:"medicineAmount"`
+	MedicineSent    int64 `protobuf:"varint,4,opt,name=medicineSent,proto3" json:"medicineSent"`
+	MedicineReceive int64 `protobuf:"varint,5,opt,name=medicineReceive,proto3" json:"medicineReceive"`
 }
 
 func (x *ContractMiReportVo) Reset() {
@@ -13566,28 +13582,28 @@ type ContractPlanDayReport struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	Year  int64 `protobuf:"varint,1,opt,name=year,proto3" json:"year,omitempty"`
-	Month int64 `protobuf:"varint,2,opt,name=month,proto3" json:"month,omitempty"`
-	Day   int64 `protobuf:"varint,3,opt,name=day,proto3" json:"day,omitempty"`
-	MibId int64 `protobuf:"varint,4,opt,name=mibId,proto3" json:"mibId,omitempty"`
+	Year  int64 `protobuf:"varint,1,opt,name=year,proto3" json:"year"`
+	Month int64 `protobuf:"varint,2,opt,name=month,proto3" json:"month"`
+	Day   int64 `protobuf:"varint,3,opt,name=day,proto3" json:"day"`
+	MibId int64 `protobuf:"varint,4,opt,name=mibId,proto3" json:"mibId"`
 	//如果聚合时不含此列，则信息不存在
-	CompanyInfo  *CompanyReportVo  `protobuf:"bytes,5,opt,name=companyInfo,proto3" json:"companyInfo,omitempty"`
-	MiInfo       *MiReportVo       `protobuf:"bytes,6,opt,name=miInfo,proto3" json:"miInfo,omitempty"`
-	MedicineInfo *MedicineReportVo `protobuf:"bytes,7,opt,name=medicineInfo,proto3" json:"medicineInfo,omitempty"`
+	CompanyInfo  *CompanyReportVo  `protobuf:"bytes,5,opt,name=companyInfo,proto3" json:"companyInfo"`
+	MiInfo       *MiReportVo       `protobuf:"bytes,6,opt,name=miInfo,proto3" json:"miInfo"`
+	MedicineInfo *MedicineReportVo `protobuf:"bytes,7,opt,name=medicineInfo,proto3" json:"medicineInfo"`
 	//本日配送计划同步金额
-	ShipmentPlanAmount           int64                  `protobuf:"varint,8,opt,name=shipmentPlanAmount,proto3" json:"shipmentPlanAmount,omitempty"`
-	ShipmentPlanCount            int64                  `protobuf:"varint,9,opt,name=shipmentPlanCount,proto3" json:"shipmentPlanCount,omitempty"`
-	ShipmentPlanUnitCount        int64                  `protobuf:"varint,10,opt,name=shipmentPlanUnitCount,proto3" json:"shipmentPlanUnitCount,omitempty"`
-	ShipmentPlanReceiveAmount    int64                  `protobuf:"varint,11,opt,name=shipmentPlanReceiveAmount,proto3" json:"shipmentPlanReceiveAmount,omitempty"`
-	ShipmentPlanReceiveCount     int64                  `protobuf:"varint,12,opt,name=shipmentPlanReceiveCount,proto3" json:"shipmentPlanReceiveCount,omitempty"`
-	ShipmentPlanReceiveUnitCount int64                  `protobuf:"varint,13,opt,name=shipmentPlanReceiveUnitCount,proto3" json:"shipmentPlanReceiveUnitCount,omitempty"`
-	ShipmentPlanNotSentAmount    int64                  `protobuf:"varint,14,opt,name=shipmentPlanNotSentAmount,proto3" json:"shipmentPlanNotSentAmount,omitempty"`
-	ShipmentPlanNotSentCount     int64                  `protobuf:"varint,15,opt,name=shipmentPlanNotSentCount,proto3" json:"shipmentPlanNotSentCount,omitempty"`
-	ShipmentPlanNotSentUnitCount int64                  `protobuf:"varint,16,opt,name=shipmentPlanNotSentUnitCount,proto3" json:"shipmentPlanNotSentUnitCount,omitempty"`
-	FactoringAmount              int64                  `protobuf:"varint,17,opt,name=factoringAmount,proto3" json:"factoringAmount,omitempty"`
-	ReportDate                   *timestamppb.Timestamp `protobuf:"bytes,18,opt,name=reportDate,proto3" json:"reportDate,omitempty"`
-	ContractInfo                 *ContractReportVo      `protobuf:"bytes,19,opt,name=contractInfo,proto3" json:"contractInfo,omitempty"`
-	ContractMiInfo               *ContractMiReportVo    `protobuf:"bytes,20,opt,name=contractMiInfo,proto3" json:"contractMiInfo,omitempty"`
+	ShipmentPlanAmount           int64                  `protobuf:"varint,8,opt,name=shipmentPlanAmount,proto3" json:"shipmentPlanAmount"`
+	ShipmentPlanCount            int64                  `protobuf:"varint,9,opt,name=shipmentPlanCount,proto3" json:"shipmentPlanCount"`
+	ShipmentPlanUnitCount        int64                  `protobuf:"varint,10,opt,name=shipmentPlanUnitCount,proto3" json:"shipmentPlanUnitCount"`
+	ShipmentPlanReceiveAmount    int64                  `protobuf:"varint,11,opt,name=shipmentPlanReceiveAmount,proto3" json:"shipmentPlanReceiveAmount"`
+	ShipmentPlanReceiveCount     int64                  `protobuf:"varint,12,opt,name=shipmentPlanReceiveCount,proto3" json:"shipmentPlanReceiveCount"`
+	ShipmentPlanReceiveUnitCount int64                  `protobuf:"varint,13,opt,name=shipmentPlanReceiveUnitCount,proto3" json:"shipmentPlanReceiveUnitCount"`
+	ShipmentPlanNotSentAmount    int64                  `protobuf:"varint,14,opt,name=shipmentPlanNotSentAmount,proto3" json:"shipmentPlanNotSentAmount"`
+	ShipmentPlanNotSentCount     int64                  `protobuf:"varint,15,opt,name=shipmentPlanNotSentCount,proto3" json:"shipmentPlanNotSentCount"`
+	ShipmentPlanNotSentUnitCount int64                  `protobuf:"varint,16,opt,name=shipmentPlanNotSentUnitCount,proto3" json:"shipmentPlanNotSentUnitCount"`
+	FactoringAmount              int64                  `protobuf:"varint,17,opt,name=factoringAmount,proto3" json:"factoringAmount"`
+	ReportDate                   *timestamppb.Timestamp `protobuf:"bytes,18,opt,name=reportDate,proto3" json:"reportDate"`
+	ContractInfo                 *ContractReportVo      `protobuf:"bytes,19,opt,name=contractInfo,proto3" json:"contractInfo"`
+	ContractMiInfo               *ContractMiReportVo    `protobuf:"bytes,20,opt,name=contractMiInfo,proto3" json:"contractMiInfo"`
 }
 
 func (x *ContractPlanDayReport) Reset() {
@@ -13767,10 +13783,10 @@ type GetContractPlanDayReportsResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ContractPlanDayReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64                    `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64                    `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64                    `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*ContractPlanDayReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64                    `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64                    `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64                    `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *GetContractPlanDayReportsResp) Reset() {
@@ -13839,27 +13855,27 @@ type ContractPlanMonthReport struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	Year           int64               `protobuf:"varint,1,opt,name=year,proto3" json:"year,omitempty"`
-	Month          int64               `protobuf:"varint,2,opt,name=month,proto3" json:"month,omitempty"`
-	ContractMiInfo *ContractMiReportVo `protobuf:"bytes,3,opt,name=contractMiInfo,proto3" json:"contractMiInfo,omitempty"`
-	MibId          int64               `protobuf:"varint,4,opt,name=mibId,proto3" json:"mibId,omitempty"`
+	Year           int64               `protobuf:"varint,1,opt,name=year,proto3" json:"year"`
+	Month          int64               `protobuf:"varint,2,opt,name=month,proto3" json:"month"`
+	ContractMiInfo *ContractMiReportVo `protobuf:"bytes,3,opt,name=contractMiInfo,proto3" json:"contractMiInfo"`
+	MibId          int64               `protobuf:"varint,4,opt,name=mibId,proto3" json:"mibId"`
 	//如果聚合时不含此列，则信息不存在
-	CompanyInfo  *CompanyReportVo  `protobuf:"bytes,5,opt,name=companyInfo,proto3" json:"companyInfo,omitempty"`
-	MiInfo       *MiReportVo       `protobuf:"bytes,6,opt,name=miInfo,proto3" json:"miInfo,omitempty"`
-	MedicineInfo *MedicineReportVo `protobuf:"bytes,7,opt,name=medicineInfo,proto3" json:"medicineInfo,omitempty"`
+	CompanyInfo  *CompanyReportVo  `protobuf:"bytes,5,opt,name=companyInfo,proto3" json:"companyInfo"`
+	MiInfo       *MiReportVo       `protobuf:"bytes,6,opt,name=miInfo,proto3" json:"miInfo"`
+	MedicineInfo *MedicineReportVo `protobuf:"bytes,7,opt,name=medicineInfo,proto3" json:"medicineInfo"`
 	//本日配送计划同步金额
-	ShipmentPlanAmount           int64                  `protobuf:"varint,8,opt,name=shipmentPlanAmount,proto3" json:"shipmentPlanAmount,omitempty"`
-	ShipmentPlanCount            int64                  `protobuf:"varint,9,opt,name=shipmentPlanCount,proto3" json:"shipmentPlanCount,omitempty"`
-	ShipmentPlanUnitCount        int64                  `protobuf:"varint,10,opt,name=shipmentPlanUnitCount,proto3" json:"shipmentPlanUnitCount,omitempty"`
-	ShipmentPlanReceiveAmount    int64                  `protobuf:"varint,11,opt,name=shipmentPlanReceiveAmount,proto3" json:"shipmentPlanReceiveAmount,omitempty"`
-	ShipmentPlanReceiveCount     int64                  `protobuf:"varint,12,opt,name=shipmentPlanReceiveCount,proto3" json:"shipmentPlanReceiveCount,omitempty"`
-	ShipmentPlanReceiveUnitCount int64                  `protobuf:"varint,13,opt,name=shipmentPlanReceiveUnitCount,proto3" json:"shipmentPlanReceiveUnitCount,omitempty"`
-	ShipmentPlanNotSentAmount    int64                  `protobuf:"varint,14,opt,name=shipmentPlanNotSentAmount,proto3" json:"shipmentPlanNotSentAmount,omitempty"`
-	ShipmentPlanNotSentCount     int64                  `protobuf:"varint,15,opt,name=shipmentPlanNotSentCount,proto3" json:"shipmentPlanNotSentCount,omitempty"`
-	ShipmentPlanNotSentUnitCount int64                  `protobuf:"varint,16,opt,name=shipmentPlanNotSentUnitCount,proto3" json:"shipmentPlanNotSentUnitCount,omitempty"`
-	FactoringAmount              int64                  `protobuf:"varint,17,opt,name=factoringAmount,proto3" json:"factoringAmount,omitempty"`
-	ReportDate                   *timestamppb.Timestamp `protobuf:"bytes,18,opt,name=reportDate,proto3" json:"reportDate,omitempty"`
-	ContractInfo                 *ContractReportVo      `protobuf:"bytes,19,opt,name=contractInfo,proto3" json:"contractInfo,omitempty"`
+	ShipmentPlanAmount           int64                  `protobuf:"varint,8,opt,name=shipmentPlanAmount,proto3" json:"shipmentPlanAmount"`
+	ShipmentPlanCount            int64                  `protobuf:"varint,9,opt,name=shipmentPlanCount,proto3" json:"shipmentPlanCount"`
+	ShipmentPlanUnitCount        int64                  `protobuf:"varint,10,opt,name=shipmentPlanUnitCount,proto3" json:"shipmentPlanUnitCount"`
+	ShipmentPlanReceiveAmount    int64                  `protobuf:"varint,11,opt,name=shipmentPlanReceiveAmount,proto3" json:"shipmentPlanReceiveAmount"`
+	ShipmentPlanReceiveCount     int64                  `protobuf:"varint,12,opt,name=shipmentPlanReceiveCount,proto3" json:"shipmentPlanReceiveCount"`
+	ShipmentPlanReceiveUnitCount int64                  `protobuf:"varint,13,opt,name=shipmentPlanReceiveUnitCount,proto3" json:"shipmentPlanReceiveUnitCount"`
+	ShipmentPlanNotSentAmount    int64                  `protobuf:"varint,14,opt,name=shipmentPlanNotSentAmount,proto3" json:"shipmentPlanNotSentAmount"`
+	ShipmentPlanNotSentCount     int64                  `protobuf:"varint,15,opt,name=shipmentPlanNotSentCount,proto3" json:"shipmentPlanNotSentCount"`
+	ShipmentPlanNotSentUnitCount int64                  `protobuf:"varint,16,opt,name=shipmentPlanNotSentUnitCount,proto3" json:"shipmentPlanNotSentUnitCount"`
+	FactoringAmount              int64                  `protobuf:"varint,17,opt,name=factoringAmount,proto3" json:"factoringAmount"`
+	ReportDate                   *timestamppb.Timestamp `protobuf:"bytes,18,opt,name=reportDate,proto3" json:"reportDate"`
+	ContractInfo                 *ContractReportVo      `protobuf:"bytes,19,opt,name=contractInfo,proto3" json:"contractInfo"`
 }
 
 func (x *ContractPlanMonthReport) Reset() {
@@ -14032,10 +14048,10 @@ type GetContractPlanMonthReportsResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ContractPlanMonthReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64                      `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64                      `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64                      `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*ContractPlanMonthReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64                      `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64                      `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64                      `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *GetContractPlanMonthReportsResp) Reset() {
@@ -14104,26 +14120,26 @@ type ContractPlanYearReport struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	Year           int64               `protobuf:"varint,1,opt,name=year,proto3" json:"year,omitempty"`
-	ContractInfo   *ContractReportVo   `protobuf:"bytes,2,opt,name=contractInfo,proto3" json:"contractInfo,omitempty"`
-	ContractMiInfo *ContractMiReportVo `protobuf:"bytes,3,opt,name=contractMiInfo,proto3" json:"contractMiInfo,omitempty"`
-	MibId          int64               `protobuf:"varint,4,opt,name=mibId,proto3" json:"mibId,omitempty"`
+	Year           int64               `protobuf:"varint,1,opt,name=year,proto3" json:"year"`
+	ContractInfo   *ContractReportVo   `protobuf:"bytes,2,opt,name=contractInfo,proto3" json:"contractInfo"`
+	ContractMiInfo *ContractMiReportVo `protobuf:"bytes,3,opt,name=contractMiInfo,proto3" json:"contractMiInfo"`
+	MibId          int64               `protobuf:"varint,4,opt,name=mibId,proto3" json:"mibId"`
 	//如果聚合时不含此列，则信息不存在
-	CompanyInfo  *CompanyReportVo  `protobuf:"bytes,5,opt,name=companyInfo,proto3" json:"companyInfo,omitempty"`
-	MiInfo       *MiReportVo       `protobuf:"bytes,6,opt,name=miInfo,proto3" json:"miInfo,omitempty"`
-	MedicineInfo *MedicineReportVo `protobuf:"bytes,7,opt,name=medicineInfo,proto3" json:"medicineInfo,omitempty"`
+	CompanyInfo  *CompanyReportVo  `protobuf:"bytes,5,opt,name=companyInfo,proto3" json:"companyInfo"`
+	MiInfo       *MiReportVo       `protobuf:"bytes,6,opt,name=miInfo,proto3" json:"miInfo"`
+	MedicineInfo *MedicineReportVo `protobuf:"bytes,7,opt,name=medicineInfo,proto3" json:"medicineInfo"`
 	//本日配送计划同步金额
-	ShipmentPlanAmount           int64                  `protobuf:"varint,8,opt,name=shipmentPlanAmount,proto3" json:"shipmentPlanAmount,omitempty"`
-	ShipmentPlanCount            int64                  `protobuf:"varint,9,opt,name=shipmentPlanCount,proto3" json:"shipmentPlanCount,omitempty"`
-	ShipmentPlanUnitCount        int64                  `protobuf:"varint,10,opt,name=shipmentPlanUnitCount,proto3" json:"shipmentPlanUnitCount,omitempty"`
-	ShipmentPlanReceiveAmount    int64                  `protobuf:"varint,11,opt,name=shipmentPlanReceiveAmount,proto3" json:"shipmentPlanReceiveAmount,omitempty"`
-	ShipmentPlanReceiveCount     int64                  `protobuf:"varint,12,opt,name=shipmentPlanReceiveCount,proto3" json:"shipmentPlanReceiveCount,omitempty"`
-	ShipmentPlanReceiveUnitCount int64                  `protobuf:"varint,13,opt,name=shipmentPlanReceiveUnitCount,proto3" json:"shipmentPlanReceiveUnitCount,omitempty"`
-	ShipmentPlanNotSentAmount    int64                  `protobuf:"varint,14,opt,name=shipmentPlanNotSentAmount,proto3" json:"shipmentPlanNotSentAmount,omitempty"`
-	ShipmentPlanNotSentCount     int64                  `protobuf:"varint,15,opt,name=shipmentPlanNotSentCount,proto3" json:"shipmentPlanNotSentCount,omitempty"`
-	ShipmentPlanNotSentUnitCount int64                  `protobuf:"varint,16,opt,name=shipmentPlanNotSentUnitCount,proto3" json:"shipmentPlanNotSentUnitCount,omitempty"`
-	FactoringAmount              int64                  `protobuf:"varint,17,opt,name=factoringAmount,proto3" json:"factoringAmount,omitempty"`
-	ReportDate                   *timestamppb.Timestamp `protobuf:"bytes,18,opt,name=reportDate,proto3" json:"reportDate,omitempty"`
+	ShipmentPlanAmount           int64                  `protobuf:"varint,8,opt,name=shipmentPlanAmount,proto3" json:"shipmentPlanAmount"`
+	ShipmentPlanCount            int64                  `protobuf:"varint,9,opt,name=shipmentPlanCount,proto3" json:"shipmentPlanCount"`
+	ShipmentPlanUnitCount        int64                  `protobuf:"varint,10,opt,name=shipmentPlanUnitCount,proto3" json:"shipmentPlanUnitCount"`
+	ShipmentPlanReceiveAmount    int64                  `protobuf:"varint,11,opt,name=shipmentPlanReceiveAmount,proto3" json:"shipmentPlanReceiveAmount"`
+	ShipmentPlanReceiveCount     int64                  `protobuf:"varint,12,opt,name=shipmentPlanReceiveCount,proto3" json:"shipmentPlanReceiveCount"`
+	ShipmentPlanReceiveUnitCount int64                  `protobuf:"varint,13,opt,name=shipmentPlanReceiveUnitCount,proto3" json:"shipmentPlanReceiveUnitCount"`
+	ShipmentPlanNotSentAmount    int64                  `protobuf:"varint,14,opt,name=shipmentPlanNotSentAmount,proto3" json:"shipmentPlanNotSentAmount"`
+	ShipmentPlanNotSentCount     int64                  `protobuf:"varint,15,opt,name=shipmentPlanNotSentCount,proto3" json:"shipmentPlanNotSentCount"`
+	ShipmentPlanNotSentUnitCount int64                  `protobuf:"varint,16,opt,name=shipmentPlanNotSentUnitCount,proto3" json:"shipmentPlanNotSentUnitCount"`
+	FactoringAmount              int64                  `protobuf:"varint,17,opt,name=factoringAmount,proto3" json:"factoringAmount"`
+	ReportDate                   *timestamppb.Timestamp `protobuf:"bytes,18,opt,name=reportDate,proto3" json:"reportDate"`
 }
 
 func (x *ContractPlanYearReport) Reset() {
@@ -14289,10 +14305,10 @@ type GetContractPlanYearReportsResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ContractPlanYearReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64                     `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64                     `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64                     `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*ContractPlanYearReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64                     `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64                     `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64                     `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *GetContractPlanYearReportsResp) Reset() {
@@ -14362,11 +14378,11 @@ type GetValidContractInfoReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
 	//指定获取哪家医院的聚合数据
-	MiId int64 `protobuf:"varint,2,opt,name=miId,proto3" json:"miId,omitempty"`
+	MiId int64 `protobuf:"varint,2,opt,name=miId,proto3" json:"miId"`
 	//指定获取哪家配送企业的聚合数据 不可同时指定
-	ComId int64 `protobuf:"varint,3,opt,name=comId,proto3" json:"comId,omitempty"`
+	ComId int64 `protobuf:"varint,3,opt,name=comId,proto3" json:"comId"`
 }
 
 func (x *GetValidContractInfoReq) Reset() {
@@ -14429,11 +14445,11 @@ type GetCurrentNeedPayReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
 	//指定获取哪家医院的聚合数据
-	MiId int64 `protobuf:"varint,2,opt,name=miId,proto3" json:"miId,omitempty"`
+	MiId int64 `protobuf:"varint,2,opt,name=miId,proto3" json:"miId"`
 	//指定获取哪家配送企业的聚合数据 不可同时指定
-	ComId int64 `protobuf:"varint,3,opt,name=comId,proto3" json:"comId,omitempty"`
+	ComId int64 `protobuf:"varint,3,opt,name=comId,proto3" json:"comId"`
 }
 
 func (x *GetCurrentNeedPayReq) Reset() {
@@ -14495,9 +14511,9 @@ type GetValidContractInfoResp struct {
 	unknownFields protoimpl.UnknownFields
 
 	//有效合同金额
-	ValidContractAmount int64 `protobuf:"varint,1,opt,name=validContractAmount,proto3" json:"validContractAmount,omitempty"`
+	ValidContractAmount int64 `protobuf:"varint,1,opt,name=validContractAmount,proto3" json:"validContractAmount"`
 	//有效合同数量
-	ValidContractCount int64 `protobuf:"varint,2,opt,name=validContractCount,proto3" json:"validContractCount,omitempty"`
+	ValidContractCount int64 `protobuf:"varint,2,opt,name=validContractCount,proto3" json:"validContractCount"`
 }
 
 func (x *GetValidContractInfoResp) Reset() {
@@ -14552,7 +14568,7 @@ type GetCurrentNeedPayResp struct {
 	unknownFields protoimpl.UnknownFields
 
 	//待支付金额
-	NeedPayAmount int64 `protobuf:"varint,1,opt,name=needPayAmount,proto3" json:"needPayAmount,omitempty"`
+	NeedPayAmount int64 `protobuf:"varint,1,opt,name=needPayAmount,proto3" json:"needPayAmount"`
 }
 
 func (x *GetCurrentNeedPayResp) Reset() {
@@ -14600,9 +14616,9 @@ type GetCompanyHashReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId    int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
-	CompanyIds   []int64  `protobuf:"varint,2,rep,packed,name=companyIds,proto3" json:"companyIds,omitempty"`
-	CompanyCodes []string `protobuf:"bytes,3,rep,name=companyCodes,proto3" json:"companyCodes,omitempty"`
+	ManagerId    int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
+	CompanyIds   []int64  `protobuf:"varint,2,rep,packed,name=companyIds,proto3" json:"companyIds"`
+	CompanyCodes []string `protobuf:"bytes,3,rep,name=companyCodes,proto3" json:"companyCodes"`
 }
 
 func (x *GetCompanyHashReq) Reset() {
@@ -14663,10 +14679,10 @@ type GetCompanyHashResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*CompanyHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64          `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64          `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64          `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*CompanyHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64          `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64          `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64          `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *GetCompanyHashResp) Reset() {
@@ -14734,10 +14750,10 @@ type CompanyHash struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CompanyId    int64                  `protobuf:"varint,1,opt,name=companyId,proto3" json:"companyId,omitempty"`
-	CompanyCode  string                 `protobuf:"bytes,2,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
-	InfoHash     string                 `protobuf:"bytes,3,opt,name=infoHash,proto3" json:"infoHash,omitempty"`
-	InfoUploadAt *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=infoUploadAt,proto3" json:"infoUploadAt,omitempty"`
+	CompanyId    int64                  `protobuf:"varint,1,opt,name=companyId,proto3" json:"companyId"`
+	CompanyCode  string                 `protobuf:"bytes,2,opt,name=companyCode,proto3" json:"companyCode"`
+	InfoHash     string                 `protobuf:"bytes,3,opt,name=infoHash,proto3" json:"infoHash"`
+	InfoUploadAt *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=infoUploadAt,proto3" json:"infoUploadAt"`
 }
 
 func (x *CompanyHash) Reset() {
@@ -14806,9 +14822,9 @@ type GetMiHashReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
-	MiIds     []int64  `protobuf:"varint,2,rep,packed,name=miIds,proto3" json:"miIds,omitempty"`
-	MiCodes   []string `protobuf:"bytes,3,rep,name=miCodes,proto3" json:"miCodes,omitempty"`
+	ManagerId int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
+	MiIds     []int64  `protobuf:"varint,2,rep,packed,name=miIds,proto3" json:"miIds"`
+	MiCodes   []string `protobuf:"bytes,3,rep,name=miCodes,proto3" json:"miCodes"`
 }
 
 func (x *GetMiHashReq) Reset() {
@@ -14869,10 +14885,10 @@ type MiHash struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MiId         int64                  `protobuf:"varint,1,opt,name=miId,proto3" json:"miId,omitempty"`
-	MiCode       string                 `protobuf:"bytes,2,opt,name=miCode,proto3" json:"miCode,omitempty"`
-	InfoHash     string                 `protobuf:"bytes,3,opt,name=infoHash,proto3" json:"infoHash,omitempty"`
-	InfoUploadAt *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=infoUploadAt,proto3" json:"infoUploadAt,omitempty"`
+	MiId         int64                  `protobuf:"varint,1,opt,name=miId,proto3" json:"miId"`
+	MiCode       string                 `protobuf:"bytes,2,opt,name=miCode,proto3" json:"miCode"`
+	InfoHash     string                 `protobuf:"bytes,3,opt,name=infoHash,proto3" json:"infoHash"`
+	InfoUploadAt *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=infoUploadAt,proto3" json:"infoUploadAt"`
 }
 
 func (x *MiHash) Reset() {
@@ -14940,10 +14956,10 @@ type GetMiHashResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*MiHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64     `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64     `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64     `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*MiHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64     `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64     `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64     `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *GetMiHashResp) Reset() {
@@ -15012,9 +15028,9 @@ type GetMedicineReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId     int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
-	MedicineIds   []int64  `protobuf:"varint,2,rep,packed,name=medicineIds,proto3" json:"medicineIds,omitempty"`
-	MedicineCodes []string `protobuf:"bytes,3,rep,name=medicineCodes,proto3" json:"medicineCodes,omitempty"`
+	ManagerId     int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
+	MedicineIds   []int64  `protobuf:"varint,2,rep,packed,name=medicineIds,proto3" json:"medicineIds"`
+	MedicineCodes []string `protobuf:"bytes,3,rep,name=medicineCodes,proto3" json:"medicineCodes"`
 }
 
 func (x *GetMedicineReq) Reset() {
@@ -15075,10 +15091,10 @@ type MedicineHash struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MedicineId   int64                  `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId,omitempty"`
-	MedicineCode string                 `protobuf:"bytes,2,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
-	InfoHash     string                 `protobuf:"bytes,3,opt,name=infoHash,proto3" json:"infoHash,omitempty"`
-	InfoUploadAt *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=infoUploadAt,proto3" json:"infoUploadAt,omitempty"`
+	MedicineId   int64                  `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId"`
+	MedicineCode string                 `protobuf:"bytes,2,opt,name=medicineCode,proto3" json:"medicineCode"`
+	InfoHash     string                 `protobuf:"bytes,3,opt,name=infoHash,proto3" json:"infoHash"`
+	InfoUploadAt *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=infoUploadAt,proto3" json:"infoUploadAt"`
 }
 
 func (x *MedicineHash) Reset() {
@@ -15146,10 +15162,10 @@ type GetMedicineResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*MedicineHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64           `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64           `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64           `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*MedicineHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64           `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64           `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64           `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *GetMedicineResp) Reset() {
@@ -15218,9 +15234,9 @@ type GetContractHashReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId     int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
-	ContractIds   []int64  `protobuf:"varint,2,rep,packed,name=contractIds,proto3" json:"contractIds,omitempty"`
-	ContractCodes []string `protobuf:"bytes,3,rep,name=contractCodes,proto3" json:"contractCodes,omitempty"`
+	ManagerId     int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
+	ContractIds   []int64  `protobuf:"varint,2,rep,packed,name=contractIds,proto3" json:"contractIds"`
+	ContractCodes []string `protobuf:"bytes,3,rep,name=contractCodes,proto3" json:"contractCodes"`
 }
 
 func (x *GetContractHashReq) Reset() {
@@ -15281,10 +15297,10 @@ type ContractHash struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ContractId   int64                  `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId,omitempty"`
-	ContractCode string                 `protobuf:"bytes,2,opt,name=contractCode,proto3" json:"contractCode,omitempty"`
-	InfoHash     string                 `protobuf:"bytes,3,opt,name=infoHash,proto3" json:"infoHash,omitempty"`
-	InfoUploadAt *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=infoUploadAt,proto3" json:"infoUploadAt,omitempty"`
+	ContractId   int64                  `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId"`
+	ContractCode string                 `protobuf:"bytes,2,opt,name=contractCode,proto3" json:"contractCode"`
+	InfoHash     string                 `protobuf:"bytes,3,opt,name=infoHash,proto3" json:"infoHash"`
+	InfoUploadAt *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=infoUploadAt,proto3" json:"infoUploadAt"`
 }
 
 func (x *ContractHash) Reset() {
@@ -15352,10 +15368,10 @@ type GetContractHashResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ContractHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64           `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64           `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64           `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*ContractHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64           `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64           `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64           `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *GetContractHashResp) Reset() {
@@ -15424,10 +15440,10 @@ type GetContractMiHashReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId     int64   `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
-	ContractMiIds []int64 `protobuf:"varint,2,rep,packed,name=contractMiIds,proto3" json:"contractMiIds,omitempty"`
-	ContractId    int64   `protobuf:"varint,3,opt,name=contractId,proto3" json:"contractId,omitempty"`
-	ContractCode  string  `protobuf:"bytes,4,opt,name=contractCode,proto3" json:"contractCode,omitempty"`
+	ManagerId     int64   `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
+	ContractMiIds []int64 `protobuf:"varint,2,rep,packed,name=contractMiIds,proto3" json:"contractMiIds"`
+	ContractId    int64   `protobuf:"varint,3,opt,name=contractId,proto3" json:"contractId"`
+	ContractCode  string  `protobuf:"bytes,4,opt,name=contractCode,proto3" json:"contractCode"`
 }
 
 func (x *GetContractMiHashReq) Reset() {
@@ -15495,11 +15511,11 @@ type ContractMiHash struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ContractMiId int64                  `protobuf:"varint,1,opt,name=contractMiId,proto3" json:"contractMiId,omitempty"`
-	MiId         int64                  `protobuf:"varint,2,opt,name=miId,proto3" json:"miId,omitempty"`
-	MiCode       string                 `protobuf:"bytes,3,opt,name=miCode,proto3" json:"miCode,omitempty"`
-	InfoHash     string                 `protobuf:"bytes,4,opt,name=infoHash,proto3" json:"infoHash,omitempty"`
-	InfoUploadAt *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=infoUploadAt,proto3" json:"infoUploadAt,omitempty"`
+	ContractMiId int64                  `protobuf:"varint,1,opt,name=contractMiId,proto3" json:"contractMiId"`
+	MiId         int64                  `protobuf:"varint,2,opt,name=miId,proto3" json:"miId"`
+	MiCode       string                 `protobuf:"bytes,3,opt,name=miCode,proto3" json:"miCode"`
+	InfoHash     string                 `protobuf:"bytes,4,opt,name=infoHash,proto3" json:"infoHash"`
+	InfoUploadAt *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=infoUploadAt,proto3" json:"infoUploadAt"`
 }
 
 func (x *ContractMiHash) Reset() {
@@ -15574,10 +15590,10 @@ type GetContractMiHashResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ContractMiHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64             `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64             `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64             `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*ContractMiHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64             `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64             `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64             `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *GetContractMiHashResp) Reset() {
@@ -15646,10 +15662,10 @@ type GetConfigHashReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId  int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
-	ConfigIds  []int64  `protobuf:"varint,2,rep,packed,name=configIds,proto3" json:"configIds,omitempty"`
-	ConfigKeys []string `protobuf:"bytes,3,rep,name=configKeys,proto3" json:"configKeys,omitempty"`
-	ConfigType string   `protobuf:"bytes,4,opt,name=configType,proto3" json:"configType,omitempty"`
+	ManagerId  int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
+	ConfigIds  []int64  `protobuf:"varint,2,rep,packed,name=configIds,proto3" json:"configIds"`
+	ConfigKeys []string `protobuf:"bytes,3,rep,name=configKeys,proto3" json:"configKeys"`
+	ConfigType string   `protobuf:"bytes,4,opt,name=configType,proto3" json:"configType"`
 }
 
 func (x *GetConfigHashReq) Reset() {
@@ -15717,10 +15733,10 @@ type ConfigHash struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ConfigId     int64                  `protobuf:"varint,1,opt,name=configId,proto3" json:"configId,omitempty"`
-	ConfigKey    string                 `protobuf:"bytes,2,opt,name=configKey,proto3" json:"configKey,omitempty"`
-	InfoHash     string                 `protobuf:"bytes,3,opt,name=infoHash,proto3" json:"infoHash,omitempty"`
-	InfoUploadAt *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=infoUploadAt,proto3" json:"infoUploadAt,omitempty"`
+	ConfigId     int64                  `protobuf:"varint,1,opt,name=configId,proto3" json:"configId"`
+	ConfigKey    string                 `protobuf:"bytes,2,opt,name=configKey,proto3" json:"configKey"`
+	InfoHash     string                 `protobuf:"bytes,3,opt,name=infoHash,proto3" json:"infoHash"`
+	InfoUploadAt *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=infoUploadAt,proto3" json:"infoUploadAt"`
 }
 
 func (x *ConfigHash) Reset() {
@@ -15788,10 +15804,10 @@ type GetConfigHashResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ConfigHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64         `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64         `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64         `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*ConfigHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64         `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64         `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64         `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *GetConfigHashResp) Reset() {
@@ -15860,10 +15876,10 @@ type GetShipmentPlanHashReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId       int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
-	ShipmentPlanIds []int64  `protobuf:"varint,2,rep,packed,name=shipmentPlanIds,proto3" json:"shipmentPlanIds,omitempty"`
-	OrderNos        []string `protobuf:"bytes,3,rep,name=orderNos,proto3" json:"orderNos,omitempty"`
-	ShipmentNo      string   `protobuf:"bytes,4,opt,name=shipmentNo,proto3" json:"shipmentNo,omitempty"`
+	ManagerId       int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
+	ShipmentPlanIds []int64  `protobuf:"varint,2,rep,packed,name=shipmentPlanIds,proto3" json:"shipmentPlanIds"`
+	OrderNos        []string `protobuf:"bytes,3,rep,name=orderNos,proto3" json:"orderNos"`
+	ShipmentNo      string   `protobuf:"bytes,4,opt,name=shipmentNo,proto3" json:"shipmentNo"`
 }
 
 func (x *GetShipmentPlanHashReq) Reset() {
@@ -15931,18 +15947,18 @@ type ShipmentPlanHash struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ShipmentPlanId          int64                  `protobuf:"varint,1,opt,name=shipmentPlanId,proto3" json:"shipmentPlanId,omitempty"`
-	OrderNo                 string                 `protobuf:"bytes,2,opt,name=orderNo,proto3" json:"orderNo,omitempty"`
-	InfoHash                string                 `protobuf:"bytes,3,opt,name=infoHash,proto3" json:"infoHash,omitempty"`
-	InfoUploadAt            *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=infoUploadAt,proto3" json:"infoUploadAt,omitempty"`
-	QrCodeHash              string                 `protobuf:"bytes,5,opt,name=qrCodeHash,proto3" json:"qrCodeHash,omitempty"`
-	QrCodeUploadAt          *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=qrCodeUploadAt,proto3" json:"qrCodeUploadAt,omitempty"`
-	ShipmentStartHash       string                 `protobuf:"bytes,7,opt,name=shipmentStartHash,proto3" json:"shipmentStartHash,omitempty"`
-	ShipmentStartUploadAt   *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=shipmentStartUploadAt,proto3" json:"shipmentStartUploadAt,omitempty"`
-	ShipmentReceiveHash     string                 `protobuf:"bytes,9,opt,name=shipmentReceiveHash,proto3" json:"shipmentReceiveHash,omitempty"`
-	ShipmentReceiveUploadAt *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=shipmentReceiveUploadAt,proto3" json:"shipmentReceiveUploadAt,omitempty"`
-	ShipmentEnterHash       string                 `protobuf:"bytes,11,opt,name=shipmentEnterHash,proto3" json:"shipmentEnterHash,omitempty"`
-	ShipmentEnterUploadAt   *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=shipmentEnterUploadAt,proto3" json:"shipmentEnterUploadAt,omitempty"`
+	ShipmentPlanId          int64                  `protobuf:"varint,1,opt,name=shipmentPlanId,proto3" json:"shipmentPlanId"`
+	OrderNo                 string                 `protobuf:"bytes,2,opt,name=orderNo,proto3" json:"orderNo"`
+	InfoHash                string                 `protobuf:"bytes,3,opt,name=infoHash,proto3" json:"infoHash"`
+	InfoUploadAt            *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=infoUploadAt,proto3" json:"infoUploadAt"`
+	QrCodeHash              string                 `protobuf:"bytes,5,opt,name=qrCodeHash,proto3" json:"qrCodeHash"`
+	QrCodeUploadAt          *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=qrCodeUploadAt,proto3" json:"qrCodeUploadAt"`
+	ShipmentStartHash       string                 `protobuf:"bytes,7,opt,name=shipmentStartHash,proto3" json:"shipmentStartHash"`
+	ShipmentStartUploadAt   *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=shipmentStartUploadAt,proto3" json:"shipmentStartUploadAt"`
+	ShipmentReceiveHash     string                 `protobuf:"bytes,9,opt,name=shipmentReceiveHash,proto3" json:"shipmentReceiveHash"`
+	ShipmentReceiveUploadAt *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=shipmentReceiveUploadAt,proto3" json:"shipmentReceiveUploadAt"`
+	ShipmentEnterHash       string                 `protobuf:"bytes,11,opt,name=shipmentEnterHash,proto3" json:"shipmentEnterHash"`
+	ShipmentEnterUploadAt   *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=shipmentEnterUploadAt,proto3" json:"shipmentEnterUploadAt"`
 }
 
 func (x *ShipmentPlanHash) Reset() {
@@ -16066,10 +16082,10 @@ type GetShipmentPlanHashResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ShipmentPlanHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64               `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64               `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64               `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*ShipmentPlanHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64               `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64               `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64               `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *GetShipmentPlanHashResp) Reset() {
@@ -16138,9 +16154,9 @@ type GetShipmentOrderHashReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId        int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
-	ShipmentOrderIds []int64  `protobuf:"varint,2,rep,packed,name=shipmentOrderIds,proto3" json:"shipmentOrderIds,omitempty"`
-	ShipmentNos      []string `protobuf:"bytes,3,rep,name=shipmentNos,proto3" json:"shipmentNos,omitempty"`
+	ManagerId        int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
+	ShipmentOrderIds []int64  `protobuf:"varint,2,rep,packed,name=shipmentOrderIds,proto3" json:"shipmentOrderIds"`
+	ShipmentNos      []string `protobuf:"bytes,3,rep,name=shipmentNos,proto3" json:"shipmentNos"`
 }
 
 func (x *GetShipmentOrderHashReq) Reset() {
@@ -16201,16 +16217,16 @@ type ShipmentOrderHash struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ShipmentOrderId         int64                  `protobuf:"varint,1,opt,name=shipmentOrderId,proto3" json:"shipmentOrderId,omitempty"`
-	ShipmentNo              string                 `protobuf:"bytes,2,opt,name=shipmentNo,proto3" json:"shipmentNo,omitempty"`
-	QrCodeHash              string                 `protobuf:"bytes,3,opt,name=qrCodeHash,proto3" json:"qrCodeHash,omitempty"`
-	QrCodeUploadAt          *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=qrCodeUploadAt,proto3" json:"qrCodeUploadAt,omitempty"`
-	ShipmentStartHash       string                 `protobuf:"bytes,5,opt,name=shipmentStartHash,proto3" json:"shipmentStartHash,omitempty"`
-	ShipmentStartUploadAt   *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=shipmentStartUploadAt,proto3" json:"shipmentStartUploadAt,omitempty"`
-	ShipmentReceiveHash     string                 `protobuf:"bytes,7,opt,name=shipmentReceiveHash,proto3" json:"shipmentReceiveHash,omitempty"`
-	ShipmentReceiveUploadAt *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=shipmentReceiveUploadAt,proto3" json:"shipmentReceiveUploadAt,omitempty"`
-	ShipmentEnterHash       string                 `protobuf:"bytes,9,opt,name=shipmentEnterHash,proto3" json:"shipmentEnterHash,omitempty"`
-	ShipmentEnterUploadAt   *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=shipmentEnterUploadAt,proto3" json:"shipmentEnterUploadAt,omitempty"`
+	ShipmentOrderId         int64                  `protobuf:"varint,1,opt,name=shipmentOrderId,proto3" json:"shipmentOrderId"`
+	ShipmentNo              string                 `protobuf:"bytes,2,opt,name=shipmentNo,proto3" json:"shipmentNo"`
+	QrCodeHash              string                 `protobuf:"bytes,3,opt,name=qrCodeHash,proto3" json:"qrCodeHash"`
+	QrCodeUploadAt          *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=qrCodeUploadAt,proto3" json:"qrCodeUploadAt"`
+	ShipmentStartHash       string                 `protobuf:"bytes,5,opt,name=shipmentStartHash,proto3" json:"shipmentStartHash"`
+	ShipmentStartUploadAt   *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=shipmentStartUploadAt,proto3" json:"shipmentStartUploadAt"`
+	ShipmentReceiveHash     string                 `protobuf:"bytes,7,opt,name=shipmentReceiveHash,proto3" json:"shipmentReceiveHash"`
+	ShipmentReceiveUploadAt *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=shipmentReceiveUploadAt,proto3" json:"shipmentReceiveUploadAt"`
+	ShipmentEnterHash       string                 `protobuf:"bytes,9,opt,name=shipmentEnterHash,proto3" json:"shipmentEnterHash"`
+	ShipmentEnterUploadAt   *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=shipmentEnterUploadAt,proto3" json:"shipmentEnterUploadAt"`
 }
 
 func (x *ShipmentOrderHash) Reset() {
@@ -16320,10 +16336,10 @@ type GetShipmentOrderHashResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ShipmentOrderHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64                `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64                `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64                `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*ShipmentOrderHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64                `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64                `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64                `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *GetShipmentOrderHashResp) Reset() {
@@ -16392,10 +16408,10 @@ type GetShipmentPayHashReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId           int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
-	ShipmentOrderIds    []int64  `protobuf:"varint,2,rep,packed,name=shipmentOrderIds,proto3" json:"shipmentOrderIds,omitempty"`
-	ShipmentPayOrderIds []int64  `protobuf:"varint,3,rep,packed,name=shipmentPayOrderIds,proto3" json:"shipmentPayOrderIds,omitempty"`
-	ShipmentNos         []string `protobuf:"bytes,4,rep,name=shipmentNos,proto3" json:"shipmentNos,omitempty"`
+	ManagerId           int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
+	ShipmentOrderIds    []int64  `protobuf:"varint,2,rep,packed,name=shipmentOrderIds,proto3" json:"shipmentOrderIds"`
+	ShipmentPayOrderIds []int64  `protobuf:"varint,3,rep,packed,name=shipmentPayOrderIds,proto3" json:"shipmentPayOrderIds"`
+	ShipmentNos         []string `protobuf:"bytes,4,rep,name=shipmentNos,proto3" json:"shipmentNos"`
 }
 
 func (x *GetShipmentPayHashReq) Reset() {
@@ -16463,12 +16479,12 @@ type ShipmentPayHash struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ShipmentOrderId int64                  `protobuf:"varint,1,opt,name=shipmentOrderId,proto3" json:"shipmentOrderId,omitempty"`
-	ShipmentNo      string                 `protobuf:"bytes,2,opt,name=shipmentNo,proto3" json:"shipmentNo,omitempty"`
-	InfoHash        string                 `protobuf:"bytes,3,opt,name=infoHash,proto3" json:"infoHash,omitempty"`
-	InfoUploadAt    *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=infoUploadAt,proto3" json:"infoUploadAt,omitempty"`
-	ResultHash      string                 `protobuf:"bytes,5,opt,name=resultHash,proto3" json:"resultHash,omitempty"`
-	ResultUploadAt  *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=resultUploadAt,proto3" json:"resultUploadAt,omitempty"`
+	ShipmentOrderId int64                  `protobuf:"varint,1,opt,name=shipmentOrderId,proto3" json:"shipmentOrderId"`
+	ShipmentNo      string                 `protobuf:"bytes,2,opt,name=shipmentNo,proto3" json:"shipmentNo"`
+	InfoHash        string                 `protobuf:"bytes,3,opt,name=infoHash,proto3" json:"infoHash"`
+	InfoUploadAt    *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=infoUploadAt,proto3" json:"infoUploadAt"`
+	ResultHash      string                 `protobuf:"bytes,5,opt,name=resultHash,proto3" json:"resultHash"`
+	ResultUploadAt  *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=resultUploadAt,proto3" json:"resultUploadAt"`
 }
 
 func (x *ShipmentPayHash) Reset() {
@@ -16550,10 +16566,10 @@ type GetShipmentPayHashResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ShipmentPayHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64              `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64              `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64              `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*ShipmentPayHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64              `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64              `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64              `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *GetShipmentPayHashResp) Reset() {
@@ -16622,9 +16638,9 @@ type GetShipmentFactoringHashReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId         int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
-	FactoringOrderIds []int64  `protobuf:"varint,2,rep,packed,name=factoringOrderIds,proto3" json:"factoringOrderIds,omitempty"`
-	FactoringOrderNos []string `protobuf:"bytes,3,rep,name=factoringOrderNos,proto3" json:"factoringOrderNos,omitempty"`
+	ManagerId         int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
+	FactoringOrderIds []int64  `protobuf:"varint,2,rep,packed,name=factoringOrderIds,proto3" json:"factoringOrderIds"`
+	FactoringOrderNos []string `protobuf:"bytes,3,rep,name=factoringOrderNos,proto3" json:"factoringOrderNos"`
 }
 
 func (x *GetShipmentFactoringHashReq) Reset() {
@@ -16685,14 +16701,14 @@ type ShipmentFactoringHash struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	FactoringOrderId int64                  `protobuf:"varint,1,opt,name=factoringOrderId,proto3" json:"factoringOrderId,omitempty"`
-	FactoringOrderNo string                 `protobuf:"bytes,2,opt,name=factoringOrderNo,proto3" json:"factoringOrderNo,omitempty"`
-	ApplyHash        string                 `protobuf:"bytes,3,opt,name=applyHash,proto3" json:"applyHash,omitempty"`
-	ApplyUploadAt    *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=applyUploadAt,proto3" json:"applyUploadAt,omitempty"`
-	ResultHash       string                 `protobuf:"bytes,5,opt,name=resultHash,proto3" json:"resultHash,omitempty"`
-	ResultUploadAt   *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=resultUploadAt,proto3" json:"resultUploadAt,omitempty"`
-	PayBackHash      string                 `protobuf:"bytes,7,opt,name=payBackHash,proto3" json:"payBackHash,omitempty"`
-	PayBackUploadAt  *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=payBackUploadAt,proto3" json:"payBackUploadAt,omitempty"`
+	FactoringOrderId int64                  `protobuf:"varint,1,opt,name=factoringOrderId,proto3" json:"factoringOrderId"`
+	FactoringOrderNo string                 `protobuf:"bytes,2,opt,name=factoringOrderNo,proto3" json:"factoringOrderNo"`
+	ApplyHash        string                 `protobuf:"bytes,3,opt,name=applyHash,proto3" json:"applyHash"`
+	ApplyUploadAt    *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=applyUploadAt,proto3" json:"applyUploadAt"`
+	ResultHash       string                 `protobuf:"bytes,5,opt,name=resultHash,proto3" json:"resultHash"`
+	ResultUploadAt   *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=resultUploadAt,proto3" json:"resultUploadAt"`
+	PayBackHash      string                 `protobuf:"bytes,7,opt,name=payBackHash,proto3" json:"payBackHash"`
+	PayBackUploadAt  *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=payBackUploadAt,proto3" json:"payBackUploadAt"`
 }
 
 func (x *ShipmentFactoringHash) Reset() {
@@ -16788,10 +16804,10 @@ type GetShipmentFactoringHashResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ShipmentFactoringHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64                    `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64                    `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64                    `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*ShipmentFactoringHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64                    `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64                    `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64                    `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *GetShipmentFactoringHashResp) Reset() {
@@ -16860,15 +16876,15 @@ type GetShipmentRankMedicineDataYearReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
 	//指定获取哪个医保局的订单报表数据，目前不支持不同医保局混合统计
-	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId,omitempty"`
+	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId"`
 	//报表的起止日期必填
-	StartAt   *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=startAt,proto3" json:"startAt,omitempty"`
-	EndAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=endAt,proto3" json:"endAt,omitempty"`
-	RankCount int64                  `protobuf:"varint,5,opt,name=rankCount,proto3" json:"rankCount,omitempty"`
+	StartAt   *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=startAt,proto3" json:"startAt"`
+	EndAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=endAt,proto3" json:"endAt"`
+	RankCount int64                  `protobuf:"varint,5,opt,name=rankCount,proto3" json:"rankCount"`
 	//显示哪家医疗机构的排名数据
-	MiId int64 `protobuf:"varint,6,opt,name=miId,proto3" json:"miId,omitempty"`
+	MiId int64 `protobuf:"varint,6,opt,name=miId,proto3" json:"miId"`
 }
 
 func (x *GetShipmentRankMedicineDataYearReq) Reset() {
@@ -16950,10 +16966,10 @@ type ShipmentRankMedicineDataYear struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Rank int64 `protobuf:"varint,1,opt,name=rank,proto3" json:"rank,omitempty"`
+	Rank int64 `protobuf:"varint,1,opt,name=rank,proto3" json:"rank"`
 	//本年配送计划同步金额 分
-	ShipmentPlanAmount int64  `protobuf:"varint,2,opt,name=shipmentPlanAmount,proto3" json:"shipmentPlanAmount,omitempty"`
-	MedicineName       string `protobuf:"bytes,3,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
+	ShipmentPlanAmount int64  `protobuf:"varint,2,opt,name=shipmentPlanAmount,proto3" json:"shipmentPlanAmount"`
+	MedicineName       string `protobuf:"bytes,3,opt,name=medicineName,proto3" json:"medicineName"`
 }
 
 func (x *ShipmentRankMedicineDataYear) Reset() {
@@ -17014,10 +17030,10 @@ type GetShipmentRankMedicineDataYearResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ShipmentRankMedicineDataYear `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64                           `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64                           `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64                           `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*ShipmentRankMedicineDataYear `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64                           `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64                           `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64                           `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *GetShipmentRankMedicineDataYearResp) Reset() {
@@ -17086,17 +17102,17 @@ type GetShipmentRankCompanyDataYearReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
 	//指定获取哪个医保局的订单报表数据，目前不支持不同医保局混合统计
-	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId,omitempty"`
+	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId"`
 	//报表的起止日期必填
-	StartAt   *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=startAt,proto3" json:"startAt,omitempty"`
-	EndAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=endAt,proto3" json:"endAt,omitempty"`
-	RankCount int64                  `protobuf:"varint,5,opt,name=rankCount,proto3" json:"rankCount,omitempty"`
+	StartAt   *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=startAt,proto3" json:"startAt"`
+	EndAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=endAt,proto3" json:"endAt"`
+	RankCount int64                  `protobuf:"varint,5,opt,name=rankCount,proto3" json:"rankCount"`
 	//需要展示的药品数量
-	MedicineCount int64 `protobuf:"varint,6,opt,name=medicineCount,proto3" json:"medicineCount,omitempty"`
+	MedicineCount int64 `protobuf:"varint,6,opt,name=medicineCount,proto3" json:"medicineCount"`
 	//显示哪家医疗机构的排名数据
-	MiId int64 `protobuf:"varint,7,opt,name=miId,proto3" json:"miId,omitempty"`
+	MiId int64 `protobuf:"varint,7,opt,name=miId,proto3" json:"miId"`
 }
 
 func (x *GetShipmentRankCompanyDataYearReq) Reset() {
@@ -17185,7 +17201,7 @@ type ShipmentRankCompanyMedicine struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MedicineName string `protobuf:"bytes,1,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
+	MedicineName string `protobuf:"bytes,1,opt,name=medicineName,proto3" json:"medicineName"`
 }
 
 func (x *ShipmentRankCompanyMedicine) Reset() {
@@ -17232,14 +17248,14 @@ type ShipmentRankCompanyDataYear struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Rank               int64                          `protobuf:"varint,1,opt,name=rank,proto3" json:"rank,omitempty"`
-	ComName            string                         `protobuf:"bytes,2,opt,name=comName,proto3" json:"comName,omitempty"`
-	ComCode            string                         `protobuf:"bytes,3,opt,name=comCode,proto3" json:"comCode,omitempty"`
-	ShipmentPlanAmount int64                          `protobuf:"varint,4,opt,name=shipmentPlanAmount,proto3" json:"shipmentPlanAmount,omitempty"`
-	Province           string                         `protobuf:"bytes,5,opt,name=province,proto3" json:"province,omitempty"`
-	City               string                         `protobuf:"bytes,6,opt,name=city,proto3" json:"city,omitempty"`
-	Zone               string                         `protobuf:"bytes,7,opt,name=zone,proto3" json:"zone,omitempty"`
-	Medicines          []*ShipmentRankCompanyMedicine `protobuf:"bytes,8,rep,name=medicines,proto3" json:"medicines,omitempty"`
+	Rank               int64                          `protobuf:"varint,1,opt,name=rank,proto3" json:"rank"`
+	ComName            string                         `protobuf:"bytes,2,opt,name=comName,proto3" json:"comName"`
+	ComCode            string                         `protobuf:"bytes,3,opt,name=comCode,proto3" json:"comCode"`
+	ShipmentPlanAmount int64                          `protobuf:"varint,4,opt,name=shipmentPlanAmount,proto3" json:"shipmentPlanAmount"`
+	Province           string                         `protobuf:"bytes,5,opt,name=province,proto3" json:"province"`
+	City               string                         `protobuf:"bytes,6,opt,name=city,proto3" json:"city"`
+	Zone               string                         `protobuf:"bytes,7,opt,name=zone,proto3" json:"zone"`
+	Medicines          []*ShipmentRankCompanyMedicine `protobuf:"bytes,8,rep,name=medicines,proto3" json:"medicines"`
 }
 
 func (x *ShipmentRankCompanyDataYear) Reset() {
@@ -17335,10 +17351,10 @@ type GetShipmentRankCompanyDataYearResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ShipmentRankCompanyDataYear `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64                          `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64                          `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64                          `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*ShipmentRankCompanyDataYear `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64                          `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64                          `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64                          `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *GetShipmentRankCompanyDataYearResp) Reset() {
@@ -17407,13 +17423,13 @@ type GetRankMiReceiveYearReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
 	//指定获取哪个医保局的订单报表数据，目前不支持不同医保局混合统计
-	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId,omitempty"`
+	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId"`
 	//0表示当前前年 -1为去年
-	YearOffset int64 `protobuf:"varint,3,opt,name=yearOffset,proto3" json:"yearOffset,omitempty"`
+	YearOffset int64 `protobuf:"varint,3,opt,name=yearOffset,proto3" json:"yearOffset"`
 	//报表的起止日期必填
-	RankCount int64 `protobuf:"varint,4,opt,name=rankCount,proto3" json:"rankCount,omitempty"`
+	RankCount int64 `protobuf:"varint,4,opt,name=rankCount,proto3" json:"rankCount"`
 }
 
 func (x *GetRankMiReceiveYearReq) Reset() {
@@ -17481,10 +17497,10 @@ type RankMiReceiveYear struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Rank                       int64                       `protobuf:"varint,1,opt,name=rank,proto3" json:"rank,omitempty"`
-	MiName                     string                      `protobuf:"bytes,2,opt,name=miName,proto3" json:"miName,omitempty"`
-	ShipmentOrderReceiveAmount int64                       `protobuf:"varint,3,opt,name=shipmentOrderReceiveAmount,proto3" json:"shipmentOrderReceiveAmount,omitempty"`
-	ShipmentOrderMonthReports  []*ShipmentOrderMonthReport `protobuf:"bytes,4,rep,name=shipmentOrderMonthReports,proto3" json:"shipmentOrderMonthReports,omitempty"`
+	Rank                       int64                       `protobuf:"varint,1,opt,name=rank,proto3" json:"rank"`
+	MiName                     string                      `protobuf:"bytes,2,opt,name=miName,proto3" json:"miName"`
+	ShipmentOrderReceiveAmount int64                       `protobuf:"varint,3,opt,name=shipmentOrderReceiveAmount,proto3" json:"shipmentOrderReceiveAmount"`
+	ShipmentOrderMonthReports  []*ShipmentOrderMonthReport `protobuf:"bytes,4,rep,name=shipmentOrderMonthReports,proto3" json:"shipmentOrderMonthReports"`
 }
 
 func (x *RankMiReceiveYear) Reset() {
@@ -17552,10 +17568,10 @@ type GetRankMiReceiveYearResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*RankMiReceiveYear `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64                `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64                `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64                `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*RankMiReceiveYear `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64                `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64                `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64                `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *GetRankMiReceiveYearResp) Reset() {
@@ -17624,13 +17640,13 @@ type GetRankComReceiveYearReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
 	//指定获取哪个医保局的订单报表数据，目前不支持不同医保局混合统计
-	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId,omitempty"`
+	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId"`
 	//0表示当前前年 -1为去年
-	YearOffset int64 `protobuf:"varint,3,opt,name=yearOffset,proto3" json:"yearOffset,omitempty"`
+	YearOffset int64 `protobuf:"varint,3,opt,name=yearOffset,proto3" json:"yearOffset"`
 	//报表的起止日期必填
-	RankCount int64 `protobuf:"varint,4,opt,name=rankCount,proto3" json:"rankCount,omitempty"`
+	RankCount int64 `protobuf:"varint,4,opt,name=rankCount,proto3" json:"rankCount"`
 }
 
 func (x *GetRankComReceiveYearReq) Reset() {
@@ -17698,10 +17714,10 @@ type RankComReceiveYear struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Rank                     int64  `protobuf:"varint,1,opt,name=rank,proto3" json:"rank,omitempty"`
-	CompanyName              string `protobuf:"bytes,2,opt,name=companyName,proto3" json:"companyName,omitempty"`
-	ShipmentPlanReceiveCount int64  `protobuf:"varint,3,opt,name=shipmentPlanReceiveCount,proto3" json:"shipmentPlanReceiveCount,omitempty"`
-	ShipmentPlanNotSentCount int64  `protobuf:"varint,4,opt,name=shipmentPlanNotSentCount,proto3" json:"shipmentPlanNotSentCount,omitempty"`
+	Rank                     int64  `protobuf:"varint,1,opt,name=rank,proto3" json:"rank"`
+	CompanyName              string `protobuf:"bytes,2,opt,name=companyName,proto3" json:"companyName"`
+	ShipmentPlanReceiveCount int64  `protobuf:"varint,3,opt,name=shipmentPlanReceiveCount,proto3" json:"shipmentPlanReceiveCount"`
+	ShipmentPlanNotSentCount int64  `protobuf:"varint,4,opt,name=shipmentPlanNotSentCount,proto3" json:"shipmentPlanNotSentCount"`
 }
 
 func (x *RankComReceiveYear) Reset() {
@@ -17769,10 +17785,10 @@ type GetRankComReceiveYearResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*RankComReceiveYear `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64                 `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64                 `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64                 `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*RankComReceiveYear `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64                 `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64                 `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64                 `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *GetRankComReceiveYearResp) Reset() {
@@ -17841,13 +17857,13 @@ type GetRankMiPaidYearReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
 	//指定获取哪个医保局的订单报表数据，目前不支持不同医保局混合统计
-	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId,omitempty"`
+	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId"`
 	//0表示当前前年 -1为去年
-	YearOffset int64 `protobuf:"varint,3,opt,name=yearOffset,proto3" json:"yearOffset,omitempty"`
+	YearOffset int64 `protobuf:"varint,3,opt,name=yearOffset,proto3" json:"yearOffset"`
 	//报表的起止日期必填
-	RankCount int64 `protobuf:"varint,4,opt,name=rankCount,proto3" json:"rankCount,omitempty"`
+	RankCount int64 `protobuf:"varint,4,opt,name=rankCount,proto3" json:"rankCount"`
 }
 
 func (x *GetRankMiPaidYearReq) Reset() {
@@ -17915,11 +17931,11 @@ type RankMiPaidYear struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Rank                          int64  `protobuf:"varint,1,opt,name=rank,proto3" json:"rank,omitempty"`
-	MiName                        string `protobuf:"bytes,2,opt,name=miName,proto3" json:"miName,omitempty"`
-	ShipmentOrderPaidAmount       int64  `protobuf:"varint,3,opt,name=shipmentOrderPaidAmount,proto3" json:"shipmentOrderPaidAmount,omitempty"`
-	ShipmentOrderNormalPayAmount  int64  `protobuf:"varint,4,opt,name=shipmentOrderNormalPayAmount,proto3" json:"shipmentOrderNormalPayAmount,omitempty"`
-	ShipmentOrderSpecialPayAmount int64  `protobuf:"varint,5,opt,name=shipmentOrderSpecialPayAmount,proto3" json:"shipmentOrderSpecialPayAmount,omitempty"`
+	Rank                          int64  `protobuf:"varint,1,opt,name=rank,proto3" json:"rank"`
+	MiName                        string `protobuf:"bytes,2,opt,name=miName,proto3" json:"miName"`
+	ShipmentOrderPaidAmount       int64  `protobuf:"varint,3,opt,name=shipmentOrderPaidAmount,proto3" json:"shipmentOrderPaidAmount"`
+	ShipmentOrderNormalPayAmount  int64  `protobuf:"varint,4,opt,name=shipmentOrderNormalPayAmount,proto3" json:"shipmentOrderNormalPayAmount"`
+	ShipmentOrderSpecialPayAmount int64  `protobuf:"varint,5,opt,name=shipmentOrderSpecialPayAmount,proto3" json:"shipmentOrderSpecialPayAmount"`
 }
 
 func (x *RankMiPaidYear) Reset() {
@@ -17994,10 +18010,10 @@ type GetRankMiPaidYearResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*RankMiPaidYear `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64             `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64             `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64             `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*RankMiPaidYear `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64             `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64             `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64             `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *GetRankMiPaidYearResp) Reset() {
@@ -18066,13 +18082,13 @@ type GetRankMedicineYearReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
 	//指定获取哪个医保局的订单报表数据，目前不支持不同医保局混合统计
-	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId,omitempty"`
+	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId"`
 	//0表示当前前年 -1为去年
-	YearOffset int64 `protobuf:"varint,3,opt,name=yearOffset,proto3" json:"yearOffset,omitempty"`
+	YearOffset int64 `protobuf:"varint,3,opt,name=yearOffset,proto3" json:"yearOffset"`
 	//报表的起止日期必填
-	RankCount int64 `protobuf:"varint,4,opt,name=rankCount,proto3" json:"rankCount,omitempty"`
+	RankCount int64 `protobuf:"varint,4,opt,name=rankCount,proto3" json:"rankCount"`
 }
 
 func (x *GetRankMedicineYearReq) Reset() {
@@ -18140,9 +18156,9 @@ type RankMedicineYear struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Rank                         int64  `protobuf:"varint,1,opt,name=rank,proto3" json:"rank,omitempty"`
-	MedicineName                 string `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
-	ShipmentPlanReceiveUnitCount int64  `protobuf:"varint,3,opt,name=shipmentPlanReceiveUnitCount,proto3" json:"shipmentPlanReceiveUnitCount,omitempty"`
+	Rank                         int64  `protobuf:"varint,1,opt,name=rank,proto3" json:"rank"`
+	MedicineName                 string `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName"`
+	ShipmentPlanReceiveUnitCount int64  `protobuf:"varint,3,opt,name=shipmentPlanReceiveUnitCount,proto3" json:"shipmentPlanReceiveUnitCount"`
 }
 
 func (x *RankMedicineYear) Reset() {
@@ -18203,10 +18219,10 @@ type GetRankMedicineYearResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*RankMedicineYear `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-	Total      int64               `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	PageSize   int64               `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	PageNumber int64               `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	List       []*RankMedicineYear `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	Total      int64               `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	PageSize   int64               `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64               `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
 }
 
 func (x *GetRankMedicineYearResp) Reset() {
@@ -18275,11 +18291,11 @@ type GetMIBDashboardBaseInfoReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
 	//指定获取哪个医保局的订单报表数据，目前不支持不同医保局混合统计
-	MibId    int64  `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId,omitempty"`
-	Province string `protobuf:"bytes,3,opt,name=province,proto3" json:"province,omitempty"`
-	City     string `protobuf:"bytes,4,opt,name=city,proto3" json:"city,omitempty"`
+	MibId    int64  `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId"`
+	Province string `protobuf:"bytes,3,opt,name=province,proto3" json:"province"`
+	City     string `protobuf:"bytes,4,opt,name=city,proto3" json:"city"`
 }
 
 func (x *GetMIBDashboardBaseInfoReq) Reset() {
@@ -18347,8 +18363,8 @@ type GetMIBDashboardBaseInfoResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MiCount      int64 `protobuf:"varint,1,opt,name=miCount,proto3" json:"miCount,omitempty"`
-	CompanyCount int64 `protobuf:"varint,2,opt,name=companyCount,proto3" json:"companyCount,omitempty"`
+	MiCount      int64 `protobuf:"varint,1,opt,name=miCount,proto3" json:"miCount"`
+	CompanyCount int64 `protobuf:"varint,2,opt,name=companyCount,proto3" json:"companyCount"`
 }
 
 func (x *GetMIBDashboardBaseInfoResp) Reset() {
@@ -19319,7 +19335,7 @@ var file_ManagerService_proto_rawDesc = []byte{
 	0x65, 0x72, 0x49, 0x64, 0x22, 0x33, 0x0a, 0x19, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x45, 0x72,
 	0x72, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x52, 0x65, 0x73,
 	0x70, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28,
-	0x03, 0x52, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x22, 0xc7, 0x03, 0x0a, 0x13, 0x4c, 0x69,
+	0x03, 0x52, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x22, 0xdf, 0x03, 0x0a, 0x13, 0x4c, 0x69,
 	0x73, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x52, 0x65,
 	0x71, 0x12, 0x1c, 0x0a, 0x09, 0x74, 0x70, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x4e, 0x6f, 0x18, 0x01,
 	0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x74, 0x70, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x4e, 0x6f, 0x12,
@@ -19348,140 +19364,143 @@ var file_ManagerService_proto_rawDesc = []byte{
 	0x64, 0x12, 0x12, 0x0a, 0x04, 0x6d, 0x69, 0x49, 0x64, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x03, 0x52,
 	0x04, 0x6d, 0x69, 0x49, 0x64, 0x12, 0x1c, 0x0a, 0x09, 0x63, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79,
 	0x49, 0x64, 0x18, 0x0c, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x63, 0x6f, 0x6d, 0x70, 0x61, 0x6e,
-	0x79, 0x49, 0x64, 0x22, 0xa1, 0x01, 0x0a, 0x14, 0x4c, 0x69, 0x73, 0x74, 0x53, 0x68, 0x69, 0x70,
-	0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x37, 0x0a, 0x04,
-	0x6c, 0x69, 0x73, 0x74, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x23, 0x2e, 0x4d, 0x61, 0x6e,
-	0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x4c, 0x69, 0x73, 0x74,
-	0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x72, 0x56, 0x6f, 0x52,
-	0x04, 0x6c, 0x69, 0x73, 0x74, 0x12, 0x14, 0x0a, 0x05, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x18, 0x02,
-	0x20, 0x01, 0x28, 0x03, 0x52, 0x05, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x12, 0x1a, 0x0a, 0x08, 0x70,
-	0x61, 0x67, 0x65, 0x53, 0x69, 0x7a, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x08, 0x70,
-	0x61, 0x67, 0x65, 0x53, 0x69, 0x7a, 0x65, 0x12, 0x1e, 0x0a, 0x0a, 0x70, 0x61, 0x67, 0x65, 0x4e,
-	0x75, 0x6d, 0x62, 0x65, 0x72, 0x18, 0x04, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0a, 0x70, 0x61, 0x67,
-	0x65, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x22, 0xf9, 0x06, 0x0a, 0x13, 0x4c, 0x69, 0x73, 0x74,
-	0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x72, 0x56, 0x6f, 0x12,
-	0x26, 0x0a, 0x0e, 0x73, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x49,
-	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0e, 0x73, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e,
-	0x74, 0x50, 0x6c, 0x61, 0x6e, 0x49, 0x64, 0x12, 0x1c, 0x0a, 0x09, 0x74, 0x70, 0x4f, 0x72, 0x64,
-	0x65, 0x72, 0x4e, 0x6f, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x74, 0x70, 0x4f, 0x72,
-	0x64, 0x65, 0x72, 0x4e, 0x6f, 0x12, 0x18, 0x0a, 0x07, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x4e, 0x6f,
-	0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x4e, 0x6f, 0x12,
-	0x1c, 0x0a, 0x09, 0x69, 0x6e, 0x76, 0x6f, 0x69, 0x63, 0x65, 0x4e, 0x6f, 0x18, 0x04, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x09, 0x69, 0x6e, 0x76, 0x6f, 0x69, 0x63, 0x65, 0x4e, 0x6f, 0x12, 0x20, 0x0a,
-	0x0b, 0x69, 0x6e, 0x76, 0x6f, 0x69, 0x63, 0x65, 0x43, 0x6f, 0x64, 0x65, 0x18, 0x05, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x0b, 0x69, 0x6e, 0x76, 0x6f, 0x69, 0x63, 0x65, 0x43, 0x6f, 0x64, 0x65, 0x12,
-	0x16, 0x0a, 0x06, 0x74, 0x70, 0x43, 0x6f, 0x64, 0x65, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x06, 0x74, 0x70, 0x43, 0x6f, 0x64, 0x65, 0x12, 0x22, 0x0a, 0x0c, 0x6d, 0x65, 0x64, 0x69, 0x63,
-	0x69, 0x6e, 0x65, 0x4e, 0x61, 0x6d, 0x65, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x6d,
-	0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x22, 0x0a, 0x0c, 0x6d,
-	0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x43, 0x6f, 0x64, 0x65, 0x18, 0x08, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x0c, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x43, 0x6f, 0x64, 0x65, 0x12,
-	0x34, 0x0a, 0x15, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x53, 0x70, 0x65, 0x63, 0x69,
-	0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x09, 0x20, 0x01, 0x28, 0x09, 0x52, 0x15,
-	0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x53, 0x70, 0x65, 0x63, 0x69, 0x66, 0x69, 0x63,
-	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x24, 0x0a, 0x0d, 0x73, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e,
-	0x74, 0x50, 0x72, 0x69, 0x63, 0x65, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0d, 0x73, 0x68,
-	0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x72, 0x69, 0x63, 0x65, 0x12, 0x26, 0x0a, 0x0e, 0x73,
-	0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x41, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x0b, 0x20,
-	0x01, 0x28, 0x03, 0x52, 0x0e, 0x73, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x41, 0x6d, 0x6f,
-	0x75, 0x6e, 0x74, 0x12, 0x20, 0x0a, 0x0b, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x41, 0x6d, 0x6f, 0x75,
-	0x6e, 0x74, 0x18, 0x0c, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0b, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x41,
-	0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x20, 0x0a, 0x0b, 0x63, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79,
-	0x4e, 0x61, 0x6d, 0x65, 0x18, 0x0d, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x63, 0x6f, 0x6d, 0x70,
-	0x61, 0x6e, 0x79, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x6d, 0x69, 0x4e, 0x61, 0x6d,
-	0x65, 0x18, 0x0e, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x6d, 0x69, 0x4e, 0x61, 0x6d, 0x65, 0x12,
-	0x3c, 0x0a, 0x0b, 0x74, 0x70, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x41, 0x74, 0x18, 0x0f,
-	0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70,
-	0x52, 0x0b, 0x74, 0x70, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x41, 0x74, 0x12, 0x38, 0x0a,
-	0x09, 0x72, 0x65, 0x63, 0x65, 0x69, 0x76, 0x65, 0x41, 0x74, 0x18, 0x10, 0x20, 0x01, 0x28, 0x0b,
-	0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62,
-	0x75, 0x66, 0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x52, 0x09, 0x72, 0x65,
-	0x63, 0x65, 0x69, 0x76, 0x65, 0x41, 0x74, 0x12, 0x1e, 0x0a, 0x0a, 0x70, 0x6c, 0x61, 0x6e, 0x53,
-	0x74, 0x61, 0x74, 0x75, 0x73, 0x18, 0x11, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x70, 0x6c, 0x61,
-	0x6e, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x12, 0x22, 0x0a, 0x0c, 0x6d, 0x61, 0x6e, 0x75, 0x66,
-	0x61, 0x63, 0x74, 0x75, 0x72, 0x65, 0x72, 0x18, 0x12, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x6d,
-	0x61, 0x6e, 0x75, 0x66, 0x61, 0x63, 0x74, 0x75, 0x72, 0x65, 0x72, 0x12, 0x18, 0x0a, 0x07, 0x74,
-	0x61, 0x67, 0x4e, 0x61, 0x6d, 0x65, 0x18, 0x13, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x74, 0x61,
-	0x67, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x22, 0x0a, 0x0c, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e,
-	0x65, 0x46, 0x6f, 0x72, 0x6d, 0x18, 0x14, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x6d, 0x65, 0x64,
-	0x69, 0x63, 0x69, 0x6e, 0x65, 0x46, 0x6f, 0x72, 0x6d, 0x12, 0x22, 0x0a, 0x0c, 0x6d, 0x65, 0x64,
-	0x69, 0x63, 0x69, 0x6e, 0x65, 0x55, 0x6e, 0x69, 0x74, 0x18, 0x15, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x0c, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x55, 0x6e, 0x69, 0x74, 0x12, 0x24, 0x0a,
-	0x0d, 0x63, 0x61, 0x6c, 0x63, 0x75, 0x6c, 0x61, 0x74, 0x65, 0x52, 0x61, 0x74, 0x65, 0x18, 0x16,
-	0x20, 0x01, 0x28, 0x03, 0x52, 0x0d, 0x63, 0x61, 0x6c, 0x63, 0x75, 0x6c, 0x61, 0x74, 0x65, 0x52,
-	0x61, 0x74, 0x65, 0x12, 0x1e, 0x0a, 0x0a, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x49,
-	0x64, 0x18, 0x17, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0a, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e,
-	0x65, 0x49, 0x64, 0x12, 0x1e, 0x0a, 0x0a, 0x73, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4e,
-	0x6f, 0x18, 0x18, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x73, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e,
-	0x74, 0x4e, 0x6f, 0x22, 0x56, 0x0a, 0x16, 0x44, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x53, 0x68, 0x69,
-	0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x52, 0x65, 0x71, 0x12, 0x1e, 0x0a,
-	0x0a, 0x73, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4e, 0x6f, 0x18, 0x01, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x0a, 0x73, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4e, 0x6f, 0x12, 0x1c, 0x0a,
-	0x09, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x49, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03,
-	0x52, 0x09, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x49, 0x64, 0x22, 0x95, 0x03, 0x0a, 0x17,
-	0x44, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72,
-	0x64, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x12, 0x14, 0x0a, 0x05, 0x6d, 0x69, 0x62, 0x49, 0x64,
-	0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05, 0x6d, 0x69, 0x62, 0x49, 0x64, 0x12, 0x28, 0x0a,
-	0x0f, 0x73, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x49, 0x64,
-	0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0f, 0x73, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74,
-	0x4f, 0x72, 0x64, 0x65, 0x72, 0x49, 0x64, 0x12, 0x20, 0x0a, 0x0b, 0x63, 0x6f, 0x6d, 0x70, 0x61,
-	0x6e, 0x79, 0x43, 0x6f, 0x64, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x63, 0x6f,
-	0x6d, 0x70, 0x61, 0x6e, 0x79, 0x43, 0x6f, 0x64, 0x65, 0x12, 0x20, 0x0a, 0x0b, 0x63, 0x6f, 0x6d,
-	0x70, 0x61, 0x6e, 0x79, 0x4e, 0x61, 0x6d, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b,
-	0x63, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x1e, 0x0a, 0x0a, 0x73,
-	0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4e, 0x6f, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x0a, 0x73, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4e, 0x6f, 0x12, 0x22, 0x0a, 0x0c, 0x73,
-	0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x43, 0x6f, 0x64, 0x65, 0x18, 0x06, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x0c, 0x73, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x43, 0x6f, 0x64, 0x65, 0x12,
-	0x28, 0x0a, 0x0f, 0x73, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x43, 0x6f, 0x6d, 0x70, 0x61,
-	0x6e, 0x79, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0f, 0x73, 0x68, 0x69, 0x70, 0x6d, 0x65,
-	0x6e, 0x74, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x12, 0x1c, 0x0a, 0x09, 0x69, 0x6e, 0x76,
-	0x6f, 0x69, 0x63, 0x65, 0x4e, 0x6f, 0x18, 0x08, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x69, 0x6e,
-	0x76, 0x6f, 0x69, 0x63, 0x65, 0x4e, 0x6f, 0x12, 0x20, 0x0a, 0x0b, 0x69, 0x6e, 0x76, 0x6f, 0x69,
-	0x63, 0x65, 0x43, 0x6f, 0x64, 0x65, 0x18, 0x09, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x69, 0x6e,
-	0x76, 0x6f, 0x69, 0x63, 0x65, 0x43, 0x6f, 0x64, 0x65, 0x12, 0x20, 0x0a, 0x0b, 0x6f, 0x72, 0x64,
-	0x65, 0x72, 0x41, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0b,
-	0x6f, 0x72, 0x64, 0x65, 0x72, 0x41, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x26, 0x0a, 0x0e, 0x73,
-	0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x18, 0x0b, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x0e, 0x73, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x61,
-	0x74, 0x75, 0x73, 0x22, 0x5b, 0x0a, 0x1b, 0x4c, 0x69, 0x73, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d,
-	0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x46, 0x6f, 0x72, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x52,
-	0x65, 0x71, 0x12, 0x1e, 0x0a, 0x0a, 0x73, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4e, 0x6f,
-	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x73, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74,
-	0x4e, 0x6f, 0x12, 0x1c, 0x0a, 0x09, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x49, 0x64, 0x18,
-	0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x49, 0x64,
-	0x22, 0x5e, 0x0a, 0x1c, 0x4c, 0x69, 0x73, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74,
-	0x50, 0x6c, 0x61, 0x6e, 0x46, 0x6f, 0x72, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70,
-	0x12, 0x3e, 0x0a, 0x04, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x2a,
-	0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e,
+	0x79, 0x49, 0x64, 0x12, 0x16, 0x0a, 0x06, 0x6d, 0x69, 0x4e, 0x61, 0x6d, 0x65, 0x18, 0x0d, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x06, 0x6d, 0x69, 0x4e, 0x61, 0x6d, 0x65, 0x22, 0xa1, 0x01, 0x0a, 0x14,
 	0x4c, 0x69, 0x73, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e,
-	0x46, 0x6f, 0x72, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x56, 0x6f, 0x52, 0x04, 0x6c, 0x69, 0x73, 0x74,
-	0x22, 0x8c, 0x03, 0x0a, 0x1a, 0x4c, 0x69, 0x73, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e,
-	0x74, 0x50, 0x6c, 0x61, 0x6e, 0x46, 0x6f, 0x72, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x56, 0x6f, 0x12,
-	0x18, 0x0a, 0x07, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x4e, 0x6f, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x07, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x4e, 0x6f, 0x12, 0x1c, 0x0a, 0x09, 0x74, 0x70, 0x4f,
-	0x72, 0x64, 0x65, 0x72, 0x4e, 0x6f, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x74, 0x70,
-	0x4f, 0x72, 0x64, 0x65, 0x72, 0x4e, 0x6f, 0x12, 0x16, 0x0a, 0x06, 0x74, 0x70, 0x43, 0x6f, 0x64,
-	0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x74, 0x70, 0x43, 0x6f, 0x64, 0x65, 0x12,
+	0x52, 0x65, 0x73, 0x70, 0x12, 0x37, 0x0a, 0x04, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x01, 0x20, 0x03,
+	0x28, 0x0b, 0x32, 0x23, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76,
+	0x69, 0x63, 0x65, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74,
+	0x50, 0x6c, 0x61, 0x6e, 0x72, 0x56, 0x6f, 0x52, 0x04, 0x6c, 0x69, 0x73, 0x74, 0x12, 0x14, 0x0a,
+	0x05, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05, 0x74, 0x6f,
+	0x74, 0x61, 0x6c, 0x12, 0x1a, 0x0a, 0x08, 0x70, 0x61, 0x67, 0x65, 0x53, 0x69, 0x7a, 0x65, 0x18,
+	0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x08, 0x70, 0x61, 0x67, 0x65, 0x53, 0x69, 0x7a, 0x65, 0x12,
+	0x1e, 0x0a, 0x0a, 0x70, 0x61, 0x67, 0x65, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x18, 0x04, 0x20,
+	0x01, 0x28, 0x03, 0x52, 0x0a, 0x70, 0x61, 0x67, 0x65, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x22,
+	0xf9, 0x06, 0x0a, 0x13, 0x4c, 0x69, 0x73, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74,
+	0x50, 0x6c, 0x61, 0x6e, 0x72, 0x56, 0x6f, 0x12, 0x26, 0x0a, 0x0e, 0x73, 0x68, 0x69, 0x70, 0x6d,
+	0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x49, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52,
+	0x0e, 0x73, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x49, 0x64, 0x12,
+	0x1c, 0x0a, 0x09, 0x74, 0x70, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x4e, 0x6f, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x09, 0x74, 0x70, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x4e, 0x6f, 0x12, 0x18, 0x0a,
+	0x07, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x4e, 0x6f, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07,
+	0x6f, 0x72, 0x64, 0x65, 0x72, 0x4e, 0x6f, 0x12, 0x1c, 0x0a, 0x09, 0x69, 0x6e, 0x76, 0x6f, 0x69,
+	0x63, 0x65, 0x4e, 0x6f, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x69, 0x6e, 0x76, 0x6f,
+	0x69, 0x63, 0x65, 0x4e, 0x6f, 0x12, 0x20, 0x0a, 0x0b, 0x69, 0x6e, 0x76, 0x6f, 0x69, 0x63, 0x65,
+	0x43, 0x6f, 0x64, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x69, 0x6e, 0x76, 0x6f,
+	0x69, 0x63, 0x65, 0x43, 0x6f, 0x64, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x74, 0x70, 0x43, 0x6f, 0x64,
+	0x65, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x74, 0x70, 0x43, 0x6f, 0x64, 0x65, 0x12,
 	0x22, 0x0a, 0x0c, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x4e, 0x61, 0x6d, 0x65, 0x18,
-	0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x4e,
+	0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x4e,
 	0x61, 0x6d, 0x65, 0x12, 0x22, 0x0a, 0x0c, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x43,
-	0x6f, 0x64, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x6d, 0x65, 0x64, 0x69, 0x63,
-	0x69, 0x6e, 0x65, 0x43, 0x6f, 0x64, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x74, 0x61, 0x67, 0x4e, 0x61,
-	0x6d, 0x65, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x74, 0x61, 0x67, 0x4e, 0x61, 0x6d,
-	0x65, 0x12, 0x34, 0x0a, 0x15, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x53, 0x70, 0x65,
-	0x63, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x15, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x53, 0x70, 0x65, 0x63, 0x69, 0x66,
-	0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x26, 0x0a, 0x0e, 0x73, 0x68, 0x69, 0x70, 0x6d,
-	0x65, 0x6e, 0x74, 0x41, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x08, 0x20, 0x01, 0x28, 0x03, 0x52,
-	0x0e, 0x73, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x41, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x12,
-	0x20, 0x0a, 0x0b, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x41, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x09,
-	0x20, 0x01, 0x28, 0x03, 0x52, 0x0b, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x41, 0x6d, 0x6f, 0x75, 0x6e,
-	0x74, 0x12, 0x3c, 0x0a, 0x0b, 0x74, 0x70, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x41, 0x74,
-	0x18, 0x0a, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61,
-	0x6d, 0x70, 0x52, 0x0b, 0x74, 0x70, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x41, 0x74, 0x22,
+	0x6f, 0x64, 0x65, 0x18, 0x08, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x6d, 0x65, 0x64, 0x69, 0x63,
+	0x69, 0x6e, 0x65, 0x43, 0x6f, 0x64, 0x65, 0x12, 0x34, 0x0a, 0x15, 0x6d, 0x65, 0x64, 0x69, 0x63,
+	0x69, 0x6e, 0x65, 0x53, 0x70, 0x65, 0x63, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e,
+	0x18, 0x09, 0x20, 0x01, 0x28, 0x09, 0x52, 0x15, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65,
+	0x53, 0x70, 0x65, 0x63, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x24, 0x0a,
+	0x0d, 0x73, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x72, 0x69, 0x63, 0x65, 0x18, 0x0a,
+	0x20, 0x01, 0x28, 0x03, 0x52, 0x0d, 0x73, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x72,
+	0x69, 0x63, 0x65, 0x12, 0x26, 0x0a, 0x0e, 0x73, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x41,
+	0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0e, 0x73, 0x68, 0x69,
+	0x70, 0x6d, 0x65, 0x6e, 0x74, 0x41, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x20, 0x0a, 0x0b, 0x6f,
+	0x72, 0x64, 0x65, 0x72, 0x41, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x0c, 0x20, 0x01, 0x28, 0x03,
+	0x52, 0x0b, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x41, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x20, 0x0a,
+	0x0b, 0x63, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x4e, 0x61, 0x6d, 0x65, 0x18, 0x0d, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x0b, 0x63, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x4e, 0x61, 0x6d, 0x65, 0x12,
+	0x16, 0x0a, 0x06, 0x6d, 0x69, 0x4e, 0x61, 0x6d, 0x65, 0x18, 0x0e, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x06, 0x6d, 0x69, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x3c, 0x0a, 0x0b, 0x74, 0x70, 0x43, 0x72, 0x65,
+	0x61, 0x74, 0x65, 0x64, 0x41, 0x74, 0x18, 0x0f, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67,
+	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54,
+	0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x52, 0x0b, 0x74, 0x70, 0x43, 0x72, 0x65, 0x61,
+	0x74, 0x65, 0x64, 0x41, 0x74, 0x12, 0x38, 0x0a, 0x09, 0x72, 0x65, 0x63, 0x65, 0x69, 0x76, 0x65,
+	0x41, 0x74, 0x18, 0x10, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
+	0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73,
+	0x74, 0x61, 0x6d, 0x70, 0x52, 0x09, 0x72, 0x65, 0x63, 0x65, 0x69, 0x76, 0x65, 0x41, 0x74, 0x12,
+	0x1e, 0x0a, 0x0a, 0x70, 0x6c, 0x61, 0x6e, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x18, 0x11, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x0a, 0x70, 0x6c, 0x61, 0x6e, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x12,
+	0x22, 0x0a, 0x0c, 0x6d, 0x61, 0x6e, 0x75, 0x66, 0x61, 0x63, 0x74, 0x75, 0x72, 0x65, 0x72, 0x18,
+	0x12, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x6d, 0x61, 0x6e, 0x75, 0x66, 0x61, 0x63, 0x74, 0x75,
+	0x72, 0x65, 0x72, 0x12, 0x18, 0x0a, 0x07, 0x74, 0x61, 0x67, 0x4e, 0x61, 0x6d, 0x65, 0x18, 0x13,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x74, 0x61, 0x67, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x22, 0x0a,
+	0x0c, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x46, 0x6f, 0x72, 0x6d, 0x18, 0x14, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x0c, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x46, 0x6f, 0x72,
+	0x6d, 0x12, 0x22, 0x0a, 0x0c, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x55, 0x6e, 0x69,
+	0x74, 0x18, 0x15, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e,
+	0x65, 0x55, 0x6e, 0x69, 0x74, 0x12, 0x24, 0x0a, 0x0d, 0x63, 0x61, 0x6c, 0x63, 0x75, 0x6c, 0x61,
+	0x74, 0x65, 0x52, 0x61, 0x74, 0x65, 0x18, 0x16, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0d, 0x63, 0x61,
+	0x6c, 0x63, 0x75, 0x6c, 0x61, 0x74, 0x65, 0x52, 0x61, 0x74, 0x65, 0x12, 0x1e, 0x0a, 0x0a, 0x6d,
+	0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x49, 0x64, 0x18, 0x17, 0x20, 0x01, 0x28, 0x03, 0x52,
+	0x0a, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x49, 0x64, 0x12, 0x1e, 0x0a, 0x0a, 0x73,
+	0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4e, 0x6f, 0x18, 0x18, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x0a, 0x73, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4e, 0x6f, 0x22, 0x56, 0x0a, 0x16, 0x44,
+	0x65, 0x74, 0x61, 0x69, 0x6c, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64,
+	0x65, 0x72, 0x52, 0x65, 0x71, 0x12, 0x1e, 0x0a, 0x0a, 0x73, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e,
+	0x74, 0x4e, 0x6f, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x73, 0x68, 0x69, 0x70, 0x6d,
+	0x65, 0x6e, 0x74, 0x4e, 0x6f, 0x12, 0x1c, 0x0a, 0x09, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72,
+	0x49, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65,
+	0x72, 0x49, 0x64, 0x22, 0x95, 0x03, 0x0a, 0x17, 0x44, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x53, 0x68,
+	0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x12,
+	0x14, 0x0a, 0x05, 0x6d, 0x69, 0x62, 0x49, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05,
+	0x6d, 0x69, 0x62, 0x49, 0x64, 0x12, 0x28, 0x0a, 0x0f, 0x73, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e,
+	0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x49, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0f,
+	0x73, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x49, 0x64, 0x12,
+	0x20, 0x0a, 0x0b, 0x63, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x43, 0x6f, 0x64, 0x65, 0x18, 0x03,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x63, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x43, 0x6f, 0x64,
+	0x65, 0x12, 0x20, 0x0a, 0x0b, 0x63, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x4e, 0x61, 0x6d, 0x65,
+	0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x63, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x4e,
+	0x61, 0x6d, 0x65, 0x12, 0x1e, 0x0a, 0x0a, 0x73, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4e,
+	0x6f, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x73, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e,
+	0x74, 0x4e, 0x6f, 0x12, 0x22, 0x0a, 0x0c, 0x73, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x43,
+	0x6f, 0x64, 0x65, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x73, 0x68, 0x69, 0x70, 0x6d,
+	0x65, 0x6e, 0x74, 0x43, 0x6f, 0x64, 0x65, 0x12, 0x28, 0x0a, 0x0f, 0x73, 0x68, 0x69, 0x70, 0x6d,
+	0x65, 0x6e, 0x74, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x0f, 0x73, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e,
+	0x79, 0x12, 0x1c, 0x0a, 0x09, 0x69, 0x6e, 0x76, 0x6f, 0x69, 0x63, 0x65, 0x4e, 0x6f, 0x18, 0x08,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x69, 0x6e, 0x76, 0x6f, 0x69, 0x63, 0x65, 0x4e, 0x6f, 0x12,
+	0x20, 0x0a, 0x0b, 0x69, 0x6e, 0x76, 0x6f, 0x69, 0x63, 0x65, 0x43, 0x6f, 0x64, 0x65, 0x18, 0x09,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x69, 0x6e, 0x76, 0x6f, 0x69, 0x63, 0x65, 0x43, 0x6f, 0x64,
+	0x65, 0x12, 0x20, 0x0a, 0x0b, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x41, 0x6d, 0x6f, 0x75, 0x6e, 0x74,
+	0x18, 0x0a, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0b, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x41, 0x6d, 0x6f,
+	0x75, 0x6e, 0x74, 0x12, 0x26, 0x0a, 0x0e, 0x73, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x53,
+	0x74, 0x61, 0x74, 0x75, 0x73, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0e, 0x73, 0x68, 0x69,
+	0x70, 0x6d, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x22, 0x5b, 0x0a, 0x1b, 0x4c,
+	0x69, 0x73, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x46,
+	0x6f, 0x72, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x52, 0x65, 0x71, 0x12, 0x1e, 0x0a, 0x0a, 0x73, 0x68,
+	0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4e, 0x6f, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a,
+	0x73, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4e, 0x6f, 0x12, 0x1c, 0x0a, 0x09, 0x6d, 0x61,
+	0x6e, 0x61, 0x67, 0x65, 0x72, 0x49, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x6d,
+	0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x49, 0x64, 0x22, 0x5e, 0x0a, 0x1c, 0x4c, 0x69, 0x73, 0x74,
+	0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x46, 0x6f, 0x72, 0x4f,
+	0x72, 0x64, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x12, 0x3e, 0x0a, 0x04, 0x6c, 0x69, 0x73, 0x74,
+	0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x2a, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72,
+	0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x53, 0x68, 0x69, 0x70,
+	0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x46, 0x6f, 0x72, 0x4f, 0x72, 0x64, 0x65, 0x72,
+	0x56, 0x6f, 0x52, 0x04, 0x6c, 0x69, 0x73, 0x74, 0x22, 0xa4, 0x03, 0x0a, 0x1a, 0x4c, 0x69, 0x73,
+	0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x46, 0x6f, 0x72,
+	0x4f, 0x72, 0x64, 0x65, 0x72, 0x56, 0x6f, 0x12, 0x18, 0x0a, 0x07, 0x6f, 0x72, 0x64, 0x65, 0x72,
+	0x4e, 0x6f, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x4e,
+	0x6f, 0x12, 0x1c, 0x0a, 0x09, 0x74, 0x70, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x4e, 0x6f, 0x18, 0x02,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x74, 0x70, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x4e, 0x6f, 0x12,
+	0x16, 0x0a, 0x06, 0x74, 0x70, 0x43, 0x6f, 0x64, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x06, 0x74, 0x70, 0x43, 0x6f, 0x64, 0x65, 0x12, 0x22, 0x0a, 0x0c, 0x6d, 0x65, 0x64, 0x69, 0x63,
+	0x69, 0x6e, 0x65, 0x4e, 0x61, 0x6d, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x6d,
+	0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x22, 0x0a, 0x0c, 0x6d,
+	0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x43, 0x6f, 0x64, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x0c, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x43, 0x6f, 0x64, 0x65, 0x12,
+	0x18, 0x0a, 0x07, 0x74, 0x61, 0x67, 0x4e, 0x61, 0x6d, 0x65, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x07, 0x74, 0x61, 0x67, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x34, 0x0a, 0x15, 0x6d, 0x65, 0x64,
+	0x69, 0x63, 0x69, 0x6e, 0x65, 0x53, 0x70, 0x65, 0x63, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69,
+	0x6f, 0x6e, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x15, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69,
+	0x6e, 0x65, 0x53, 0x70, 0x65, 0x63, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12,
+	0x26, 0x0a, 0x0e, 0x73, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x41, 0x6d, 0x6f, 0x75, 0x6e,
+	0x74, 0x18, 0x08, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0e, 0x73, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e,
+	0x74, 0x41, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x20, 0x0a, 0x0b, 0x6f, 0x72, 0x64, 0x65, 0x72,
+	0x41, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x09, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0b, 0x6f, 0x72,
+	0x64, 0x65, 0x72, 0x41, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x3c, 0x0a, 0x0b, 0x74, 0x70, 0x43,
+	0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x41, 0x74, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a,
+	0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66,
+	0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x52, 0x0b, 0x74, 0x70, 0x43, 0x72,
+	0x65, 0x61, 0x74, 0x65, 0x64, 0x41, 0x74, 0x12, 0x16, 0x0a, 0x06, 0x6d, 0x69, 0x4e, 0x61, 0x6d,
+	0x65, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x6d, 0x69, 0x4e, 0x61, 0x6d, 0x65, 0x22,
 	0xd6, 0x01, 0x0a, 0x14, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e,
 	0x74, 0x50, 0x6c, 0x61, 0x6e, 0x52, 0x65, 0x71, 0x12, 0x38, 0x0a, 0x09, 0x73, 0x74, 0x61, 0x72,
 	0x74, 0x44, 0x61, 0x74, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f,
