@@ -69,6 +69,7 @@ message QueryTxIDReq {
 
 message QueryTxIDRsp {
   string Rst = 1;
+  google.protobuf.Timestamp CreateAt = 2;
 }
 
 message BcAndBankPayOrderActionRequest {
