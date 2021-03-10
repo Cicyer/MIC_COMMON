@@ -487,8 +487,8 @@ message ListFactoringPayOrderResp {
 message ApplyReq {
   int64   managerId = 1;
   repeated string shipmentNos = 2;
-  //需要重试发起的保理订单
-  repeated string factoringOrderNos = 3;
+  //需要重试发起的保理订单，只允许单笔
+  string factoringOrderNo = 3;
 }
 message ApplyResp {
   string code = 1;
