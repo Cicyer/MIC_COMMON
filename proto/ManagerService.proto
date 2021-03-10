@@ -694,6 +694,7 @@ message ListShipmentPlanReq {
   int64 managerId = 10;
   int64 miId = 11;
   int64 companyId = 12;
+  string miName = 13;
 }
 
 message ListShipmentPlanResp {
@@ -778,6 +779,7 @@ message ListShipmentPlanForOrderVo {
   int64 shipmentAmount = 8;
   int64 orderAmount = 9;
   google.protobuf.Timestamp tpCreatedAt = 10;
+  string miName = 11;
 }
 //招采单汇总
 message CountShipmentPlanReq {
