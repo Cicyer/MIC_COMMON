@@ -30,8 +30,8 @@ type Page struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	PageNumber int64 `protobuf:"varint,1,opt,name=pageNumber,proto3" json:"pageNumber"`
-	PageSize   int64 `protobuf:"varint,2,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64 `protobuf:"varint,1,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	PageSize   int64 `protobuf:"varint,2,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
 }
 
 func (x *Page) Reset() {
@@ -86,12 +86,12 @@ type ListBankAccountReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	OrganizationId int64 `protobuf:"varint,1,opt,name=organizationId,proto3" json:"organizationId"`
+	OrganizationId int64 `protobuf:"varint,1,opt,name=organizationId,proto3" json:"organizationId,omitempty"`
 	//
-	AccountType string `protobuf:"bytes,2,opt,name=accountType,proto3" json:"accountType"`
-	ManagerId   int64  `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId"`
+	AccountType string `protobuf:"bytes,2,opt,name=accountType,proto3" json:"accountType,omitempty"`
+	ManagerId   int64  `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId,omitempty"`
 	//指定获取哪些账户
-	BankAccountIds []int64 `protobuf:"varint,4,rep,packed,name=bankAccountIds,proto3" json:"bankAccountIds"`
+	BankAccountIds []int64 `protobuf:"varint,4,rep,packed,name=bankAccountIds,proto3" json:"bankAccountIds,omitempty"`
 }
 
 func (x *ListBankAccountReq) Reset() {
@@ -159,10 +159,10 @@ type ListBankAccountResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ListBankAccountVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64                `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64                `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64                `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*ListBankAccountVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64                `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64                `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64                `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *ListBankAccountResp) Reset() {
@@ -230,17 +230,17 @@ type ListBankAccountVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	OrganizationId int64                  `protobuf:"varint,1,opt,name=organizationId,proto3" json:"organizationId"`
-	CardNo         string                 `protobuf:"bytes,2,opt,name=cardNo,proto3" json:"cardNo"`
-	AccountType    string                 `protobuf:"bytes,3,opt,name=accountType,proto3" json:"accountType"`
-	Bank           string                 `protobuf:"bytes,4,opt,name=bank,proto3" json:"bank"`
-	CardOwner      string                 `protobuf:"bytes,5,opt,name=cardOwner,proto3" json:"cardOwner"`
-	Toibkn         string                 `protobuf:"bytes,6,opt,name=toibkn,proto3" json:"toibkn"`
-	FrozenAmount   int64                  `protobuf:"varint,7,opt,name=frozenAmount,proto3" json:"frozenAmount"`
-	CardStatus     string                 `protobuf:"bytes,8,opt,name=cardStatus,proto3" json:"cardStatus"`
-	ValidStatus    string                 `protobuf:"bytes,9,opt,name=validStatus,proto3" json:"validStatus"`
-	BankAccountId  int64                  `protobuf:"varint,10,opt,name=bankAccountId,proto3" json:"bankAccountId"`
-	CreatedAt      *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=createdAt,proto3" json:"createdAt"`
+	OrganizationId int64                  `protobuf:"varint,1,opt,name=organizationId,proto3" json:"organizationId,omitempty"`
+	CardNo         string                 `protobuf:"bytes,2,opt,name=cardNo,proto3" json:"cardNo,omitempty"`
+	AccountType    string                 `protobuf:"bytes,3,opt,name=accountType,proto3" json:"accountType,omitempty"`
+	Bank           string                 `protobuf:"bytes,4,opt,name=bank,proto3" json:"bank,omitempty"`
+	CardOwner      string                 `protobuf:"bytes,5,opt,name=cardOwner,proto3" json:"cardOwner,omitempty"`
+	Toibkn         string                 `protobuf:"bytes,6,opt,name=toibkn,proto3" json:"toibkn,omitempty"`
+	FrozenAmount   int64                  `protobuf:"varint,7,opt,name=frozenAmount,proto3" json:"frozenAmount,omitempty"`
+	CardStatus     string                 `protobuf:"bytes,8,opt,name=cardStatus,proto3" json:"cardStatus,omitempty"`
+	ValidStatus    string                 `protobuf:"bytes,9,opt,name=validStatus,proto3" json:"validStatus,omitempty"`
+	BankAccountId  int64                  `protobuf:"varint,10,opt,name=bankAccountId,proto3" json:"bankAccountId,omitempty"`
+	CreatedAt      *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
 }
 
 func (x *ListBankAccountVo) Reset() {
@@ -358,8 +358,8 @@ type CreateOneAccountInfoReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List      []*AccountInfo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	ManagerId int64          `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId"`
+	List      []*AccountInfo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	ManagerId int64          `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *CreateOneAccountInfoReq) Reset() {
@@ -413,15 +413,15 @@ type AccountInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MibId          int64  `protobuf:"varint,1,opt,name=mibId,proto3" json:"mibId"`
-	CardNo         string `protobuf:"bytes,2,opt,name=cardNo,proto3" json:"cardNo"`
-	AccountType    string `protobuf:"bytes,3,opt,name=accountType,proto3" json:"accountType"`
-	Bank           string `protobuf:"bytes,4,opt,name=bank,proto3" json:"bank"`
-	OrganizationId int64  `protobuf:"varint,5,opt,name=organizationId,proto3" json:"organizationId"`
-	Toibkn         string `protobuf:"bytes,6,opt,name=toibkn,proto3" json:"toibkn"`
-	CardOwner      string `protobuf:"bytes,7,opt,name=cardOwner,proto3" json:"cardOwner"`
-	FrozenAmount   int64  `protobuf:"varint,8,opt,name=frozenAmount,proto3" json:"frozenAmount"`
-	CardStatus     string `protobuf:"bytes,9,opt,name=cardStatus,proto3" json:"cardStatus"`
+	MibId          int64  `protobuf:"varint,1,opt,name=mibId,proto3" json:"mibId,omitempty"`
+	CardNo         string `protobuf:"bytes,2,opt,name=cardNo,proto3" json:"cardNo,omitempty"`
+	AccountType    string `protobuf:"bytes,3,opt,name=accountType,proto3" json:"accountType,omitempty"`
+	Bank           string `protobuf:"bytes,4,opt,name=bank,proto3" json:"bank,omitempty"`
+	OrganizationId int64  `protobuf:"varint,5,opt,name=organizationId,proto3" json:"organizationId,omitempty"`
+	Toibkn         string `protobuf:"bytes,6,opt,name=toibkn,proto3" json:"toibkn,omitempty"`
+	CardOwner      string `protobuf:"bytes,7,opt,name=cardOwner,proto3" json:"cardOwner,omitempty"`
+	FrozenAmount   int64  `protobuf:"varint,8,opt,name=frozenAmount,proto3" json:"frozenAmount,omitempty"`
+	CardStatus     string `protobuf:"bytes,9,opt,name=cardStatus,proto3" json:"cardStatus,omitempty"`
 }
 
 func (x *AccountInfo) Reset() {
@@ -524,7 +524,7 @@ type CreateOneAccountInfoResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
 }
 
 func (x *CreateOneAccountInfoResp) Reset() {
@@ -572,8 +572,8 @@ type UpdateBankAccountListReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List      []*AccountInfo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	ManagerId int64          `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId"`
+	List      []*AccountInfo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	ManagerId int64          `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *UpdateBankAccountListReq) Reset() {
@@ -627,7 +627,7 @@ type UpdateBankAccountListResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
 }
 
 func (x *UpdateBankAccountListResp) Reset() {
@@ -675,9 +675,9 @@ type UpdateBankAccountReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CardNo      string `protobuf:"bytes,1,opt,name=cardNo,proto3" json:"cardNo"`
-	ValidStatus string `protobuf:"bytes,2,opt,name=validStatus,proto3" json:"validStatus"`
-	ManagerId   int64  `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId"`
+	CardNo      string `protobuf:"bytes,1,opt,name=cardNo,proto3" json:"cardNo,omitempty"`
+	ValidStatus string `protobuf:"bytes,2,opt,name=validStatus,proto3" json:"validStatus,omitempty"`
+	ManagerId   int64  `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *UpdateBankAccountReq) Reset() {
@@ -738,7 +738,7 @@ type UpdateBankAccountResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
 }
 
 func (x *UpdateBankAccountResp) Reset() {
@@ -785,10 +785,10 @@ type GetCompanyCreditConfigsReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ManagerId   int64  `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
-	Page        *Page  `protobuf:"bytes,2,opt,name=page,proto3" json:"page"`
-	CompanyCode string `protobuf:"bytes,3,opt,name=companyCode,proto3" json:"companyCode"`
-	CompanyName string `protobuf:"bytes,4,opt,name=companyName,proto3" json:"companyName"`
+	ManagerId   int64  `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	Page        *Page  `protobuf:"bytes,2,opt,name=page,proto3" json:"page,omitempty"`
+	CompanyCode string `protobuf:"bytes,3,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
+	CompanyName string `protobuf:"bytes,4,opt,name=companyName,proto3" json:"companyName,omitempty"`
 }
 
 func (x *GetCompanyCreditConfigsReq) Reset() {
@@ -856,21 +856,21 @@ type CompanyCredit struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CompanyId       int64                  `protobuf:"varint,1,opt,name=companyId,proto3" json:"companyId"`
-	CompanyName     string                 `protobuf:"bytes,2,opt,name=companyName,proto3" json:"companyName"`
-	CompanyCode     string                 `protobuf:"bytes,3,opt,name=companyCode,proto3" json:"companyCode"`
-	CreditUsed      int64                  `protobuf:"varint,4,opt,name=creditUsed,proto3" json:"creditUsed"`
-	CreditAmount    int64                  `protobuf:"varint,5,opt,name=creditAmount,proto3" json:"creditAmount"`
-	CreditType      string                 `protobuf:"bytes,6,opt,name=creditType,proto3" json:"creditType"`
-	StartAt         *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=startAt,proto3" json:"startAt"`
-	EndAt           *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=endAt,proto3" json:"endAt"`
-	UpdaterId       int64                  `protobuf:"varint,9,opt,name=updaterId,proto3" json:"updaterId"`
-	UpdaterUserName string                 `protobuf:"bytes,10,opt,name=updaterUserName,proto3" json:"updaterUserName"`
-	ManagerName     string                 `protobuf:"bytes,11,opt,name=managerName,proto3" json:"managerName"`
-	ManagerPhone    string                 `protobuf:"bytes,12,opt,name=managerPhone,proto3" json:"managerPhone"`
-	Province        string                 `protobuf:"bytes,13,opt,name=province,proto3" json:"province"`
-	City            string                 `protobuf:"bytes,14,opt,name=city,proto3" json:"city"`
-	Zone            string                 `protobuf:"bytes,15,opt,name=zone,proto3" json:"zone"`
+	CompanyId       int64                  `protobuf:"varint,1,opt,name=companyId,proto3" json:"companyId,omitempty"`
+	CompanyName     string                 `protobuf:"bytes,2,opt,name=companyName,proto3" json:"companyName,omitempty"`
+	CompanyCode     string                 `protobuf:"bytes,3,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
+	CreditUsed      int64                  `protobuf:"varint,4,opt,name=creditUsed,proto3" json:"creditUsed,omitempty"`
+	CreditAmount    int64                  `protobuf:"varint,5,opt,name=creditAmount,proto3" json:"creditAmount,omitempty"`
+	CreditType      string                 `protobuf:"bytes,6,opt,name=creditType,proto3" json:"creditType,omitempty"`
+	StartAt         *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=startAt,proto3" json:"startAt,omitempty"`
+	EndAt           *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=endAt,proto3" json:"endAt,omitempty"`
+	UpdaterId       int64                  `protobuf:"varint,9,opt,name=updaterId,proto3" json:"updaterId,omitempty"`
+	UpdaterUserName string                 `protobuf:"bytes,10,opt,name=updaterUserName,proto3" json:"updaterUserName,omitempty"`
+	ManagerName     string                 `protobuf:"bytes,11,opt,name=managerName,proto3" json:"managerName,omitempty"`
+	ManagerPhone    string                 `protobuf:"bytes,12,opt,name=managerPhone,proto3" json:"managerPhone,omitempty"`
+	Province        string                 `protobuf:"bytes,13,opt,name=province,proto3" json:"province,omitempty"`
+	City            string                 `protobuf:"bytes,14,opt,name=city,proto3" json:"city,omitempty"`
+	Zone            string                 `protobuf:"bytes,15,opt,name=zone,proto3" json:"zone,omitempty"`
 }
 
 func (x *CompanyCredit) Reset() {
@@ -1015,10 +1015,10 @@ type GetCompanyCreditConfigsResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*CompanyCredit `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64            `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64            `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64            `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*CompanyCredit `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64            `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64            `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64            `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *GetCompanyCreditConfigsResp) Reset() {
@@ -1086,12 +1086,12 @@ type UpdateCompanyCreditConfigReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ManagerId    int64                  `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
-	CompanyCode  string                 `protobuf:"bytes,2,opt,name=companyCode,proto3" json:"companyCode"`
-	CreditAmount int64                  `protobuf:"varint,3,opt,name=creditAmount,proto3" json:"creditAmount"`
-	CreditType   string                 `protobuf:"bytes,4,opt,name=creditType,proto3" json:"creditType"`
-	StartAt      *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=startAt,proto3" json:"startAt"`
-	EndAt        *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=endAt,proto3" json:"endAt"`
+	ManagerId    int64                  `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	CompanyCode  string                 `protobuf:"bytes,2,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
+	CreditAmount int64                  `protobuf:"varint,3,opt,name=creditAmount,proto3" json:"creditAmount,omitempty"`
+	CreditType   string                 `protobuf:"bytes,4,opt,name=creditType,proto3" json:"creditType,omitempty"`
+	StartAt      *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=startAt,proto3" json:"startAt,omitempty"`
+	EndAt        *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=endAt,proto3" json:"endAt,omitempty"`
 }
 
 func (x *UpdateCompanyCreditConfigReq) Reset() {
@@ -1211,8 +1211,8 @@ type GetCompanyBankAccountDetailReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
-	CompanyId int64 `protobuf:"varint,2,opt,name=companyId,proto3" json:"companyId"`
+	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	CompanyId int64 `protobuf:"varint,2,opt,name=companyId,proto3" json:"companyId,omitempty"`
 }
 
 func (x *GetCompanyBankAccountDetailReq) Reset() {
@@ -1266,19 +1266,19 @@ type GetCompanyBankAccountDetailResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ComId        int64                  `protobuf:"varint,1,opt,name=comId,proto3" json:"comId"`
-	ComName      string                 `protobuf:"bytes,2,opt,name=comName,proto3" json:"comName"`
-	CardNo       string                 `protobuf:"bytes,3,opt,name=cardNo,proto3" json:"cardNo"`
-	Bank         string                 `protobuf:"bytes,4,opt,name=bank,proto3" json:"bank"`
-	Toibkn       string                 `protobuf:"bytes,5,opt,name=toibkn,proto3" json:"toibkn"`
-	CardOwner    string                 `protobuf:"bytes,6,opt,name=cardOwner,proto3" json:"cardOwner"`
-	ValidStatus  string                 `protobuf:"bytes,7,opt,name=validStatus,proto3" json:"validStatus"`
-	FrozenAmount int64                  `protobuf:"varint,8,opt,name=frozenAmount,proto3" json:"frozenAmount"`
-	Bokbal       int64                  `protobuf:"varint,9,opt,name=bokbal,proto3" json:"bokbal"`
-	Avabal       int64                  `protobuf:"varint,10,opt,name=avabal,proto3" json:"avabal"`
-	Ovramt       int64                  `protobuf:"varint,11,opt,name=ovramt,proto3" json:"ovramt"`
-	Stpamt       int64                  `protobuf:"varint,12,opt,name=stpamt,proto3" json:"stpamt"`
-	CreateAt     *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=createAt,proto3" json:"createAt"`
+	ComId        int64                  `protobuf:"varint,1,opt,name=comId,proto3" json:"comId,omitempty"`
+	ComName      string                 `protobuf:"bytes,2,opt,name=comName,proto3" json:"comName,omitempty"`
+	CardNo       string                 `protobuf:"bytes,3,opt,name=cardNo,proto3" json:"cardNo,omitempty"`
+	Bank         string                 `protobuf:"bytes,4,opt,name=bank,proto3" json:"bank,omitempty"`
+	Toibkn       string                 `protobuf:"bytes,5,opt,name=toibkn,proto3" json:"toibkn,omitempty"`
+	CardOwner    string                 `protobuf:"bytes,6,opt,name=cardOwner,proto3" json:"cardOwner,omitempty"`
+	ValidStatus  string                 `protobuf:"bytes,7,opt,name=validStatus,proto3" json:"validStatus,omitempty"`
+	FrozenAmount int64                  `protobuf:"varint,8,opt,name=frozenAmount,proto3" json:"frozenAmount,omitempty"`
+	Bokbal       int64                  `protobuf:"varint,9,opt,name=bokbal,proto3" json:"bokbal,omitempty"`
+	Avabal       int64                  `protobuf:"varint,10,opt,name=avabal,proto3" json:"avabal,omitempty"`
+	Ovramt       int64                  `protobuf:"varint,11,opt,name=ovramt,proto3" json:"ovramt,omitempty"`
+	Stpamt       int64                  `protobuf:"varint,12,opt,name=stpamt,proto3" json:"stpamt,omitempty"`
+	CreateAt     *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=createAt,proto3" json:"createAt,omitempty"`
 }
 
 func (x *GetCompanyBankAccountDetailResp) Reset() {
@@ -1409,14 +1409,14 @@ type CompanyWithdrawReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ManagerId     int64  `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
-	CompanyId     int64  `protobuf:"varint,2,opt,name=companyId,proto3" json:"companyId"`
-	ToAcc         string `protobuf:"bytes,3,opt,name=toAcc,proto3" json:"toAcc"`
-	ToAccName     string `protobuf:"bytes,4,opt,name=toAccName,proto3" json:"toAccName"`
-	Tobknm        string `protobuf:"bytes,5,opt,name=tobknm,proto3" json:"tobknm"`
-	Toibkn        string `protobuf:"bytes,6,opt,name=toibkn,proto3" json:"toibkn"`
-	Furinfo       string `protobuf:"bytes,7,opt,name=furinfo,proto3" json:"furinfo"`
-	WithdrawMoney int64  `protobuf:"varint,8,opt,name=withdrawMoney,proto3" json:"withdrawMoney"`
+	ManagerId     int64  `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	CompanyId     int64  `protobuf:"varint,2,opt,name=companyId,proto3" json:"companyId,omitempty"`
+	ToAcc         string `protobuf:"bytes,3,opt,name=toAcc,proto3" json:"toAcc,omitempty"`
+	ToAccName     string `protobuf:"bytes,4,opt,name=toAccName,proto3" json:"toAccName,omitempty"`
+	Tobknm        string `protobuf:"bytes,5,opt,name=tobknm,proto3" json:"tobknm,omitempty"`
+	Toibkn        string `protobuf:"bytes,6,opt,name=toibkn,proto3" json:"toibkn,omitempty"`
+	Furinfo       string `protobuf:"bytes,7,opt,name=furinfo,proto3" json:"furinfo,omitempty"`
+	WithdrawMoney int64  `protobuf:"varint,8,opt,name=withdrawMoney,proto3" json:"withdrawMoney,omitempty"`
 }
 
 func (x *CompanyWithdrawReq) Reset() {
@@ -1550,12 +1550,12 @@ type ListCompanyWithdrawReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ManagerId   int64                  `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
-	Page        *Page                  `protobuf:"bytes,2,opt,name=page,proto3" json:"page"`
-	AccountType string                 `protobuf:"bytes,3,opt,name=accountType,proto3" json:"accountType"`
-	ComIds      []int64                `protobuf:"varint,4,rep,packed,name=comIds,proto3" json:"comIds"`
-	PayStartAt  *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=payStartAt,proto3" json:"payStartAt"`
-	PayEndAt    *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=payEndAt,proto3" json:"payEndAt"`
+	ManagerId   int64                  `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	Page        *Page                  `protobuf:"bytes,2,opt,name=page,proto3" json:"page,omitempty"`
+	AccountType string                 `protobuf:"bytes,3,opt,name=accountType,proto3" json:"accountType,omitempty"`
+	ComIds      []int64                `protobuf:"varint,4,rep,packed,name=comIds,proto3" json:"comIds,omitempty"`
+	PayStartAt  *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=payStartAt,proto3" json:"payStartAt,omitempty"`
+	PayEndAt    *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=payEndAt,proto3" json:"payEndAt,omitempty"`
 }
 
 func (x *ListCompanyWithdrawReq) Reset() {
@@ -1637,20 +1637,20 @@ type CompanyWithdraw struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	OutTradeNo    string                 `protobuf:"bytes,1,opt,name=outTradeNo,proto3" json:"outTradeNo"`
-	WithdrawMoney int64                  `protobuf:"varint,2,opt,name=withdrawMoney,proto3" json:"withdrawMoney"`
-	ToAcc         string                 `protobuf:"bytes,3,opt,name=toAcc,proto3" json:"toAcc"`
-	ToAccName     string                 `protobuf:"bytes,4,opt,name=toAccName,proto3" json:"toAccName"`
-	Tobknm        string                 `protobuf:"bytes,5,opt,name=tobknm,proto3" json:"tobknm"`
-	Toibkn        string                 `protobuf:"bytes,6,opt,name=toibkn,proto3" json:"toibkn"`
-	Furinfo       string                 `protobuf:"bytes,7,opt,name=furinfo,proto3" json:"furinfo"`
-	PayAt         *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=payAt,proto3" json:"payAt"`
-	PayType       string                 `protobuf:"bytes,9,opt,name=payType,proto3" json:"payType"`
-	PayStatus     string                 `protobuf:"bytes,10,opt,name=payStatus,proto3" json:"payStatus"`
-	ErrMsg        string                 `protobuf:"bytes,11,opt,name=errMsg,proto3" json:"errMsg"`
-	ReceiptUrl    string                 `protobuf:"bytes,12,opt,name=receiptUrl,proto3" json:"receiptUrl"`
-	CreateAt      *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=createAt,proto3" json:"createAt"`
-	UserName      string                 `protobuf:"bytes,14,opt,name=userName,proto3" json:"userName"`
+	OutTradeNo    string                 `protobuf:"bytes,1,opt,name=outTradeNo,proto3" json:"outTradeNo,omitempty"`
+	WithdrawMoney int64                  `protobuf:"varint,2,opt,name=withdrawMoney,proto3" json:"withdrawMoney,omitempty"`
+	ToAcc         string                 `protobuf:"bytes,3,opt,name=toAcc,proto3" json:"toAcc,omitempty"`
+	ToAccName     string                 `protobuf:"bytes,4,opt,name=toAccName,proto3" json:"toAccName,omitempty"`
+	Tobknm        string                 `protobuf:"bytes,5,opt,name=tobknm,proto3" json:"tobknm,omitempty"`
+	Toibkn        string                 `protobuf:"bytes,6,opt,name=toibkn,proto3" json:"toibkn,omitempty"`
+	Furinfo       string                 `protobuf:"bytes,7,opt,name=furinfo,proto3" json:"furinfo,omitempty"`
+	PayAt         *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=payAt,proto3" json:"payAt,omitempty"`
+	PayType       string                 `protobuf:"bytes,9,opt,name=payType,proto3" json:"payType,omitempty"`
+	PayStatus     string                 `protobuf:"bytes,10,opt,name=payStatus,proto3" json:"payStatus,omitempty"`
+	ErrMsg        string                 `protobuf:"bytes,11,opt,name=errMsg,proto3" json:"errMsg,omitempty"`
+	ReceiptUrl    string                 `protobuf:"bytes,12,opt,name=receiptUrl,proto3" json:"receiptUrl,omitempty"`
+	CreateAt      *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=createAt,proto3" json:"createAt,omitempty"`
+	UserName      string                 `protobuf:"bytes,14,opt,name=userName,proto3" json:"userName,omitempty"`
 }
 
 func (x *CompanyWithdraw) Reset() {
@@ -1788,10 +1788,10 @@ type ListCompanyWithdrawResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*CompanyWithdraw `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64              `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64              `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64              `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*CompanyWithdraw `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64              `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64              `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64              `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *ListCompanyWithdrawResp) Reset() {
@@ -1859,22 +1859,22 @@ type ListPayOrderReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ManagerId          int64                  `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
-	Page               *Page                  `protobuf:"bytes,2,opt,name=page,proto3" json:"page"`
-	InvoiceNo          string                 `protobuf:"bytes,3,opt,name=invoiceNo,proto3" json:"invoiceNo"`
-	InvoiceCode        string                 `protobuf:"bytes,4,opt,name=invoiceCode,proto3" json:"invoiceCode"`
-	ShipmentNo         string                 `protobuf:"bytes,5,opt,name=shipmentNo,proto3" json:"shipmentNo"`
-	PayStatus          []string               `protobuf:"bytes,6,rep,name=payStatus,proto3" json:"payStatus"`
-	PayType            []string               `protobuf:"bytes,7,rep,name=payType,proto3" json:"payType"`
-	MiName             string                 `protobuf:"bytes,8,opt,name=miName,proto3" json:"miName"`
-	ComName            string                 `protobuf:"bytes,9,opt,name=comName,proto3" json:"comName"`
-	ComCode            string                 `protobuf:"bytes,10,opt,name=comCode,proto3" json:"comCode"`
-	PayDeadlineStartAt *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=payDeadlineStartAt,proto3" json:"payDeadlineStartAt"`
-	PayDeadlineEndAt   *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=payDeadlineEndAt,proto3" json:"payDeadlineEndAt"`
-	ReceiveStartAt     *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=receiveStartAt,proto3" json:"receiveStartAt"`
-	ReceiveEndAt       *timestamppb.Timestamp `protobuf:"bytes,14,opt,name=receiveEndAt,proto3" json:"receiveEndAt"`
-	ComIds             []int64                `protobuf:"varint,15,rep,packed,name=comIds,proto3" json:"comIds"`
-	MiIds              []int64                `protobuf:"varint,16,rep,packed,name=miIds,proto3" json:"miIds"`
+	ManagerId          int64                  `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	Page               *Page                  `protobuf:"bytes,2,opt,name=page,proto3" json:"page,omitempty"`
+	InvoiceNo          string                 `protobuf:"bytes,3,opt,name=invoiceNo,proto3" json:"invoiceNo,omitempty"`
+	InvoiceCode        string                 `protobuf:"bytes,4,opt,name=invoiceCode,proto3" json:"invoiceCode,omitempty"`
+	ShipmentNo         string                 `protobuf:"bytes,5,opt,name=shipmentNo,proto3" json:"shipmentNo,omitempty"`
+	PayStatus          []string               `protobuf:"bytes,6,rep,name=payStatus,proto3" json:"payStatus,omitempty"`
+	PayType            []string               `protobuf:"bytes,7,rep,name=payType,proto3" json:"payType,omitempty"`
+	MiName             string                 `protobuf:"bytes,8,opt,name=miName,proto3" json:"miName,omitempty"`
+	ComName            string                 `protobuf:"bytes,9,opt,name=comName,proto3" json:"comName,omitempty"`
+	ComCode            string                 `protobuf:"bytes,10,opt,name=comCode,proto3" json:"comCode,omitempty"`
+	PayDeadlineStartAt *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=payDeadlineStartAt,proto3" json:"payDeadlineStartAt,omitempty"`
+	PayDeadlineEndAt   *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=payDeadlineEndAt,proto3" json:"payDeadlineEndAt,omitempty"`
+	ReceiveStartAt     *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=receiveStartAt,proto3" json:"receiveStartAt,omitempty"`
+	ReceiveEndAt       *timestamppb.Timestamp `protobuf:"bytes,14,opt,name=receiveEndAt,proto3" json:"receiveEndAt,omitempty"`
+	ComIds             []int64                `protobuf:"varint,15,rep,packed,name=comIds,proto3" json:"comIds,omitempty"`
+	MiIds              []int64                `protobuf:"varint,16,rep,packed,name=miIds,proto3" json:"miIds,omitempty"`
 }
 
 func (x *ListPayOrderReq) Reset() {
@@ -2026,25 +2026,25 @@ type PayOrder struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ShipmentOrderId     int64                  `protobuf:"varint,1,opt,name=shipmentOrderId,proto3" json:"shipmentOrderId"`
-	ShipmentNo          string                 `protobuf:"bytes,2,opt,name=shipmentNo,proto3" json:"shipmentNo"`
-	InvoiceNo           string                 `protobuf:"bytes,3,opt,name=invoiceNo,proto3" json:"invoiceNo"`
-	InvoiceCode         string                 `protobuf:"bytes,4,opt,name=invoiceCode,proto3" json:"invoiceCode"`
-	ShipmentCode        string                 `protobuf:"bytes,5,opt,name=shipmentCode,proto3" json:"shipmentCode"`
-	ShipmentOrderAmount int64                  `protobuf:"varint,6,opt,name=shipmentOrderAmount,proto3" json:"shipmentOrderAmount"`
-	ErrMsg              string                 `protobuf:"bytes,7,opt,name=errMsg,proto3" json:"errMsg"`
-	PayAt               *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=payAt,proto3" json:"payAt"`
-	PayType             string                 `protobuf:"bytes,9,opt,name=payType,proto3" json:"payType"`
-	PayStatus           string                 `protobuf:"bytes,10,opt,name=payStatus,proto3" json:"payStatus"`
-	ReceiveAt           *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=receiveAt,proto3" json:"receiveAt"`
-	ReceiptUrl          string                 `protobuf:"bytes,12,opt,name=receiptUrl,proto3" json:"receiptUrl"`
-	PayDeadline         *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=payDeadline,proto3" json:"payDeadline"`
-	MiName              string                 `protobuf:"bytes,14,opt,name=miName,proto3" json:"miName"`
-	MiId                int64                  `protobuf:"varint,15,opt,name=miId,proto3" json:"miId"`
-	MiCode              string                 `protobuf:"bytes,16,opt,name=miCode,proto3" json:"miCode"`
-	ComName             string                 `protobuf:"bytes,17,opt,name=comName,proto3" json:"comName"`
-	ComId               int64                  `protobuf:"varint,18,opt,name=comId,proto3" json:"comId"`
-	ComCode             string                 `protobuf:"bytes,19,opt,name=comCode,proto3" json:"comCode"`
+	ShipmentOrderId     int64                  `protobuf:"varint,1,opt,name=shipmentOrderId,proto3" json:"shipmentOrderId,omitempty"`
+	ShipmentNo          string                 `protobuf:"bytes,2,opt,name=shipmentNo,proto3" json:"shipmentNo,omitempty"`
+	InvoiceNo           string                 `protobuf:"bytes,3,opt,name=invoiceNo,proto3" json:"invoiceNo,omitempty"`
+	InvoiceCode         string                 `protobuf:"bytes,4,opt,name=invoiceCode,proto3" json:"invoiceCode,omitempty"`
+	ShipmentCode        string                 `protobuf:"bytes,5,opt,name=shipmentCode,proto3" json:"shipmentCode,omitempty"`
+	ShipmentOrderAmount int64                  `protobuf:"varint,6,opt,name=shipmentOrderAmount,proto3" json:"shipmentOrderAmount,omitempty"`
+	ErrMsg              string                 `protobuf:"bytes,7,opt,name=errMsg,proto3" json:"errMsg,omitempty"`
+	PayAt               *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=payAt,proto3" json:"payAt,omitempty"`
+	PayType             string                 `protobuf:"bytes,9,opt,name=payType,proto3" json:"payType,omitempty"`
+	PayStatus           string                 `protobuf:"bytes,10,opt,name=payStatus,proto3" json:"payStatus,omitempty"`
+	ReceiveAt           *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=receiveAt,proto3" json:"receiveAt,omitempty"`
+	ReceiptUrl          string                 `protobuf:"bytes,12,opt,name=receiptUrl,proto3" json:"receiptUrl,omitempty"`
+	PayDeadline         *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=payDeadline,proto3" json:"payDeadline,omitempty"`
+	MiName              string                 `protobuf:"bytes,14,opt,name=miName,proto3" json:"miName,omitempty"`
+	MiId                int64                  `protobuf:"varint,15,opt,name=miId,proto3" json:"miId,omitempty"`
+	MiCode              string                 `protobuf:"bytes,16,opt,name=miCode,proto3" json:"miCode,omitempty"`
+	ComName             string                 `protobuf:"bytes,17,opt,name=comName,proto3" json:"comName,omitempty"`
+	ComId               int64                  `protobuf:"varint,18,opt,name=comId,proto3" json:"comId,omitempty"`
+	ComCode             string                 `protobuf:"bytes,19,opt,name=comCode,proto3" json:"comCode,omitempty"`
 }
 
 func (x *PayOrder) Reset() {
@@ -2217,10 +2217,10 @@ type ListPayOrderResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*PayOrder `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64       `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64       `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64       `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*PayOrder `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64       `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64       `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64       `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *ListPayOrderResp) Reset() {
@@ -2288,11 +2288,11 @@ type ListPayOrderPlanReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ManagerId   int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
-	Page        *Page    `protobuf:"bytes,2,opt,name=page,proto3" json:"page"`
-	ShipmentNos []string `protobuf:"bytes,3,rep,name=shipmentNos,proto3" json:"shipmentNos"`
-	ComIds      []int64  `protobuf:"varint,4,rep,packed,name=comIds,proto3" json:"comIds"`
-	MiIds       []int64  `protobuf:"varint,5,rep,packed,name=miIds,proto3" json:"miIds"`
+	ManagerId   int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	Page        *Page    `protobuf:"bytes,2,opt,name=page,proto3" json:"page,omitempty"`
+	ShipmentNos []string `protobuf:"bytes,3,rep,name=shipmentNos,proto3" json:"shipmentNos,omitempty"`
+	ComIds      []int64  `protobuf:"varint,4,rep,packed,name=comIds,proto3" json:"comIds,omitempty"`
+	MiIds       []int64  `protobuf:"varint,5,rep,packed,name=miIds,proto3" json:"miIds,omitempty"`
 }
 
 func (x *ListPayOrderPlanReq) Reset() {
@@ -2367,32 +2367,32 @@ type PayOrderPlan struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	TpOrderNo             string                 `protobuf:"bytes,1,opt,name=tpOrderNo,proto3" json:"tpOrderNo"`
-	OrderNo               string                 `protobuf:"bytes,2,opt,name=orderNo,proto3" json:"orderNo"`
-	TpCode                string                 `protobuf:"bytes,3,opt,name=tpCode,proto3" json:"tpCode"`
-	ShipmentAmount        int64                  `protobuf:"varint,4,opt,name=shipmentAmount,proto3" json:"shipmentAmount"`
-	OrderAmount           int64                  `protobuf:"varint,5,opt,name=orderAmount,proto3" json:"orderAmount"`
-	ShipmentOrderId       int64                  `protobuf:"varint,6,opt,name=shipmentOrderId,proto3" json:"shipmentOrderId"`
-	ShipmentNo            string                 `protobuf:"bytes,7,opt,name=shipmentNo,proto3" json:"shipmentNo"`
-	InvoiceNo             string                 `protobuf:"bytes,8,opt,name=invoiceNo,proto3" json:"invoiceNo"`
-	InvoiceCode           string                 `protobuf:"bytes,9,opt,name=invoiceCode,proto3" json:"invoiceCode"`
-	ShipmentCode          string                 `protobuf:"bytes,10,opt,name=shipmentCode,proto3" json:"shipmentCode"`
-	MedicineName          string                 `protobuf:"bytes,11,opt,name=medicineName,proto3" json:"medicineName"`
-	MedicineCode          string                 `protobuf:"bytes,12,opt,name=medicineCode,proto3" json:"medicineCode"`
-	MedicineSpecification string                 `protobuf:"bytes,13,opt,name=medicineSpecification,proto3" json:"medicineSpecification"`
-	TagName               string                 `protobuf:"bytes,14,opt,name=tagName,proto3" json:"tagName"`
-	ShipmentOrderAmount   int64                  `protobuf:"varint,15,opt,name=shipmentOrderAmount,proto3" json:"shipmentOrderAmount"`
-	TpCreatedAt           *timestamppb.Timestamp `protobuf:"bytes,16,opt,name=tpCreatedAt,proto3" json:"tpCreatedAt"`
-	PayDeadline           *timestamppb.Timestamp `protobuf:"bytes,17,opt,name=payDeadline,proto3" json:"payDeadline"`
-	ShipmentStatus        string                 `protobuf:"bytes,18,opt,name=shipmentStatus,proto3" json:"shipmentStatus"`
-	PayStatus             string                 `protobuf:"bytes,19,opt,name=payStatus,proto3" json:"payStatus"`
-	ErrMsg                string                 `protobuf:"bytes,20,opt,name=errMsg,proto3" json:"errMsg"`
-	MiId                  int64                  `protobuf:"varint,21,opt,name=miId,proto3" json:"miId"`
-	MiName                string                 `protobuf:"bytes,22,opt,name=miName,proto3" json:"miName"`
-	MiCode                string                 `protobuf:"bytes,23,opt,name=miCode,proto3" json:"miCode"`
-	ComName               string                 `protobuf:"bytes,24,opt,name=comName,proto3" json:"comName"`
-	ComId                 int64                  `protobuf:"varint,25,opt,name=comId,proto3" json:"comId"`
-	ComCode               string                 `protobuf:"bytes,26,opt,name=comCode,proto3" json:"comCode"`
+	TpOrderNo             string                 `protobuf:"bytes,1,opt,name=tpOrderNo,proto3" json:"tpOrderNo,omitempty"`
+	OrderNo               string                 `protobuf:"bytes,2,opt,name=orderNo,proto3" json:"orderNo,omitempty"`
+	TpCode                string                 `protobuf:"bytes,3,opt,name=tpCode,proto3" json:"tpCode,omitempty"`
+	ShipmentAmount        int64                  `protobuf:"varint,4,opt,name=shipmentAmount,proto3" json:"shipmentAmount,omitempty"`
+	OrderAmount           int64                  `protobuf:"varint,5,opt,name=orderAmount,proto3" json:"orderAmount,omitempty"`
+	ShipmentOrderId       int64                  `protobuf:"varint,6,opt,name=shipmentOrderId,proto3" json:"shipmentOrderId,omitempty"`
+	ShipmentNo            string                 `protobuf:"bytes,7,opt,name=shipmentNo,proto3" json:"shipmentNo,omitempty"`
+	InvoiceNo             string                 `protobuf:"bytes,8,opt,name=invoiceNo,proto3" json:"invoiceNo,omitempty"`
+	InvoiceCode           string                 `protobuf:"bytes,9,opt,name=invoiceCode,proto3" json:"invoiceCode,omitempty"`
+	ShipmentCode          string                 `protobuf:"bytes,10,opt,name=shipmentCode,proto3" json:"shipmentCode,omitempty"`
+	MedicineName          string                 `protobuf:"bytes,11,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
+	MedicineCode          string                 `protobuf:"bytes,12,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
+	MedicineSpecification string                 `protobuf:"bytes,13,opt,name=medicineSpecification,proto3" json:"medicineSpecification,omitempty"`
+	TagName               string                 `protobuf:"bytes,14,opt,name=tagName,proto3" json:"tagName,omitempty"`
+	ShipmentOrderAmount   int64                  `protobuf:"varint,15,opt,name=shipmentOrderAmount,proto3" json:"shipmentOrderAmount,omitempty"`
+	TpCreatedAt           *timestamppb.Timestamp `protobuf:"bytes,16,opt,name=tpCreatedAt,proto3" json:"tpCreatedAt,omitempty"`
+	PayDeadline           *timestamppb.Timestamp `protobuf:"bytes,17,opt,name=payDeadline,proto3" json:"payDeadline,omitempty"`
+	ShipmentStatus        string                 `protobuf:"bytes,18,opt,name=shipmentStatus,proto3" json:"shipmentStatus,omitempty"`
+	PayStatus             string                 `protobuf:"bytes,19,opt,name=payStatus,proto3" json:"payStatus,omitempty"`
+	ErrMsg                string                 `protobuf:"bytes,20,opt,name=errMsg,proto3" json:"errMsg,omitempty"`
+	MiId                  int64                  `protobuf:"varint,21,opt,name=miId,proto3" json:"miId,omitempty"`
+	MiName                string                 `protobuf:"bytes,22,opt,name=miName,proto3" json:"miName,omitempty"`
+	MiCode                string                 `protobuf:"bytes,23,opt,name=miCode,proto3" json:"miCode,omitempty"`
+	ComName               string                 `protobuf:"bytes,24,opt,name=comName,proto3" json:"comName,omitempty"`
+	ComId                 int64                  `protobuf:"varint,25,opt,name=comId,proto3" json:"comId,omitempty"`
+	ComCode               string                 `protobuf:"bytes,26,opt,name=comCode,proto3" json:"comCode,omitempty"`
 }
 
 func (x *PayOrderPlan) Reset() {
@@ -2614,10 +2614,10 @@ type ListPayOrderPlanResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*PayOrderPlan `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64           `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64           `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64           `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*PayOrderPlan `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64           `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64           `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64           `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *ListPayOrderPlanResp) Reset() {
@@ -2685,8 +2685,8 @@ type FinishPayOrderErrorReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ManagerId  int64  `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
-	ShipmentNo string `protobuf:"bytes,2,opt,name=shipmentNo,proto3" json:"shipmentNo"`
+	ManagerId  int64  `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	ShipmentNo string `protobuf:"bytes,2,opt,name=shipmentNo,proto3" json:"shipmentNo,omitempty"`
 }
 
 func (x *FinishPayOrderErrorReq) Reset() {
@@ -2740,8 +2740,8 @@ type FinishPayOrderErrorResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Code string `protobuf:"bytes,1,opt,name=code,proto3" json:"code"`
-	Msg  string `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg"`
+	Code string `protobuf:"bytes,1,opt,name=code,proto3" json:"code,omitempty"`
+	Msg  string `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
 }
 
 func (x *FinishPayOrderErrorResp) Reset() {
@@ -2795,20 +2795,20 @@ type ListFactoringOrderReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ManagerId          int64                  `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
-	Page               *Page                  `protobuf:"bytes,2,opt,name=page,proto3" json:"page"`
-	FactoringOrderNo   string                 `protobuf:"bytes,3,opt,name=factoringOrderNo,proto3" json:"factoringOrderNo"`
-	FactoringBankNo    string                 `protobuf:"bytes,4,opt,name=factoringBankNo,proto3" json:"factoringBankNo"`
-	MiName             string                 `protobuf:"bytes,5,opt,name=miName,proto3" json:"miName"`
-	ComName            string                 `protobuf:"bytes,6,opt,name=comName,proto3" json:"comName"`
-	FactoringStatus    []string               `protobuf:"bytes,7,rep,name=factoringStatus,proto3" json:"factoringStatus"`
-	ApplyResultStartAt *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=applyResultStartAt,proto3" json:"applyResultStartAt"`
-	ApplyResultEndAt   *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=applyResultEndAt,proto3" json:"applyResultEndAt"`
-	RefundStatus       []string               `protobuf:"bytes,10,rep,name=refundStatus,proto3" json:"refundStatus"`
-	ApplyStartAt       *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=applyStartAt,proto3" json:"applyStartAt"`
-	ApplyEndAt         *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=applyEndAt,proto3" json:"applyEndAt"`
-	ComIds             []int64                `protobuf:"varint,13,rep,packed,name=comIds,proto3" json:"comIds"`
-	MiIds              []int64                `protobuf:"varint,14,rep,packed,name=miIds,proto3" json:"miIds"`
+	ManagerId          int64                  `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	Page               *Page                  `protobuf:"bytes,2,opt,name=page,proto3" json:"page,omitempty"`
+	FactoringOrderNo   string                 `protobuf:"bytes,3,opt,name=factoringOrderNo,proto3" json:"factoringOrderNo,omitempty"`
+	FactoringBankNo    string                 `protobuf:"bytes,4,opt,name=factoringBankNo,proto3" json:"factoringBankNo,omitempty"`
+	MiName             string                 `protobuf:"bytes,5,opt,name=miName,proto3" json:"miName,omitempty"`
+	ComName            string                 `protobuf:"bytes,6,opt,name=comName,proto3" json:"comName,omitempty"`
+	FactoringStatus    []string               `protobuf:"bytes,7,rep,name=factoringStatus,proto3" json:"factoringStatus,omitempty"`
+	ApplyResultStartAt *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=applyResultStartAt,proto3" json:"applyResultStartAt,omitempty"`
+	ApplyResultEndAt   *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=applyResultEndAt,proto3" json:"applyResultEndAt,omitempty"`
+	RefundStatus       []string               `protobuf:"bytes,10,rep,name=refundStatus,proto3" json:"refundStatus,omitempty"`
+	ApplyStartAt       *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=applyStartAt,proto3" json:"applyStartAt,omitempty"`
+	ApplyEndAt         *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=applyEndAt,proto3" json:"applyEndAt,omitempty"`
+	ComIds             []int64                `protobuf:"varint,13,rep,packed,name=comIds,proto3" json:"comIds,omitempty"`
+	MiIds              []int64                `protobuf:"varint,14,rep,packed,name=miIds,proto3" json:"miIds,omitempty"`
 }
 
 func (x *ListFactoringOrderReq) Reset() {
@@ -2946,23 +2946,23 @@ type FactoringOrder struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	FactoringOrderNo   string                 `protobuf:"bytes,1,opt,name=factoringOrderNo,proto3" json:"factoringOrderNo"`
-	FactoringBankNo    string                 `protobuf:"bytes,2,opt,name=factoringBankNo,proto3" json:"factoringBankNo"`
-	MiName             string                 `protobuf:"bytes,3,opt,name=miName,proto3" json:"miName"`
-	MiId               int64                  `protobuf:"varint,4,opt,name=miId,proto3" json:"miId"`
-	MiCode             string                 `protobuf:"bytes,5,opt,name=miCode,proto3" json:"miCode"`
-	CompanyId          int64                  `protobuf:"varint,6,opt,name=companyId,proto3" json:"companyId"`
-	CompanyName        string                 `protobuf:"bytes,7,opt,name=companyName,proto3" json:"companyName"`
-	CompanyCode        string                 `protobuf:"bytes,8,opt,name=companyCode,proto3" json:"companyCode"`
-	FactoringMoney     int64                  `protobuf:"varint,9,opt,name=factoringMoney,proto3" json:"factoringMoney"`
-	ActualReceiveMoney int64                  `protobuf:"varint,10,opt,name=actualReceiveMoney,proto3" json:"actualReceiveMoney"`
-	PlatformFee        int64                  `protobuf:"varint,11,opt,name=platformFee,proto3" json:"platformFee"`
-	ApplyAt            *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=applyAt,proto3" json:"applyAt"`
-	ApplyResultAt      *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=applyResultAt,proto3" json:"applyResultAt"`
-	FactoringStatus    string                 `protobuf:"bytes,14,opt,name=factoringStatus,proto3" json:"factoringStatus"`
-	RefundAt           *timestamppb.Timestamp `protobuf:"bytes,15,opt,name=refundAt,proto3" json:"refundAt"`
-	RefundStatus       string                 `protobuf:"bytes,16,opt,name=refundStatus,proto3" json:"refundStatus"`
-	ErrMsg             string                 `protobuf:"bytes,17,opt,name=errMsg,proto3" json:"errMsg"`
+	FactoringOrderNo   string                 `protobuf:"bytes,1,opt,name=factoringOrderNo,proto3" json:"factoringOrderNo,omitempty"`
+	FactoringBankNo    string                 `protobuf:"bytes,2,opt,name=factoringBankNo,proto3" json:"factoringBankNo,omitempty"`
+	MiName             string                 `protobuf:"bytes,3,opt,name=miName,proto3" json:"miName,omitempty"`
+	MiId               int64                  `protobuf:"varint,4,opt,name=miId,proto3" json:"miId,omitempty"`
+	MiCode             string                 `protobuf:"bytes,5,opt,name=miCode,proto3" json:"miCode,omitempty"`
+	CompanyId          int64                  `protobuf:"varint,6,opt,name=companyId,proto3" json:"companyId,omitempty"`
+	CompanyName        string                 `protobuf:"bytes,7,opt,name=companyName,proto3" json:"companyName,omitempty"`
+	CompanyCode        string                 `protobuf:"bytes,8,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
+	FactoringMoney     int64                  `protobuf:"varint,9,opt,name=factoringMoney,proto3" json:"factoringMoney,omitempty"`
+	ActualReceiveMoney int64                  `protobuf:"varint,10,opt,name=actualReceiveMoney,proto3" json:"actualReceiveMoney,omitempty"`
+	PlatformFee        int64                  `protobuf:"varint,11,opt,name=platformFee,proto3" json:"platformFee,omitempty"`
+	ApplyAt            *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=applyAt,proto3" json:"applyAt,omitempty"`
+	ApplyResultAt      *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=applyResultAt,proto3" json:"applyResultAt,omitempty"`
+	FactoringStatus    string                 `protobuf:"bytes,14,opt,name=factoringStatus,proto3" json:"factoringStatus,omitempty"`
+	RefundAt           *timestamppb.Timestamp `protobuf:"bytes,15,opt,name=refundAt,proto3" json:"refundAt,omitempty"`
+	RefundStatus       string                 `protobuf:"bytes,16,opt,name=refundStatus,proto3" json:"refundStatus,omitempty"`
+	ErrMsg             string                 `protobuf:"bytes,17,opt,name=errMsg,proto3" json:"errMsg,omitempty"`
 }
 
 func (x *FactoringOrder) Reset() {
@@ -3121,10 +3121,10 @@ type ListFactoringOrderResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*FactoringOrder `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64             `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64             `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64             `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*FactoringOrder `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64             `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64             `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64             `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *ListFactoringOrderResp) Reset() {
@@ -3192,10 +3192,10 @@ type GetTransferReceiptReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ManagerId  int64   `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
-	ShipmentNo string  `protobuf:"bytes,2,opt,name=shipmentNo,proto3" json:"shipmentNo"`
-	ComIds     []int64 `protobuf:"varint,3,rep,packed,name=comIds,proto3" json:"comIds"`
-	MiIds      []int64 `protobuf:"varint,4,rep,packed,name=miIds,proto3" json:"miIds"`
+	ManagerId  int64   `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	ShipmentNo string  `protobuf:"bytes,2,opt,name=shipmentNo,proto3" json:"shipmentNo,omitempty"`
+	ComIds     []int64 `protobuf:"varint,3,rep,packed,name=comIds,proto3" json:"comIds,omitempty"`
+	MiIds      []int64 `protobuf:"varint,4,rep,packed,name=miIds,proto3" json:"miIds,omitempty"`
 }
 
 func (x *GetTransferReceiptReq) Reset() {
@@ -3263,7 +3263,7 @@ type GetTransferReceiptResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ReceiptUrl string `protobuf:"bytes,1,opt,name=receiptUrl,proto3" json:"receiptUrl"`
+	ReceiptUrl string `protobuf:"bytes,1,opt,name=receiptUrl,proto3" json:"receiptUrl,omitempty"`
 }
 
 func (x *GetTransferReceiptResp) Reset() {
@@ -3310,11 +3310,11 @@ type ListFactoringOrderPlanReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ManagerId        int64   `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
-	Page             *Page   `protobuf:"bytes,2,opt,name=page,proto3" json:"page"`
-	FactoringOrderNo string  `protobuf:"bytes,3,opt,name=factoringOrderNo,proto3" json:"factoringOrderNo"`
-	ComIds           []int64 `protobuf:"varint,4,rep,packed,name=comIds,proto3" json:"comIds"`
-	MiIds            []int64 `protobuf:"varint,5,rep,packed,name=miIds,proto3" json:"miIds"`
+	ManagerId        int64   `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	Page             *Page   `protobuf:"bytes,2,opt,name=page,proto3" json:"page,omitempty"`
+	FactoringOrderNo string  `protobuf:"bytes,3,opt,name=factoringOrderNo,proto3" json:"factoringOrderNo,omitempty"`
+	ComIds           []int64 `protobuf:"varint,4,rep,packed,name=comIds,proto3" json:"comIds,omitempty"`
+	MiIds            []int64 `protobuf:"varint,5,rep,packed,name=miIds,proto3" json:"miIds,omitempty"`
 }
 
 func (x *ListFactoringOrderPlanReq) Reset() {
@@ -3389,51 +3389,51 @@ type FactoringOrderPlan struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ShipmentPlanId      int64                  `protobuf:"varint,1,opt,name=shipmentPlanId,proto3" json:"shipmentPlanId"`
-	TpOrderNo           string                 `protobuf:"bytes,2,opt,name=tpOrderNo,proto3" json:"tpOrderNo"`
-	OrderNo             string                 `protobuf:"bytes,3,opt,name=orderNo,proto3" json:"orderNo"`
-	ShipmentAmount      int64                  `protobuf:"varint,4,opt,name=shipmentAmount,proto3" json:"shipmentAmount"`
-	OrderAmount         int64                  `protobuf:"varint,5,opt,name=orderAmount,proto3" json:"orderAmount"`
-	ShipmentOrderId     int64                  `protobuf:"varint,6,opt,name=shipmentOrderId,proto3" json:"shipmentOrderId"`
-	ShipmentNo          string                 `protobuf:"bytes,7,opt,name=shipmentNo,proto3" json:"shipmentNo"`
-	InvoiceNo           string                 `protobuf:"bytes,8,opt,name=invoiceNo,proto3" json:"invoiceNo"`
-	InvoiceCode         string                 `protobuf:"bytes,9,opt,name=invoiceCode,proto3" json:"invoiceCode"`
-	ShipmentCode        string                 `protobuf:"bytes,10,opt,name=shipmentCode,proto3" json:"shipmentCode"`
-	ShipmentOrderAmount int64                  `protobuf:"varint,11,opt,name=shipmentOrderAmount,proto3" json:"shipmentOrderAmount"`
-	ShipmentStatus      string                 `protobuf:"bytes,12,opt,name=shipmentStatus,proto3" json:"shipmentStatus"`
-	ErrMsg              string                 `protobuf:"bytes,13,opt,name=errMsg,proto3" json:"errMsg"`
-	FactoringOrderNo    string                 `protobuf:"bytes,14,opt,name=factoringOrderNo,proto3" json:"factoringOrderNo"`
-	FactoringBankNo     string                 `protobuf:"bytes,15,opt,name=factoringBankNo,proto3" json:"factoringBankNo"`
-	SendOutAt           *timestamppb.Timestamp `protobuf:"bytes,16,opt,name=sendOutAt,proto3" json:"sendOutAt"`
-	ReceiveDeadline     *timestamppb.Timestamp `protobuf:"bytes,17,opt,name=receiveDeadline,proto3" json:"receiveDeadline"`
-	TagName             string                 `protobuf:"bytes,18,opt,name=tagName,proto3" json:"tagName"`
-	TpCreatedAt         *timestamppb.Timestamp `protobuf:"bytes,19,opt,name=tpCreatedAt,proto3" json:"tpCreatedAt"`
+	ShipmentPlanId      int64                  `protobuf:"varint,1,opt,name=shipmentPlanId,proto3" json:"shipmentPlanId,omitempty"`
+	TpOrderNo           string                 `protobuf:"bytes,2,opt,name=tpOrderNo,proto3" json:"tpOrderNo,omitempty"`
+	OrderNo             string                 `protobuf:"bytes,3,opt,name=orderNo,proto3" json:"orderNo,omitempty"`
+	ShipmentAmount      int64                  `protobuf:"varint,4,opt,name=shipmentAmount,proto3" json:"shipmentAmount,omitempty"`
+	OrderAmount         int64                  `protobuf:"varint,5,opt,name=orderAmount,proto3" json:"orderAmount,omitempty"`
+	ShipmentOrderId     int64                  `protobuf:"varint,6,opt,name=shipmentOrderId,proto3" json:"shipmentOrderId,omitempty"`
+	ShipmentNo          string                 `protobuf:"bytes,7,opt,name=shipmentNo,proto3" json:"shipmentNo,omitempty"`
+	InvoiceNo           string                 `protobuf:"bytes,8,opt,name=invoiceNo,proto3" json:"invoiceNo,omitempty"`
+	InvoiceCode         string                 `protobuf:"bytes,9,opt,name=invoiceCode,proto3" json:"invoiceCode,omitempty"`
+	ShipmentCode        string                 `protobuf:"bytes,10,opt,name=shipmentCode,proto3" json:"shipmentCode,omitempty"`
+	ShipmentOrderAmount int64                  `protobuf:"varint,11,opt,name=shipmentOrderAmount,proto3" json:"shipmentOrderAmount,omitempty"`
+	ShipmentStatus      string                 `protobuf:"bytes,12,opt,name=shipmentStatus,proto3" json:"shipmentStatus,omitempty"`
+	ErrMsg              string                 `protobuf:"bytes,13,opt,name=errMsg,proto3" json:"errMsg,omitempty"`
+	FactoringOrderNo    string                 `protobuf:"bytes,14,opt,name=factoringOrderNo,proto3" json:"factoringOrderNo,omitempty"`
+	FactoringBankNo     string                 `protobuf:"bytes,15,opt,name=factoringBankNo,proto3" json:"factoringBankNo,omitempty"`
+	SendOutAt           *timestamppb.Timestamp `protobuf:"bytes,16,opt,name=sendOutAt,proto3" json:"sendOutAt,omitempty"`
+	ReceiveDeadline     *timestamppb.Timestamp `protobuf:"bytes,17,opt,name=receiveDeadline,proto3" json:"receiveDeadline,omitempty"`
+	TagName             string                 `protobuf:"bytes,18,opt,name=tagName,proto3" json:"tagName,omitempty"`
+	TpCreatedAt         *timestamppb.Timestamp `protobuf:"bytes,19,opt,name=tpCreatedAt,proto3" json:"tpCreatedAt,omitempty"`
 	//发票到期日
-	PayDeadline      *timestamppb.Timestamp `protobuf:"bytes,20,opt,name=payDeadline,proto3" json:"payDeadline"`
-	FactoringStatus  string                 `protobuf:"bytes,21,opt,name=factoringStatus,proto3" json:"factoringStatus"`
-	RefundAt         *timestamppb.Timestamp `protobuf:"bytes,22,opt,name=refundAt,proto3" json:"refundAt"`
-	RefundStatus     string                 `protobuf:"bytes,23,opt,name=refundStatus,proto3" json:"refundStatus"`
-	MiName           string                 `protobuf:"bytes,25,opt,name=miName,proto3" json:"miName"`
-	MiId             int64                  `protobuf:"varint,26,opt,name=miId,proto3" json:"miId"`
-	MiCode           string                 `protobuf:"bytes,27,opt,name=miCode,proto3" json:"miCode"`
-	CompanyId        int64                  `protobuf:"varint,28,opt,name=companyId,proto3" json:"companyId"`
-	CompanyName      string                 `protobuf:"bytes,29,opt,name=companyName,proto3" json:"companyName"`
-	CompanyCode      string                 `protobuf:"bytes,30,opt,name=companyCode,proto3" json:"companyCode"`
-	MedicineId       int64                  `protobuf:"varint,31,opt,name=medicineId,proto3" json:"medicineId"`
-	MedicineName     string                 `protobuf:"bytes,32,opt,name=medicineName,proto3" json:"medicineName"`
-	InvoiceMd5       string                 `protobuf:"bytes,33,opt,name=invoiceMd5,proto3" json:"invoiceMd5"`
-	InvoiceUrl       string                 `protobuf:"bytes,34,opt,name=invoiceUrl,proto3" json:"invoiceUrl"`
-	InvoiceType      string                 `protobuf:"bytes,35,opt,name=invoiceType,proto3" json:"invoiceType"`
-	InvoiceTotal     int64                  `protobuf:"varint,36,opt,name=invoiceTotal,proto3" json:"invoiceTotal"`
-	InvoiceTax       int64                  `protobuf:"varint,37,opt,name=invoiceTax,proto3" json:"invoiceTax"`
-	InvoiceCheckCode string                 `protobuf:"bytes,38,opt,name=invoiceCheckCode,proto3" json:"invoiceCheckCode"`
-	InvoiceDate      *timestamppb.Timestamp `protobuf:"bytes,39,opt,name=invoiceDate,proto3" json:"invoiceDate"`
+	PayDeadline      *timestamppb.Timestamp `protobuf:"bytes,20,opt,name=payDeadline,proto3" json:"payDeadline,omitempty"`
+	FactoringStatus  string                 `protobuf:"bytes,21,opt,name=factoringStatus,proto3" json:"factoringStatus,omitempty"`
+	RefundAt         *timestamppb.Timestamp `protobuf:"bytes,22,opt,name=refundAt,proto3" json:"refundAt,omitempty"`
+	RefundStatus     string                 `protobuf:"bytes,23,opt,name=refundStatus,proto3" json:"refundStatus,omitempty"`
+	MiName           string                 `protobuf:"bytes,25,opt,name=miName,proto3" json:"miName,omitempty"`
+	MiId             int64                  `protobuf:"varint,26,opt,name=miId,proto3" json:"miId,omitempty"`
+	MiCode           string                 `protobuf:"bytes,27,opt,name=miCode,proto3" json:"miCode,omitempty"`
+	CompanyId        int64                  `protobuf:"varint,28,opt,name=companyId,proto3" json:"companyId,omitempty"`
+	CompanyName      string                 `protobuf:"bytes,29,opt,name=companyName,proto3" json:"companyName,omitempty"`
+	CompanyCode      string                 `protobuf:"bytes,30,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
+	MedicineId       int64                  `protobuf:"varint,31,opt,name=medicineId,proto3" json:"medicineId,omitempty"`
+	MedicineName     string                 `protobuf:"bytes,32,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
+	InvoiceMd5       string                 `protobuf:"bytes,33,opt,name=invoiceMd5,proto3" json:"invoiceMd5,omitempty"`
+	InvoiceUrl       string                 `protobuf:"bytes,34,opt,name=invoiceUrl,proto3" json:"invoiceUrl,omitempty"`
+	InvoiceType      string                 `protobuf:"bytes,35,opt,name=invoiceType,proto3" json:"invoiceType,omitempty"`
+	InvoiceTotal     int64                  `protobuf:"varint,36,opt,name=invoiceTotal,proto3" json:"invoiceTotal,omitempty"`
+	InvoiceTax       int64                  `protobuf:"varint,37,opt,name=invoiceTax,proto3" json:"invoiceTax,omitempty"`
+	InvoiceCheckCode string                 `protobuf:"bytes,38,opt,name=invoiceCheckCode,proto3" json:"invoiceCheckCode,omitempty"`
+	InvoiceDate      *timestamppb.Timestamp `protobuf:"bytes,39,opt,name=invoiceDate,proto3" json:"invoiceDate,omitempty"`
 	//发票起算日
-	ReceiveAt      *timestamppb.Timestamp `protobuf:"bytes,40,opt,name=receiveAt,proto3" json:"receiveAt"`
-	MedicineCode   string                 `protobuf:"bytes,41,opt,name=medicineCode,proto3" json:"medicineCode"`
-	ApplyAt        *timestamppb.Timestamp `protobuf:"bytes,42,opt,name=applyAt,proto3" json:"applyAt"`
-	ApplyResultAt  *timestamppb.Timestamp `protobuf:"bytes,43,opt,name=applyResultAt,proto3" json:"applyResultAt"`
-	FactoringMoney int64                  `protobuf:"varint,44,opt,name=factoringMoney,proto3" json:"factoringMoney"`
+	ReceiveAt      *timestamppb.Timestamp `protobuf:"bytes,40,opt,name=receiveAt,proto3" json:"receiveAt,omitempty"`
+	MedicineCode   string                 `protobuf:"bytes,41,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
+	ApplyAt        *timestamppb.Timestamp `protobuf:"bytes,42,opt,name=applyAt,proto3" json:"applyAt,omitempty"`
+	ApplyResultAt  *timestamppb.Timestamp `protobuf:"bytes,43,opt,name=applyResultAt,proto3" json:"applyResultAt,omitempty"`
+	FactoringMoney int64                  `protobuf:"varint,44,opt,name=factoringMoney,proto3" json:"factoringMoney,omitempty"`
 }
 
 func (x *FactoringOrderPlan) Reset() {
@@ -3774,10 +3774,10 @@ type ListFactoringOrderPlanResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*FactoringOrderPlan `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64                 `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64                 `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64                 `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*FactoringOrderPlan `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64                 `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64                 `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64                 `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *ListFactoringOrderPlanResp) Reset() {
@@ -3845,8 +3845,8 @@ type FinishFactoringOrderErrorReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ManagerId        int64  `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
-	FactoringOrderNo string `protobuf:"bytes,2,opt,name=factoringOrderNo,proto3" json:"factoringOrderNo"`
+	ManagerId        int64  `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	FactoringOrderNo string `protobuf:"bytes,2,opt,name=factoringOrderNo,proto3" json:"factoringOrderNo,omitempty"`
 }
 
 func (x *FinishFactoringOrderErrorReq) Reset() {
@@ -3900,8 +3900,8 @@ type FinishFactoringOrderErrorResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Code string `protobuf:"bytes,1,opt,name=code,proto3" json:"code"`
-	Msg  string `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg"`
+	Code string `protobuf:"bytes,1,opt,name=code,proto3" json:"code,omitempty"`
+	Msg  string `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
 }
 
 func (x *FinishFactoringOrderErrorResp) Reset() {
@@ -3955,8 +3955,8 @@ type PayShipmentOrdersReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ManagerId   int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
-	ShipmentNos []string `protobuf:"bytes,2,rep,name=shipmentNos,proto3" json:"shipmentNos"`
+	ManagerId   int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	ShipmentNos []string `protobuf:"bytes,2,rep,name=shipmentNos,proto3" json:"shipmentNos,omitempty"`
 }
 
 func (x *PayShipmentOrdersReq) Reset() {
@@ -4010,8 +4010,8 @@ type PayShipmentOrdersResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Code string `protobuf:"bytes,1,opt,name=code,proto3" json:"code"`
-	Msg  string `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg"`
+	Code string `protobuf:"bytes,1,opt,name=code,proto3" json:"code,omitempty"`
+	Msg  string `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
 }
 
 func (x *PayShipmentOrdersResp) Reset() {
@@ -4065,8 +4065,8 @@ type GetWithdrawReceiptReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ManagerId  int64  `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
-	OutTradeNo string `protobuf:"bytes,2,opt,name=outTradeNo,proto3" json:"outTradeNo"`
+	ManagerId  int64  `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	OutTradeNo string `protobuf:"bytes,2,opt,name=outTradeNo,proto3" json:"outTradeNo,omitempty"`
 }
 
 func (x *GetWithdrawReceiptReq) Reset() {
@@ -4120,7 +4120,7 @@ type GetWithdrawReceiptResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ReceiptUrl string `protobuf:"bytes,1,opt,name=receiptUrl,proto3" json:"receiptUrl"`
+	ReceiptUrl string `protobuf:"bytes,1,opt,name=receiptUrl,proto3" json:"receiptUrl,omitempty"`
 }
 
 func (x *GetWithdrawReceiptResp) Reset() {
@@ -4167,25 +4167,25 @@ type ListFactoringPayOrderReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ManagerId          int64                  `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
-	Page               *Page                  `protobuf:"bytes,2,opt,name=page,proto3" json:"page"`
-	InvoiceNo          string                 `protobuf:"bytes,3,opt,name=invoiceNo,proto3" json:"invoiceNo"`
-	InvoiceCode        string                 `protobuf:"bytes,4,opt,name=invoiceCode,proto3" json:"invoiceCode"`
-	ShipmentNo         string                 `protobuf:"bytes,5,opt,name=shipmentNo,proto3" json:"shipmentNo"`
-	PayStatus          []string               `protobuf:"bytes,6,rep,name=payStatus,proto3" json:"payStatus"`
-	PayType            []string               `protobuf:"bytes,7,rep,name=payType,proto3" json:"payType"`
-	MiName             string                 `protobuf:"bytes,8,opt,name=miName,proto3" json:"miName"`
-	ComName            string                 `protobuf:"bytes,9,opt,name=comName,proto3" json:"comName"`
-	ComCode            string                 `protobuf:"bytes,10,opt,name=comCode,proto3" json:"comCode"`
-	PayDeadlineStartAt *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=payDeadlineStartAt,proto3" json:"payDeadlineStartAt"`
-	PayDeadlineEndAt   *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=payDeadlineEndAt,proto3" json:"payDeadlineEndAt"`
-	ReceiveStartAt     *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=receiveStartAt,proto3" json:"receiveStartAt"`
-	ReceiveEndAt       *timestamppb.Timestamp `protobuf:"bytes,14,opt,name=receiveEndAt,proto3" json:"receiveEndAt"`
+	ManagerId          int64                  `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	Page               *Page                  `protobuf:"bytes,2,opt,name=page,proto3" json:"page,omitempty"`
+	InvoiceNo          string                 `protobuf:"bytes,3,opt,name=invoiceNo,proto3" json:"invoiceNo,omitempty"`
+	InvoiceCode        string                 `protobuf:"bytes,4,opt,name=invoiceCode,proto3" json:"invoiceCode,omitempty"`
+	ShipmentNo         string                 `protobuf:"bytes,5,opt,name=shipmentNo,proto3" json:"shipmentNo,omitempty"`
+	PayStatus          []string               `protobuf:"bytes,6,rep,name=payStatus,proto3" json:"payStatus,omitempty"`
+	PayType            []string               `protobuf:"bytes,7,rep,name=payType,proto3" json:"payType,omitempty"`
+	MiName             string                 `protobuf:"bytes,8,opt,name=miName,proto3" json:"miName,omitempty"`
+	ComName            string                 `protobuf:"bytes,9,opt,name=comName,proto3" json:"comName,omitempty"`
+	ComCode            string                 `protobuf:"bytes,10,opt,name=comCode,proto3" json:"comCode,omitempty"`
+	PayDeadlineStartAt *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=payDeadlineStartAt,proto3" json:"payDeadlineStartAt,omitempty"`
+	PayDeadlineEndAt   *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=payDeadlineEndAt,proto3" json:"payDeadlineEndAt,omitempty"`
+	ReceiveStartAt     *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=receiveStartAt,proto3" json:"receiveStartAt,omitempty"`
+	ReceiveEndAt       *timestamppb.Timestamp `protobuf:"bytes,14,opt,name=receiveEndAt,proto3" json:"receiveEndAt,omitempty"`
 	//数据库列并无此项，仅用于区分已发起和未发起保理的支付单 WAITING APPLYING SUCCESS FAIL
-	FactoringApplyStatus string  `protobuf:"bytes,15,opt,name=factoringApplyStatus,proto3" json:"factoringApplyStatus"`
-	ComIds               []int64 `protobuf:"varint,16,rep,packed,name=comIds,proto3" json:"comIds"`
-	MiIds                []int64 `protobuf:"varint,17,rep,packed,name=miIds,proto3" json:"miIds"`
-	FactoringOrderNo     string  `protobuf:"bytes,18,opt,name=factoringOrderNo,proto3" json:"factoringOrderNo"`
+	FactoringApplyStatus string  `protobuf:"bytes,15,opt,name=factoringApplyStatus,proto3" json:"factoringApplyStatus,omitempty"`
+	ComIds               []int64 `protobuf:"varint,16,rep,packed,name=comIds,proto3" json:"comIds,omitempty"`
+	MiIds                []int64 `protobuf:"varint,17,rep,packed,name=miIds,proto3" json:"miIds,omitempty"`
+	FactoringOrderNo     string  `protobuf:"bytes,18,opt,name=factoringOrderNo,proto3" json:"factoringOrderNo,omitempty"`
 }
 
 func (x *ListFactoringPayOrderReq) Reset() {
@@ -4351,30 +4351,30 @@ type FactoringPayOrder struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ShipmentOrderId     int64                  `protobuf:"varint,1,opt,name=shipmentOrderId,proto3" json:"shipmentOrderId"`
-	ShipmentNo          string                 `protobuf:"bytes,2,opt,name=shipmentNo,proto3" json:"shipmentNo"`
-	InvoiceNo           string                 `protobuf:"bytes,3,opt,name=invoiceNo,proto3" json:"invoiceNo"`
-	InvoiceCode         string                 `protobuf:"bytes,4,opt,name=invoiceCode,proto3" json:"invoiceCode"`
-	ShipmentCode        string                 `protobuf:"bytes,5,opt,name=shipmentCode,proto3" json:"shipmentCode"`
-	ShipmentOrderAmount int64                  `protobuf:"varint,6,opt,name=shipmentOrderAmount,proto3" json:"shipmentOrderAmount"`
-	ErrMsg              string                 `protobuf:"bytes,7,opt,name=errMsg,proto3" json:"errMsg"`
-	PayAt               *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=payAt,proto3" json:"payAt"`
-	PayType             string                 `protobuf:"bytes,9,opt,name=payType,proto3" json:"payType"`
-	PayStatus           string                 `protobuf:"bytes,10,opt,name=payStatus,proto3" json:"payStatus"`
-	ReceiveAt           *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=receiveAt,proto3" json:"receiveAt"`
-	ReceiptUrl          string                 `protobuf:"bytes,12,opt,name=receiptUrl,proto3" json:"receiptUrl"`
-	PayDeadline         *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=payDeadline,proto3" json:"payDeadline"`
-	MiName              string                 `protobuf:"bytes,14,opt,name=miName,proto3" json:"miName"`
-	MiId                int64                  `protobuf:"varint,15,opt,name=miId,proto3" json:"miId"`
-	MiCode              string                 `protobuf:"bytes,16,opt,name=miCode,proto3" json:"miCode"`
-	CompanyName         string                 `protobuf:"bytes,17,opt,name=companyName,proto3" json:"companyName"`
-	CompanyId           int64                  `protobuf:"varint,18,opt,name=companyId,proto3" json:"companyId"`
-	CompanyCode         string                 `protobuf:"bytes,19,opt,name=companyCode,proto3" json:"companyCode"`
-	FactoringDeadline   *timestamppb.Timestamp `protobuf:"bytes,20,opt,name=factoringDeadline,proto3" json:"factoringDeadline"`
-	ApplyAt             *timestamppb.Timestamp `protobuf:"bytes,21,opt,name=applyAt,proto3" json:"applyAt"`
-	ApplyResultAt       *timestamppb.Timestamp `protobuf:"bytes,22,opt,name=applyResultAt,proto3" json:"applyResultAt"`
-	FactoringStatus     string                 `protobuf:"bytes,23,opt,name=factoringStatus,proto3" json:"factoringStatus"`
-	RefundAt            *timestamppb.Timestamp `protobuf:"bytes,24,opt,name=refundAt,proto3" json:"refundAt"`
+	ShipmentOrderId     int64                  `protobuf:"varint,1,opt,name=shipmentOrderId,proto3" json:"shipmentOrderId,omitempty"`
+	ShipmentNo          string                 `protobuf:"bytes,2,opt,name=shipmentNo,proto3" json:"shipmentNo,omitempty"`
+	InvoiceNo           string                 `protobuf:"bytes,3,opt,name=invoiceNo,proto3" json:"invoiceNo,omitempty"`
+	InvoiceCode         string                 `protobuf:"bytes,4,opt,name=invoiceCode,proto3" json:"invoiceCode,omitempty"`
+	ShipmentCode        string                 `protobuf:"bytes,5,opt,name=shipmentCode,proto3" json:"shipmentCode,omitempty"`
+	ShipmentOrderAmount int64                  `protobuf:"varint,6,opt,name=shipmentOrderAmount,proto3" json:"shipmentOrderAmount,omitempty"`
+	ErrMsg              string                 `protobuf:"bytes,7,opt,name=errMsg,proto3" json:"errMsg,omitempty"`
+	PayAt               *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=payAt,proto3" json:"payAt,omitempty"`
+	PayType             string                 `protobuf:"bytes,9,opt,name=payType,proto3" json:"payType,omitempty"`
+	PayStatus           string                 `protobuf:"bytes,10,opt,name=payStatus,proto3" json:"payStatus,omitempty"`
+	ReceiveAt           *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=receiveAt,proto3" json:"receiveAt,omitempty"`
+	ReceiptUrl          string                 `protobuf:"bytes,12,opt,name=receiptUrl,proto3" json:"receiptUrl,omitempty"`
+	PayDeadline         *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=payDeadline,proto3" json:"payDeadline,omitempty"`
+	MiName              string                 `protobuf:"bytes,14,opt,name=miName,proto3" json:"miName,omitempty"`
+	MiId                int64                  `protobuf:"varint,15,opt,name=miId,proto3" json:"miId,omitempty"`
+	MiCode              string                 `protobuf:"bytes,16,opt,name=miCode,proto3" json:"miCode,omitempty"`
+	CompanyName         string                 `protobuf:"bytes,17,opt,name=companyName,proto3" json:"companyName,omitempty"`
+	CompanyId           int64                  `protobuf:"varint,18,opt,name=companyId,proto3" json:"companyId,omitempty"`
+	CompanyCode         string                 `protobuf:"bytes,19,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
+	FactoringDeadline   *timestamppb.Timestamp `protobuf:"bytes,20,opt,name=factoringDeadline,proto3" json:"factoringDeadline,omitempty"`
+	ApplyAt             *timestamppb.Timestamp `protobuf:"bytes,21,opt,name=applyAt,proto3" json:"applyAt,omitempty"`
+	ApplyResultAt       *timestamppb.Timestamp `protobuf:"bytes,22,opt,name=applyResultAt,proto3" json:"applyResultAt,omitempty"`
+	FactoringStatus     string                 `protobuf:"bytes,23,opt,name=factoringStatus,proto3" json:"factoringStatus,omitempty"`
+	RefundAt            *timestamppb.Timestamp `protobuf:"bytes,24,opt,name=refundAt,proto3" json:"refundAt,omitempty"`
 }
 
 func (x *FactoringPayOrder) Reset() {
@@ -4582,10 +4582,10 @@ type ListFactoringPayOrderResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*FactoringPayOrder `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64                `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64                `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64                `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*FactoringPayOrder `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64                `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64                `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64                `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *ListFactoringPayOrderResp) Reset() {
@@ -4653,10 +4653,10 @@ type ApplyReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ManagerId   int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
-	ShipmentNos []string `protobuf:"bytes,2,rep,name=shipmentNos,proto3" json:"shipmentNos"`
+	ManagerId   int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	ShipmentNos []string `protobuf:"bytes,2,rep,name=shipmentNos,proto3" json:"shipmentNos,omitempty"`
 	//需要重试发起的保理订单，只允许单笔
-	FactoringOrderNo string `protobuf:"bytes,3,opt,name=factoringOrderNo,proto3" json:"factoringOrderNo"`
+	FactoringOrderNo string `protobuf:"bytes,3,opt,name=factoringOrderNo,proto3" json:"factoringOrderNo,omitempty"`
 }
 
 func (x *ApplyReq) Reset() {
@@ -4717,8 +4717,8 @@ type ApplyResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Code string `protobuf:"bytes,1,opt,name=code,proto3" json:"code"`
-	Msg  string `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg"`
+	Code string `protobuf:"bytes,1,opt,name=code,proto3" json:"code,omitempty"`
+	Msg  string `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
 }
 
 func (x *ApplyResp) Reset() {

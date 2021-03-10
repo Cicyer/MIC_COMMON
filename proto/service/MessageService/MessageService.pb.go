@@ -30,8 +30,8 @@ type Page struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	PageNumber int64 `protobuf:"varint,1,opt,name=pageNumber,proto3" json:"pageNumber"`
-	PageSize   int64 `protobuf:"varint,2,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64 `protobuf:"varint,1,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	PageSize   int64 `protobuf:"varint,2,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
 }
 
 func (x *Page) Reset() {
@@ -85,13 +85,13 @@ type SendEmailsReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Subject string `protobuf:"bytes,1,opt,name=subject,proto3" json:"subject"`
-	Content string `protobuf:"bytes,2,opt,name=content,proto3" json:"content"`
+	Subject string `protobuf:"bytes,1,opt,name=subject,proto3" json:"subject,omitempty"`
+	Content string `protobuf:"bytes,2,opt,name=content,proto3" json:"content,omitempty"`
 	//平台可选发送邮件账户，message配置时已经存在
-	Sender   string   `protobuf:"bytes,3,opt,name=sender,proto3" json:"sender"`
-	IsHtml   bool     `protobuf:"varint,4,opt,name=isHtml,proto3" json:"isHtml"`
-	ToEmails []string `protobuf:"bytes,5,rep,name=toEmails,proto3" json:"toEmails"`
-	CcEmails []string `protobuf:"bytes,6,rep,name=ccEmails,proto3" json:"ccEmails"`
+	Sender   string   `protobuf:"bytes,3,opt,name=sender,proto3" json:"sender,omitempty"`
+	IsHtml   bool     `protobuf:"varint,4,opt,name=isHtml,proto3" json:"isHtml,omitempty"`
+	ToEmails []string `protobuf:"bytes,5,rep,name=toEmails,proto3" json:"toEmails,omitempty"`
+	CcEmails []string `protobuf:"bytes,6,rep,name=ccEmails,proto3" json:"ccEmails,omitempty"`
 }
 
 func (x *SendEmailsReq) Reset() {
@@ -173,21 +173,21 @@ type SendMessageReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Title   string `protobuf:"bytes,1,opt,name=title,proto3" json:"title"`
-	Content string `protobuf:"bytes,2,opt,name=content,proto3" json:"content"`
+	Title   string `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
+	Content string `protobuf:"bytes,2,opt,name=content,proto3" json:"content,omitempty"`
 	//平台可选发送邮件账户，message配置时已经存在
-	InfoType string `protobuf:"bytes,3,opt,name=infoType,proto3" json:"infoType"`
+	InfoType string `protobuf:"bytes,3,opt,name=infoType,proto3" json:"infoType,omitempty"`
 	//发送操作人，不填为平台自主发送
-	ManagerId int64 `protobuf:"varint,4,opt,name=managerId,proto3" json:"managerId"`
+	ManagerId int64 `protobuf:"varint,4,opt,name=managerId,proto3" json:"managerId,omitempty"`
 	//指定接收组织机构id（如果操作的messagePermission处理不支持此项则此参数无效）
-	ToOrganizationIds []int64 `protobuf:"varint,5,rep,packed,name=toOrganizationIds,proto3" json:"toOrganizationIds"`
+	ToOrganizationIds []int64 `protobuf:"varint,5,rep,packed,name=toOrganizationIds,proto3" json:"toOrganizationIds,omitempty"`
 	//指定接收人id（如果操作的messagePermission处理不支持此项则此参数无效）
-	ToUserIds []int64 `protobuf:"varint,6,rep,packed,name=toUserIds,proto3" json:"toUserIds"`
+	ToUserIds []int64 `protobuf:"varint,6,rep,packed,name=toUserIds,proto3" json:"toUserIds,omitempty"`
 	//该推送的业务权限类别- 此项决定如何将参数处理为推送结构
-	MessagePermission string `protobuf:"bytes,7,opt,name=messagePermission,proto3" json:"messagePermission"`
+	MessagePermission string `protobuf:"bytes,7,opt,name=messagePermission,proto3" json:"messagePermission,omitempty"`
 	//产生此业务推送的源头信息，根据permission不同连接对象不同
-	LinkId   int64  `protobuf:"varint,8,opt,name=linkId,proto3" json:"linkId"`
-	LinkCode string `protobuf:"bytes,9,opt,name=linkCode,proto3" json:"linkCode"`
+	LinkId   int64  `protobuf:"varint,8,opt,name=linkId,proto3" json:"linkId,omitempty"`
+	LinkCode string `protobuf:"bytes,9,opt,name=linkCode,proto3" json:"linkCode,omitempty"`
 }
 
 func (x *SendMessageReq) Reset() {
@@ -291,15 +291,15 @@ type SendSmsReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//短信模板编码
-	TemplateCode string `protobuf:"bytes,1,opt,name=templateCode,proto3" json:"templateCode"`
+	TemplateCode string `protobuf:"bytes,1,opt,name=templateCode,proto3" json:"templateCode,omitempty"`
 	//模板参数替换
-	Param map[string]string `protobuf:"bytes,2,rep,name=param,proto3" json:"param" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Param map[string]string `protobuf:"bytes,2,rep,name=param,proto3" json:"param,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	//短信标题
-	Subject string `protobuf:"bytes,3,opt,name=subject,proto3" json:"subject"`
+	Subject string `protobuf:"bytes,3,opt,name=subject,proto3" json:"subject,omitempty"`
 	//如果非模板，使用此内容发送
-	Content string `protobuf:"bytes,4,opt,name=content,proto3" json:"content"`
+	Content string `protobuf:"bytes,4,opt,name=content,proto3" json:"content,omitempty"`
 	//收信手机号
-	ToPhones []string `protobuf:"bytes,5,rep,name=toPhones,proto3" json:"toPhones"`
+	ToPhones []string `protobuf:"bytes,5,rep,name=toPhones,proto3" json:"toPhones,omitempty"`
 }
 
 func (x *SendSmsReq) Reset() {
@@ -374,14 +374,14 @@ type GetMessageRecordsReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	StartAt     *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=startAt,proto3" json:"startAt"`
-	EndAt       *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=endAt,proto3" json:"endAt"`
-	InfoType    string                 `protobuf:"bytes,3,opt,name=infoType,proto3" json:"infoType"`
-	BusinessKey string                 `protobuf:"bytes,4,opt,name=businessKey,proto3" json:"businessKey"`
-	ReadStatus  string                 `protobuf:"bytes,5,opt,name=readStatus,proto3" json:"readStatus"`
-	Page        *Page                  `protobuf:"bytes,6,opt,name=page,proto3" json:"page"`
+	StartAt     *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=startAt,proto3" json:"startAt,omitempty"`
+	EndAt       *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=endAt,proto3" json:"endAt,omitempty"`
+	InfoType    string                 `protobuf:"bytes,3,opt,name=infoType,proto3" json:"infoType,omitempty"`
+	BusinessKey string                 `protobuf:"bytes,4,opt,name=businessKey,proto3" json:"businessKey,omitempty"`
+	ReadStatus  string                 `protobuf:"bytes,5,opt,name=readStatus,proto3" json:"readStatus,omitempty"`
+	Page        *Page                  `protobuf:"bytes,6,opt,name=page,proto3" json:"page,omitempty"`
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64 `protobuf:"varint,7,opt,name=managerId,proto3" json:"managerId"`
+	ManagerId int64 `protobuf:"varint,7,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *GetMessageRecordsReq) Reset() {
@@ -470,9 +470,9 @@ type GetMessageBusinessReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Page *Page `protobuf:"bytes,1,opt,name=page,proto3" json:"page"`
+	Page *Page `protobuf:"bytes,1,opt,name=page,proto3" json:"page,omitempty"`
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId"`
+	ManagerId int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *GetMessageBusinessReq) Reset() {
@@ -526,9 +526,9 @@ type ConsumeMessageReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MessageIds []int64 `protobuf:"varint,1,rep,packed,name=messageIds,proto3" json:"messageIds"`
+	MessageIds []int64 `protobuf:"varint,1,rep,packed,name=messageIds,proto3" json:"messageIds,omitempty"`
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId"`
+	ManagerId int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *ConsumeMessageReq) Reset() {
@@ -696,16 +696,16 @@ type Message struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Title        string                 `protobuf:"bytes,1,opt,name=title,proto3" json:"title"`
-	Content      string                 `protobuf:"bytes,2,opt,name=content,proto3" json:"content"`
-	InfoType     string                 `protobuf:"bytes,3,opt,name=infoType,proto3" json:"infoType"`
-	BusinessKey  string                 `protobuf:"bytes,4,opt,name=businessKey,proto3" json:"businessKey"`
-	BusinessName string                 `protobuf:"bytes,5,opt,name=businessName,proto3" json:"businessName"`
-	LinkId       int64                  `protobuf:"varint,6,opt,name=linkId,proto3" json:"linkId"`
-	LinkCode     string                 `protobuf:"bytes,7,opt,name=linkCode,proto3" json:"linkCode"`
-	ReadAt       *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=readAt,proto3" json:"readAt"`
-	CreatedAt    *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=createdAt,proto3" json:"createdAt"`
-	ReadStatus   string                 `protobuf:"bytes,10,opt,name=readStatus,proto3" json:"readStatus"`
+	Title        string                 `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
+	Content      string                 `protobuf:"bytes,2,opt,name=content,proto3" json:"content,omitempty"`
+	InfoType     string                 `protobuf:"bytes,3,opt,name=infoType,proto3" json:"infoType,omitempty"`
+	BusinessKey  string                 `protobuf:"bytes,4,opt,name=businessKey,proto3" json:"businessKey,omitempty"`
+	BusinessName string                 `protobuf:"bytes,5,opt,name=businessName,proto3" json:"businessName,omitempty"`
+	LinkId       int64                  `protobuf:"varint,6,opt,name=linkId,proto3" json:"linkId,omitempty"`
+	LinkCode     string                 `protobuf:"bytes,7,opt,name=linkCode,proto3" json:"linkCode,omitempty"`
+	ReadAt       *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=readAt,proto3" json:"readAt,omitempty"`
+	CreatedAt    *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	ReadStatus   string                 `protobuf:"bytes,10,opt,name=readStatus,proto3" json:"readStatus,omitempty"`
 }
 
 func (x *Message) Reset() {
@@ -815,10 +815,10 @@ type MessageListResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*Message `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64      `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64      `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64      `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*Message `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64      `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64      `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64      `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *MessageListResp) Reset() {
@@ -886,8 +886,8 @@ type MessageBusiness struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	BusinessKey  string `protobuf:"bytes,1,opt,name=businessKey,proto3" json:"businessKey"`
-	BusinessName string `protobuf:"bytes,2,opt,name=businessName,proto3" json:"businessName"`
+	BusinessKey  string `protobuf:"bytes,1,opt,name=businessKey,proto3" json:"businessKey,omitempty"`
+	BusinessName string `protobuf:"bytes,2,opt,name=businessName,proto3" json:"businessName,omitempty"`
 }
 
 func (x *MessageBusiness) Reset() {
@@ -941,10 +941,10 @@ type MessageBusinessResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*MessageBusiness `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64              `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64              `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64              `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*MessageBusiness `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64              `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64              `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64              `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *MessageBusinessResp) Reset() {
@@ -1051,7 +1051,7 @@ type GetUnreadCountReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
+	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *GetUnreadCountReq) Reset() {
@@ -1098,8 +1098,8 @@ type UnreadCountResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	InfoCount  int64 `protobuf:"varint,1,opt,name=infoCount,proto3" json:"infoCount"`
-	ErrorCount int64 `protobuf:"varint,2,opt,name=errorCount,proto3" json:"errorCount"`
+	InfoCount  int64 `protobuf:"varint,1,opt,name=infoCount,proto3" json:"infoCount,omitempty"`
+	ErrorCount int64 `protobuf:"varint,2,opt,name=errorCount,proto3" json:"errorCount,omitempty"`
 }
 
 func (x *UnreadCountResp) Reset() {
