@@ -55,4 +55,10 @@ var CM = map[int]map[string]string{
 	20003: {"EN": "bank sdk error", "CN": "银行端接口错误"},
 	20004: {"EN": "bAndB sdk logic error", "CN": "plugin外挂程序内部错误"},
 	21001: {"EN": "Info Already On Chain", "CN": "信息已生效无法修改"},
+
+	30001: {"EN": "InvalidFactoringOrderNo", "CN": "无效的保理单号"},
+	30002: {"EN": "FactoringApplyOutTime", "CN": "超出可保理时间段"},
+	30003: {"EN": "FactoringApplyCreditNotEnough", "CN": "授信额度不足"},
+	30004: {"EN": "FactoringApplyAlreadyPaid", "CN": "部分货款已支付，无法申请保理"},
+	30005: {"EN": "FactoringApplyError", "CN": "保理申请信息异常"},
 }

@@ -43,4 +43,11 @@ var (
 	BAndBInternalError    = add(20004)
 	//信息已生效无法修改
 	InfoAlreadyOnChain = add(21001)
+
+	InvalidFactoringOrderNo       = add(30001) // 无效的保理单号
+	FactoringApplyOutTime         = add(30002) // 超出可保理时间段
+	FactoringApplyCreditNotEnough = add(30003) //授信额度不足
+	FactoringApplyAlreadyPaid     = add(30004) //部分货款已支付，无法申请保理
+	FactoringApplyError           = add(30005) //保理申请信息异常
+
 )
