@@ -1546,8 +1546,12 @@ message GetContractPlanYearReportsResp {
   int64 pageNumber = 4;
 }
 message ContractSum{
-  ContractReportVo contractInfo = 1;
-  ContractMiReportVo contractMiInfo = 2;
+  //预计总金额
+  int64  medicineMoney = 1;
+  //预计总量
+  int64  medicineAmount = 2;
+  int64  medicineSent = 4;
+  int64  medicineReceive = 5;
 }
 message GetContractSumResp {
   repeated ContractSum list = 1;
