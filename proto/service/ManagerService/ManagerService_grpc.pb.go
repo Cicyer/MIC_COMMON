@@ -2145,6 +2145,8 @@ type DataReportServiceClient interface {
 	GetContractPlanMonthReports(ctx context.Context, in *GetContractPlanReportsReq, opts ...grpc.CallOption) (*GetContractPlanMonthReportsResp, error)
 	//查询合同信息 年报数据
 	GetContractPlanYearReports(ctx context.Context, in *GetContractPlanReportsReq, opts ...grpc.CallOption) (*GetContractPlanYearReportsResp, error)
+	//查询所含条件的合同聚合数据
+	GetContractSum(ctx context.Context, in *GetContractPlanReportsReq, opts ...grpc.CallOption) (*GetContractSumResp, error)
 	//查询某医保局下生效合同的统计数据
 	GetValidContractInfo(ctx context.Context, in *GetValidContractInfoReq, opts ...grpc.CallOption) (*GetValidContractInfoResp, error)
 	//获取目前的待支付金额
@@ -2267,6 +2269,15 @@ func (c *dataReportServiceClient) GetContractPlanYearReports(ctx context.Context
 	return out, nil
 }
 
+func (c *dataReportServiceClient) GetContractSum(ctx context.Context, in *GetContractPlanReportsReq, opts ...grpc.CallOption) (*GetContractSumResp, error) {
+	out := new(GetContractSumResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.DataReportService/GetContractSum", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *dataReportServiceClient) GetValidContractInfo(ctx context.Context, in *GetValidContractInfoReq, opts ...grpc.CallOption) (*GetValidContractInfoResp, error) {
 	out := new(GetValidContractInfoResp)
 	err := c.cc.Invoke(ctx, "/ManagerService.DataReportService/GetValidContractInfo", in, out, opts...)
@@ -2313,6 +2324,8 @@ type DataReportServiceServer interface {
 	GetContractPlanMonthReports(context.Context, *GetContractPlanReportsReq) (*GetContractPlanMonthReportsResp, error)
 	//查询合同信息 年报数据
 	GetContractPlanYearReports(context.Context, *GetContractPlanReportsReq) (*GetContractPlanYearReportsResp, error)
+	//查询所含条件的合同聚合数据
+	GetContractSum(context.Context, *GetContractPlanReportsReq) (*GetContractSumResp, error)
 	//查询某医保局下生效合同的统计数据
 	GetValidContractInfo(context.Context, *GetValidContractInfoReq) (*GetValidContractInfoResp, error)
 	//获取目前的待支付金额
@@ -2359,6 +2372,9 @@ func (UnimplementedDataReportServiceServer) GetContractPlanMonthReports(context.
 }
 func (UnimplementedDataReportServiceServer) GetContractPlanYearReports(context.Context, *GetContractPlanReportsReq) (*GetContractPlanYearReportsResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetContractPlanYearReports not implemented")
+}
+func (UnimplementedDataReportServiceServer) GetContractSum(context.Context, *GetContractPlanReportsReq) (*GetContractSumResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetContractSum not implemented")
 }
 func (UnimplementedDataReportServiceServer) GetValidContractInfo(context.Context, *GetValidContractInfoReq) (*GetValidContractInfoResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetValidContractInfo not implemented")
@@ -2595,6 +2611,24 @@ func _DataReportService_GetContractPlanYearReports_Handler(srv interface{}, ctx 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _DataReportService_GetContractSum_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetContractPlanReportsReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DataReportServiceServer).GetContractSum(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.DataReportService/GetContractSum",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DataReportServiceServer).GetContractSum(ctx, req.(*GetContractPlanReportsReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _DataReportService_GetValidContractInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetValidContractInfoReq)
 	if err := dec(in); err != nil {
@@ -2685,6 +2719,10 @@ var DataReportService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetContractPlanYearReports",
 			Handler:    _DataReportService_GetContractPlanYearReports_Handler,
+		},
+		{
+			MethodName: "GetContractSum",
+			Handler:    _DataReportService_GetContractSum_Handler,
 		},
 		{
 			MethodName: "GetValidContractInfo",

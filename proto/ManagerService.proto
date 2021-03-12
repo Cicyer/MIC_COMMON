@@ -1545,6 +1545,16 @@ message GetContractPlanYearReportsResp {
   int64 pageSize = 3;
   int64 pageNumber = 4;
 }
+message ContractSum{
+  ContractReportVo contractInfo = 1;
+  ContractMiReportVo contractMiInfo = 2;
+}
+message GetContractSumResp {
+  repeated ContractSum list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
 
 //查询当前时间点生效的合同信息
 message GetValidContractInfoReq {
@@ -2067,7 +2077,8 @@ service DataReportService {
   rpc GetContractPlanMonthReports(GetContractPlanReportsReq) returns (GetContractPlanMonthReportsResp);
   //查询合同信息 年报数据
   rpc GetContractPlanYearReports(GetContractPlanReportsReq) returns (GetContractPlanYearReportsResp);
-
+  //查询所含条件的合同聚合数据
+  rpc GetContractSum(GetContractPlanReportsReq) returns (GetContractSumResp);
   //查询某医保局下生效合同的统计数据
   rpc GetValidContractInfo(GetValidContractInfoReq) returns (GetValidContractInfoResp);
   //获取目前的待支付金额
