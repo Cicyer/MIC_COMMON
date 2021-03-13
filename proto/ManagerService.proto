@@ -748,6 +748,8 @@ message DetailShipmentOrderResp {
   string invoiceCode = 9;
   int64 orderAmount = 10;
   string shipmentStatus = 11;
+  string miCode = 12;
+  string miName = 13;
 }
 //招采单列表(根据配送编号查询)
 message ListShipmentPlanForOrderReq {
