@@ -216,6 +216,16 @@ message UpdateContractActiveReq {
 message UpdateContractActiveResp {
   int64  result = 1;
 }
+//刷新合同
+message RefreshContractReq {
+  int64  contractId = 1;
+  string  contractCode = 2;
+  int64 managerId = 3;
+}
+
+message RefreshContractResp {
+  int64  result = 1;
+}
 //删除主合同
 message DeleteOneContractReq {
   int64  contractId = 1;
@@ -1989,6 +1999,7 @@ service ManagerService {
   rpc DeleteOneContractMi(DeleteOneContractMiReq) returns(DeleteOneContractMiResp);
   rpc GetContractInfo(GetContractInfoReq) returns(GetContractInfoResp);
   rpc CountContract(CountContractReq) returns(CountContractResp);
+  rpc RefreshContract(RefreshContractReq) returns(RefreshContractResp);
   //暂未使用 后期删除
   rpc ContractDetail(ContractDetailReq) returns(ContractDetailResp);
   rpc CheckContractList(UpCheckContractReq) returns(CheckContractListResp);
