@@ -219,7 +219,7 @@ message UpdateContractActiveResp {
 //刷新合同
 message RefreshContractReq {
   int64  contractId = 1;
-  string  contractCode = 2;
+  string  contractNo = 2;
   int64 managerId = 3;
 }
 
