@@ -6,6 +6,6 @@ protoc --go-grpc_out=. *.proto
 protoc --go_out=. *.proto
 
 需要将 
-omit去掉empty"
+,omit去掉empty"
 替换为 
-"v
+"
