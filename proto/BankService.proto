@@ -128,6 +128,7 @@ message UpdateCompanyCreditConfigResp {
 message GetCompanyBankAccountDetailReq {
   int64   managerId = 1;
   int64   companyId = 2;
+  string  companyCode = 3;
 }
 
 message GetCompanyBankAccountDetailResp {
@@ -423,6 +424,20 @@ message PayShipmentOrdersResp {
   string code = 1;
   string msg = 2;
 }
+//支付单汇总
+message PayOrderCountReq {
+  google.protobuf.Timestamp startDate = 1;
+  google.protobuf.Timestamp endDate = 2;
+  int64 managerId = 3;
+  int64 miId = 4;
+  int64 companyId = 5;
+}
+message PayOrderCountResp {
+  int64 payOrderAmount = 1;
+  int64 payOrderNum = 2;
+  int64 waitNum = 3;
+}
+
 message GetWithdrawReceiptReq {
   int64   managerId = 1;
   string outTradeNo = 2;
@@ -522,6 +537,8 @@ service ShipmentPayOrderService {
   rpc GetTransferReceipt(GetTransferReceiptReq) returns(GetTransferReceiptResp);
   //医院主动批量支付订单，自动按照配送企业进行拆单
   rpc PayShipmentOrders(PayShipmentOrdersReq) returns(PayShipmentOrdersResp);
+  //支付汇总
+  rpc PayOrderCount(PayOrderCountReq) returns(PayOrderCountResp);
 
 }
 //保理单相关业务
