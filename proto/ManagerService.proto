@@ -829,8 +829,7 @@ message CreateShipmentOrderReq {
 }
 
 message CreateShipmentOrderResp {
-  string code = 1;
-  string msg = 2;
+  string shipmentNo = 1;
 }
 
 //配送单列表
