@@ -443,6 +443,8 @@ type ShipmentPayOrderServiceClient interface {
 	GetTransferReceipt(ctx context.Context, in *GetTransferReceiptReq, opts ...grpc.CallOption) (*GetTransferReceiptResp, error)
 	//医院主动批量支付订单，自动按照配送企业进行拆单
 	PayShipmentOrders(ctx context.Context, in *PayShipmentOrdersReq, opts ...grpc.CallOption) (*PayShipmentOrdersResp, error)
+	//支付汇总
+	PayOrderCount(ctx context.Context, in *PayOrderCountReq, opts ...grpc.CallOption) (*PayOrderCountResp, error)
 }
 
 type shipmentPayOrderServiceClient struct {
@@ -498,6 +500,15 @@ func (c *shipmentPayOrderServiceClient) PayShipmentOrders(ctx context.Context, i
 	return out, nil
 }
 
+func (c *shipmentPayOrderServiceClient) PayOrderCount(ctx context.Context, in *PayOrderCountReq, opts ...grpc.CallOption) (*PayOrderCountResp, error) {
+	out := new(PayOrderCountResp)
+	err := c.cc.Invoke(ctx, "/BankService.ShipmentPayOrderService/PayOrderCount", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ShipmentPayOrderServiceServer is the server API for ShipmentPayOrderService service.
 // All implementations must embed UnimplementedShipmentPayOrderServiceServer
 // for forward compatibility
@@ -512,6 +523,8 @@ type ShipmentPayOrderServiceServer interface {
 	GetTransferReceipt(context.Context, *GetTransferReceiptReq) (*GetTransferReceiptResp, error)
 	//医院主动批量支付订单，自动按照配送企业进行拆单
 	PayShipmentOrders(context.Context, *PayShipmentOrdersReq) (*PayShipmentOrdersResp, error)
+	//支付汇总
+	PayOrderCount(context.Context, *PayOrderCountReq) (*PayOrderCountResp, error)
 	mustEmbedUnimplementedShipmentPayOrderServiceServer()
 }
 
@@ -533,6 +546,9 @@ func (UnimplementedShipmentPayOrderServiceServer) GetTransferReceipt(context.Con
 }
 func (UnimplementedShipmentPayOrderServiceServer) PayShipmentOrders(context.Context, *PayShipmentOrdersReq) (*PayShipmentOrdersResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PayShipmentOrders not implemented")
+}
+func (UnimplementedShipmentPayOrderServiceServer) PayOrderCount(context.Context, *PayOrderCountReq) (*PayOrderCountResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PayOrderCount not implemented")
 }
 func (UnimplementedShipmentPayOrderServiceServer) mustEmbedUnimplementedShipmentPayOrderServiceServer() {
 }
@@ -638,6 +654,24 @@ func _ShipmentPayOrderService_PayShipmentOrders_Handler(srv interface{}, ctx con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ShipmentPayOrderService_PayOrderCount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PayOrderCountReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ShipmentPayOrderServiceServer).PayOrderCount(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/BankService.ShipmentPayOrderService/PayOrderCount",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ShipmentPayOrderServiceServer).PayOrderCount(ctx, req.(*PayOrderCountReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ShipmentPayOrderService_ServiceDesc is the grpc.ServiceDesc for ShipmentPayOrderService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -664,6 +698,10 @@ var ShipmentPayOrderService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "PayShipmentOrders",
 			Handler:    _ShipmentPayOrderService_PayShipmentOrders_Handler,
+		},
+		{
+			MethodName: "PayOrderCount",
+			Handler:    _ShipmentPayOrderService_PayOrderCount_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
