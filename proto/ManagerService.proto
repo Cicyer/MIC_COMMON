@@ -847,6 +847,8 @@ message ListShipmentOrderReq {
   Page page = 10;
   int64 managerId = 11;
   google.protobuf.Timestamp receiveDeadline = 12;
+  string miName = 13;
+  string comName = 14;
 }
 
 message ListShipmentOrderResp {
