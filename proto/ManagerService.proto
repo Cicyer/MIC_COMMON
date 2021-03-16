@@ -739,6 +739,8 @@ message ListShipmentPlanrVo {
   int64 calculateRate = 22;
   int64 medicineId = 23;
   string shipmentNo = 24;
+  string companyCode = 25;
+  string miCode = 26;
 }
 //根据配送单号查询配送单详情
 message DetailShipmentOrderReq {
