@@ -7,6 +7,7 @@ import (
 	"gopkg.in/natefinch/lumberjack.v2"
 	"io"
 	"os"
+	"path"
 	"runtime"
 	"time"
 )
@@ -76,26 +77,26 @@ func InitLog(logPath string, logLevel ...string) {
 	logger = zap.New(core, zap.AddCaller()).Sugar()
 }
 
-func getWriter(path string, filename string) io.Writer {
-	if path == "" {
+func getWriter(dir string, filename string) io.Writer {
+	if dir == "" {
 		return os.Stdout
 	}
-	err := os.MkdirAll(path, 0777)
+	err := os.MkdirAll(dir, 0777)
 	if err != nil {
 		fmt.Printf("%s", err)
 	}
 	hook := lumberjack.Logger{
-		Filename:   path + filename, // 日志文件路径
-		MaxSize:    128,             // 每个日志文件保存的最大尺寸 单位：M
-		MaxBackups: 100,             // 日志文件最多保存多少个备份
-		MaxAge:     30,              // 文件最多保存多少天
-		Compress:   true,            // 是否压缩
+		Filename:   path.Join(dir, filename), // 日志文件路径
+		MaxSize:    128,                      // 每个日志文件保存的最大尺寸 单位：M
+		MaxBackups: 100,                      // 日志文件最多保存多少个备份
+		MaxAge:     30,                       // 文件最多保存多少天
+		Compress:   true,                     // 是否压缩
 	}
 	// 生成rotatelogs的Logger 实际生成的文件名 demo.log.YYmmddHH
 	// demo.log是指向最新日志的链接
 	// 保存30天内的日志，每12小时(整点)分割一次日志
 	//hook, err := rotatelogs.New(
-	//	//	path+filename+".%Y%m%d-%H", // 没有使用go风格反人类的format格式
+	//	//	dir+filename+".%Y%m%d-%H", // 没有使用go风格反人类的format格式
 	//	//	rotatelogs.WithMaxAge(time.Hour*24*30),
 	//	//	rotatelogs.WithRotationTime(time.Hour*12),
 	//	//)
