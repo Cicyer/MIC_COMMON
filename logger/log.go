@@ -9,6 +9,7 @@ import (
 	"os"
 	"path"
 	"runtime"
+	"strings"
 	"time"
 )
 
@@ -92,6 +93,9 @@ func getWriter(dir string, filename string) io.Writer {
 		MaxAge:     30,                       // 文件最多保存多少天
 		Compress:   true,                     // 是否压缩
 	}
+	if runtime.GOOS == "windows" {
+		hook.Filename = windowsPathJoin(dir, filename)
+	}
 	// 生成rotatelogs的Logger 实际生成的文件名 demo.log.YYmmddHH
 	// demo.log是指向最新日志的链接
 	// 保存30天内的日志，每12小时(整点)分割一次日志
@@ -106,6 +110,14 @@ func getWriter(dir string, filename string) io.Writer {
 	return io.Writer(&hook)
 }
 
+func windowsPathJoin(elem ...string) string {
+	for i, e := range elem {
+		if e != "" {
+			return strings.Join(elem[i:], "\\")
+		}
+	}
+	return ""
+}
 func NewEncoderConfig() zapcore.EncoderConfig {
 	return zapcore.EncoderConfig{
 		TimeKey:        "time",
