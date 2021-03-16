@@ -64,7 +64,7 @@ func InitLog(logPath string, logLevel ...string) {
 	})
 	var ostype = runtime.GOOS
 	var rootPath = ""
-	if ostype == "windows" && logPath != "" {
+	if ostype == "windows" && logPath != "" && !strings.Contains(logPath, ":") {
 		rootPath = "c:"
 	}
 	// 获取 info、warn日志文件的io.Writer 抽象 getWriter() 在下方实现
