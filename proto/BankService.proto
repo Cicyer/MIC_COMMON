@@ -56,6 +56,7 @@ message AccountInfo {
   string   cardOwner = 7;
   int64  frozenAmount = 8;
   string  cardStatus = 9;
+  int64  id = 10;
 }
 
 message CreateOneAccountInfoResp {
