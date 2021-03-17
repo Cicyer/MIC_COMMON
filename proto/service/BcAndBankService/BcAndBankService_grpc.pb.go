@@ -24,6 +24,8 @@ type BcAndBankServiceClient interface {
 	BcUploadCompanies(ctx context.Context, in *UploadChainCompanies, opts ...grpc.CallOption) (*BcResponses, error)
 	// 医疗机构上链
 	BcUploadMis(ctx context.Context, in *UploadChainMis, opts ...grpc.CallOption) (*BcResponses, error)
+	// 药品信息上链
+	BcUploadMedicine(ctx context.Context, in *UploadChainMedicines, opts ...grpc.CallOption) (*BcResponses, error)
 	// 合同信息上链
 	BcUploadContracts(ctx context.Context, in *UploadChainContracts, opts ...grpc.CallOption) (*BcResponses, error)
 	// 子合同信息上链
@@ -89,6 +91,15 @@ func (c *bcAndBankServiceClient) BcUploadCompanies(ctx context.Context, in *Uplo
 func (c *bcAndBankServiceClient) BcUploadMis(ctx context.Context, in *UploadChainMis, opts ...grpc.CallOption) (*BcResponses, error) {
 	out := new(BcResponses)
 	err := c.cc.Invoke(ctx, "/BcAndBankService.BcAndBankService/BcUploadMis", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *bcAndBankServiceClient) BcUploadMedicine(ctx context.Context, in *UploadChainMedicines, opts ...grpc.CallOption) (*BcResponses, error) {
+	out := new(BcResponses)
+	err := c.cc.Invoke(ctx, "/BcAndBankService.BcAndBankService/BcUploadMedicine", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -232,6 +243,8 @@ type BcAndBankServiceServer interface {
 	BcUploadCompanies(context.Context, *UploadChainCompanies) (*BcResponses, error)
 	// 医疗机构上链
 	BcUploadMis(context.Context, *UploadChainMis) (*BcResponses, error)
+	// 药品信息上链
+	BcUploadMedicine(context.Context, *UploadChainMedicines) (*BcResponses, error)
 	// 合同信息上链
 	BcUploadContracts(context.Context, *UploadChainContracts) (*BcResponses, error)
 	// 子合同信息上链
@@ -281,6 +294,9 @@ func (UnimplementedBcAndBankServiceServer) BcUploadCompanies(context.Context, *U
 }
 func (UnimplementedBcAndBankServiceServer) BcUploadMis(context.Context, *UploadChainMis) (*BcResponses, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BcUploadMis not implemented")
+}
+func (UnimplementedBcAndBankServiceServer) BcUploadMedicine(context.Context, *UploadChainMedicines) (*BcResponses, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BcUploadMedicine not implemented")
 }
 func (UnimplementedBcAndBankServiceServer) BcUploadContracts(context.Context, *UploadChainContracts) (*BcResponses, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BcUploadContracts not implemented")
@@ -387,6 +403,24 @@ func _BcAndBankService_BcUploadMis_Handler(srv interface{}, ctx context.Context,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(BcAndBankServiceServer).BcUploadMis(ctx, req.(*UploadChainMis))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BcAndBankService_BcUploadMedicine_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UploadChainMedicines)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BcAndBankServiceServer).BcUploadMedicine(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/BcAndBankService.BcAndBankService/BcUploadMedicine",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BcAndBankServiceServer).BcUploadMedicine(ctx, req.(*UploadChainMedicines))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -661,6 +695,10 @@ var BcAndBankService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "BcUploadMis",
 			Handler:    _BcAndBankService_BcUploadMis_Handler,
+		},
+		{
+			MethodName: "BcUploadMedicine",
+			Handler:    _BcAndBankService_BcUploadMedicine_Handler,
 		},
 		{
 			MethodName: "BcUploadContracts",
