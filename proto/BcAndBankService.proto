@@ -17,6 +17,8 @@ service BcAndBankService {
   rpc BcUploadCompanies(UploadChainCompanies) returns (BcResponses);
   // 医疗机构上链
   rpc BcUploadMis(UploadChainMis) returns (BcResponses);
+  // 药品信息上链
+  rpc BcUploadMedicine(UploadChainMedicines) returns (BcResponses);
   // 合同信息上链
   rpc BcUploadContracts(UploadChainContracts) returns (BcResponses);
   // 子合同信息上链
