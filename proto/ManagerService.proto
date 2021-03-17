@@ -378,9 +378,14 @@ message SelectInfoByMedicineNamesResp {
 message TagListReq {
   string  tagType = 1;
   int64 managerId = 2;
+  int64 tagName = 3;
+  Page page = 4;
 }
 message TagListResp {
   repeated TagListVo list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
 }
 
 message TagListVo {
@@ -419,10 +424,14 @@ message DeleteTagResp {
 message TagDetailListReq {
   int64  tagId = 1;
   int64 managerId = 2;
+  Page page = 3;
 }
 
 message TagDetailListResp {
   repeated TagDetailVo list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
 }
 
 message TagDetailVo {
