@@ -514,6 +514,7 @@ message ApplyResp {
 message ListCnapsReq {
   int64   managerId = 1;
   string bankName = 2;
+  string cnap = 3;
 }
 message ListCnapsResp {
   repeated CnapsVo list = 1;
