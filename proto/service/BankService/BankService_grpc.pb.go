@@ -17,6 +17,8 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type BankServiceClient interface {
+	//联行号模糊搜索
+	ListCnaps(ctx context.Context, in *ListCnapsReq, opts ...grpc.CallOption) (*ListCnapsResp, error)
 	//银行账号相关
 	ListBankAccount(ctx context.Context, in *ListBankAccountReq, opts ...grpc.CallOption) (*ListBankAccountResp, error)
 	CreateOneAccountInfo(ctx context.Context, in *CreateOneAccountInfoReq, opts ...grpc.CallOption) (*CreateOneAccountInfoResp, error)
@@ -38,6 +40,15 @@ type bankServiceClient struct {
 
 func NewBankServiceClient(cc grpc.ClientConnInterface) BankServiceClient {
 	return &bankServiceClient{cc}
+}
+
+func (c *bankServiceClient) ListCnaps(ctx context.Context, in *ListCnapsReq, opts ...grpc.CallOption) (*ListCnapsResp, error) {
+	out := new(ListCnapsResp)
+	err := c.cc.Invoke(ctx, "/BankService.BankService/ListCnaps", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *bankServiceClient) ListBankAccount(ctx context.Context, in *ListBankAccountReq, opts ...grpc.CallOption) (*ListBankAccountResp, error) {
@@ -134,6 +145,8 @@ func (c *bankServiceClient) ListCompanyWithdraw(ctx context.Context, in *ListCom
 // All implementations must embed UnimplementedBankServiceServer
 // for forward compatibility
 type BankServiceServer interface {
+	//联行号模糊搜索
+	ListCnaps(context.Context, *ListCnapsReq) (*ListCnapsResp, error)
 	//银行账号相关
 	ListBankAccount(context.Context, *ListBankAccountReq) (*ListBankAccountResp, error)
 	CreateOneAccountInfo(context.Context, *CreateOneAccountInfoReq) (*CreateOneAccountInfoResp, error)
@@ -154,6 +167,9 @@ type BankServiceServer interface {
 type UnimplementedBankServiceServer struct {
 }
 
+func (UnimplementedBankServiceServer) ListCnaps(context.Context, *ListCnapsReq) (*ListCnapsResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListCnaps not implemented")
+}
 func (UnimplementedBankServiceServer) ListBankAccount(context.Context, *ListBankAccountReq) (*ListBankAccountResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListBankAccount not implemented")
 }
@@ -195,6 +211,24 @@ type UnsafeBankServiceServer interface {
 
 func RegisterBankServiceServer(s grpc.ServiceRegistrar, srv BankServiceServer) {
 	s.RegisterService(&BankService_ServiceDesc, srv)
+}
+
+func _BankService_ListCnaps_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListCnapsReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BankServiceServer).ListCnaps(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/BankService.BankService/ListCnaps",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BankServiceServer).ListCnaps(ctx, req.(*ListCnapsReq))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _BankService_ListBankAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -384,6 +418,10 @@ var BankService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "BankService.BankService",
 	HandlerType: (*BankServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "ListCnaps",
+			Handler:    _BankService_ListCnaps_Handler,
+		},
 		{
 			MethodName: "ListBankAccount",
 			Handler:    _BankService_ListBankAccount_Handler,
