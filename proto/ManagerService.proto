@@ -378,7 +378,7 @@ message SelectInfoByMedicineNamesResp {
 message TagListReq {
   string  tagType = 1;
   int64 managerId = 2;
-  int64 tagName = 3;
+  string tagName = 3;
   Page page = 4;
 }
 message TagListResp {
