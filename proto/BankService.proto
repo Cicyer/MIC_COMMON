@@ -510,7 +510,25 @@ message ApplyResp {
   string code = 1;
   string msg = 2;
 }
+
+message ListCnapsReq {
+  int64   managerId = 1;
+  string bankName = 2;
+}
+message ListCnapsResp {
+  repeated CnapsVo list = 1;
+}
+message CnapsVo {
+  int64 cnapId = 1;
+  string cnap = 2;
+  string bankName = 3;
+  string address = 4;
+}
+
+
 service BankService {
+  //联行号模糊搜索
+  rpc ListCnaps(ListCnapsReq) returns(ListCnapsResp);
   //银行账号相关
   rpc ListBankAccount(ListBankAccountReq) returns(ListBankAccountResp);
   rpc CreateOneAccountInfo(CreateOneAccountInfoReq) returns(CreateOneAccountInfoResp);
