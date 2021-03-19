@@ -515,10 +515,16 @@ message ListCnapsReq {
   int64   managerId = 1;
   string bankName = 2;
   string cnap = 3;
+  Page   page = 4;
 }
+
 message ListCnapsResp {
   repeated CnapsVo list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
 }
+
 message CnapsVo {
   int64 cnapId = 1;
   string cnap = 2;
