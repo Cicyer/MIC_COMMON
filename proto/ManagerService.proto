@@ -1062,6 +1062,7 @@ message GetShipmentPlanReportsReq {
   google.protobuf.Timestamp endAt = 4;
   PlanReportGetCondition optionalFilterCond = 5;
   PlanReportGroupCondition optionalGroupCond = 6;
+  Page page = 7;
 }
 message CompanyReportVo {
   int64 companyId = 1;
@@ -1213,6 +1214,7 @@ message GetShipmentOrderReportsReq {
   google.protobuf.Timestamp endAt = 4;
   OrderReportGetCondition optionalFilterCond = 5;
   OrderReportGroupCondition optionalGroupCond = 6;
+  Page page = 7;
 }
 message ShipmentOrderDayReport {
   //谁在请求 按照搜索账号控制显示范围
@@ -1327,6 +1329,7 @@ message GetFactoringOrderReportsReq {
   google.protobuf.Timestamp endAt = 4;
   FactoringReportGetCondition optionalFilterCond = 5;
   FactoringReportGroupCondition optionalGroupCond = 6;
+  Page page = 7;
 }
 
 message FactoringOrderDayReport {
@@ -1452,6 +1455,7 @@ message GetContractPlanReportsReq {
   google.protobuf.Timestamp endAt = 4;
   ContractPlanReportGetCondition optionalFilterCond = 5;
   ContractPlanReportGroupCondition optionalGroupCond = 6;
+  Page page = 7;
 }
 
 
