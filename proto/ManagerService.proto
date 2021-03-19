@@ -1441,6 +1441,7 @@ message ContractPlanReportGroupCondition {
   //按照子合同聚合
   bool byContractMi = 9;
 }
+//此操作或合并合同的当前状态参数，而不是数据报表的
 message GetContractPlanReportsReq {
   //谁在请求 按照搜索账号控制显示范围
   int64 managerId = 1;
@@ -1576,6 +1577,12 @@ message ContractSum{
   int64  medicineAmount = 2;
   int64  medicineSent = 4;
   int64  medicineReceive = 5;
+  //如果聚合时不含此列，则信息不存在
+  CompanyReportVo companyInfo = 6;
+  MiReportVo miInfo = 7;
+  MedicineReportVo medicineInfo = 8;
+  ContractReportVo contractInfo = 9;
+  ContractMiReportVo contractMiInfo = 10;
 }
 message GetContractSumResp {
   repeated ContractSum list = 1;
