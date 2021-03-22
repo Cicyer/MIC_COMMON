@@ -1006,6 +1006,7 @@ message MiSpecialConfig {
   string  province = 8;
   string  city = 9;
   string  zone = 10;
+  int64 configId = 11;
 }
 message GetMiSpecialConfigResp {
   repeated MiSpecialConfig list = 1;

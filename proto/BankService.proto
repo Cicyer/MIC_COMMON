@@ -106,6 +106,7 @@ message CompanyCredit {
   string  province = 13;
   string  city = 14;
   string  zone = 15;
+  int64   configId = 16;
 }
 message GetCompanyCreditConfigsResp {
   repeated CompanyCredit list = 1;
