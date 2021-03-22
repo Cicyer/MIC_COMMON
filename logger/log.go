@@ -123,7 +123,7 @@ func getDateWriter(path string, filename string) io.Writer {
 		fmt.Printf("%s", err)
 	}
 	hook, err := rotatelogs.New(
-		path+"%Y%m%d-%H."+filename,
+		path+"%Y%m%d."+filename,
 		rotatelogs.WithMaxAge(time.Hour*24*30),
 		rotatelogs.WithRotationTime(time.Hour*24),
 	)
