@@ -2,6 +2,7 @@ package logger
 
 import (
 	"fmt"
+	rotatelogs "github.com/lestrrat/go-file-rotatelogs"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 	"gopkg.in/natefinch/lumberjack.v2"
@@ -68,8 +69,8 @@ func InitLog(logPath string, logLevel ...string) {
 		rootPath = "c:"
 	}
 	// 获取 info、warn日志文件的io.Writer 抽象 getWriter() 在下方实现
-	infoWriter := getWriter(rootPath+logPath, "info.log")
-	warnWriter := getWriter(rootPath+logPath, "error.log")
+	infoWriter := getDateWriter(rootPath+logPath, "info.log")
+	warnWriter := getDateWriter(rootPath+logPath, "error.log")
 	// 最后创建具体的Logger
 	core := zapcore.NewTee(
 		zapcore.NewCore(encoder, zapcore.AddSync(infoWriter), infoLevel),
@@ -108,6 +109,28 @@ func getWriter(dir string, filename string) io.Writer {
 	//	//	panic(err)
 	//	//}
 	return io.Writer(&hook)
+}
+
+func getDateWriter(path string, filename string) io.Writer {
+	if path == "" {
+		return os.Stdout
+	}
+	// 生成rotatelogs的Logger 实际生成的文件名 demo.log.YYmmddHH
+	// demo.log是指向最新日志的链接
+	// 保存30天内的日志，每12小时(整点)分割一次日志
+	err := os.MkdirAll(path, 0777)
+	if err != nil {
+		fmt.Printf("%s", err)
+	}
+	hook, err := rotatelogs.New(
+		path+"%Y%m%d-%H"+filename,
+		rotatelogs.WithMaxAge(time.Hour*24*30),
+		rotatelogs.WithRotationTime(time.Hour*12),
+	)
+	if err != nil {
+		panic(err)
+	}
+	return hook
 }
 
 func windowsPathJoin(elem ...string) string {
