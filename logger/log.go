@@ -115,7 +115,7 @@ func getDateWriter(path string, filename string) io.Writer {
 	if path == "" {
 		return os.Stdout
 	}
-	// 生成rotatelogs的Logger 实际生成的文件名 demo.log.YYmmddHH
+	// 生成rotatelogs的Logger 实际生成的文件名 YYmmddHH.demo.log
 	// demo.log是指向最新日志的链接
 	// 保存30天内的日志，每12小时(整点)分割一次日志
 	err := os.MkdirAll(path, 0777)
@@ -123,9 +123,9 @@ func getDateWriter(path string, filename string) io.Writer {
 		fmt.Printf("%s", err)
 	}
 	hook, err := rotatelogs.New(
-		path+"%Y%m%d-%H"+filename,
+		path+"%Y%m%d-%H."+filename,
 		rotatelogs.WithMaxAge(time.Hour*24*30),
-		rotatelogs.WithRotationTime(time.Hour*12),
+		rotatelogs.WithRotationTime(time.Hour*24),
 	)
 	if err != nil {
 		panic(err)
