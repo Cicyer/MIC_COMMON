@@ -34,7 +34,7 @@ message SendCustomMessageReq{
 }
 
 message SendCustomMessageResp{
-
+  int64 num=1;
 }
 
 message SendMessageReq {
@@ -79,8 +79,9 @@ message ConsumeMessageReq {
   int64 managerId = 2;
 }
 message SendMessageResp {
-
+  int64 num=1;
 }
+
 message SendEmailsResp {
 
 }
