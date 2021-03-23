@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package ChainService;
-option go_package = "service/ChainService;ChainService";
+option go_package = "service/BcAndBankService;BcAndBankService";
 import public "google/protobuf/timestamp.proto";
 
 
