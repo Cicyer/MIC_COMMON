@@ -39,10 +39,11 @@ message SendCustomMessageResp{
 
 message SendMessageReq {
   //该推送的业务权限类别- 此项决定如何将参数处理为推送结构
-  string messagePermission = 7;
+  string messagePermission = 1;
   //产生此业务推送的源头信息，根据permission不同连接对象不同
-  int64 linkId = 8;
-  string linkCode = 9;
+  int64 linkId = 2;
+  string linkCode = 3;
+  string extends = 4;
 }
 
 message SendSmsReq {
