@@ -3201,6 +3201,7 @@ type RankServiceClient interface {
 	GetRankMiPaidYear(ctx context.Context, in *GetRankMiPaidYearReq, opts ...grpc.CallOption) (*GetRankMiPaidYearResp, error)
 	// 查询药品采购量年度排名
 	GetRankMedicineYear(ctx context.Context, in *GetRankMedicineYearReq, opts ...grpc.CallOption) (*GetRankMedicineYearResp, error)
+	//  濮阳行政地图此时的数据
 	GetMIBDashboardBaseInfo(ctx context.Context, in *GetMIBDashboardBaseInfoReq, opts ...grpc.CallOption) (*GetMIBDashboardBaseInfoResp, error)
 }
 
@@ -3291,6 +3292,7 @@ type RankServiceServer interface {
 	GetRankMiPaidYear(context.Context, *GetRankMiPaidYearReq) (*GetRankMiPaidYearResp, error)
 	// 查询药品采购量年度排名
 	GetRankMedicineYear(context.Context, *GetRankMedicineYearReq) (*GetRankMedicineYearResp, error)
+	//  濮阳行政地图此时的数据
 	GetMIBDashboardBaseInfo(context.Context, *GetMIBDashboardBaseInfoReq) (*GetMIBDashboardBaseInfoResp, error)
 	mustEmbedUnimplementedRankServiceServer()
 }

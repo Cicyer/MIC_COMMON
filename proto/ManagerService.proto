@@ -2158,5 +2158,6 @@ service RankService {
   rpc GetRankMiPaidYear(GetRankMiPaidYearReq) returns (GetRankMiPaidYearResp);
   // 查询药品采购量年度排名
   rpc GetRankMedicineYear(GetRankMedicineYearReq) returns (GetRankMedicineYearResp);
+  //  濮阳行政地图此时的数据
   rpc GetMIBDashboardBaseInfo(GetMIBDashboardBaseInfoReq) returns (GetMIBDashboardBaseInfoResp);
 }

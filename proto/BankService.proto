@@ -353,7 +353,7 @@ message GetTransferReceiptResp {
 message ListFactoringOrderPlanReq {
   int64   managerId = 1;
   Page   page = 2;
-  string factoringOrderNo = 3;
+  repeated string factoringOrderNo = 3;
   repeated int64   comIds = 4;
   repeated int64   miIds = 5;
 }
