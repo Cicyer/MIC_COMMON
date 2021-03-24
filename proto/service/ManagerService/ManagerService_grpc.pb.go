@@ -3193,9 +3193,13 @@ type RankServiceClient interface {
 	GetShipmentRankMedicineDataYear(ctx context.Context, in *GetShipmentRankMedicineDataYearReq, opts ...grpc.CallOption) (*GetShipmentRankMedicineDataYearResp, error)
 	GetShipmentRankCompanyDataYear(ctx context.Context, in *GetShipmentRankCompanyDataYearReq, opts ...grpc.CallOption) (*GetShipmentRankCompanyDataYearResp, error)
 	//MIB端使用
+	//查询医疗机构采购金额年度排名
 	GetRankMiReceiveYear(ctx context.Context, in *GetRankMiReceiveYearReq, opts ...grpc.CallOption) (*GetRankMiReceiveYearResp, error)
+	//查询医药企业送达率 年度排名
 	GetRankComReceiveYear(ctx context.Context, in *GetRankComReceiveYearReq, opts ...grpc.CallOption) (*GetRankComReceiveYearResp, error)
+	//查询医疗机构 主动支付率年度排名
 	GetRankMiPaidYear(ctx context.Context, in *GetRankMiPaidYearReq, opts ...grpc.CallOption) (*GetRankMiPaidYearResp, error)
+	// 查询药品采购量年度排名
 	GetRankMedicineYear(ctx context.Context, in *GetRankMedicineYearReq, opts ...grpc.CallOption) (*GetRankMedicineYearResp, error)
 	GetMIBDashboardBaseInfo(ctx context.Context, in *GetMIBDashboardBaseInfoReq, opts ...grpc.CallOption) (*GetMIBDashboardBaseInfoResp, error)
 }
@@ -3279,9 +3283,13 @@ type RankServiceServer interface {
 	GetShipmentRankMedicineDataYear(context.Context, *GetShipmentRankMedicineDataYearReq) (*GetShipmentRankMedicineDataYearResp, error)
 	GetShipmentRankCompanyDataYear(context.Context, *GetShipmentRankCompanyDataYearReq) (*GetShipmentRankCompanyDataYearResp, error)
 	//MIB端使用
+	//查询医疗机构采购金额年度排名
 	GetRankMiReceiveYear(context.Context, *GetRankMiReceiveYearReq) (*GetRankMiReceiveYearResp, error)
+	//查询医药企业送达率 年度排名
 	GetRankComReceiveYear(context.Context, *GetRankComReceiveYearReq) (*GetRankComReceiveYearResp, error)
+	//查询医疗机构 主动支付率年度排名
 	GetRankMiPaidYear(context.Context, *GetRankMiPaidYearReq) (*GetRankMiPaidYearResp, error)
+	// 查询药品采购量年度排名
 	GetRankMedicineYear(context.Context, *GetRankMedicineYearReq) (*GetRankMedicineYearResp, error)
 	GetMIBDashboardBaseInfo(context.Context, *GetMIBDashboardBaseInfoReq) (*GetMIBDashboardBaseInfoResp, error)
 	mustEmbedUnimplementedRankServiceServer()
