@@ -715,6 +715,7 @@ message ListShipmentPlanReq {
   int64 companyId = 12;
   string miName = 13;
   string tpCode = 14;
+  string companyName = 15;
 }
 
 message ListShipmentPlanResp {
