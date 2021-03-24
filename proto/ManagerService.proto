@@ -2149,9 +2149,13 @@ service RankService {
   rpc GetShipmentRankMedicineDataYear(GetShipmentRankMedicineDataYearReq) returns (GetShipmentRankMedicineDataYearResp);
   rpc GetShipmentRankCompanyDataYear(GetShipmentRankCompanyDataYearReq) returns (GetShipmentRankCompanyDataYearResp);
   //MIB端使用
+  //查询医疗机构采购金额年度排名
   rpc GetRankMiReceiveYear(GetRankMiReceiveYearReq) returns (GetRankMiReceiveYearResp);
+  //查询医药企业送达率 年度排名
   rpc GetRankComReceiveYear(GetRankComReceiveYearReq) returns (GetRankComReceiveYearResp);
+  //查询医疗机构 主动支付率年度排名
   rpc GetRankMiPaidYear(GetRankMiPaidYearReq) returns (GetRankMiPaidYearResp);
+  // 查询药品采购量年度排名
   rpc GetRankMedicineYear(GetRankMedicineYearReq) returns (GetRankMedicineYearResp);
   rpc GetMIBDashboardBaseInfo(GetMIBDashboardBaseInfoReq) returns (GetMIBDashboardBaseInfoResp);
 }
