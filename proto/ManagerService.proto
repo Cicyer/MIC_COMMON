@@ -604,6 +604,7 @@ message ListCompanyReq {
   string validStatus = 3;
   Page page = 4;
   int64 managerId = 5;
+  repeated int64 companyIds = 6;
 }
 
 message ListCompanyResp {
