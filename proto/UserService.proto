@@ -25,6 +25,7 @@ message UserPassLoginResp {
   int64 organizationId = 6;
   repeated PermissionInfo permissions = 7;
   string activeStatus = 8;
+  string roleName = 9;
 }
 
 message PermissionInfo {
