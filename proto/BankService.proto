@@ -235,6 +235,7 @@ message PayOrder{
   string   factoringStatus = 20;
   string   refundStatus = 21;
   string   factoringOrderNo = 22;
+  string invoiceUrl=23;
 }
 
 message ListPayOrderResp {
