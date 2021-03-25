@@ -231,6 +231,7 @@ message PayOrder{
   string   comName = 17;
   int64   comId = 18;
   string   comCode = 19;
+  string invoiceUrl=20;
 }
 
 message ListPayOrderResp {
