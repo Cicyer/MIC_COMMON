@@ -301,8 +301,8 @@ message FinishPayOrderErrorResp {
 message ListFactoringOrderReq {
   int64   managerId = 1;
   Page   page = 2;
-  repeated string factoringOrderNo = 3;
-  repeated string factoringBankNo = 4;
+  repeated string factoringOrderNos = 3;
+  repeated string factoringBankNos = 4;
   string miName = 5;
   string comName = 6;
   repeated string factoringStatus = 7;
