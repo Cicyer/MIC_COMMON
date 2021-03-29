@@ -753,6 +753,7 @@ message ListShipmentPlanrVo {
   string shipmentNo = 24;
   string companyCode = 25;
   string miCode = 26;
+  google.protobuf.Timestamp sendDeadline = 27;
 }
 //根据配送单号查询配送单详情
 message DetailShipmentOrderReq {
