@@ -89,6 +89,7 @@ message Message {
   google.protobuf.Timestamp readAt = 8;
   google.protobuf.Timestamp createdAt = 9;
   string readStatus = 10;
+  int64  messageId = 11;
 }
 message MessageListResp {
   repeated Message list = 1;
