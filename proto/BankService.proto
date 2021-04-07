@@ -77,6 +77,8 @@ message UpdateBankAccountReq {
   string  cardNo = 1;
   string  validStatus = 2;
   int64   managerId = 3;
+  string  accountType = 4;
+  string  oldValidStatus = 5;
 }
 
 message UpdateBankAccountResp {
