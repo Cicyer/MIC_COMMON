@@ -79,6 +79,8 @@ message UpdateBankAccountReq {
   int64   managerId = 3;
   string  accountType = 4;
   string  oldValidStatus = 5;
+  int64  orgId = 6;
+  string  orgCode = 7;
 }
 
 message UpdateBankAccountResp {
