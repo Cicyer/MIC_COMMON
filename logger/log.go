@@ -14,7 +14,7 @@ import (
 	"time"
 )
 
-var Logger *zap.SugaredLogger
+var logger *zap.SugaredLogger
 
 type LogConfig struct {
 	LogPath string
@@ -76,7 +76,7 @@ func InitLog(logPath string, logLevel ...string) {
 		zapcore.NewCore(encoder, zapcore.AddSync(infoWriter), infoLevel),
 		zapcore.NewCore(encoder, zapcore.AddSync(warnWriter), warnLevel),
 	)
-	Logger = zap.New(core, zap.AddCaller()).Sugar()
+	logger = zap.New(core, zap.AddCaller(), zap.AddCallerSkip(1)).Sugar()
 }
 
 func getWriter(dir string, filename string) io.Writer {
@@ -158,4 +158,52 @@ func NewEncoderConfig() zapcore.EncoderConfig {
 
 func TimeEncoder(t time.Time, enc zapcore.PrimitiveArrayEncoder) {
 	enc.AppendString(t.Format("2006-01-02 15:04:05.000"))
+}
+
+func Debug(args ...interface{}) {
+	logger.Debug(args...)
+}
+
+func Debugf(template string, args ...interface{}) {
+	logger.Debugf(template, args...)
+}
+
+func Info(args ...interface{}) {
+	logger.Info(args...)
+}
+
+func Infof(template string, args ...interface{}) {
+	logger.Infof(template, args...)
+}
+
+func Warn(args ...interface{}) {
+	logger.Warn(args...)
+}
+
+func Warnf(template string, args ...interface{}) {
+	logger.Warnf(template, args...)
+}
+
+func Error(args ...interface{}) {
+	logger.Error(args...)
+}
+
+func Errorf(template string, args ...interface{}) {
+	logger.Errorf(template, args...)
+}
+
+func Panic(args ...interface{}) {
+	logger.Panic(args...)
+}
+
+func Panicf(template string, args ...interface{}) {
+	logger.Panicf(template, args...)
+}
+
+func Fatal(args ...interface{}) {
+	logger.Fatal(args...)
+}
+
+func Fatalf(template string, args ...interface{}) {
+	logger.Fatalf(template, args...)
 }
