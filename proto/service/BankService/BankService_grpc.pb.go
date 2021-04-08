@@ -27,6 +27,9 @@ type BankServiceClient interface {
 	//配送企业授信额度设置
 	GetCompanyCreditConfigs(ctx context.Context, in *GetCompanyCreditConfigsReq, opts ...grpc.CallOption) (*GetCompanyCreditConfigsResp, error)
 	UpdateCompanyCreditConfig(ctx context.Context, in *UpdateCompanyCreditConfigReq, opts ...grpc.CallOption) (*UpdateCompanyCreditConfigResp, error)
+	//医疗机构专户填平额度设置
+	GetMiSpecialConfig(ctx context.Context, in *GetMiSpecialConfigReq, opts ...grpc.CallOption) (*GetMiSpecialConfigResp, error)
+	UpdateMiSpecialConfig(ctx context.Context, in *UpdateMiSpecialConfigReq, opts ...grpc.CallOption) (*UpdateMiSpecialConfigResp, error)
 	//企业账户操作相关
 	GetCompanyBankAccountDetail(ctx context.Context, in *GetCompanyBankAccountDetailReq, opts ...grpc.CallOption) (*GetCompanyBankAccountDetailResp, error)
 	CompanyWithdraw(ctx context.Context, in *CompanyWithdrawReq, opts ...grpc.CallOption) (*CompanyWithdrawResp, error)
@@ -105,6 +108,24 @@ func (c *bankServiceClient) UpdateCompanyCreditConfig(ctx context.Context, in *U
 	return out, nil
 }
 
+func (c *bankServiceClient) GetMiSpecialConfig(ctx context.Context, in *GetMiSpecialConfigReq, opts ...grpc.CallOption) (*GetMiSpecialConfigResp, error) {
+	out := new(GetMiSpecialConfigResp)
+	err := c.cc.Invoke(ctx, "/BankService.BankService/GetMiSpecialConfig", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *bankServiceClient) UpdateMiSpecialConfig(ctx context.Context, in *UpdateMiSpecialConfigReq, opts ...grpc.CallOption) (*UpdateMiSpecialConfigResp, error) {
+	out := new(UpdateMiSpecialConfigResp)
+	err := c.cc.Invoke(ctx, "/BankService.BankService/UpdateMiSpecialConfig", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *bankServiceClient) GetCompanyBankAccountDetail(ctx context.Context, in *GetCompanyBankAccountDetailReq, opts ...grpc.CallOption) (*GetCompanyBankAccountDetailResp, error) {
 	out := new(GetCompanyBankAccountDetailResp)
 	err := c.cc.Invoke(ctx, "/BankService.BankService/GetCompanyBankAccountDetail", in, out, opts...)
@@ -155,6 +176,9 @@ type BankServiceServer interface {
 	//配送企业授信额度设置
 	GetCompanyCreditConfigs(context.Context, *GetCompanyCreditConfigsReq) (*GetCompanyCreditConfigsResp, error)
 	UpdateCompanyCreditConfig(context.Context, *UpdateCompanyCreditConfigReq) (*UpdateCompanyCreditConfigResp, error)
+	//医疗机构专户填平额度设置
+	GetMiSpecialConfig(context.Context, *GetMiSpecialConfigReq) (*GetMiSpecialConfigResp, error)
+	UpdateMiSpecialConfig(context.Context, *UpdateMiSpecialConfigReq) (*UpdateMiSpecialConfigResp, error)
 	//企业账户操作相关
 	GetCompanyBankAccountDetail(context.Context, *GetCompanyBankAccountDetailReq) (*GetCompanyBankAccountDetailResp, error)
 	CompanyWithdraw(context.Context, *CompanyWithdrawReq) (*CompanyWithdrawResp, error)
@@ -187,6 +211,12 @@ func (UnimplementedBankServiceServer) GetCompanyCreditConfigs(context.Context, *
 }
 func (UnimplementedBankServiceServer) UpdateCompanyCreditConfig(context.Context, *UpdateCompanyCreditConfigReq) (*UpdateCompanyCreditConfigResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateCompanyCreditConfig not implemented")
+}
+func (UnimplementedBankServiceServer) GetMiSpecialConfig(context.Context, *GetMiSpecialConfigReq) (*GetMiSpecialConfigResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetMiSpecialConfig not implemented")
+}
+func (UnimplementedBankServiceServer) UpdateMiSpecialConfig(context.Context, *UpdateMiSpecialConfigReq) (*UpdateMiSpecialConfigResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateMiSpecialConfig not implemented")
 }
 func (UnimplementedBankServiceServer) GetCompanyBankAccountDetail(context.Context, *GetCompanyBankAccountDetailReq) (*GetCompanyBankAccountDetailResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetCompanyBankAccountDetail not implemented")
@@ -339,6 +369,42 @@ func _BankService_UpdateCompanyCreditConfig_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _BankService_GetMiSpecialConfig_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetMiSpecialConfigReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BankServiceServer).GetMiSpecialConfig(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/BankService.BankService/GetMiSpecialConfig",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BankServiceServer).GetMiSpecialConfig(ctx, req.(*GetMiSpecialConfigReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BankService_UpdateMiSpecialConfig_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateMiSpecialConfigReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BankServiceServer).UpdateMiSpecialConfig(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/BankService.BankService/UpdateMiSpecialConfig",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BankServiceServer).UpdateMiSpecialConfig(ctx, req.(*UpdateMiSpecialConfigReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _BankService_GetCompanyBankAccountDetail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetCompanyBankAccountDetailReq)
 	if err := dec(in); err != nil {
@@ -445,6 +511,14 @@ var BankService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateCompanyCreditConfig",
 			Handler:    _BankService_UpdateCompanyCreditConfig_Handler,
+		},
+		{
+			MethodName: "GetMiSpecialConfig",
+			Handler:    _BankService_GetMiSpecialConfig_Handler,
+		},
+		{
+			MethodName: "UpdateMiSpecialConfig",
+			Handler:    _BankService_UpdateMiSpecialConfig_Handler,
 		},
 		{
 			MethodName: "GetCompanyBankAccountDetail",

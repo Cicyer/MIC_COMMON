@@ -90,9 +90,6 @@ type ManagerServiceClient interface {
 	InsertConfigs(ctx context.Context, in *InsertConfigsReq, opts ...grpc.CallOption) (*InsertConfigsResp, error)
 	//删除配置
 	DeleteConfigs(ctx context.Context, in *DeleteConfigsReq, opts ...grpc.CallOption) (*DeleteConfigsResp, error)
-	//医院专户额度
-	GetMiSpecialConfig(ctx context.Context, in *GetMiSpecialConfigReq, opts ...grpc.CallOption) (*GetMiSpecialConfigResp, error)
-	UpdateMiSpecialConfig(ctx context.Context, in *UpdateMiSpecialConfigReq, opts ...grpc.CallOption) (*UpdateMiSpecialConfigResp, error)
 }
 
 type managerServiceClient struct {
@@ -598,24 +595,6 @@ func (c *managerServiceClient) DeleteConfigs(ctx context.Context, in *DeleteConf
 	return out, nil
 }
 
-func (c *managerServiceClient) GetMiSpecialConfig(ctx context.Context, in *GetMiSpecialConfigReq, opts ...grpc.CallOption) (*GetMiSpecialConfigResp, error) {
-	out := new(GetMiSpecialConfigResp)
-	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/GetMiSpecialConfig", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *managerServiceClient) UpdateMiSpecialConfig(ctx context.Context, in *UpdateMiSpecialConfigReq, opts ...grpc.CallOption) (*UpdateMiSpecialConfigResp, error) {
-	out := new(UpdateMiSpecialConfigResp)
-	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/UpdateMiSpecialConfig", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // ManagerServiceServer is the server API for ManagerService service.
 // All implementations must embed UnimplementedManagerServiceServer
 // for forward compatibility
@@ -693,9 +672,6 @@ type ManagerServiceServer interface {
 	InsertConfigs(context.Context, *InsertConfigsReq) (*InsertConfigsResp, error)
 	//删除配置
 	DeleteConfigs(context.Context, *DeleteConfigsReq) (*DeleteConfigsResp, error)
-	//医院专户额度
-	GetMiSpecialConfig(context.Context, *GetMiSpecialConfigReq) (*GetMiSpecialConfigResp, error)
-	UpdateMiSpecialConfig(context.Context, *UpdateMiSpecialConfigReq) (*UpdateMiSpecialConfigResp, error)
 	mustEmbedUnimplementedManagerServiceServer()
 }
 
@@ -867,12 +843,6 @@ func (UnimplementedManagerServiceServer) InsertConfigs(context.Context, *InsertC
 }
 func (UnimplementedManagerServiceServer) DeleteConfigs(context.Context, *DeleteConfigsReq) (*DeleteConfigsResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteConfigs not implemented")
-}
-func (UnimplementedManagerServiceServer) GetMiSpecialConfig(context.Context, *GetMiSpecialConfigReq) (*GetMiSpecialConfigResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetMiSpecialConfig not implemented")
-}
-func (UnimplementedManagerServiceServer) UpdateMiSpecialConfig(context.Context, *UpdateMiSpecialConfigReq) (*UpdateMiSpecialConfigResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateMiSpecialConfig not implemented")
 }
 func (UnimplementedManagerServiceServer) mustEmbedUnimplementedManagerServiceServer() {}
 
@@ -1877,42 +1847,6 @@ func _ManagerService_DeleteConfigs_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ManagerService_GetMiSpecialConfig_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetMiSpecialConfigReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ManagerServiceServer).GetMiSpecialConfig(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/ManagerService.ManagerService/GetMiSpecialConfig",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ManagerServiceServer).GetMiSpecialConfig(ctx, req.(*GetMiSpecialConfigReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ManagerService_UpdateMiSpecialConfig_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateMiSpecialConfigReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ManagerServiceServer).UpdateMiSpecialConfig(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/ManagerService.ManagerService/UpdateMiSpecialConfig",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ManagerServiceServer).UpdateMiSpecialConfig(ctx, req.(*UpdateMiSpecialConfigReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // ManagerService_ServiceDesc is the grpc.ServiceDesc for ManagerService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -2139,14 +2073,6 @@ var ManagerService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeleteConfigs",
 			Handler:    _ManagerService_DeleteConfigs_Handler,
-		},
-		{
-			MethodName: "GetMiSpecialConfig",
-			Handler:    _ManagerService_GetMiSpecialConfig_Handler,
-		},
-		{
-			MethodName: "UpdateMiSpecialConfig",
-			Handler:    _ManagerService_UpdateMiSpecialConfig_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

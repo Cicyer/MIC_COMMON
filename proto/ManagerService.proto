@@ -990,43 +990,6 @@ message GetConfigResp {
   int64 pageNumber = 4;
 }
 
-message GetMiSpecialConfigReq {
-  //谁在请求 按照搜索账号控制显示范围
-  int64 managerId = 1;
-  string miCode = 2;
-  int64 miId = 3;
-  string miName = 4;
-  Page page = 5;
-}
-message MiSpecialConfig {
-  int64 miId = 1;
-  string miName = 2;
-  string miCode = 3;
-  int64 limitBalance = 4;
-  int64 bankAccountId = 5;
-  string  managerName = 6;
-  string  managerPhone = 7;
-  string  province = 8;
-  string  city = 9;
-  string  zone = 10;
-  int64 configId = 11;
-}
-message GetMiSpecialConfigResp {
-  repeated MiSpecialConfig list = 1;
-  int64 total = 2;
-  int64 pageSize = 3;
-  int64 pageNumber = 4;
-}
-message UpdateMiSpecialConfigReq {
-  //谁在请求 按照搜索账号控制显示范围
-  int64 managerId = 1;
-  string miCode = 2;
-  int64 limitBalance = 3;
-  int64 oldLimitBalance = 4;
-}
-message UpdateMiSpecialConfigResp {
-}
-
 //招采单报表可选聚合维度
 message PlanReportGroupCondition {
   //直接聚合为单行，使用此项则其他聚合条件不生效
@@ -2091,9 +2054,7 @@ service ManagerService {
   rpc InsertConfigs(InsertConfigsReq) returns (InsertConfigsResp);
   //删除配置
   rpc DeleteConfigs(DeleteConfigsReq) returns (DeleteConfigsResp);
-  //医院专户额度
-  rpc GetMiSpecialConfig(GetMiSpecialConfigReq) returns (GetMiSpecialConfigResp);
-  rpc UpdateMiSpecialConfig(UpdateMiSpecialConfigReq) returns (UpdateMiSpecialConfigResp);
+
 }
 
 //=========数据报表服务================

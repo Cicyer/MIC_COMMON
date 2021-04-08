@@ -540,8 +540,44 @@ message CnapsVo {
   string bankName = 3;
   string address = 4;
 }
+message GetMiSpecialConfigReq {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 managerId = 1;
+  string miCode = 2;
+  int64 miId = 3;
+  string miName = 4;
+  Page page = 5;
+}
 
+message UpdateMiSpecialConfigReq {
+  //谁在请求 按照搜索账号控制显示范围
+  int64 managerId = 1;
+  string miCode = 2;
+  int64 limitBalance = 3;
+  int64 oldLimitBalance = 4;
+}
+message UpdateMiSpecialConfigResp {
+}
 
+message MiSpecialConfig {
+  int64 miId = 1;
+  string miName = 2;
+  string miCode = 3;
+  int64 limitBalance = 4;
+  int64 bankAccountId = 5;
+  string  managerName = 6;
+  string  managerPhone = 7;
+  string  province = 8;
+  string  city = 9;
+  string  zone = 10;
+  int64 configId = 11;
+}
+message GetMiSpecialConfigResp {
+  repeated MiSpecialConfig list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
 service BankService {
   //联行号模糊搜索
   rpc ListCnaps(ListCnapsReq) returns(ListCnapsResp);
@@ -553,6 +589,9 @@ service BankService {
   //配送企业授信额度设置
   rpc GetCompanyCreditConfigs(GetCompanyCreditConfigsReq) returns (GetCompanyCreditConfigsResp);
   rpc UpdateCompanyCreditConfig(UpdateCompanyCreditConfigReq) returns (UpdateCompanyCreditConfigResp);
+  //医疗机构专户填平额度设置
+  rpc GetMiSpecialConfig(GetMiSpecialConfigReq) returns (GetMiSpecialConfigResp);
+  rpc UpdateMiSpecialConfig(UpdateMiSpecialConfigReq) returns (UpdateMiSpecialConfigResp);
   //企业账户操作相关
   rpc GetCompanyBankAccountDetail(GetCompanyBankAccountDetailReq) returns (GetCompanyBankAccountDetailResp);
   rpc CompanyWithdraw(CompanyWithdrawReq) returns (CompanyWithdrawResp);
