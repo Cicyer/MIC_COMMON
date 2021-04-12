@@ -961,6 +961,8 @@ message GetConfigReq {
   //可以获取该区间正在生效的所有配置
   google.protobuf.Timestamp startAt = 7;
   google.protobuf.Timestamp endAt = 8;
+  //获取在此时间节点生效的配置
+  google.protobuf.Timestamp validateTime = 9;
 }
 message CommonConfig{
   int64 configId = 1;
