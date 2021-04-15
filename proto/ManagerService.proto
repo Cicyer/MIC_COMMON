@@ -2063,7 +2063,6 @@ service ManagerService {
 service DataReportService {
   //查询招采计划 日报数据
   rpc GetShipmentPlanDayReports(GetShipmentPlanReportsReq) returns (GetShipmentPlanDayReportsResp);
-  
   //查询招采计划 月报数据
   rpc GetShipmentPlanMonthReports(GetShipmentPlanReportsReq) returns (GetShipmentPlanMonthReportsResp);
   //查询招采计划 年报数据
