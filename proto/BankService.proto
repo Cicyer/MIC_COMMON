@@ -239,7 +239,8 @@ message PayOrder{
   string   factoringStatus = 20;
   string   refundStatus = 21;
   string   factoringOrderNo = 22;
-  string invoiceUrl=23;
+  string invoiceUrl = 23;
+  int64   shipmentPayOrderId = 24;
 }
 
 message ListPayOrderResp {
