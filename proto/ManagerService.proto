@@ -2113,6 +2113,7 @@ service HashService {
 service RankService {
   //MI端使用按年查询药品履约率排名
   rpc GetShipmentRankMedicineDataYear(GetShipmentRankMedicineDataYearReq) returns (GetShipmentRankMedicineDataYearResp);
+  
   rpc GetShipmentRankCompanyDataYear(GetShipmentRankCompanyDataYearReq) returns (GetShipmentRankCompanyDataYearResp);
   //MIB端使用
   //查询医疗机构采购金额年度排名

@@ -854,7 +854,7 @@ type UnsafeManagerServiceServer interface {
 }
 
 func RegisterManagerServiceServer(s grpc.ServiceRegistrar, srv ManagerServiceServer) {
-	s.RegisterService(&ManagerService_ServiceDesc, srv)
+	s.RegisterService(&_ManagerService_serviceDesc, srv)
 }
 
 func _ManagerService_ListContract_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -1847,10 +1847,7 @@ func _ManagerService_DeleteConfigs_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
-// ManagerService_ServiceDesc is the grpc.ServiceDesc for ManagerService service.
-// It's only intended for direct use with grpc.RegisterService,
-// and not to be introspected or modified (even as a copy)
-var ManagerService_ServiceDesc = grpc.ServiceDesc{
+var _ManagerService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "ManagerService.ManagerService",
 	HandlerType: (*ManagerServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
@@ -2354,7 +2351,7 @@ type UnsafeDataReportServiceServer interface {
 }
 
 func RegisterDataReportServiceServer(s grpc.ServiceRegistrar, srv DataReportServiceServer) {
-	s.RegisterService(&DataReportService_ServiceDesc, srv)
+	s.RegisterService(&_DataReportService_serviceDesc, srv)
 }
 
 func _DataReportService_GetShipmentPlanDayReports_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -2627,10 +2624,7 @@ func _DataReportService_GetCurrentNeedPay_Handler(srv interface{}, ctx context.C
 	return interceptor(ctx, in, info, handler)
 }
 
-// DataReportService_ServiceDesc is the grpc.ServiceDesc for DataReportService service.
-// It's only intended for direct use with grpc.RegisterService,
-// and not to be introspected or modified (even as a copy)
-var DataReportService_ServiceDesc = grpc.ServiceDesc{
+var _DataReportService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "ManagerService.DataReportService",
 	HandlerType: (*DataReportServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
@@ -2876,7 +2870,7 @@ type UnsafeHashServiceServer interface {
 }
 
 func RegisterHashServiceServer(s grpc.ServiceRegistrar, srv HashServiceServer) {
-	s.RegisterService(&HashService_ServiceDesc, srv)
+	s.RegisterService(&_HashService_serviceDesc, srv)
 }
 
 func _HashService_GetCompanyHash_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -3059,10 +3053,7 @@ func _HashService_GetShipmentFactoringHash_Handler(srv interface{}, ctx context.
 	return interceptor(ctx, in, info, handler)
 }
 
-// HashService_ServiceDesc is the grpc.ServiceDesc for HashService service.
-// It's only intended for direct use with grpc.RegisterService,
-// and not to be introspected or modified (even as a copy)
-var HashService_ServiceDesc = grpc.ServiceDesc{
+var _HashService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "ManagerService.HashService",
 	HandlerType: (*HashServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
@@ -3258,7 +3249,7 @@ type UnsafeRankServiceServer interface {
 }
 
 func RegisterRankServiceServer(s grpc.ServiceRegistrar, srv RankServiceServer) {
-	s.RegisterService(&RankService_ServiceDesc, srv)
+	s.RegisterService(&_RankService_serviceDesc, srv)
 }
 
 func _RankService_GetShipmentRankMedicineDataYear_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -3387,10 +3378,7 @@ func _RankService_GetMIBDashboardBaseInfo_Handler(srv interface{}, ctx context.C
 	return interceptor(ctx, in, info, handler)
 }
 
-// RankService_ServiceDesc is the grpc.ServiceDesc for RankService service.
-// It's only intended for direct use with grpc.RegisterService,
-// and not to be introspected or modified (even as a copy)
-var RankService_ServiceDesc = grpc.ServiceDesc{
+var _RankService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "ManagerService.RankService",
 	HandlerType: (*RankServiceServer)(nil),
 	Methods: []grpc.MethodDesc{

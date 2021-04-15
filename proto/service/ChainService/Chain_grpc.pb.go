@@ -64,7 +64,7 @@ type UnsafeChainServiceServer interface {
 }
 
 func RegisterChainServiceServer(s grpc.ServiceRegistrar, srv ChainServiceServer) {
-	s.RegisterService(&ChainService_ServiceDesc, srv)
+	s.RegisterService(&_ChainService_serviceDesc, srv)
 }
 
 func _ChainService_GetHashContent_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -85,10 +85,7 @@ func _ChainService_GetHashContent_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
-// ChainService_ServiceDesc is the grpc.ServiceDesc for ChainService service.
-// It's only intended for direct use with grpc.RegisterService,
-// and not to be introspected or modified (even as a copy)
-var ChainService_ServiceDesc = grpc.ServiceDesc{
+var _ChainService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "ChainService.ChainService",
 	HandlerType: (*ChainServiceServer)(nil),
 	Methods: []grpc.MethodDesc{

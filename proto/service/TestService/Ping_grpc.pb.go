@@ -62,7 +62,7 @@ type UnsafePingServiceServer interface {
 }
 
 func RegisterPingServiceServer(s grpc.ServiceRegistrar, srv PingServiceServer) {
-	s.RegisterService(&PingService_ServiceDesc, srv)
+	s.RegisterService(&_PingService_serviceDesc, srv)
 }
 
 func _PingService_Ping_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -83,10 +83,7 @@ func _PingService_Ping_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
-// PingService_ServiceDesc is the grpc.ServiceDesc for PingService service.
-// It's only intended for direct use with grpc.RegisterService,
-// and not to be introspected or modified (even as a copy)
-var PingService_ServiceDesc = grpc.ServiceDesc{
+var _PingService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "TestService.PingService",
 	HandlerType: (*PingServiceServer)(nil),
 	Methods: []grpc.MethodDesc{

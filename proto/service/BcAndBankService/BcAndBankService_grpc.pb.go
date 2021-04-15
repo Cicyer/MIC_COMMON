@@ -350,7 +350,7 @@ type UnsafeBcAndBankServiceServer interface {
 }
 
 func RegisterBcAndBankServiceServer(s grpc.ServiceRegistrar, srv BcAndBankServiceServer) {
-	s.RegisterService(&BcAndBankService_ServiceDesc, srv)
+	s.RegisterService(&_BcAndBankService_serviceDesc, srv)
 }
 
 func _BcAndBankService_BcUploadConfigs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -677,10 +677,7 @@ func _BcAndBankService_BcQueryByTxID_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
-// BcAndBankService_ServiceDesc is the grpc.ServiceDesc for BcAndBankService service.
-// It's only intended for direct use with grpc.RegisterService,
-// and not to be introspected or modified (even as a copy)
-var BcAndBankService_ServiceDesc = grpc.ServiceDesc{
+var _BcAndBankService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "BcAndBankService.BcAndBankService",
 	HandlerType: (*BcAndBankServiceServer)(nil),
 	Methods: []grpc.MethodDesc{

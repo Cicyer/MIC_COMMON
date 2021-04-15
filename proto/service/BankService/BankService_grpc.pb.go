@@ -240,7 +240,7 @@ type UnsafeBankServiceServer interface {
 }
 
 func RegisterBankServiceServer(s grpc.ServiceRegistrar, srv BankServiceServer) {
-	s.RegisterService(&BankService_ServiceDesc, srv)
+	s.RegisterService(&_BankService_serviceDesc, srv)
 }
 
 func _BankService_ListCnaps_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -477,10 +477,7 @@ func _BankService_ListCompanyWithdraw_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
-// BankService_ServiceDesc is the grpc.ServiceDesc for BankService service.
-// It's only intended for direct use with grpc.RegisterService,
-// and not to be introspected or modified (even as a copy)
-var BankService_ServiceDesc = grpc.ServiceDesc{
+var _BankService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "BankService.BankService",
 	HandlerType: (*BankServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
@@ -673,7 +670,7 @@ type UnsafeShipmentPayOrderServiceServer interface {
 }
 
 func RegisterShipmentPayOrderServiceServer(s grpc.ServiceRegistrar, srv ShipmentPayOrderServiceServer) {
-	s.RegisterService(&ShipmentPayOrderService_ServiceDesc, srv)
+	s.RegisterService(&_ShipmentPayOrderService_serviceDesc, srv)
 }
 
 func _ShipmentPayOrderService_ListPayOrder_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -784,10 +781,7 @@ func _ShipmentPayOrderService_PayOrderCount_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
-// ShipmentPayOrderService_ServiceDesc is the grpc.ServiceDesc for ShipmentPayOrderService service.
-// It's only intended for direct use with grpc.RegisterService,
-// and not to be introspected or modified (even as a copy)
-var ShipmentPayOrderService_ServiceDesc = grpc.ServiceDesc{
+var _ShipmentPayOrderService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "BankService.ShipmentPayOrderService",
 	HandlerType: (*ShipmentPayOrderServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
@@ -935,7 +929,7 @@ type UnsafeFactoringOrderServiceServer interface {
 }
 
 func RegisterFactoringOrderServiceServer(s grpc.ServiceRegistrar, srv FactoringOrderServiceServer) {
-	s.RegisterService(&FactoringOrderService_ServiceDesc, srv)
+	s.RegisterService(&_FactoringOrderService_serviceDesc, srv)
 }
 
 func _FactoringOrderService_ListFactoringOrder_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -1028,10 +1022,7 @@ func _FactoringOrderService_Apply_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
-// FactoringOrderService_ServiceDesc is the grpc.ServiceDesc for FactoringOrderService service.
-// It's only intended for direct use with grpc.RegisterService,
-// and not to be introspected or modified (even as a copy)
-var FactoringOrderService_ServiceDesc = grpc.ServiceDesc{
+var _FactoringOrderService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "BankService.FactoringOrderService",
 	HandlerType: (*FactoringOrderServiceServer)(nil),
 	Methods: []grpc.MethodDesc{

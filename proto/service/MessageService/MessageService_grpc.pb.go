@@ -168,7 +168,7 @@ type UnsafeMessageServiceServer interface {
 }
 
 func RegisterMessageServiceServer(s grpc.ServiceRegistrar, srv MessageServiceServer) {
-	s.RegisterService(&MessageService_ServiceDesc, srv)
+	s.RegisterService(&_MessageService_serviceDesc, srv)
 }
 
 func _MessageService_SendEmails_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -315,10 +315,7 @@ func _MessageService_UnreadCount_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
-// MessageService_ServiceDesc is the grpc.ServiceDesc for MessageService service.
-// It's only intended for direct use with grpc.RegisterService,
-// and not to be introspected or modified (even as a copy)
-var MessageService_ServiceDesc = grpc.ServiceDesc{
+var _MessageService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "MessageService.MessageService",
 	HandlerType: (*MessageServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
