@@ -1979,6 +1979,121 @@ message GetMIBDashboardBaseInfoResp {
   int64 companyCount = 2;
 }
 
+message ListCompanyBindReq {
+  int64 managerId = 1;
+  string companyName = 2;
+  string companyCode = 3;
+  Page page = 4;
+  repeated ListColumnReq column = 5;
+}
+//选择列
+message ListColumnReq {
+  string columnName = 1;
+}
+
+message ListCompanyBindResp {
+  repeated ListCompanyBindVo list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+
+message ListCompanyBindVo{
+  string companyName = 1;
+  string companyCode = 2;
+  string companyBindJson = 3;
+}
+
+message ListMiBindReq {
+  int64 managerId = 1;
+  string miName = 2;
+  string miCode = 3;
+  Page page = 4;
+  repeated ListColumnReq column = 5;
+}
+
+message ListMiBindResp {
+  repeated ListMiBindBindVo list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+
+message ListMiBindBindVo{
+  string miName = 1;
+  string miCode = 2;
+  string miBindJson = 3;
+}
+
+message ListMedicineBindReq {
+  int64 managerId = 1;
+  string medicineName = 2;
+  string medicineCode = 3;
+  Page page = 4;
+  repeated ListColumnReq column = 5;
+}
+
+message ListMedicineBindResp {
+  repeated ListMedicineBindVo list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+
+message ListMedicineBindVo{
+  string medicineName = 1;
+  string medicineCode = 2;
+  string medicineBindJson = 3;
+}
+
+message CompanyBindReq {
+  int64 managerId = 1;
+  repeated CompanyBindParam param = 2;
+}
+
+message CompanyBindParam {
+  int64 bindId = 2;
+  string companyCode = 3;
+  string companyLinkCode = 4;
+  string linkType = 5;
+}
+
+message CompanyBindResp {
+  int64 result = 1;
+}
+
+message MiBindReq {
+  int64 managerId = 1;
+  repeated MiBindParam param = 2;
+}
+
+message MiBindParam {
+  int64 bindId = 2;
+  string miCode = 3;
+  string miLinkCode = 4;
+  string linkType = 5;
+}
+
+message MiBindResp {
+  int64 result = 1;
+}
+
+message MedicineBindReq {
+  int64 managerId = 1;
+  repeated MedicineBindParam param = 2;
+}
+
+message MedicineBindParam {
+  int64 bindId = 2;
+  string medicineCode = 3;
+  string medicineLinkCode = 4;
+  string linkType = 5;
+}
+
+message MedicineBindResp {
+  int64 result = 1;
+}
+
 service ManagerService {
   //合同相关
   rpc ListContract(ContractListReq) returns(ContractListResp);
@@ -2056,6 +2171,16 @@ service ManagerService {
   rpc InsertConfigs(InsertConfigsReq) returns (InsertConfigsResp);
   //删除配置
   rpc DeleteConfigs(DeleteConfigsReq) returns (DeleteConfigsResp);
+
+  //配送企业绑定
+  rpc ListCompanyBind(ListCompanyBindReq) returns (ListCompanyBindResp);
+  rpc CompanyBind(CompanyBindReq) returns (CompanyBindResp);
+  //医疗机构绑定
+  rpc ListMiBind(ListMiBindReq) returns (ListMiBindResp);
+  rpc MiBind(MiBindReq) returns (MiBindResp);
+  //药品绑定绑定
+  rpc ListMedicineBind(ListMedicineBindReq) returns (ListMedicineBindResp);
+  rpc MedicineBind(MedicineBindReq) returns (MedicineBindResp);
 
 }
 
