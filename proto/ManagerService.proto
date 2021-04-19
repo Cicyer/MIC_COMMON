@@ -1982,11 +1982,11 @@ message ListCompanyBindReq {
   string companyName = 2;
   string companyCode = 3;
   Page page = 4;
-  repeated ListColumnReq column = 5;
+  repeated ListLinkTypeReq linkType = 5;
 }
 //选择列
-message ListColumnReq {
-  string columnName = 1;
+message ListLinkTypeReq {
+  string linkTypeName = 1;
 }
 
 message ListCompanyBindResp {
@@ -2007,7 +2007,7 @@ message ListMiBindReq {
   string miName = 2;
   string miCode = 3;
   Page page = 4;
-  repeated ListColumnReq column = 5;
+  repeated ListLinkTypeReq linkType = 5;
 }
 
 message ListMiBindResp {
@@ -2028,7 +2028,7 @@ message ListMedicineBindReq {
   string medicineName = 2;
   string medicineCode = 3;
   Page page = 4;
-  repeated ListColumnReq column = 5;
+  repeated ListLinkTypeReq linkType = 5;
 }
 
 message ListMedicineBindResp {
