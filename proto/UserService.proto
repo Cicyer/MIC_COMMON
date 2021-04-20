@@ -17,9 +17,8 @@ message UserPassLoginReq {
 }
 
 message OauthTokenReq {
-  string grantType = 1;
-  string clientId = 2;
-  string clientSecret = 3;
+  string clientId = 1;
+  string clientSecret = 2;
 }
 message OauthTokenResp {
   string accessToken = 1;
