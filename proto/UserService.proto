@@ -17,16 +17,17 @@ message UserPassLoginReq {
 }
 
 message OauthTokenReq {
-  string grantType = 1;
-  string clientId = 2;
-  string clientSecret = 3;
+  string clientId = 1;
+  string clientSecret = 2;
+  string accessToken = 3;
+  string refreshToken = 4;
 }
 message OauthTokenResp {
   string accessToken = 1;
   string tokenType = 2;
   int64 expiresIn = 3;
   string refreshToken = 4;
-  string role = 5;
+  string organizationCode = 5;
   int64 organizationId = 6;
   repeated PermissionInfo permissions = 7;
 }
