@@ -16,6 +16,20 @@ message UserPassLoginReq {
   string platFormType = 3;
 }
 
+message OauthTokenReq {
+  string grantType = 1;
+  string clientId = 2;
+  string clientSecret = 3;
+}
+message OauthTokenResp {
+  string accessToken = 1;
+  string tokenType = 2;
+  int64 expiresIn = 3;
+  string refreshToken = 4;
+  string role = 5;
+  int64 organizationId = 6;
+  repeated PermissionInfo permissions = 7;
+}
 message UserPassLoginResp {
   int64 userId = 1;
   string username = 2;
@@ -141,6 +155,7 @@ message UserInfoReq {
 
 service UserService {
   rpc PassLogin(UserPassLoginReq) returns (UserPassLoginResp);
+  rpc OauthToken(OauthTokenReq) returns (OauthTokenResp);
   rpc CreateUser(CreateUserReq) returns (CreateUserResp);
   rpc UpdateUser(UpdateUserReq) returns (UpdateUserResp);
   rpc ListUser(ListUserReq) returns (ListUserResp);
