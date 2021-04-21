@@ -21,6 +21,7 @@ message OauthTokenReq {
   string clientSecret = 2;
   string grantType = 3;
   string refreshToken = 4;
+  string organizationType = 5;
 }
 message OauthTokenResp {
   string accessToken = 1;
@@ -29,7 +30,8 @@ message OauthTokenResp {
   string refreshToken = 4;
   string organizationCode = 5;
   int64 organizationId = 6;
-  repeated PermissionInfo permissions = 7;
+  string organizationType = 7;
+  repeated PermissionInfo permissions = 8;
 }
 message UserPassLoginResp {
   int64 userId = 1;
@@ -193,6 +195,7 @@ message GetOauthAccountResp {
 message GetOauthTokenReq {
   string clientId = 1;
   string accessToken = 2;
+  string organizationType = 3;
 }
 
 service UserService {
