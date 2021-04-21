@@ -30,7 +30,9 @@ type ManagerServiceClient interface {
 	GetContractInfo(ctx context.Context, in *GetContractInfoReq, opts ...grpc.CallOption) (*GetContractInfoResp, error)
 	CountContract(ctx context.Context, in *CountContractReq, opts ...grpc.CallOption) (*CountContractResp, error)
 	RefreshContract(ctx context.Context, in *RefreshContractReq, opts ...grpc.CallOption) (*RefreshContractResp, error)
-	//暂未使用 后期删除
+	//合同重置
+	ResetContract(ctx context.Context, in *ResetContractReq, opts ...grpc.CallOption) (*ResetContractResp, error)
+	//暂未使用
 	ContractDetail(ctx context.Context, in *ContractDetailReq, opts ...grpc.CallOption) (*ContractDetailResp, error)
 	CheckContractList(ctx context.Context, in *UpCheckContractReq, opts ...grpc.CallOption) (*CheckContractListResp, error)
 	//药品相关
@@ -211,6 +213,15 @@ func (c *managerServiceClient) CountContract(ctx context.Context, in *CountContr
 func (c *managerServiceClient) RefreshContract(ctx context.Context, in *RefreshContractReq, opts ...grpc.CallOption) (*RefreshContractResp, error) {
 	out := new(RefreshContractResp)
 	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/RefreshContract", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) ResetContract(ctx context.Context, in *ResetContractReq, opts ...grpc.CallOption) (*ResetContractResp, error) {
+	out := new(ResetContractResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/ResetContract", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -675,7 +686,9 @@ type ManagerServiceServer interface {
 	GetContractInfo(context.Context, *GetContractInfoReq) (*GetContractInfoResp, error)
 	CountContract(context.Context, *CountContractReq) (*CountContractResp, error)
 	RefreshContract(context.Context, *RefreshContractReq) (*RefreshContractResp, error)
-	//暂未使用 后期删除
+	//合同重置
+	ResetContract(context.Context, *ResetContractReq) (*ResetContractResp, error)
+	//暂未使用
 	ContractDetail(context.Context, *ContractDetailReq) (*ContractDetailResp, error)
 	CheckContractList(context.Context, *UpCheckContractReq) (*CheckContractListResp, error)
 	//药品相关
@@ -786,6 +799,9 @@ func (UnimplementedManagerServiceServer) CountContract(context.Context, *CountCo
 }
 func (UnimplementedManagerServiceServer) RefreshContract(context.Context, *RefreshContractReq) (*RefreshContractResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RefreshContract not implemented")
+}
+func (UnimplementedManagerServiceServer) ResetContract(context.Context, *ResetContractReq) (*ResetContractResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ResetContract not implemented")
 }
 func (UnimplementedManagerServiceServer) ContractDetail(context.Context, *ContractDetailReq) (*ContractDetailResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ContractDetail not implemented")
@@ -1159,6 +1175,24 @@ func _ManagerService_RefreshContract_Handler(srv interface{}, ctx context.Contex
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ManagerServiceServer).RefreshContract(ctx, req.(*RefreshContractReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_ResetContract_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ResetContractReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).ResetContract(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/ResetContract",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).ResetContract(ctx, req.(*ResetContractReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2096,6 +2130,10 @@ var _ManagerService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RefreshContract",
 			Handler:    _ManagerService_RefreshContract_Handler,
+		},
+		{
+			MethodName: "ResetContract",
+			Handler:    _ManagerService_ResetContract_Handler,
 		},
 		{
 			MethodName: "ContractDetail",
