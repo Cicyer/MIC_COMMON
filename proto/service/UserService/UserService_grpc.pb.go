@@ -19,6 +19,7 @@ const _ = grpc.SupportPackageIsVersion7
 type UserServiceClient interface {
 	PassLogin(ctx context.Context, in *UserPassLoginReq, opts ...grpc.CallOption) (*UserPassLoginResp, error)
 	OauthToken(ctx context.Context, in *OauthTokenReq, opts ...grpc.CallOption) (*OauthTokenResp, error)
+	GetOauthToken(ctx context.Context, in *GetOauthTokenReq, opts ...grpc.CallOption) (*OauthTokenResp, error)
 	CreateOauthAccount(ctx context.Context, in *CreateOauthAccountReq, opts ...grpc.CallOption) (*CreateOauthAccountResp, error)
 	//重置oauth 的secret
 	ResetOauthAccountSecret(ctx context.Context, in *ResetOauthAccountReq, opts ...grpc.CallOption) (*CreateOauthAccountResp, error)
@@ -52,6 +53,15 @@ func (c *userServiceClient) PassLogin(ctx context.Context, in *UserPassLoginReq,
 func (c *userServiceClient) OauthToken(ctx context.Context, in *OauthTokenReq, opts ...grpc.CallOption) (*OauthTokenResp, error) {
 	out := new(OauthTokenResp)
 	err := c.cc.Invoke(ctx, "/UserService.UserService/OauthToken", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) GetOauthToken(ctx context.Context, in *GetOauthTokenReq, opts ...grpc.CallOption) (*OauthTokenResp, error) {
+	out := new(OauthTokenResp)
+	err := c.cc.Invoke(ctx, "/UserService.UserService/GetOauthToken", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -145,6 +155,7 @@ func (c *userServiceClient) UserInfo(ctx context.Context, in *UserInfoReq, opts 
 type UserServiceServer interface {
 	PassLogin(context.Context, *UserPassLoginReq) (*UserPassLoginResp, error)
 	OauthToken(context.Context, *OauthTokenReq) (*OauthTokenResp, error)
+	GetOauthToken(context.Context, *GetOauthTokenReq) (*OauthTokenResp, error)
 	CreateOauthAccount(context.Context, *CreateOauthAccountReq) (*CreateOauthAccountResp, error)
 	//重置oauth 的secret
 	ResetOauthAccountSecret(context.Context, *ResetOauthAccountReq) (*CreateOauthAccountResp, error)
@@ -168,6 +179,9 @@ func (UnimplementedUserServiceServer) PassLogin(context.Context, *UserPassLoginR
 }
 func (UnimplementedUserServiceServer) OauthToken(context.Context, *OauthTokenReq) (*OauthTokenResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method OauthToken not implemented")
+}
+func (UnimplementedUserServiceServer) GetOauthToken(context.Context, *GetOauthTokenReq) (*OauthTokenResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetOauthToken not implemented")
 }
 func (UnimplementedUserServiceServer) CreateOauthAccount(context.Context, *CreateOauthAccountReq) (*CreateOauthAccountResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateOauthAccount not implemented")
@@ -241,6 +255,24 @@ func _UserService_OauthToken_Handler(srv interface{}, ctx context.Context, dec f
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(UserServiceServer).OauthToken(ctx, req.(*OauthTokenReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_GetOauthToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetOauthTokenReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).GetOauthToken(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/UserService.UserService/GetOauthToken",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).GetOauthToken(ctx, req.(*GetOauthTokenReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -418,6 +450,10 @@ var _UserService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "OauthToken",
 			Handler:    _UserService_OauthToken_Handler,
+		},
+		{
+			MethodName: "GetOauthToken",
+			Handler:    _UserService_GetOauthToken_Handler,
 		},
 		{
 			MethodName: "CreateOauthAccount",

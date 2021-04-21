@@ -19,7 +19,7 @@ message UserPassLoginReq {
 message OauthTokenReq {
   string clientId = 1;
   string clientSecret = 2;
-  string accessToken = 3;
+  string grantType = 3;
   string refreshToken = 4;
 }
 message OauthTokenResp {
@@ -190,11 +190,15 @@ message GetOauthAccountResp {
   google.protobuf.Timestamp tokenExpire = 11;
   google.protobuf.Timestamp refreshTokenExpire = 12;
 }
-
+message GetOauthTokenReq {
+  string clientId = 1;
+  string accessToken = 2;
+}
 
 service UserService {
   rpc PassLogin(UserPassLoginReq) returns (UserPassLoginResp);
   rpc OauthToken(OauthTokenReq) returns (OauthTokenResp);
+  rpc GetOauthToken(GetOauthTokenReq) returns (OauthTokenResp);
   rpc CreateOauthAccount(CreateOauthAccountReq) returns (CreateOauthAccountResp);
   //重置oauth 的secret
   rpc ResetOauthAccountSecret(ResetOauthAccountReq) returns (CreateOauthAccountResp);
