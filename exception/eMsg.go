@@ -50,6 +50,10 @@ var CM = map[int]map[string]string{
 	10601: {"EN": "Invalid Mib", "CN": "无效的医保局信息"},
 	10701: {"EN": "Invalid Contract", "CN": "无效的合同信息"},
 
+	11001: {"EN": "Invalid ClientInfo", "CN": "无效的client id或secret"},
+	11002: {"EN": "Invalid accessToken", "CN": "无效的accessToken"},
+	11003: {"EN": "Invalid RefreshToken", "CN": "无效的RefreshToken"},
+
 	20001: {"EN": "blockchain upload error", "CN": "区块链上传错误"},
 	20002: {"EN": "blockchain error", "CN": "区块链端错误"},
 	20003: {"EN": "bank sdk error", "CN": "银行端接口错误"},

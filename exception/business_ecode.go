@@ -1,7 +1,10 @@
 package ecode
 
 var (
-	IllegalParam = add(10001) //参数错误
+	IllegalParam        = add(10001) //参数错误
+	InvalidClientInfo   = add(11001)
+	InvalidAccessToken  = add(11002)
+	InvalidRefreshToken = add(11003)
 
 	LoginFailed           = add(10101) //登陆失败
 	AccessTokenExpires    = add(10102) // Token 过期
