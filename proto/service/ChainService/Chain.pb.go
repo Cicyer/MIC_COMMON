@@ -30,10 +30,10 @@ type GetHashContentReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ManagerId int64  `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
-	Hash      string `protobuf:"bytes,2,opt,name=hash,proto3" json:"hash"`
+	ManagerId int64  `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	Hash      string `protobuf:"bytes,2,opt,name=hash,proto3" json:"hash,omitempty"`
 	//目前支持的hash类型  COM CONFIG CONTRACT CONTRACT_MI FACTORING MEDICINE MI PAY SHIPMENT
-	BusinessType string `protobuf:"bytes,3,opt,name=businessType,proto3" json:"businessType"`
+	BusinessType string `protobuf:"bytes,3,opt,name=businessType,proto3" json:"businessType,omitempty"`
 }
 
 func (x *GetHashContentReq) Reset() {
@@ -95,19 +95,19 @@ type GetHashContentResp struct {
 	unknownFields protoimpl.UnknownFields
 
 	//证书内容结构，json
-	Data string `protobuf:"bytes,1,opt,name=data,proto3" json:"data"`
+	Data string `protobuf:"bytes,1,opt,name=data,proto3" json:"data,omitempty"`
 	//向上追溯用的hash
-	LastHash         string `protobuf:"bytes,2,opt,name=lastHash,proto3" json:"lastHash"`
-	UploadNode       string `protobuf:"bytes,3,opt,name=uploadNode,proto3" json:"uploadNode"`
-	UploaderName     string `protobuf:"bytes,4,opt,name=uploaderName,proto3" json:"uploaderName"`
-	UploaderRole     string `protobuf:"bytes,5,opt,name=uploaderRole,proto3" json:"uploaderRole"`
-	UploaderRoleName string `protobuf:"bytes,6,opt,name=uploaderRoleName,proto3" json:"uploaderRoleName"`
-	UploaderAccount  string `protobuf:"bytes,7,opt,name=uploaderAccount,proto3" json:"uploaderAccount"`
-	CurrentHash      string `protobuf:"bytes,8,opt,name=currentHash,proto3" json:"currentHash"`
+	LastHash         string `protobuf:"bytes,2,opt,name=lastHash,proto3" json:"lastHash,omitempty"`
+	UploadNode       string `protobuf:"bytes,3,opt,name=uploadNode,proto3" json:"uploadNode,omitempty"`
+	UploaderName     string `protobuf:"bytes,4,opt,name=uploaderName,proto3" json:"uploaderName,omitempty"`
+	UploaderRole     string `protobuf:"bytes,5,opt,name=uploaderRole,proto3" json:"uploaderRole,omitempty"`
+	UploaderRoleName string `protobuf:"bytes,6,opt,name=uploaderRoleName,proto3" json:"uploaderRoleName,omitempty"`
+	UploaderAccount  string `protobuf:"bytes,7,opt,name=uploaderAccount,proto3" json:"uploaderAccount,omitempty"`
+	CurrentHash      string `protobuf:"bytes,8,opt,name=currentHash,proto3" json:"currentHash,omitempty"`
 	// 上链成功时间
-	UploadSuccessAt *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=uploadSuccessAt,proto3" json:"uploadSuccessAt"`
+	UploadSuccessAt *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=uploadSuccessAt,proto3" json:"uploadSuccessAt,omitempty"`
 	// 证书描述
-	Description string `protobuf:"bytes,10,opt,name=description,proto3" json:"description"`
+	Description string `protobuf:"bytes,10,opt,name=description,proto3" json:"description,omitempty"`
 }
 
 func (x *GetHashContentResp) Reset() {

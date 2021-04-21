@@ -30,7 +30,9 @@ type ManagerServiceClient interface {
 	GetContractInfo(ctx context.Context, in *GetContractInfoReq, opts ...grpc.CallOption) (*GetContractInfoResp, error)
 	CountContract(ctx context.Context, in *CountContractReq, opts ...grpc.CallOption) (*CountContractResp, error)
 	RefreshContract(ctx context.Context, in *RefreshContractReq, opts ...grpc.CallOption) (*RefreshContractResp, error)
-	//暂未使用 后期删除
+	//合同重置
+	ResetContract(ctx context.Context, in *ResetContractReq, opts ...grpc.CallOption) (*ResetContractResp, error)
+	//暂未使用
 	ContractDetail(ctx context.Context, in *ContractDetailReq, opts ...grpc.CallOption) (*ContractDetailResp, error)
 	CheckContractList(ctx context.Context, in *UpCheckContractReq, opts ...grpc.CallOption) (*CheckContractListResp, error)
 	//药品相关
@@ -90,6 +92,15 @@ type ManagerServiceClient interface {
 	InsertConfigs(ctx context.Context, in *InsertConfigsReq, opts ...grpc.CallOption) (*InsertConfigsResp, error)
 	//删除配置
 	DeleteConfigs(ctx context.Context, in *DeleteConfigsReq, opts ...grpc.CallOption) (*DeleteConfigsResp, error)
+	//配送企业绑定
+	ListCompanyBind(ctx context.Context, in *ListCompanyBindReq, opts ...grpc.CallOption) (*ListCompanyBindResp, error)
+	CompanyBind(ctx context.Context, in *CompanyBindReq, opts ...grpc.CallOption) (*CompanyBindResp, error)
+	//医疗机构绑定
+	ListMiBind(ctx context.Context, in *ListMiBindReq, opts ...grpc.CallOption) (*ListMiBindResp, error)
+	MiBind(ctx context.Context, in *MiBindReq, opts ...grpc.CallOption) (*MiBindResp, error)
+	//药品绑定绑定
+	ListMedicineBind(ctx context.Context, in *ListMedicineBindReq, opts ...grpc.CallOption) (*ListMedicineBindResp, error)
+	MedicineBind(ctx context.Context, in *MedicineBindReq, opts ...grpc.CallOption) (*MedicineBindResp, error)
 }
 
 type managerServiceClient struct {
@@ -202,6 +213,15 @@ func (c *managerServiceClient) CountContract(ctx context.Context, in *CountContr
 func (c *managerServiceClient) RefreshContract(ctx context.Context, in *RefreshContractReq, opts ...grpc.CallOption) (*RefreshContractResp, error) {
 	out := new(RefreshContractResp)
 	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/RefreshContract", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) ResetContract(ctx context.Context, in *ResetContractReq, opts ...grpc.CallOption) (*ResetContractResp, error) {
+	out := new(ResetContractResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/ResetContract", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -595,6 +615,60 @@ func (c *managerServiceClient) DeleteConfigs(ctx context.Context, in *DeleteConf
 	return out, nil
 }
 
+func (c *managerServiceClient) ListCompanyBind(ctx context.Context, in *ListCompanyBindReq, opts ...grpc.CallOption) (*ListCompanyBindResp, error) {
+	out := new(ListCompanyBindResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/ListCompanyBind", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) CompanyBind(ctx context.Context, in *CompanyBindReq, opts ...grpc.CallOption) (*CompanyBindResp, error) {
+	out := new(CompanyBindResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/CompanyBind", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) ListMiBind(ctx context.Context, in *ListMiBindReq, opts ...grpc.CallOption) (*ListMiBindResp, error) {
+	out := new(ListMiBindResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/ListMiBind", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) MiBind(ctx context.Context, in *MiBindReq, opts ...grpc.CallOption) (*MiBindResp, error) {
+	out := new(MiBindResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/MiBind", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) ListMedicineBind(ctx context.Context, in *ListMedicineBindReq, opts ...grpc.CallOption) (*ListMedicineBindResp, error) {
+	out := new(ListMedicineBindResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/ListMedicineBind", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managerServiceClient) MedicineBind(ctx context.Context, in *MedicineBindReq, opts ...grpc.CallOption) (*MedicineBindResp, error) {
+	out := new(MedicineBindResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.ManagerService/MedicineBind", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ManagerServiceServer is the server API for ManagerService service.
 // All implementations must embed UnimplementedManagerServiceServer
 // for forward compatibility
@@ -612,7 +686,9 @@ type ManagerServiceServer interface {
 	GetContractInfo(context.Context, *GetContractInfoReq) (*GetContractInfoResp, error)
 	CountContract(context.Context, *CountContractReq) (*CountContractResp, error)
 	RefreshContract(context.Context, *RefreshContractReq) (*RefreshContractResp, error)
-	//暂未使用 后期删除
+	//合同重置
+	ResetContract(context.Context, *ResetContractReq) (*ResetContractResp, error)
+	//暂未使用
 	ContractDetail(context.Context, *ContractDetailReq) (*ContractDetailResp, error)
 	CheckContractList(context.Context, *UpCheckContractReq) (*CheckContractListResp, error)
 	//药品相关
@@ -672,6 +748,15 @@ type ManagerServiceServer interface {
 	InsertConfigs(context.Context, *InsertConfigsReq) (*InsertConfigsResp, error)
 	//删除配置
 	DeleteConfigs(context.Context, *DeleteConfigsReq) (*DeleteConfigsResp, error)
+	//配送企业绑定
+	ListCompanyBind(context.Context, *ListCompanyBindReq) (*ListCompanyBindResp, error)
+	CompanyBind(context.Context, *CompanyBindReq) (*CompanyBindResp, error)
+	//医疗机构绑定
+	ListMiBind(context.Context, *ListMiBindReq) (*ListMiBindResp, error)
+	MiBind(context.Context, *MiBindReq) (*MiBindResp, error)
+	//药品绑定绑定
+	ListMedicineBind(context.Context, *ListMedicineBindReq) (*ListMedicineBindResp, error)
+	MedicineBind(context.Context, *MedicineBindReq) (*MedicineBindResp, error)
 	mustEmbedUnimplementedManagerServiceServer()
 }
 
@@ -714,6 +799,9 @@ func (UnimplementedManagerServiceServer) CountContract(context.Context, *CountCo
 }
 func (UnimplementedManagerServiceServer) RefreshContract(context.Context, *RefreshContractReq) (*RefreshContractResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RefreshContract not implemented")
+}
+func (UnimplementedManagerServiceServer) ResetContract(context.Context, *ResetContractReq) (*ResetContractResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ResetContract not implemented")
 }
 func (UnimplementedManagerServiceServer) ContractDetail(context.Context, *ContractDetailReq) (*ContractDetailResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ContractDetail not implemented")
@@ -843,6 +931,24 @@ func (UnimplementedManagerServiceServer) InsertConfigs(context.Context, *InsertC
 }
 func (UnimplementedManagerServiceServer) DeleteConfigs(context.Context, *DeleteConfigsReq) (*DeleteConfigsResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteConfigs not implemented")
+}
+func (UnimplementedManagerServiceServer) ListCompanyBind(context.Context, *ListCompanyBindReq) (*ListCompanyBindResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListCompanyBind not implemented")
+}
+func (UnimplementedManagerServiceServer) CompanyBind(context.Context, *CompanyBindReq) (*CompanyBindResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CompanyBind not implemented")
+}
+func (UnimplementedManagerServiceServer) ListMiBind(context.Context, *ListMiBindReq) (*ListMiBindResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListMiBind not implemented")
+}
+func (UnimplementedManagerServiceServer) MiBind(context.Context, *MiBindReq) (*MiBindResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MiBind not implemented")
+}
+func (UnimplementedManagerServiceServer) ListMedicineBind(context.Context, *ListMedicineBindReq) (*ListMedicineBindResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListMedicineBind not implemented")
+}
+func (UnimplementedManagerServiceServer) MedicineBind(context.Context, *MedicineBindReq) (*MedicineBindResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MedicineBind not implemented")
 }
 func (UnimplementedManagerServiceServer) mustEmbedUnimplementedManagerServiceServer() {}
 
@@ -1069,6 +1175,24 @@ func _ManagerService_RefreshContract_Handler(srv interface{}, ctx context.Contex
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ManagerServiceServer).RefreshContract(ctx, req.(*RefreshContractReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_ResetContract_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ResetContractReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).ResetContract(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/ResetContract",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).ResetContract(ctx, req.(*ResetContractReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1847,6 +1971,114 @@ func _ManagerService_DeleteConfigs_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ManagerService_ListCompanyBind_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListCompanyBindReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).ListCompanyBind(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/ListCompanyBind",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).ListCompanyBind(ctx, req.(*ListCompanyBindReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_CompanyBind_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CompanyBindReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).CompanyBind(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/CompanyBind",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).CompanyBind(ctx, req.(*CompanyBindReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_ListMiBind_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListMiBindReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).ListMiBind(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/ListMiBind",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).ListMiBind(ctx, req.(*ListMiBindReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_MiBind_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MiBindReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).MiBind(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/MiBind",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).MiBind(ctx, req.(*MiBindReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_ListMedicineBind_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListMedicineBindReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).ListMedicineBind(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/ListMedicineBind",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).ListMedicineBind(ctx, req.(*ListMedicineBindReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagerService_MedicineBind_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MedicineBindReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagerServiceServer).MedicineBind(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.ManagerService/MedicineBind",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagerServiceServer).MedicineBind(ctx, req.(*MedicineBindReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ManagerService_ServiceDesc is the grpc.ServiceDesc for ManagerService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -1901,6 +2133,10 @@ var ManagerService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RefreshContract",
 			Handler:    _ManagerService_RefreshContract_Handler,
+		},
+		{
+			MethodName: "ResetContract",
+			Handler:    _ManagerService_ResetContract_Handler,
 		},
 		{
 			MethodName: "ContractDetail",
@@ -2073,6 +2309,30 @@ var ManagerService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeleteConfigs",
 			Handler:    _ManagerService_DeleteConfigs_Handler,
+		},
+		{
+			MethodName: "ListCompanyBind",
+			Handler:    _ManagerService_ListCompanyBind_Handler,
+		},
+		{
+			MethodName: "CompanyBind",
+			Handler:    _ManagerService_CompanyBind_Handler,
+		},
+		{
+			MethodName: "ListMiBind",
+			Handler:    _ManagerService_ListMiBind_Handler,
+		},
+		{
+			MethodName: "MiBind",
+			Handler:    _ManagerService_MiBind_Handler,
+		},
+		{
+			MethodName: "ListMedicineBind",
+			Handler:    _ManagerService_ListMedicineBind_Handler,
+		},
+		{
+			MethodName: "MedicineBind",
+			Handler:    _ManagerService_MedicineBind_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
