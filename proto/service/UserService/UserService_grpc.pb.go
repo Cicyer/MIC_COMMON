@@ -19,6 +19,11 @@ const _ = grpc.SupportPackageIsVersion7
 type UserServiceClient interface {
 	PassLogin(ctx context.Context, in *UserPassLoginReq, opts ...grpc.CallOption) (*UserPassLoginResp, error)
 	OauthToken(ctx context.Context, in *OauthTokenReq, opts ...grpc.CallOption) (*OauthTokenResp, error)
+	CreateOauthAccount(ctx context.Context, in *CreateOauthAccountReq, opts ...grpc.CallOption) (*CreateOauthAccountResp, error)
+	//重置oauth 的secret
+	ResetOauthAccountSecret(ctx context.Context, in *ResetOauthAccountReq, opts ...grpc.CallOption) (*CreateOauthAccountResp, error)
+	//获取某个指定平台组织的oauth账号信息
+	GetOauthAccount(ctx context.Context, in *GetOauthAccountReq, opts ...grpc.CallOption) (*GetOauthAccountResp, error)
 	CreateUser(ctx context.Context, in *CreateUserReq, opts ...grpc.CallOption) (*CreateUserResp, error)
 	UpdateUser(ctx context.Context, in *UpdateUserReq, opts ...grpc.CallOption) (*UpdateUserResp, error)
 	ListUser(ctx context.Context, in *ListUserReq, opts ...grpc.CallOption) (*ListUserResp, error)
@@ -47,6 +52,33 @@ func (c *userServiceClient) PassLogin(ctx context.Context, in *UserPassLoginReq,
 func (c *userServiceClient) OauthToken(ctx context.Context, in *OauthTokenReq, opts ...grpc.CallOption) (*OauthTokenResp, error) {
 	out := new(OauthTokenResp)
 	err := c.cc.Invoke(ctx, "/UserService.UserService/OauthToken", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) CreateOauthAccount(ctx context.Context, in *CreateOauthAccountReq, opts ...grpc.CallOption) (*CreateOauthAccountResp, error) {
+	out := new(CreateOauthAccountResp)
+	err := c.cc.Invoke(ctx, "/UserService.UserService/CreateOauthAccount", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) ResetOauthAccountSecret(ctx context.Context, in *ResetOauthAccountReq, opts ...grpc.CallOption) (*CreateOauthAccountResp, error) {
+	out := new(CreateOauthAccountResp)
+	err := c.cc.Invoke(ctx, "/UserService.UserService/ResetOauthAccountSecret", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) GetOauthAccount(ctx context.Context, in *GetOauthAccountReq, opts ...grpc.CallOption) (*GetOauthAccountResp, error) {
+	out := new(GetOauthAccountResp)
+	err := c.cc.Invoke(ctx, "/UserService.UserService/GetOauthAccount", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -113,6 +145,11 @@ func (c *userServiceClient) UserInfo(ctx context.Context, in *UserInfoReq, opts 
 type UserServiceServer interface {
 	PassLogin(context.Context, *UserPassLoginReq) (*UserPassLoginResp, error)
 	OauthToken(context.Context, *OauthTokenReq) (*OauthTokenResp, error)
+	CreateOauthAccount(context.Context, *CreateOauthAccountReq) (*CreateOauthAccountResp, error)
+	//重置oauth 的secret
+	ResetOauthAccountSecret(context.Context, *ResetOauthAccountReq) (*CreateOauthAccountResp, error)
+	//获取某个指定平台组织的oauth账号信息
+	GetOauthAccount(context.Context, *GetOauthAccountReq) (*GetOauthAccountResp, error)
 	CreateUser(context.Context, *CreateUserReq) (*CreateUserResp, error)
 	UpdateUser(context.Context, *UpdateUserReq) (*UpdateUserResp, error)
 	ListUser(context.Context, *ListUserReq) (*ListUserResp, error)
@@ -131,6 +168,15 @@ func (UnimplementedUserServiceServer) PassLogin(context.Context, *UserPassLoginR
 }
 func (UnimplementedUserServiceServer) OauthToken(context.Context, *OauthTokenReq) (*OauthTokenResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method OauthToken not implemented")
+}
+func (UnimplementedUserServiceServer) CreateOauthAccount(context.Context, *CreateOauthAccountReq) (*CreateOauthAccountResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateOauthAccount not implemented")
+}
+func (UnimplementedUserServiceServer) ResetOauthAccountSecret(context.Context, *ResetOauthAccountReq) (*CreateOauthAccountResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ResetOauthAccountSecret not implemented")
+}
+func (UnimplementedUserServiceServer) GetOauthAccount(context.Context, *GetOauthAccountReq) (*GetOauthAccountResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetOauthAccount not implemented")
 }
 func (UnimplementedUserServiceServer) CreateUser(context.Context, *CreateUserReq) (*CreateUserResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateUser not implemented")
@@ -195,6 +241,60 @@ func _UserService_OauthToken_Handler(srv interface{}, ctx context.Context, dec f
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(UserServiceServer).OauthToken(ctx, req.(*OauthTokenReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_CreateOauthAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateOauthAccountReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).CreateOauthAccount(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/UserService.UserService/CreateOauthAccount",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).CreateOauthAccount(ctx, req.(*CreateOauthAccountReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_ResetOauthAccountSecret_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ResetOauthAccountReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).ResetOauthAccountSecret(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/UserService.UserService/ResetOauthAccountSecret",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).ResetOauthAccountSecret(ctx, req.(*ResetOauthAccountReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_GetOauthAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetOauthAccountReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).GetOauthAccount(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/UserService.UserService/GetOauthAccount",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).GetOauthAccount(ctx, req.(*GetOauthAccountReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -318,6 +418,18 @@ var _UserService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "OauthToken",
 			Handler:    _UserService_OauthToken_Handler,
+		},
+		{
+			MethodName: "CreateOauthAccount",
+			Handler:    _UserService_CreateOauthAccount_Handler,
+		},
+		{
+			MethodName: "ResetOauthAccountSecret",
+			Handler:    _UserService_ResetOauthAccountSecret_Handler,
+		},
+		{
+			MethodName: "GetOauthAccount",
+			Handler:    _UserService_GetOauthAccount_Handler,
 		},
 		{
 			MethodName: "CreateUser",
