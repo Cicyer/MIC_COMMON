@@ -282,6 +282,7 @@ message MedicineListForQueryReq {
   string  medicineCode = 2;
   int64 managerId = 3;
   Page page = 4;
+  string activeStatus = 5;
 }
 
 message MedicineListForQueryResp {
@@ -519,6 +520,7 @@ message CommonMIReq {
   string  miCode = 2;
   int64 managerId = 3;
   Page page = 4;
+  string activeStatus =5;
 }
 
 message CommonMIResp {
@@ -572,6 +574,7 @@ message CommonCompanyReq {
   string  companyCode = 2;
   int64 managerId = 3;
   Page page = 4;
+  string activeStatus =5;
 }
 
 message CommonCompanyResp {
