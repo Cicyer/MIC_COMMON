@@ -2088,6 +2088,35 @@ message MedicineBindResp {
   int64 result = 1;
 }
 
+message ResetContractReq {
+  int64 managerId = 1;
+  repeated ResetContractParam param = 2;
+  int64        oldContractId = 3;
+  string       contractNo = 4;
+  string       tenderCompany = 5;
+  int64        medicineId = 6;
+  int64        companyId = 7;
+  int64        mibId = 8;
+  int64        medicinePrice = 9;
+  int64        medicineReceive = 10;
+  int64        totalAmount = 11;
+  google.protobuf.Timestamp    startAt = 12;
+  google.protobuf.Timestamp     endAt = 13;
+  int64        creator = 14;
+}
+
+message ResetContractParam {
+  int64 miId = 1;
+  int64 medicineAmount = 2;
+  int64 medicineSent = 3;
+  int64 medicineReceive = 4;
+}
+
+message ResetContractResp {
+  int64 result = 1;
+}
+
+
 service ManagerService {
   //合同相关
   rpc ListContract(ContractListReq) returns(ContractListResp);
@@ -2102,7 +2131,9 @@ service ManagerService {
   rpc GetContractInfo(GetContractInfoReq) returns(GetContractInfoResp);
   rpc CountContract(CountContractReq) returns(CountContractResp);
   rpc RefreshContract(RefreshContractReq) returns(RefreshContractResp);
-  //暂未使用 后期删除
+  //合同重置
+  rpc ResetContract(ResetContractReq) returns(ResetContractResp);
+  //暂未使用
   rpc ContractDetail(ContractDetailReq) returns(ContractDetailResp);
   rpc CheckContractList(UpCheckContractReq) returns(CheckContractListResp);
   //药品相关
