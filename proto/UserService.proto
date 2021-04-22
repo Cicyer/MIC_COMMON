@@ -171,6 +171,7 @@ message ResetOauthAccountReq {
   int64 organizationId = 2;
   int64 mibId = 3;
   int64 managerId = 4;
+  string organizationType = 5;
 }
 message GetOauthAccountReq {
   int64 organizationId = 1;
