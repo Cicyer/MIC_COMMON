@@ -160,7 +160,7 @@ message CreateOauthAccountReq {
   int64 organizationId = 1;
   string organizationType = 2;
   int64 mibId = 3;
-  int64 userId = 4;
+  int64 managerId = 4;
 }
 message CreateOauthAccountResp {
   string clientId = 1;
@@ -173,7 +173,7 @@ message GetOauthAccountReq {
   int64 organizationId = 1;
   string organizationType = 2;
   int64 mibId = 3;
-  int64 userId = 4;
+  int64 managerId = 4;
   //也可以直接指定clientId
   string clientId = 5;
 }
