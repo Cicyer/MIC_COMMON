@@ -25,6 +25,7 @@ type UserServiceClient interface {
 	ResetOauthAccountSecret(ctx context.Context, in *ResetOauthAccountReq, opts ...grpc.CallOption) (*CreateOauthAccountResp, error)
 	//获取某个指定平台组织的oauth账号信息
 	GetOauthAccount(ctx context.Context, in *GetOauthAccountReq, opts ...grpc.CallOption) (*GetOauthAccountResp, error)
+	BindOauthPermission(ctx context.Context, in *BindOauthPermissionReq, opts ...grpc.CallOption) (*OauthTokenResp, error)
 	CreateUser(ctx context.Context, in *CreateUserReq, opts ...grpc.CallOption) (*CreateUserResp, error)
 	UpdateUser(ctx context.Context, in *UpdateUserReq, opts ...grpc.CallOption) (*UpdateUserResp, error)
 	ListUser(ctx context.Context, in *ListUserReq, opts ...grpc.CallOption) (*ListUserResp, error)
@@ -89,6 +90,15 @@ func (c *userServiceClient) ResetOauthAccountSecret(ctx context.Context, in *Res
 func (c *userServiceClient) GetOauthAccount(ctx context.Context, in *GetOauthAccountReq, opts ...grpc.CallOption) (*GetOauthAccountResp, error) {
 	out := new(GetOauthAccountResp)
 	err := c.cc.Invoke(ctx, "/UserService.UserService/GetOauthAccount", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) BindOauthPermission(ctx context.Context, in *BindOauthPermissionReq, opts ...grpc.CallOption) (*OauthTokenResp, error) {
+	out := new(OauthTokenResp)
+	err := c.cc.Invoke(ctx, "/UserService.UserService/BindOauthPermission", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -161,6 +171,7 @@ type UserServiceServer interface {
 	ResetOauthAccountSecret(context.Context, *ResetOauthAccountReq) (*CreateOauthAccountResp, error)
 	//获取某个指定平台组织的oauth账号信息
 	GetOauthAccount(context.Context, *GetOauthAccountReq) (*GetOauthAccountResp, error)
+	BindOauthPermission(context.Context, *BindOauthPermissionReq) (*OauthTokenResp, error)
 	CreateUser(context.Context, *CreateUserReq) (*CreateUserResp, error)
 	UpdateUser(context.Context, *UpdateUserReq) (*UpdateUserResp, error)
 	ListUser(context.Context, *ListUserReq) (*ListUserResp, error)
@@ -191,6 +202,9 @@ func (UnimplementedUserServiceServer) ResetOauthAccountSecret(context.Context, *
 }
 func (UnimplementedUserServiceServer) GetOauthAccount(context.Context, *GetOauthAccountReq) (*GetOauthAccountResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetOauthAccount not implemented")
+}
+func (UnimplementedUserServiceServer) BindOauthPermission(context.Context, *BindOauthPermissionReq) (*OauthTokenResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BindOauthPermission not implemented")
 }
 func (UnimplementedUserServiceServer) CreateUser(context.Context, *CreateUserReq) (*CreateUserResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateUser not implemented")
@@ -331,6 +345,24 @@ func _UserService_GetOauthAccount_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserService_BindOauthPermission_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(BindOauthPermissionReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).BindOauthPermission(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/UserService.UserService/BindOauthPermission",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).BindOauthPermission(ctx, req.(*BindOauthPermissionReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _UserService_CreateUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateUserReq)
 	if err := dec(in); err != nil {
@@ -466,6 +498,10 @@ var _UserService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetOauthAccount",
 			Handler:    _UserService_GetOauthAccount_Handler,
+		},
+		{
+			MethodName: "BindOauthPermission",
+			Handler:    _UserService_BindOauthPermission_Handler,
 		},
 		{
 			MethodName: "CreateUser",
