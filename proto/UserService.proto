@@ -202,6 +202,13 @@ message GetOauthTokenReq {
   string organizationType = 3;
 }
 
+message BindOauthPermissionReq {
+  int64 organizationId = 1;
+  string organizationType = 2;
+  int64 mibId = 3;
+  int64 managerId = 4;
+  repeated string permissions = 5;
+}
 service UserService {
   rpc PassLogin(UserPassLoginReq) returns (UserPassLoginResp);
   rpc OauthToken(OauthTokenReq) returns (OauthTokenResp);
@@ -211,6 +218,7 @@ service UserService {
   rpc ResetOauthAccountSecret(ResetOauthAccountReq) returns (CreateOauthAccountResp);
   //获取某个指定平台组织的oauth账号信息
   rpc GetOauthAccount(GetOauthAccountReq) returns (GetOauthAccountResp);
+  rpc BindOauthPermission(BindOauthPermissionReq) returns (OauthTokenResp);
 
   rpc CreateUser(CreateUserReq) returns (CreateUserResp);
   rpc UpdateUser(UpdateUserReq) returns (UpdateUserResp);
