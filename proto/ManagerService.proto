@@ -2214,13 +2214,14 @@ service ManagerService {
 
 }
 
-
-message MiStockSyncReq{
-  repeated MiStockSyncParam param = 1;
+message StockSyncReq{
+  repeated StockSyncParam param = 1;
   int64 managerId = 2;
+  int64 orgId = 3;
+  int64 platFormType = 4;
 }
 
-message MiStockSyncParam{
+message StockSyncParam{
   string  medicineLinkCode = 1;
   string  medicineLinkName = 2;
   string  warehouseCode = 3;
@@ -2228,37 +2229,15 @@ message MiStockSyncParam{
   int32 stockNum = 5;
   sint32 num = 6;
   google.protobuf.Timestamp changeTime = 7;
-  int64 miId = 8;
 }
 
-message MiStockSyncResp{
-  int64 result = 1;
-}
-
-message ComStockSyncReq{
-  repeated MiStockSyncParam param = 1;
-  int64 managerId = 2;
-}
-
-message ComStockSyncParam{
-  string  medicineLinkCode = 1;
-  string  medicineLinkName = 2;
-  string  warehouseCode = 3;
-  string  changeType = 4;
-  int32 stockNum = 5;
-  sint32 num = 6;
-  google.protobuf.Timestamp changeTime = 7;
-  int64 comId = 8;
-}
-
-message ComStockSyncResp{
+message StockSyncResp{
   int64 result = 1;
 }
 
 // 库存service
 service StockService{
-  rpc MiStockSync(MiStockSyncReq) returns (MiStockSyncResp);
-  rpc ComStockSync(ComStockSyncReq) returns (ComStockSyncResp);
+  rpc StockSync(StockSyncReq) returns (StockSyncResp);
 }
 
 //=========数据报表服务================
