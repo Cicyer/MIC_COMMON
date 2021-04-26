@@ -520,7 +520,7 @@ message CommonMIReq {
   string  miCode = 2;
   int64 managerId = 3;
   Page page = 4;
-  string activeStatus =5;
+  string activeStatus = 5;
 }
 
 message CommonMIResp {
@@ -574,7 +574,7 @@ message CommonCompanyReq {
   string  companyCode = 2;
   int64 managerId = 3;
   Page page = 4;
-  string activeStatus =5;
+  string activeStatus = 5;
 }
 
 message CommonCompanyResp {
@@ -2214,6 +2214,53 @@ service ManagerService {
 
 }
 
+
+message MiStockSyncReq{
+  repeated MiStockSyncParam param = 1;
+  int64 managerId = 2;
+}
+
+message MiStockSyncParam{
+  string  medicineLinkCode = 1;
+  string  medicineLinkName = 2;
+  string  warehouseCode = 3;
+  string  changeType = 4;
+  int32 stockNum = 5;
+  sint32 num = 6;
+  google.protobuf.Timestamp changeTime = 7;
+  int64 miId = 8;
+}
+
+message MiStockSyncResp{
+  int64 result = 1;
+}
+
+message ComStockSyncReq{
+  repeated MiStockSyncParam param = 1;
+  int64 managerId = 2;
+}
+
+message ComStockSyncParam{
+  string  medicineLinkCode = 1;
+  string  medicineLinkName = 2;
+  string  warehouseCode = 3;
+  string  changeType = 4;
+  int32 stockNum = 5;
+  sint32 num = 6;
+  google.protobuf.Timestamp changeTime = 7;
+  int64 comId = 8;
+}
+
+message ComStockSyncResp{
+  int64 result = 1;
+}
+
+// 库存service
+service StockService{
+  rpc MiStockSync(MiStockSyncReq) returns (MiStockSyncResp);
+  rpc ComStockSync(ComStockSyncReq) returns (ComStockSyncResp);
+}
+
 //=========数据报表服务================
 service DataReportService {
   //查询招采计划 日报数据
@@ -2268,7 +2315,7 @@ service HashService {
 service RankService {
   //MI端使用按年查询药品履约率排名
   rpc GetShipmentRankMedicineDataYear(GetShipmentRankMedicineDataYearReq) returns (GetShipmentRankMedicineDataYearResp);
-  
+
   rpc GetShipmentRankCompanyDataYear(GetShipmentRankCompanyDataYearReq) returns (GetShipmentRankCompanyDataYearResp);
   //MIB端使用
   //查询医疗机构采购金额年度排名
