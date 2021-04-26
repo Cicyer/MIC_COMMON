@@ -2336,6 +2336,125 @@ var _ManagerService_serviceDesc = grpc.ServiceDesc{
 	Metadata: "ManagerService.proto",
 }
 
+// StockServiceClient is the client API for StockService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type StockServiceClient interface {
+	MiStockSync(ctx context.Context, in *MiStockSyncReq, opts ...grpc.CallOption) (*MiStockSyncResp, error)
+	ComStockSync(ctx context.Context, in *ComStockSyncReq, opts ...grpc.CallOption) (*ComStockSyncResp, error)
+}
+
+type stockServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewStockServiceClient(cc grpc.ClientConnInterface) StockServiceClient {
+	return &stockServiceClient{cc}
+}
+
+func (c *stockServiceClient) MiStockSync(ctx context.Context, in *MiStockSyncReq, opts ...grpc.CallOption) (*MiStockSyncResp, error) {
+	out := new(MiStockSyncResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.StockService/MiStockSync", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *stockServiceClient) ComStockSync(ctx context.Context, in *ComStockSyncReq, opts ...grpc.CallOption) (*ComStockSyncResp, error) {
+	out := new(ComStockSyncResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.StockService/ComStockSync", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// StockServiceServer is the server API for StockService service.
+// All implementations must embed UnimplementedStockServiceServer
+// for forward compatibility
+type StockServiceServer interface {
+	MiStockSync(context.Context, *MiStockSyncReq) (*MiStockSyncResp, error)
+	ComStockSync(context.Context, *ComStockSyncReq) (*ComStockSyncResp, error)
+	mustEmbedUnimplementedStockServiceServer()
+}
+
+// UnimplementedStockServiceServer must be embedded to have forward compatible implementations.
+type UnimplementedStockServiceServer struct {
+}
+
+func (UnimplementedStockServiceServer) MiStockSync(context.Context, *MiStockSyncReq) (*MiStockSyncResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MiStockSync not implemented")
+}
+func (UnimplementedStockServiceServer) ComStockSync(context.Context, *ComStockSyncReq) (*ComStockSyncResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ComStockSync not implemented")
+}
+func (UnimplementedStockServiceServer) mustEmbedUnimplementedStockServiceServer() {}
+
+// UnsafeStockServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to StockServiceServer will
+// result in compilation errors.
+type UnsafeStockServiceServer interface {
+	mustEmbedUnimplementedStockServiceServer()
+}
+
+func RegisterStockServiceServer(s grpc.ServiceRegistrar, srv StockServiceServer) {
+	s.RegisterService(&_StockService_serviceDesc, srv)
+}
+
+func _StockService_MiStockSync_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MiStockSyncReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StockServiceServer).MiStockSync(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.StockService/MiStockSync",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StockServiceServer).MiStockSync(ctx, req.(*MiStockSyncReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _StockService_ComStockSync_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ComStockSyncReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StockServiceServer).ComStockSync(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.StockService/ComStockSync",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StockServiceServer).ComStockSync(ctx, req.(*ComStockSyncReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _StockService_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "ManagerService.StockService",
+	HandlerType: (*StockServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "MiStockSync",
+			Handler:    _StockService_MiStockSync_Handler,
+		},
+		{
+			MethodName: "ComStockSync",
+			Handler:    _StockService_ComStockSync_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "ManagerService.proto",
+}
+
 // DataReportServiceClient is the client API for DataReportService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
