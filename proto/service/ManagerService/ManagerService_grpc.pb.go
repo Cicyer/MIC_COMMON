@@ -2340,8 +2340,7 @@ var _ManagerService_serviceDesc = grpc.ServiceDesc{
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type StockServiceClient interface {
-	MiStockSync(ctx context.Context, in *MiStockSyncReq, opts ...grpc.CallOption) (*MiStockSyncResp, error)
-	ComStockSync(ctx context.Context, in *ComStockSyncReq, opts ...grpc.CallOption) (*ComStockSyncResp, error)
+	StockSync(ctx context.Context, in *StockSyncReq, opts ...grpc.CallOption) (*StockSyncResp, error)
 }
 
 type stockServiceClient struct {
@@ -2352,18 +2351,9 @@ func NewStockServiceClient(cc grpc.ClientConnInterface) StockServiceClient {
 	return &stockServiceClient{cc}
 }
 
-func (c *stockServiceClient) MiStockSync(ctx context.Context, in *MiStockSyncReq, opts ...grpc.CallOption) (*MiStockSyncResp, error) {
-	out := new(MiStockSyncResp)
-	err := c.cc.Invoke(ctx, "/ManagerService.StockService/MiStockSync", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *stockServiceClient) ComStockSync(ctx context.Context, in *ComStockSyncReq, opts ...grpc.CallOption) (*ComStockSyncResp, error) {
-	out := new(ComStockSyncResp)
-	err := c.cc.Invoke(ctx, "/ManagerService.StockService/ComStockSync", in, out, opts...)
+func (c *stockServiceClient) StockSync(ctx context.Context, in *StockSyncReq, opts ...grpc.CallOption) (*StockSyncResp, error) {
+	out := new(StockSyncResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.StockService/StockSync", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -2374,8 +2364,7 @@ func (c *stockServiceClient) ComStockSync(ctx context.Context, in *ComStockSyncR
 // All implementations must embed UnimplementedStockServiceServer
 // for forward compatibility
 type StockServiceServer interface {
-	MiStockSync(context.Context, *MiStockSyncReq) (*MiStockSyncResp, error)
-	ComStockSync(context.Context, *ComStockSyncReq) (*ComStockSyncResp, error)
+	StockSync(context.Context, *StockSyncReq) (*StockSyncResp, error)
 	mustEmbedUnimplementedStockServiceServer()
 }
 
@@ -2383,11 +2372,8 @@ type StockServiceServer interface {
 type UnimplementedStockServiceServer struct {
 }
 
-func (UnimplementedStockServiceServer) MiStockSync(context.Context, *MiStockSyncReq) (*MiStockSyncResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MiStockSync not implemented")
-}
-func (UnimplementedStockServiceServer) ComStockSync(context.Context, *ComStockSyncReq) (*ComStockSyncResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ComStockSync not implemented")
+func (UnimplementedStockServiceServer) StockSync(context.Context, *StockSyncReq) (*StockSyncResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StockSync not implemented")
 }
 func (UnimplementedStockServiceServer) mustEmbedUnimplementedStockServiceServer() {}
 
@@ -2402,38 +2388,20 @@ func RegisterStockServiceServer(s grpc.ServiceRegistrar, srv StockServiceServer)
 	s.RegisterService(&_StockService_serviceDesc, srv)
 }
 
-func _StockService_MiStockSync_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MiStockSyncReq)
+func _StockService_StockSync_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StockSyncReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(StockServiceServer).MiStockSync(ctx, in)
+		return srv.(StockServiceServer).StockSync(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/ManagerService.StockService/MiStockSync",
+		FullMethod: "/ManagerService.StockService/StockSync",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StockServiceServer).MiStockSync(ctx, req.(*MiStockSyncReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _StockService_ComStockSync_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ComStockSyncReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(StockServiceServer).ComStockSync(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/ManagerService.StockService/ComStockSync",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StockServiceServer).ComStockSync(ctx, req.(*ComStockSyncReq))
+		return srv.(StockServiceServer).StockSync(ctx, req.(*StockSyncReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2443,12 +2411,8 @@ var _StockService_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*StockServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "MiStockSync",
-			Handler:    _StockService_MiStockSync_Handler,
-		},
-		{
-			MethodName: "ComStockSync",
-			Handler:    _StockService_ComStockSync_Handler,
+			MethodName: "StockSync",
+			Handler:    _StockService_StockSync_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
