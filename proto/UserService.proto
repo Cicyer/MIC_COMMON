@@ -227,3 +227,8 @@ service UserService {
   rpc DeleteUser(DeleteUserReq) returns (DeleteUserResp);
   rpc UserInfo(UserInfoReq) returns (UserDetail);
 }
+
+// 角色权限管理相关
+service RoleService {
+  //
+}
