@@ -2218,7 +2218,7 @@ message StockSyncReq{
   repeated StockSyncParam param = 1;
   int64 managerId = 2;
   int64 orgId = 3;
-  int64 platFormType = 4;
+  string platFormType = 4;
 }
 
 message StockSyncParam{
