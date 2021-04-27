@@ -2286,7 +2286,7 @@ message ComStockMedicineBindReq{
   string medicineCode = 2;
   string medicineName = 3;
   string medicineLinkCode = 4;
-  string companyCode = 5;
+  int64 companyId = 5;
   int64 bingId = 6;
 }
 
@@ -2299,7 +2299,7 @@ message MiStockMedicineBindReq{
   string medicineCode = 2;
   string medicineName = 3;
   string medicineLinkCode = 4;
-  string miCode = 5;
+  int64 miId = 5;
   int64 bingId = 6;
 }
 
