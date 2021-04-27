@@ -35,8 +35,8 @@ type Page struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	PageNumber int64 `protobuf:"varint,1,opt,name=pageNumber,proto3" json:"pageNumber"`
-	PageSize   int64 `protobuf:"varint,2,opt,name=pageSize,proto3" json:"pageSize"`
+	PageNumber int64 `protobuf:"varint,1,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+	PageSize   int64 `protobuf:"varint,2,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
 }
 
 func (x *Page) Reset() {
@@ -91,8 +91,8 @@ type GetContractInfoReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ShipmentPlanId int64 `protobuf:"varint,1,opt,name=shipmentPlanId,proto3" json:"shipmentPlanId"`
-	ManagerId      int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId"`
+	ShipmentPlanId int64 `protobuf:"varint,1,opt,name=shipmentPlanId,proto3" json:"shipmentPlanId,omitempty"`
+	ManagerId      int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *GetContractInfoReq) Reset() {
@@ -146,8 +146,8 @@ type GetContractInfoResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ContractId int64  `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId"`
-	ContractNo string `protobuf:"bytes,2,opt,name=contractNo,proto3" json:"contractNo"`
+	ContractId int64  `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId,omitempty"`
+	ContractNo string `protobuf:"bytes,2,opt,name=contractNo,proto3" json:"contractNo,omitempty"`
 }
 
 func (x *GetContractInfoResp) Reset() {
@@ -202,8 +202,8 @@ type CountContractReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MibId     int64 `protobuf:"varint,1,opt,name=mibId,proto3" json:"mibId"`
-	ManagerId int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId"`
+	MibId     int64 `protobuf:"varint,1,opt,name=mibId,proto3" json:"mibId,omitempty"`
+	ManagerId int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *CountContractReq) Reset() {
@@ -257,8 +257,8 @@ type CountContractResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CountContract int64 `protobuf:"varint,1,opt,name=countContract,proto3" json:"countContract"`
-	CountMoney    int64 `protobuf:"varint,2,opt,name=countMoney,proto3" json:"countMoney"`
+	CountContract int64 `protobuf:"varint,1,opt,name=countContract,proto3" json:"countContract,omitempty"`
+	CountMoney    int64 `protobuf:"varint,2,opt,name=countMoney,proto3" json:"countMoney,omitempty"`
 }
 
 func (x *CountContractResp) Reset() {
@@ -313,8 +313,8 @@ type ContractDetailReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ContractId int64 `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId"`
-	ManagerId  int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId"`
+	ContractId int64 `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId,omitempty"`
+	ManagerId  int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *ContractDetailReq) Reset() {
@@ -368,7 +368,7 @@ type ContractDetailResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List []*ContractDetailVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	List []*ContractDetailVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
 }
 
 func (x *ContractDetailResp) Reset() {
@@ -415,11 +415,11 @@ type ContractDetailVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Manufacturer    string `protobuf:"bytes,1,opt,name=manufacturer,proto3" json:"manufacturer"`
-	MiName          string `protobuf:"bytes,2,opt,name=miName,proto3" json:"miName"`
-	MedicineAmount  string `protobuf:"bytes,3,opt,name=medicineAmount,proto3" json:"medicineAmount"`
-	AllMoney        string `protobuf:"bytes,4,opt,name=allMoney,proto3" json:"allMoney"`
-	MedicineReceive string `protobuf:"bytes,5,opt,name=medicineReceive,proto3" json:"medicineReceive"`
+	Manufacturer    string `protobuf:"bytes,1,opt,name=manufacturer,proto3" json:"manufacturer,omitempty"`
+	MiName          string `protobuf:"bytes,2,opt,name=miName,proto3" json:"miName,omitempty"`
+	MedicineAmount  string `protobuf:"bytes,3,opt,name=medicineAmount,proto3" json:"medicineAmount,omitempty"`
+	AllMoney        string `protobuf:"bytes,4,opt,name=allMoney,proto3" json:"allMoney,omitempty"`
+	MedicineReceive string `protobuf:"bytes,5,opt,name=medicineReceive,proto3" json:"medicineReceive,omitempty"`
 }
 
 func (x *ContractDetailVo) Reset() {
@@ -495,21 +495,21 @@ type ContractListReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MedicineName   string                 `protobuf:"bytes,1,opt,name=medicineName,proto3" json:"medicineName"`
-	TenderCompany  string                 `protobuf:"bytes,2,opt,name=TenderCompany,proto3" json:"TenderCompany"`
-	StartAt        *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=StartAt,proto3" json:"StartAt"`
-	EndAt          *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=EndAt,proto3" json:"EndAt"`
-	CompanyName    string                 `protobuf:"bytes,5,opt,name=companyName,proto3" json:"companyName"`
-	TagId          int64                  `protobuf:"varint,6,opt,name=tagId,proto3" json:"tagId"`
-	ContractNo     string                 `protobuf:"bytes,7,opt,name=contractNo,proto3" json:"contractNo"`
-	ContractStatus string                 `protobuf:"bytes,8,opt,name=contractStatus,proto3" json:"contractStatus"`
-	Page           *Page                  `protobuf:"bytes,9,opt,name=page,proto3" json:"page"`
-	ManagerId      int64                  `protobuf:"varint,10,opt,name=managerId,proto3" json:"managerId"`
-	MedicineCode   string                 `protobuf:"bytes,11,opt,name=medicineCode,proto3" json:"medicineCode"`
+	MedicineName   string                 `protobuf:"bytes,1,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
+	TenderCompany  string                 `protobuf:"bytes,2,opt,name=TenderCompany,proto3" json:"TenderCompany,omitempty"`
+	StartAt        *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=StartAt,proto3" json:"StartAt,omitempty"`
+	EndAt          *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=EndAt,proto3" json:"EndAt,omitempty"`
+	CompanyName    string                 `protobuf:"bytes,5,opt,name=companyName,proto3" json:"companyName,omitempty"`
+	TagId          int64                  `protobuf:"varint,6,opt,name=tagId,proto3" json:"tagId,omitempty"`
+	ContractNo     string                 `protobuf:"bytes,7,opt,name=contractNo,proto3" json:"contractNo,omitempty"`
+	ContractStatus string                 `protobuf:"bytes,8,opt,name=contractStatus,proto3" json:"contractStatus,omitempty"`
+	Page           *Page                  `protobuf:"bytes,9,opt,name=page,proto3" json:"page,omitempty"`
+	ManagerId      int64                  `protobuf:"varint,10,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	MedicineCode   string                 `protobuf:"bytes,11,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
 	//备用
-	CompanyCode string `protobuf:"bytes,12,opt,name=companyCode,proto3" json:"companyCode"`
-	CompanyId   int64  `protobuf:"varint,13,opt,name=companyId,proto3" json:"companyId"`
-	MiId        int64  `protobuf:"varint,14,opt,name=miId,proto3" json:"miId"`
+	CompanyCode string `protobuf:"bytes,12,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
+	CompanyId   int64  `protobuf:"varint,13,opt,name=companyId,proto3" json:"companyId,omitempty"`
+	MiId        int64  `protobuf:"varint,14,opt,name=miId,proto3" json:"miId,omitempty"`
 }
 
 func (x *ContractListReq) Reset() {
@@ -647,10 +647,10 @@ type ContractListResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ContractListVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64             `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64             `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64             `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*ContractListVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64             `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64             `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64             `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *ContractListResp) Reset() {
@@ -718,27 +718,27 @@ type ContractListVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ContractId            int64                  `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId"`
-	ContractNo            string                 `protobuf:"bytes,2,opt,name=contractNo,proto3" json:"contractNo"`
-	MedicineName          string                 `protobuf:"bytes,3,opt,name=medicineName,proto3" json:"medicineName"`
-	MedicineCode          string                 `protobuf:"bytes,4,opt,name=medicineCode,proto3" json:"medicineCode"`
-	TagName               string                 `protobuf:"bytes,5,opt,name=tagName,proto3" json:"tagName"`
-	MedicineSpecification string                 `protobuf:"bytes,6,opt,name=medicineSpecification,proto3" json:"medicineSpecification"`
-	TenderCompany         string                 `protobuf:"bytes,7,opt,name=tenderCompany,proto3" json:"tenderCompany"`
-	CompanyName           string                 `protobuf:"bytes,8,opt,name=companyName,proto3" json:"companyName"`
-	MedicinePrice         int64                  `protobuf:"varint,9,opt,name=medicinePrice,proto3" json:"medicinePrice"`
-	TotalAmount           int64                  `protobuf:"varint,10,opt,name=totalAmount,proto3" json:"totalAmount"`
-	TotalMoney            int64                  `protobuf:"varint,11,opt,name=totalMoney,proto3" json:"totalMoney"`
-	StartAt               *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=startAt,proto3" json:"startAt"`
-	EndAt                 *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=endAt,proto3" json:"endAt"`
-	CreatedAt             *timestamppb.Timestamp `protobuf:"bytes,14,opt,name=createdAt,proto3" json:"createdAt"`
-	HashInfo              string                 `protobuf:"bytes,15,opt,name=hashInfo,proto3" json:"hashInfo"`
-	ActiveStatus          string                 `protobuf:"bytes,16,opt,name=activeStatus,proto3" json:"activeStatus"`
-	MedicineId            int64                  `protobuf:"varint,17,opt,name=medicineId,proto3" json:"medicineId"`
-	CompanyId             int64                  `protobuf:"varint,18,opt,name=companyId,proto3" json:"companyId"`
-	ContractMiAmount      int64                  `protobuf:"varint,19,opt,name=contractMiAmount,proto3" json:"contractMiAmount"`
-	ContractMiReceive     int64                  `protobuf:"varint,20,opt,name=contractMiReceive,proto3" json:"contractMiReceive"`
-	Manufacturer          string                 `protobuf:"bytes,21,opt,name=manufacturer,proto3" json:"manufacturer"`
+	ContractId            int64                  `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId,omitempty"`
+	ContractNo            string                 `protobuf:"bytes,2,opt,name=contractNo,proto3" json:"contractNo,omitempty"`
+	MedicineName          string                 `protobuf:"bytes,3,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
+	MedicineCode          string                 `protobuf:"bytes,4,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
+	TagName               string                 `protobuf:"bytes,5,opt,name=tagName,proto3" json:"tagName,omitempty"`
+	MedicineSpecification string                 `protobuf:"bytes,6,opt,name=medicineSpecification,proto3" json:"medicineSpecification,omitempty"`
+	TenderCompany         string                 `protobuf:"bytes,7,opt,name=tenderCompany,proto3" json:"tenderCompany,omitempty"`
+	CompanyName           string                 `protobuf:"bytes,8,opt,name=companyName,proto3" json:"companyName,omitempty"`
+	MedicinePrice         int64                  `protobuf:"varint,9,opt,name=medicinePrice,proto3" json:"medicinePrice,omitempty"`
+	TotalAmount           int64                  `protobuf:"varint,10,opt,name=totalAmount,proto3" json:"totalAmount,omitempty"`
+	TotalMoney            int64                  `protobuf:"varint,11,opt,name=totalMoney,proto3" json:"totalMoney,omitempty"`
+	StartAt               *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=startAt,proto3" json:"startAt,omitempty"`
+	EndAt                 *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=endAt,proto3" json:"endAt,omitempty"`
+	CreatedAt             *timestamppb.Timestamp `protobuf:"bytes,14,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	HashInfo              string                 `protobuf:"bytes,15,opt,name=hashInfo,proto3" json:"hashInfo,omitempty"`
+	ActiveStatus          string                 `protobuf:"bytes,16,opt,name=activeStatus,proto3" json:"activeStatus,omitempty"`
+	MedicineId            int64                  `protobuf:"varint,17,opt,name=medicineId,proto3" json:"medicineId,omitempty"`
+	CompanyId             int64                  `protobuf:"varint,18,opt,name=companyId,proto3" json:"companyId,omitempty"`
+	ContractMiAmount      int64                  `protobuf:"varint,19,opt,name=contractMiAmount,proto3" json:"contractMiAmount,omitempty"`
+	ContractMiReceive     int64                  `protobuf:"varint,20,opt,name=contractMiReceive,proto3" json:"contractMiReceive,omitempty"`
+	Manufacturer          string                 `protobuf:"bytes,21,opt,name=manufacturer,proto3" json:"manufacturer,omitempty"`
 }
 
 func (x *ContractListVo) Reset() {
@@ -926,8 +926,8 @@ type UpCheckContractReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Reqs      []*CheckContractParam `protobuf:"bytes,1,rep,name=reqs,proto3" json:"reqs"`
-	ManagerId int64                 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId"`
+	Reqs      []*CheckContractParam `protobuf:"bytes,1,rep,name=reqs,proto3" json:"reqs,omitempty"`
+	ManagerId int64                 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *UpCheckContractReq) Reset() {
@@ -981,10 +981,10 @@ type CheckContractParam struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MedicineId int64                  `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId"`
-	CompanyId  int64                  `protobuf:"varint,2,opt,name=companyId,proto3" json:"companyId"`
-	StartAt    *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=startAt,proto3" json:"startAt"`
-	EndAt      *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=endAt,proto3" json:"endAt"`
+	MedicineId int64                  `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId,omitempty"`
+	CompanyId  int64                  `protobuf:"varint,2,opt,name=companyId,proto3" json:"companyId,omitempty"`
+	StartAt    *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=startAt,proto3" json:"startAt,omitempty"`
+	EndAt      *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=endAt,proto3" json:"endAt,omitempty"`
 }
 
 func (x *CheckContractParam) Reset() {
@@ -1052,7 +1052,7 @@ type CheckContractListResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List []*ContractListVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	List []*ContractListVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
 }
 
 func (x *CheckContractListResp) Reset() {
@@ -1100,9 +1100,9 @@ type ContractMiListReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ContractId   int64 `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId"`
-	ContractMiId int64 `protobuf:"varint,2,opt,name=contractMiId,proto3" json:"contractMiId"`
-	ManagerId    int64 `protobuf:"varint,4,opt,name=managerId,proto3" json:"managerId"`
+	ContractId   int64 `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId,omitempty"`
+	ContractMiId int64 `protobuf:"varint,2,opt,name=contractMiId,proto3" json:"contractMiId,omitempty"`
+	ManagerId    int64 `protobuf:"varint,4,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *ContractMiListReq) Reset() {
@@ -1163,7 +1163,7 @@ type ContractMiListResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List []*ContractMiListVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	List []*ContractMiListVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
 }
 
 func (x *ContractMiListResp) Reset() {
@@ -1210,21 +1210,21 @@ type ContractMiListVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MiContractId          int64                  `protobuf:"varint,1,opt,name=miContractId,proto3" json:"miContractId"`
-	MedicineName          string                 `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName"`
-	MedicineCode          string                 `protobuf:"bytes,3,opt,name=medicineCode,proto3" json:"medicineCode"`
-	MiName                string                 `protobuf:"bytes,4,opt,name=miName,proto3" json:"miName"`
-	MedicinePrice         int64                  `protobuf:"varint,5,opt,name=medicinePrice,proto3" json:"medicinePrice"`
-	MedicineAmount        int64                  `protobuf:"varint,6,opt,name=medicineAmount,proto3" json:"medicineAmount"`
-	MedicineAmountMoney   int64                  `protobuf:"varint,7,opt,name=medicineAmountMoney,proto3" json:"medicineAmountMoney"`
-	HashInfo              string                 `protobuf:"bytes,8,opt,name=hashInfo,proto3" json:"hashInfo"`
-	InfoUploadAt          *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=infoUploadAt,proto3" json:"infoUploadAt"`
-	MedicineSpecification string                 `protobuf:"bytes,10,opt,name=medicineSpecification,proto3" json:"medicineSpecification"`
-	ContractMd5           string                 `protobuf:"bytes,11,opt,name=contractMd5,proto3" json:"contractMd5"`
-	ContractUrl           string                 `protobuf:"bytes,12,opt,name=contractUrl,proto3" json:"contractUrl"`
-	ActiveStatus          string                 `protobuf:"bytes,13,opt,name=activeStatus,proto3" json:"activeStatus"`
-	Manufacturer          string                 `protobuf:"bytes,14,opt,name=manufacturer,proto3" json:"manufacturer"`
-	MedicineReceive       int64                  `protobuf:"varint,15,opt,name=MedicineReceive,proto3" json:"MedicineReceive"`
+	MiContractId          int64                  `protobuf:"varint,1,opt,name=miContractId,proto3" json:"miContractId,omitempty"`
+	MedicineName          string                 `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
+	MedicineCode          string                 `protobuf:"bytes,3,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
+	MiName                string                 `protobuf:"bytes,4,opt,name=miName,proto3" json:"miName,omitempty"`
+	MedicinePrice         int64                  `protobuf:"varint,5,opt,name=medicinePrice,proto3" json:"medicinePrice,omitempty"`
+	MedicineAmount        int64                  `protobuf:"varint,6,opt,name=medicineAmount,proto3" json:"medicineAmount,omitempty"`
+	MedicineAmountMoney   int64                  `protobuf:"varint,7,opt,name=medicineAmountMoney,proto3" json:"medicineAmountMoney,omitempty"`
+	HashInfo              string                 `protobuf:"bytes,8,opt,name=hashInfo,proto3" json:"hashInfo,omitempty"`
+	InfoUploadAt          *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=infoUploadAt,proto3" json:"infoUploadAt,omitempty"`
+	MedicineSpecification string                 `protobuf:"bytes,10,opt,name=medicineSpecification,proto3" json:"medicineSpecification,omitempty"`
+	ContractMd5           string                 `protobuf:"bytes,11,opt,name=contractMd5,proto3" json:"contractMd5,omitempty"`
+	ContractUrl           string                 `protobuf:"bytes,12,opt,name=contractUrl,proto3" json:"contractUrl,omitempty"`
+	ActiveStatus          string                 `protobuf:"bytes,13,opt,name=activeStatus,proto3" json:"activeStatus,omitempty"`
+	Manufacturer          string                 `protobuf:"bytes,14,opt,name=manufacturer,proto3" json:"manufacturer,omitempty"`
+	MedicineReceive       int64                  `protobuf:"varint,15,opt,name=MedicineReceive,proto3" json:"MedicineReceive,omitempty"`
 }
 
 func (x *ContractMiListVo) Reset() {
@@ -1370,10 +1370,10 @@ type CreateOneContractMIReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MiId           int64 `protobuf:"varint,1,opt,name=miId,proto3" json:"miId"`
-	ContractId     int64 `protobuf:"varint,2,opt,name=contractId,proto3" json:"contractId"`
-	MedicineAmount int64 `protobuf:"varint,3,opt,name=medicineAmount,proto3" json:"medicineAmount"`
-	ManagerId      int64 `protobuf:"varint,4,opt,name=managerId,proto3" json:"managerId"`
+	MiId           int64 `protobuf:"varint,1,opt,name=miId,proto3" json:"miId,omitempty"`
+	ContractId     int64 `protobuf:"varint,2,opt,name=contractId,proto3" json:"contractId,omitempty"`
+	MedicineAmount int64 `protobuf:"varint,3,opt,name=medicineAmount,proto3" json:"medicineAmount,omitempty"`
+	ManagerId      int64 `protobuf:"varint,4,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *CreateOneContractMIReq) Reset() {
@@ -1441,7 +1441,7 @@ type CreateOneContractMIResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
 }
 
 func (x *CreateOneContractMIResp) Reset() {
@@ -1489,10 +1489,10 @@ type UpdateOneContractMIReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ContractMiId   int64 `protobuf:"varint,1,opt,name=contractMiId,proto3" json:"contractMiId"`
-	MiId           int64 `protobuf:"varint,2,opt,name=miId,proto3" json:"miId"`
-	MedicineAmount int64 `protobuf:"varint,3,opt,name=medicineAmount,proto3" json:"medicineAmount"`
-	ManagerId      int64 `protobuf:"varint,4,opt,name=managerId,proto3" json:"managerId"`
+	ContractMiId   int64 `protobuf:"varint,1,opt,name=contractMiId,proto3" json:"contractMiId,omitempty"`
+	MiId           int64 `protobuf:"varint,2,opt,name=miId,proto3" json:"miId,omitempty"`
+	MedicineAmount int64 `protobuf:"varint,3,opt,name=medicineAmount,proto3" json:"medicineAmount,omitempty"`
+	ManagerId      int64 `protobuf:"varint,4,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *UpdateOneContractMIReq) Reset() {
@@ -1560,7 +1560,7 @@ type UpdateOneContractMIResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
 }
 
 func (x *UpdateOneContractMIResp) Reset() {
@@ -1608,14 +1608,14 @@ type UpdateOneContractReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ContractId    int64                  `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId"`
-	MedicineId    int64                  `protobuf:"varint,2,opt,name=medicineId,proto3" json:"medicineId"`
-	MedicinePrice int64                  `protobuf:"varint,3,opt,name=medicinePrice,proto3" json:"medicinePrice"`
-	StartAt       *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=startAt,proto3" json:"startAt"`
-	EndAt         *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=endAt,proto3" json:"endAt"`
-	ManagerId     int64                  `protobuf:"varint,6,opt,name=managerId,proto3" json:"managerId"`
-	CompanyId     int64                  `protobuf:"varint,7,opt,name=companyId,proto3" json:"companyId"`
-	TenderCompany string                 `protobuf:"bytes,8,opt,name=tenderCompany,proto3" json:"tenderCompany"`
+	ContractId    int64                  `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId,omitempty"`
+	MedicineId    int64                  `protobuf:"varint,2,opt,name=medicineId,proto3" json:"medicineId,omitempty"`
+	MedicinePrice int64                  `protobuf:"varint,3,opt,name=medicinePrice,proto3" json:"medicinePrice,omitempty"`
+	StartAt       *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=startAt,proto3" json:"startAt,omitempty"`
+	EndAt         *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=endAt,proto3" json:"endAt,omitempty"`
+	ManagerId     int64                  `protobuf:"varint,6,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	CompanyId     int64                  `protobuf:"varint,7,opt,name=companyId,proto3" json:"companyId,omitempty"`
+	TenderCompany string                 `protobuf:"bytes,8,opt,name=tenderCompany,proto3" json:"tenderCompany,omitempty"`
 }
 
 func (x *UpdateOneContractReq) Reset() {
@@ -1711,7 +1711,7 @@ type UpdateOneContractResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
 }
 
 func (x *UpdateOneContractResp) Reset() {
@@ -1759,9 +1759,9 @@ type BatchOperateContractReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	UpdateParam []*BatchOperateContract `protobuf:"bytes,1,rep,name=updateParam,proto3" json:"updateParam"`
-	CreateParam []*BatchOperateContract `protobuf:"bytes,2,rep,name=createParam,proto3" json:"createParam"`
-	ManagerId   int64                   `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId"`
+	UpdateParam []*BatchOperateContract `protobuf:"bytes,1,rep,name=updateParam,proto3" json:"updateParam,omitempty"`
+	CreateParam []*BatchOperateContract `protobuf:"bytes,2,rep,name=createParam,proto3" json:"createParam,omitempty"`
+	ManagerId   int64                   `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *BatchOperateContractReq) Reset() {
@@ -1822,7 +1822,7 @@ type BatchOperateContractResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
 }
 
 func (x *BatchOperateContractResp) Reset() {
@@ -1869,14 +1869,14 @@ type BatchOperateContract struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ContractId    int64                  `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId"`
-	MedicineId    int64                  `protobuf:"varint,2,opt,name=medicineId,proto3" json:"medicineId"`
-	MedicinePrice int64                  `protobuf:"varint,3,opt,name=medicinePrice,proto3" json:"medicinePrice"`
-	StartAt       *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=startAt,proto3" json:"startAt"`
-	EndAt         *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=endAt,proto3" json:"endAt"`
-	ManagerId     int64                  `protobuf:"varint,6,opt,name=managerId,proto3" json:"managerId"`
-	CompanyId     int64                  `protobuf:"varint,7,opt,name=companyId,proto3" json:"companyId"`
-	TenderCompany string                 `protobuf:"bytes,8,opt,name=tenderCompany,proto3" json:"tenderCompany"`
+	ContractId    int64                  `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId,omitempty"`
+	MedicineId    int64                  `protobuf:"varint,2,opt,name=medicineId,proto3" json:"medicineId,omitempty"`
+	MedicinePrice int64                  `protobuf:"varint,3,opt,name=medicinePrice,proto3" json:"medicinePrice,omitempty"`
+	StartAt       *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=startAt,proto3" json:"startAt,omitempty"`
+	EndAt         *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=endAt,proto3" json:"endAt,omitempty"`
+	ManagerId     int64                  `protobuf:"varint,6,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	CompanyId     int64                  `protobuf:"varint,7,opt,name=companyId,proto3" json:"companyId,omitempty"`
+	TenderCompany string                 `protobuf:"bytes,8,opt,name=tenderCompany,proto3" json:"tenderCompany,omitempty"`
 }
 
 func (x *BatchOperateContract) Reset() {
@@ -1973,9 +1973,9 @@ type UpdateContractActiveReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ContractId   int64  `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId"`
-	ActiveStatus string `protobuf:"bytes,2,opt,name=activeStatus,proto3" json:"activeStatus"`
-	ManagerId    int64  `protobuf:"varint,6,opt,name=managerId,proto3" json:"managerId"`
+	ContractId   int64  `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId,omitempty"`
+	ActiveStatus string `protobuf:"bytes,2,opt,name=activeStatus,proto3" json:"activeStatus,omitempty"`
+	ManagerId    int64  `protobuf:"varint,6,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *UpdateContractActiveReq) Reset() {
@@ -2036,7 +2036,7 @@ type UpdateContractActiveResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
 }
 
 func (x *UpdateContractActiveResp) Reset() {
@@ -2084,9 +2084,9 @@ type RefreshContractReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ContractId int64  `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId"`
-	ContractNo string `protobuf:"bytes,2,opt,name=contractNo,proto3" json:"contractNo"`
-	ManagerId  int64  `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId"`
+	ContractId int64  `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId,omitempty"`
+	ContractNo string `protobuf:"bytes,2,opt,name=contractNo,proto3" json:"contractNo,omitempty"`
+	ManagerId  int64  `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *RefreshContractReq) Reset() {
@@ -2147,7 +2147,7 @@ type RefreshContractResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
 }
 
 func (x *RefreshContractResp) Reset() {
@@ -2195,8 +2195,8 @@ type DeleteOneContractReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ContractId int64 `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId"`
-	ManagerId  int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId"`
+	ContractId int64 `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId,omitempty"`
+	ManagerId  int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *DeleteOneContractReq) Reset() {
@@ -2250,7 +2250,7 @@ type DeleteOneContractResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
 }
 
 func (x *DeleteOneContractResp) Reset() {
@@ -2298,8 +2298,8 @@ type DeleteOneContractMiReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ContractMiId int64 `protobuf:"varint,1,opt,name=contractMiId,proto3" json:"contractMiId"`
-	ManagerId    int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId"`
+	ContractMiId int64 `protobuf:"varint,1,opt,name=contractMiId,proto3" json:"contractMiId,omitempty"`
+	ManagerId    int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *DeleteOneContractMiReq) Reset() {
@@ -2353,7 +2353,7 @@ type DeleteOneContractMiResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
 }
 
 func (x *DeleteOneContractMiResp) Reset() {
@@ -2401,12 +2401,12 @@ type MedicineListReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MedicineName string `protobuf:"bytes,1,opt,name=medicineName,proto3" json:"medicineName"`
-	MedicineCode string `protobuf:"bytes,2,opt,name=medicineCode,proto3" json:"medicineCode"`
-	TagId        int64  `protobuf:"varint,3,opt,name=tagId,proto3" json:"tagId"`
-	Manufacturer string `protobuf:"bytes,4,opt,name=manufacturer,proto3" json:"manufacturer"`
-	Page         *Page  `protobuf:"bytes,5,opt,name=page,proto3" json:"page"`
-	ManagerId    int64  `protobuf:"varint,6,opt,name=managerId,proto3" json:"managerId"`
+	MedicineName string `protobuf:"bytes,1,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
+	MedicineCode string `protobuf:"bytes,2,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
+	TagId        int64  `protobuf:"varint,3,opt,name=tagId,proto3" json:"tagId,omitempty"`
+	Manufacturer string `protobuf:"bytes,4,opt,name=manufacturer,proto3" json:"manufacturer,omitempty"`
+	Page         *Page  `protobuf:"bytes,5,opt,name=page,proto3" json:"page,omitempty"`
+	ManagerId    int64  `protobuf:"varint,6,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *MedicineListReq) Reset() {
@@ -2488,10 +2488,10 @@ type MedicineListResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*MedicineListVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64             `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64             `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64             `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*MedicineListVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64             `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64             `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64             `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *MedicineListResp) Reset() {
@@ -2559,19 +2559,19 @@ type MedicineListVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MedicineId            int64                  `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId"`
-	MedicineName          string                 `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName"`
-	MedicineCode          string                 `protobuf:"bytes,3,opt,name=medicineCode,proto3" json:"medicineCode"`
-	MedicineSpecification string                 `protobuf:"bytes,4,opt,name=medicineSpecification,proto3" json:"medicineSpecification"`
-	MedicineForm          string                 `protobuf:"bytes,5,opt,name=medicineForm,proto3" json:"medicineForm"`
-	MedicinePackage       string                 `protobuf:"bytes,6,opt,name=medicinePackage,proto3" json:"medicinePackage"`
-	CalculateRate         int64                  `protobuf:"varint,7,opt,name=calculateRate,proto3" json:"calculateRate"`
-	Manufacturer          string                 `protobuf:"bytes,8,opt,name=manufacturer,proto3" json:"manufacturer"`
-	CreatedAt             *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=createdAt,proto3" json:"createdAt"`
-	MedicineUnit          string                 `protobuf:"bytes,10,opt,name=medicineUnit,proto3" json:"medicineUnit"`
-	HashInfo              string                 `protobuf:"bytes,11,opt,name=hashInfo,proto3" json:"hashInfo"`
-	TagName               string                 `protobuf:"bytes,12,opt,name=tagName,proto3" json:"tagName"`
-	ActiveStatus          string                 `protobuf:"bytes,13,opt,name=activeStatus,proto3" json:"activeStatus"`
+	MedicineId            int64                  `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId,omitempty"`
+	MedicineName          string                 `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
+	MedicineCode          string                 `protobuf:"bytes,3,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
+	MedicineSpecification string                 `protobuf:"bytes,4,opt,name=medicineSpecification,proto3" json:"medicineSpecification,omitempty"`
+	MedicineForm          string                 `protobuf:"bytes,5,opt,name=medicineForm,proto3" json:"medicineForm,omitempty"`
+	MedicinePackage       string                 `protobuf:"bytes,6,opt,name=medicinePackage,proto3" json:"medicinePackage,omitempty"`
+	CalculateRate         int64                  `protobuf:"varint,7,opt,name=calculateRate,proto3" json:"calculateRate,omitempty"`
+	Manufacturer          string                 `protobuf:"bytes,8,opt,name=manufacturer,proto3" json:"manufacturer,omitempty"`
+	CreatedAt             *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	MedicineUnit          string                 `protobuf:"bytes,10,opt,name=medicineUnit,proto3" json:"medicineUnit,omitempty"`
+	HashInfo              string                 `protobuf:"bytes,11,opt,name=hashInfo,proto3" json:"hashInfo,omitempty"`
+	TagName               string                 `protobuf:"bytes,12,opt,name=tagName,proto3" json:"tagName,omitempty"`
+	ActiveStatus          string                 `protobuf:"bytes,13,opt,name=activeStatus,proto3" json:"activeStatus,omitempty"`
 }
 
 func (x *MedicineListVo) Reset() {
@@ -2703,10 +2703,10 @@ type MedicineListForQueryReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MedicineName string `protobuf:"bytes,1,opt,name=medicineName,proto3" json:"medicineName"`
-	MedicineCode string `protobuf:"bytes,2,opt,name=medicineCode,proto3" json:"medicineCode"`
-	ManagerId    int64  `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId"`
-	Page         *Page  `protobuf:"bytes,4,opt,name=page,proto3" json:"page"`
+	MedicineName string `protobuf:"bytes,1,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
+	MedicineCode string `protobuf:"bytes,2,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
+	ManagerId    int64  `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	Page         *Page  `protobuf:"bytes,4,opt,name=page,proto3" json:"page,omitempty"`
 }
 
 func (x *MedicineListForQueryReq) Reset() {
@@ -2774,10 +2774,10 @@ type MedicineListForQueryResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*MedicineListVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64             `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64             `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64             `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*MedicineListVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64             `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64             `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64             `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *MedicineListForQueryResp) Reset() {
@@ -2845,9 +2845,9 @@ type MedicineListForQueryVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MedicineId   int64  `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId"`
-	MedicineName string `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName"`
-	MedicineCode string `protobuf:"bytes,3,opt,name=medicineCode,proto3" json:"medicineCode"`
+	MedicineId   int64  `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId,omitempty"`
+	MedicineName string `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
+	MedicineCode string `protobuf:"bytes,3,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
 }
 
 func (x *MedicineListForQueryVo) Reset() {
@@ -2909,15 +2909,15 @@ type CreateMedicineReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MedicineName          string `protobuf:"bytes,1,opt,name=medicineName,proto3" json:"medicineName"`
-	MedicineCode          string `protobuf:"bytes,2,opt,name=medicineCode,proto3" json:"medicineCode"`
-	MedicineSpecification string `protobuf:"bytes,3,opt,name=medicineSpecification,proto3" json:"medicineSpecification"`
-	MedicineForm          string `protobuf:"bytes,4,opt,name=medicineForm,proto3" json:"medicineForm"`
-	MedicinePackage       string `protobuf:"bytes,5,opt,name=medicinePackage,proto3" json:"medicinePackage"`
-	CalculateRate         int64  `protobuf:"varint,6,opt,name=calculateRate,proto3" json:"calculateRate"`
-	Manufacturer          string `protobuf:"bytes,7,opt,name=manufacturer,proto3" json:"manufacturer"`
-	MedicineUnit          string `protobuf:"bytes,8,opt,name=medicineUnit,proto3" json:"medicineUnit"`
-	ManagerId             int64  `protobuf:"varint,9,opt,name=managerId,proto3" json:"managerId"`
+	MedicineName          string `protobuf:"bytes,1,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
+	MedicineCode          string `protobuf:"bytes,2,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
+	MedicineSpecification string `protobuf:"bytes,3,opt,name=medicineSpecification,proto3" json:"medicineSpecification,omitempty"`
+	MedicineForm          string `protobuf:"bytes,4,opt,name=medicineForm,proto3" json:"medicineForm,omitempty"`
+	MedicinePackage       string `protobuf:"bytes,5,opt,name=medicinePackage,proto3" json:"medicinePackage,omitempty"`
+	CalculateRate         int64  `protobuf:"varint,6,opt,name=calculateRate,proto3" json:"calculateRate,omitempty"`
+	Manufacturer          string `protobuf:"bytes,7,opt,name=manufacturer,proto3" json:"manufacturer,omitempty"`
+	MedicineUnit          string `protobuf:"bytes,8,opt,name=medicineUnit,proto3" json:"medicineUnit,omitempty"`
+	ManagerId             int64  `protobuf:"varint,9,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *CreateMedicineReq) Reset() {
@@ -3020,7 +3020,7 @@ type CreateMedicineResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
 }
 
 func (x *CreateMedicineResp) Reset() {
@@ -3068,8 +3068,8 @@ type CreateBatchMedicineReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List      []*CreateMedicineReq `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	ManagerId int64                `protobuf:"varint,9,opt,name=managerId,proto3" json:"managerId"`
+	List      []*CreateMedicineReq `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	ManagerId int64                `protobuf:"varint,9,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *CreateBatchMedicineReq) Reset() {
@@ -3123,7 +3123,7 @@ type CreateBatchMedicineResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
 }
 
 func (x *CreateBatchMedicineResp) Reset() {
@@ -3171,16 +3171,16 @@ type UpdateMedicineReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MedicineId            int64  `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId"`
-	MedicineName          string `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName"`
-	MedicineCode          string `protobuf:"bytes,3,opt,name=medicineCode,proto3" json:"medicineCode"`
-	MedicineSpecification string `protobuf:"bytes,4,opt,name=medicineSpecification,proto3" json:"medicineSpecification"`
-	MedicineForm          string `protobuf:"bytes,5,opt,name=medicineForm,proto3" json:"medicineForm"`
-	MedicinePackage       string `protobuf:"bytes,6,opt,name=medicinePackage,proto3" json:"medicinePackage"`
-	CalculateRate         int64  `protobuf:"varint,7,opt,name=calculateRate,proto3" json:"calculateRate"`
-	Manufacturer          string `protobuf:"bytes,8,opt,name=manufacturer,proto3" json:"manufacturer"`
-	MedicineUnit          string `protobuf:"bytes,9,opt,name=medicineUnit,proto3" json:"medicineUnit"`
-	ManagerId             int64  `protobuf:"varint,10,opt,name=managerId,proto3" json:"managerId"`
+	MedicineId            int64  `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId,omitempty"`
+	MedicineName          string `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
+	MedicineCode          string `protobuf:"bytes,3,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
+	MedicineSpecification string `protobuf:"bytes,4,opt,name=medicineSpecification,proto3" json:"medicineSpecification,omitempty"`
+	MedicineForm          string `protobuf:"bytes,5,opt,name=medicineForm,proto3" json:"medicineForm,omitempty"`
+	MedicinePackage       string `protobuf:"bytes,6,opt,name=medicinePackage,proto3" json:"medicinePackage,omitempty"`
+	CalculateRate         int64  `protobuf:"varint,7,opt,name=calculateRate,proto3" json:"calculateRate,omitempty"`
+	Manufacturer          string `protobuf:"bytes,8,opt,name=manufacturer,proto3" json:"manufacturer,omitempty"`
+	MedicineUnit          string `protobuf:"bytes,9,opt,name=medicineUnit,proto3" json:"medicineUnit,omitempty"`
+	ManagerId             int64  `protobuf:"varint,10,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *UpdateMedicineReq) Reset() {
@@ -3290,7 +3290,7 @@ type UpdateMedicineResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
 }
 
 func (x *UpdateMedicineResp) Reset() {
@@ -3338,9 +3338,9 @@ type UpdateMedicineActiveReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MedicineId   int64  `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId"`
-	ActiveStatus string `protobuf:"bytes,2,opt,name=activeStatus,proto3" json:"activeStatus"`
-	ManagerId    int64  `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId"`
+	MedicineId   int64  `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId,omitempty"`
+	ActiveStatus string `protobuf:"bytes,2,opt,name=activeStatus,proto3" json:"activeStatus,omitempty"`
+	ManagerId    int64  `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *UpdateMedicineActiveReq) Reset() {
@@ -3401,7 +3401,7 @@ type UpdateMedicineActiveResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=Result,proto3" json:"Result"`
+	Result int64 `protobuf:"varint,1,opt,name=Result,proto3" json:"Result,omitempty"`
 }
 
 func (x *UpdateMedicineActiveResp) Reset() {
@@ -3449,8 +3449,8 @@ type DeleteMedicineReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MedicineCode string `protobuf:"bytes,1,opt,name=medicineCode,proto3" json:"medicineCode"`
-	ManagerId    int64  `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId"`
+	MedicineCode string `protobuf:"bytes,1,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
+	ManagerId    int64  `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *DeleteMedicineReq) Reset() {
@@ -3504,7 +3504,7 @@ type DeleteMedicineResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=Result,proto3" json:"Result"`
+	Result int64 `protobuf:"varint,1,opt,name=Result,proto3" json:"Result,omitempty"`
 }
 
 func (x *DeleteMedicineResp) Reset() {
@@ -3552,8 +3552,8 @@ type SelectTagByMedicineIdReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MedicineId int64 `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId"`
-	ManagerId  int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId"`
+	MedicineId int64 `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId,omitempty"`
+	ManagerId  int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *SelectTagByMedicineIdReq) Reset() {
@@ -3607,7 +3607,7 @@ type SelectTagByMedicineIdResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	TagNames string `protobuf:"bytes,1,opt,name=tagNames,proto3" json:"tagNames"`
+	TagNames string `protobuf:"bytes,1,opt,name=tagNames,proto3" json:"tagNames,omitempty"`
 }
 
 func (x *SelectTagByMedicineIdResp) Reset() {
@@ -3655,8 +3655,8 @@ type SelectInfoByMedicineNamesReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MedicineNames []string `protobuf:"bytes,1,rep,name=medicineNames,proto3" json:"medicineNames"`
-	ManagerId     int64    `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId"`
+	MedicineNames []string `protobuf:"bytes,1,rep,name=medicineNames,proto3" json:"medicineNames,omitempty"`
+	ManagerId     int64    `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *SelectInfoByMedicineNamesReq) Reset() {
@@ -3710,7 +3710,7 @@ type SelectInfoByMedicineNamesResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List []*MedicineListForQueryVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	List []*MedicineListForQueryVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
 }
 
 func (x *SelectInfoByMedicineNamesResp) Reset() {
@@ -3758,10 +3758,10 @@ type TagListReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	TagType   string `protobuf:"bytes,1,opt,name=tagType,proto3" json:"tagType"`
-	ManagerId int64  `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId"`
-	TagName   string `protobuf:"bytes,3,opt,name=tagName,proto3" json:"tagName"`
-	Page      *Page  `protobuf:"bytes,4,opt,name=page,proto3" json:"page"`
+	TagType   string `protobuf:"bytes,1,opt,name=tagType,proto3" json:"tagType,omitempty"`
+	ManagerId int64  `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	TagName   string `protobuf:"bytes,3,opt,name=tagName,proto3" json:"tagName,omitempty"`
+	Page      *Page  `protobuf:"bytes,4,opt,name=page,proto3" json:"page,omitempty"`
 }
 
 func (x *TagListReq) Reset() {
@@ -3829,10 +3829,10 @@ type TagListResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*TagListVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64        `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64        `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64        `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*TagListVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64        `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64        `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64        `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *TagListResp) Reset() {
@@ -3900,9 +3900,9 @@ type TagListVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	TagId   int64  `protobuf:"varint,1,opt,name=tagId,proto3" json:"tagId"`
-	TagName string `protobuf:"bytes,2,opt,name=tagName,proto3" json:"tagName"`
-	TagType string `protobuf:"bytes,3,opt,name=tagType,proto3" json:"tagType"`
+	TagId   int64  `protobuf:"varint,1,opt,name=tagId,proto3" json:"tagId,omitempty"`
+	TagName string `protobuf:"bytes,2,opt,name=tagName,proto3" json:"tagName,omitempty"`
+	TagType string `protobuf:"bytes,3,opt,name=tagType,proto3" json:"tagType,omitempty"`
 }
 
 func (x *TagListVo) Reset() {
@@ -3964,9 +3964,9 @@ type CreateTagReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	TagType   string `protobuf:"bytes,1,opt,name=tagType,proto3" json:"tagType"`
-	TagName   string `protobuf:"bytes,2,opt,name=tagName,proto3" json:"tagName"`
-	ManagerId int64  `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId"`
+	TagType   string `protobuf:"bytes,1,opt,name=tagType,proto3" json:"tagType,omitempty"`
+	TagName   string `protobuf:"bytes,2,opt,name=tagName,proto3" json:"tagName,omitempty"`
+	ManagerId int64  `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *CreateTagReq) Reset() {
@@ -4027,7 +4027,7 @@ type CreateTagResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
 }
 
 func (x *CreateTagResp) Reset() {
@@ -4075,9 +4075,9 @@ type UpdateTagReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	TagId     int64  `protobuf:"varint,1,opt,name=tagId,proto3" json:"tagId"`
-	TagName   string `protobuf:"bytes,2,opt,name=tagName,proto3" json:"tagName"`
-	ManagerId int64  `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId"`
+	TagId     int64  `protobuf:"varint,1,opt,name=tagId,proto3" json:"tagId,omitempty"`
+	TagName   string `protobuf:"bytes,2,opt,name=tagName,proto3" json:"tagName,omitempty"`
+	ManagerId int64  `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *UpdateTagReq) Reset() {
@@ -4138,7 +4138,7 @@ type UpdateTagResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
 }
 
 func (x *UpdateTagResp) Reset() {
@@ -4186,8 +4186,8 @@ type DeleteTagReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	TagId     int64 `protobuf:"varint,1,opt,name=tagId,proto3" json:"tagId"`
-	ManagerId int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId"`
+	TagId     int64 `protobuf:"varint,1,opt,name=tagId,proto3" json:"tagId,omitempty"`
+	ManagerId int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *DeleteTagReq) Reset() {
@@ -4280,9 +4280,9 @@ type TagDetailListReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	TagId     int64 `protobuf:"varint,1,opt,name=tagId,proto3" json:"tagId"`
-	ManagerId int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId"`
-	Page      *Page `protobuf:"bytes,3,opt,name=page,proto3" json:"page"`
+	TagId     int64 `protobuf:"varint,1,opt,name=tagId,proto3" json:"tagId,omitempty"`
+	ManagerId int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	Page      *Page `protobuf:"bytes,3,opt,name=page,proto3" json:"page,omitempty"`
 }
 
 func (x *TagDetailListReq) Reset() {
@@ -4343,10 +4343,10 @@ type TagDetailListResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*TagDetailVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64          `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64          `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64          `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*TagDetailVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64          `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64          `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64          `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *TagDetailListResp) Reset() {
@@ -4414,13 +4414,13 @@ type TagDetailVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MedicineId            int64  `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId"`
-	MedicineName          string `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName"`
-	MedicineCode          string `protobuf:"bytes,3,opt,name=medicineCode,proto3" json:"medicineCode"`
-	MedicineUnit          string `protobuf:"bytes,4,opt,name=medicineUnit,proto3" json:"medicineUnit"`
-	MedicineForm          string `protobuf:"bytes,5,opt,name=medicineForm,proto3" json:"medicineForm"`
-	MedicineSpecification string `protobuf:"bytes,6,opt,name=medicineSpecification,proto3" json:"medicineSpecification"`
-	Manufacturer          string `protobuf:"bytes,7,opt,name=manufacturer,proto3" json:"manufacturer"`
+	MedicineId            int64  `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId,omitempty"`
+	MedicineName          string `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
+	MedicineCode          string `protobuf:"bytes,3,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
+	MedicineUnit          string `protobuf:"bytes,4,opt,name=medicineUnit,proto3" json:"medicineUnit,omitempty"`
+	MedicineForm          string `protobuf:"bytes,5,opt,name=medicineForm,proto3" json:"medicineForm,omitempty"`
+	MedicineSpecification string `protobuf:"bytes,6,opt,name=medicineSpecification,proto3" json:"medicineSpecification,omitempty"`
+	Manufacturer          string `protobuf:"bytes,7,opt,name=manufacturer,proto3" json:"manufacturer,omitempty"`
 }
 
 func (x *TagDetailVo) Reset() {
@@ -4510,9 +4510,9 @@ type DeleteTagMedicineReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	TagId      int64 `protobuf:"varint,1,opt,name=tagId,proto3" json:"tagId"`
-	MedicineId int64 `protobuf:"varint,2,opt,name=medicineId,proto3" json:"medicineId"`
-	ManagerId  int64 `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId"`
+	TagId      int64 `protobuf:"varint,1,opt,name=tagId,proto3" json:"tagId,omitempty"`
+	MedicineId int64 `protobuf:"varint,2,opt,name=medicineId,proto3" json:"medicineId,omitempty"`
+	ManagerId  int64 `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *DeleteTagMedicineReq) Reset() {
@@ -4573,7 +4573,7 @@ type DeleteTagMedicineResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
 }
 
 func (x *DeleteTagMedicineResp) Reset() {
@@ -4621,9 +4621,9 @@ type CreateTagMedicineReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	TagId      int64 `protobuf:"varint,1,opt,name=tagId,proto3" json:"tagId"`
-	MedicineId int64 `protobuf:"varint,2,opt,name=medicineId,proto3" json:"medicineId"`
-	ManagerId  int64 `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId"`
+	TagId      int64 `protobuf:"varint,1,opt,name=tagId,proto3" json:"tagId,omitempty"`
+	MedicineId int64 `protobuf:"varint,2,opt,name=medicineId,proto3" json:"medicineId,omitempty"`
+	ManagerId  int64 `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *CreateTagMedicineReq) Reset() {
@@ -4684,7 +4684,7 @@ type CreateTagMedicineResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
 }
 
 func (x *CreateTagMedicineResp) Reset() {
@@ -4732,10 +4732,10 @@ type CommonMedicineQueryReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MedicineCode string `protobuf:"bytes,1,opt,name=medicineCode,proto3" json:"medicineCode"`
-	MedicineName string `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName"`
-	TagId        int64  `protobuf:"varint,3,opt,name=tagId,proto3" json:"tagId"`
-	ManagerId    int64  `protobuf:"varint,4,opt,name=managerId,proto3" json:"managerId"`
+	MedicineCode string `protobuf:"bytes,1,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
+	MedicineName string `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
+	TagId        int64  `protobuf:"varint,3,opt,name=tagId,proto3" json:"tagId,omitempty"`
+	ManagerId    int64  `protobuf:"varint,4,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *CommonMedicineQueryReq) Reset() {
@@ -4803,7 +4803,7 @@ type CommonMedicineQueryResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List []*TagMedicineVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	List []*TagMedicineVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
 }
 
 func (x *CommonMedicineQueryResp) Reset() {
@@ -4850,9 +4850,9 @@ type TagMedicineVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MedicineId   int64  `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId"`
-	MedicineName string `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName"`
-	MedicineCode string `protobuf:"bytes,3,opt,name=medicineCode,proto3" json:"medicineCode"`
+	MedicineId   int64  `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId,omitempty"`
+	MedicineName string `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
+	MedicineCode string `protobuf:"bytes,3,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
 }
 
 func (x *TagMedicineVo) Reset() {
@@ -4914,12 +4914,12 @@ type ListMiReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MiCode      string  `protobuf:"bytes,1,opt,name=miCode,proto3" json:"miCode"`
-	MiName      string  `protobuf:"bytes,2,opt,name=miName,proto3" json:"miName"`
-	ValidStatus string  `protobuf:"bytes,3,opt,name=validStatus,proto3" json:"validStatus"`
-	Page        *Page   `protobuf:"bytes,4,opt,name=page,proto3" json:"page"`
-	ManagerId   int64   `protobuf:"varint,5,opt,name=managerId,proto3" json:"managerId"`
-	MiIds       []int64 `protobuf:"varint,6,rep,packed,name=miIds,proto3" json:"miIds"`
+	MiCode      string  `protobuf:"bytes,1,opt,name=miCode,proto3" json:"miCode,omitempty"`
+	MiName      string  `protobuf:"bytes,2,opt,name=miName,proto3" json:"miName,omitempty"`
+	ValidStatus string  `protobuf:"bytes,3,opt,name=validStatus,proto3" json:"validStatus,omitempty"`
+	Page        *Page   `protobuf:"bytes,4,opt,name=page,proto3" json:"page,omitempty"`
+	ManagerId   int64   `protobuf:"varint,5,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	MiIds       []int64 `protobuf:"varint,6,rep,packed,name=miIds,proto3" json:"miIds,omitempty"`
 }
 
 func (x *ListMiReq) Reset() {
@@ -5001,10 +5001,10 @@ type ListMiResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ListMiVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64       `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64       `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64       `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*ListMiVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64       `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64       `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64       `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *ListMiResp) Reset() {
@@ -5072,17 +5072,17 @@ type ListMiVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MiId         int64                  `protobuf:"varint,1,opt,name=miId,proto3" json:"miId"`
-	MiCode       string                 `protobuf:"bytes,2,opt,name=miCode,proto3" json:"miCode"`
-	MiName       string                 `protobuf:"bytes,3,opt,name=miName,proto3" json:"miName"`
-	MiType       string                 `protobuf:"bytes,4,opt,name=miType,proto3" json:"miType"`
-	ManagerName  string                 `protobuf:"bytes,5,opt,name=managerName,proto3" json:"managerName"`
-	ManagerPhone string                 `protobuf:"bytes,6,opt,name=managerPhone,proto3" json:"managerPhone"`
-	Province     string                 `protobuf:"bytes,7,opt,name=province,proto3" json:"province"`
-	City         string                 `protobuf:"bytes,8,opt,name=city,proto3" json:"city"`
-	Zone         string                 `protobuf:"bytes,9,opt,name=zone,proto3" json:"zone"`
-	HashInfo     string                 `protobuf:"bytes,10,opt,name=hashInfo,proto3" json:"hashInfo"`
-	CreatedAt    *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=createdAt,proto3" json:"createdAt"`
+	MiId         int64                  `protobuf:"varint,1,opt,name=miId,proto3" json:"miId,omitempty"`
+	MiCode       string                 `protobuf:"bytes,2,opt,name=miCode,proto3" json:"miCode,omitempty"`
+	MiName       string                 `protobuf:"bytes,3,opt,name=miName,proto3" json:"miName,omitempty"`
+	MiType       string                 `protobuf:"bytes,4,opt,name=miType,proto3" json:"miType,omitempty"`
+	ManagerName  string                 `protobuf:"bytes,5,opt,name=managerName,proto3" json:"managerName,omitempty"`
+	ManagerPhone string                 `protobuf:"bytes,6,opt,name=managerPhone,proto3" json:"managerPhone,omitempty"`
+	Province     string                 `protobuf:"bytes,7,opt,name=province,proto3" json:"province,omitempty"`
+	City         string                 `protobuf:"bytes,8,opt,name=city,proto3" json:"city,omitempty"`
+	Zone         string                 `protobuf:"bytes,9,opt,name=zone,proto3" json:"zone,omitempty"`
+	HashInfo     string                 `protobuf:"bytes,10,opt,name=hashInfo,proto3" json:"hashInfo,omitempty"`
+	CreatedAt    *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
 }
 
 func (x *ListMiVo) Reset() {
@@ -5200,10 +5200,10 @@ type CommonMIReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MiName    string `protobuf:"bytes,1,opt,name=miName,proto3" json:"miName"`
-	MiCode    string `protobuf:"bytes,2,opt,name=miCode,proto3" json:"miCode"`
-	ManagerId int64  `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId"`
-	Page      *Page  `protobuf:"bytes,4,opt,name=page,proto3" json:"page"`
+	MiName    string `protobuf:"bytes,1,opt,name=miName,proto3" json:"miName,omitempty"`
+	MiCode    string `protobuf:"bytes,2,opt,name=miCode,proto3" json:"miCode,omitempty"`
+	ManagerId int64  `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	Page      *Page  `protobuf:"bytes,4,opt,name=page,proto3" json:"page,omitempty"`
 }
 
 func (x *CommonMIReq) Reset() {
@@ -5271,10 +5271,10 @@ type CommonMIResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*CommonMIVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64         `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64         `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64         `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*CommonMIVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64         `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64         `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64         `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *CommonMIResp) Reset() {
@@ -5342,9 +5342,9 @@ type CommonMIVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MiId   int64  `protobuf:"varint,1,opt,name=miId,proto3" json:"miId"`
-	MiName string `protobuf:"bytes,2,opt,name=miName,proto3" json:"miName"`
-	MiCode string `protobuf:"bytes,3,opt,name=miCode,proto3" json:"miCode"`
+	MiId   int64  `protobuf:"varint,1,opt,name=miId,proto3" json:"miId,omitempty"`
+	MiName string `protobuf:"bytes,2,opt,name=miName,proto3" json:"miName,omitempty"`
+	MiCode string `protobuf:"bytes,3,opt,name=miCode,proto3" json:"miCode,omitempty"`
 }
 
 func (x *CommonMIVo) Reset() {
@@ -5406,15 +5406,15 @@ type CreateOneMIReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MiName       string `protobuf:"bytes,1,opt,name=miName,proto3" json:"miName"`
-	MiCode       string `protobuf:"bytes,2,opt,name=miCode,proto3" json:"miCode"`
-	MiType       string `protobuf:"bytes,3,opt,name=miType,proto3" json:"miType"`
-	ManagerName  string `protobuf:"bytes,4,opt,name=managerName,proto3" json:"managerName"`
-	ManagerPhone string `protobuf:"bytes,5,opt,name=managerPhone,proto3" json:"managerPhone"`
-	Province     string `protobuf:"bytes,6,opt,name=province,proto3" json:"province"`
-	City         string `protobuf:"bytes,7,opt,name=city,proto3" json:"city"`
-	Zone         string `protobuf:"bytes,8,opt,name=zone,proto3" json:"zone"`
-	ManagerId    int64  `protobuf:"varint,9,opt,name=managerId,proto3" json:"managerId"`
+	MiName       string `protobuf:"bytes,1,opt,name=miName,proto3" json:"miName,omitempty"`
+	MiCode       string `protobuf:"bytes,2,opt,name=miCode,proto3" json:"miCode,omitempty"`
+	MiType       string `protobuf:"bytes,3,opt,name=miType,proto3" json:"miType,omitempty"`
+	ManagerName  string `protobuf:"bytes,4,opt,name=managerName,proto3" json:"managerName,omitempty"`
+	ManagerPhone string `protobuf:"bytes,5,opt,name=managerPhone,proto3" json:"managerPhone,omitempty"`
+	Province     string `protobuf:"bytes,6,opt,name=province,proto3" json:"province,omitempty"`
+	City         string `protobuf:"bytes,7,opt,name=city,proto3" json:"city,omitempty"`
+	Zone         string `protobuf:"bytes,8,opt,name=zone,proto3" json:"zone,omitempty"`
+	ManagerId    int64  `protobuf:"varint,9,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *CreateOneMIReq) Reset() {
@@ -5517,7 +5517,7 @@ type CreateOneMIResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
 }
 
 func (x *CreateOneMIResp) Reset() {
@@ -5565,15 +5565,15 @@ type UpdateMiReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MiId         int64  `protobuf:"varint,1,opt,name=miId,proto3" json:"miId"`
-	MiName       string `protobuf:"bytes,2,opt,name=miName,proto3" json:"miName"`
-	MiType       string `protobuf:"bytes,3,opt,name=miType,proto3" json:"miType"`
-	ManagerName  string `protobuf:"bytes,4,opt,name=managerName,proto3" json:"managerName"`
-	ManagerPhone string `protobuf:"bytes,5,opt,name=managerPhone,proto3" json:"managerPhone"`
-	Province     string `protobuf:"bytes,6,opt,name=province,proto3" json:"province"`
-	City         string `protobuf:"bytes,7,opt,name=city,proto3" json:"city"`
-	Zone         string `protobuf:"bytes,8,opt,name=zone,proto3" json:"zone"`
-	ManagerId    int64  `protobuf:"varint,9,opt,name=managerId,proto3" json:"managerId"`
+	MiId         int64  `protobuf:"varint,1,opt,name=miId,proto3" json:"miId,omitempty"`
+	MiName       string `protobuf:"bytes,2,opt,name=miName,proto3" json:"miName,omitempty"`
+	MiType       string `protobuf:"bytes,3,opt,name=miType,proto3" json:"miType,omitempty"`
+	ManagerName  string `protobuf:"bytes,4,opt,name=managerName,proto3" json:"managerName,omitempty"`
+	ManagerPhone string `protobuf:"bytes,5,opt,name=managerPhone,proto3" json:"managerPhone,omitempty"`
+	Province     string `protobuf:"bytes,6,opt,name=province,proto3" json:"province,omitempty"`
+	City         string `protobuf:"bytes,7,opt,name=city,proto3" json:"city,omitempty"`
+	Zone         string `protobuf:"bytes,8,opt,name=zone,proto3" json:"zone,omitempty"`
+	ManagerId    int64  `protobuf:"varint,9,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *UpdateMiReq) Reset() {
@@ -5676,7 +5676,7 @@ type UpdateMiResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
 }
 
 func (x *UpdateMiResp) Reset() {
@@ -5724,10 +5724,10 @@ type CommonCompanyReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CompanyName string `protobuf:"bytes,1,opt,name=companyName,proto3" json:"companyName"`
-	CompanyCode string `protobuf:"bytes,2,opt,name=companyCode,proto3" json:"companyCode"`
-	ManagerId   int64  `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId"`
-	Page        *Page  `protobuf:"bytes,4,opt,name=page,proto3" json:"page"`
+	CompanyName string `protobuf:"bytes,1,opt,name=companyName,proto3" json:"companyName,omitempty"`
+	CompanyCode string `protobuf:"bytes,2,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
+	ManagerId   int64  `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	Page        *Page  `protobuf:"bytes,4,opt,name=page,proto3" json:"page,omitempty"`
 }
 
 func (x *CommonCompanyReq) Reset() {
@@ -5795,10 +5795,10 @@ type CommonCompanyResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*CommonCompanyVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64              `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64              `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64              `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*CommonCompanyVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64              `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64              `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64              `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *CommonCompanyResp) Reset() {
@@ -5866,9 +5866,9 @@ type CommonCompanyVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CompanyId   int64  `protobuf:"varint,1,opt,name=companyId,proto3" json:"companyId"`
-	CompanyName string `protobuf:"bytes,2,opt,name=companyName,proto3" json:"companyName"`
-	CompanyCode string `protobuf:"bytes,3,opt,name=companyCode,proto3" json:"companyCode"`
+	CompanyId   int64  `protobuf:"varint,1,opt,name=companyId,proto3" json:"companyId,omitempty"`
+	CompanyName string `protobuf:"bytes,2,opt,name=companyName,proto3" json:"companyName,omitempty"`
+	CompanyCode string `protobuf:"bytes,3,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
 }
 
 func (x *CommonCompanyVo) Reset() {
@@ -5930,8 +5930,8 @@ type SelCompanyByNamesReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CompanyNames []string `protobuf:"bytes,1,rep,name=companyNames,proto3" json:"companyNames"`
-	ManagerId    int64    `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId"`
+	CompanyNames []string `protobuf:"bytes,1,rep,name=companyNames,proto3" json:"companyNames,omitempty"`
+	ManagerId    int64    `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *SelCompanyByNamesReq) Reset() {
@@ -5985,7 +5985,7 @@ type SelCompanyByNamesResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List []*CommonCompanyVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	List []*CommonCompanyVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
 }
 
 func (x *SelCompanyByNamesResp) Reset() {
@@ -6033,12 +6033,12 @@ type ListCompanyReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CompanyName string  `protobuf:"bytes,1,opt,name=companyName,proto3" json:"companyName"`
-	CompanyCode string  `protobuf:"bytes,2,opt,name=companyCode,proto3" json:"companyCode"`
-	ValidStatus string  `protobuf:"bytes,3,opt,name=validStatus,proto3" json:"validStatus"`
-	Page        *Page   `protobuf:"bytes,4,opt,name=page,proto3" json:"page"`
-	ManagerId   int64   `protobuf:"varint,5,opt,name=managerId,proto3" json:"managerId"`
-	CompanyIds  []int64 `protobuf:"varint,6,rep,packed,name=companyIds,proto3" json:"companyIds"`
+	CompanyName string  `protobuf:"bytes,1,opt,name=companyName,proto3" json:"companyName,omitempty"`
+	CompanyCode string  `protobuf:"bytes,2,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
+	ValidStatus string  `protobuf:"bytes,3,opt,name=validStatus,proto3" json:"validStatus,omitempty"`
+	Page        *Page   `protobuf:"bytes,4,opt,name=page,proto3" json:"page,omitempty"`
+	ManagerId   int64   `protobuf:"varint,5,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	CompanyIds  []int64 `protobuf:"varint,6,rep,packed,name=companyIds,proto3" json:"companyIds,omitempty"`
 }
 
 func (x *ListCompanyReq) Reset() {
@@ -6120,10 +6120,10 @@ type ListCompanyResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ListCompanyVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64            `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64            `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64            `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*ListCompanyVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64            `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64            `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64            `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *ListCompanyResp) Reset() {
@@ -6191,16 +6191,16 @@ type ListCompanyVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CompanyId    int64                  `protobuf:"varint,1,opt,name=companyId,proto3" json:"companyId"`
-	CompanyName  string                 `protobuf:"bytes,2,opt,name=companyName,proto3" json:"companyName"`
-	CompanyCode  string                 `protobuf:"bytes,3,opt,name=companyCode,proto3" json:"companyCode"`
-	ManagerName  string                 `protobuf:"bytes,4,opt,name=managerName,proto3" json:"managerName"`
-	ManagerPhone string                 `protobuf:"bytes,5,opt,name=managerPhone,proto3" json:"managerPhone"`
-	Province     string                 `protobuf:"bytes,6,opt,name=province,proto3" json:"province"`
-	City         string                 `protobuf:"bytes,7,opt,name=city,proto3" json:"city"`
-	Zone         string                 `protobuf:"bytes,8,opt,name=zone,proto3" json:"zone"`
-	HashInfo     string                 `protobuf:"bytes,9,opt,name=hashInfo,proto3" json:"hashInfo"`
-	CreatedAt    *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=createdAt,proto3" json:"createdAt"`
+	CompanyId    int64                  `protobuf:"varint,1,opt,name=companyId,proto3" json:"companyId,omitempty"`
+	CompanyName  string                 `protobuf:"bytes,2,opt,name=companyName,proto3" json:"companyName,omitempty"`
+	CompanyCode  string                 `protobuf:"bytes,3,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
+	ManagerName  string                 `protobuf:"bytes,4,opt,name=managerName,proto3" json:"managerName,omitempty"`
+	ManagerPhone string                 `protobuf:"bytes,5,opt,name=managerPhone,proto3" json:"managerPhone,omitempty"`
+	Province     string                 `protobuf:"bytes,6,opt,name=province,proto3" json:"province,omitempty"`
+	City         string                 `protobuf:"bytes,7,opt,name=city,proto3" json:"city,omitempty"`
+	Zone         string                 `protobuf:"bytes,8,opt,name=zone,proto3" json:"zone,omitempty"`
+	HashInfo     string                 `protobuf:"bytes,9,opt,name=hashInfo,proto3" json:"hashInfo,omitempty"`
+	CreatedAt    *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
 }
 
 func (x *ListCompanyVo) Reset() {
@@ -6311,14 +6311,14 @@ type CreateOneCompanyReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CompanyName  string `protobuf:"bytes,1,opt,name=companyName,proto3" json:"companyName"`
-	CompanyCode  string `protobuf:"bytes,2,opt,name=companyCode,proto3" json:"companyCode"`
-	ManagerName  string `protobuf:"bytes,3,opt,name=managerName,proto3" json:"managerName"`
-	ManagerPhone string `protobuf:"bytes,4,opt,name=managerPhone,proto3" json:"managerPhone"`
-	Province     string `protobuf:"bytes,5,opt,name=province,proto3" json:"province"`
-	City         string `protobuf:"bytes,6,opt,name=city,proto3" json:"city"`
-	Zone         string `protobuf:"bytes,7,opt,name=zone,proto3" json:"zone"`
-	ManagerId    int64  `protobuf:"varint,8,opt,name=managerId,proto3" json:"managerId"`
+	CompanyName  string `protobuf:"bytes,1,opt,name=companyName,proto3" json:"companyName,omitempty"`
+	CompanyCode  string `protobuf:"bytes,2,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
+	ManagerName  string `protobuf:"bytes,3,opt,name=managerName,proto3" json:"managerName,omitempty"`
+	ManagerPhone string `protobuf:"bytes,4,opt,name=managerPhone,proto3" json:"managerPhone,omitempty"`
+	Province     string `protobuf:"bytes,5,opt,name=province,proto3" json:"province,omitempty"`
+	City         string `protobuf:"bytes,6,opt,name=city,proto3" json:"city,omitempty"`
+	Zone         string `protobuf:"bytes,7,opt,name=zone,proto3" json:"zone,omitempty"`
+	ManagerId    int64  `protobuf:"varint,8,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *CreateOneCompanyReq) Reset() {
@@ -6414,7 +6414,7 @@ type CreateOneCompanyResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
 }
 
 func (x *CreateOneCompanyResp) Reset() {
@@ -6462,15 +6462,15 @@ type UpdateOneCompanyReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CompanyName  string `protobuf:"bytes,1,opt,name=companyName,proto3" json:"companyName"`
-	CompanyCode  string `protobuf:"bytes,2,opt,name=companyCode,proto3" json:"companyCode"`
-	ManagerName  string `protobuf:"bytes,3,opt,name=managerName,proto3" json:"managerName"`
-	ManagerPhone string `protobuf:"bytes,4,opt,name=managerPhone,proto3" json:"managerPhone"`
-	Province     string `protobuf:"bytes,5,opt,name=province,proto3" json:"province"`
-	City         string `protobuf:"bytes,6,opt,name=city,proto3" json:"city"`
-	Zone         string `protobuf:"bytes,7,opt,name=zone,proto3" json:"zone"`
-	ManagerId    int64  `protobuf:"varint,8,opt,name=managerId,proto3" json:"managerId"`
-	CompanyId    int64  `protobuf:"varint,9,opt,name=companyId,proto3" json:"companyId"`
+	CompanyName  string `protobuf:"bytes,1,opt,name=companyName,proto3" json:"companyName,omitempty"`
+	CompanyCode  string `protobuf:"bytes,2,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
+	ManagerName  string `protobuf:"bytes,3,opt,name=managerName,proto3" json:"managerName,omitempty"`
+	ManagerPhone string `protobuf:"bytes,4,opt,name=managerPhone,proto3" json:"managerPhone,omitempty"`
+	Province     string `protobuf:"bytes,5,opt,name=province,proto3" json:"province,omitempty"`
+	City         string `protobuf:"bytes,6,opt,name=city,proto3" json:"city,omitempty"`
+	Zone         string `protobuf:"bytes,7,opt,name=zone,proto3" json:"zone,omitempty"`
+	ManagerId    int64  `protobuf:"varint,8,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	CompanyId    int64  `protobuf:"varint,9,opt,name=companyId,proto3" json:"companyId,omitempty"`
 }
 
 func (x *UpdateOneCompanyReq) Reset() {
@@ -6573,7 +6573,7 @@ type UpdateOneCompanyResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
 }
 
 func (x *UpdateOneCompanyResp) Reset() {
@@ -6621,13 +6621,13 @@ type ListTpPlanErrReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	TpOrderCode  string                 `protobuf:"bytes,1,opt,name=tpOrderCode,proto3" json:"tpOrderCode"`
-	MedicineName string                 `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName"`
-	MedicineCode string                 `protobuf:"bytes,3,opt,name=medicineCode,proto3" json:"medicineCode"`
-	StratDate    *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=stratDate,proto3" json:"stratDate"`
-	EndDate      *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=endDate,proto3" json:"endDate"`
-	Page         *Page                  `protobuf:"bytes,6,opt,name=page,proto3" json:"page"`
-	ManagerId    int64                  `protobuf:"varint,7,opt,name=managerId,proto3" json:"managerId"`
+	TpOrderCode  string                 `protobuf:"bytes,1,opt,name=tpOrderCode,proto3" json:"tpOrderCode,omitempty"`
+	MedicineName string                 `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
+	MedicineCode string                 `protobuf:"bytes,3,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
+	StratDate    *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=stratDate,proto3" json:"stratDate,omitempty"`
+	EndDate      *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=endDate,proto3" json:"endDate,omitempty"`
+	Page         *Page                  `protobuf:"bytes,6,opt,name=page,proto3" json:"page,omitempty"`
+	ManagerId    int64                  `protobuf:"varint,7,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *ListTpPlanErrReq) Reset() {
@@ -6716,10 +6716,10 @@ type ListTpPlanErrResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ListTpPlanErrVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64              `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64              `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64              `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*ListTpPlanErrVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64              `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64              `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64              `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *ListTpPlanErrResp) Reset() {
@@ -6787,18 +6787,18 @@ type ListTpPlanErrVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	TpSyncShipmentPlanId  int64                  `protobuf:"varint,1,opt,name=tpSyncShipmentPlanId,proto3" json:"tpSyncShipmentPlanId"`
-	TpOrderCode           string                 `protobuf:"bytes,2,opt,name=tpOrderCode,proto3" json:"tpOrderCode"`
-	TenderPlatformCode    string                 `protobuf:"bytes,3,opt,name=tenderPlatformCode,proto3" json:"tenderPlatformCode"`
-	MedicineName          string                 `protobuf:"bytes,4,opt,name=medicineName,proto3" json:"medicineName"`
-	MedicineCode          string                 `protobuf:"bytes,5,opt,name=medicineCode,proto3" json:"medicineCode"`
-	MedicineSpecification string                 `protobuf:"bytes,6,opt,name=medicineSpecification,proto3" json:"medicineSpecification"`
-	TpShipmentAmount      int64                  `protobuf:"varint,7,opt,name=tpShipmentAmount,proto3" json:"tpShipmentAmount"`
-	TpPrice               int64                  `protobuf:"varint,8,opt,name=tpPrice,proto3" json:"tpPrice"`
-	CompanyName           string                 `protobuf:"bytes,9,opt,name=companyName,proto3" json:"companyName"`
-	MiName                string                 `protobuf:"bytes,10,opt,name=miName,proto3" json:"miName"`
-	ErrMsg                string                 `protobuf:"bytes,11,opt,name=errMsg,proto3" json:"errMsg"`
-	CreatedAt             *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=createdAt,proto3" json:"createdAt"`
+	TpSyncShipmentPlanId  int64                  `protobuf:"varint,1,opt,name=tpSyncShipmentPlanId,proto3" json:"tpSyncShipmentPlanId,omitempty"`
+	TpOrderCode           string                 `protobuf:"bytes,2,opt,name=tpOrderCode,proto3" json:"tpOrderCode,omitempty"`
+	TenderPlatformCode    string                 `protobuf:"bytes,3,opt,name=tenderPlatformCode,proto3" json:"tenderPlatformCode,omitempty"`
+	MedicineName          string                 `protobuf:"bytes,4,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
+	MedicineCode          string                 `protobuf:"bytes,5,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
+	MedicineSpecification string                 `protobuf:"bytes,6,opt,name=medicineSpecification,proto3" json:"medicineSpecification,omitempty"`
+	TpShipmentAmount      int64                  `protobuf:"varint,7,opt,name=tpShipmentAmount,proto3" json:"tpShipmentAmount,omitempty"`
+	TpPrice               int64                  `protobuf:"varint,8,opt,name=tpPrice,proto3" json:"tpPrice,omitempty"`
+	CompanyName           string                 `protobuf:"bytes,9,opt,name=companyName,proto3" json:"companyName,omitempty"`
+	MiName                string                 `protobuf:"bytes,10,opt,name=miName,proto3" json:"miName,omitempty"`
+	ErrMsg                string                 `protobuf:"bytes,11,opt,name=errMsg,proto3" json:"errMsg,omitempty"`
+	CreatedAt             *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
 }
 
 func (x *ListTpPlanErrVo) Reset() {
@@ -6923,8 +6923,8 @@ type UpdateErrShipmentPlanReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	TpShipmentPlanId int64 `protobuf:"varint,1,opt,name=tpShipmentPlanId,proto3" json:"tpShipmentPlanId"`
-	ManagerId        int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId"`
+	TpShipmentPlanId int64 `protobuf:"varint,1,opt,name=tpShipmentPlanId,proto3" json:"tpShipmentPlanId,omitempty"`
+	ManagerId        int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *UpdateErrShipmentPlanReq) Reset() {
@@ -6978,7 +6978,7 @@ type UpdateErrShipmentPlanResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
 }
 
 func (x *UpdateErrShipmentPlanResp) Reset() {
@@ -7026,21 +7026,21 @@ type ListShipmentPlanReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	TpOrderNo    string                 `protobuf:"bytes,1,opt,name=tpOrderNo,proto3" json:"tpOrderNo"`
-	ShipmentNo   string                 `protobuf:"bytes,2,opt,name=shipmentNo,proto3" json:"shipmentNo"`
-	MedicineName string                 `protobuf:"bytes,3,opt,name=medicineName,proto3" json:"medicineName"`
-	MedicineCode string                 `protobuf:"bytes,4,opt,name=medicineCode,proto3" json:"medicineCode"`
-	CompanyCode  string                 `protobuf:"bytes,5,opt,name=companyCode,proto3" json:"companyCode"`
-	PlanStatus   string                 `protobuf:"bytes,6,opt,name=planStatus,proto3" json:"planStatus"`
-	StratDate    *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=stratDate,proto3" json:"stratDate"`
-	EndDate      *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=endDate,proto3" json:"endDate"`
-	Page         *Page                  `protobuf:"bytes,9,opt,name=page,proto3" json:"page"`
-	ManagerId    int64                  `protobuf:"varint,10,opt,name=managerId,proto3" json:"managerId"`
-	MiId         int64                  `protobuf:"varint,11,opt,name=miId,proto3" json:"miId"`
-	CompanyId    int64                  `protobuf:"varint,12,opt,name=companyId,proto3" json:"companyId"`
-	MiName       string                 `protobuf:"bytes,13,opt,name=miName,proto3" json:"miName"`
-	TpCode       string                 `protobuf:"bytes,14,opt,name=tpCode,proto3" json:"tpCode"`
-	CompanyName  string                 `protobuf:"bytes,15,opt,name=companyName,proto3" json:"companyName"`
+	TpOrderNo    string                 `protobuf:"bytes,1,opt,name=tpOrderNo,proto3" json:"tpOrderNo,omitempty"`
+	ShipmentNo   string                 `protobuf:"bytes,2,opt,name=shipmentNo,proto3" json:"shipmentNo,omitempty"`
+	MedicineName string                 `protobuf:"bytes,3,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
+	MedicineCode string                 `protobuf:"bytes,4,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
+	CompanyCode  string                 `protobuf:"bytes,5,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
+	PlanStatus   string                 `protobuf:"bytes,6,opt,name=planStatus,proto3" json:"planStatus,omitempty"`
+	StratDate    *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=stratDate,proto3" json:"stratDate,omitempty"`
+	EndDate      *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=endDate,proto3" json:"endDate,omitempty"`
+	Page         *Page                  `protobuf:"bytes,9,opt,name=page,proto3" json:"page,omitempty"`
+	ManagerId    int64                  `protobuf:"varint,10,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	MiId         int64                  `protobuf:"varint,11,opt,name=miId,proto3" json:"miId,omitempty"`
+	CompanyId    int64                  `protobuf:"varint,12,opt,name=companyId,proto3" json:"companyId,omitempty"`
+	MiName       string                 `protobuf:"bytes,13,opt,name=miName,proto3" json:"miName,omitempty"`
+	TpCode       string                 `protobuf:"bytes,14,opt,name=tpCode,proto3" json:"tpCode,omitempty"`
+	CompanyName  string                 `protobuf:"bytes,15,opt,name=companyName,proto3" json:"companyName,omitempty"`
 }
 
 func (x *ListShipmentPlanReq) Reset() {
@@ -7185,10 +7185,10 @@ type ListShipmentPlanResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ListShipmentPlanrVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64                  `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64                  `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64                  `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*ListShipmentPlanrVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64                  `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64                  `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *ListShipmentPlanResp) Reset() {
@@ -7256,33 +7256,33 @@ type ListShipmentPlanrVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ShipmentPlanId        int64                  `protobuf:"varint,1,opt,name=shipmentPlanId,proto3" json:"shipmentPlanId"`
-	TpOrderNo             string                 `protobuf:"bytes,2,opt,name=tpOrderNo,proto3" json:"tpOrderNo"`
-	OrderNo               string                 `protobuf:"bytes,3,opt,name=orderNo,proto3" json:"orderNo"`
-	InvoiceNo             string                 `protobuf:"bytes,4,opt,name=invoiceNo,proto3" json:"invoiceNo"`
-	InvoiceCode           string                 `protobuf:"bytes,5,opt,name=invoiceCode,proto3" json:"invoiceCode"`
-	TpCode                string                 `protobuf:"bytes,6,opt,name=tpCode,proto3" json:"tpCode"`
-	MedicineName          string                 `protobuf:"bytes,7,opt,name=medicineName,proto3" json:"medicineName"`
-	MedicineCode          string                 `protobuf:"bytes,8,opt,name=medicineCode,proto3" json:"medicineCode"`
-	MedicineSpecification string                 `protobuf:"bytes,9,opt,name=medicineSpecification,proto3" json:"medicineSpecification"`
-	ShipmentPrice         int64                  `protobuf:"varint,10,opt,name=shipmentPrice,proto3" json:"shipmentPrice"`
-	ShipmentAmount        int64                  `protobuf:"varint,11,opt,name=shipmentAmount,proto3" json:"shipmentAmount"`
-	OrderAmount           int64                  `protobuf:"varint,12,opt,name=orderAmount,proto3" json:"orderAmount"`
-	CompanyName           string                 `protobuf:"bytes,13,opt,name=companyName,proto3" json:"companyName"`
-	MiName                string                 `protobuf:"bytes,14,opt,name=miName,proto3" json:"miName"`
-	TpCreatedAt           *timestamppb.Timestamp `protobuf:"bytes,15,opt,name=tpCreatedAt,proto3" json:"tpCreatedAt"`
-	ReceiveAt             *timestamppb.Timestamp `protobuf:"bytes,16,opt,name=receiveAt,proto3" json:"receiveAt"`
-	PlanStatus            string                 `protobuf:"bytes,17,opt,name=planStatus,proto3" json:"planStatus"`
-	Manufacturer          string                 `protobuf:"bytes,18,opt,name=manufacturer,proto3" json:"manufacturer"`
-	TagName               string                 `protobuf:"bytes,19,opt,name=tagName,proto3" json:"tagName"`
-	MedicineForm          string                 `protobuf:"bytes,20,opt,name=medicineForm,proto3" json:"medicineForm"`
-	MedicineUnit          string                 `protobuf:"bytes,21,opt,name=medicineUnit,proto3" json:"medicineUnit"`
-	CalculateRate         int64                  `protobuf:"varint,22,opt,name=calculateRate,proto3" json:"calculateRate"`
-	MedicineId            int64                  `protobuf:"varint,23,opt,name=medicineId,proto3" json:"medicineId"`
-	ShipmentNo            string                 `protobuf:"bytes,24,opt,name=shipmentNo,proto3" json:"shipmentNo"`
-	CompanyCode           string                 `protobuf:"bytes,25,opt,name=companyCode,proto3" json:"companyCode"`
-	MiCode                string                 `protobuf:"bytes,26,opt,name=miCode,proto3" json:"miCode"`
-	SendDeadline          *timestamppb.Timestamp `protobuf:"bytes,27,opt,name=sendDeadline,proto3" json:"sendDeadline"`
+	ShipmentPlanId        int64                  `protobuf:"varint,1,opt,name=shipmentPlanId,proto3" json:"shipmentPlanId,omitempty"`
+	TpOrderNo             string                 `protobuf:"bytes,2,opt,name=tpOrderNo,proto3" json:"tpOrderNo,omitempty"`
+	OrderNo               string                 `protobuf:"bytes,3,opt,name=orderNo,proto3" json:"orderNo,omitempty"`
+	InvoiceNo             string                 `protobuf:"bytes,4,opt,name=invoiceNo,proto3" json:"invoiceNo,omitempty"`
+	InvoiceCode           string                 `protobuf:"bytes,5,opt,name=invoiceCode,proto3" json:"invoiceCode,omitempty"`
+	TpCode                string                 `protobuf:"bytes,6,opt,name=tpCode,proto3" json:"tpCode,omitempty"`
+	MedicineName          string                 `protobuf:"bytes,7,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
+	MedicineCode          string                 `protobuf:"bytes,8,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
+	MedicineSpecification string                 `protobuf:"bytes,9,opt,name=medicineSpecification,proto3" json:"medicineSpecification,omitempty"`
+	ShipmentPrice         int64                  `protobuf:"varint,10,opt,name=shipmentPrice,proto3" json:"shipmentPrice,omitempty"`
+	ShipmentAmount        int64                  `protobuf:"varint,11,opt,name=shipmentAmount,proto3" json:"shipmentAmount,omitempty"`
+	OrderAmount           int64                  `protobuf:"varint,12,opt,name=orderAmount,proto3" json:"orderAmount,omitempty"`
+	CompanyName           string                 `protobuf:"bytes,13,opt,name=companyName,proto3" json:"companyName,omitempty"`
+	MiName                string                 `protobuf:"bytes,14,opt,name=miName,proto3" json:"miName,omitempty"`
+	TpCreatedAt           *timestamppb.Timestamp `protobuf:"bytes,15,opt,name=tpCreatedAt,proto3" json:"tpCreatedAt,omitempty"`
+	ReceiveAt             *timestamppb.Timestamp `protobuf:"bytes,16,opt,name=receiveAt,proto3" json:"receiveAt,omitempty"`
+	PlanStatus            string                 `protobuf:"bytes,17,opt,name=planStatus,proto3" json:"planStatus,omitempty"`
+	Manufacturer          string                 `protobuf:"bytes,18,opt,name=manufacturer,proto3" json:"manufacturer,omitempty"`
+	TagName               string                 `protobuf:"bytes,19,opt,name=tagName,proto3" json:"tagName,omitempty"`
+	MedicineForm          string                 `protobuf:"bytes,20,opt,name=medicineForm,proto3" json:"medicineForm,omitempty"`
+	MedicineUnit          string                 `protobuf:"bytes,21,opt,name=medicineUnit,proto3" json:"medicineUnit,omitempty"`
+	CalculateRate         int64                  `protobuf:"varint,22,opt,name=calculateRate,proto3" json:"calculateRate,omitempty"`
+	MedicineId            int64                  `protobuf:"varint,23,opt,name=medicineId,proto3" json:"medicineId,omitempty"`
+	ShipmentNo            string                 `protobuf:"bytes,24,opt,name=shipmentNo,proto3" json:"shipmentNo,omitempty"`
+	CompanyCode           string                 `protobuf:"bytes,25,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
+	MiCode                string                 `protobuf:"bytes,26,opt,name=miCode,proto3" json:"miCode,omitempty"`
+	SendDeadline          *timestamppb.Timestamp `protobuf:"bytes,27,opt,name=sendDeadline,proto3" json:"sendDeadline,omitempty"`
 }
 
 func (x *ListShipmentPlanrVo) Reset() {
@@ -7512,8 +7512,8 @@ type DetailShipmentOrderReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ShipmentNo string `protobuf:"bytes,1,opt,name=shipmentNo,proto3" json:"shipmentNo"`
-	ManagerId  int64  `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId"`
+	ShipmentNo string `protobuf:"bytes,1,opt,name=shipmentNo,proto3" json:"shipmentNo,omitempty"`
+	ManagerId  int64  `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *DetailShipmentOrderReq) Reset() {
@@ -7568,19 +7568,19 @@ type DetailShipmentOrderResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MibId           int64  `protobuf:"varint,1,opt,name=mibId,proto3" json:"mibId"`
-	ShipmentOrderId int64  `protobuf:"varint,2,opt,name=shipmentOrderId,proto3" json:"shipmentOrderId"`
-	CompanyCode     string `protobuf:"bytes,3,opt,name=companyCode,proto3" json:"companyCode"`
-	CompanyName     string `protobuf:"bytes,4,opt,name=companyName,proto3" json:"companyName"`
-	ShipmentNo      string `protobuf:"bytes,5,opt,name=shipmentNo,proto3" json:"shipmentNo"`
-	ShipmentCode    string `protobuf:"bytes,6,opt,name=shipmentCode,proto3" json:"shipmentCode"`
-	ShipmentCompany string `protobuf:"bytes,7,opt,name=shipmentCompany,proto3" json:"shipmentCompany"`
-	InvoiceNo       string `protobuf:"bytes,8,opt,name=invoiceNo,proto3" json:"invoiceNo"`
-	InvoiceCode     string `protobuf:"bytes,9,opt,name=invoiceCode,proto3" json:"invoiceCode"`
-	OrderAmount     int64  `protobuf:"varint,10,opt,name=orderAmount,proto3" json:"orderAmount"`
-	ShipmentStatus  string `protobuf:"bytes,11,opt,name=shipmentStatus,proto3" json:"shipmentStatus"`
-	MiCode          string `protobuf:"bytes,12,opt,name=miCode,proto3" json:"miCode"`
-	MiName          string `protobuf:"bytes,13,opt,name=miName,proto3" json:"miName"`
+	MibId           int64  `protobuf:"varint,1,opt,name=mibId,proto3" json:"mibId,omitempty"`
+	ShipmentOrderId int64  `protobuf:"varint,2,opt,name=shipmentOrderId,proto3" json:"shipmentOrderId,omitempty"`
+	CompanyCode     string `protobuf:"bytes,3,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
+	CompanyName     string `protobuf:"bytes,4,opt,name=companyName,proto3" json:"companyName,omitempty"`
+	ShipmentNo      string `protobuf:"bytes,5,opt,name=shipmentNo,proto3" json:"shipmentNo,omitempty"`
+	ShipmentCode    string `protobuf:"bytes,6,opt,name=shipmentCode,proto3" json:"shipmentCode,omitempty"`
+	ShipmentCompany string `protobuf:"bytes,7,opt,name=shipmentCompany,proto3" json:"shipmentCompany,omitempty"`
+	InvoiceNo       string `protobuf:"bytes,8,opt,name=invoiceNo,proto3" json:"invoiceNo,omitempty"`
+	InvoiceCode     string `protobuf:"bytes,9,opt,name=invoiceCode,proto3" json:"invoiceCode,omitempty"`
+	OrderAmount     int64  `protobuf:"varint,10,opt,name=orderAmount,proto3" json:"orderAmount,omitempty"`
+	ShipmentStatus  string `protobuf:"bytes,11,opt,name=shipmentStatus,proto3" json:"shipmentStatus,omitempty"`
+	MiCode          string `protobuf:"bytes,12,opt,name=miCode,proto3" json:"miCode,omitempty"`
+	MiName          string `protobuf:"bytes,13,opt,name=miName,proto3" json:"miName,omitempty"`
 }
 
 func (x *DetailShipmentOrderResp) Reset() {
@@ -7713,7 +7713,7 @@ type ListShipmentPlanForOrderReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//  string  tpOrderCode = 1;
-	ShipmentNo string `protobuf:"bytes,1,opt,name=shipmentNo,proto3" json:"shipmentNo"`
+	ShipmentNo string `protobuf:"bytes,1,opt,name=shipmentNo,proto3" json:"shipmentNo,omitempty"`
 	//  string medicineName = 3;
 	//  string medicineCode = 4;
 	//  string companyCode = 5;
@@ -7721,7 +7721,7 @@ type ListShipmentPlanForOrderReq struct {
 	//  google.protobuf.Timestamp stratDate = 7;
 	//  google.protobuf.Timestamp endDate = 8;
 	//  Page page = 9;
-	ManagerId int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId"`
+	ManagerId int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *ListShipmentPlanForOrderReq) Reset() {
@@ -7775,7 +7775,7 @@ type ListShipmentPlanForOrderResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List []*ListShipmentPlanForOrderVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
+	List []*ListShipmentPlanForOrderVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
 }
 
 func (x *ListShipmentPlanForOrderResp) Reset() {
@@ -7822,17 +7822,17 @@ type ListShipmentPlanForOrderVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	OrderNo               string                 `protobuf:"bytes,1,opt,name=orderNo,proto3" json:"orderNo"`
-	TpOrderNo             string                 `protobuf:"bytes,2,opt,name=tpOrderNo,proto3" json:"tpOrderNo"`
-	TpCode                string                 `protobuf:"bytes,3,opt,name=tpCode,proto3" json:"tpCode"`
-	MedicineName          string                 `protobuf:"bytes,4,opt,name=medicineName,proto3" json:"medicineName"`
-	MedicineCode          string                 `protobuf:"bytes,5,opt,name=medicineCode,proto3" json:"medicineCode"`
-	TagName               string                 `protobuf:"bytes,6,opt,name=tagName,proto3" json:"tagName"`
-	MedicineSpecification string                 `protobuf:"bytes,7,opt,name=medicineSpecification,proto3" json:"medicineSpecification"`
-	ShipmentAmount        int64                  `protobuf:"varint,8,opt,name=shipmentAmount,proto3" json:"shipmentAmount"`
-	OrderAmount           int64                  `protobuf:"varint,9,opt,name=orderAmount,proto3" json:"orderAmount"`
-	TpCreatedAt           *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=tpCreatedAt,proto3" json:"tpCreatedAt"`
-	MiName                string                 `protobuf:"bytes,11,opt,name=miName,proto3" json:"miName"`
+	OrderNo               string                 `protobuf:"bytes,1,opt,name=orderNo,proto3" json:"orderNo,omitempty"`
+	TpOrderNo             string                 `protobuf:"bytes,2,opt,name=tpOrderNo,proto3" json:"tpOrderNo,omitempty"`
+	TpCode                string                 `protobuf:"bytes,3,opt,name=tpCode,proto3" json:"tpCode,omitempty"`
+	MedicineName          string                 `protobuf:"bytes,4,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
+	MedicineCode          string                 `protobuf:"bytes,5,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
+	TagName               string                 `protobuf:"bytes,6,opt,name=tagName,proto3" json:"tagName,omitempty"`
+	MedicineSpecification string                 `protobuf:"bytes,7,opt,name=medicineSpecification,proto3" json:"medicineSpecification,omitempty"`
+	ShipmentAmount        int64                  `protobuf:"varint,8,opt,name=shipmentAmount,proto3" json:"shipmentAmount,omitempty"`
+	OrderAmount           int64                  `protobuf:"varint,9,opt,name=orderAmount,proto3" json:"orderAmount,omitempty"`
+	TpCreatedAt           *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=tpCreatedAt,proto3" json:"tpCreatedAt,omitempty"`
+	MiName                string                 `protobuf:"bytes,11,opt,name=miName,proto3" json:"miName,omitempty"`
 }
 
 func (x *ListShipmentPlanForOrderVo) Reset() {
@@ -7950,11 +7950,11 @@ type CountShipmentPlanReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	StartDate *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=startDate,proto3" json:"startDate"`
-	EndDate   *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=endDate,proto3" json:"endDate"`
-	MiId      int64                  `protobuf:"varint,3,opt,name=miId,proto3" json:"miId"`
-	CompanyId int64                  `protobuf:"varint,4,opt,name=companyId,proto3" json:"companyId"`
-	ManagerId int64                  `protobuf:"varint,5,opt,name=managerId,proto3" json:"managerId"`
+	StartDate *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=startDate,proto3" json:"startDate,omitempty"`
+	EndDate   *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=endDate,proto3" json:"endDate,omitempty"`
+	MiId      int64                  `protobuf:"varint,3,opt,name=miId,proto3" json:"miId,omitempty"`
+	CompanyId int64                  `protobuf:"varint,4,opt,name=companyId,proto3" json:"companyId,omitempty"`
+	ManagerId int64                  `protobuf:"varint,5,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *CountShipmentPlanReq) Reset() {
@@ -8029,9 +8029,9 @@ type CountShipmentPlanResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	WaitNum     int64 `protobuf:"varint,1,opt,name=waitNum,proto3" json:"waitNum"`
-	FailNum     int64 `protobuf:"varint,2,opt,name=failNum,proto3" json:"failNum"`
-	CompleteNum int64 `protobuf:"varint,3,opt,name=completeNum,proto3" json:"completeNum"`
+	WaitNum     int64 `protobuf:"varint,1,opt,name=waitNum,proto3" json:"waitNum,omitempty"`
+	FailNum     int64 `protobuf:"varint,2,opt,name=failNum,proto3" json:"failNum,omitempty"`
+	CompleteNum int64 `protobuf:"varint,3,opt,name=completeNum,proto3" json:"completeNum,omitempty"`
 }
 
 func (x *CountShipmentPlanResp) Reset() {
@@ -8093,23 +8093,23 @@ type CreateShipmentOrderReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MiCode           string                 `protobuf:"bytes,1,opt,name=miCode,proto3" json:"miCode"`
-	CompanyCode      string                 `protobuf:"bytes,2,opt,name=companyCode,proto3" json:"companyCode"`
-	InvoiceMd5       string                 `protobuf:"bytes,3,opt,name=invoiceMd5,proto3" json:"invoiceMd5"`
-	InvoiceUrl       string                 `protobuf:"bytes,4,opt,name=invoiceUrl,proto3" json:"invoiceUrl"`
-	InvoiceType      string                 `protobuf:"bytes,5,opt,name=invoiceType,proto3" json:"invoiceType"`
-	InvoiceTotal     int64                  `protobuf:"varint,6,opt,name=invoiceTotal,proto3" json:"invoiceTotal"`
-	InvoiceTax       int64                  `protobuf:"varint,7,opt,name=invoiceTax,proto3" json:"invoiceTax"`
-	InvoiceCheckCode string                 `protobuf:"bytes,8,opt,name=invoiceCheckCode,proto3" json:"invoiceCheckCode"`
-	InvoiceNo        string                 `protobuf:"bytes,9,opt,name=invoiceNo,proto3" json:"invoiceNo"`
-	InvoiceCode      string                 `protobuf:"bytes,10,opt,name=invoiceCode,proto3" json:"invoiceCode"`
-	InvoiceDate      *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=invoiceDate,proto3" json:"invoiceDate"`
-	SendOutAt        *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=sendOutAt,proto3" json:"sendOutAt"`
-	OrderAmount      int64                  `protobuf:"varint,13,opt,name=orderAmount,proto3" json:"orderAmount"`
-	ShipmentCode     string                 `protobuf:"bytes,14,opt,name=shipmentCode,proto3" json:"shipmentCode"`
-	ShipmentCompany  string                 `protobuf:"bytes,15,opt,name=shipmentCompany,proto3" json:"shipmentCompany"`
-	ShipmentPlanIds  []int64                `protobuf:"varint,16,rep,packed,name=shipmentPlanIds,proto3" json:"shipmentPlanIds"`
-	ManagerId        int64                  `protobuf:"varint,17,opt,name=managerId,proto3" json:"managerId"`
+	MiCode           string                 `protobuf:"bytes,1,opt,name=miCode,proto3" json:"miCode,omitempty"`
+	CompanyCode      string                 `protobuf:"bytes,2,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
+	InvoiceMd5       string                 `protobuf:"bytes,3,opt,name=invoiceMd5,proto3" json:"invoiceMd5,omitempty"`
+	InvoiceUrl       string                 `protobuf:"bytes,4,opt,name=invoiceUrl,proto3" json:"invoiceUrl,omitempty"`
+	InvoiceType      string                 `protobuf:"bytes,5,opt,name=invoiceType,proto3" json:"invoiceType,omitempty"`
+	InvoiceTotal     int64                  `protobuf:"varint,6,opt,name=invoiceTotal,proto3" json:"invoiceTotal,omitempty"`
+	InvoiceTax       int64                  `protobuf:"varint,7,opt,name=invoiceTax,proto3" json:"invoiceTax,omitempty"`
+	InvoiceCheckCode string                 `protobuf:"bytes,8,opt,name=invoiceCheckCode,proto3" json:"invoiceCheckCode,omitempty"`
+	InvoiceNo        string                 `protobuf:"bytes,9,opt,name=invoiceNo,proto3" json:"invoiceNo,omitempty"`
+	InvoiceCode      string                 `protobuf:"bytes,10,opt,name=invoiceCode,proto3" json:"invoiceCode,omitempty"`
+	InvoiceDate      *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=invoiceDate,proto3" json:"invoiceDate,omitempty"`
+	SendOutAt        *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=sendOutAt,proto3" json:"sendOutAt,omitempty"`
+	OrderAmount      int64                  `protobuf:"varint,13,opt,name=orderAmount,proto3" json:"orderAmount,omitempty"`
+	ShipmentCode     string                 `protobuf:"bytes,14,opt,name=shipmentCode,proto3" json:"shipmentCode,omitempty"`
+	ShipmentCompany  string                 `protobuf:"bytes,15,opt,name=shipmentCompany,proto3" json:"shipmentCompany,omitempty"`
+	ShipmentPlanIds  []int64                `protobuf:"varint,16,rep,packed,name=shipmentPlanIds,proto3" json:"shipmentPlanIds,omitempty"`
+	ManagerId        int64                  `protobuf:"varint,17,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *CreateShipmentOrderReq) Reset() {
@@ -8268,7 +8268,7 @@ type CreateShipmentOrderResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ShipmentNo string `protobuf:"bytes,1,opt,name=shipmentNo,proto3" json:"shipmentNo"`
+	ShipmentNo string `protobuf:"bytes,1,opt,name=shipmentNo,proto3" json:"shipmentNo,omitempty"`
 }
 
 func (x *CreateShipmentOrderResp) Reset() {
@@ -8316,20 +8316,20 @@ type ListShipmentOrderReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CompanyId       int64                  `protobuf:"varint,1,opt,name=companyId,proto3" json:"companyId"`
-	MiId            int64                  `protobuf:"varint,2,opt,name=miId,proto3" json:"miId"`
-	ShipmentStatus  string                 `protobuf:"bytes,3,opt,name=shipmentStatus,proto3" json:"shipmentStatus"`
-	ShipmentNo      string                 `protobuf:"bytes,4,opt,name=shipmentNo,proto3" json:"shipmentNo"`
-	InvoiceNo       string                 `protobuf:"bytes,5,opt,name=invoiceNo,proto3" json:"invoiceNo"`
-	InvoiceCode     string                 `protobuf:"bytes,6,opt,name=invoiceCode,proto3" json:"invoiceCode"`
-	ShipmentCode    string                 `protobuf:"bytes,7,opt,name=shipmentCode,proto3" json:"shipmentCode"`
-	StartDate       *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=startDate,proto3" json:"startDate"`
-	EndDate         *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=endDate,proto3" json:"endDate"`
-	Page            *Page                  `protobuf:"bytes,10,opt,name=page,proto3" json:"page"`
-	ManagerId       int64                  `protobuf:"varint,11,opt,name=managerId,proto3" json:"managerId"`
-	ReceiveDeadline *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=receiveDeadline,proto3" json:"receiveDeadline"`
-	MiName          string                 `protobuf:"bytes,13,opt,name=miName,proto3" json:"miName"`
-	ComName         string                 `protobuf:"bytes,14,opt,name=comName,proto3" json:"comName"`
+	CompanyId       int64                  `protobuf:"varint,1,opt,name=companyId,proto3" json:"companyId,omitempty"`
+	MiId            int64                  `protobuf:"varint,2,opt,name=miId,proto3" json:"miId,omitempty"`
+	ShipmentStatus  string                 `protobuf:"bytes,3,opt,name=shipmentStatus,proto3" json:"shipmentStatus,omitempty"`
+	ShipmentNo      string                 `protobuf:"bytes,4,opt,name=shipmentNo,proto3" json:"shipmentNo,omitempty"`
+	InvoiceNo       string                 `protobuf:"bytes,5,opt,name=invoiceNo,proto3" json:"invoiceNo,omitempty"`
+	InvoiceCode     string                 `protobuf:"bytes,6,opt,name=invoiceCode,proto3" json:"invoiceCode,omitempty"`
+	ShipmentCode    string                 `protobuf:"bytes,7,opt,name=shipmentCode,proto3" json:"shipmentCode,omitempty"`
+	StartDate       *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=startDate,proto3" json:"startDate,omitempty"`
+	EndDate         *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=endDate,proto3" json:"endDate,omitempty"`
+	Page            *Page                  `protobuf:"bytes,10,opt,name=page,proto3" json:"page,omitempty"`
+	ManagerId       int64                  `protobuf:"varint,11,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	ReceiveDeadline *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=receiveDeadline,proto3" json:"receiveDeadline,omitempty"`
+	MiName          string                 `protobuf:"bytes,13,opt,name=miName,proto3" json:"miName,omitempty"`
+	ComName         string                 `protobuf:"bytes,14,opt,name=comName,proto3" json:"comName,omitempty"`
 }
 
 func (x *ListShipmentOrderReq) Reset() {
@@ -8467,10 +8467,10 @@ type ListShipmentOrderResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ListShipmentOrderVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64                  `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64                  `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64                  `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*ListShipmentOrderVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64                  `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64                  `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *ListShipmentOrderResp) Reset() {
@@ -8538,17 +8538,17 @@ type ListShipmentOrderVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ShipmentOrderId int64                  `protobuf:"varint,1,opt,name=shipmentOrderId,proto3" json:"shipmentOrderId"`
-	ShipmentNo      string                 `protobuf:"bytes,2,opt,name=shipmentNo,proto3" json:"shipmentNo"`
-	InvoiceNo       string                 `protobuf:"bytes,3,opt,name=invoiceNo,proto3" json:"invoiceNo"`
-	InvoiceCode     string                 `protobuf:"bytes,4,opt,name=invoiceCode,proto3" json:"invoiceCode"`
-	ShipmentCode    string                 `protobuf:"bytes,5,opt,name=shipmentCode,proto3" json:"shipmentCode"`
-	MiName          string                 `protobuf:"bytes,6,opt,name=miName,proto3" json:"miName"`
-	OrderAmount     int64                  `protobuf:"varint,7,opt,name=orderAmount,proto3" json:"orderAmount"`
-	SendOutAt       *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=sendOutAt,proto3" json:"sendOutAt"`
-	ReceiveDeadline *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=receiveDeadline,proto3" json:"receiveDeadline"`
-	ShipmentStatus  string                 `protobuf:"bytes,10,opt,name=shipmentStatus,proto3" json:"shipmentStatus"`
-	CompanyName     string                 `protobuf:"bytes,11,opt,name=companyName,proto3" json:"companyName"`
+	ShipmentOrderId int64                  `protobuf:"varint,1,opt,name=shipmentOrderId,proto3" json:"shipmentOrderId,omitempty"`
+	ShipmentNo      string                 `protobuf:"bytes,2,opt,name=shipmentNo,proto3" json:"shipmentNo,omitempty"`
+	InvoiceNo       string                 `protobuf:"bytes,3,opt,name=invoiceNo,proto3" json:"invoiceNo,omitempty"`
+	InvoiceCode     string                 `protobuf:"bytes,4,opt,name=invoiceCode,proto3" json:"invoiceCode,omitempty"`
+	ShipmentCode    string                 `protobuf:"bytes,5,opt,name=shipmentCode,proto3" json:"shipmentCode,omitempty"`
+	MiName          string                 `protobuf:"bytes,6,opt,name=miName,proto3" json:"miName,omitempty"`
+	OrderAmount     int64                  `protobuf:"varint,7,opt,name=orderAmount,proto3" json:"orderAmount,omitempty"`
+	SendOutAt       *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=sendOutAt,proto3" json:"sendOutAt,omitempty"`
+	ReceiveDeadline *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=receiveDeadline,proto3" json:"receiveDeadline,omitempty"`
+	ShipmentStatus  string                 `protobuf:"bytes,10,opt,name=shipmentStatus,proto3" json:"shipmentStatus,omitempty"`
+	CompanyName     string                 `protobuf:"bytes,11,opt,name=companyName,proto3" json:"companyName,omitempty"`
 }
 
 func (x *ListShipmentOrderVo) Reset() {
@@ -8666,10 +8666,10 @@ type CountShipmentOrderReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CompanyCode string                 `protobuf:"bytes,1,opt,name=companyCode,proto3" json:"companyCode"`
-	StartDate   *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=startDate,proto3" json:"startDate"`
-	EndDate     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=endDate,proto3" json:"endDate"`
-	ManagerId   int64                  `protobuf:"varint,4,opt,name=managerId,proto3" json:"managerId"`
+	CompanyCode string                 `protobuf:"bytes,1,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
+	StartDate   *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=startDate,proto3" json:"startDate,omitempty"`
+	EndDate     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=endDate,proto3" json:"endDate,omitempty"`
+	ManagerId   int64                  `protobuf:"varint,4,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *CountShipmentOrderReq) Reset() {
@@ -8737,8 +8737,8 @@ type CountShipmentOrderResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ShipmentOrderCount int64 `protobuf:"varint,1,opt,name=shipmentOrderCount,proto3" json:"shipmentOrderCount"`
-	ShipmentPlanCount  int64 `protobuf:"varint,2,opt,name=shipmentPlanCount,proto3" json:"shipmentPlanCount"`
+	ShipmentOrderCount int64 `protobuf:"varint,1,opt,name=shipmentOrderCount,proto3" json:"shipmentOrderCount,omitempty"`
+	ShipmentPlanCount  int64 `protobuf:"varint,2,opt,name=shipmentPlanCount,proto3" json:"shipmentPlanCount,omitempty"`
 }
 
 func (x *CountShipmentOrderResp) Reset() {
@@ -8793,9 +8793,9 @@ type ReceiveShipmentOrderReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ShipmentNo string `protobuf:"bytes,1,opt,name=shipmentNo,proto3" json:"shipmentNo"`
-	MiId       int64  `protobuf:"varint,2,opt,name=miId,proto3" json:"miId"`
-	ManagerId  int64  `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId"`
+	ShipmentNo string `protobuf:"bytes,1,opt,name=shipmentNo,proto3" json:"shipmentNo,omitempty"`
+	MiId       int64  `protobuf:"varint,2,opt,name=miId,proto3" json:"miId,omitempty"`
+	ManagerId  int64  `protobuf:"varint,3,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *ReceiveShipmentOrderReq) Reset() {
@@ -8856,8 +8856,8 @@ type ReceiveShipmentOrderResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Code string `protobuf:"bytes,1,opt,name=code,proto3" json:"code"`
-	Msg  string `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg"`
+	Code string `protobuf:"bytes,1,opt,name=code,proto3" json:"code,omitempty"`
+	Msg  string `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
 }
 
 func (x *ReceiveShipmentOrderResp) Reset() {
@@ -8912,8 +8912,8 @@ type GetContractByShipmentPlanIdReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ShipmentId int64 `protobuf:"varint,1,opt,name=shipmentId,proto3" json:"shipmentId"`
-	ManagerId  int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId"`
+	ShipmentId int64 `protobuf:"varint,1,opt,name=shipmentId,proto3" json:"shipmentId,omitempty"`
+	ManagerId  int64 `protobuf:"varint,2,opt,name=managerId,proto3" json:"managerId,omitempty"`
 }
 
 func (x *GetContractByShipmentPlanIdReq) Reset() {
@@ -8967,8 +8967,8 @@ type GetContractByShipmentPlanIdResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ContractId int64  `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId"`
-	ContractNo string `protobuf:"bytes,2,opt,name=contractNo,proto3" json:"contractNo"`
+	ContractId int64  `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId,omitempty"`
+	ContractNo string `protobuf:"bytes,2,opt,name=contractNo,proto3" json:"contractNo,omitempty"`
 }
 
 func (x *GetContractByShipmentPlanIdResp) Reset() {
@@ -9023,8 +9023,8 @@ type InsertConfigsReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64           `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
-	Configs   []*CommonConfig `protobuf:"bytes,2,rep,name=configs,proto3" json:"configs"`
+	ManagerId int64           `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	Configs   []*CommonConfig `protobuf:"bytes,2,rep,name=configs,proto3" json:"configs,omitempty"`
 }
 
 func (x *InsertConfigsReq) Reset() {
@@ -9079,15 +9079,15 @@ type UpdateConfigReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
+	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
 	//条件生效顺序 id>key> type 1,2,3
-	ConfigId  int64  `protobuf:"varint,2,opt,name=configId,proto3" json:"configId"`
-	Key       string `protobuf:"bytes,3,opt,name=key,proto3" json:"key"`
-	TypeOne   string `protobuf:"bytes,4,opt,name=typeOne,proto3" json:"typeOne"`
-	TypeTwo   string `protobuf:"bytes,5,opt,name=typeTwo,proto3" json:"typeTwo"`
-	TypeThree string `protobuf:"bytes,6,opt,name=typeThree,proto3" json:"typeThree"`
-	OldValue  string `protobuf:"bytes,7,opt,name=oldValue,proto3" json:"oldValue"`
-	Value     string `protobuf:"bytes,8,opt,name=value,proto3" json:"value"`
+	ConfigId  int64  `protobuf:"varint,2,opt,name=configId,proto3" json:"configId,omitempty"`
+	Key       string `protobuf:"bytes,3,opt,name=key,proto3" json:"key,omitempty"`
+	TypeOne   string `protobuf:"bytes,4,opt,name=typeOne,proto3" json:"typeOne,omitempty"`
+	TypeTwo   string `protobuf:"bytes,5,opt,name=typeTwo,proto3" json:"typeTwo,omitempty"`
+	TypeThree string `protobuf:"bytes,6,opt,name=typeThree,proto3" json:"typeThree,omitempty"`
+	OldValue  string `protobuf:"bytes,7,opt,name=oldValue,proto3" json:"oldValue,omitempty"`
+	Value     string `protobuf:"bytes,8,opt,name=value,proto3" json:"value,omitempty"`
 }
 
 func (x *UpdateConfigReq) Reset() {
@@ -9183,14 +9183,14 @@ type DeleteConfigsReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
+	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
 	//指定要删除的id，id必填
-	ConfigIds []int64 `protobuf:"varint,2,rep,packed,name=configIds,proto3" json:"configIds"`
+	ConfigIds []int64 `protobuf:"varint,2,rep,packed,name=configIds,proto3" json:"configIds,omitempty"`
 	//以下为限制项目，
-	Key       string `protobuf:"bytes,3,opt,name=key,proto3" json:"key"`
-	TypeOne   string `protobuf:"bytes,4,opt,name=typeOne,proto3" json:"typeOne"`
-	TypeTwo   string `protobuf:"bytes,5,opt,name=typeTwo,proto3" json:"typeTwo"`
-	TypeThree string `protobuf:"bytes,6,opt,name=typeThree,proto3" json:"typeThree"`
+	Key       string `protobuf:"bytes,3,opt,name=key,proto3" json:"key,omitempty"`
+	TypeOne   string `protobuf:"bytes,4,opt,name=typeOne,proto3" json:"typeOne,omitempty"`
+	TypeTwo   string `protobuf:"bytes,5,opt,name=typeTwo,proto3" json:"typeTwo,omitempty"`
+	TypeThree string `protobuf:"bytes,6,opt,name=typeThree,proto3" json:"typeThree,omitempty"`
 }
 
 func (x *DeleteConfigsReq) Reset() {
@@ -9273,18 +9273,18 @@ type GetConfigReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
+	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
 	//不指定page默认为20个
-	Page      *Page    `protobuf:"bytes,2,opt,name=page,proto3" json:"page"`
-	Keys      []string `protobuf:"bytes,3,rep,name=keys,proto3" json:"keys"`
-	TypeOne   string   `protobuf:"bytes,4,opt,name=typeOne,proto3" json:"typeOne"`
-	TypeTwo   string   `protobuf:"bytes,5,opt,name=typeTwo,proto3" json:"typeTwo"`
-	TypeThree string   `protobuf:"bytes,6,opt,name=typeThree,proto3" json:"typeThree"`
+	Page      *Page    `protobuf:"bytes,2,opt,name=page,proto3" json:"page,omitempty"`
+	Keys      []string `protobuf:"bytes,3,rep,name=keys,proto3" json:"keys,omitempty"`
+	TypeOne   string   `protobuf:"bytes,4,opt,name=typeOne,proto3" json:"typeOne,omitempty"`
+	TypeTwo   string   `protobuf:"bytes,5,opt,name=typeTwo,proto3" json:"typeTwo,omitempty"`
+	TypeThree string   `protobuf:"bytes,6,opt,name=typeThree,proto3" json:"typeThree,omitempty"`
 	//可以获取该区间正在生效的所有配置
-	StartAt *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=startAt,proto3" json:"startAt"`
-	EndAt   *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=endAt,proto3" json:"endAt"`
+	StartAt *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=startAt,proto3" json:"startAt,omitempty"`
+	EndAt   *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=endAt,proto3" json:"endAt,omitempty"`
 	//获取在此时间节点生效的配置
-	ValidateTime *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=validateTime,proto3" json:"validateTime"`
+	ValidateTime *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=validateTime,proto3" json:"validateTime,omitempty"`
 }
 
 func (x *GetConfigReq) Reset() {
@@ -9387,16 +9387,16 @@ type CommonConfig struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ConfigId  int64                  `protobuf:"varint,1,opt,name=configId,proto3" json:"configId"`
-	Key       string                 `protobuf:"bytes,2,opt,name=key,proto3" json:"key"`
-	TypeOne   string                 `protobuf:"bytes,3,opt,name=typeOne,proto3" json:"typeOne"`
-	TypeTwo   string                 `protobuf:"bytes,4,opt,name=typeTwo,proto3" json:"typeTwo"`
-	TypeThree string                 `protobuf:"bytes,5,opt,name=typeThree,proto3" json:"typeThree"`
-	Value     string                 `protobuf:"bytes,6,opt,name=value,proto3" json:"value"`
-	StartAt   *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=startAt,proto3" json:"startAt"`
-	EndAt     *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=endAt,proto3" json:"endAt"`
-	Explain   string                 `protobuf:"bytes,9,opt,name=explain,proto3" json:"explain"`
-	Created   *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=created,proto3" json:"created"`
+	ConfigId  int64                  `protobuf:"varint,1,opt,name=configId,proto3" json:"configId,omitempty"`
+	Key       string                 `protobuf:"bytes,2,opt,name=key,proto3" json:"key,omitempty"`
+	TypeOne   string                 `protobuf:"bytes,3,opt,name=typeOne,proto3" json:"typeOne,omitempty"`
+	TypeTwo   string                 `protobuf:"bytes,4,opt,name=typeTwo,proto3" json:"typeTwo,omitempty"`
+	TypeThree string                 `protobuf:"bytes,5,opt,name=typeThree,proto3" json:"typeThree,omitempty"`
+	Value     string                 `protobuf:"bytes,6,opt,name=value,proto3" json:"value,omitempty"`
+	StartAt   *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=startAt,proto3" json:"startAt,omitempty"`
+	EndAt     *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=endAt,proto3" json:"endAt,omitempty"`
+	Explain   string                 `protobuf:"bytes,9,opt,name=explain,proto3" json:"explain,omitempty"`
+	Created   *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=created,proto3" json:"created,omitempty"`
 }
 
 func (x *CommonConfig) Reset() {
@@ -9620,10 +9620,10 @@ type GetConfigResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*CommonConfig `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64           `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64           `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64           `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*CommonConfig `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64           `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64           `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64           `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *GetConfigResp) Reset() {
@@ -9693,15 +9693,15 @@ type PlanReportGroupCondition struct {
 	unknownFields protoimpl.UnknownFields
 
 	//直接聚合为单行，使用此项则其他聚合条件不生效
-	ByAll bool `protobuf:"varint,1,opt,name=byAll,proto3" json:"byAll"`
+	ByAll bool `protobuf:"varint,1,opt,name=byAll,proto3" json:"byAll,omitempty"`
 	//时间维度聚合,注意对于月报，按日聚合无效，年报类推
-	ByMonth bool `protobuf:"varint,2,opt,name=byMonth,proto3" json:"byMonth"`
-	ByYear  bool `protobuf:"varint,3,opt,name=byYear,proto3" json:"byYear"`
-	ByDay   bool `protobuf:"varint,4,opt,name=byDay,proto3" json:"byDay"`
+	ByMonth bool `protobuf:"varint,2,opt,name=byMonth,proto3" json:"byMonth,omitempty"`
+	ByYear  bool `protobuf:"varint,3,opt,name=byYear,proto3" json:"byYear,omitempty"`
+	ByDay   bool `protobuf:"varint,4,opt,name=byDay,proto3" json:"byDay,omitempty"`
 	//业务维度
-	ByMi       bool `protobuf:"varint,5,opt,name=byMi,proto3" json:"byMi"`
-	ByCom      bool `protobuf:"varint,6,opt,name=byCom,proto3" json:"byCom"`
-	ByMedicine bool `protobuf:"varint,7,opt,name=byMedicine,proto3" json:"byMedicine"`
+	ByMi       bool `protobuf:"varint,5,opt,name=byMi,proto3" json:"byMi,omitempty"`
+	ByCom      bool `protobuf:"varint,6,opt,name=byCom,proto3" json:"byCom,omitempty"`
+	ByMedicine bool `protobuf:"varint,7,opt,name=byMedicine,proto3" json:"byMedicine,omitempty"`
 }
 
 func (x *PlanReportGroupCondition) Reset() {
@@ -9792,18 +9792,18 @@ type PlanReportGetCondition struct {
 	unknownFields protoimpl.UnknownFields
 
 	//指定获取哪家医院的数据
-	MiIds []int64 `protobuf:"varint,1,rep,packed,name=miIds,proto3" json:"miIds"`
+	MiIds []int64 `protobuf:"varint,1,rep,packed,name=miIds,proto3" json:"miIds,omitempty"`
 	//指定获取哪家配送企业的数据
-	ComIds        []int64  `protobuf:"varint,2,rep,packed,name=comIds,proto3" json:"comIds"`
-	MedicineCodes []string `protobuf:"bytes,3,rep,name=medicineCodes,proto3" json:"medicineCodes"`
+	ComIds        []int64  `protobuf:"varint,2,rep,packed,name=comIds,proto3" json:"comIds,omitempty"`
+	MedicineCodes []string `protobuf:"bytes,3,rep,name=medicineCodes,proto3" json:"medicineCodes,omitempty"`
 	//用于药品名模糊搜索，只显示5个候选药品
-	MedicineName string `protobuf:"bytes,4,opt,name=medicineName,proto3" json:"medicineName"`
+	MedicineName string `protobuf:"bytes,4,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
 	//用于医院名模糊搜索，只显示5个候选医院
-	MiName string `protobuf:"bytes,5,opt,name=miName,proto3" json:"miName"`
+	MiName string `protobuf:"bytes,5,opt,name=miName,proto3" json:"miName,omitempty"`
 	//用于企业名模糊搜索，只显示5个候选医院
-	ComName string `protobuf:"bytes,6,opt,name=comName,proto3" json:"comName"`
+	ComName string `protobuf:"bytes,6,opt,name=comName,proto3" json:"comName,omitempty"`
 	//按某个标签显示
-	TagId int64 `protobuf:"varint,7,opt,name=tagId,proto3" json:"tagId"`
+	TagId int64 `protobuf:"varint,7,opt,name=tagId,proto3" json:"tagId,omitempty"`
 }
 
 func (x *PlanReportGetCondition) Reset() {
@@ -9893,15 +9893,15 @@ type GetShipmentPlanReportsReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
+	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
 	//指定获取哪个医保局的订单报表数据，目前不支持不同医保局混合统计
-	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId"`
+	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId,omitempty"`
 	//报表的起止日期必填
-	StartAt            *timestamppb.Timestamp    `protobuf:"bytes,3,opt,name=startAt,proto3" json:"startAt"`
-	EndAt              *timestamppb.Timestamp    `protobuf:"bytes,4,opt,name=endAt,proto3" json:"endAt"`
-	OptionalFilterCond *PlanReportGetCondition   `protobuf:"bytes,5,opt,name=optionalFilterCond,proto3" json:"optionalFilterCond"`
-	OptionalGroupCond  *PlanReportGroupCondition `protobuf:"bytes,6,opt,name=optionalGroupCond,proto3" json:"optionalGroupCond"`
-	Page               *Page                     `protobuf:"bytes,7,opt,name=page,proto3" json:"page"`
+	StartAt            *timestamppb.Timestamp    `protobuf:"bytes,3,opt,name=startAt,proto3" json:"startAt,omitempty"`
+	EndAt              *timestamppb.Timestamp    `protobuf:"bytes,4,opt,name=endAt,proto3" json:"endAt,omitempty"`
+	OptionalFilterCond *PlanReportGetCondition   `protobuf:"bytes,5,opt,name=optionalFilterCond,proto3" json:"optionalFilterCond,omitempty"`
+	OptionalGroupCond  *PlanReportGroupCondition `protobuf:"bytes,6,opt,name=optionalGroupCond,proto3" json:"optionalGroupCond,omitempty"`
+	Page               *Page                     `protobuf:"bytes,7,opt,name=page,proto3" json:"page,omitempty"`
 }
 
 func (x *GetShipmentPlanReportsReq) Reset() {
@@ -9990,14 +9990,14 @@ type CompanyReportVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CompanyId    int64  `protobuf:"varint,1,opt,name=companyId,proto3" json:"companyId"`
-	CompanyName  string `protobuf:"bytes,2,opt,name=companyName,proto3" json:"companyName"`
-	CompanyCode  string `protobuf:"bytes,3,opt,name=companyCode,proto3" json:"companyCode"`
-	ManagerName  string `protobuf:"bytes,4,opt,name=managerName,proto3" json:"managerName"`
-	ManagerPhone string `protobuf:"bytes,5,opt,name=managerPhone,proto3" json:"managerPhone"`
-	Province     string `protobuf:"bytes,6,opt,name=province,proto3" json:"province"`
-	City         string `protobuf:"bytes,7,opt,name=city,proto3" json:"city"`
-	Zone         string `protobuf:"bytes,8,opt,name=zone,proto3" json:"zone"`
+	CompanyId    int64  `protobuf:"varint,1,opt,name=companyId,proto3" json:"companyId,omitempty"`
+	CompanyName  string `protobuf:"bytes,2,opt,name=companyName,proto3" json:"companyName,omitempty"`
+	CompanyCode  string `protobuf:"bytes,3,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
+	ManagerName  string `protobuf:"bytes,4,opt,name=managerName,proto3" json:"managerName,omitempty"`
+	ManagerPhone string `protobuf:"bytes,5,opt,name=managerPhone,proto3" json:"managerPhone,omitempty"`
+	Province     string `protobuf:"bytes,6,opt,name=province,proto3" json:"province,omitempty"`
+	City         string `protobuf:"bytes,7,opt,name=city,proto3" json:"city,omitempty"`
+	Zone         string `protobuf:"bytes,8,opt,name=zone,proto3" json:"zone,omitempty"`
 }
 
 func (x *CompanyReportVo) Reset() {
@@ -10093,15 +10093,15 @@ type MiReportVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MiId         int64  `protobuf:"varint,1,opt,name=miId,proto3" json:"miId"`
-	MiCode       string `protobuf:"bytes,2,opt,name=miCode,proto3" json:"miCode"`
-	MiName       string `protobuf:"bytes,3,opt,name=miName,proto3" json:"miName"`
-	MiType       string `protobuf:"bytes,4,opt,name=miType,proto3" json:"miType"`
-	ManagerName  string `protobuf:"bytes,5,opt,name=managerName,proto3" json:"managerName"`
-	ManagerPhone string `protobuf:"bytes,6,opt,name=managerPhone,proto3" json:"managerPhone"`
-	Province     string `protobuf:"bytes,7,opt,name=province,proto3" json:"province"`
-	City         string `protobuf:"bytes,8,opt,name=city,proto3" json:"city"`
-	Zone         string `protobuf:"bytes,9,opt,name=zone,proto3" json:"zone"`
+	MiId         int64  `protobuf:"varint,1,opt,name=miId,proto3" json:"miId,omitempty"`
+	MiCode       string `protobuf:"bytes,2,opt,name=miCode,proto3" json:"miCode,omitempty"`
+	MiName       string `protobuf:"bytes,3,opt,name=miName,proto3" json:"miName,omitempty"`
+	MiType       string `protobuf:"bytes,4,opt,name=miType,proto3" json:"miType,omitempty"`
+	ManagerName  string `protobuf:"bytes,5,opt,name=managerName,proto3" json:"managerName,omitempty"`
+	ManagerPhone string `protobuf:"bytes,6,opt,name=managerPhone,proto3" json:"managerPhone,omitempty"`
+	Province     string `protobuf:"bytes,7,opt,name=province,proto3" json:"province,omitempty"`
+	City         string `protobuf:"bytes,8,opt,name=city,proto3" json:"city,omitempty"`
+	Zone         string `protobuf:"bytes,9,opt,name=zone,proto3" json:"zone,omitempty"`
 }
 
 func (x *MiReportVo) Reset() {
@@ -10204,16 +10204,16 @@ type MedicineReportVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MedicineId            int64  `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId"`
-	MedicineName          string `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName"`
-	MedicineCode          string `protobuf:"bytes,3,opt,name=medicineCode,proto3" json:"medicineCode"`
-	MedicineSpecification string `protobuf:"bytes,4,opt,name=medicineSpecification,proto3" json:"medicineSpecification"`
-	MedicineForm          string `protobuf:"bytes,5,opt,name=medicineForm,proto3" json:"medicineForm"`
-	MedicinePackage       string `protobuf:"bytes,6,opt,name=medicinePackage,proto3" json:"medicinePackage"`
-	CalculateRate         int64  `protobuf:"varint,7,opt,name=calculateRate,proto3" json:"calculateRate"`
-	Manufacturer          string `protobuf:"bytes,8,opt,name=manufacturer,proto3" json:"manufacturer"`
-	MedicineUnit          string `protobuf:"bytes,9,opt,name=medicineUnit,proto3" json:"medicineUnit"`
-	TagName               string `protobuf:"bytes,10,opt,name=tagName,proto3" json:"tagName"`
+	MedicineId            int64  `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId,omitempty"`
+	MedicineName          string `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
+	MedicineCode          string `protobuf:"bytes,3,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
+	MedicineSpecification string `protobuf:"bytes,4,opt,name=medicineSpecification,proto3" json:"medicineSpecification,omitempty"`
+	MedicineForm          string `protobuf:"bytes,5,opt,name=medicineForm,proto3" json:"medicineForm,omitempty"`
+	MedicinePackage       string `protobuf:"bytes,6,opt,name=medicinePackage,proto3" json:"medicinePackage,omitempty"`
+	CalculateRate         int64  `protobuf:"varint,7,opt,name=calculateRate,proto3" json:"calculateRate,omitempty"`
+	Manufacturer          string `protobuf:"bytes,8,opt,name=manufacturer,proto3" json:"manufacturer,omitempty"`
+	MedicineUnit          string `protobuf:"bytes,9,opt,name=medicineUnit,proto3" json:"medicineUnit,omitempty"`
+	TagName               string `protobuf:"bytes,10,opt,name=tagName,proto3" json:"tagName,omitempty"`
 }
 
 func (x *MedicineReportVo) Reset() {
@@ -10324,25 +10324,25 @@ type ShipmentPlanDayReport struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	Year  int64 `protobuf:"varint,1,opt,name=year,proto3" json:"year"`
-	Month int64 `protobuf:"varint,2,opt,name=month,proto3" json:"month"`
-	Day   int64 `protobuf:"varint,3,opt,name=day,proto3" json:"day"`
-	MibId int64 `protobuf:"varint,4,opt,name=mibId,proto3" json:"mibId"`
+	Year  int64 `protobuf:"varint,1,opt,name=year,proto3" json:"year,omitempty"`
+	Month int64 `protobuf:"varint,2,opt,name=month,proto3" json:"month,omitempty"`
+	Day   int64 `protobuf:"varint,3,opt,name=day,proto3" json:"day,omitempty"`
+	MibId int64 `protobuf:"varint,4,opt,name=mibId,proto3" json:"mibId,omitempty"`
 	//如果聚合时不含此列，则信息不存在
-	CompanyInfo  *CompanyReportVo  `protobuf:"bytes,5,opt,name=companyInfo,proto3" json:"companyInfo"`
-	MiInfo       *MiReportVo       `protobuf:"bytes,6,opt,name=miInfo,proto3" json:"miInfo"`
-	MedicineInfo *MedicineReportVo `protobuf:"bytes,7,opt,name=medicineInfo,proto3" json:"medicineInfo"`
+	CompanyInfo  *CompanyReportVo  `protobuf:"bytes,5,opt,name=companyInfo,proto3" json:"companyInfo,omitempty"`
+	MiInfo       *MiReportVo       `protobuf:"bytes,6,opt,name=miInfo,proto3" json:"miInfo,omitempty"`
+	MedicineInfo *MedicineReportVo `protobuf:"bytes,7,opt,name=medicineInfo,proto3" json:"medicineInfo,omitempty"`
 	//本日配送计划同步金额
-	ShipmentPlanAmount           int64                  `protobuf:"varint,8,opt,name=shipmentPlanAmount,proto3" json:"shipmentPlanAmount"`
-	ShipmentPlanCount            int64                  `protobuf:"varint,9,opt,name=shipmentPlanCount,proto3" json:"shipmentPlanCount"`
-	ShipmentPlanUnitCount        int64                  `protobuf:"varint,10,opt,name=shipmentPlanUnitCount,proto3" json:"shipmentPlanUnitCount"`
-	ShipmentPlanReceiveAmount    int64                  `protobuf:"varint,11,opt,name=shipmentPlanReceiveAmount,proto3" json:"shipmentPlanReceiveAmount"`
-	ShipmentPlanReceiveCount     int64                  `protobuf:"varint,12,opt,name=shipmentPlanReceiveCount,proto3" json:"shipmentPlanReceiveCount"`
-	ShipmentPlanReceiveUnitCount int64                  `protobuf:"varint,13,opt,name=shipmentPlanReceiveUnitCount,proto3" json:"shipmentPlanReceiveUnitCount"`
-	ShipmentPlanNotSentAmount    int64                  `protobuf:"varint,14,opt,name=shipmentPlanNotSentAmount,proto3" json:"shipmentPlanNotSentAmount"`
-	ShipmentPlanNotSentCount     int64                  `protobuf:"varint,15,opt,name=shipmentPlanNotSentCount,proto3" json:"shipmentPlanNotSentCount"`
-	ShipmentPlanNotSentUnitCount int64                  `protobuf:"varint,16,opt,name=shipmentPlanNotSentUnitCount,proto3" json:"shipmentPlanNotSentUnitCount"`
-	ReportDate                   *timestamppb.Timestamp `protobuf:"bytes,17,opt,name=reportDate,proto3" json:"reportDate"`
+	ShipmentPlanAmount           int64                  `protobuf:"varint,8,opt,name=shipmentPlanAmount,proto3" json:"shipmentPlanAmount,omitempty"`
+	ShipmentPlanCount            int64                  `protobuf:"varint,9,opt,name=shipmentPlanCount,proto3" json:"shipmentPlanCount,omitempty"`
+	ShipmentPlanUnitCount        int64                  `protobuf:"varint,10,opt,name=shipmentPlanUnitCount,proto3" json:"shipmentPlanUnitCount,omitempty"`
+	ShipmentPlanReceiveAmount    int64                  `protobuf:"varint,11,opt,name=shipmentPlanReceiveAmount,proto3" json:"shipmentPlanReceiveAmount,omitempty"`
+	ShipmentPlanReceiveCount     int64                  `protobuf:"varint,12,opt,name=shipmentPlanReceiveCount,proto3" json:"shipmentPlanReceiveCount,omitempty"`
+	ShipmentPlanReceiveUnitCount int64                  `protobuf:"varint,13,opt,name=shipmentPlanReceiveUnitCount,proto3" json:"shipmentPlanReceiveUnitCount,omitempty"`
+	ShipmentPlanNotSentAmount    int64                  `protobuf:"varint,14,opt,name=shipmentPlanNotSentAmount,proto3" json:"shipmentPlanNotSentAmount,omitempty"`
+	ShipmentPlanNotSentCount     int64                  `protobuf:"varint,15,opt,name=shipmentPlanNotSentCount,proto3" json:"shipmentPlanNotSentCount,omitempty"`
+	ShipmentPlanNotSentUnitCount int64                  `protobuf:"varint,16,opt,name=shipmentPlanNotSentUnitCount,proto3" json:"shipmentPlanNotSentUnitCount,omitempty"`
+	ReportDate                   *timestamppb.Timestamp `protobuf:"bytes,17,opt,name=reportDate,proto3" json:"reportDate,omitempty"`
 }
 
 func (x *ShipmentPlanDayReport) Reset() {
@@ -10502,24 +10502,24 @@ type ShipmentPlanMonthReport struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	Year  int64 `protobuf:"varint,1,opt,name=year,proto3" json:"year"`
-	Month int64 `protobuf:"varint,2,opt,name=month,proto3" json:"month"`
-	MibId int64 `protobuf:"varint,3,opt,name=mibId,proto3" json:"mibId"`
+	Year  int64 `protobuf:"varint,1,opt,name=year,proto3" json:"year,omitempty"`
+	Month int64 `protobuf:"varint,2,opt,name=month,proto3" json:"month,omitempty"`
+	MibId int64 `protobuf:"varint,3,opt,name=mibId,proto3" json:"mibId,omitempty"`
 	//如果聚合时不含此列，则信息不存在
-	CompanyInfo  *CompanyReportVo  `protobuf:"bytes,4,opt,name=companyInfo,proto3" json:"companyInfo"`
-	MiInfo       *MiReportVo       `protobuf:"bytes,5,opt,name=miInfo,proto3" json:"miInfo"`
-	MedicineInfo *MedicineReportVo `protobuf:"bytes,6,opt,name=medicineInfo,proto3" json:"medicineInfo"`
+	CompanyInfo  *CompanyReportVo  `protobuf:"bytes,4,opt,name=companyInfo,proto3" json:"companyInfo,omitempty"`
+	MiInfo       *MiReportVo       `protobuf:"bytes,5,opt,name=miInfo,proto3" json:"miInfo,omitempty"`
+	MedicineInfo *MedicineReportVo `protobuf:"bytes,6,opt,name=medicineInfo,proto3" json:"medicineInfo,omitempty"`
 	//本日配送计划同步金额
-	ShipmentPlanAmount           int64                  `protobuf:"varint,7,opt,name=shipmentPlanAmount,proto3" json:"shipmentPlanAmount"`
-	ShipmentPlanCount            int64                  `protobuf:"varint,8,opt,name=shipmentPlanCount,proto3" json:"shipmentPlanCount"`
-	ShipmentPlanUnitCount        int64                  `protobuf:"varint,9,opt,name=shipmentPlanUnitCount,proto3" json:"shipmentPlanUnitCount"`
-	ShipmentPlanReceiveAmount    int64                  `protobuf:"varint,10,opt,name=shipmentPlanReceiveAmount,proto3" json:"shipmentPlanReceiveAmount"`
-	ShipmentPlanReceiveCount     int64                  `protobuf:"varint,11,opt,name=shipmentPlanReceiveCount,proto3" json:"shipmentPlanReceiveCount"`
-	ShipmentPlanReceiveUnitCount int64                  `protobuf:"varint,12,opt,name=shipmentPlanReceiveUnitCount,proto3" json:"shipmentPlanReceiveUnitCount"`
-	ShipmentPlanNotSentAmount    int64                  `protobuf:"varint,13,opt,name=shipmentPlanNotSentAmount,proto3" json:"shipmentPlanNotSentAmount"`
-	ShipmentPlanNotSentCount     int64                  `protobuf:"varint,14,opt,name=shipmentPlanNotSentCount,proto3" json:"shipmentPlanNotSentCount"`
-	ShipmentPlanNotSentUnitCount int64                  `protobuf:"varint,15,opt,name=shipmentPlanNotSentUnitCount,proto3" json:"shipmentPlanNotSentUnitCount"`
-	ReportDate                   *timestamppb.Timestamp `protobuf:"bytes,16,opt,name=reportDate,proto3" json:"reportDate"`
+	ShipmentPlanAmount           int64                  `protobuf:"varint,7,opt,name=shipmentPlanAmount,proto3" json:"shipmentPlanAmount,omitempty"`
+	ShipmentPlanCount            int64                  `protobuf:"varint,8,opt,name=shipmentPlanCount,proto3" json:"shipmentPlanCount,omitempty"`
+	ShipmentPlanUnitCount        int64                  `protobuf:"varint,9,opt,name=shipmentPlanUnitCount,proto3" json:"shipmentPlanUnitCount,omitempty"`
+	ShipmentPlanReceiveAmount    int64                  `protobuf:"varint,10,opt,name=shipmentPlanReceiveAmount,proto3" json:"shipmentPlanReceiveAmount,omitempty"`
+	ShipmentPlanReceiveCount     int64                  `protobuf:"varint,11,opt,name=shipmentPlanReceiveCount,proto3" json:"shipmentPlanReceiveCount,omitempty"`
+	ShipmentPlanReceiveUnitCount int64                  `protobuf:"varint,12,opt,name=shipmentPlanReceiveUnitCount,proto3" json:"shipmentPlanReceiveUnitCount,omitempty"`
+	ShipmentPlanNotSentAmount    int64                  `protobuf:"varint,13,opt,name=shipmentPlanNotSentAmount,proto3" json:"shipmentPlanNotSentAmount,omitempty"`
+	ShipmentPlanNotSentCount     int64                  `protobuf:"varint,14,opt,name=shipmentPlanNotSentCount,proto3" json:"shipmentPlanNotSentCount,omitempty"`
+	ShipmentPlanNotSentUnitCount int64                  `protobuf:"varint,15,opt,name=shipmentPlanNotSentUnitCount,proto3" json:"shipmentPlanNotSentUnitCount,omitempty"`
+	ReportDate                   *timestamppb.Timestamp `protobuf:"bytes,16,opt,name=reportDate,proto3" json:"reportDate,omitempty"`
 }
 
 func (x *ShipmentPlanMonthReport) Reset() {
@@ -10672,23 +10672,23 @@ type ShipmentPlanYearReport struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	Year  int64 `protobuf:"varint,1,opt,name=year,proto3" json:"year"`
-	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId"`
+	Year  int64 `protobuf:"varint,1,opt,name=year,proto3" json:"year,omitempty"`
+	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId,omitempty"`
 	//如果聚合时不含此列，则信息不存在
-	CompanyInfo  *CompanyReportVo  `protobuf:"bytes,3,opt,name=companyInfo,proto3" json:"companyInfo"`
-	MiInfo       *MiReportVo       `protobuf:"bytes,4,opt,name=miInfo,proto3" json:"miInfo"`
-	MedicineInfo *MedicineReportVo `protobuf:"bytes,5,opt,name=medicineInfo,proto3" json:"medicineInfo"`
+	CompanyInfo  *CompanyReportVo  `protobuf:"bytes,3,opt,name=companyInfo,proto3" json:"companyInfo,omitempty"`
+	MiInfo       *MiReportVo       `protobuf:"bytes,4,opt,name=miInfo,proto3" json:"miInfo,omitempty"`
+	MedicineInfo *MedicineReportVo `protobuf:"bytes,5,opt,name=medicineInfo,proto3" json:"medicineInfo,omitempty"`
 	//本日配送计划同步金额
-	ShipmentPlanAmount           int64                  `protobuf:"varint,6,opt,name=shipmentPlanAmount,proto3" json:"shipmentPlanAmount"`
-	ShipmentPlanCount            int64                  `protobuf:"varint,7,opt,name=shipmentPlanCount,proto3" json:"shipmentPlanCount"`
-	ShipmentPlanUnitCount        int64                  `protobuf:"varint,8,opt,name=shipmentPlanUnitCount,proto3" json:"shipmentPlanUnitCount"`
-	ShipmentPlanReceiveAmount    int64                  `protobuf:"varint,9,opt,name=shipmentPlanReceiveAmount,proto3" json:"shipmentPlanReceiveAmount"`
-	ShipmentPlanReceiveCount     int64                  `protobuf:"varint,10,opt,name=shipmentPlanReceiveCount,proto3" json:"shipmentPlanReceiveCount"`
-	ShipmentPlanReceiveUnitCount int64                  `protobuf:"varint,11,opt,name=shipmentPlanReceiveUnitCount,proto3" json:"shipmentPlanReceiveUnitCount"`
-	ShipmentPlanNotSentAmount    int64                  `protobuf:"varint,12,opt,name=shipmentPlanNotSentAmount,proto3" json:"shipmentPlanNotSentAmount"`
-	ShipmentPlanNotSentCount     int64                  `protobuf:"varint,13,opt,name=shipmentPlanNotSentCount,proto3" json:"shipmentPlanNotSentCount"`
-	ShipmentPlanNotSentUnitCount int64                  `protobuf:"varint,14,opt,name=shipmentPlanNotSentUnitCount,proto3" json:"shipmentPlanNotSentUnitCount"`
-	ReportDate                   *timestamppb.Timestamp `protobuf:"bytes,15,opt,name=reportDate,proto3" json:"reportDate"`
+	ShipmentPlanAmount           int64                  `protobuf:"varint,6,opt,name=shipmentPlanAmount,proto3" json:"shipmentPlanAmount,omitempty"`
+	ShipmentPlanCount            int64                  `protobuf:"varint,7,opt,name=shipmentPlanCount,proto3" json:"shipmentPlanCount,omitempty"`
+	ShipmentPlanUnitCount        int64                  `protobuf:"varint,8,opt,name=shipmentPlanUnitCount,proto3" json:"shipmentPlanUnitCount,omitempty"`
+	ShipmentPlanReceiveAmount    int64                  `protobuf:"varint,9,opt,name=shipmentPlanReceiveAmount,proto3" json:"shipmentPlanReceiveAmount,omitempty"`
+	ShipmentPlanReceiveCount     int64                  `protobuf:"varint,10,opt,name=shipmentPlanReceiveCount,proto3" json:"shipmentPlanReceiveCount,omitempty"`
+	ShipmentPlanReceiveUnitCount int64                  `protobuf:"varint,11,opt,name=shipmentPlanReceiveUnitCount,proto3" json:"shipmentPlanReceiveUnitCount,omitempty"`
+	ShipmentPlanNotSentAmount    int64                  `protobuf:"varint,12,opt,name=shipmentPlanNotSentAmount,proto3" json:"shipmentPlanNotSentAmount,omitempty"`
+	ShipmentPlanNotSentCount     int64                  `protobuf:"varint,13,opt,name=shipmentPlanNotSentCount,proto3" json:"shipmentPlanNotSentCount,omitempty"`
+	ShipmentPlanNotSentUnitCount int64                  `protobuf:"varint,14,opt,name=shipmentPlanNotSentUnitCount,proto3" json:"shipmentPlanNotSentUnitCount,omitempty"`
+	ReportDate                   *timestamppb.Timestamp `protobuf:"bytes,15,opt,name=reportDate,proto3" json:"reportDate,omitempty"`
 }
 
 func (x *ShipmentPlanYearReport) Reset() {
@@ -10833,10 +10833,10 @@ type GetShipmentPlanDayReportsResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ShipmentPlanDayReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64                    `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64                    `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64                    `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*ShipmentPlanDayReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64                    `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64                    `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64                    `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *GetShipmentPlanDayReportsResp) Reset() {
@@ -10904,10 +10904,10 @@ type GetShipmentPlanMonthReportsResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ShipmentPlanMonthReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64                      `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64                      `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64                      `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*ShipmentPlanMonthReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64                      `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64                      `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64                      `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *GetShipmentPlanMonthReportsResp) Reset() {
@@ -10975,10 +10975,10 @@ type GetShipmentPlanYearReportsResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ShipmentPlanYearReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64                     `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64                     `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64                     `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*ShipmentPlanYearReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64                     `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64                     `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64                     `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *GetShipmentPlanYearReportsResp) Reset() {
@@ -11048,14 +11048,14 @@ type OrderReportGroupCondition struct {
 	unknownFields protoimpl.UnknownFields
 
 	//直接聚合为单行，使用此项则其他聚合条件不生效
-	ByAll bool `protobuf:"varint,1,opt,name=byAll,proto3" json:"byAll"`
+	ByAll bool `protobuf:"varint,1,opt,name=byAll,proto3" json:"byAll,omitempty"`
 	//时间维度聚合,注意对于月报，按日聚合无效，年报类推
-	ByMonth bool `protobuf:"varint,2,opt,name=byMonth,proto3" json:"byMonth"`
-	ByYear  bool `protobuf:"varint,3,opt,name=byYear,proto3" json:"byYear"`
-	ByDay   bool `protobuf:"varint,4,opt,name=byDay,proto3" json:"byDay"`
+	ByMonth bool `protobuf:"varint,2,opt,name=byMonth,proto3" json:"byMonth,omitempty"`
+	ByYear  bool `protobuf:"varint,3,opt,name=byYear,proto3" json:"byYear,omitempty"`
+	ByDay   bool `protobuf:"varint,4,opt,name=byDay,proto3" json:"byDay,omitempty"`
 	//业务维度
-	ByMi  bool `protobuf:"varint,5,opt,name=byMi,proto3" json:"byMi"`
-	ByCom bool `protobuf:"varint,6,opt,name=byCom,proto3" json:"byCom"`
+	ByMi  bool `protobuf:"varint,5,opt,name=byMi,proto3" json:"byMi,omitempty"`
+	ByCom bool `protobuf:"varint,6,opt,name=byCom,proto3" json:"byCom,omitempty"`
 }
 
 func (x *OrderReportGroupCondition) Reset() {
@@ -11139,13 +11139,13 @@ type OrderReportGetCondition struct {
 	unknownFields protoimpl.UnknownFields
 
 	//指定获取哪家医院的数据
-	MiIds []int64 `protobuf:"varint,1,rep,packed,name=miIds,proto3" json:"miIds"`
+	MiIds []int64 `protobuf:"varint,1,rep,packed,name=miIds,proto3" json:"miIds,omitempty"`
 	//指定获取哪家配送企业的数据
-	ComIds []int64 `protobuf:"varint,2,rep,packed,name=comIds,proto3" json:"comIds"`
+	ComIds []int64 `protobuf:"varint,2,rep,packed,name=comIds,proto3" json:"comIds,omitempty"`
 	//用于医院名模糊搜索，只显示5个候选医院
-	MiName string `protobuf:"bytes,3,opt,name=miName,proto3" json:"miName"`
+	MiName string `protobuf:"bytes,3,opt,name=miName,proto3" json:"miName,omitempty"`
 	//用于配送企业名模糊搜索，只显示5个候选
-	ComName string `protobuf:"bytes,4,opt,name=comName,proto3" json:"comName"`
+	ComName string `protobuf:"bytes,4,opt,name=comName,proto3" json:"comName,omitempty"`
 }
 
 func (x *OrderReportGetCondition) Reset() {
@@ -11214,15 +11214,15 @@ type GetShipmentOrderReportsReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
+	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
 	//指定获取哪个医保局的订单报表数据，目前不支持不同医保局混合统计
-	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId"`
+	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId,omitempty"`
 	//报表的起止日期必填
-	StartAt            *timestamppb.Timestamp     `protobuf:"bytes,3,opt,name=startAt,proto3" json:"startAt"`
-	EndAt              *timestamppb.Timestamp     `protobuf:"bytes,4,opt,name=endAt,proto3" json:"endAt"`
-	OptionalFilterCond *OrderReportGetCondition   `protobuf:"bytes,5,opt,name=optionalFilterCond,proto3" json:"optionalFilterCond"`
-	OptionalGroupCond  *OrderReportGroupCondition `protobuf:"bytes,6,opt,name=optionalGroupCond,proto3" json:"optionalGroupCond"`
-	Page               *Page                      `protobuf:"bytes,7,opt,name=page,proto3" json:"page"`
+	StartAt            *timestamppb.Timestamp     `protobuf:"bytes,3,opt,name=startAt,proto3" json:"startAt,omitempty"`
+	EndAt              *timestamppb.Timestamp     `protobuf:"bytes,4,opt,name=endAt,proto3" json:"endAt,omitempty"`
+	OptionalFilterCond *OrderReportGetCondition   `protobuf:"bytes,5,opt,name=optionalFilterCond,proto3" json:"optionalFilterCond,omitempty"`
+	OptionalGroupCond  *OrderReportGroupCondition `protobuf:"bytes,6,opt,name=optionalGroupCond,proto3" json:"optionalGroupCond,omitempty"`
+	Page               *Page                      `protobuf:"bytes,7,opt,name=page,proto3" json:"page,omitempty"`
 }
 
 func (x *GetShipmentOrderReportsReq) Reset() {
@@ -11312,24 +11312,24 @@ type ShipmentOrderDayReport struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	Year  int64 `protobuf:"varint,1,opt,name=year,proto3" json:"year"`
-	Month int64 `protobuf:"varint,2,opt,name=month,proto3" json:"month"`
-	Day   int64 `protobuf:"varint,3,opt,name=day,proto3" json:"day"`
-	MibId int64 `protobuf:"varint,4,opt,name=mibId,proto3" json:"mibId"`
+	Year  int64 `protobuf:"varint,1,opt,name=year,proto3" json:"year,omitempty"`
+	Month int64 `protobuf:"varint,2,opt,name=month,proto3" json:"month,omitempty"`
+	Day   int64 `protobuf:"varint,3,opt,name=day,proto3" json:"day,omitempty"`
+	MibId int64 `protobuf:"varint,4,opt,name=mibId,proto3" json:"mibId,omitempty"`
 	//如果聚合时不含此列，则信息不存在
-	CompanyInfo                   *CompanyReportVo       `protobuf:"bytes,5,opt,name=companyInfo,proto3" json:"companyInfo"`
-	MiInfo                        *MiReportVo            `protobuf:"bytes,6,opt,name=miInfo,proto3" json:"miInfo"`
-	ShipmentOrderPaidAmount       int64                  `protobuf:"varint,7,opt,name=shipmentOrderPaidAmount,proto3" json:"shipmentOrderPaidAmount"`
-	ShipmentOrderPaidCount        int64                  `protobuf:"varint,8,opt,name=shipmentOrderPaidCount,proto3" json:"shipmentOrderPaidCount"`
-	ShipmentOrderSpecialPayAmount int64                  `protobuf:"varint,9,opt,name=shipmentOrderSpecialPayAmount,proto3" json:"shipmentOrderSpecialPayAmount"`
-	ShipmentOrderSpecialPayCount  int64                  `protobuf:"varint,10,opt,name=shipmentOrderSpecialPayCount,proto3" json:"shipmentOrderSpecialPayCount"`
-	ShipmentOrderNormalPayAmount  int64                  `protobuf:"varint,11,opt,name=shipmentOrderNormalPayAmount,proto3" json:"shipmentOrderNormalPayAmount"`
-	ShipmentOrderNormalPayCount   int64                  `protobuf:"varint,12,opt,name=shipmentOrderNormalPayCount,proto3" json:"shipmentOrderNormalPayCount"`
-	ShipmentOrderReceiveAmount    int64                  `protobuf:"varint,13,opt,name=shipmentOrderReceiveAmount,proto3" json:"shipmentOrderReceiveAmount"`
-	ShipmentOrderReceiveCount     int64                  `protobuf:"varint,14,opt,name=shipmentOrderReceiveCount,proto3" json:"shipmentOrderReceiveCount"`
-	ShipmentOrderTimeoutAmount    int64                  `protobuf:"varint,15,opt,name=shipmentOrderTimeoutAmount,proto3" json:"shipmentOrderTimeoutAmount"`
-	ShipmentOrderTimeoutCount     int64                  `protobuf:"varint,16,opt,name=shipmentOrderTimeoutCount,proto3" json:"shipmentOrderTimeoutCount"`
-	ReportDate                    *timestamppb.Timestamp `protobuf:"bytes,17,opt,name=reportDate,proto3" json:"reportDate"`
+	CompanyInfo                   *CompanyReportVo       `protobuf:"bytes,5,opt,name=companyInfo,proto3" json:"companyInfo,omitempty"`
+	MiInfo                        *MiReportVo            `protobuf:"bytes,6,opt,name=miInfo,proto3" json:"miInfo,omitempty"`
+	ShipmentOrderPaidAmount       int64                  `protobuf:"varint,7,opt,name=shipmentOrderPaidAmount,proto3" json:"shipmentOrderPaidAmount,omitempty"`
+	ShipmentOrderPaidCount        int64                  `protobuf:"varint,8,opt,name=shipmentOrderPaidCount,proto3" json:"shipmentOrderPaidCount,omitempty"`
+	ShipmentOrderSpecialPayAmount int64                  `protobuf:"varint,9,opt,name=shipmentOrderSpecialPayAmount,proto3" json:"shipmentOrderSpecialPayAmount,omitempty"`
+	ShipmentOrderSpecialPayCount  int64                  `protobuf:"varint,10,opt,name=shipmentOrderSpecialPayCount,proto3" json:"shipmentOrderSpecialPayCount,omitempty"`
+	ShipmentOrderNormalPayAmount  int64                  `protobuf:"varint,11,opt,name=shipmentOrderNormalPayAmount,proto3" json:"shipmentOrderNormalPayAmount,omitempty"`
+	ShipmentOrderNormalPayCount   int64                  `protobuf:"varint,12,opt,name=shipmentOrderNormalPayCount,proto3" json:"shipmentOrderNormalPayCount,omitempty"`
+	ShipmentOrderReceiveAmount    int64                  `protobuf:"varint,13,opt,name=shipmentOrderReceiveAmount,proto3" json:"shipmentOrderReceiveAmount,omitempty"`
+	ShipmentOrderReceiveCount     int64                  `protobuf:"varint,14,opt,name=shipmentOrderReceiveCount,proto3" json:"shipmentOrderReceiveCount,omitempty"`
+	ShipmentOrderTimeoutAmount    int64                  `protobuf:"varint,15,opt,name=shipmentOrderTimeoutAmount,proto3" json:"shipmentOrderTimeoutAmount,omitempty"`
+	ShipmentOrderTimeoutCount     int64                  `protobuf:"varint,16,opt,name=shipmentOrderTimeoutCount,proto3" json:"shipmentOrderTimeoutCount,omitempty"`
+	ReportDate                    *timestamppb.Timestamp `protobuf:"bytes,17,opt,name=reportDate,proto3" json:"reportDate,omitempty"`
 }
 
 func (x *ShipmentOrderDayReport) Reset() {
@@ -11489,23 +11489,23 @@ type ShipmentOrderMonthReport struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	Year       int64                  `protobuf:"varint,1,opt,name=year,proto3" json:"year"`
-	Month      int64                  `protobuf:"varint,2,opt,name=month,proto3" json:"month"`
-	ReportDate *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=reportDate,proto3" json:"reportDate"`
-	MibId      int64                  `protobuf:"varint,4,opt,name=mibId,proto3" json:"mibId"`
+	Year       int64                  `protobuf:"varint,1,opt,name=year,proto3" json:"year,omitempty"`
+	Month      int64                  `protobuf:"varint,2,opt,name=month,proto3" json:"month,omitempty"`
+	ReportDate *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=reportDate,proto3" json:"reportDate,omitempty"`
+	MibId      int64                  `protobuf:"varint,4,opt,name=mibId,proto3" json:"mibId,omitempty"`
 	//如果聚合时不含此列，则信息不存在
-	CompanyInfo                   *CompanyReportVo `protobuf:"bytes,5,opt,name=companyInfo,proto3" json:"companyInfo"`
-	MiInfo                        *MiReportVo      `protobuf:"bytes,6,opt,name=miInfo,proto3" json:"miInfo"`
-	ShipmentOrderPaidAmount       int64            `protobuf:"varint,7,opt,name=shipmentOrderPaidAmount,proto3" json:"shipmentOrderPaidAmount"`
-	ShipmentOrderPaidCount        int64            `protobuf:"varint,8,opt,name=shipmentOrderPaidCount,proto3" json:"shipmentOrderPaidCount"`
-	ShipmentOrderSpecialPayAmount int64            `protobuf:"varint,9,opt,name=shipmentOrderSpecialPayAmount,proto3" json:"shipmentOrderSpecialPayAmount"`
-	ShipmentOrderSpecialPayCount  int64            `protobuf:"varint,10,opt,name=shipmentOrderSpecialPayCount,proto3" json:"shipmentOrderSpecialPayCount"`
-	ShipmentOrderNormalPayAmount  int64            `protobuf:"varint,11,opt,name=shipmentOrderNormalPayAmount,proto3" json:"shipmentOrderNormalPayAmount"`
-	ShipmentOrderNormalPayCount   int64            `protobuf:"varint,12,opt,name=shipmentOrderNormalPayCount,proto3" json:"shipmentOrderNormalPayCount"`
-	ShipmentOrderReceiveAmount    int64            `protobuf:"varint,13,opt,name=shipmentOrderReceiveAmount,proto3" json:"shipmentOrderReceiveAmount"`
-	ShipmentOrderReceiveCount     int64            `protobuf:"varint,14,opt,name=shipmentOrderReceiveCount,proto3" json:"shipmentOrderReceiveCount"`
-	ShipmentOrderTimeoutAmount    int64            `protobuf:"varint,15,opt,name=shipmentOrderTimeoutAmount,proto3" json:"shipmentOrderTimeoutAmount"`
-	ShipmentOrderTimeoutCount     int64            `protobuf:"varint,16,opt,name=shipmentOrderTimeoutCount,proto3" json:"shipmentOrderTimeoutCount"`
+	CompanyInfo                   *CompanyReportVo `protobuf:"bytes,5,opt,name=companyInfo,proto3" json:"companyInfo,omitempty"`
+	MiInfo                        *MiReportVo      `protobuf:"bytes,6,opt,name=miInfo,proto3" json:"miInfo,omitempty"`
+	ShipmentOrderPaidAmount       int64            `protobuf:"varint,7,opt,name=shipmentOrderPaidAmount,proto3" json:"shipmentOrderPaidAmount,omitempty"`
+	ShipmentOrderPaidCount        int64            `protobuf:"varint,8,opt,name=shipmentOrderPaidCount,proto3" json:"shipmentOrderPaidCount,omitempty"`
+	ShipmentOrderSpecialPayAmount int64            `protobuf:"varint,9,opt,name=shipmentOrderSpecialPayAmount,proto3" json:"shipmentOrderSpecialPayAmount,omitempty"`
+	ShipmentOrderSpecialPayCount  int64            `protobuf:"varint,10,opt,name=shipmentOrderSpecialPayCount,proto3" json:"shipmentOrderSpecialPayCount,omitempty"`
+	ShipmentOrderNormalPayAmount  int64            `protobuf:"varint,11,opt,name=shipmentOrderNormalPayAmount,proto3" json:"shipmentOrderNormalPayAmount,omitempty"`
+	ShipmentOrderNormalPayCount   int64            `protobuf:"varint,12,opt,name=shipmentOrderNormalPayCount,proto3" json:"shipmentOrderNormalPayCount,omitempty"`
+	ShipmentOrderReceiveAmount    int64            `protobuf:"varint,13,opt,name=shipmentOrderReceiveAmount,proto3" json:"shipmentOrderReceiveAmount,omitempty"`
+	ShipmentOrderReceiveCount     int64            `protobuf:"varint,14,opt,name=shipmentOrderReceiveCount,proto3" json:"shipmentOrderReceiveCount,omitempty"`
+	ShipmentOrderTimeoutAmount    int64            `protobuf:"varint,15,opt,name=shipmentOrderTimeoutAmount,proto3" json:"shipmentOrderTimeoutAmount,omitempty"`
+	ShipmentOrderTimeoutCount     int64            `protobuf:"varint,16,opt,name=shipmentOrderTimeoutCount,proto3" json:"shipmentOrderTimeoutCount,omitempty"`
 }
 
 func (x *ShipmentOrderMonthReport) Reset() {
@@ -11658,22 +11658,22 @@ type ShipmentOrderYearReport struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	Year       int64                  `protobuf:"varint,1,opt,name=year,proto3" json:"year"`
-	ReportDate *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=reportDate,proto3" json:"reportDate"`
-	MibId      int64                  `protobuf:"varint,3,opt,name=mibId,proto3" json:"mibId"`
+	Year       int64                  `protobuf:"varint,1,opt,name=year,proto3" json:"year,omitempty"`
+	ReportDate *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=reportDate,proto3" json:"reportDate,omitempty"`
+	MibId      int64                  `protobuf:"varint,3,opt,name=mibId,proto3" json:"mibId,omitempty"`
 	//如果聚合时不含此列，则信息不存在
-	CompanyInfo                   *CompanyReportVo `protobuf:"bytes,4,opt,name=companyInfo,proto3" json:"companyInfo"`
-	MiInfo                        *MiReportVo      `protobuf:"bytes,5,opt,name=miInfo,proto3" json:"miInfo"`
-	ShipmentOrderPaidAmount       int64            `protobuf:"varint,6,opt,name=shipmentOrderPaidAmount,proto3" json:"shipmentOrderPaidAmount"`
-	ShipmentOrderPaidCount        int64            `protobuf:"varint,7,opt,name=shipmentOrderPaidCount,proto3" json:"shipmentOrderPaidCount"`
-	ShipmentOrderSpecialPayAmount int64            `protobuf:"varint,8,opt,name=shipmentOrderSpecialPayAmount,proto3" json:"shipmentOrderSpecialPayAmount"`
-	ShipmentOrderSpecialPayCount  int64            `protobuf:"varint,9,opt,name=shipmentOrderSpecialPayCount,proto3" json:"shipmentOrderSpecialPayCount"`
-	ShipmentOrderNormalPayAmount  int64            `protobuf:"varint,10,opt,name=shipmentOrderNormalPayAmount,proto3" json:"shipmentOrderNormalPayAmount"`
-	ShipmentOrderNormalPayCount   int64            `protobuf:"varint,11,opt,name=shipmentOrderNormalPayCount,proto3" json:"shipmentOrderNormalPayCount"`
-	ShipmentOrderReceiveAmount    int64            `protobuf:"varint,12,opt,name=shipmentOrderReceiveAmount,proto3" json:"shipmentOrderReceiveAmount"`
-	ShipmentOrderReceiveCount     int64            `protobuf:"varint,13,opt,name=shipmentOrderReceiveCount,proto3" json:"shipmentOrderReceiveCount"`
-	ShipmentOrderTimeoutAmount    int64            `protobuf:"varint,14,opt,name=shipmentOrderTimeoutAmount,proto3" json:"shipmentOrderTimeoutAmount"`
-	ShipmentOrderTimeoutCount     int64            `protobuf:"varint,15,opt,name=shipmentOrderTimeoutCount,proto3" json:"shipmentOrderTimeoutCount"`
+	CompanyInfo                   *CompanyReportVo `protobuf:"bytes,4,opt,name=companyInfo,proto3" json:"companyInfo,omitempty"`
+	MiInfo                        *MiReportVo      `protobuf:"bytes,5,opt,name=miInfo,proto3" json:"miInfo,omitempty"`
+	ShipmentOrderPaidAmount       int64            `protobuf:"varint,6,opt,name=shipmentOrderPaidAmount,proto3" json:"shipmentOrderPaidAmount,omitempty"`
+	ShipmentOrderPaidCount        int64            `protobuf:"varint,7,opt,name=shipmentOrderPaidCount,proto3" json:"shipmentOrderPaidCount,omitempty"`
+	ShipmentOrderSpecialPayAmount int64            `protobuf:"varint,8,opt,name=shipmentOrderSpecialPayAmount,proto3" json:"shipmentOrderSpecialPayAmount,omitempty"`
+	ShipmentOrderSpecialPayCount  int64            `protobuf:"varint,9,opt,name=shipmentOrderSpecialPayCount,proto3" json:"shipmentOrderSpecialPayCount,omitempty"`
+	ShipmentOrderNormalPayAmount  int64            `protobuf:"varint,10,opt,name=shipmentOrderNormalPayAmount,proto3" json:"shipmentOrderNormalPayAmount,omitempty"`
+	ShipmentOrderNormalPayCount   int64            `protobuf:"varint,11,opt,name=shipmentOrderNormalPayCount,proto3" json:"shipmentOrderNormalPayCount,omitempty"`
+	ShipmentOrderReceiveAmount    int64            `protobuf:"varint,12,opt,name=shipmentOrderReceiveAmount,proto3" json:"shipmentOrderReceiveAmount,omitempty"`
+	ShipmentOrderReceiveCount     int64            `protobuf:"varint,13,opt,name=shipmentOrderReceiveCount,proto3" json:"shipmentOrderReceiveCount,omitempty"`
+	ShipmentOrderTimeoutAmount    int64            `protobuf:"varint,14,opt,name=shipmentOrderTimeoutAmount,proto3" json:"shipmentOrderTimeoutAmount,omitempty"`
+	ShipmentOrderTimeoutCount     int64            `protobuf:"varint,15,opt,name=shipmentOrderTimeoutCount,proto3" json:"shipmentOrderTimeoutCount,omitempty"`
 }
 
 func (x *ShipmentOrderYearReport) Reset() {
@@ -11818,10 +11818,10 @@ type GetShipmentOrderDayReportsResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ShipmentOrderDayReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64                     `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64                     `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64                     `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*ShipmentOrderDayReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64                     `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64                     `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64                     `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *GetShipmentOrderDayReportsResp) Reset() {
@@ -11889,10 +11889,10 @@ type GetShipmentOrderMonthReportsResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ShipmentOrderMonthReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64                       `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64                       `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64                       `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*ShipmentOrderMonthReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64                       `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64                       `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64                       `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *GetShipmentOrderMonthReportsResp) Reset() {
@@ -11960,10 +11960,10 @@ type GetShipmentOrderYearReportsResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ShipmentOrderYearReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64                      `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64                      `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64                      `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*ShipmentOrderYearReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64                      `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64                      `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64                      `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *GetShipmentOrderYearReportsResp) Reset() {
@@ -12033,14 +12033,14 @@ type FactoringReportGroupCondition struct {
 	unknownFields protoimpl.UnknownFields
 
 	//直接聚合为单行，使用此项则其他聚合条件不生效
-	ByAll bool `protobuf:"varint,1,opt,name=byAll,proto3" json:"byAll"`
+	ByAll bool `protobuf:"varint,1,opt,name=byAll,proto3" json:"byAll,omitempty"`
 	//时间维度聚合,注意对于月报，按日聚合无效，年报类推
-	ByMonth bool `protobuf:"varint,2,opt,name=byMonth,proto3" json:"byMonth"`
-	ByYear  bool `protobuf:"varint,3,opt,name=byYear,proto3" json:"byYear"`
-	ByDay   bool `protobuf:"varint,4,opt,name=byDay,proto3" json:"byDay"`
+	ByMonth bool `protobuf:"varint,2,opt,name=byMonth,proto3" json:"byMonth,omitempty"`
+	ByYear  bool `protobuf:"varint,3,opt,name=byYear,proto3" json:"byYear,omitempty"`
+	ByDay   bool `protobuf:"varint,4,opt,name=byDay,proto3" json:"byDay,omitempty"`
 	//业务维度
-	ByMi  bool `protobuf:"varint,5,opt,name=byMi,proto3" json:"byMi"`
-	ByCom bool `protobuf:"varint,6,opt,name=byCom,proto3" json:"byCom"`
+	ByMi  bool `protobuf:"varint,5,opt,name=byMi,proto3" json:"byMi,omitempty"`
+	ByCom bool `protobuf:"varint,6,opt,name=byCom,proto3" json:"byCom,omitempty"`
 }
 
 func (x *FactoringReportGroupCondition) Reset() {
@@ -12124,13 +12124,13 @@ type FactoringReportGetCondition struct {
 	unknownFields protoimpl.UnknownFields
 
 	//指定获取哪家医院的数据
-	MiIds []int64 `protobuf:"varint,1,rep,packed,name=miIds,proto3" json:"miIds"`
+	MiIds []int64 `protobuf:"varint,1,rep,packed,name=miIds,proto3" json:"miIds,omitempty"`
 	//指定获取哪家配送企业的数据
-	ComIds []int64 `protobuf:"varint,2,rep,packed,name=comIds,proto3" json:"comIds"`
+	ComIds []int64 `protobuf:"varint,2,rep,packed,name=comIds,proto3" json:"comIds,omitempty"`
 	//用于医院名模糊搜索，只显示5个候选医院
-	MiName string `protobuf:"bytes,3,opt,name=miName,proto3" json:"miName"`
+	MiName string `protobuf:"bytes,3,opt,name=miName,proto3" json:"miName,omitempty"`
 	//用于配送企业名模糊搜索，只显示5个候选
-	ComName string `protobuf:"bytes,4,opt,name=comName,proto3" json:"comName"`
+	ComName string `protobuf:"bytes,4,opt,name=comName,proto3" json:"comName,omitempty"`
 }
 
 func (x *FactoringReportGetCondition) Reset() {
@@ -12199,15 +12199,15 @@ type GetFactoringOrderReportsReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
+	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
 	//指定获取哪个医保局的订单报表数据，目前不支持不同医保局混合统计
-	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId"`
+	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId,omitempty"`
 	//报表的起止日期必填
-	StartAt            *timestamppb.Timestamp         `protobuf:"bytes,3,opt,name=startAt,proto3" json:"startAt"`
-	EndAt              *timestamppb.Timestamp         `protobuf:"bytes,4,opt,name=endAt,proto3" json:"endAt"`
-	OptionalFilterCond *FactoringReportGetCondition   `protobuf:"bytes,5,opt,name=optionalFilterCond,proto3" json:"optionalFilterCond"`
-	OptionalGroupCond  *FactoringReportGroupCondition `protobuf:"bytes,6,opt,name=optionalGroupCond,proto3" json:"optionalGroupCond"`
-	Page               *Page                          `protobuf:"bytes,7,opt,name=page,proto3" json:"page"`
+	StartAt            *timestamppb.Timestamp         `protobuf:"bytes,3,opt,name=startAt,proto3" json:"startAt,omitempty"`
+	EndAt              *timestamppb.Timestamp         `protobuf:"bytes,4,opt,name=endAt,proto3" json:"endAt,omitempty"`
+	OptionalFilterCond *FactoringReportGetCondition   `protobuf:"bytes,5,opt,name=optionalFilterCond,proto3" json:"optionalFilterCond,omitempty"`
+	OptionalGroupCond  *FactoringReportGroupCondition `protobuf:"bytes,6,opt,name=optionalGroupCond,proto3" json:"optionalGroupCond,omitempty"`
+	Page               *Page                          `protobuf:"bytes,7,opt,name=page,proto3" json:"page,omitempty"`
 }
 
 func (x *GetFactoringOrderReportsReq) Reset() {
@@ -12297,22 +12297,22 @@ type FactoringOrderDayReport struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	Year  int64 `protobuf:"varint,1,opt,name=year,proto3" json:"year"`
-	Month int64 `protobuf:"varint,2,opt,name=month,proto3" json:"month"`
-	Day   int64 `protobuf:"varint,3,opt,name=day,proto3" json:"day"`
-	MibId int64 `protobuf:"varint,4,opt,name=mibId,proto3" json:"mibId"`
+	Year  int64 `protobuf:"varint,1,opt,name=year,proto3" json:"year,omitempty"`
+	Month int64 `protobuf:"varint,2,opt,name=month,proto3" json:"month,omitempty"`
+	Day   int64 `protobuf:"varint,3,opt,name=day,proto3" json:"day,omitempty"`
+	MibId int64 `protobuf:"varint,4,opt,name=mibId,proto3" json:"mibId,omitempty"`
 	//如果聚合时不含此列，则信息不存在
-	CompanyInfo                          *CompanyReportVo       `protobuf:"bytes,5,opt,name=companyInfo,proto3" json:"companyInfo"`
-	MiInfo                               *MiReportVo            `protobuf:"bytes,6,opt,name=miInfo,proto3" json:"miInfo"`
-	FactoringAmount                      int64                  `protobuf:"varint,7,opt,name=factoringAmount,proto3" json:"factoringAmount"`
-	FactoringCount                       int64                  `protobuf:"varint,8,opt,name=factoringCount,proto3" json:"factoringCount"`
-	FactoringFailAmount                  int64                  `protobuf:"varint,9,opt,name=factoringFailAmount,proto3" json:"factoringFailAmount"`
-	FactoringFailCount                   int64                  `protobuf:"varint,10,opt,name=factoringFailCount,proto3" json:"factoringFailCount"`
-	FactoringApplyAmount                 int64                  `protobuf:"varint,11,opt,name=factoringApplyAmount,proto3" json:"factoringApplyAmount"`
-	FactoringApplyCount                  int64                  `protobuf:"varint,12,opt,name=factoringApplyCount,proto3" json:"factoringApplyCount"`
-	ShipmentOrderFactoringNotApplyAmount int64                  `protobuf:"varint,13,opt,name=shipmentOrderFactoringNotApplyAmount,proto3" json:"shipmentOrderFactoringNotApplyAmount"`
-	ShipmentOrderFactoringNotApplyCount  int64                  `protobuf:"varint,14,opt,name=shipmentOrderFactoringNotApplyCount,proto3" json:"shipmentOrderFactoringNotApplyCount"`
-	ReportDate                           *timestamppb.Timestamp `protobuf:"bytes,15,opt,name=reportDate,proto3" json:"reportDate"`
+	CompanyInfo                          *CompanyReportVo       `protobuf:"bytes,5,opt,name=companyInfo,proto3" json:"companyInfo,omitempty"`
+	MiInfo                               *MiReportVo            `protobuf:"bytes,6,opt,name=miInfo,proto3" json:"miInfo,omitempty"`
+	FactoringAmount                      int64                  `protobuf:"varint,7,opt,name=factoringAmount,proto3" json:"factoringAmount,omitempty"`
+	FactoringCount                       int64                  `protobuf:"varint,8,opt,name=factoringCount,proto3" json:"factoringCount,omitempty"`
+	FactoringFailAmount                  int64                  `protobuf:"varint,9,opt,name=factoringFailAmount,proto3" json:"factoringFailAmount,omitempty"`
+	FactoringFailCount                   int64                  `protobuf:"varint,10,opt,name=factoringFailCount,proto3" json:"factoringFailCount,omitempty"`
+	FactoringApplyAmount                 int64                  `protobuf:"varint,11,opt,name=factoringApplyAmount,proto3" json:"factoringApplyAmount,omitempty"`
+	FactoringApplyCount                  int64                  `protobuf:"varint,12,opt,name=factoringApplyCount,proto3" json:"factoringApplyCount,omitempty"`
+	ShipmentOrderFactoringNotApplyAmount int64                  `protobuf:"varint,13,opt,name=shipmentOrderFactoringNotApplyAmount,proto3" json:"shipmentOrderFactoringNotApplyAmount,omitempty"`
+	ShipmentOrderFactoringNotApplyCount  int64                  `protobuf:"varint,14,opt,name=shipmentOrderFactoringNotApplyCount,proto3" json:"shipmentOrderFactoringNotApplyCount,omitempty"`
+	ReportDate                           *timestamppb.Timestamp `protobuf:"bytes,15,opt,name=reportDate,proto3" json:"reportDate,omitempty"`
 }
 
 func (x *FactoringOrderDayReport) Reset() {
@@ -12457,10 +12457,10 @@ type GetFactoringOrderDayReportsResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*FactoringOrderDayReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64                      `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64                      `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64                      `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*FactoringOrderDayReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64                      `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64                      `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64                      `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *GetFactoringOrderDayReportsResp) Reset() {
@@ -12529,21 +12529,21 @@ type FactoringOrderMonthReport struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	Year  int64 `protobuf:"varint,1,opt,name=year,proto3" json:"year"`
-	Month int64 `protobuf:"varint,2,opt,name=month,proto3" json:"month"`
-	MibId int64 `protobuf:"varint,3,opt,name=mibId,proto3" json:"mibId"`
+	Year  int64 `protobuf:"varint,1,opt,name=year,proto3" json:"year,omitempty"`
+	Month int64 `protobuf:"varint,2,opt,name=month,proto3" json:"month,omitempty"`
+	MibId int64 `protobuf:"varint,3,opt,name=mibId,proto3" json:"mibId,omitempty"`
 	//如果聚合时不含此列，则信息不存在
-	CompanyInfo                          *CompanyReportVo       `protobuf:"bytes,4,opt,name=companyInfo,proto3" json:"companyInfo"`
-	MiInfo                               *MiReportVo            `protobuf:"bytes,5,opt,name=miInfo,proto3" json:"miInfo"`
-	FactoringAmount                      int64                  `protobuf:"varint,6,opt,name=factoringAmount,proto3" json:"factoringAmount"`
-	FactoringCount                       int64                  `protobuf:"varint,7,opt,name=factoringCount,proto3" json:"factoringCount"`
-	FactoringFailAmount                  int64                  `protobuf:"varint,8,opt,name=factoringFailAmount,proto3" json:"factoringFailAmount"`
-	FactoringFailCount                   int64                  `protobuf:"varint,9,opt,name=factoringFailCount,proto3" json:"factoringFailCount"`
-	FactoringApplyAmount                 int64                  `protobuf:"varint,10,opt,name=factoringApplyAmount,proto3" json:"factoringApplyAmount"`
-	FactoringApplyCount                  int64                  `protobuf:"varint,11,opt,name=factoringApplyCount,proto3" json:"factoringApplyCount"`
-	ShipmentOrderFactoringNotApplyAmount int64                  `protobuf:"varint,12,opt,name=shipmentOrderFactoringNotApplyAmount,proto3" json:"shipmentOrderFactoringNotApplyAmount"`
-	ShipmentOrderFactoringNotApplyCount  int64                  `protobuf:"varint,13,opt,name=shipmentOrderFactoringNotApplyCount,proto3" json:"shipmentOrderFactoringNotApplyCount"`
-	ReportDate                           *timestamppb.Timestamp `protobuf:"bytes,14,opt,name=reportDate,proto3" json:"reportDate"`
+	CompanyInfo                          *CompanyReportVo       `protobuf:"bytes,4,opt,name=companyInfo,proto3" json:"companyInfo,omitempty"`
+	MiInfo                               *MiReportVo            `protobuf:"bytes,5,opt,name=miInfo,proto3" json:"miInfo,omitempty"`
+	FactoringAmount                      int64                  `protobuf:"varint,6,opt,name=factoringAmount,proto3" json:"factoringAmount,omitempty"`
+	FactoringCount                       int64                  `protobuf:"varint,7,opt,name=factoringCount,proto3" json:"factoringCount,omitempty"`
+	FactoringFailAmount                  int64                  `protobuf:"varint,8,opt,name=factoringFailAmount,proto3" json:"factoringFailAmount,omitempty"`
+	FactoringFailCount                   int64                  `protobuf:"varint,9,opt,name=factoringFailCount,proto3" json:"factoringFailCount,omitempty"`
+	FactoringApplyAmount                 int64                  `protobuf:"varint,10,opt,name=factoringApplyAmount,proto3" json:"factoringApplyAmount,omitempty"`
+	FactoringApplyCount                  int64                  `protobuf:"varint,11,opt,name=factoringApplyCount,proto3" json:"factoringApplyCount,omitempty"`
+	ShipmentOrderFactoringNotApplyAmount int64                  `protobuf:"varint,12,opt,name=shipmentOrderFactoringNotApplyAmount,proto3" json:"shipmentOrderFactoringNotApplyAmount,omitempty"`
+	ShipmentOrderFactoringNotApplyCount  int64                  `protobuf:"varint,13,opt,name=shipmentOrderFactoringNotApplyCount,proto3" json:"shipmentOrderFactoringNotApplyCount,omitempty"`
+	ReportDate                           *timestamppb.Timestamp `protobuf:"bytes,14,opt,name=reportDate,proto3" json:"reportDate,omitempty"`
 }
 
 func (x *FactoringOrderMonthReport) Reset() {
@@ -12681,10 +12681,10 @@ type GetFactoringOrderMonthReportsResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*FactoringOrderMonthReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64                        `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64                        `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64                        `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*FactoringOrderMonthReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64                        `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64                        `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64                        `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *GetFactoringOrderMonthReportsResp) Reset() {
@@ -12753,20 +12753,20 @@ type FactoringOrderYearReport struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	Year       int64                  `protobuf:"varint,1,opt,name=year,proto3" json:"year"`
-	ReportDate *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=reportDate,proto3" json:"reportDate"`
-	MibId      int64                  `protobuf:"varint,3,opt,name=mibId,proto3" json:"mibId"`
+	Year       int64                  `protobuf:"varint,1,opt,name=year,proto3" json:"year,omitempty"`
+	ReportDate *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=reportDate,proto3" json:"reportDate,omitempty"`
+	MibId      int64                  `protobuf:"varint,3,opt,name=mibId,proto3" json:"mibId,omitempty"`
 	//如果聚合时不含此列，则信息不存在
-	CompanyInfo                          *CompanyReportVo `protobuf:"bytes,4,opt,name=companyInfo,proto3" json:"companyInfo"`
-	MiInfo                               *MiReportVo      `protobuf:"bytes,5,opt,name=miInfo,proto3" json:"miInfo"`
-	FactoringAmount                      int64            `protobuf:"varint,6,opt,name=factoringAmount,proto3" json:"factoringAmount"`
-	FactoringCount                       int64            `protobuf:"varint,7,opt,name=factoringCount,proto3" json:"factoringCount"`
-	FactoringFailAmount                  int64            `protobuf:"varint,8,opt,name=factoringFailAmount,proto3" json:"factoringFailAmount"`
-	FactoringFailCount                   int64            `protobuf:"varint,9,opt,name=factoringFailCount,proto3" json:"factoringFailCount"`
-	FactoringApplyAmount                 int64            `protobuf:"varint,10,opt,name=factoringApplyAmount,proto3" json:"factoringApplyAmount"`
-	FactoringApplyCount                  int64            `protobuf:"varint,11,opt,name=factoringApplyCount,proto3" json:"factoringApplyCount"`
-	ShipmentOrderFactoringNotApplyAmount int64            `protobuf:"varint,12,opt,name=shipmentOrderFactoringNotApplyAmount,proto3" json:"shipmentOrderFactoringNotApplyAmount"`
-	ShipmentOrderFactoringNotApplyCount  int64            `protobuf:"varint,13,opt,name=shipmentOrderFactoringNotApplyCount,proto3" json:"shipmentOrderFactoringNotApplyCount"`
+	CompanyInfo                          *CompanyReportVo `protobuf:"bytes,4,opt,name=companyInfo,proto3" json:"companyInfo,omitempty"`
+	MiInfo                               *MiReportVo      `protobuf:"bytes,5,opt,name=miInfo,proto3" json:"miInfo,omitempty"`
+	FactoringAmount                      int64            `protobuf:"varint,6,opt,name=factoringAmount,proto3" json:"factoringAmount,omitempty"`
+	FactoringCount                       int64            `protobuf:"varint,7,opt,name=factoringCount,proto3" json:"factoringCount,omitempty"`
+	FactoringFailAmount                  int64            `protobuf:"varint,8,opt,name=factoringFailAmount,proto3" json:"factoringFailAmount,omitempty"`
+	FactoringFailCount                   int64            `protobuf:"varint,9,opt,name=factoringFailCount,proto3" json:"factoringFailCount,omitempty"`
+	FactoringApplyAmount                 int64            `protobuf:"varint,10,opt,name=factoringApplyAmount,proto3" json:"factoringApplyAmount,omitempty"`
+	FactoringApplyCount                  int64            `protobuf:"varint,11,opt,name=factoringApplyCount,proto3" json:"factoringApplyCount,omitempty"`
+	ShipmentOrderFactoringNotApplyAmount int64            `protobuf:"varint,12,opt,name=shipmentOrderFactoringNotApplyAmount,proto3" json:"shipmentOrderFactoringNotApplyAmount,omitempty"`
+	ShipmentOrderFactoringNotApplyCount  int64            `protobuf:"varint,13,opt,name=shipmentOrderFactoringNotApplyCount,proto3" json:"shipmentOrderFactoringNotApplyCount,omitempty"`
 }
 
 func (x *FactoringOrderYearReport) Reset() {
@@ -12897,10 +12897,10 @@ type GetFactoringOrderYearReportsResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*FactoringOrderYearReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64                       `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64                       `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64                       `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*FactoringOrderYearReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64                       `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64                       `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64                       `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *GetFactoringOrderYearReportsResp) Reset() {
@@ -12970,25 +12970,25 @@ type ContractPlanReportGetCondition struct {
 	unknownFields protoimpl.UnknownFields
 
 	//指定获取哪家医院的数据
-	MiIds []int64 `protobuf:"varint,1,rep,packed,name=miIds,proto3" json:"miIds"`
+	MiIds []int64 `protobuf:"varint,1,rep,packed,name=miIds,proto3" json:"miIds,omitempty"`
 	//指定获取哪家配送企业的数据
-	ComIds        []int64  `protobuf:"varint,2,rep,packed,name=comIds,proto3" json:"comIds"`
-	MedicineCodes []string `protobuf:"bytes,3,rep,name=medicineCodes,proto3" json:"medicineCodes"`
+	ComIds        []int64  `protobuf:"varint,2,rep,packed,name=comIds,proto3" json:"comIds,omitempty"`
+	MedicineCodes []string `protobuf:"bytes,3,rep,name=medicineCodes,proto3" json:"medicineCodes,omitempty"`
 	//用于药品名模糊搜索，只显示5个候选药品
-	MedicineName string `protobuf:"bytes,4,opt,name=medicineName,proto3" json:"medicineName"`
+	MedicineName string `protobuf:"bytes,4,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
 	//用于医院名模糊搜索，只显示5个候选医院
-	MiName string `protobuf:"bytes,5,opt,name=miName,proto3" json:"miName"`
+	MiName string `protobuf:"bytes,5,opt,name=miName,proto3" json:"miName,omitempty"`
 	//用于企业名模糊搜索，只显示5个候选医院
-	ComName string `protobuf:"bytes,6,opt,name=comName,proto3" json:"comName"`
+	ComName string `protobuf:"bytes,6,opt,name=comName,proto3" json:"comName,omitempty"`
 	//按某个标签显示
-	TagId int64 `protobuf:"varint,7,opt,name=tagId,proto3" json:"tagId"`
+	TagId int64 `protobuf:"varint,7,opt,name=tagId,proto3" json:"tagId,omitempty"`
 	//按某份合同聚合
-	ContractNo string `protobuf:"bytes,8,opt,name=contractNo,proto3" json:"contractNo"`
+	ContractNo string `protobuf:"bytes,8,opt,name=contractNo,proto3" json:"contractNo,omitempty"`
 	//按子合同聚合等效于 按照 com,mi,medicine,contract聚合
-	ContractId int64 `protobuf:"varint,9,opt,name=contractId,proto3" json:"contractId"`
+	ContractId int64 `protobuf:"varint,9,opt,name=contractId,proto3" json:"contractId,omitempty"`
 	//合同起止时间过滤
-	ContractStartBegin *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=contractStartBegin,proto3" json:"contractStartBegin"`
-	ContractStartEnd   *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=contractStartEnd,proto3" json:"contractStartEnd"`
+	ContractStartBegin *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=contractStartBegin,proto3" json:"contractStartBegin,omitempty"`
+	ContractStartEnd   *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=contractStartEnd,proto3" json:"contractStartEnd,omitempty"`
 }
 
 func (x *ContractPlanReportGetCondition) Reset() {
@@ -13107,18 +13107,18 @@ type ContractPlanReportGroupCondition struct {
 	unknownFields protoimpl.UnknownFields
 
 	//直接聚合为单行，使用此项则其他聚合条件不生效
-	ByAll bool `protobuf:"varint,1,opt,name=byAll,proto3" json:"byAll"`
+	ByAll bool `protobuf:"varint,1,opt,name=byAll,proto3" json:"byAll,omitempty"`
 	//时间维度聚合,注意对于月报，按日聚合无效，年报类推
-	ByMonth bool `protobuf:"varint,2,opt,name=byMonth,proto3" json:"byMonth"`
-	ByYear  bool `protobuf:"varint,3,opt,name=byYear,proto3" json:"byYear"`
-	ByDay   bool `protobuf:"varint,4,opt,name=byDay,proto3" json:"byDay"`
+	ByMonth bool `protobuf:"varint,2,opt,name=byMonth,proto3" json:"byMonth,omitempty"`
+	ByYear  bool `protobuf:"varint,3,opt,name=byYear,proto3" json:"byYear,omitempty"`
+	ByDay   bool `protobuf:"varint,4,opt,name=byDay,proto3" json:"byDay,omitempty"`
 	//业务维度
-	ByMi       bool `protobuf:"varint,5,opt,name=byMi,proto3" json:"byMi"`
-	ByCom      bool `protobuf:"varint,6,opt,name=byCom,proto3" json:"byCom"`
-	ByMedicine bool `protobuf:"varint,7,opt,name=byMedicine,proto3" json:"byMedicine"`
-	ByContract bool `protobuf:"varint,8,opt,name=byContract,proto3" json:"byContract"`
+	ByMi       bool `protobuf:"varint,5,opt,name=byMi,proto3" json:"byMi,omitempty"`
+	ByCom      bool `protobuf:"varint,6,opt,name=byCom,proto3" json:"byCom,omitempty"`
+	ByMedicine bool `protobuf:"varint,7,opt,name=byMedicine,proto3" json:"byMedicine,omitempty"`
+	ByContract bool `protobuf:"varint,8,opt,name=byContract,proto3" json:"byContract,omitempty"`
 	//按照子合同聚合
-	ByContractMi bool `protobuf:"varint,9,opt,name=byContractMi,proto3" json:"byContractMi"`
+	ByContractMi bool `protobuf:"varint,9,opt,name=byContractMi,proto3" json:"byContractMi,omitempty"`
 }
 
 func (x *ContractPlanReportGroupCondition) Reset() {
@@ -13223,15 +13223,15 @@ type GetContractPlanReportsReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
+	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
 	//指定获取哪个医保局的订单报表数据，目前不支持不同医保局混合统计
-	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId"`
+	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId,omitempty"`
 	//报表的起止日期必填
-	StartAt            *timestamppb.Timestamp            `protobuf:"bytes,3,opt,name=startAt,proto3" json:"startAt"`
-	EndAt              *timestamppb.Timestamp            `protobuf:"bytes,4,opt,name=endAt,proto3" json:"endAt"`
-	OptionalFilterCond *ContractPlanReportGetCondition   `protobuf:"bytes,5,opt,name=optionalFilterCond,proto3" json:"optionalFilterCond"`
-	OptionalGroupCond  *ContractPlanReportGroupCondition `protobuf:"bytes,6,opt,name=optionalGroupCond,proto3" json:"optionalGroupCond"`
-	Page               *Page                             `protobuf:"bytes,7,opt,name=page,proto3" json:"page"`
+	StartAt            *timestamppb.Timestamp            `protobuf:"bytes,3,opt,name=startAt,proto3" json:"startAt,omitempty"`
+	EndAt              *timestamppb.Timestamp            `protobuf:"bytes,4,opt,name=endAt,proto3" json:"endAt,omitempty"`
+	OptionalFilterCond *ContractPlanReportGetCondition   `protobuf:"bytes,5,opt,name=optionalFilterCond,proto3" json:"optionalFilterCond,omitempty"`
+	OptionalGroupCond  *ContractPlanReportGroupCondition `protobuf:"bytes,6,opt,name=optionalGroupCond,proto3" json:"optionalGroupCond,omitempty"`
+	Page               *Page                             `protobuf:"bytes,7,opt,name=page,proto3" json:"page,omitempty"`
 }
 
 func (x *GetContractPlanReportsReq) Reset() {
@@ -13320,17 +13320,17 @@ type ContractReportVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ContractNo string `protobuf:"bytes,1,opt,name=contractNo,proto3" json:"contractNo"`
+	ContractNo string `protobuf:"bytes,1,opt,name=contractNo,proto3" json:"contractNo,omitempty"`
 	//投标企业名
-	TenderCompany string `protobuf:"bytes,2,opt,name=tenderCompany,proto3" json:"tenderCompany"`
+	TenderCompany string `protobuf:"bytes,2,opt,name=tenderCompany,proto3" json:"tenderCompany,omitempty"`
 	//中标价格 单位分/包装
-	MedicinePrice int64 `protobuf:"varint,3,opt,name=medicinePrice,proto3" json:"medicinePrice"`
+	MedicinePrice int64 `protobuf:"varint,3,opt,name=medicinePrice,proto3" json:"medicinePrice,omitempty"`
 	//已确认收货的数量
-	MedicineReceive int64 `protobuf:"varint,4,opt,name=medicineReceive,proto3" json:"medicineReceive"`
+	MedicineReceive int64 `protobuf:"varint,4,opt,name=medicineReceive,proto3" json:"medicineReceive,omitempty"`
 	//预计采购量
-	TotalAmount int64                  `protobuf:"varint,5,opt,name=totalAmount,proto3" json:"totalAmount"`
-	StartAt     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=startAt,proto3" json:"startAt"`
-	EndAt       *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=endAt,proto3" json:"endAt"`
+	TotalAmount int64                  `protobuf:"varint,5,opt,name=totalAmount,proto3" json:"totalAmount,omitempty"`
+	StartAt     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=startAt,proto3" json:"startAt,omitempty"`
+	EndAt       *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=endAt,proto3" json:"endAt,omitempty"`
 }
 
 func (x *ContractReportVo) Reset() {
@@ -13419,11 +13419,11 @@ type ContractMiReportVo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MiContractId    int64 `protobuf:"varint,1,opt,name=miContractId,proto3" json:"miContractId"`
-	MedicinePrice   int64 `protobuf:"varint,2,opt,name=medicinePrice,proto3" json:"medicinePrice"`
-	MedicineAmount  int64 `protobuf:"varint,3,opt,name=medicineAmount,proto3" json:"medicineAmount"`
-	MedicineSent    int64 `protobuf:"varint,4,opt,name=medicineSent,proto3" json:"medicineSent"`
-	MedicineReceive int64 `protobuf:"varint,5,opt,name=medicineReceive,proto3" json:"medicineReceive"`
+	MiContractId    int64 `protobuf:"varint,1,opt,name=miContractId,proto3" json:"miContractId,omitempty"`
+	MedicinePrice   int64 `protobuf:"varint,2,opt,name=medicinePrice,proto3" json:"medicinePrice,omitempty"`
+	MedicineAmount  int64 `protobuf:"varint,3,opt,name=medicineAmount,proto3" json:"medicineAmount,omitempty"`
+	MedicineSent    int64 `protobuf:"varint,4,opt,name=medicineSent,proto3" json:"medicineSent,omitempty"`
+	MedicineReceive int64 `protobuf:"varint,5,opt,name=medicineReceive,proto3" json:"medicineReceive,omitempty"`
 }
 
 func (x *ContractMiReportVo) Reset() {
@@ -13499,28 +13499,28 @@ type ContractPlanDayReport struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	Year  int64 `protobuf:"varint,1,opt,name=year,proto3" json:"year"`
-	Month int64 `protobuf:"varint,2,opt,name=month,proto3" json:"month"`
-	Day   int64 `protobuf:"varint,3,opt,name=day,proto3" json:"day"`
-	MibId int64 `protobuf:"varint,4,opt,name=mibId,proto3" json:"mibId"`
+	Year  int64 `protobuf:"varint,1,opt,name=year,proto3" json:"year,omitempty"`
+	Month int64 `protobuf:"varint,2,opt,name=month,proto3" json:"month,omitempty"`
+	Day   int64 `protobuf:"varint,3,opt,name=day,proto3" json:"day,omitempty"`
+	MibId int64 `protobuf:"varint,4,opt,name=mibId,proto3" json:"mibId,omitempty"`
 	//如果聚合时不含此列，则信息不存在
-	CompanyInfo  *CompanyReportVo  `protobuf:"bytes,5,opt,name=companyInfo,proto3" json:"companyInfo"`
-	MiInfo       *MiReportVo       `protobuf:"bytes,6,opt,name=miInfo,proto3" json:"miInfo"`
-	MedicineInfo *MedicineReportVo `protobuf:"bytes,7,opt,name=medicineInfo,proto3" json:"medicineInfo"`
+	CompanyInfo  *CompanyReportVo  `protobuf:"bytes,5,opt,name=companyInfo,proto3" json:"companyInfo,omitempty"`
+	MiInfo       *MiReportVo       `protobuf:"bytes,6,opt,name=miInfo,proto3" json:"miInfo,omitempty"`
+	MedicineInfo *MedicineReportVo `protobuf:"bytes,7,opt,name=medicineInfo,proto3" json:"medicineInfo,omitempty"`
 	//本日配送计划同步金额
-	ShipmentPlanAmount           int64                  `protobuf:"varint,8,opt,name=shipmentPlanAmount,proto3" json:"shipmentPlanAmount"`
-	ShipmentPlanCount            int64                  `protobuf:"varint,9,opt,name=shipmentPlanCount,proto3" json:"shipmentPlanCount"`
-	ShipmentPlanUnitCount        int64                  `protobuf:"varint,10,opt,name=shipmentPlanUnitCount,proto3" json:"shipmentPlanUnitCount"`
-	ShipmentPlanReceiveAmount    int64                  `protobuf:"varint,11,opt,name=shipmentPlanReceiveAmount,proto3" json:"shipmentPlanReceiveAmount"`
-	ShipmentPlanReceiveCount     int64                  `protobuf:"varint,12,opt,name=shipmentPlanReceiveCount,proto3" json:"shipmentPlanReceiveCount"`
-	ShipmentPlanReceiveUnitCount int64                  `protobuf:"varint,13,opt,name=shipmentPlanReceiveUnitCount,proto3" json:"shipmentPlanReceiveUnitCount"`
-	ShipmentPlanNotSentAmount    int64                  `protobuf:"varint,14,opt,name=shipmentPlanNotSentAmount,proto3" json:"shipmentPlanNotSentAmount"`
-	ShipmentPlanNotSentCount     int64                  `protobuf:"varint,15,opt,name=shipmentPlanNotSentCount,proto3" json:"shipmentPlanNotSentCount"`
-	ShipmentPlanNotSentUnitCount int64                  `protobuf:"varint,16,opt,name=shipmentPlanNotSentUnitCount,proto3" json:"shipmentPlanNotSentUnitCount"`
-	FactoringAmount              int64                  `protobuf:"varint,17,opt,name=factoringAmount,proto3" json:"factoringAmount"`
-	ReportDate                   *timestamppb.Timestamp `protobuf:"bytes,18,opt,name=reportDate,proto3" json:"reportDate"`
-	ContractInfo                 *ContractReportVo      `protobuf:"bytes,19,opt,name=contractInfo,proto3" json:"contractInfo"`
-	ContractMiInfo               *ContractMiReportVo    `protobuf:"bytes,20,opt,name=contractMiInfo,proto3" json:"contractMiInfo"`
+	ShipmentPlanAmount           int64                  `protobuf:"varint,8,opt,name=shipmentPlanAmount,proto3" json:"shipmentPlanAmount,omitempty"`
+	ShipmentPlanCount            int64                  `protobuf:"varint,9,opt,name=shipmentPlanCount,proto3" json:"shipmentPlanCount,omitempty"`
+	ShipmentPlanUnitCount        int64                  `protobuf:"varint,10,opt,name=shipmentPlanUnitCount,proto3" json:"shipmentPlanUnitCount,omitempty"`
+	ShipmentPlanReceiveAmount    int64                  `protobuf:"varint,11,opt,name=shipmentPlanReceiveAmount,proto3" json:"shipmentPlanReceiveAmount,omitempty"`
+	ShipmentPlanReceiveCount     int64                  `protobuf:"varint,12,opt,name=shipmentPlanReceiveCount,proto3" json:"shipmentPlanReceiveCount,omitempty"`
+	ShipmentPlanReceiveUnitCount int64                  `protobuf:"varint,13,opt,name=shipmentPlanReceiveUnitCount,proto3" json:"shipmentPlanReceiveUnitCount,omitempty"`
+	ShipmentPlanNotSentAmount    int64                  `protobuf:"varint,14,opt,name=shipmentPlanNotSentAmount,proto3" json:"shipmentPlanNotSentAmount,omitempty"`
+	ShipmentPlanNotSentCount     int64                  `protobuf:"varint,15,opt,name=shipmentPlanNotSentCount,proto3" json:"shipmentPlanNotSentCount,omitempty"`
+	ShipmentPlanNotSentUnitCount int64                  `protobuf:"varint,16,opt,name=shipmentPlanNotSentUnitCount,proto3" json:"shipmentPlanNotSentUnitCount,omitempty"`
+	FactoringAmount              int64                  `protobuf:"varint,17,opt,name=factoringAmount,proto3" json:"factoringAmount,omitempty"`
+	ReportDate                   *timestamppb.Timestamp `protobuf:"bytes,18,opt,name=reportDate,proto3" json:"reportDate,omitempty"`
+	ContractInfo                 *ContractReportVo      `protobuf:"bytes,19,opt,name=contractInfo,proto3" json:"contractInfo,omitempty"`
+	ContractMiInfo               *ContractMiReportVo    `protobuf:"bytes,20,opt,name=contractMiInfo,proto3" json:"contractMiInfo,omitempty"`
 }
 
 func (x *ContractPlanDayReport) Reset() {
@@ -13700,10 +13700,10 @@ type GetContractPlanDayReportsResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ContractPlanDayReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64                    `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64                    `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64                    `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*ContractPlanDayReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64                    `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64                    `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64                    `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *GetContractPlanDayReportsResp) Reset() {
@@ -13772,27 +13772,27 @@ type ContractPlanMonthReport struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	Year           int64               `protobuf:"varint,1,opt,name=year,proto3" json:"year"`
-	Month          int64               `protobuf:"varint,2,opt,name=month,proto3" json:"month"`
-	ContractMiInfo *ContractMiReportVo `protobuf:"bytes,3,opt,name=contractMiInfo,proto3" json:"contractMiInfo"`
-	MibId          int64               `protobuf:"varint,4,opt,name=mibId,proto3" json:"mibId"`
+	Year           int64               `protobuf:"varint,1,opt,name=year,proto3" json:"year,omitempty"`
+	Month          int64               `protobuf:"varint,2,opt,name=month,proto3" json:"month,omitempty"`
+	ContractMiInfo *ContractMiReportVo `protobuf:"bytes,3,opt,name=contractMiInfo,proto3" json:"contractMiInfo,omitempty"`
+	MibId          int64               `protobuf:"varint,4,opt,name=mibId,proto3" json:"mibId,omitempty"`
 	//如果聚合时不含此列，则信息不存在
-	CompanyInfo  *CompanyReportVo  `protobuf:"bytes,5,opt,name=companyInfo,proto3" json:"companyInfo"`
-	MiInfo       *MiReportVo       `protobuf:"bytes,6,opt,name=miInfo,proto3" json:"miInfo"`
-	MedicineInfo *MedicineReportVo `protobuf:"bytes,7,opt,name=medicineInfo,proto3" json:"medicineInfo"`
+	CompanyInfo  *CompanyReportVo  `protobuf:"bytes,5,opt,name=companyInfo,proto3" json:"companyInfo,omitempty"`
+	MiInfo       *MiReportVo       `protobuf:"bytes,6,opt,name=miInfo,proto3" json:"miInfo,omitempty"`
+	MedicineInfo *MedicineReportVo `protobuf:"bytes,7,opt,name=medicineInfo,proto3" json:"medicineInfo,omitempty"`
 	//本日配送计划同步金额
-	ShipmentPlanAmount           int64                  `protobuf:"varint,8,opt,name=shipmentPlanAmount,proto3" json:"shipmentPlanAmount"`
-	ShipmentPlanCount            int64                  `protobuf:"varint,9,opt,name=shipmentPlanCount,proto3" json:"shipmentPlanCount"`
-	ShipmentPlanUnitCount        int64                  `protobuf:"varint,10,opt,name=shipmentPlanUnitCount,proto3" json:"shipmentPlanUnitCount"`
-	ShipmentPlanReceiveAmount    int64                  `protobuf:"varint,11,opt,name=shipmentPlanReceiveAmount,proto3" json:"shipmentPlanReceiveAmount"`
-	ShipmentPlanReceiveCount     int64                  `protobuf:"varint,12,opt,name=shipmentPlanReceiveCount,proto3" json:"shipmentPlanReceiveCount"`
-	ShipmentPlanReceiveUnitCount int64                  `protobuf:"varint,13,opt,name=shipmentPlanReceiveUnitCount,proto3" json:"shipmentPlanReceiveUnitCount"`
-	ShipmentPlanNotSentAmount    int64                  `protobuf:"varint,14,opt,name=shipmentPlanNotSentAmount,proto3" json:"shipmentPlanNotSentAmount"`
-	ShipmentPlanNotSentCount     int64                  `protobuf:"varint,15,opt,name=shipmentPlanNotSentCount,proto3" json:"shipmentPlanNotSentCount"`
-	ShipmentPlanNotSentUnitCount int64                  `protobuf:"varint,16,opt,name=shipmentPlanNotSentUnitCount,proto3" json:"shipmentPlanNotSentUnitCount"`
-	FactoringAmount              int64                  `protobuf:"varint,17,opt,name=factoringAmount,proto3" json:"factoringAmount"`
-	ReportDate                   *timestamppb.Timestamp `protobuf:"bytes,18,opt,name=reportDate,proto3" json:"reportDate"`
-	ContractInfo                 *ContractReportVo      `protobuf:"bytes,19,opt,name=contractInfo,proto3" json:"contractInfo"`
+	ShipmentPlanAmount           int64                  `protobuf:"varint,8,opt,name=shipmentPlanAmount,proto3" json:"shipmentPlanAmount,omitempty"`
+	ShipmentPlanCount            int64                  `protobuf:"varint,9,opt,name=shipmentPlanCount,proto3" json:"shipmentPlanCount,omitempty"`
+	ShipmentPlanUnitCount        int64                  `protobuf:"varint,10,opt,name=shipmentPlanUnitCount,proto3" json:"shipmentPlanUnitCount,omitempty"`
+	ShipmentPlanReceiveAmount    int64                  `protobuf:"varint,11,opt,name=shipmentPlanReceiveAmount,proto3" json:"shipmentPlanReceiveAmount,omitempty"`
+	ShipmentPlanReceiveCount     int64                  `protobuf:"varint,12,opt,name=shipmentPlanReceiveCount,proto3" json:"shipmentPlanReceiveCount,omitempty"`
+	ShipmentPlanReceiveUnitCount int64                  `protobuf:"varint,13,opt,name=shipmentPlanReceiveUnitCount,proto3" json:"shipmentPlanReceiveUnitCount,omitempty"`
+	ShipmentPlanNotSentAmount    int64                  `protobuf:"varint,14,opt,name=shipmentPlanNotSentAmount,proto3" json:"shipmentPlanNotSentAmount,omitempty"`
+	ShipmentPlanNotSentCount     int64                  `protobuf:"varint,15,opt,name=shipmentPlanNotSentCount,proto3" json:"shipmentPlanNotSentCount,omitempty"`
+	ShipmentPlanNotSentUnitCount int64                  `protobuf:"varint,16,opt,name=shipmentPlanNotSentUnitCount,proto3" json:"shipmentPlanNotSentUnitCount,omitempty"`
+	FactoringAmount              int64                  `protobuf:"varint,17,opt,name=factoringAmount,proto3" json:"factoringAmount,omitempty"`
+	ReportDate                   *timestamppb.Timestamp `protobuf:"bytes,18,opt,name=reportDate,proto3" json:"reportDate,omitempty"`
+	ContractInfo                 *ContractReportVo      `protobuf:"bytes,19,opt,name=contractInfo,proto3" json:"contractInfo,omitempty"`
 }
 
 func (x *ContractPlanMonthReport) Reset() {
@@ -13965,10 +13965,10 @@ type GetContractPlanMonthReportsResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ContractPlanMonthReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64                      `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64                      `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64                      `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*ContractPlanMonthReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64                      `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64                      `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64                      `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *GetContractPlanMonthReportsResp) Reset() {
@@ -14037,26 +14037,26 @@ type ContractPlanYearReport struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	Year           int64               `protobuf:"varint,1,opt,name=year,proto3" json:"year"`
-	ContractInfo   *ContractReportVo   `protobuf:"bytes,2,opt,name=contractInfo,proto3" json:"contractInfo"`
-	ContractMiInfo *ContractMiReportVo `protobuf:"bytes,3,opt,name=contractMiInfo,proto3" json:"contractMiInfo"`
-	MibId          int64               `protobuf:"varint,4,opt,name=mibId,proto3" json:"mibId"`
+	Year           int64               `protobuf:"varint,1,opt,name=year,proto3" json:"year,omitempty"`
+	ContractInfo   *ContractReportVo   `protobuf:"bytes,2,opt,name=contractInfo,proto3" json:"contractInfo,omitempty"`
+	ContractMiInfo *ContractMiReportVo `protobuf:"bytes,3,opt,name=contractMiInfo,proto3" json:"contractMiInfo,omitempty"`
+	MibId          int64               `protobuf:"varint,4,opt,name=mibId,proto3" json:"mibId,omitempty"`
 	//如果聚合时不含此列，则信息不存在
-	CompanyInfo  *CompanyReportVo  `protobuf:"bytes,5,opt,name=companyInfo,proto3" json:"companyInfo"`
-	MiInfo       *MiReportVo       `protobuf:"bytes,6,opt,name=miInfo,proto3" json:"miInfo"`
-	MedicineInfo *MedicineReportVo `protobuf:"bytes,7,opt,name=medicineInfo,proto3" json:"medicineInfo"`
+	CompanyInfo  *CompanyReportVo  `protobuf:"bytes,5,opt,name=companyInfo,proto3" json:"companyInfo,omitempty"`
+	MiInfo       *MiReportVo       `protobuf:"bytes,6,opt,name=miInfo,proto3" json:"miInfo,omitempty"`
+	MedicineInfo *MedicineReportVo `protobuf:"bytes,7,opt,name=medicineInfo,proto3" json:"medicineInfo,omitempty"`
 	//本日配送计划同步金额
-	ShipmentPlanAmount           int64                  `protobuf:"varint,8,opt,name=shipmentPlanAmount,proto3" json:"shipmentPlanAmount"`
-	ShipmentPlanCount            int64                  `protobuf:"varint,9,opt,name=shipmentPlanCount,proto3" json:"shipmentPlanCount"`
-	ShipmentPlanUnitCount        int64                  `protobuf:"varint,10,opt,name=shipmentPlanUnitCount,proto3" json:"shipmentPlanUnitCount"`
-	ShipmentPlanReceiveAmount    int64                  `protobuf:"varint,11,opt,name=shipmentPlanReceiveAmount,proto3" json:"shipmentPlanReceiveAmount"`
-	ShipmentPlanReceiveCount     int64                  `protobuf:"varint,12,opt,name=shipmentPlanReceiveCount,proto3" json:"shipmentPlanReceiveCount"`
-	ShipmentPlanReceiveUnitCount int64                  `protobuf:"varint,13,opt,name=shipmentPlanReceiveUnitCount,proto3" json:"shipmentPlanReceiveUnitCount"`
-	ShipmentPlanNotSentAmount    int64                  `protobuf:"varint,14,opt,name=shipmentPlanNotSentAmount,proto3" json:"shipmentPlanNotSentAmount"`
-	ShipmentPlanNotSentCount     int64                  `protobuf:"varint,15,opt,name=shipmentPlanNotSentCount,proto3" json:"shipmentPlanNotSentCount"`
-	ShipmentPlanNotSentUnitCount int64                  `protobuf:"varint,16,opt,name=shipmentPlanNotSentUnitCount,proto3" json:"shipmentPlanNotSentUnitCount"`
-	FactoringAmount              int64                  `protobuf:"varint,17,opt,name=factoringAmount,proto3" json:"factoringAmount"`
-	ReportDate                   *timestamppb.Timestamp `protobuf:"bytes,18,opt,name=reportDate,proto3" json:"reportDate"`
+	ShipmentPlanAmount           int64                  `protobuf:"varint,8,opt,name=shipmentPlanAmount,proto3" json:"shipmentPlanAmount,omitempty"`
+	ShipmentPlanCount            int64                  `protobuf:"varint,9,opt,name=shipmentPlanCount,proto3" json:"shipmentPlanCount,omitempty"`
+	ShipmentPlanUnitCount        int64                  `protobuf:"varint,10,opt,name=shipmentPlanUnitCount,proto3" json:"shipmentPlanUnitCount,omitempty"`
+	ShipmentPlanReceiveAmount    int64                  `protobuf:"varint,11,opt,name=shipmentPlanReceiveAmount,proto3" json:"shipmentPlanReceiveAmount,omitempty"`
+	ShipmentPlanReceiveCount     int64                  `protobuf:"varint,12,opt,name=shipmentPlanReceiveCount,proto3" json:"shipmentPlanReceiveCount,omitempty"`
+	ShipmentPlanReceiveUnitCount int64                  `protobuf:"varint,13,opt,name=shipmentPlanReceiveUnitCount,proto3" json:"shipmentPlanReceiveUnitCount,omitempty"`
+	ShipmentPlanNotSentAmount    int64                  `protobuf:"varint,14,opt,name=shipmentPlanNotSentAmount,proto3" json:"shipmentPlanNotSentAmount,omitempty"`
+	ShipmentPlanNotSentCount     int64                  `protobuf:"varint,15,opt,name=shipmentPlanNotSentCount,proto3" json:"shipmentPlanNotSentCount,omitempty"`
+	ShipmentPlanNotSentUnitCount int64                  `protobuf:"varint,16,opt,name=shipmentPlanNotSentUnitCount,proto3" json:"shipmentPlanNotSentUnitCount,omitempty"`
+	FactoringAmount              int64                  `protobuf:"varint,17,opt,name=factoringAmount,proto3" json:"factoringAmount,omitempty"`
+	ReportDate                   *timestamppb.Timestamp `protobuf:"bytes,18,opt,name=reportDate,proto3" json:"reportDate,omitempty"`
 }
 
 func (x *ContractPlanYearReport) Reset() {
@@ -14222,10 +14222,10 @@ type GetContractPlanYearReportsResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ContractPlanYearReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64                     `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64                     `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64                     `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*ContractPlanYearReport `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64                     `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64                     `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64                     `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *GetContractPlanYearReportsResp) Reset() {
@@ -14294,17 +14294,17 @@ type ContractSum struct {
 	unknownFields protoimpl.UnknownFields
 
 	//预计总金额
-	MedicineMoney int64 `protobuf:"varint,1,opt,name=medicineMoney,proto3" json:"medicineMoney"`
+	MedicineMoney int64 `protobuf:"varint,1,opt,name=medicineMoney,proto3" json:"medicineMoney,omitempty"`
 	//预计总量
-	MedicineAmount  int64 `protobuf:"varint,2,opt,name=medicineAmount,proto3" json:"medicineAmount"`
-	MedicineSent    int64 `protobuf:"varint,4,opt,name=medicineSent,proto3" json:"medicineSent"`
-	MedicineReceive int64 `protobuf:"varint,5,opt,name=medicineReceive,proto3" json:"medicineReceive"`
+	MedicineAmount  int64 `protobuf:"varint,2,opt,name=medicineAmount,proto3" json:"medicineAmount,omitempty"`
+	MedicineSent    int64 `protobuf:"varint,4,opt,name=medicineSent,proto3" json:"medicineSent,omitempty"`
+	MedicineReceive int64 `protobuf:"varint,5,opt,name=medicineReceive,proto3" json:"medicineReceive,omitempty"`
 	//如果聚合时不含此列，则信息不存在
-	CompanyInfo    *CompanyReportVo    `protobuf:"bytes,6,opt,name=companyInfo,proto3" json:"companyInfo"`
-	MiInfo         *MiReportVo         `protobuf:"bytes,7,opt,name=miInfo,proto3" json:"miInfo"`
-	MedicineInfo   *MedicineReportVo   `protobuf:"bytes,8,opt,name=medicineInfo,proto3" json:"medicineInfo"`
-	ContractInfo   *ContractReportVo   `protobuf:"bytes,9,opt,name=contractInfo,proto3" json:"contractInfo"`
-	ContractMiInfo *ContractMiReportVo `protobuf:"bytes,10,opt,name=contractMiInfo,proto3" json:"contractMiInfo"`
+	CompanyInfo    *CompanyReportVo    `protobuf:"bytes,6,opt,name=companyInfo,proto3" json:"companyInfo,omitempty"`
+	MiInfo         *MiReportVo         `protobuf:"bytes,7,opt,name=miInfo,proto3" json:"miInfo,omitempty"`
+	MedicineInfo   *MedicineReportVo   `protobuf:"bytes,8,opt,name=medicineInfo,proto3" json:"medicineInfo,omitempty"`
+	ContractInfo   *ContractReportVo   `protobuf:"bytes,9,opt,name=contractInfo,proto3" json:"contractInfo,omitempty"`
+	ContractMiInfo *ContractMiReportVo `protobuf:"bytes,10,opt,name=contractMiInfo,proto3" json:"contractMiInfo,omitempty"`
 }
 
 func (x *ContractSum) Reset() {
@@ -14407,10 +14407,10 @@ type GetContractSumResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ContractSum `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64          `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64          `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64          `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*ContractSum `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64          `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64          `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64          `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *GetContractSumResp) Reset() {
@@ -14480,11 +14480,11 @@ type GetValidContractInfoReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
+	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
 	//指定获取哪家医院的聚合数据
-	MiId int64 `protobuf:"varint,2,opt,name=miId,proto3" json:"miId"`
+	MiId int64 `protobuf:"varint,2,opt,name=miId,proto3" json:"miId,omitempty"`
 	//指定获取哪家配送企业的聚合数据 不可同时指定
-	ComId int64 `protobuf:"varint,3,opt,name=comId,proto3" json:"comId"`
+	ComId int64 `protobuf:"varint,3,opt,name=comId,proto3" json:"comId,omitempty"`
 }
 
 func (x *GetValidContractInfoReq) Reset() {
@@ -14547,11 +14547,11 @@ type GetCurrentNeedPayReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
+	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
 	//指定获取哪家医院的聚合数据
-	MiId int64 `protobuf:"varint,2,opt,name=miId,proto3" json:"miId"`
+	MiId int64 `protobuf:"varint,2,opt,name=miId,proto3" json:"miId,omitempty"`
 	//指定获取哪家配送企业的聚合数据 不可同时指定
-	ComId int64 `protobuf:"varint,3,opt,name=comId,proto3" json:"comId"`
+	ComId int64 `protobuf:"varint,3,opt,name=comId,proto3" json:"comId,omitempty"`
 }
 
 func (x *GetCurrentNeedPayReq) Reset() {
@@ -14613,9 +14613,9 @@ type GetValidContractInfoResp struct {
 	unknownFields protoimpl.UnknownFields
 
 	//有效合同金额
-	ValidContractAmount int64 `protobuf:"varint,1,opt,name=validContractAmount,proto3" json:"validContractAmount"`
+	ValidContractAmount int64 `protobuf:"varint,1,opt,name=validContractAmount,proto3" json:"validContractAmount,omitempty"`
 	//有效合同数量
-	ValidContractCount int64 `protobuf:"varint,2,opt,name=validContractCount,proto3" json:"validContractCount"`
+	ValidContractCount int64 `protobuf:"varint,2,opt,name=validContractCount,proto3" json:"validContractCount,omitempty"`
 }
 
 func (x *GetValidContractInfoResp) Reset() {
@@ -14670,7 +14670,7 @@ type GetCurrentNeedPayResp struct {
 	unknownFields protoimpl.UnknownFields
 
 	//待支付金额
-	NeedPayAmount int64 `protobuf:"varint,1,opt,name=needPayAmount,proto3" json:"needPayAmount"`
+	NeedPayAmount int64 `protobuf:"varint,1,opt,name=needPayAmount,proto3" json:"needPayAmount,omitempty"`
 }
 
 func (x *GetCurrentNeedPayResp) Reset() {
@@ -14718,9 +14718,9 @@ type GetCompanyHashReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId    int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
-	CompanyIds   []int64  `protobuf:"varint,2,rep,packed,name=companyIds,proto3" json:"companyIds"`
-	CompanyCodes []string `protobuf:"bytes,3,rep,name=companyCodes,proto3" json:"companyCodes"`
+	ManagerId    int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	CompanyIds   []int64  `protobuf:"varint,2,rep,packed,name=companyIds,proto3" json:"companyIds,omitempty"`
+	CompanyCodes []string `protobuf:"bytes,3,rep,name=companyCodes,proto3" json:"companyCodes,omitempty"`
 }
 
 func (x *GetCompanyHashReq) Reset() {
@@ -14781,10 +14781,10 @@ type GetCompanyHashResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*CompanyHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64          `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64          `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64          `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*CompanyHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64          `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64          `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64          `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *GetCompanyHashResp) Reset() {
@@ -14852,10 +14852,10 @@ type CompanyHash struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CompanyId    int64                  `protobuf:"varint,1,opt,name=companyId,proto3" json:"companyId"`
-	CompanyCode  string                 `protobuf:"bytes,2,opt,name=companyCode,proto3" json:"companyCode"`
-	InfoHash     string                 `protobuf:"bytes,3,opt,name=infoHash,proto3" json:"infoHash"`
-	InfoUploadAt *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=infoUploadAt,proto3" json:"infoUploadAt"`
+	CompanyId    int64                  `protobuf:"varint,1,opt,name=companyId,proto3" json:"companyId,omitempty"`
+	CompanyCode  string                 `protobuf:"bytes,2,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
+	InfoHash     string                 `protobuf:"bytes,3,opt,name=infoHash,proto3" json:"infoHash,omitempty"`
+	InfoUploadAt *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=infoUploadAt,proto3" json:"infoUploadAt,omitempty"`
 }
 
 func (x *CompanyHash) Reset() {
@@ -14924,9 +14924,9 @@ type GetMiHashReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
-	MiIds     []int64  `protobuf:"varint,2,rep,packed,name=miIds,proto3" json:"miIds"`
-	MiCodes   []string `protobuf:"bytes,3,rep,name=miCodes,proto3" json:"miCodes"`
+	ManagerId int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	MiIds     []int64  `protobuf:"varint,2,rep,packed,name=miIds,proto3" json:"miIds,omitempty"`
+	MiCodes   []string `protobuf:"bytes,3,rep,name=miCodes,proto3" json:"miCodes,omitempty"`
 }
 
 func (x *GetMiHashReq) Reset() {
@@ -14987,10 +14987,10 @@ type MiHash struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MiId         int64                  `protobuf:"varint,1,opt,name=miId,proto3" json:"miId"`
-	MiCode       string                 `protobuf:"bytes,2,opt,name=miCode,proto3" json:"miCode"`
-	InfoHash     string                 `protobuf:"bytes,3,opt,name=infoHash,proto3" json:"infoHash"`
-	InfoUploadAt *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=infoUploadAt,proto3" json:"infoUploadAt"`
+	MiId         int64                  `protobuf:"varint,1,opt,name=miId,proto3" json:"miId,omitempty"`
+	MiCode       string                 `protobuf:"bytes,2,opt,name=miCode,proto3" json:"miCode,omitempty"`
+	InfoHash     string                 `protobuf:"bytes,3,opt,name=infoHash,proto3" json:"infoHash,omitempty"`
+	InfoUploadAt *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=infoUploadAt,proto3" json:"infoUploadAt,omitempty"`
 }
 
 func (x *MiHash) Reset() {
@@ -15058,10 +15058,10 @@ type GetMiHashResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*MiHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64     `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64     `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64     `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*MiHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64     `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64     `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64     `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *GetMiHashResp) Reset() {
@@ -15130,9 +15130,9 @@ type GetMedicineReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId     int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
-	MedicineIds   []int64  `protobuf:"varint,2,rep,packed,name=medicineIds,proto3" json:"medicineIds"`
-	MedicineCodes []string `protobuf:"bytes,3,rep,name=medicineCodes,proto3" json:"medicineCodes"`
+	ManagerId     int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	MedicineIds   []int64  `protobuf:"varint,2,rep,packed,name=medicineIds,proto3" json:"medicineIds,omitempty"`
+	MedicineCodes []string `protobuf:"bytes,3,rep,name=medicineCodes,proto3" json:"medicineCodes,omitempty"`
 }
 
 func (x *GetMedicineReq) Reset() {
@@ -15193,10 +15193,10 @@ type MedicineHash struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MedicineId   int64                  `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId"`
-	MedicineCode string                 `protobuf:"bytes,2,opt,name=medicineCode,proto3" json:"medicineCode"`
-	InfoHash     string                 `protobuf:"bytes,3,opt,name=infoHash,proto3" json:"infoHash"`
-	InfoUploadAt *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=infoUploadAt,proto3" json:"infoUploadAt"`
+	MedicineId   int64                  `protobuf:"varint,1,opt,name=medicineId,proto3" json:"medicineId,omitempty"`
+	MedicineCode string                 `protobuf:"bytes,2,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
+	InfoHash     string                 `protobuf:"bytes,3,opt,name=infoHash,proto3" json:"infoHash,omitempty"`
+	InfoUploadAt *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=infoUploadAt,proto3" json:"infoUploadAt,omitempty"`
 }
 
 func (x *MedicineHash) Reset() {
@@ -15264,10 +15264,10 @@ type GetMedicineResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*MedicineHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64           `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64           `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64           `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*MedicineHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64           `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64           `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64           `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *GetMedicineResp) Reset() {
@@ -15336,9 +15336,9 @@ type GetContractHashReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId     int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
-	ContractIds   []int64  `protobuf:"varint,2,rep,packed,name=contractIds,proto3" json:"contractIds"`
-	ContractCodes []string `protobuf:"bytes,3,rep,name=contractCodes,proto3" json:"contractCodes"`
+	ManagerId     int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	ContractIds   []int64  `protobuf:"varint,2,rep,packed,name=contractIds,proto3" json:"contractIds,omitempty"`
+	ContractCodes []string `protobuf:"bytes,3,rep,name=contractCodes,proto3" json:"contractCodes,omitempty"`
 }
 
 func (x *GetContractHashReq) Reset() {
@@ -15399,10 +15399,10 @@ type ContractHash struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ContractId   int64                  `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId"`
-	ContractCode string                 `protobuf:"bytes,2,opt,name=contractCode,proto3" json:"contractCode"`
-	InfoHash     string                 `protobuf:"bytes,3,opt,name=infoHash,proto3" json:"infoHash"`
-	InfoUploadAt *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=infoUploadAt,proto3" json:"infoUploadAt"`
+	ContractId   int64                  `protobuf:"varint,1,opt,name=contractId,proto3" json:"contractId,omitempty"`
+	ContractCode string                 `protobuf:"bytes,2,opt,name=contractCode,proto3" json:"contractCode,omitempty"`
+	InfoHash     string                 `protobuf:"bytes,3,opt,name=infoHash,proto3" json:"infoHash,omitempty"`
+	InfoUploadAt *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=infoUploadAt,proto3" json:"infoUploadAt,omitempty"`
 }
 
 func (x *ContractHash) Reset() {
@@ -15470,10 +15470,10 @@ type GetContractHashResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ContractHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64           `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64           `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64           `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*ContractHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64           `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64           `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64           `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *GetContractHashResp) Reset() {
@@ -15542,10 +15542,10 @@ type GetContractMiHashReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId     int64   `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
-	ContractMiIds []int64 `protobuf:"varint,2,rep,packed,name=contractMiIds,proto3" json:"contractMiIds"`
-	ContractId    int64   `protobuf:"varint,3,opt,name=contractId,proto3" json:"contractId"`
-	ContractCode  string  `protobuf:"bytes,4,opt,name=contractCode,proto3" json:"contractCode"`
+	ManagerId     int64   `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	ContractMiIds []int64 `protobuf:"varint,2,rep,packed,name=contractMiIds,proto3" json:"contractMiIds,omitempty"`
+	ContractId    int64   `protobuf:"varint,3,opt,name=contractId,proto3" json:"contractId,omitempty"`
+	ContractCode  string  `protobuf:"bytes,4,opt,name=contractCode,proto3" json:"contractCode,omitempty"`
 }
 
 func (x *GetContractMiHashReq) Reset() {
@@ -15613,11 +15613,11 @@ type ContractMiHash struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ContractMiId int64                  `protobuf:"varint,1,opt,name=contractMiId,proto3" json:"contractMiId"`
-	MiId         int64                  `protobuf:"varint,2,opt,name=miId,proto3" json:"miId"`
-	MiCode       string                 `protobuf:"bytes,3,opt,name=miCode,proto3" json:"miCode"`
-	InfoHash     string                 `protobuf:"bytes,4,opt,name=infoHash,proto3" json:"infoHash"`
-	InfoUploadAt *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=infoUploadAt,proto3" json:"infoUploadAt"`
+	ContractMiId int64                  `protobuf:"varint,1,opt,name=contractMiId,proto3" json:"contractMiId,omitempty"`
+	MiId         int64                  `protobuf:"varint,2,opt,name=miId,proto3" json:"miId,omitempty"`
+	MiCode       string                 `protobuf:"bytes,3,opt,name=miCode,proto3" json:"miCode,omitempty"`
+	InfoHash     string                 `protobuf:"bytes,4,opt,name=infoHash,proto3" json:"infoHash,omitempty"`
+	InfoUploadAt *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=infoUploadAt,proto3" json:"infoUploadAt,omitempty"`
 }
 
 func (x *ContractMiHash) Reset() {
@@ -15692,10 +15692,10 @@ type GetContractMiHashResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ContractMiHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64             `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64             `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64             `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*ContractMiHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64             `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64             `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64             `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *GetContractMiHashResp) Reset() {
@@ -15764,10 +15764,10 @@ type GetConfigHashReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId  int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
-	ConfigIds  []int64  `protobuf:"varint,2,rep,packed,name=configIds,proto3" json:"configIds"`
-	ConfigKeys []string `protobuf:"bytes,3,rep,name=configKeys,proto3" json:"configKeys"`
-	ConfigType string   `protobuf:"bytes,4,opt,name=configType,proto3" json:"configType"`
+	ManagerId  int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	ConfigIds  []int64  `protobuf:"varint,2,rep,packed,name=configIds,proto3" json:"configIds,omitempty"`
+	ConfigKeys []string `protobuf:"bytes,3,rep,name=configKeys,proto3" json:"configKeys,omitempty"`
+	ConfigType string   `protobuf:"bytes,4,opt,name=configType,proto3" json:"configType,omitempty"`
 }
 
 func (x *GetConfigHashReq) Reset() {
@@ -15835,10 +15835,10 @@ type ConfigHash struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ConfigId     int64                  `protobuf:"varint,1,opt,name=configId,proto3" json:"configId"`
-	ConfigKey    string                 `protobuf:"bytes,2,opt,name=configKey,proto3" json:"configKey"`
-	InfoHash     string                 `protobuf:"bytes,3,opt,name=infoHash,proto3" json:"infoHash"`
-	InfoUploadAt *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=infoUploadAt,proto3" json:"infoUploadAt"`
+	ConfigId     int64                  `protobuf:"varint,1,opt,name=configId,proto3" json:"configId,omitempty"`
+	ConfigKey    string                 `protobuf:"bytes,2,opt,name=configKey,proto3" json:"configKey,omitempty"`
+	InfoHash     string                 `protobuf:"bytes,3,opt,name=infoHash,proto3" json:"infoHash,omitempty"`
+	InfoUploadAt *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=infoUploadAt,proto3" json:"infoUploadAt,omitempty"`
 }
 
 func (x *ConfigHash) Reset() {
@@ -15906,10 +15906,10 @@ type GetConfigHashResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ConfigHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64         `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64         `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64         `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*ConfigHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64         `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64         `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64         `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *GetConfigHashResp) Reset() {
@@ -15978,10 +15978,10 @@ type GetShipmentPlanHashReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId       int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
-	ShipmentPlanIds []int64  `protobuf:"varint,2,rep,packed,name=shipmentPlanIds,proto3" json:"shipmentPlanIds"`
-	OrderNos        []string `protobuf:"bytes,3,rep,name=orderNos,proto3" json:"orderNos"`
-	ShipmentNo      string   `protobuf:"bytes,4,opt,name=shipmentNo,proto3" json:"shipmentNo"`
+	ManagerId       int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	ShipmentPlanIds []int64  `protobuf:"varint,2,rep,packed,name=shipmentPlanIds,proto3" json:"shipmentPlanIds,omitempty"`
+	OrderNos        []string `protobuf:"bytes,3,rep,name=orderNos,proto3" json:"orderNos,omitempty"`
+	ShipmentNo      string   `protobuf:"bytes,4,opt,name=shipmentNo,proto3" json:"shipmentNo,omitempty"`
 }
 
 func (x *GetShipmentPlanHashReq) Reset() {
@@ -16049,18 +16049,18 @@ type ShipmentPlanHash struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ShipmentPlanId          int64                  `protobuf:"varint,1,opt,name=shipmentPlanId,proto3" json:"shipmentPlanId"`
-	OrderNo                 string                 `protobuf:"bytes,2,opt,name=orderNo,proto3" json:"orderNo"`
-	InfoHash                string                 `protobuf:"bytes,3,opt,name=infoHash,proto3" json:"infoHash"`
-	InfoUploadAt            *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=infoUploadAt,proto3" json:"infoUploadAt"`
-	QrCodeHash              string                 `protobuf:"bytes,5,opt,name=qrCodeHash,proto3" json:"qrCodeHash"`
-	QrCodeUploadAt          *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=qrCodeUploadAt,proto3" json:"qrCodeUploadAt"`
-	ShipmentStartHash       string                 `protobuf:"bytes,7,opt,name=shipmentStartHash,proto3" json:"shipmentStartHash"`
-	ShipmentStartUploadAt   *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=shipmentStartUploadAt,proto3" json:"shipmentStartUploadAt"`
-	ShipmentReceiveHash     string                 `protobuf:"bytes,9,opt,name=shipmentReceiveHash,proto3" json:"shipmentReceiveHash"`
-	ShipmentReceiveUploadAt *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=shipmentReceiveUploadAt,proto3" json:"shipmentReceiveUploadAt"`
-	ShipmentEnterHash       string                 `protobuf:"bytes,11,opt,name=shipmentEnterHash,proto3" json:"shipmentEnterHash"`
-	ShipmentEnterUploadAt   *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=shipmentEnterUploadAt,proto3" json:"shipmentEnterUploadAt"`
+	ShipmentPlanId          int64                  `protobuf:"varint,1,opt,name=shipmentPlanId,proto3" json:"shipmentPlanId,omitempty"`
+	OrderNo                 string                 `protobuf:"bytes,2,opt,name=orderNo,proto3" json:"orderNo,omitempty"`
+	InfoHash                string                 `protobuf:"bytes,3,opt,name=infoHash,proto3" json:"infoHash,omitempty"`
+	InfoUploadAt            *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=infoUploadAt,proto3" json:"infoUploadAt,omitempty"`
+	QrCodeHash              string                 `protobuf:"bytes,5,opt,name=qrCodeHash,proto3" json:"qrCodeHash,omitempty"`
+	QrCodeUploadAt          *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=qrCodeUploadAt,proto3" json:"qrCodeUploadAt,omitempty"`
+	ShipmentStartHash       string                 `protobuf:"bytes,7,opt,name=shipmentStartHash,proto3" json:"shipmentStartHash,omitempty"`
+	ShipmentStartUploadAt   *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=shipmentStartUploadAt,proto3" json:"shipmentStartUploadAt,omitempty"`
+	ShipmentReceiveHash     string                 `protobuf:"bytes,9,opt,name=shipmentReceiveHash,proto3" json:"shipmentReceiveHash,omitempty"`
+	ShipmentReceiveUploadAt *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=shipmentReceiveUploadAt,proto3" json:"shipmentReceiveUploadAt,omitempty"`
+	ShipmentEnterHash       string                 `protobuf:"bytes,11,opt,name=shipmentEnterHash,proto3" json:"shipmentEnterHash,omitempty"`
+	ShipmentEnterUploadAt   *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=shipmentEnterUploadAt,proto3" json:"shipmentEnterUploadAt,omitempty"`
 }
 
 func (x *ShipmentPlanHash) Reset() {
@@ -16184,10 +16184,10 @@ type GetShipmentPlanHashResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ShipmentPlanHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64               `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64               `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64               `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*ShipmentPlanHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64               `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64               `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64               `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *GetShipmentPlanHashResp) Reset() {
@@ -16256,9 +16256,9 @@ type GetShipmentOrderHashReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId        int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
-	ShipmentOrderIds []int64  `protobuf:"varint,2,rep,packed,name=shipmentOrderIds,proto3" json:"shipmentOrderIds"`
-	ShipmentNos      []string `protobuf:"bytes,3,rep,name=shipmentNos,proto3" json:"shipmentNos"`
+	ManagerId        int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	ShipmentOrderIds []int64  `protobuf:"varint,2,rep,packed,name=shipmentOrderIds,proto3" json:"shipmentOrderIds,omitempty"`
+	ShipmentNos      []string `protobuf:"bytes,3,rep,name=shipmentNos,proto3" json:"shipmentNos,omitempty"`
 }
 
 func (x *GetShipmentOrderHashReq) Reset() {
@@ -16319,16 +16319,16 @@ type ShipmentOrderHash struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ShipmentOrderId         int64                  `protobuf:"varint,1,opt,name=shipmentOrderId,proto3" json:"shipmentOrderId"`
-	ShipmentNo              string                 `protobuf:"bytes,2,opt,name=shipmentNo,proto3" json:"shipmentNo"`
-	QrCodeHash              string                 `protobuf:"bytes,3,opt,name=qrCodeHash,proto3" json:"qrCodeHash"`
-	QrCodeUploadAt          *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=qrCodeUploadAt,proto3" json:"qrCodeUploadAt"`
-	ShipmentStartHash       string                 `protobuf:"bytes,5,opt,name=shipmentStartHash,proto3" json:"shipmentStartHash"`
-	ShipmentStartUploadAt   *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=shipmentStartUploadAt,proto3" json:"shipmentStartUploadAt"`
-	ShipmentReceiveHash     string                 `protobuf:"bytes,7,opt,name=shipmentReceiveHash,proto3" json:"shipmentReceiveHash"`
-	ShipmentReceiveUploadAt *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=shipmentReceiveUploadAt,proto3" json:"shipmentReceiveUploadAt"`
-	ShipmentEnterHash       string                 `protobuf:"bytes,9,opt,name=shipmentEnterHash,proto3" json:"shipmentEnterHash"`
-	ShipmentEnterUploadAt   *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=shipmentEnterUploadAt,proto3" json:"shipmentEnterUploadAt"`
+	ShipmentOrderId         int64                  `protobuf:"varint,1,opt,name=shipmentOrderId,proto3" json:"shipmentOrderId,omitempty"`
+	ShipmentNo              string                 `protobuf:"bytes,2,opt,name=shipmentNo,proto3" json:"shipmentNo,omitempty"`
+	QrCodeHash              string                 `protobuf:"bytes,3,opt,name=qrCodeHash,proto3" json:"qrCodeHash,omitempty"`
+	QrCodeUploadAt          *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=qrCodeUploadAt,proto3" json:"qrCodeUploadAt,omitempty"`
+	ShipmentStartHash       string                 `protobuf:"bytes,5,opt,name=shipmentStartHash,proto3" json:"shipmentStartHash,omitempty"`
+	ShipmentStartUploadAt   *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=shipmentStartUploadAt,proto3" json:"shipmentStartUploadAt,omitempty"`
+	ShipmentReceiveHash     string                 `protobuf:"bytes,7,opt,name=shipmentReceiveHash,proto3" json:"shipmentReceiveHash,omitempty"`
+	ShipmentReceiveUploadAt *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=shipmentReceiveUploadAt,proto3" json:"shipmentReceiveUploadAt,omitempty"`
+	ShipmentEnterHash       string                 `protobuf:"bytes,9,opt,name=shipmentEnterHash,proto3" json:"shipmentEnterHash,omitempty"`
+	ShipmentEnterUploadAt   *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=shipmentEnterUploadAt,proto3" json:"shipmentEnterUploadAt,omitempty"`
 }
 
 func (x *ShipmentOrderHash) Reset() {
@@ -16438,10 +16438,10 @@ type GetShipmentOrderHashResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ShipmentOrderHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64                `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64                `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64                `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*ShipmentOrderHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64                `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64                `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64                `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *GetShipmentOrderHashResp) Reset() {
@@ -16510,10 +16510,10 @@ type GetShipmentPayHashReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId           int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
-	ShipmentOrderIds    []int64  `protobuf:"varint,2,rep,packed,name=shipmentOrderIds,proto3" json:"shipmentOrderIds"`
-	ShipmentPayOrderIds []int64  `protobuf:"varint,3,rep,packed,name=shipmentPayOrderIds,proto3" json:"shipmentPayOrderIds"`
-	ShipmentNos         []string `protobuf:"bytes,4,rep,name=shipmentNos,proto3" json:"shipmentNos"`
+	ManagerId           int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	ShipmentOrderIds    []int64  `protobuf:"varint,2,rep,packed,name=shipmentOrderIds,proto3" json:"shipmentOrderIds,omitempty"`
+	ShipmentPayOrderIds []int64  `protobuf:"varint,3,rep,packed,name=shipmentPayOrderIds,proto3" json:"shipmentPayOrderIds,omitempty"`
+	ShipmentNos         []string `protobuf:"bytes,4,rep,name=shipmentNos,proto3" json:"shipmentNos,omitempty"`
 }
 
 func (x *GetShipmentPayHashReq) Reset() {
@@ -16581,12 +16581,12 @@ type ShipmentPayHash struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ShipmentOrderId int64                  `protobuf:"varint,1,opt,name=shipmentOrderId,proto3" json:"shipmentOrderId"`
-	ShipmentNo      string                 `protobuf:"bytes,2,opt,name=shipmentNo,proto3" json:"shipmentNo"`
-	InfoHash        string                 `protobuf:"bytes,3,opt,name=infoHash,proto3" json:"infoHash"`
-	InfoUploadAt    *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=infoUploadAt,proto3" json:"infoUploadAt"`
-	ResultHash      string                 `protobuf:"bytes,5,opt,name=resultHash,proto3" json:"resultHash"`
-	ResultUploadAt  *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=resultUploadAt,proto3" json:"resultUploadAt"`
+	ShipmentOrderId int64                  `protobuf:"varint,1,opt,name=shipmentOrderId,proto3" json:"shipmentOrderId,omitempty"`
+	ShipmentNo      string                 `protobuf:"bytes,2,opt,name=shipmentNo,proto3" json:"shipmentNo,omitempty"`
+	InfoHash        string                 `protobuf:"bytes,3,opt,name=infoHash,proto3" json:"infoHash,omitempty"`
+	InfoUploadAt    *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=infoUploadAt,proto3" json:"infoUploadAt,omitempty"`
+	ResultHash      string                 `protobuf:"bytes,5,opt,name=resultHash,proto3" json:"resultHash,omitempty"`
+	ResultUploadAt  *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=resultUploadAt,proto3" json:"resultUploadAt,omitempty"`
 }
 
 func (x *ShipmentPayHash) Reset() {
@@ -16668,10 +16668,10 @@ type GetShipmentPayHashResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ShipmentPayHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64              `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64              `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64              `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*ShipmentPayHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64              `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64              `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64              `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *GetShipmentPayHashResp) Reset() {
@@ -16740,9 +16740,9 @@ type GetShipmentFactoringHashReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId         int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
-	FactoringOrderIds []int64  `protobuf:"varint,2,rep,packed,name=factoringOrderIds,proto3" json:"factoringOrderIds"`
-	FactoringOrderNos []string `protobuf:"bytes,3,rep,name=factoringOrderNos,proto3" json:"factoringOrderNos"`
+	ManagerId         int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	FactoringOrderIds []int64  `protobuf:"varint,2,rep,packed,name=factoringOrderIds,proto3" json:"factoringOrderIds,omitempty"`
+	FactoringOrderNos []string `protobuf:"bytes,3,rep,name=factoringOrderNos,proto3" json:"factoringOrderNos,omitempty"`
 }
 
 func (x *GetShipmentFactoringHashReq) Reset() {
@@ -16803,14 +16803,14 @@ type ShipmentFactoringHash struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	FactoringOrderId int64                  `protobuf:"varint,1,opt,name=factoringOrderId,proto3" json:"factoringOrderId"`
-	FactoringOrderNo string                 `protobuf:"bytes,2,opt,name=factoringOrderNo,proto3" json:"factoringOrderNo"`
-	ApplyHash        string                 `protobuf:"bytes,3,opt,name=applyHash,proto3" json:"applyHash"`
-	ApplyUploadAt    *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=applyUploadAt,proto3" json:"applyUploadAt"`
-	ResultHash       string                 `protobuf:"bytes,5,opt,name=resultHash,proto3" json:"resultHash"`
-	ResultUploadAt   *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=resultUploadAt,proto3" json:"resultUploadAt"`
-	PayBackHash      string                 `protobuf:"bytes,7,opt,name=payBackHash,proto3" json:"payBackHash"`
-	PayBackUploadAt  *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=payBackUploadAt,proto3" json:"payBackUploadAt"`
+	FactoringOrderId int64                  `protobuf:"varint,1,opt,name=factoringOrderId,proto3" json:"factoringOrderId,omitempty"`
+	FactoringOrderNo string                 `protobuf:"bytes,2,opt,name=factoringOrderNo,proto3" json:"factoringOrderNo,omitempty"`
+	ApplyHash        string                 `protobuf:"bytes,3,opt,name=applyHash,proto3" json:"applyHash,omitempty"`
+	ApplyUploadAt    *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=applyUploadAt,proto3" json:"applyUploadAt,omitempty"`
+	ResultHash       string                 `protobuf:"bytes,5,opt,name=resultHash,proto3" json:"resultHash,omitempty"`
+	ResultUploadAt   *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=resultUploadAt,proto3" json:"resultUploadAt,omitempty"`
+	PayBackHash      string                 `protobuf:"bytes,7,opt,name=payBackHash,proto3" json:"payBackHash,omitempty"`
+	PayBackUploadAt  *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=payBackUploadAt,proto3" json:"payBackUploadAt,omitempty"`
 }
 
 func (x *ShipmentFactoringHash) Reset() {
@@ -16906,10 +16906,10 @@ type GetShipmentFactoringHashResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ShipmentFactoringHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64                    `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64                    `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64                    `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*ShipmentFactoringHash `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64                    `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64                    `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64                    `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *GetShipmentFactoringHashResp) Reset() {
@@ -16978,15 +16978,15 @@ type GetShipmentRankMedicineDataYearReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
+	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
 	//指定获取哪个医保局的订单报表数据，目前不支持不同医保局混合统计
-	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId"`
+	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId,omitempty"`
 	//报表的起止日期必填
-	StartAt   *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=startAt,proto3" json:"startAt"`
-	EndAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=endAt,proto3" json:"endAt"`
-	RankCount int64                  `protobuf:"varint,5,opt,name=rankCount,proto3" json:"rankCount"`
+	StartAt   *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=startAt,proto3" json:"startAt,omitempty"`
+	EndAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=endAt,proto3" json:"endAt,omitempty"`
+	RankCount int64                  `protobuf:"varint,5,opt,name=rankCount,proto3" json:"rankCount,omitempty"`
 	//显示哪家医疗机构的排名数据
-	MiId int64 `protobuf:"varint,6,opt,name=miId,proto3" json:"miId"`
+	MiId int64 `protobuf:"varint,6,opt,name=miId,proto3" json:"miId,omitempty"`
 }
 
 func (x *GetShipmentRankMedicineDataYearReq) Reset() {
@@ -17068,10 +17068,10 @@ type ShipmentRankMedicineDataYear struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Rank int64 `protobuf:"varint,1,opt,name=rank,proto3" json:"rank"`
+	Rank int64 `protobuf:"varint,1,opt,name=rank,proto3" json:"rank,omitempty"`
 	//本年配送计划同步金额 分
-	ShipmentPlanAmount int64  `protobuf:"varint,2,opt,name=shipmentPlanAmount,proto3" json:"shipmentPlanAmount"`
-	MedicineName       string `protobuf:"bytes,3,opt,name=medicineName,proto3" json:"medicineName"`
+	ShipmentPlanAmount int64  `protobuf:"varint,2,opt,name=shipmentPlanAmount,proto3" json:"shipmentPlanAmount,omitempty"`
+	MedicineName       string `protobuf:"bytes,3,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
 }
 
 func (x *ShipmentRankMedicineDataYear) Reset() {
@@ -17132,10 +17132,10 @@ type GetShipmentRankMedicineDataYearResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ShipmentRankMedicineDataYear `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64                           `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64                           `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64                           `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*ShipmentRankMedicineDataYear `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64                           `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64                           `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64                           `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *GetShipmentRankMedicineDataYearResp) Reset() {
@@ -17204,17 +17204,17 @@ type GetShipmentRankCompanyDataYearReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
+	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
 	//指定获取哪个医保局的订单报表数据，目前不支持不同医保局混合统计
-	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId"`
+	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId,omitempty"`
 	//报表的起止日期必填
-	StartAt   *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=startAt,proto3" json:"startAt"`
-	EndAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=endAt,proto3" json:"endAt"`
-	RankCount int64                  `protobuf:"varint,5,opt,name=rankCount,proto3" json:"rankCount"`
+	StartAt   *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=startAt,proto3" json:"startAt,omitempty"`
+	EndAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=endAt,proto3" json:"endAt,omitempty"`
+	RankCount int64                  `protobuf:"varint,5,opt,name=rankCount,proto3" json:"rankCount,omitempty"`
 	//需要展示的药品数量
-	MedicineCount int64 `protobuf:"varint,6,opt,name=medicineCount,proto3" json:"medicineCount"`
+	MedicineCount int64 `protobuf:"varint,6,opt,name=medicineCount,proto3" json:"medicineCount,omitempty"`
 	//显示哪家医疗机构的排名数据
-	MiId int64 `protobuf:"varint,7,opt,name=miId,proto3" json:"miId"`
+	MiId int64 `protobuf:"varint,7,opt,name=miId,proto3" json:"miId,omitempty"`
 }
 
 func (x *GetShipmentRankCompanyDataYearReq) Reset() {
@@ -17303,7 +17303,7 @@ type ShipmentRankCompanyMedicine struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MedicineName string `protobuf:"bytes,1,opt,name=medicineName,proto3" json:"medicineName"`
+	MedicineName string `protobuf:"bytes,1,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
 }
 
 func (x *ShipmentRankCompanyMedicine) Reset() {
@@ -17350,14 +17350,14 @@ type ShipmentRankCompanyDataYear struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Rank               int64                          `protobuf:"varint,1,opt,name=rank,proto3" json:"rank"`
-	ComName            string                         `protobuf:"bytes,2,opt,name=comName,proto3" json:"comName"`
-	ComCode            string                         `protobuf:"bytes,3,opt,name=comCode,proto3" json:"comCode"`
-	ShipmentPlanAmount int64                          `protobuf:"varint,4,opt,name=shipmentPlanAmount,proto3" json:"shipmentPlanAmount"`
-	Province           string                         `protobuf:"bytes,5,opt,name=province,proto3" json:"province"`
-	City               string                         `protobuf:"bytes,6,opt,name=city,proto3" json:"city"`
-	Zone               string                         `protobuf:"bytes,7,opt,name=zone,proto3" json:"zone"`
-	Medicines          []*ShipmentRankCompanyMedicine `protobuf:"bytes,8,rep,name=medicines,proto3" json:"medicines"`
+	Rank               int64                          `protobuf:"varint,1,opt,name=rank,proto3" json:"rank,omitempty"`
+	ComName            string                         `protobuf:"bytes,2,opt,name=comName,proto3" json:"comName,omitempty"`
+	ComCode            string                         `protobuf:"bytes,3,opt,name=comCode,proto3" json:"comCode,omitempty"`
+	ShipmentPlanAmount int64                          `protobuf:"varint,4,opt,name=shipmentPlanAmount,proto3" json:"shipmentPlanAmount,omitempty"`
+	Province           string                         `protobuf:"bytes,5,opt,name=province,proto3" json:"province,omitempty"`
+	City               string                         `protobuf:"bytes,6,opt,name=city,proto3" json:"city,omitempty"`
+	Zone               string                         `protobuf:"bytes,7,opt,name=zone,proto3" json:"zone,omitempty"`
+	Medicines          []*ShipmentRankCompanyMedicine `protobuf:"bytes,8,rep,name=medicines,proto3" json:"medicines,omitempty"`
 }
 
 func (x *ShipmentRankCompanyDataYear) Reset() {
@@ -17453,10 +17453,10 @@ type GetShipmentRankCompanyDataYearResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*ShipmentRankCompanyDataYear `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64                          `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64                          `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64                          `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*ShipmentRankCompanyDataYear `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64                          `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64                          `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64                          `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *GetShipmentRankCompanyDataYearResp) Reset() {
@@ -17525,13 +17525,13 @@ type GetRankMiReceiveYearReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
+	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
 	//指定获取哪个医保局的订单报表数据，目前不支持不同医保局混合统计
-	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId"`
+	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId,omitempty"`
 	//0表示当前前年 -1为去年
-	YearOffset int64 `protobuf:"varint,3,opt,name=yearOffset,proto3" json:"yearOffset"`
+	YearOffset int64 `protobuf:"varint,3,opt,name=yearOffset,proto3" json:"yearOffset,omitempty"`
 	//报表的起止日期必填
-	RankCount int64 `protobuf:"varint,4,opt,name=rankCount,proto3" json:"rankCount"`
+	RankCount int64 `protobuf:"varint,4,opt,name=rankCount,proto3" json:"rankCount,omitempty"`
 }
 
 func (x *GetRankMiReceiveYearReq) Reset() {
@@ -17599,10 +17599,10 @@ type RankMiReceiveYear struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Rank                       int64                       `protobuf:"varint,1,opt,name=rank,proto3" json:"rank"`
-	MiName                     string                      `protobuf:"bytes,2,opt,name=miName,proto3" json:"miName"`
-	ShipmentOrderReceiveAmount int64                       `protobuf:"varint,3,opt,name=shipmentOrderReceiveAmount,proto3" json:"shipmentOrderReceiveAmount"`
-	ShipmentOrderMonthReports  []*ShipmentOrderMonthReport `protobuf:"bytes,4,rep,name=shipmentOrderMonthReports,proto3" json:"shipmentOrderMonthReports"`
+	Rank                       int64                       `protobuf:"varint,1,opt,name=rank,proto3" json:"rank,omitempty"`
+	MiName                     string                      `protobuf:"bytes,2,opt,name=miName,proto3" json:"miName,omitempty"`
+	ShipmentOrderReceiveAmount int64                       `protobuf:"varint,3,opt,name=shipmentOrderReceiveAmount,proto3" json:"shipmentOrderReceiveAmount,omitempty"`
+	ShipmentOrderMonthReports  []*ShipmentOrderMonthReport `protobuf:"bytes,4,rep,name=shipmentOrderMonthReports,proto3" json:"shipmentOrderMonthReports,omitempty"`
 }
 
 func (x *RankMiReceiveYear) Reset() {
@@ -17670,10 +17670,10 @@ type GetRankMiReceiveYearResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*RankMiReceiveYear `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64                `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64                `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64                `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*RankMiReceiveYear `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64                `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64                `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64                `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *GetRankMiReceiveYearResp) Reset() {
@@ -17742,13 +17742,13 @@ type GetRankComReceiveYearReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
+	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
 	//指定获取哪个医保局的订单报表数据，目前不支持不同医保局混合统计
-	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId"`
+	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId,omitempty"`
 	//0表示当前前年 -1为去年
-	YearOffset int64 `protobuf:"varint,3,opt,name=yearOffset,proto3" json:"yearOffset"`
+	YearOffset int64 `protobuf:"varint,3,opt,name=yearOffset,proto3" json:"yearOffset,omitempty"`
 	//报表的起止日期必填
-	RankCount int64 `protobuf:"varint,4,opt,name=rankCount,proto3" json:"rankCount"`
+	RankCount int64 `protobuf:"varint,4,opt,name=rankCount,proto3" json:"rankCount,omitempty"`
 }
 
 func (x *GetRankComReceiveYearReq) Reset() {
@@ -17816,10 +17816,10 @@ type RankComReceiveYear struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Rank                     int64  `protobuf:"varint,1,opt,name=rank,proto3" json:"rank"`
-	CompanyName              string `protobuf:"bytes,2,opt,name=companyName,proto3" json:"companyName"`
-	ShipmentPlanReceiveCount int64  `protobuf:"varint,3,opt,name=shipmentPlanReceiveCount,proto3" json:"shipmentPlanReceiveCount"`
-	ShipmentPlanNotSentCount int64  `protobuf:"varint,4,opt,name=shipmentPlanNotSentCount,proto3" json:"shipmentPlanNotSentCount"`
+	Rank                     int64  `protobuf:"varint,1,opt,name=rank,proto3" json:"rank,omitempty"`
+	CompanyName              string `protobuf:"bytes,2,opt,name=companyName,proto3" json:"companyName,omitempty"`
+	ShipmentPlanReceiveCount int64  `protobuf:"varint,3,opt,name=shipmentPlanReceiveCount,proto3" json:"shipmentPlanReceiveCount,omitempty"`
+	ShipmentPlanNotSentCount int64  `protobuf:"varint,4,opt,name=shipmentPlanNotSentCount,proto3" json:"shipmentPlanNotSentCount,omitempty"`
 }
 
 func (x *RankComReceiveYear) Reset() {
@@ -17887,10 +17887,10 @@ type GetRankComReceiveYearResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*RankComReceiveYear `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64                 `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64                 `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64                 `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*RankComReceiveYear `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64                 `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64                 `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64                 `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *GetRankComReceiveYearResp) Reset() {
@@ -17959,13 +17959,13 @@ type GetRankMiPaidYearReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
+	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
 	//指定获取哪个医保局的订单报表数据，目前不支持不同医保局混合统计
-	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId"`
+	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId,omitempty"`
 	//0表示当前前年 -1为去年
-	YearOffset int64 `protobuf:"varint,3,opt,name=yearOffset,proto3" json:"yearOffset"`
+	YearOffset int64 `protobuf:"varint,3,opt,name=yearOffset,proto3" json:"yearOffset,omitempty"`
 	//报表的起止日期必填
-	RankCount int64 `protobuf:"varint,4,opt,name=rankCount,proto3" json:"rankCount"`
+	RankCount int64 `protobuf:"varint,4,opt,name=rankCount,proto3" json:"rankCount,omitempty"`
 }
 
 func (x *GetRankMiPaidYearReq) Reset() {
@@ -18033,11 +18033,11 @@ type RankMiPaidYear struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Rank                          int64  `protobuf:"varint,1,opt,name=rank,proto3" json:"rank"`
-	MiName                        string `protobuf:"bytes,2,opt,name=miName,proto3" json:"miName"`
-	ShipmentOrderPaidAmount       int64  `protobuf:"varint,3,opt,name=shipmentOrderPaidAmount,proto3" json:"shipmentOrderPaidAmount"`
-	ShipmentOrderNormalPayAmount  int64  `protobuf:"varint,4,opt,name=shipmentOrderNormalPayAmount,proto3" json:"shipmentOrderNormalPayAmount"`
-	ShipmentOrderSpecialPayAmount int64  `protobuf:"varint,5,opt,name=shipmentOrderSpecialPayAmount,proto3" json:"shipmentOrderSpecialPayAmount"`
+	Rank                          int64  `protobuf:"varint,1,opt,name=rank,proto3" json:"rank,omitempty"`
+	MiName                        string `protobuf:"bytes,2,opt,name=miName,proto3" json:"miName,omitempty"`
+	ShipmentOrderPaidAmount       int64  `protobuf:"varint,3,opt,name=shipmentOrderPaidAmount,proto3" json:"shipmentOrderPaidAmount,omitempty"`
+	ShipmentOrderNormalPayAmount  int64  `protobuf:"varint,4,opt,name=shipmentOrderNormalPayAmount,proto3" json:"shipmentOrderNormalPayAmount,omitempty"`
+	ShipmentOrderSpecialPayAmount int64  `protobuf:"varint,5,opt,name=shipmentOrderSpecialPayAmount,proto3" json:"shipmentOrderSpecialPayAmount,omitempty"`
 }
 
 func (x *RankMiPaidYear) Reset() {
@@ -18112,10 +18112,10 @@ type GetRankMiPaidYearResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*RankMiPaidYear `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64             `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64             `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64             `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*RankMiPaidYear `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64             `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64             `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64             `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *GetRankMiPaidYearResp) Reset() {
@@ -18184,13 +18184,13 @@ type GetRankMedicineYearReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
+	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
 	//指定获取哪个医保局的订单报表数据，目前不支持不同医保局混合统计
-	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId"`
+	MibId int64 `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId,omitempty"`
 	//0表示当前前年 -1为去年
-	YearOffset int64 `protobuf:"varint,3,opt,name=yearOffset,proto3" json:"yearOffset"`
+	YearOffset int64 `protobuf:"varint,3,opt,name=yearOffset,proto3" json:"yearOffset,omitempty"`
 	//报表的起止日期必填
-	RankCount int64 `protobuf:"varint,4,opt,name=rankCount,proto3" json:"rankCount"`
+	RankCount int64 `protobuf:"varint,4,opt,name=rankCount,proto3" json:"rankCount,omitempty"`
 }
 
 func (x *GetRankMedicineYearReq) Reset() {
@@ -18258,9 +18258,9 @@ type RankMedicineYear struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Rank                         int64  `protobuf:"varint,1,opt,name=rank,proto3" json:"rank"`
-	MedicineName                 string `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName"`
-	ShipmentPlanReceiveUnitCount int64  `protobuf:"varint,3,opt,name=shipmentPlanReceiveUnitCount,proto3" json:"shipmentPlanReceiveUnitCount"`
+	Rank                         int64  `protobuf:"varint,1,opt,name=rank,proto3" json:"rank,omitempty"`
+	MedicineName                 string `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
+	ShipmentPlanReceiveUnitCount int64  `protobuf:"varint,3,opt,name=shipmentPlanReceiveUnitCount,proto3" json:"shipmentPlanReceiveUnitCount,omitempty"`
 }
 
 func (x *RankMedicineYear) Reset() {
@@ -18321,10 +18321,10 @@ type GetRankMedicineYearResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List       []*RankMedicineYear `protobuf:"bytes,1,rep,name=list,proto3" json:"list"`
-	Total      int64               `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
-	PageSize   int64               `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize"`
-	PageNumber int64               `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber"`
+	List       []*RankMedicineYear `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64               `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64               `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64               `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
 }
 
 func (x *GetRankMedicineYearResp) Reset() {
@@ -18393,11 +18393,11 @@ type GetMIBDashboardBaseInfoReq struct {
 	unknownFields protoimpl.UnknownFields
 
 	//谁在请求 按照搜索账号控制显示范围
-	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId"`
+	ManagerId int64 `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
 	//指定获取哪个医保局的订单报表数据，目前不支持不同医保局混合统计
-	MibId    int64  `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId"`
-	Province string `protobuf:"bytes,3,opt,name=province,proto3" json:"province"`
-	City     string `protobuf:"bytes,4,opt,name=city,proto3" json:"city"`
+	MibId    int64  `protobuf:"varint,2,opt,name=mibId,proto3" json:"mibId,omitempty"`
+	Province string `protobuf:"bytes,3,opt,name=province,proto3" json:"province,omitempty"`
+	City     string `protobuf:"bytes,4,opt,name=city,proto3" json:"city,omitempty"`
 }
 
 func (x *GetMIBDashboardBaseInfoReq) Reset() {
@@ -18465,8 +18465,8 @@ type GetMIBDashboardBaseInfoResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MiCount      int64 `protobuf:"varint,1,opt,name=miCount,proto3" json:"miCount"`
-	CompanyCount int64 `protobuf:"varint,2,opt,name=companyCount,proto3" json:"companyCount"`
+	MiCount      int64 `protobuf:"varint,1,opt,name=miCount,proto3" json:"miCount,omitempty"`
+	CompanyCount int64 `protobuf:"varint,2,opt,name=companyCount,proto3" json:"companyCount,omitempty"`
 }
 
 func (x *GetMIBDashboardBaseInfoResp) Reset() {
@@ -18511,6 +18511,1433 @@ func (x *GetMIBDashboardBaseInfoResp) GetMiCount() int64 {
 func (x *GetMIBDashboardBaseInfoResp) GetCompanyCount() int64 {
 	if x != nil {
 		return x.CompanyCount
+	}
+	return 0
+}
+
+type ListCompanyBindReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ManagerId   int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	CompanyName string   `protobuf:"bytes,2,opt,name=companyName,proto3" json:"companyName,omitempty"`
+	CompanyCode string   `protobuf:"bytes,3,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
+	Page        *Page    `protobuf:"bytes,4,opt,name=page,proto3" json:"page,omitempty"`
+	LinkTypes   []string `protobuf:"bytes,5,rep,name=linkTypes,proto3" json:"linkTypes,omitempty"`
+}
+
+func (x *ListCompanyBindReq) Reset() {
+	*x = ListCompanyBindReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_ManagerService_proto_msgTypes[228]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ListCompanyBindReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListCompanyBindReq) ProtoMessage() {}
+
+func (x *ListCompanyBindReq) ProtoReflect() protoreflect.Message {
+	mi := &file_ManagerService_proto_msgTypes[228]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListCompanyBindReq.ProtoReflect.Descriptor instead.
+func (*ListCompanyBindReq) Descriptor() ([]byte, []int) {
+	return file_ManagerService_proto_rawDescGZIP(), []int{228}
+}
+
+func (x *ListCompanyBindReq) GetManagerId() int64 {
+	if x != nil {
+		return x.ManagerId
+	}
+	return 0
+}
+
+func (x *ListCompanyBindReq) GetCompanyName() string {
+	if x != nil {
+		return x.CompanyName
+	}
+	return ""
+}
+
+func (x *ListCompanyBindReq) GetCompanyCode() string {
+	if x != nil {
+		return x.CompanyCode
+	}
+	return ""
+}
+
+func (x *ListCompanyBindReq) GetPage() *Page {
+	if x != nil {
+		return x.Page
+	}
+	return nil
+}
+
+func (x *ListCompanyBindReq) GetLinkTypes() []string {
+	if x != nil {
+		return x.LinkTypes
+	}
+	return nil
+}
+
+type ListCompanyBindResp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	List       []*ListCompanyBindVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64                `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64                `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64                `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+}
+
+func (x *ListCompanyBindResp) Reset() {
+	*x = ListCompanyBindResp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_ManagerService_proto_msgTypes[229]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ListCompanyBindResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListCompanyBindResp) ProtoMessage() {}
+
+func (x *ListCompanyBindResp) ProtoReflect() protoreflect.Message {
+	mi := &file_ManagerService_proto_msgTypes[229]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListCompanyBindResp.ProtoReflect.Descriptor instead.
+func (*ListCompanyBindResp) Descriptor() ([]byte, []int) {
+	return file_ManagerService_proto_rawDescGZIP(), []int{229}
+}
+
+func (x *ListCompanyBindResp) GetList() []*ListCompanyBindVo {
+	if x != nil {
+		return x.List
+	}
+	return nil
+}
+
+func (x *ListCompanyBindResp) GetTotal() int64 {
+	if x != nil {
+		return x.Total
+	}
+	return 0
+}
+
+func (x *ListCompanyBindResp) GetPageSize() int64 {
+	if x != nil {
+		return x.PageSize
+	}
+	return 0
+}
+
+func (x *ListCompanyBindResp) GetPageNumber() int64 {
+	if x != nil {
+		return x.PageNumber
+	}
+	return 0
+}
+
+type ListCompanyBindVo struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	CompanyName     string `protobuf:"bytes,1,opt,name=companyName,proto3" json:"companyName,omitempty"`
+	CompanyCode     string `protobuf:"bytes,2,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
+	CompanyBindJson string `protobuf:"bytes,3,opt,name=companyBindJson,proto3" json:"companyBindJson,omitempty"`
+}
+
+func (x *ListCompanyBindVo) Reset() {
+	*x = ListCompanyBindVo{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_ManagerService_proto_msgTypes[230]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ListCompanyBindVo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListCompanyBindVo) ProtoMessage() {}
+
+func (x *ListCompanyBindVo) ProtoReflect() protoreflect.Message {
+	mi := &file_ManagerService_proto_msgTypes[230]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListCompanyBindVo.ProtoReflect.Descriptor instead.
+func (*ListCompanyBindVo) Descriptor() ([]byte, []int) {
+	return file_ManagerService_proto_rawDescGZIP(), []int{230}
+}
+
+func (x *ListCompanyBindVo) GetCompanyName() string {
+	if x != nil {
+		return x.CompanyName
+	}
+	return ""
+}
+
+func (x *ListCompanyBindVo) GetCompanyCode() string {
+	if x != nil {
+		return x.CompanyCode
+	}
+	return ""
+}
+
+func (x *ListCompanyBindVo) GetCompanyBindJson() string {
+	if x != nil {
+		return x.CompanyBindJson
+	}
+	return ""
+}
+
+type ListMiBindReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ManagerId int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	MiName    string   `protobuf:"bytes,2,opt,name=miName,proto3" json:"miName,omitempty"`
+	MiCode    string   `protobuf:"bytes,3,opt,name=miCode,proto3" json:"miCode,omitempty"`
+	Page      *Page    `protobuf:"bytes,4,opt,name=page,proto3" json:"page,omitempty"`
+	LinkTypes []string `protobuf:"bytes,5,rep,name=linkTypes,proto3" json:"linkTypes,omitempty"`
+}
+
+func (x *ListMiBindReq) Reset() {
+	*x = ListMiBindReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_ManagerService_proto_msgTypes[231]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ListMiBindReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListMiBindReq) ProtoMessage() {}
+
+func (x *ListMiBindReq) ProtoReflect() protoreflect.Message {
+	mi := &file_ManagerService_proto_msgTypes[231]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListMiBindReq.ProtoReflect.Descriptor instead.
+func (*ListMiBindReq) Descriptor() ([]byte, []int) {
+	return file_ManagerService_proto_rawDescGZIP(), []int{231}
+}
+
+func (x *ListMiBindReq) GetManagerId() int64 {
+	if x != nil {
+		return x.ManagerId
+	}
+	return 0
+}
+
+func (x *ListMiBindReq) GetMiName() string {
+	if x != nil {
+		return x.MiName
+	}
+	return ""
+}
+
+func (x *ListMiBindReq) GetMiCode() string {
+	if x != nil {
+		return x.MiCode
+	}
+	return ""
+}
+
+func (x *ListMiBindReq) GetPage() *Page {
+	if x != nil {
+		return x.Page
+	}
+	return nil
+}
+
+func (x *ListMiBindReq) GetLinkTypes() []string {
+	if x != nil {
+		return x.LinkTypes
+	}
+	return nil
+}
+
+type ListMiBindResp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	List       []*ListMiBindBindVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64               `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64               `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64               `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+}
+
+func (x *ListMiBindResp) Reset() {
+	*x = ListMiBindResp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_ManagerService_proto_msgTypes[232]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ListMiBindResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListMiBindResp) ProtoMessage() {}
+
+func (x *ListMiBindResp) ProtoReflect() protoreflect.Message {
+	mi := &file_ManagerService_proto_msgTypes[232]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListMiBindResp.ProtoReflect.Descriptor instead.
+func (*ListMiBindResp) Descriptor() ([]byte, []int) {
+	return file_ManagerService_proto_rawDescGZIP(), []int{232}
+}
+
+func (x *ListMiBindResp) GetList() []*ListMiBindBindVo {
+	if x != nil {
+		return x.List
+	}
+	return nil
+}
+
+func (x *ListMiBindResp) GetTotal() int64 {
+	if x != nil {
+		return x.Total
+	}
+	return 0
+}
+
+func (x *ListMiBindResp) GetPageSize() int64 {
+	if x != nil {
+		return x.PageSize
+	}
+	return 0
+}
+
+func (x *ListMiBindResp) GetPageNumber() int64 {
+	if x != nil {
+		return x.PageNumber
+	}
+	return 0
+}
+
+type ListMiBindBindVo struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	MiName     string `protobuf:"bytes,1,opt,name=miName,proto3" json:"miName,omitempty"`
+	MiCode     string `protobuf:"bytes,2,opt,name=miCode,proto3" json:"miCode,omitempty"`
+	MiBindJson string `protobuf:"bytes,3,opt,name=miBindJson,proto3" json:"miBindJson,omitempty"`
+}
+
+func (x *ListMiBindBindVo) Reset() {
+	*x = ListMiBindBindVo{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_ManagerService_proto_msgTypes[233]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ListMiBindBindVo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListMiBindBindVo) ProtoMessage() {}
+
+func (x *ListMiBindBindVo) ProtoReflect() protoreflect.Message {
+	mi := &file_ManagerService_proto_msgTypes[233]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListMiBindBindVo.ProtoReflect.Descriptor instead.
+func (*ListMiBindBindVo) Descriptor() ([]byte, []int) {
+	return file_ManagerService_proto_rawDescGZIP(), []int{233}
+}
+
+func (x *ListMiBindBindVo) GetMiName() string {
+	if x != nil {
+		return x.MiName
+	}
+	return ""
+}
+
+func (x *ListMiBindBindVo) GetMiCode() string {
+	if x != nil {
+		return x.MiCode
+	}
+	return ""
+}
+
+func (x *ListMiBindBindVo) GetMiBindJson() string {
+	if x != nil {
+		return x.MiBindJson
+	}
+	return ""
+}
+
+type ListMedicineBindReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ManagerId    int64    `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	MedicineName string   `protobuf:"bytes,2,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
+	MedicineCode string   `protobuf:"bytes,3,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
+	Page         *Page    `protobuf:"bytes,4,opt,name=page,proto3" json:"page,omitempty"`
+	LinkTypes    []string `protobuf:"bytes,5,rep,name=linkTypes,proto3" json:"linkTypes,omitempty"`
+}
+
+func (x *ListMedicineBindReq) Reset() {
+	*x = ListMedicineBindReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_ManagerService_proto_msgTypes[234]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ListMedicineBindReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListMedicineBindReq) ProtoMessage() {}
+
+func (x *ListMedicineBindReq) ProtoReflect() protoreflect.Message {
+	mi := &file_ManagerService_proto_msgTypes[234]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListMedicineBindReq.ProtoReflect.Descriptor instead.
+func (*ListMedicineBindReq) Descriptor() ([]byte, []int) {
+	return file_ManagerService_proto_rawDescGZIP(), []int{234}
+}
+
+func (x *ListMedicineBindReq) GetManagerId() int64 {
+	if x != nil {
+		return x.ManagerId
+	}
+	return 0
+}
+
+func (x *ListMedicineBindReq) GetMedicineName() string {
+	if x != nil {
+		return x.MedicineName
+	}
+	return ""
+}
+
+func (x *ListMedicineBindReq) GetMedicineCode() string {
+	if x != nil {
+		return x.MedicineCode
+	}
+	return ""
+}
+
+func (x *ListMedicineBindReq) GetPage() *Page {
+	if x != nil {
+		return x.Page
+	}
+	return nil
+}
+
+func (x *ListMedicineBindReq) GetLinkTypes() []string {
+	if x != nil {
+		return x.LinkTypes
+	}
+	return nil
+}
+
+type ListMedicineBindResp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	List       []*ListMedicineBindVo `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total      int64                 `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	PageSize   int64                 `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	PageNumber int64                 `protobuf:"varint,4,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
+}
+
+func (x *ListMedicineBindResp) Reset() {
+	*x = ListMedicineBindResp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_ManagerService_proto_msgTypes[235]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ListMedicineBindResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListMedicineBindResp) ProtoMessage() {}
+
+func (x *ListMedicineBindResp) ProtoReflect() protoreflect.Message {
+	mi := &file_ManagerService_proto_msgTypes[235]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListMedicineBindResp.ProtoReflect.Descriptor instead.
+func (*ListMedicineBindResp) Descriptor() ([]byte, []int) {
+	return file_ManagerService_proto_rawDescGZIP(), []int{235}
+}
+
+func (x *ListMedicineBindResp) GetList() []*ListMedicineBindVo {
+	if x != nil {
+		return x.List
+	}
+	return nil
+}
+
+func (x *ListMedicineBindResp) GetTotal() int64 {
+	if x != nil {
+		return x.Total
+	}
+	return 0
+}
+
+func (x *ListMedicineBindResp) GetPageSize() int64 {
+	if x != nil {
+		return x.PageSize
+	}
+	return 0
+}
+
+func (x *ListMedicineBindResp) GetPageNumber() int64 {
+	if x != nil {
+		return x.PageNumber
+	}
+	return 0
+}
+
+type ListMedicineBindVo struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	MedicineName     string `protobuf:"bytes,1,opt,name=medicineName,proto3" json:"medicineName,omitempty"`
+	MedicineCode     string `protobuf:"bytes,2,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
+	MedicineBindJson string `protobuf:"bytes,3,opt,name=medicineBindJson,proto3" json:"medicineBindJson,omitempty"`
+}
+
+func (x *ListMedicineBindVo) Reset() {
+	*x = ListMedicineBindVo{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_ManagerService_proto_msgTypes[236]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ListMedicineBindVo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListMedicineBindVo) ProtoMessage() {}
+
+func (x *ListMedicineBindVo) ProtoReflect() protoreflect.Message {
+	mi := &file_ManagerService_proto_msgTypes[236]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListMedicineBindVo.ProtoReflect.Descriptor instead.
+func (*ListMedicineBindVo) Descriptor() ([]byte, []int) {
+	return file_ManagerService_proto_rawDescGZIP(), []int{236}
+}
+
+func (x *ListMedicineBindVo) GetMedicineName() string {
+	if x != nil {
+		return x.MedicineName
+	}
+	return ""
+}
+
+func (x *ListMedicineBindVo) GetMedicineCode() string {
+	if x != nil {
+		return x.MedicineCode
+	}
+	return ""
+}
+
+func (x *ListMedicineBindVo) GetMedicineBindJson() string {
+	if x != nil {
+		return x.MedicineBindJson
+	}
+	return ""
+}
+
+type CompanyBindReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ManagerId int64               `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	Param     []*CompanyBindParam `protobuf:"bytes,2,rep,name=param,proto3" json:"param,omitempty"`
+}
+
+func (x *CompanyBindReq) Reset() {
+	*x = CompanyBindReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_ManagerService_proto_msgTypes[237]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CompanyBindReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CompanyBindReq) ProtoMessage() {}
+
+func (x *CompanyBindReq) ProtoReflect() protoreflect.Message {
+	mi := &file_ManagerService_proto_msgTypes[237]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CompanyBindReq.ProtoReflect.Descriptor instead.
+func (*CompanyBindReq) Descriptor() ([]byte, []int) {
+	return file_ManagerService_proto_rawDescGZIP(), []int{237}
+}
+
+func (x *CompanyBindReq) GetManagerId() int64 {
+	if x != nil {
+		return x.ManagerId
+	}
+	return 0
+}
+
+func (x *CompanyBindReq) GetParam() []*CompanyBindParam {
+	if x != nil {
+		return x.Param
+	}
+	return nil
+}
+
+type CompanyBindParam struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	BindId          int64  `protobuf:"varint,2,opt,name=bindId,proto3" json:"bindId,omitempty"`
+	CompanyCode     string `protobuf:"bytes,3,opt,name=companyCode,proto3" json:"companyCode,omitempty"`
+	CompanyLinkCode string `protobuf:"bytes,4,opt,name=companyLinkCode,proto3" json:"companyLinkCode,omitempty"`
+	LinkType        string `protobuf:"bytes,5,opt,name=linkType,proto3" json:"linkType,omitempty"`
+}
+
+func (x *CompanyBindParam) Reset() {
+	*x = CompanyBindParam{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_ManagerService_proto_msgTypes[238]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CompanyBindParam) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CompanyBindParam) ProtoMessage() {}
+
+func (x *CompanyBindParam) ProtoReflect() protoreflect.Message {
+	mi := &file_ManagerService_proto_msgTypes[238]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CompanyBindParam.ProtoReflect.Descriptor instead.
+func (*CompanyBindParam) Descriptor() ([]byte, []int) {
+	return file_ManagerService_proto_rawDescGZIP(), []int{238}
+}
+
+func (x *CompanyBindParam) GetBindId() int64 {
+	if x != nil {
+		return x.BindId
+	}
+	return 0
+}
+
+func (x *CompanyBindParam) GetCompanyCode() string {
+	if x != nil {
+		return x.CompanyCode
+	}
+	return ""
+}
+
+func (x *CompanyBindParam) GetCompanyLinkCode() string {
+	if x != nil {
+		return x.CompanyLinkCode
+	}
+	return ""
+}
+
+func (x *CompanyBindParam) GetLinkType() string {
+	if x != nil {
+		return x.LinkType
+	}
+	return ""
+}
+
+type CompanyBindResp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
+}
+
+func (x *CompanyBindResp) Reset() {
+	*x = CompanyBindResp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_ManagerService_proto_msgTypes[239]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CompanyBindResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CompanyBindResp) ProtoMessage() {}
+
+func (x *CompanyBindResp) ProtoReflect() protoreflect.Message {
+	mi := &file_ManagerService_proto_msgTypes[239]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CompanyBindResp.ProtoReflect.Descriptor instead.
+func (*CompanyBindResp) Descriptor() ([]byte, []int) {
+	return file_ManagerService_proto_rawDescGZIP(), []int{239}
+}
+
+func (x *CompanyBindResp) GetResult() int64 {
+	if x != nil {
+		return x.Result
+	}
+	return 0
+}
+
+type MiBindReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ManagerId int64          `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	Param     []*MiBindParam `protobuf:"bytes,2,rep,name=param,proto3" json:"param,omitempty"`
+}
+
+func (x *MiBindReq) Reset() {
+	*x = MiBindReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_ManagerService_proto_msgTypes[240]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MiBindReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MiBindReq) ProtoMessage() {}
+
+func (x *MiBindReq) ProtoReflect() protoreflect.Message {
+	mi := &file_ManagerService_proto_msgTypes[240]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MiBindReq.ProtoReflect.Descriptor instead.
+func (*MiBindReq) Descriptor() ([]byte, []int) {
+	return file_ManagerService_proto_rawDescGZIP(), []int{240}
+}
+
+func (x *MiBindReq) GetManagerId() int64 {
+	if x != nil {
+		return x.ManagerId
+	}
+	return 0
+}
+
+func (x *MiBindReq) GetParam() []*MiBindParam {
+	if x != nil {
+		return x.Param
+	}
+	return nil
+}
+
+type MiBindParam struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	BindId     int64  `protobuf:"varint,2,opt,name=bindId,proto3" json:"bindId,omitempty"`
+	MiCode     string `protobuf:"bytes,3,opt,name=miCode,proto3" json:"miCode,omitempty"`
+	MiLinkCode string `protobuf:"bytes,4,opt,name=miLinkCode,proto3" json:"miLinkCode,omitempty"`
+	LinkType   string `protobuf:"bytes,5,opt,name=linkType,proto3" json:"linkType,omitempty"`
+}
+
+func (x *MiBindParam) Reset() {
+	*x = MiBindParam{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_ManagerService_proto_msgTypes[241]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MiBindParam) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MiBindParam) ProtoMessage() {}
+
+func (x *MiBindParam) ProtoReflect() protoreflect.Message {
+	mi := &file_ManagerService_proto_msgTypes[241]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MiBindParam.ProtoReflect.Descriptor instead.
+func (*MiBindParam) Descriptor() ([]byte, []int) {
+	return file_ManagerService_proto_rawDescGZIP(), []int{241}
+}
+
+func (x *MiBindParam) GetBindId() int64 {
+	if x != nil {
+		return x.BindId
+	}
+	return 0
+}
+
+func (x *MiBindParam) GetMiCode() string {
+	if x != nil {
+		return x.MiCode
+	}
+	return ""
+}
+
+func (x *MiBindParam) GetMiLinkCode() string {
+	if x != nil {
+		return x.MiLinkCode
+	}
+	return ""
+}
+
+func (x *MiBindParam) GetLinkType() string {
+	if x != nil {
+		return x.LinkType
+	}
+	return ""
+}
+
+type MiBindResp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
+}
+
+func (x *MiBindResp) Reset() {
+	*x = MiBindResp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_ManagerService_proto_msgTypes[242]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MiBindResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MiBindResp) ProtoMessage() {}
+
+func (x *MiBindResp) ProtoReflect() protoreflect.Message {
+	mi := &file_ManagerService_proto_msgTypes[242]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MiBindResp.ProtoReflect.Descriptor instead.
+func (*MiBindResp) Descriptor() ([]byte, []int) {
+	return file_ManagerService_proto_rawDescGZIP(), []int{242}
+}
+
+func (x *MiBindResp) GetResult() int64 {
+	if x != nil {
+		return x.Result
+	}
+	return 0
+}
+
+type MedicineBindReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ManagerId int64                `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	Param     []*MedicineBindParam `protobuf:"bytes,2,rep,name=param,proto3" json:"param,omitempty"`
+}
+
+func (x *MedicineBindReq) Reset() {
+	*x = MedicineBindReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_ManagerService_proto_msgTypes[243]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MedicineBindReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MedicineBindReq) ProtoMessage() {}
+
+func (x *MedicineBindReq) ProtoReflect() protoreflect.Message {
+	mi := &file_ManagerService_proto_msgTypes[243]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MedicineBindReq.ProtoReflect.Descriptor instead.
+func (*MedicineBindReq) Descriptor() ([]byte, []int) {
+	return file_ManagerService_proto_rawDescGZIP(), []int{243}
+}
+
+func (x *MedicineBindReq) GetManagerId() int64 {
+	if x != nil {
+		return x.ManagerId
+	}
+	return 0
+}
+
+func (x *MedicineBindReq) GetParam() []*MedicineBindParam {
+	if x != nil {
+		return x.Param
+	}
+	return nil
+}
+
+type MedicineBindParam struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	BindId           int64  `protobuf:"varint,2,opt,name=bindId,proto3" json:"bindId,omitempty"`
+	MedicineCode     string `protobuf:"bytes,3,opt,name=medicineCode,proto3" json:"medicineCode,omitempty"`
+	MedicineLinkCode string `protobuf:"bytes,4,opt,name=medicineLinkCode,proto3" json:"medicineLinkCode,omitempty"`
+	LinkType         string `protobuf:"bytes,5,opt,name=linkType,proto3" json:"linkType,omitempty"`
+}
+
+func (x *MedicineBindParam) Reset() {
+	*x = MedicineBindParam{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_ManagerService_proto_msgTypes[244]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MedicineBindParam) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MedicineBindParam) ProtoMessage() {}
+
+func (x *MedicineBindParam) ProtoReflect() protoreflect.Message {
+	mi := &file_ManagerService_proto_msgTypes[244]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MedicineBindParam.ProtoReflect.Descriptor instead.
+func (*MedicineBindParam) Descriptor() ([]byte, []int) {
+	return file_ManagerService_proto_rawDescGZIP(), []int{244}
+}
+
+func (x *MedicineBindParam) GetBindId() int64 {
+	if x != nil {
+		return x.BindId
+	}
+	return 0
+}
+
+func (x *MedicineBindParam) GetMedicineCode() string {
+	if x != nil {
+		return x.MedicineCode
+	}
+	return ""
+}
+
+func (x *MedicineBindParam) GetMedicineLinkCode() string {
+	if x != nil {
+		return x.MedicineLinkCode
+	}
+	return ""
+}
+
+func (x *MedicineBindParam) GetLinkType() string {
+	if x != nil {
+		return x.LinkType
+	}
+	return ""
+}
+
+type MedicineBindResp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
+}
+
+func (x *MedicineBindResp) Reset() {
+	*x = MedicineBindResp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_ManagerService_proto_msgTypes[245]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MedicineBindResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MedicineBindResp) ProtoMessage() {}
+
+func (x *MedicineBindResp) ProtoReflect() protoreflect.Message {
+	mi := &file_ManagerService_proto_msgTypes[245]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MedicineBindResp.ProtoReflect.Descriptor instead.
+func (*MedicineBindResp) Descriptor() ([]byte, []int) {
+	return file_ManagerService_proto_rawDescGZIP(), []int{245}
+}
+
+func (x *MedicineBindResp) GetResult() int64 {
+	if x != nil {
+		return x.Result
+	}
+	return 0
+}
+
+type ResetContractReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ManagerId       int64                  `protobuf:"varint,1,opt,name=managerId,proto3" json:"managerId,omitempty"`
+	Param           []*ResetContractParam  `protobuf:"bytes,2,rep,name=param,proto3" json:"param,omitempty"`
+	OldContractId   int64                  `protobuf:"varint,3,opt,name=oldContractId,proto3" json:"oldContractId,omitempty"`
+	ContractNo      string                 `protobuf:"bytes,4,opt,name=contractNo,proto3" json:"contractNo,omitempty"`
+	TenderCompany   string                 `protobuf:"bytes,5,opt,name=tenderCompany,proto3" json:"tenderCompany,omitempty"`
+	MedicineId      int64                  `protobuf:"varint,6,opt,name=medicineId,proto3" json:"medicineId,omitempty"`
+	CompanyId       int64                  `protobuf:"varint,7,opt,name=companyId,proto3" json:"companyId,omitempty"`
+	MibId           int64                  `protobuf:"varint,8,opt,name=mibId,proto3" json:"mibId,omitempty"`
+	MedicinePrice   int64                  `protobuf:"varint,9,opt,name=medicinePrice,proto3" json:"medicinePrice,omitempty"`
+	MedicineReceive int64                  `protobuf:"varint,10,opt,name=medicineReceive,proto3" json:"medicineReceive,omitempty"`
+	TotalAmount     int64                  `protobuf:"varint,11,opt,name=totalAmount,proto3" json:"totalAmount,omitempty"`
+	StartAt         *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=startAt,proto3" json:"startAt,omitempty"`
+	EndAt           *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=endAt,proto3" json:"endAt,omitempty"`
+	Creator         int64                  `protobuf:"varint,14,opt,name=creator,proto3" json:"creator,omitempty"`
+}
+
+func (x *ResetContractReq) Reset() {
+	*x = ResetContractReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_ManagerService_proto_msgTypes[246]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ResetContractReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ResetContractReq) ProtoMessage() {}
+
+func (x *ResetContractReq) ProtoReflect() protoreflect.Message {
+	mi := &file_ManagerService_proto_msgTypes[246]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ResetContractReq.ProtoReflect.Descriptor instead.
+func (*ResetContractReq) Descriptor() ([]byte, []int) {
+	return file_ManagerService_proto_rawDescGZIP(), []int{246}
+}
+
+func (x *ResetContractReq) GetManagerId() int64 {
+	if x != nil {
+		return x.ManagerId
+	}
+	return 0
+}
+
+func (x *ResetContractReq) GetParam() []*ResetContractParam {
+	if x != nil {
+		return x.Param
+	}
+	return nil
+}
+
+func (x *ResetContractReq) GetOldContractId() int64 {
+	if x != nil {
+		return x.OldContractId
+	}
+	return 0
+}
+
+func (x *ResetContractReq) GetContractNo() string {
+	if x != nil {
+		return x.ContractNo
+	}
+	return ""
+}
+
+func (x *ResetContractReq) GetTenderCompany() string {
+	if x != nil {
+		return x.TenderCompany
+	}
+	return ""
+}
+
+func (x *ResetContractReq) GetMedicineId() int64 {
+	if x != nil {
+		return x.MedicineId
+	}
+	return 0
+}
+
+func (x *ResetContractReq) GetCompanyId() int64 {
+	if x != nil {
+		return x.CompanyId
+	}
+	return 0
+}
+
+func (x *ResetContractReq) GetMibId() int64 {
+	if x != nil {
+		return x.MibId
+	}
+	return 0
+}
+
+func (x *ResetContractReq) GetMedicinePrice() int64 {
+	if x != nil {
+		return x.MedicinePrice
+	}
+	return 0
+}
+
+func (x *ResetContractReq) GetMedicineReceive() int64 {
+	if x != nil {
+		return x.MedicineReceive
+	}
+	return 0
+}
+
+func (x *ResetContractReq) GetTotalAmount() int64 {
+	if x != nil {
+		return x.TotalAmount
+	}
+	return 0
+}
+
+func (x *ResetContractReq) GetStartAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.StartAt
+	}
+	return nil
+}
+
+func (x *ResetContractReq) GetEndAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.EndAt
+	}
+	return nil
+}
+
+func (x *ResetContractReq) GetCreator() int64 {
+	if x != nil {
+		return x.Creator
+	}
+	return 0
+}
+
+type ResetContractParam struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	MiId            int64 `protobuf:"varint,1,opt,name=miId,proto3" json:"miId,omitempty"`
+	MedicineAmount  int64 `protobuf:"varint,2,opt,name=medicineAmount,proto3" json:"medicineAmount,omitempty"`
+	MedicineSent    int64 `protobuf:"varint,3,opt,name=medicineSent,proto3" json:"medicineSent,omitempty"`
+	MedicineReceive int64 `protobuf:"varint,4,opt,name=medicineReceive,proto3" json:"medicineReceive,omitempty"`
+}
+
+func (x *ResetContractParam) Reset() {
+	*x = ResetContractParam{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_ManagerService_proto_msgTypes[247]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ResetContractParam) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ResetContractParam) ProtoMessage() {}
+
+func (x *ResetContractParam) ProtoReflect() protoreflect.Message {
+	mi := &file_ManagerService_proto_msgTypes[247]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ResetContractParam.ProtoReflect.Descriptor instead.
+func (*ResetContractParam) Descriptor() ([]byte, []int) {
+	return file_ManagerService_proto_rawDescGZIP(), []int{247}
+}
+
+func (x *ResetContractParam) GetMiId() int64 {
+	if x != nil {
+		return x.MiId
+	}
+	return 0
+}
+
+func (x *ResetContractParam) GetMedicineAmount() int64 {
+	if x != nil {
+		return x.MedicineAmount
+	}
+	return 0
+}
+
+func (x *ResetContractParam) GetMedicineSent() int64 {
+	if x != nil {
+		return x.MedicineSent
+	}
+	return 0
+}
+
+func (x *ResetContractParam) GetMedicineReceive() int64 {
+	if x != nil {
+		return x.MedicineReceive
+	}
+	return 0
+}
+
+type ResetContractResp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Result int64 `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
+}
+
+func (x *ResetContractResp) Reset() {
+	*x = ResetContractResp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_ManagerService_proto_msgTypes[248]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ResetContractResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ResetContractResp) ProtoMessage() {}
+
+func (x *ResetContractResp) ProtoReflect() protoreflect.Message {
+	mi := &file_ManagerService_proto_msgTypes[248]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ResetContractResp.ProtoReflect.Descriptor instead.
+func (*ResetContractResp) Descriptor() ([]byte, []int) {
+	return file_ManagerService_proto_rawDescGZIP(), []int{248}
+}
+
+func (x *ResetContractResp) GetResult() int64 {
+	if x != nil {
+		return x.Result
 	}
 	return 0
 }
@@ -21684,559 +23111,783 @@ var file_ManagerService_proto_rawDesc = []byte{
 	0x70, 0x12, 0x18, 0x0a, 0x07, 0x6d, 0x69, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01,
 	0x28, 0x03, 0x52, 0x07, 0x6d, 0x69, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x22, 0x0a, 0x0c, 0x63,
 	0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28,
-	0x03, 0x52, 0x0c, 0x63, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x32,
-	0xa9, 0x28, 0x0a, 0x0e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69,
-	0x63, 0x65, 0x12, 0x51, 0x0a, 0x0c, 0x4c, 0x69, 0x73, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61,
-	0x63, 0x74, 0x12, 0x1f, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76,
-	0x69, 0x63, 0x65, 0x2e, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x4c, 0x69, 0x73, 0x74,
-	0x52, 0x65, 0x71, 0x1a, 0x20, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72,
-	0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x4c, 0x69, 0x73,
-	0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x57, 0x0a, 0x0e, 0x4c, 0x69, 0x73, 0x74, 0x4d, 0x69, 0x43,
-	0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x12, 0x21, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65,
-	0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63,
-	0x74, 0x4d, 0x69, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x22, 0x2e, 0x4d, 0x61, 0x6e,
+	0x03, 0x52, 0x0c, 0x63, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x22,
+	0xbe, 0x01, 0x0a, 0x12, 0x4c, 0x69, 0x73, 0x74, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x42,
+	0x69, 0x6e, 0x64, 0x52, 0x65, 0x71, 0x12, 0x1c, 0x0a, 0x09, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65,
+	0x72, 0x49, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x6d, 0x61, 0x6e, 0x61, 0x67,
+	0x65, 0x72, 0x49, 0x64, 0x12, 0x20, 0x0a, 0x0b, 0x63, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x4e,
+	0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x63, 0x6f, 0x6d, 0x70, 0x61,
+	0x6e, 0x79, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x20, 0x0a, 0x0b, 0x63, 0x6f, 0x6d, 0x70, 0x61, 0x6e,
+	0x79, 0x43, 0x6f, 0x64, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x63, 0x6f, 0x6d,
+	0x70, 0x61, 0x6e, 0x79, 0x43, 0x6f, 0x64, 0x65, 0x12, 0x28, 0x0a, 0x04, 0x70, 0x61, 0x67, 0x65,
+	0x18, 0x04, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x14, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72,
+	0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x50, 0x61, 0x67, 0x65, 0x52, 0x04, 0x70, 0x61,
+	0x67, 0x65, 0x12, 0x1c, 0x0a, 0x09, 0x6c, 0x69, 0x6e, 0x6b, 0x54, 0x79, 0x70, 0x65, 0x73, 0x18,
+	0x05, 0x20, 0x03, 0x28, 0x09, 0x52, 0x09, 0x6c, 0x69, 0x6e, 0x6b, 0x54, 0x79, 0x70, 0x65, 0x73,
+	0x22, 0x9e, 0x01, 0x0a, 0x13, 0x4c, 0x69, 0x73, 0x74, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79,
+	0x42, 0x69, 0x6e, 0x64, 0x52, 0x65, 0x73, 0x70, 0x12, 0x35, 0x0a, 0x04, 0x6c, 0x69, 0x73, 0x74,
+	0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x21, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72,
+	0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x43, 0x6f, 0x6d, 0x70,
+	0x61, 0x6e, 0x79, 0x42, 0x69, 0x6e, 0x64, 0x56, 0x6f, 0x52, 0x04, 0x6c, 0x69, 0x73, 0x74, 0x12,
+	0x14, 0x0a, 0x05, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05,
+	0x74, 0x6f, 0x74, 0x61, 0x6c, 0x12, 0x1a, 0x0a, 0x08, 0x70, 0x61, 0x67, 0x65, 0x53, 0x69, 0x7a,
+	0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x08, 0x70, 0x61, 0x67, 0x65, 0x53, 0x69, 0x7a,
+	0x65, 0x12, 0x1e, 0x0a, 0x0a, 0x70, 0x61, 0x67, 0x65, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x18,
+	0x04, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0a, 0x70, 0x61, 0x67, 0x65, 0x4e, 0x75, 0x6d, 0x62, 0x65,
+	0x72, 0x22, 0x81, 0x01, 0x0a, 0x11, 0x4c, 0x69, 0x73, 0x74, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e,
+	0x79, 0x42, 0x69, 0x6e, 0x64, 0x56, 0x6f, 0x12, 0x20, 0x0a, 0x0b, 0x63, 0x6f, 0x6d, 0x70, 0x61,
+	0x6e, 0x79, 0x4e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x63, 0x6f,
+	0x6d, 0x70, 0x61, 0x6e, 0x79, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x20, 0x0a, 0x0b, 0x63, 0x6f, 0x6d,
+	0x70, 0x61, 0x6e, 0x79, 0x43, 0x6f, 0x64, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b,
+	0x63, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x43, 0x6f, 0x64, 0x65, 0x12, 0x28, 0x0a, 0x0f, 0x63,
+	0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x42, 0x69, 0x6e, 0x64, 0x4a, 0x73, 0x6f, 0x6e, 0x18, 0x03,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x0f, 0x63, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x42, 0x69, 0x6e,
+	0x64, 0x4a, 0x73, 0x6f, 0x6e, 0x22, 0xa5, 0x01, 0x0a, 0x0d, 0x4c, 0x69, 0x73, 0x74, 0x4d, 0x69,
+	0x42, 0x69, 0x6e, 0x64, 0x52, 0x65, 0x71, 0x12, 0x1c, 0x0a, 0x09, 0x6d, 0x61, 0x6e, 0x61, 0x67,
+	0x65, 0x72, 0x49, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x6d, 0x61, 0x6e, 0x61,
+	0x67, 0x65, 0x72, 0x49, 0x64, 0x12, 0x16, 0x0a, 0x06, 0x6d, 0x69, 0x4e, 0x61, 0x6d, 0x65, 0x18,
+	0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x6d, 0x69, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x16, 0x0a,
+	0x06, 0x6d, 0x69, 0x43, 0x6f, 0x64, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x6d,
+	0x69, 0x43, 0x6f, 0x64, 0x65, 0x12, 0x28, 0x0a, 0x04, 0x70, 0x61, 0x67, 0x65, 0x18, 0x04, 0x20,
+	0x01, 0x28, 0x0b, 0x32, 0x14, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72,
+	0x76, 0x69, 0x63, 0x65, 0x2e, 0x50, 0x61, 0x67, 0x65, 0x52, 0x04, 0x70, 0x61, 0x67, 0x65, 0x12,
+	0x1c, 0x0a, 0x09, 0x6c, 0x69, 0x6e, 0x6b, 0x54, 0x79, 0x70, 0x65, 0x73, 0x18, 0x05, 0x20, 0x03,
+	0x28, 0x09, 0x52, 0x09, 0x6c, 0x69, 0x6e, 0x6b, 0x54, 0x79, 0x70, 0x65, 0x73, 0x22, 0x98, 0x01,
+	0x0a, 0x0e, 0x4c, 0x69, 0x73, 0x74, 0x4d, 0x69, 0x42, 0x69, 0x6e, 0x64, 0x52, 0x65, 0x73, 0x70,
+	0x12, 0x34, 0x0a, 0x04, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x20,
+	0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e,
+	0x4c, 0x69, 0x73, 0x74, 0x4d, 0x69, 0x42, 0x69, 0x6e, 0x64, 0x42, 0x69, 0x6e, 0x64, 0x56, 0x6f,
+	0x52, 0x04, 0x6c, 0x69, 0x73, 0x74, 0x12, 0x14, 0x0a, 0x05, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x18,
+	0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x12, 0x1a, 0x0a, 0x08,
+	0x70, 0x61, 0x67, 0x65, 0x53, 0x69, 0x7a, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x08,
+	0x70, 0x61, 0x67, 0x65, 0x53, 0x69, 0x7a, 0x65, 0x12, 0x1e, 0x0a, 0x0a, 0x70, 0x61, 0x67, 0x65,
+	0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x18, 0x04, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0a, 0x70, 0x61,
+	0x67, 0x65, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x22, 0x62, 0x0a, 0x10, 0x4c, 0x69, 0x73, 0x74,
+	0x4d, 0x69, 0x42, 0x69, 0x6e, 0x64, 0x42, 0x69, 0x6e, 0x64, 0x56, 0x6f, 0x12, 0x16, 0x0a, 0x06,
+	0x6d, 0x69, 0x4e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x6d, 0x69,
+	0x4e, 0x61, 0x6d, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x6d, 0x69, 0x43, 0x6f, 0x64, 0x65, 0x18, 0x02,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x6d, 0x69, 0x43, 0x6f, 0x64, 0x65, 0x12, 0x1e, 0x0a, 0x0a,
+	0x6d, 0x69, 0x42, 0x69, 0x6e, 0x64, 0x4a, 0x73, 0x6f, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x0a, 0x6d, 0x69, 0x42, 0x69, 0x6e, 0x64, 0x4a, 0x73, 0x6f, 0x6e, 0x22, 0xc3, 0x01, 0x0a,
+	0x13, 0x4c, 0x69, 0x73, 0x74, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x42, 0x69, 0x6e,
+	0x64, 0x52, 0x65, 0x71, 0x12, 0x1c, 0x0a, 0x09, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x49,
+	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72,
+	0x49, 0x64, 0x12, 0x22, 0x0a, 0x0c, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x4e, 0x61,
+	0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69,
+	0x6e, 0x65, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x22, 0x0a, 0x0c, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69,
+	0x6e, 0x65, 0x43, 0x6f, 0x64, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x6d, 0x65,
+	0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x43, 0x6f, 0x64, 0x65, 0x12, 0x28, 0x0a, 0x04, 0x70, 0x61,
+	0x67, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x14, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67,
+	0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x50, 0x61, 0x67, 0x65, 0x52, 0x04,
+	0x70, 0x61, 0x67, 0x65, 0x12, 0x1c, 0x0a, 0x09, 0x6c, 0x69, 0x6e, 0x6b, 0x54, 0x79, 0x70, 0x65,
+	0x73, 0x18, 0x05, 0x20, 0x03, 0x28, 0x09, 0x52, 0x09, 0x6c, 0x69, 0x6e, 0x6b, 0x54, 0x79, 0x70,
+	0x65, 0x73, 0x22, 0xa0, 0x01, 0x0a, 0x14, 0x4c, 0x69, 0x73, 0x74, 0x4d, 0x65, 0x64, 0x69, 0x63,
+	0x69, 0x6e, 0x65, 0x42, 0x69, 0x6e, 0x64, 0x52, 0x65, 0x73, 0x70, 0x12, 0x36, 0x0a, 0x04, 0x6c,
+	0x69, 0x73, 0x74, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x22, 0x2e, 0x4d, 0x61, 0x6e, 0x61,
+	0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x4d,
+	0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x42, 0x69, 0x6e, 0x64, 0x56, 0x6f, 0x52, 0x04, 0x6c,
+	0x69, 0x73, 0x74, 0x12, 0x14, 0x0a, 0x05, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x03, 0x52, 0x05, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x12, 0x1a, 0x0a, 0x08, 0x70, 0x61, 0x67,
+	0x65, 0x53, 0x69, 0x7a, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x08, 0x70, 0x61, 0x67,
+	0x65, 0x53, 0x69, 0x7a, 0x65, 0x12, 0x1e, 0x0a, 0x0a, 0x70, 0x61, 0x67, 0x65, 0x4e, 0x75, 0x6d,
+	0x62, 0x65, 0x72, 0x18, 0x04, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0a, 0x70, 0x61, 0x67, 0x65, 0x4e,
+	0x75, 0x6d, 0x62, 0x65, 0x72, 0x22, 0x88, 0x01, 0x0a, 0x12, 0x4c, 0x69, 0x73, 0x74, 0x4d, 0x65,
+	0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x42, 0x69, 0x6e, 0x64, 0x56, 0x6f, 0x12, 0x22, 0x0a, 0x0c,
+	0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x4e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x0c, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x4e, 0x61, 0x6d, 0x65,
+	0x12, 0x22, 0x0a, 0x0c, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x43, 0x6f, 0x64, 0x65,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65,
+	0x43, 0x6f, 0x64, 0x65, 0x12, 0x2a, 0x0a, 0x10, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65,
+	0x42, 0x69, 0x6e, 0x64, 0x4a, 0x73, 0x6f, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x10,
+	0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x42, 0x69, 0x6e, 0x64, 0x4a, 0x73, 0x6f, 0x6e,
+	0x22, 0x66, 0x0a, 0x0e, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x42, 0x69, 0x6e, 0x64, 0x52,
+	0x65, 0x71, 0x12, 0x1c, 0x0a, 0x09, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x49, 0x64, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x49, 0x64,
+	0x12, 0x36, 0x0a, 0x05, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32,
+	0x20, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
+	0x2e, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x42, 0x69, 0x6e, 0x64, 0x50, 0x61, 0x72, 0x61,
+	0x6d, 0x52, 0x05, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x22, 0x92, 0x01, 0x0a, 0x10, 0x43, 0x6f, 0x6d,
+	0x70, 0x61, 0x6e, 0x79, 0x42, 0x69, 0x6e, 0x64, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x12, 0x16, 0x0a,
+	0x06, 0x62, 0x69, 0x6e, 0x64, 0x49, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06, 0x62,
+	0x69, 0x6e, 0x64, 0x49, 0x64, 0x12, 0x20, 0x0a, 0x0b, 0x63, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79,
+	0x43, 0x6f, 0x64, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x63, 0x6f, 0x6d, 0x70,
+	0x61, 0x6e, 0x79, 0x43, 0x6f, 0x64, 0x65, 0x12, 0x28, 0x0a, 0x0f, 0x63, 0x6f, 0x6d, 0x70, 0x61,
+	0x6e, 0x79, 0x4c, 0x69, 0x6e, 0x6b, 0x43, 0x6f, 0x64, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x0f, 0x63, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x4c, 0x69, 0x6e, 0x6b, 0x43, 0x6f, 0x64,
+	0x65, 0x12, 0x1a, 0x0a, 0x08, 0x6c, 0x69, 0x6e, 0x6b, 0x54, 0x79, 0x70, 0x65, 0x18, 0x05, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x08, 0x6c, 0x69, 0x6e, 0x6b, 0x54, 0x79, 0x70, 0x65, 0x22, 0x29, 0x0a,
+	0x0f, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x42, 0x69, 0x6e, 0x64, 0x52, 0x65, 0x73, 0x70,
+	0x12, 0x16, 0x0a, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03,
+	0x52, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x22, 0x5c, 0x0a, 0x09, 0x4d, 0x69, 0x42, 0x69,
+	0x6e, 0x64, 0x52, 0x65, 0x71, 0x12, 0x1c, 0x0a, 0x09, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72,
+	0x49, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65,
+	0x72, 0x49, 0x64, 0x12, 0x31, 0x0a, 0x05, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x18, 0x02, 0x20, 0x03,
+	0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76,
+	0x69, 0x63, 0x65, 0x2e, 0x4d, 0x69, 0x42, 0x69, 0x6e, 0x64, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x52,
+	0x05, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x22, 0x79, 0x0a, 0x0b, 0x4d, 0x69, 0x42, 0x69, 0x6e, 0x64,
+	0x50, 0x61, 0x72, 0x61, 0x6d, 0x12, 0x16, 0x0a, 0x06, 0x62, 0x69, 0x6e, 0x64, 0x49, 0x64, 0x18,
+	0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06, 0x62, 0x69, 0x6e, 0x64, 0x49, 0x64, 0x12, 0x16, 0x0a,
+	0x06, 0x6d, 0x69, 0x43, 0x6f, 0x64, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x6d,
+	0x69, 0x43, 0x6f, 0x64, 0x65, 0x12, 0x1e, 0x0a, 0x0a, 0x6d, 0x69, 0x4c, 0x69, 0x6e, 0x6b, 0x43,
+	0x6f, 0x64, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x6d, 0x69, 0x4c, 0x69, 0x6e,
+	0x6b, 0x43, 0x6f, 0x64, 0x65, 0x12, 0x1a, 0x0a, 0x08, 0x6c, 0x69, 0x6e, 0x6b, 0x54, 0x79, 0x70,
+	0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x6c, 0x69, 0x6e, 0x6b, 0x54, 0x79, 0x70,
+	0x65, 0x22, 0x24, 0x0a, 0x0a, 0x4d, 0x69, 0x42, 0x69, 0x6e, 0x64, 0x52, 0x65, 0x73, 0x70, 0x12,
+	0x16, 0x0a, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52,
+	0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x22, 0x68, 0x0a, 0x0f, 0x4d, 0x65, 0x64, 0x69, 0x63,
+	0x69, 0x6e, 0x65, 0x42, 0x69, 0x6e, 0x64, 0x52, 0x65, 0x71, 0x12, 0x1c, 0x0a, 0x09, 0x6d, 0x61,
+	0x6e, 0x61, 0x67, 0x65, 0x72, 0x49, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x6d,
+	0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x49, 0x64, 0x12, 0x37, 0x0a, 0x05, 0x70, 0x61, 0x72, 0x61,
+	0x6d, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x21, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65,
+	0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e,
+	0x65, 0x42, 0x69, 0x6e, 0x64, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x52, 0x05, 0x70, 0x61, 0x72, 0x61,
+	0x6d, 0x22, 0x97, 0x01, 0x0a, 0x11, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x42, 0x69,
+	0x6e, 0x64, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x12, 0x16, 0x0a, 0x06, 0x62, 0x69, 0x6e, 0x64, 0x49,
+	0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06, 0x62, 0x69, 0x6e, 0x64, 0x49, 0x64, 0x12,
+	0x22, 0x0a, 0x0c, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x43, 0x6f, 0x64, 0x65, 0x18,
+	0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x43,
+	0x6f, 0x64, 0x65, 0x12, 0x2a, 0x0a, 0x10, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x4c,
+	0x69, 0x6e, 0x6b, 0x43, 0x6f, 0x64, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x10, 0x6d,
+	0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x4c, 0x69, 0x6e, 0x6b, 0x43, 0x6f, 0x64, 0x65, 0x12,
+	0x1a, 0x0a, 0x08, 0x6c, 0x69, 0x6e, 0x6b, 0x54, 0x79, 0x70, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x08, 0x6c, 0x69, 0x6e, 0x6b, 0x54, 0x79, 0x70, 0x65, 0x22, 0x2a, 0x0a, 0x10, 0x4d,
+	0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x42, 0x69, 0x6e, 0x64, 0x52, 0x65, 0x73, 0x70, 0x12,
+	0x16, 0x0a, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52,
+	0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x22, 0x9e, 0x04, 0x0a, 0x10, 0x52, 0x65, 0x73, 0x65,
+	0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x52, 0x65, 0x71, 0x12, 0x1c, 0x0a, 0x09,
+	0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x49, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52,
+	0x09, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x49, 0x64, 0x12, 0x38, 0x0a, 0x05, 0x70, 0x61,
+	0x72, 0x61, 0x6d, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x22, 0x2e, 0x4d, 0x61, 0x6e, 0x61,
+	0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x52, 0x65, 0x73, 0x65, 0x74,
+	0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x52, 0x05, 0x70,
+	0x61, 0x72, 0x61, 0x6d, 0x12, 0x24, 0x0a, 0x0d, 0x6f, 0x6c, 0x64, 0x43, 0x6f, 0x6e, 0x74, 0x72,
+	0x61, 0x63, 0x74, 0x49, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0d, 0x6f, 0x6c, 0x64,
+	0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x49, 0x64, 0x12, 0x1e, 0x0a, 0x0a, 0x63, 0x6f,
+	0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x4e, 0x6f, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a,
+	0x63, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x4e, 0x6f, 0x12, 0x24, 0x0a, 0x0d, 0x74, 0x65,
+	0x6e, 0x64, 0x65, 0x72, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x18, 0x05, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x0d, 0x74, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79,
+	0x12, 0x1e, 0x0a, 0x0a, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x49, 0x64, 0x18, 0x06,
+	0x20, 0x01, 0x28, 0x03, 0x52, 0x0a, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x49, 0x64,
+	0x12, 0x1c, 0x0a, 0x09, 0x63, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x49, 0x64, 0x18, 0x07, 0x20,
+	0x01, 0x28, 0x03, 0x52, 0x09, 0x63, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x49, 0x64, 0x12, 0x14,
+	0x0a, 0x05, 0x6d, 0x69, 0x62, 0x49, 0x64, 0x18, 0x08, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05, 0x6d,
+	0x69, 0x62, 0x49, 0x64, 0x12, 0x24, 0x0a, 0x0d, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65,
+	0x50, 0x72, 0x69, 0x63, 0x65, 0x18, 0x09, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0d, 0x6d, 0x65, 0x64,
+	0x69, 0x63, 0x69, 0x6e, 0x65, 0x50, 0x72, 0x69, 0x63, 0x65, 0x12, 0x28, 0x0a, 0x0f, 0x6d, 0x65,
+	0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x52, 0x65, 0x63, 0x65, 0x69, 0x76, 0x65, 0x18, 0x0a, 0x20,
+	0x01, 0x28, 0x03, 0x52, 0x0f, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x52, 0x65, 0x63,
+	0x65, 0x69, 0x76, 0x65, 0x12, 0x20, 0x0a, 0x0b, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x41, 0x6d, 0x6f,
+	0x75, 0x6e, 0x74, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0b, 0x74, 0x6f, 0x74, 0x61, 0x6c,
+	0x41, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x34, 0x0a, 0x07, 0x73, 0x74, 0x61, 0x72, 0x74, 0x41,
+	0x74, 0x18, 0x0c, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
+	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74,
+	0x61, 0x6d, 0x70, 0x52, 0x07, 0x73, 0x74, 0x61, 0x72, 0x74, 0x41, 0x74, 0x12, 0x30, 0x0a, 0x05,
+	0x65, 0x6e, 0x64, 0x41, 0x74, 0x18, 0x0d, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f,
+	0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54, 0x69,
+	0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x52, 0x05, 0x65, 0x6e, 0x64, 0x41, 0x74, 0x12, 0x18,
+	0x0a, 0x07, 0x63, 0x72, 0x65, 0x61, 0x74, 0x6f, 0x72, 0x18, 0x0e, 0x20, 0x01, 0x28, 0x03, 0x52,
+	0x07, 0x63, 0x72, 0x65, 0x61, 0x74, 0x6f, 0x72, 0x22, 0x9e, 0x01, 0x0a, 0x12, 0x52, 0x65, 0x73,
+	0x65, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x12,
+	0x12, 0x0a, 0x04, 0x6d, 0x69, 0x49, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x04, 0x6d,
+	0x69, 0x49, 0x64, 0x12, 0x26, 0x0a, 0x0e, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x41,
+	0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0e, 0x6d, 0x65, 0x64,
+	0x69, 0x63, 0x69, 0x6e, 0x65, 0x41, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x22, 0x0a, 0x0c, 0x6d,
+	0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x53, 0x65, 0x6e, 0x74, 0x18, 0x03, 0x20, 0x01, 0x28,
+	0x03, 0x52, 0x0c, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x53, 0x65, 0x6e, 0x74, 0x12,
+	0x28, 0x0a, 0x0f, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x52, 0x65, 0x63, 0x65, 0x69,
+	0x76, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0f, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x69,
+	0x6e, 0x65, 0x52, 0x65, 0x63, 0x65, 0x69, 0x76, 0x65, 0x22, 0x2b, 0x0a, 0x11, 0x52, 0x65, 0x73,
+	0x65, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x16,
+	0x0a, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06,
+	0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x32, 0xeb, 0x2c, 0x0a, 0x0e, 0x4d, 0x61, 0x6e, 0x61, 0x67,
+	0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x51, 0x0a, 0x0c, 0x4c, 0x69, 0x73,
+	0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x12, 0x1f, 0x2e, 0x4d, 0x61, 0x6e, 0x61,
+	0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x6f, 0x6e, 0x74, 0x72,
+	0x61, 0x63, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x20, 0x2e, 0x4d, 0x61, 0x6e,
 	0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x6f, 0x6e, 0x74,
-	0x72, 0x61, 0x63, 0x74, 0x4d, 0x69, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x66,
-	0x0a, 0x13, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x6e, 0x65, 0x43, 0x6f, 0x6e, 0x74, 0x72,
-	0x61, 0x63, 0x74, 0x4d, 0x49, 0x12, 0x26, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53,
-	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x6e, 0x65,
-	0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x4d, 0x49, 0x52, 0x65, 0x71, 0x1a, 0x27, 0x2e,
-	0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43,
-	0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x6e, 0x65, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74,
-	0x4d, 0x49, 0x52, 0x65, 0x73, 0x70, 0x12, 0x66, 0x0a, 0x13, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65,
-	0x4f, 0x6e, 0x65, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x4d, 0x49, 0x12, 0x26, 0x2e,
-	0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x55,
-	0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x6e, 0x65, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74,
-	0x4d, 0x49, 0x52, 0x65, 0x71, 0x1a, 0x27, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53,
-	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x6e, 0x65,
-	0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x4d, 0x49, 0x52, 0x65, 0x73, 0x70, 0x12, 0x60,
-	0x0a, 0x11, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x6e, 0x65, 0x43, 0x6f, 0x6e, 0x74, 0x72,
-	0x61, 0x63, 0x74, 0x12, 0x24, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72,
-	0x76, 0x69, 0x63, 0x65, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x6e, 0x65, 0x43, 0x6f,
-	0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x25, 0x2e, 0x4d, 0x61, 0x6e, 0x61,
-	0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74,
-	0x65, 0x4f, 0x6e, 0x65, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x52, 0x65, 0x73, 0x70,
-	0x12, 0x69, 0x0a, 0x14, 0x42, 0x61, 0x74, 0x63, 0x68, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x65,
-	0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x12, 0x27, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67,
+	0x72, 0x61, 0x63, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x57, 0x0a, 0x0e,
+	0x4c, 0x69, 0x73, 0x74, 0x4d, 0x69, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x12, 0x21,
+	0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e,
+	0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x4d, 0x69, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65,
+	0x71, 0x1a, 0x22, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69,
+	0x63, 0x65, 0x2e, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x4d, 0x69, 0x4c, 0x69, 0x73,
+	0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x66, 0x0a, 0x13, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f,
+	0x6e, 0x65, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x4d, 0x49, 0x12, 0x26, 0x2e, 0x4d,
+	0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x72,
+	0x65, 0x61, 0x74, 0x65, 0x4f, 0x6e, 0x65, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x4d,
+	0x49, 0x52, 0x65, 0x71, 0x1a, 0x27, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65,
+	0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x6e, 0x65, 0x43,
+	0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x4d, 0x49, 0x52, 0x65, 0x73, 0x70, 0x12, 0x66, 0x0a,
+	0x13, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x6e, 0x65, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61,
+	0x63, 0x74, 0x4d, 0x49, 0x12, 0x26, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65,
+	0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x6e, 0x65, 0x43,
+	0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x4d, 0x49, 0x52, 0x65, 0x71, 0x1a, 0x27, 0x2e, 0x4d,
+	0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x55, 0x70,
+	0x64, 0x61, 0x74, 0x65, 0x4f, 0x6e, 0x65, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x4d,
+	0x49, 0x52, 0x65, 0x73, 0x70, 0x12, 0x60, 0x0a, 0x11, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f,
+	0x6e, 0x65, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x12, 0x24, 0x2e, 0x4d, 0x61, 0x6e,
+	0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x55, 0x70, 0x64, 0x61,
+	0x74, 0x65, 0x4f, 0x6e, 0x65, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x52, 0x65, 0x71,
+	0x1a, 0x25, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63,
+	0x65, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x6e, 0x65, 0x43, 0x6f, 0x6e, 0x74, 0x72,
+	0x61, 0x63, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x69, 0x0a, 0x14, 0x42, 0x61, 0x74, 0x63, 0x68,
+	0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x65, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x12,
+	0x27, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
+	0x2e, 0x42, 0x61, 0x74, 0x63, 0x68, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x65, 0x43, 0x6f, 0x6e,
+	0x74, 0x72, 0x61, 0x63, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x28, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67,
 	0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x42, 0x61, 0x74, 0x63, 0x68, 0x4f,
 	0x70, 0x65, 0x72, 0x61, 0x74, 0x65, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x52, 0x65,
-	0x71, 0x1a, 0x28, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69,
-	0x63, 0x65, 0x2e, 0x42, 0x61, 0x74, 0x63, 0x68, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x65, 0x43,
-	0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x69, 0x0a, 0x14, 0x55,
-	0x70, 0x64, 0x61, 0x74, 0x65, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x41, 0x63, 0x74,
-	0x69, 0x76, 0x65, 0x12, 0x27, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72,
+	0x73, 0x70, 0x12, 0x69, 0x0a, 0x14, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x43, 0x6f, 0x6e, 0x74,
+	0x72, 0x61, 0x63, 0x74, 0x41, 0x63, 0x74, 0x69, 0x76, 0x65, 0x12, 0x27, 0x2e, 0x4d, 0x61, 0x6e,
+	0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x55, 0x70, 0x64, 0x61,
+	0x74, 0x65, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x41, 0x63, 0x74, 0x69, 0x76, 0x65,
+	0x52, 0x65, 0x71, 0x1a, 0x28, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72,
 	0x76, 0x69, 0x63, 0x65, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x43, 0x6f, 0x6e, 0x74, 0x72,
-	0x61, 0x63, 0x74, 0x41, 0x63, 0x74, 0x69, 0x76, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x28, 0x2e, 0x4d,
-	0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x55, 0x70,
-	0x64, 0x61, 0x74, 0x65, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x41, 0x63, 0x74, 0x69,
-	0x76, 0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x60, 0x0a, 0x11, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65,
-	0x4f, 0x6e, 0x65, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x12, 0x24, 0x2e, 0x4d, 0x61,
-	0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x44, 0x65, 0x6c,
-	0x65, 0x74, 0x65, 0x4f, 0x6e, 0x65, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x52, 0x65,
-	0x71, 0x1a, 0x25, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69,
-	0x63, 0x65, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x4f, 0x6e, 0x65, 0x43, 0x6f, 0x6e, 0x74,
-	0x72, 0x61, 0x63, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x66, 0x0a, 0x13, 0x44, 0x65, 0x6c, 0x65,
-	0x74, 0x65, 0x4f, 0x6e, 0x65, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x4d, 0x69, 0x12,
-	0x26, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
-	0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x4f, 0x6e, 0x65, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61,
-	0x63, 0x74, 0x4d, 0x69, 0x52, 0x65, 0x71, 0x1a, 0x27, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65,
-	0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x4f,
-	0x6e, 0x65, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x4d, 0x69, 0x52, 0x65, 0x73, 0x70,
-	0x12, 0x5a, 0x0a, 0x0f, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x49,
-	0x6e, 0x66, 0x6f, 0x12, 0x22, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72,
-	0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74,
-	0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x71, 0x1a, 0x23, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65,
-	0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x74,
-	0x72, 0x61, 0x63, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x73, 0x70, 0x12, 0x54, 0x0a, 0x0d,
-	0x43, 0x6f, 0x75, 0x6e, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x12, 0x20, 0x2e,
-	0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43,
-	0x6f, 0x75, 0x6e, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x52, 0x65, 0x71, 0x1a,
-	0x21, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
-	0x2e, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x52, 0x65,
-	0x73, 0x70, 0x12, 0x5a, 0x0a, 0x0f, 0x52, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68, 0x43, 0x6f, 0x6e,
-	0x74, 0x72, 0x61, 0x63, 0x74, 0x12, 0x22, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53,
-	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x52, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68, 0x43, 0x6f,
-	0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x23, 0x2e, 0x4d, 0x61, 0x6e, 0x61,
-	0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x52, 0x65, 0x66, 0x72, 0x65,
-	0x73, 0x68, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x57,
-	0x0a, 0x0e, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x44, 0x65, 0x74, 0x61, 0x69, 0x6c,
-	0x12, 0x21, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63,
-	0x65, 0x2e, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x44, 0x65, 0x74, 0x61, 0x69, 0x6c,
-	0x52, 0x65, 0x71, 0x1a, 0x22, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72,
-	0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x44, 0x65, 0x74,
-	0x61, 0x69, 0x6c, 0x52, 0x65, 0x73, 0x70, 0x12, 0x5e, 0x0a, 0x11, 0x43, 0x68, 0x65, 0x63, 0x6b,
-	0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x22, 0x2e, 0x4d,
-	0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x55, 0x70,
-	0x43, 0x68, 0x65, 0x63, 0x6b, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x52, 0x65, 0x71,
-	0x1a, 0x25, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63,
-	0x65, 0x2e, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x4c,
-	0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x51, 0x0a, 0x0c, 0x4c, 0x69, 0x73, 0x74, 0x4d,
-	0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x12, 0x1f, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65,
-	0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e,
-	0x65, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x20, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67,
-	0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69,
-	0x6e, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x69, 0x0a, 0x14, 0x4d, 0x65,
-	0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x46, 0x6f, 0x72, 0x51, 0x75, 0x65,
-	0x72, 0x79, 0x12, 0x27, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76,
-	0x69, 0x63, 0x65, 0x2e, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x4c, 0x69, 0x73, 0x74,
-	0x46, 0x6f, 0x72, 0x51, 0x75, 0x65, 0x72, 0x79, 0x52, 0x65, 0x71, 0x1a, 0x28, 0x2e, 0x4d, 0x61,
-	0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x4d, 0x65, 0x64,
-	0x69, 0x63, 0x69, 0x6e, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x46, 0x6f, 0x72, 0x51, 0x75, 0x65, 0x72,
-	0x79, 0x52, 0x65, 0x73, 0x70, 0x12, 0x57, 0x0a, 0x0e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4d,
-	0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x12, 0x21, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65,
-	0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4d,
-	0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x22, 0x2e, 0x4d, 0x61, 0x6e,
-	0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x72, 0x65, 0x61,
-	0x74, 0x65, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x66,
-	0x0a, 0x13, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x42, 0x61, 0x74, 0x63, 0x68, 0x4d, 0x65, 0x64,
-	0x69, 0x63, 0x69, 0x6e, 0x65, 0x12, 0x26, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53,
-	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x42, 0x61, 0x74,
-	0x63, 0x68, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x27, 0x2e,
-	0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43,
-	0x72, 0x65, 0x61, 0x74, 0x65, 0x42, 0x61, 0x74, 0x63, 0x68, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69,
-	0x6e, 0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x57, 0x0a, 0x0e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65,
-	0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x12, 0x21, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67,
-	0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65,
-	0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x22, 0x2e, 0x4d, 0x61,
-	0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x55, 0x70, 0x64,
-	0x61, 0x74, 0x65, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x52, 0x65, 0x73, 0x70, 0x12,
-	0x69, 0x0a, 0x14, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e,
-	0x65, 0x41, 0x63, 0x74, 0x69, 0x76, 0x65, 0x12, 0x27, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65,
-	0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4d,
-	0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x41, 0x63, 0x74, 0x69, 0x76, 0x65, 0x52, 0x65, 0x71,
-	0x1a, 0x28, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63,
-	0x65, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65,
-	0x41, 0x63, 0x74, 0x69, 0x76, 0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x57, 0x0a, 0x0e, 0x44, 0x65,
-	0x6c, 0x65, 0x74, 0x65, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x12, 0x21, 0x2e, 0x4d,
-	0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x44, 0x65,
-	0x6c, 0x65, 0x74, 0x65, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x52, 0x65, 0x71, 0x1a,
-	0x22, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
-	0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x52,
-	0x65, 0x73, 0x70, 0x12, 0x6c, 0x0a, 0x15, 0x53, 0x65, 0x6c, 0x65, 0x63, 0x74, 0x54, 0x61, 0x67,
-	0x42, 0x79, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x49, 0x64, 0x12, 0x28, 0x2e, 0x4d,
-	0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x53, 0x65,
-	0x6c, 0x65, 0x63, 0x74, 0x54, 0x61, 0x67, 0x42, 0x79, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e,
-	0x65, 0x49, 0x64, 0x52, 0x65, 0x71, 0x1a, 0x29, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72,
-	0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x53, 0x65, 0x6c, 0x65, 0x63, 0x74, 0x54, 0x61,
-	0x67, 0x42, 0x79, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x49, 0x64, 0x52, 0x65, 0x73,
-	0x70, 0x12, 0x78, 0x0a, 0x19, 0x53, 0x65, 0x6c, 0x65, 0x63, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x42,
-	0x79, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x4e, 0x61, 0x6d, 0x65, 0x73, 0x12, 0x2c,
-	0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e,
-	0x53, 0x65, 0x6c, 0x65, 0x63, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x42, 0x79, 0x4d, 0x65, 0x64, 0x69,
-	0x63, 0x69, 0x6e, 0x65, 0x4e, 0x61, 0x6d, 0x65, 0x73, 0x52, 0x65, 0x71, 0x1a, 0x2d, 0x2e, 0x4d,
-	0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x53, 0x65,
-	0x6c, 0x65, 0x63, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x42, 0x79, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69,
-	0x6e, 0x65, 0x4e, 0x61, 0x6d, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x12, 0x42, 0x0a, 0x07, 0x54,
-	0x61, 0x67, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x1a, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72,
-	0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x54, 0x61, 0x67, 0x4c, 0x69, 0x73, 0x74, 0x52,
-	0x65, 0x71, 0x1a, 0x1b, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76,
-	0x69, 0x63, 0x65, 0x2e, 0x54, 0x61, 0x67, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12,
-	0x48, 0x0a, 0x09, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x54, 0x61, 0x67, 0x12, 0x1c, 0x2e, 0x4d,
-	0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x72,
-	0x65, 0x61, 0x74, 0x65, 0x54, 0x61, 0x67, 0x52, 0x65, 0x71, 0x1a, 0x1d, 0x2e, 0x4d, 0x61, 0x6e,
-	0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x72, 0x65, 0x61,
-	0x74, 0x65, 0x54, 0x61, 0x67, 0x52, 0x65, 0x73, 0x70, 0x12, 0x48, 0x0a, 0x09, 0x55, 0x70, 0x64,
-	0x61, 0x74, 0x65, 0x54, 0x61, 0x67, 0x12, 0x1c, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72,
-	0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x54, 0x61,
-	0x67, 0x52, 0x65, 0x71, 0x1a, 0x1d, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65,
-	0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x54, 0x61, 0x67, 0x52,
-	0x65, 0x73, 0x70, 0x12, 0x48, 0x0a, 0x09, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x54, 0x61, 0x67,
-	0x12, 0x1c, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63,
-	0x65, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x54, 0x61, 0x67, 0x52, 0x65, 0x71, 0x1a, 0x1d,
-	0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e,
-	0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x54, 0x61, 0x67, 0x52, 0x65, 0x73, 0x70, 0x12, 0x54, 0x0a,
-	0x0d, 0x54, 0x61, 0x67, 0x44, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x20,
-	0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e,
-	0x54, 0x61, 0x67, 0x44, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71,
-	0x1a, 0x21, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63,
-	0x65, 0x2e, 0x54, 0x61, 0x67, 0x44, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x4c, 0x69, 0x73, 0x74, 0x52,
-	0x65, 0x73, 0x70, 0x12, 0x60, 0x0a, 0x11, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x54, 0x61, 0x67,
-	0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x12, 0x24, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67,
+	0x61, 0x63, 0x74, 0x41, 0x63, 0x74, 0x69, 0x76, 0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x60, 0x0a,
+	0x11, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x4f, 0x6e, 0x65, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61,
+	0x63, 0x74, 0x12, 0x24, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76,
+	0x69, 0x63, 0x65, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x4f, 0x6e, 0x65, 0x43, 0x6f, 0x6e,
+	0x74, 0x72, 0x61, 0x63, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x25, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67,
 	0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65,
-	0x54, 0x61, 0x67, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x25,
+	0x4f, 0x6e, 0x65, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12,
+	0x66, 0x0a, 0x13, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x4f, 0x6e, 0x65, 0x43, 0x6f, 0x6e, 0x74,
+	0x72, 0x61, 0x63, 0x74, 0x4d, 0x69, 0x12, 0x26, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72,
+	0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x4f, 0x6e,
+	0x65, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x4d, 0x69, 0x52, 0x65, 0x71, 0x1a, 0x27,
 	0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e,
-	0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x54, 0x61, 0x67, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e,
-	0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x60, 0x0a, 0x11, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x54,
-	0x61, 0x67, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x12, 0x24, 0x2e, 0x4d, 0x61, 0x6e,
-	0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x72, 0x65, 0x61,
-	0x74, 0x65, 0x54, 0x61, 0x67, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x52, 0x65, 0x71,
-	0x1a, 0x25, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63,
-	0x65, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x54, 0x61, 0x67, 0x4d, 0x65, 0x64, 0x69, 0x63,
-	0x69, 0x6e, 0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x66, 0x0a, 0x13, 0x43, 0x6f, 0x6d, 0x6d, 0x6f,
-	0x6e, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x51, 0x75, 0x65, 0x72, 0x79, 0x12, 0x26,
+	0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x4f, 0x6e, 0x65, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63,
+	0x74, 0x4d, 0x69, 0x52, 0x65, 0x73, 0x70, 0x12, 0x5a, 0x0a, 0x0f, 0x47, 0x65, 0x74, 0x43, 0x6f,
+	0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x22, 0x2e, 0x4d, 0x61, 0x6e,
+	0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x43,
+	0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x71, 0x1a, 0x23,
 	0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e,
-	0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x51, 0x75,
-	0x65, 0x72, 0x79, 0x52, 0x65, 0x71, 0x1a, 0x27, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72,
-	0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x4d, 0x65,
-	0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x51, 0x75, 0x65, 0x72, 0x79, 0x52, 0x65, 0x73, 0x70, 0x12,
-	0x3f, 0x0a, 0x06, 0x4c, 0x69, 0x73, 0x74, 0x4d, 0x69, 0x12, 0x19, 0x2e, 0x4d, 0x61, 0x6e, 0x61,
-	0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x4d,
-	0x69, 0x52, 0x65, 0x71, 0x1a, 0x1a, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65,
-	0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x4d, 0x69, 0x52, 0x65, 0x73, 0x70,
-	0x12, 0x45, 0x0a, 0x08, 0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x4d, 0x49, 0x12, 0x1b, 0x2e, 0x4d,
-	0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x6f,
-	0x6d, 0x6d, 0x6f, 0x6e, 0x4d, 0x49, 0x52, 0x65, 0x71, 0x1a, 0x1c, 0x2e, 0x4d, 0x61, 0x6e, 0x61,
-	0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x6f, 0x6d, 0x6d, 0x6f,
-	0x6e, 0x4d, 0x49, 0x52, 0x65, 0x73, 0x70, 0x12, 0x4e, 0x0a, 0x0b, 0x43, 0x72, 0x65, 0x61, 0x74,
-	0x65, 0x4f, 0x6e, 0x65, 0x4d, 0x49, 0x12, 0x1e, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72,
-	0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x6e,
-	0x65, 0x4d, 0x49, 0x52, 0x65, 0x71, 0x1a, 0x1f, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72,
-	0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x6e,
-	0x65, 0x4d, 0x49, 0x52, 0x65, 0x73, 0x70, 0x12, 0x45, 0x0a, 0x08, 0x55, 0x70, 0x64, 0x61, 0x74,
-	0x65, 0x4d, 0x69, 0x12, 0x1b, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72,
-	0x76, 0x69, 0x63, 0x65, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4d, 0x69, 0x52, 0x65, 0x71,
-	0x1a, 0x1c, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63,
-	0x65, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4d, 0x69, 0x52, 0x65, 0x73, 0x70, 0x12, 0x4e,
-	0x0a, 0x0b, 0x4c, 0x69, 0x73, 0x74, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x12, 0x1e, 0x2e,
-	0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x4c,
-	0x69, 0x73, 0x74, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x52, 0x65, 0x71, 0x1a, 0x1f, 0x2e,
-	0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x4c,
-	0x69, 0x73, 0x74, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x52, 0x65, 0x73, 0x70, 0x12, 0x5d,
-	0x0a, 0x10, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x6e, 0x65, 0x43, 0x6f, 0x6d, 0x70, 0x61,
-	0x6e, 0x79, 0x12, 0x23, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76,
-	0x69, 0x63, 0x65, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x6e, 0x65, 0x43, 0x6f, 0x6d,
-	0x70, 0x61, 0x6e, 0x79, 0x52, 0x65, 0x71, 0x1a, 0x24, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65,
-	0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f,
-	0x6e, 0x65, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x52, 0x65, 0x73, 0x70, 0x12, 0x5d, 0x0a,
-	0x10, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x6e, 0x65, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e,
-	0x79, 0x12, 0x23, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69,
-	0x63, 0x65, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x6e, 0x65, 0x43, 0x6f, 0x6d, 0x70,
-	0x61, 0x6e, 0x79, 0x52, 0x65, 0x71, 0x1a, 0x24, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72,
-	0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x6e,
-	0x65, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x52, 0x65, 0x73, 0x70, 0x12, 0x54, 0x0a, 0x0d,
-	0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x12, 0x20, 0x2e,
+	0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x52,
+	0x65, 0x73, 0x70, 0x12, 0x54, 0x0a, 0x0d, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x43, 0x6f, 0x6e, 0x74,
+	0x72, 0x61, 0x63, 0x74, 0x12, 0x20, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65,
+	0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72,
+	0x61, 0x63, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x21, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72,
+	0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x43, 0x6f, 0x6e,
+	0x74, 0x72, 0x61, 0x63, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x5a, 0x0a, 0x0f, 0x52, 0x65, 0x66,
+	0x72, 0x65, 0x73, 0x68, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x12, 0x22, 0x2e, 0x4d,
+	0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x52, 0x65,
+	0x66, 0x72, 0x65, 0x73, 0x68, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x52, 0x65, 0x71,
+	0x1a, 0x23, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63,
+	0x65, 0x2e, 0x52, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63,
+	0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x54, 0x0a, 0x0d, 0x52, 0x65, 0x73, 0x65, 0x74, 0x43, 0x6f,
+	0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x12, 0x20, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72,
+	0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x52, 0x65, 0x73, 0x65, 0x74, 0x43, 0x6f, 0x6e,
+	0x74, 0x72, 0x61, 0x63, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x21, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67,
+	0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x52, 0x65, 0x73, 0x65, 0x74, 0x43,
+	0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x57, 0x0a, 0x0e, 0x43,
+	0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x44, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x12, 0x21, 0x2e,
 	0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43,
-	0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x52, 0x65, 0x71, 0x1a,
-	0x21, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
-	0x2e, 0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x52, 0x65,
-	0x73, 0x70, 0x12, 0x60, 0x0a, 0x11, 0x53, 0x65, 0x6c, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79,
-	0x42, 0x79, 0x4e, 0x61, 0x6d, 0x65, 0x73, 0x12, 0x24, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65,
-	0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x53, 0x65, 0x6c, 0x43, 0x6f, 0x6d, 0x70,
-	0x61, 0x6e, 0x79, 0x42, 0x79, 0x4e, 0x61, 0x6d, 0x65, 0x73, 0x52, 0x65, 0x71, 0x1a, 0x25, 0x2e,
-	0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x53,
-	0x65, 0x6c, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x42, 0x79, 0x4e, 0x61, 0x6d, 0x65, 0x73,
-	0x52, 0x65, 0x73, 0x70, 0x12, 0x54, 0x0a, 0x0d, 0x4c, 0x69, 0x73, 0x74, 0x54, 0x70, 0x50, 0x6c,
-	0x61, 0x6e, 0x45, 0x72, 0x72, 0x12, 0x20, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53,
-	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x54, 0x70, 0x50, 0x6c, 0x61,
-	0x6e, 0x45, 0x72, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x21, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65,
-	0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x54, 0x70, 0x50,
-	0x6c, 0x61, 0x6e, 0x45, 0x72, 0x72, 0x52, 0x65, 0x73, 0x70, 0x12, 0x6c, 0x0a, 0x15, 0x55, 0x70,
-	0x64, 0x61, 0x74, 0x65, 0x45, 0x72, 0x72, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50,
-	0x6c, 0x61, 0x6e, 0x12, 0x28, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72,
-	0x76, 0x69, 0x63, 0x65, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x45, 0x72, 0x72, 0x53, 0x68,
-	0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x52, 0x65, 0x71, 0x1a, 0x29, 0x2e,
+	0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x44, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x52, 0x65, 0x71,
+	0x1a, 0x22, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63,
+	0x65, 0x2e, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x44, 0x65, 0x74, 0x61, 0x69, 0x6c,
+	0x52, 0x65, 0x73, 0x70, 0x12, 0x5e, 0x0a, 0x11, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x43, 0x6f, 0x6e,
+	0x74, 0x72, 0x61, 0x63, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x22, 0x2e, 0x4d, 0x61, 0x6e, 0x61,
+	0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x55, 0x70, 0x43, 0x68, 0x65,
+	0x63, 0x6b, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x25, 0x2e,
+	0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43,
+	0x68, 0x65, 0x63, 0x6b, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x4c, 0x69, 0x73, 0x74,
+	0x52, 0x65, 0x73, 0x70, 0x12, 0x51, 0x0a, 0x0c, 0x4c, 0x69, 0x73, 0x74, 0x4d, 0x65, 0x64, 0x69,
+	0x63, 0x69, 0x6e, 0x65, 0x12, 0x1f, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65,
+	0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x4c, 0x69,
+	0x73, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x20, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53,
+	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x4c,
+	0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x69, 0x0a, 0x14, 0x4d, 0x65, 0x64, 0x69, 0x63,
+	0x69, 0x6e, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x46, 0x6f, 0x72, 0x51, 0x75, 0x65, 0x72, 0x79, 0x12,
+	0x27, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
+	0x2e, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x46, 0x6f, 0x72,
+	0x51, 0x75, 0x65, 0x72, 0x79, 0x52, 0x65, 0x71, 0x1a, 0x28, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67,
+	0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69,
+	0x6e, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x46, 0x6f, 0x72, 0x51, 0x75, 0x65, 0x72, 0x79, 0x52, 0x65,
+	0x73, 0x70, 0x12, 0x57, 0x0a, 0x0e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4d, 0x65, 0x64, 0x69,
+	0x63, 0x69, 0x6e, 0x65, 0x12, 0x21, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65,
+	0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4d, 0x65, 0x64, 0x69,
+	0x63, 0x69, 0x6e, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x22, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65,
+	0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4d,
+	0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x66, 0x0a, 0x13, 0x43,
+	0x72, 0x65, 0x61, 0x74, 0x65, 0x42, 0x61, 0x74, 0x63, 0x68, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69,
+	0x6e, 0x65, 0x12, 0x26, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76,
+	0x69, 0x63, 0x65, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x42, 0x61, 0x74, 0x63, 0x68, 0x4d,
+	0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x27, 0x2e, 0x4d, 0x61, 0x6e,
+	0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x72, 0x65, 0x61,
+	0x74, 0x65, 0x42, 0x61, 0x74, 0x63, 0x68, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x52,
+	0x65, 0x73, 0x70, 0x12, 0x57, 0x0a, 0x0e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4d, 0x65, 0x64,
+	0x69, 0x63, 0x69, 0x6e, 0x65, 0x12, 0x21, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53,
+	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4d, 0x65, 0x64,
+	0x69, 0x63, 0x69, 0x6e, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x22, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67,
+	0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65,
+	0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x69, 0x0a, 0x14,
+	0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x41, 0x63,
+	0x74, 0x69, 0x76, 0x65, 0x12, 0x27, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65,
+	0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4d, 0x65, 0x64, 0x69,
+	0x63, 0x69, 0x6e, 0x65, 0x41, 0x63, 0x74, 0x69, 0x76, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x28, 0x2e,
 	0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x55,
-	0x70, 0x64, 0x61, 0x74, 0x65, 0x45, 0x72, 0x72, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74,
-	0x50, 0x6c, 0x61, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x5d, 0x0a, 0x10, 0x4c, 0x69, 0x73, 0x74,
-	0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x12, 0x23, 0x2e, 0x4d,
-	0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x4c, 0x69,
-	0x73, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x52, 0x65,
-	0x71, 0x1a, 0x24, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69,
-	0x63, 0x65, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50,
-	0x6c, 0x61, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x60, 0x0a, 0x11, 0x43, 0x6f, 0x75, 0x6e, 0x74,
-	0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x12, 0x24, 0x2e, 0x4d,
+	0x70, 0x64, 0x61, 0x74, 0x65, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x41, 0x63, 0x74,
+	0x69, 0x76, 0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x57, 0x0a, 0x0e, 0x44, 0x65, 0x6c, 0x65, 0x74,
+	0x65, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x12, 0x21, 0x2e, 0x4d, 0x61, 0x6e, 0x61,
+	0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74,
+	0x65, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x22, 0x2e, 0x4d,
+	0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x44, 0x65,
+	0x6c, 0x65, 0x74, 0x65, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x52, 0x65, 0x73, 0x70,
+	0x12, 0x6c, 0x0a, 0x15, 0x53, 0x65, 0x6c, 0x65, 0x63, 0x74, 0x54, 0x61, 0x67, 0x42, 0x79, 0x4d,
+	0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x49, 0x64, 0x12, 0x28, 0x2e, 0x4d, 0x61, 0x6e, 0x61,
+	0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x53, 0x65, 0x6c, 0x65, 0x63,
+	0x74, 0x54, 0x61, 0x67, 0x42, 0x79, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x49, 0x64,
+	0x52, 0x65, 0x71, 0x1a, 0x29, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72,
+	0x76, 0x69, 0x63, 0x65, 0x2e, 0x53, 0x65, 0x6c, 0x65, 0x63, 0x74, 0x54, 0x61, 0x67, 0x42, 0x79,
+	0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x49, 0x64, 0x52, 0x65, 0x73, 0x70, 0x12, 0x78,
+	0x0a, 0x19, 0x53, 0x65, 0x6c, 0x65, 0x63, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x42, 0x79, 0x4d, 0x65,
+	0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x4e, 0x61, 0x6d, 0x65, 0x73, 0x12, 0x2c, 0x2e, 0x4d, 0x61,
+	0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x53, 0x65, 0x6c,
+	0x65, 0x63, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x42, 0x79, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e,
+	0x65, 0x4e, 0x61, 0x6d, 0x65, 0x73, 0x52, 0x65, 0x71, 0x1a, 0x2d, 0x2e, 0x4d, 0x61, 0x6e, 0x61,
+	0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x53, 0x65, 0x6c, 0x65, 0x63,
+	0x74, 0x49, 0x6e, 0x66, 0x6f, 0x42, 0x79, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x4e,
+	0x61, 0x6d, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x12, 0x42, 0x0a, 0x07, 0x54, 0x61, 0x67, 0x4c,
+	0x69, 0x73, 0x74, 0x12, 0x1a, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72,
+	0x76, 0x69, 0x63, 0x65, 0x2e, 0x54, 0x61, 0x67, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x1a,
+	0x1b, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
+	0x2e, 0x54, 0x61, 0x67, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x48, 0x0a, 0x09,
+	0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x54, 0x61, 0x67, 0x12, 0x1c, 0x2e, 0x4d, 0x61, 0x6e, 0x61,
+	0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74,
+	0x65, 0x54, 0x61, 0x67, 0x52, 0x65, 0x71, 0x1a, 0x1d, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65,
+	0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x54,
+	0x61, 0x67, 0x52, 0x65, 0x73, 0x70, 0x12, 0x48, 0x0a, 0x09, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65,
+	0x54, 0x61, 0x67, 0x12, 0x1c, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72,
+	0x76, 0x69, 0x63, 0x65, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x54, 0x61, 0x67, 0x52, 0x65,
+	0x71, 0x1a, 0x1d, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69,
+	0x63, 0x65, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x54, 0x61, 0x67, 0x52, 0x65, 0x73, 0x70,
+	0x12, 0x48, 0x0a, 0x09, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x54, 0x61, 0x67, 0x12, 0x1c, 0x2e,
+	0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x44,
+	0x65, 0x6c, 0x65, 0x74, 0x65, 0x54, 0x61, 0x67, 0x52, 0x65, 0x71, 0x1a, 0x1d, 0x2e, 0x4d, 0x61,
+	0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x44, 0x65, 0x6c,
+	0x65, 0x74, 0x65, 0x54, 0x61, 0x67, 0x52, 0x65, 0x73, 0x70, 0x12, 0x54, 0x0a, 0x0d, 0x54, 0x61,
+	0x67, 0x44, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x20, 0x2e, 0x4d, 0x61,
+	0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x54, 0x61, 0x67,
+	0x44, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x21, 0x2e,
+	0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x54,
+	0x61, 0x67, 0x44, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70,
+	0x12, 0x60, 0x0a, 0x11, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x54, 0x61, 0x67, 0x4d, 0x65, 0x64,
+	0x69, 0x63, 0x69, 0x6e, 0x65, 0x12, 0x24, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53,
+	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x54, 0x61, 0x67,
+	0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x25, 0x2e, 0x4d, 0x61,
+	0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x44, 0x65, 0x6c,
+	0x65, 0x74, 0x65, 0x54, 0x61, 0x67, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x52, 0x65,
+	0x73, 0x70, 0x12, 0x60, 0x0a, 0x11, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x54, 0x61, 0x67, 0x4d,
+	0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x12, 0x24, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65,
+	0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x54,
+	0x61, 0x67, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x25, 0x2e,
+	0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43,
+	0x72, 0x65, 0x61, 0x74, 0x65, 0x54, 0x61, 0x67, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65,
+	0x52, 0x65, 0x73, 0x70, 0x12, 0x66, 0x0a, 0x13, 0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x4d, 0x65,
+	0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x51, 0x75, 0x65, 0x72, 0x79, 0x12, 0x26, 0x2e, 0x4d, 0x61,
+	0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x6f, 0x6d,
+	0x6d, 0x6f, 0x6e, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x51, 0x75, 0x65, 0x72, 0x79,
+	0x52, 0x65, 0x71, 0x1a, 0x27, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72,
+	0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x4d, 0x65, 0x64, 0x69, 0x63,
+	0x69, 0x6e, 0x65, 0x51, 0x75, 0x65, 0x72, 0x79, 0x52, 0x65, 0x73, 0x70, 0x12, 0x3f, 0x0a, 0x06,
+	0x4c, 0x69, 0x73, 0x74, 0x4d, 0x69, 0x12, 0x19, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72,
+	0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x4d, 0x69, 0x52, 0x65,
+	0x71, 0x1a, 0x1a, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69,
+	0x63, 0x65, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x4d, 0x69, 0x52, 0x65, 0x73, 0x70, 0x12, 0x45, 0x0a,
+	0x08, 0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x4d, 0x49, 0x12, 0x1b, 0x2e, 0x4d, 0x61, 0x6e, 0x61,
+	0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x6f, 0x6d, 0x6d, 0x6f,
+	0x6e, 0x4d, 0x49, 0x52, 0x65, 0x71, 0x1a, 0x1c, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72,
+	0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x4d, 0x49,
+	0x52, 0x65, 0x73, 0x70, 0x12, 0x4e, 0x0a, 0x0b, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x6e,
+	0x65, 0x4d, 0x49, 0x12, 0x1e, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72,
+	0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x6e, 0x65, 0x4d, 0x49,
+	0x52, 0x65, 0x71, 0x1a, 0x1f, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72,
+	0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x6e, 0x65, 0x4d, 0x49,
+	0x52, 0x65, 0x73, 0x70, 0x12, 0x45, 0x0a, 0x08, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4d, 0x69,
+	0x12, 0x1b, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63,
+	0x65, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4d, 0x69, 0x52, 0x65, 0x71, 0x1a, 0x1c, 0x2e,
+	0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x55,
+	0x70, 0x64, 0x61, 0x74, 0x65, 0x4d, 0x69, 0x52, 0x65, 0x73, 0x70, 0x12, 0x4e, 0x0a, 0x0b, 0x4c,
+	0x69, 0x73, 0x74, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x12, 0x1e, 0x2e, 0x4d, 0x61, 0x6e,
+	0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x4c, 0x69, 0x73, 0x74,
+	0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x52, 0x65, 0x71, 0x1a, 0x1f, 0x2e, 0x4d, 0x61, 0x6e,
+	0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x4c, 0x69, 0x73, 0x74,
+	0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x52, 0x65, 0x73, 0x70, 0x12, 0x5d, 0x0a, 0x10, 0x43,
+	0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x6e, 0x65, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x12,
+	0x23, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
+	0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x6e, 0x65, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e,
+	0x79, 0x52, 0x65, 0x71, 0x1a, 0x24, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65,
+	0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x6e, 0x65, 0x43,
+	0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x52, 0x65, 0x73, 0x70, 0x12, 0x5d, 0x0a, 0x10, 0x55, 0x70,
+	0x64, 0x61, 0x74, 0x65, 0x4f, 0x6e, 0x65, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x12, 0x23,
+	0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e,
+	0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x6e, 0x65, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79,
+	0x52, 0x65, 0x71, 0x1a, 0x24, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72,
+	0x76, 0x69, 0x63, 0x65, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x6e, 0x65, 0x43, 0x6f,
+	0x6d, 0x70, 0x61, 0x6e, 0x79, 0x52, 0x65, 0x73, 0x70, 0x12, 0x54, 0x0a, 0x0d, 0x43, 0x6f, 0x6d,
+	0x6d, 0x6f, 0x6e, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x12, 0x20, 0x2e, 0x4d, 0x61, 0x6e,
+	0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x6f, 0x6d, 0x6d,
+	0x6f, 0x6e, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x52, 0x65, 0x71, 0x1a, 0x21, 0x2e, 0x4d,
 	0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x6f,
-	0x75, 0x6e, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x52,
-	0x65, 0x71, 0x1a, 0x25, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76,
-	0x69, 0x63, 0x65, 0x2e, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e,
-	0x74, 0x50, 0x6c, 0x61, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x66, 0x0a, 0x13, 0x44, 0x65, 0x74,
-	0x61, 0x69, 0x6c, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72,
-	0x12, 0x26, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63,
-	0x65, 0x2e, 0x44, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74,
-	0x4f, 0x72, 0x64, 0x65, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x27, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67,
-	0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x44, 0x65, 0x74, 0x61, 0x69, 0x6c,
-	0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x52, 0x65, 0x73,
-	0x70, 0x12, 0x75, 0x0a, 0x18, 0x4c, 0x69, 0x73, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e,
-	0x74, 0x50, 0x6c, 0x61, 0x6e, 0x46, 0x6f, 0x72, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x12, 0x2b, 0x2e,
-	0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x4c,
-	0x69, 0x73, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x46,
-	0x6f, 0x72, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x2c, 0x2e, 0x4d, 0x61, 0x6e,
+	0x6d, 0x6d, 0x6f, 0x6e, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x52, 0x65, 0x73, 0x70, 0x12,
+	0x60, 0x0a, 0x11, 0x53, 0x65, 0x6c, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x42, 0x79, 0x4e,
+	0x61, 0x6d, 0x65, 0x73, 0x12, 0x24, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65,
+	0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x53, 0x65, 0x6c, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79,
+	0x42, 0x79, 0x4e, 0x61, 0x6d, 0x65, 0x73, 0x52, 0x65, 0x71, 0x1a, 0x25, 0x2e, 0x4d, 0x61, 0x6e,
+	0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x53, 0x65, 0x6c, 0x43,
+	0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x42, 0x79, 0x4e, 0x61, 0x6d, 0x65, 0x73, 0x52, 0x65, 0x73,
+	0x70, 0x12, 0x54, 0x0a, 0x0d, 0x4c, 0x69, 0x73, 0x74, 0x54, 0x70, 0x50, 0x6c, 0x61, 0x6e, 0x45,
+	0x72, 0x72, 0x12, 0x20, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76,
+	0x69, 0x63, 0x65, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x54, 0x70, 0x50, 0x6c, 0x61, 0x6e, 0x45, 0x72,
+	0x72, 0x52, 0x65, 0x71, 0x1a, 0x21, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65,
+	0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x54, 0x70, 0x50, 0x6c, 0x61, 0x6e,
+	0x45, 0x72, 0x72, 0x52, 0x65, 0x73, 0x70, 0x12, 0x6c, 0x0a, 0x15, 0x55, 0x70, 0x64, 0x61, 0x74,
+	0x65, 0x45, 0x72, 0x72, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e,
+	0x12, 0x28, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63,
+	0x65, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x45, 0x72, 0x72, 0x53, 0x68, 0x69, 0x70, 0x6d,
+	0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x52, 0x65, 0x71, 0x1a, 0x29, 0x2e, 0x4d, 0x61, 0x6e,
+	0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x55, 0x70, 0x64, 0x61,
+	0x74, 0x65, 0x45, 0x72, 0x72, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61,
+	0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x5d, 0x0a, 0x10, 0x4c, 0x69, 0x73, 0x74, 0x53, 0x68, 0x69,
+	0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x12, 0x23, 0x2e, 0x4d, 0x61, 0x6e, 0x61,
+	0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x53,
+	0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x52, 0x65, 0x71, 0x1a, 0x24,
+	0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e,
+	0x4c, 0x69, 0x73, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e,
+	0x52, 0x65, 0x73, 0x70, 0x12, 0x60, 0x0a, 0x11, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x53, 0x68, 0x69,
+	0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x12, 0x24, 0x2e, 0x4d, 0x61, 0x6e, 0x61,
+	0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x6f, 0x75, 0x6e, 0x74,
+	0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x52, 0x65, 0x71, 0x1a,
+	0x25, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
+	0x2e, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c,
+	0x61, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x66, 0x0a, 0x13, 0x44, 0x65, 0x74, 0x61, 0x69, 0x6c,
+	0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x12, 0x26, 0x2e,
+	0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x44,
+	0x65, 0x74, 0x61, 0x69, 0x6c, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64,
+	0x65, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x27, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53,
+	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x44, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x53, 0x68, 0x69,
+	0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x12, 0x75,
+	0x0a, 0x18, 0x4c, 0x69, 0x73, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c,
+	0x61, 0x6e, 0x46, 0x6f, 0x72, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x12, 0x2b, 0x2e, 0x4d, 0x61, 0x6e,
 	0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x4c, 0x69, 0x73, 0x74,
 	0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x46, 0x6f, 0x72, 0x4f,
-	0x72, 0x64, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x12, 0x66, 0x0a, 0x13, 0x43, 0x72, 0x65, 0x61,
-	0x74, 0x65, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x12,
-	0x26, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
-	0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f,
-	0x72, 0x64, 0x65, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x27, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65,
-	0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x53,
-	0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70,
-	0x12, 0x60, 0x0a, 0x11, 0x4c, 0x69, 0x73, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74,
-	0x4f, 0x72, 0x64, 0x65, 0x72, 0x12, 0x24, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53,
-	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d,
-	0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x25, 0x2e, 0x4d, 0x61,
-	0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x4c, 0x69, 0x73,
-	0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x52, 0x65,
-	0x73, 0x70, 0x12, 0x63, 0x0a, 0x12, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d,
-	0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x12, 0x25, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67,
-	0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x53,
-	0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x52, 0x65, 0x71, 0x1a,
-	0x26, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
-	0x2e, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72,
-	0x64, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x12, 0x69, 0x0a, 0x14, 0x52, 0x65, 0x63, 0x65, 0x69,
-	0x76, 0x65, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x12,
-	0x27, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
-	0x2e, 0x52, 0x65, 0x63, 0x65, 0x69, 0x76, 0x65, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74,
-	0x4f, 0x72, 0x64, 0x65, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x28, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67,
-	0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x52, 0x65, 0x63, 0x65, 0x69, 0x76,
-	0x65, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x52, 0x65,
-	0x73, 0x70, 0x12, 0x7e, 0x0a, 0x1b, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63,
-	0x74, 0x42, 0x79, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x49,
-	0x64, 0x12, 0x2e, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69,
-	0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x42, 0x79,
-	0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x49, 0x64, 0x52, 0x65,
-	0x71, 0x1a, 0x2f, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69,
-	0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x42, 0x79,
-	0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x49, 0x64, 0x52, 0x65,
-	0x73, 0x70, 0x12, 0x48, 0x0a, 0x09, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12,
-	0x1c, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
-	0x2e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65, 0x71, 0x1a, 0x1d, 0x2e,
-	0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47,
-	0x65, 0x74, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65, 0x73, 0x70, 0x12, 0x51, 0x0a, 0x0c,
-	0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x1f, 0x2e, 0x4d,
-	0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x55, 0x70,
-	0x64, 0x61, 0x74, 0x65, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65, 0x71, 0x1a, 0x20, 0x2e,
-	0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x55,
-	0x70, 0x64, 0x61, 0x74, 0x65, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65, 0x73, 0x70, 0x12,
-	0x54, 0x0a, 0x0d, 0x49, 0x6e, 0x73, 0x65, 0x72, 0x74, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x73,
-	0x12, 0x20, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63,
-	0x65, 0x2e, 0x49, 0x6e, 0x73, 0x65, 0x72, 0x74, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x73, 0x52,
-	0x65, 0x71, 0x1a, 0x21, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76,
-	0x69, 0x63, 0x65, 0x2e, 0x49, 0x6e, 0x73, 0x65, 0x72, 0x74, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67,
-	0x73, 0x52, 0x65, 0x73, 0x70, 0x12, 0x54, 0x0a, 0x0d, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x43,
-	0x6f, 0x6e, 0x66, 0x69, 0x67, 0x73, 0x12, 0x20, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72,
-	0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x43, 0x6f,
-	0x6e, 0x66, 0x69, 0x67, 0x73, 0x52, 0x65, 0x71, 0x1a, 0x21, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67,
-	0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65,
-	0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x73, 0x52, 0x65, 0x73, 0x70, 0x32, 0x88, 0x0e, 0x0a, 0x11,
-	0x44, 0x61, 0x74, 0x61, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63,
-	0x65, 0x12, 0x75, 0x0a, 0x19, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74,
-	0x50, 0x6c, 0x61, 0x6e, 0x44, 0x61, 0x79, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x12, 0x29,
+	0x72, 0x64, 0x65, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x2c, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65,
+	0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x53, 0x68, 0x69,
+	0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x46, 0x6f, 0x72, 0x4f, 0x72, 0x64, 0x65,
+	0x72, 0x52, 0x65, 0x73, 0x70, 0x12, 0x66, 0x0a, 0x13, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x53,
+	0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x12, 0x26, 0x2e, 0x4d,
+	0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x72,
+	0x65, 0x61, 0x74, 0x65, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65,
+	0x72, 0x52, 0x65, 0x71, 0x1a, 0x27, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65,
+	0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x53, 0x68, 0x69, 0x70,
+	0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x12, 0x60, 0x0a,
+	0x11, 0x4c, 0x69, 0x73, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64,
+	0x65, 0x72, 0x12, 0x24, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76,
+	0x69, 0x63, 0x65, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74,
+	0x4f, 0x72, 0x64, 0x65, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x25, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67,
+	0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x53, 0x68,
+	0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x12,
+	0x63, 0x0a, 0x12, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74,
+	0x4f, 0x72, 0x64, 0x65, 0x72, 0x12, 0x25, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53,
+	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x53, 0x68, 0x69, 0x70,
+	0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x26, 0x2e, 0x4d,
+	0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x6f,
+	0x75, 0x6e, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72,
+	0x52, 0x65, 0x73, 0x70, 0x12, 0x69, 0x0a, 0x14, 0x52, 0x65, 0x63, 0x65, 0x69, 0x76, 0x65, 0x53,
+	0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x12, 0x27, 0x2e, 0x4d,
+	0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x52, 0x65,
+	0x63, 0x65, 0x69, 0x76, 0x65, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64,
+	0x65, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x28, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53,
+	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x52, 0x65, 0x63, 0x65, 0x69, 0x76, 0x65, 0x53, 0x68,
+	0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x12,
+	0x7e, 0x0a, 0x1b, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x42, 0x79,
+	0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x49, 0x64, 0x12, 0x2e,
 	0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e,
-	0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x52,
-	0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x52, 0x65, 0x71, 0x1a, 0x2d, 0x2e, 0x4d, 0x61, 0x6e, 0x61,
-	0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x68,
-	0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x44, 0x61, 0x79, 0x52, 0x65, 0x70,
-	0x6f, 0x72, 0x74, 0x73, 0x52, 0x65, 0x73, 0x70, 0x12, 0x79, 0x0a, 0x1b, 0x47, 0x65, 0x74, 0x53,
-	0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x4d, 0x6f, 0x6e, 0x74, 0x68,
+	0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x42, 0x79, 0x53, 0x68, 0x69,
+	0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x49, 0x64, 0x52, 0x65, 0x71, 0x1a, 0x2f,
+	0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e,
+	0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x42, 0x79, 0x53, 0x68, 0x69,
+	0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x49, 0x64, 0x52, 0x65, 0x73, 0x70, 0x12,
+	0x48, 0x0a, 0x09, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x1c, 0x2e, 0x4d,
+	0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65,
+	0x74, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65, 0x71, 0x1a, 0x1d, 0x2e, 0x4d, 0x61, 0x6e,
+	0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x43,
+	0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65, 0x73, 0x70, 0x12, 0x51, 0x0a, 0x0c, 0x55, 0x70, 0x64,
+	0x61, 0x74, 0x65, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x1f, 0x2e, 0x4d, 0x61, 0x6e, 0x61,
+	0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74,
+	0x65, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65, 0x71, 0x1a, 0x20, 0x2e, 0x4d, 0x61, 0x6e,
+	0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x55, 0x70, 0x64, 0x61,
+	0x74, 0x65, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65, 0x73, 0x70, 0x12, 0x54, 0x0a, 0x0d,
+	0x49, 0x6e, 0x73, 0x65, 0x72, 0x74, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x73, 0x12, 0x20, 0x2e,
+	0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x49,
+	0x6e, 0x73, 0x65, 0x72, 0x74, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x73, 0x52, 0x65, 0x71, 0x1a,
+	0x21, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
+	0x2e, 0x49, 0x6e, 0x73, 0x65, 0x72, 0x74, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x73, 0x52, 0x65,
+	0x73, 0x70, 0x12, 0x54, 0x0a, 0x0d, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x43, 0x6f, 0x6e, 0x66,
+	0x69, 0x67, 0x73, 0x12, 0x20, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72,
+	0x76, 0x69, 0x63, 0x65, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x43, 0x6f, 0x6e, 0x66, 0x69,
+	0x67, 0x73, 0x52, 0x65, 0x71, 0x1a, 0x21, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53,
+	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x43, 0x6f, 0x6e,
+	0x66, 0x69, 0x67, 0x73, 0x52, 0x65, 0x73, 0x70, 0x12, 0x5a, 0x0a, 0x0f, 0x4c, 0x69, 0x73, 0x74,
+	0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x42, 0x69, 0x6e, 0x64, 0x12, 0x22, 0x2e, 0x4d, 0x61,
+	0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x4c, 0x69, 0x73,
+	0x74, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x42, 0x69, 0x6e, 0x64, 0x52, 0x65, 0x71, 0x1a,
+	0x23, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
+	0x2e, 0x4c, 0x69, 0x73, 0x74, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x42, 0x69, 0x6e, 0x64,
+	0x52, 0x65, 0x73, 0x70, 0x12, 0x4e, 0x0a, 0x0b, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x42,
+	0x69, 0x6e, 0x64, 0x12, 0x1e, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72,
+	0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x42, 0x69, 0x6e, 0x64,
+	0x52, 0x65, 0x71, 0x1a, 0x1f, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72,
+	0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x42, 0x69, 0x6e, 0x64,
+	0x52, 0x65, 0x73, 0x70, 0x12, 0x4b, 0x0a, 0x0a, 0x4c, 0x69, 0x73, 0x74, 0x4d, 0x69, 0x42, 0x69,
+	0x6e, 0x64, 0x12, 0x1d, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76,
+	0x69, 0x63, 0x65, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x4d, 0x69, 0x42, 0x69, 0x6e, 0x64, 0x52, 0x65,
+	0x71, 0x1a, 0x1e, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69,
+	0x63, 0x65, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x4d, 0x69, 0x42, 0x69, 0x6e, 0x64, 0x52, 0x65, 0x73,
+	0x70, 0x12, 0x3f, 0x0a, 0x06, 0x4d, 0x69, 0x42, 0x69, 0x6e, 0x64, 0x12, 0x19, 0x2e, 0x4d, 0x61,
+	0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x4d, 0x69, 0x42,
+	0x69, 0x6e, 0x64, 0x52, 0x65, 0x71, 0x1a, 0x1a, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72,
+	0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x4d, 0x69, 0x42, 0x69, 0x6e, 0x64, 0x52, 0x65,
+	0x73, 0x70, 0x12, 0x5d, 0x0a, 0x10, 0x4c, 0x69, 0x73, 0x74, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69,
+	0x6e, 0x65, 0x42, 0x69, 0x6e, 0x64, 0x12, 0x23, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72,
+	0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x4d, 0x65, 0x64, 0x69,
+	0x63, 0x69, 0x6e, 0x65, 0x42, 0x69, 0x6e, 0x64, 0x52, 0x65, 0x71, 0x1a, 0x24, 0x2e, 0x4d, 0x61,
+	0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x4c, 0x69, 0x73,
+	0x74, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x42, 0x69, 0x6e, 0x64, 0x52, 0x65, 0x73,
+	0x70, 0x12, 0x51, 0x0a, 0x0c, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x42, 0x69, 0x6e,
+	0x64, 0x12, 0x1f, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69,
+	0x63, 0x65, 0x2e, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x42, 0x69, 0x6e, 0x64, 0x52,
+	0x65, 0x71, 0x1a, 0x20, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76,
+	0x69, 0x63, 0x65, 0x2e, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x42, 0x69, 0x6e, 0x64,
+	0x52, 0x65, 0x73, 0x70, 0x32, 0x88, 0x0e, 0x0a, 0x11, 0x44, 0x61, 0x74, 0x61, 0x52, 0x65, 0x70,
+	0x6f, 0x72, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x75, 0x0a, 0x19, 0x47, 0x65,
+	0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x44, 0x61, 0x79,
 	0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x12, 0x29, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65,
 	0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70,
 	0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x52,
-	0x65, 0x71, 0x1a, 0x2f, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76,
+	0x65, 0x71, 0x1a, 0x2d, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76,
 	0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50,
-	0x6c, 0x61, 0x6e, 0x4d, 0x6f, 0x6e, 0x74, 0x68, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x52,
-	0x65, 0x73, 0x70, 0x12, 0x77, 0x0a, 0x1a, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65,
-	0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x59, 0x65, 0x61, 0x72, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74,
-	0x73, 0x12, 0x29, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69,
-	0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c,
-	0x61, 0x6e, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x52, 0x65, 0x71, 0x1a, 0x2e, 0x2e, 0x4d,
-	0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65,
-	0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x59, 0x65, 0x61,
-	0x72, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x52, 0x65, 0x73, 0x70, 0x12, 0x78, 0x0a, 0x1a,
-	0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72,
-	0x44, 0x61, 0x79, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x12, 0x2a, 0x2e, 0x4d, 0x61, 0x6e,
+	0x6c, 0x61, 0x6e, 0x44, 0x61, 0x79, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x52, 0x65, 0x73,
+	0x70, 0x12, 0x79, 0x0a, 0x1b, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74,
+	0x50, 0x6c, 0x61, 0x6e, 0x4d, 0x6f, 0x6e, 0x74, 0x68, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73,
+	0x12, 0x29, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63,
+	0x65, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61,
+	0x6e, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x52, 0x65, 0x71, 0x1a, 0x2f, 0x2e, 0x4d, 0x61,
+	0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74,
+	0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x4d, 0x6f, 0x6e, 0x74,
+	0x68, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x52, 0x65, 0x73, 0x70, 0x12, 0x77, 0x0a, 0x1a,
+	0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x59,
+	0x65, 0x61, 0x72, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x12, 0x29, 0x2e, 0x4d, 0x61, 0x6e,
 	0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x53,
-	0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x52, 0x65, 0x70, 0x6f,
-	0x72, 0x74, 0x73, 0x52, 0x65, 0x71, 0x1a, 0x2e, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72,
-	0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d,
-	0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x44, 0x61, 0x79, 0x52, 0x65, 0x70, 0x6f, 0x72,
-	0x74, 0x73, 0x52, 0x65, 0x73, 0x70, 0x12, 0x7c, 0x0a, 0x1c, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69,
-	0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x4d, 0x6f, 0x6e, 0x74, 0x68, 0x52,
-	0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x12, 0x2a, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72,
-	0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d,
-	0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x52,
-	0x65, 0x71, 0x1a, 0x30, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76,
-	0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f,
-	0x72, 0x64, 0x65, 0x72, 0x4d, 0x6f, 0x6e, 0x74, 0x68, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73,
-	0x52, 0x65, 0x73, 0x70, 0x12, 0x7a, 0x0a, 0x1b, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d,
-	0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x59, 0x65, 0x61, 0x72, 0x52, 0x65, 0x70, 0x6f,
+	0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x52, 0x65, 0x70, 0x6f, 0x72,
+	0x74, 0x73, 0x52, 0x65, 0x71, 0x1a, 0x2e, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53,
+	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65,
+	0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x59, 0x65, 0x61, 0x72, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74,
+	0x73, 0x52, 0x65, 0x73, 0x70, 0x12, 0x78, 0x0a, 0x1a, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70,
+	0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x44, 0x61, 0x79, 0x52, 0x65, 0x70, 0x6f,
 	0x72, 0x74, 0x73, 0x12, 0x2a, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72,
 	0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74,
 	0x4f, 0x72, 0x64, 0x65, 0x72, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x52, 0x65, 0x71, 0x1a,
-	0x2f, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
+	0x2e, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
 	0x2e, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65,
-	0x72, 0x59, 0x65, 0x61, 0x72, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x52, 0x65, 0x73, 0x70,
-	0x12, 0x7b, 0x0a, 0x1b, 0x47, 0x65, 0x74, 0x46, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x69, 0x6e, 0x67,
-	0x4f, 0x72, 0x64, 0x65, 0x72, 0x44, 0x61, 0x79, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x12,
-	0x2b, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
-	0x2e, 0x47, 0x65, 0x74, 0x46, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x69, 0x6e, 0x67, 0x4f, 0x72, 0x64,
-	0x65, 0x72, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x52, 0x65, 0x71, 0x1a, 0x2f, 0x2e, 0x4d,
-	0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65,
-	0x74, 0x46, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x69, 0x6e, 0x67, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x44,
-	0x61, 0x79, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x52, 0x65, 0x73, 0x70, 0x12, 0x7f, 0x0a,
-	0x1d, 0x47, 0x65, 0x74, 0x46, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x69, 0x6e, 0x67, 0x4f, 0x72, 0x64,
-	0x65, 0x72, 0x4d, 0x6f, 0x6e, 0x74, 0x68, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x12, 0x2b,
-	0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e,
-	0x47, 0x65, 0x74, 0x46, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x69, 0x6e, 0x67, 0x4f, 0x72, 0x64, 0x65,
-	0x72, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x52, 0x65, 0x71, 0x1a, 0x31, 0x2e, 0x4d, 0x61,
-	0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74,
-	0x46, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x69, 0x6e, 0x67, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x4d, 0x6f,
-	0x6e, 0x74, 0x68, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x52, 0x65, 0x73, 0x70, 0x12, 0x7d,
-	0x0a, 0x1c, 0x47, 0x65, 0x74, 0x46, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x69, 0x6e, 0x67, 0x4f, 0x72,
-	0x64, 0x65, 0x72, 0x59, 0x65, 0x61, 0x72, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x12, 0x2b,
-	0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e,
-	0x47, 0x65, 0x74, 0x46, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x69, 0x6e, 0x67, 0x4f, 0x72, 0x64, 0x65,
+	0x72, 0x44, 0x61, 0x79, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x52, 0x65, 0x73, 0x70, 0x12,
+	0x7c, 0x0a, 0x1c, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72,
+	0x64, 0x65, 0x72, 0x4d, 0x6f, 0x6e, 0x74, 0x68, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x12,
+	0x2a, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
+	0x2e, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65,
 	0x72, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x52, 0x65, 0x71, 0x1a, 0x30, 0x2e, 0x4d, 0x61,
 	0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74,
-	0x46, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x69, 0x6e, 0x67, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x59, 0x65,
-	0x61, 0x72, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x52, 0x65, 0x73, 0x70, 0x12, 0x75, 0x0a,
-	0x19, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x50, 0x6c, 0x61, 0x6e,
-	0x44, 0x61, 0x79, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x12, 0x29, 0x2e, 0x4d, 0x61, 0x6e,
-	0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x43,
-	0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x52, 0x65, 0x70, 0x6f, 0x72,
-	0x74, 0x73, 0x52, 0x65, 0x71, 0x1a, 0x2d, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53,
-	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61,
-	0x63, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x44, 0x61, 0x79, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73,
-	0x52, 0x65, 0x73, 0x70, 0x12, 0x79, 0x0a, 0x1b, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72,
-	0x61, 0x63, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x4d, 0x6f, 0x6e, 0x74, 0x68, 0x52, 0x65, 0x70, 0x6f,
+	0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x4d, 0x6f, 0x6e,
+	0x74, 0x68, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x52, 0x65, 0x73, 0x70, 0x12, 0x7a, 0x0a,
+	0x1b, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65,
+	0x72, 0x59, 0x65, 0x61, 0x72, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x12, 0x2a, 0x2e, 0x4d,
+	0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65,
+	0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x52, 0x65,
+	0x70, 0x6f, 0x72, 0x74, 0x73, 0x52, 0x65, 0x71, 0x1a, 0x2f, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67,
+	0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69,
+	0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x59, 0x65, 0x61, 0x72, 0x52, 0x65,
+	0x70, 0x6f, 0x72, 0x74, 0x73, 0x52, 0x65, 0x73, 0x70, 0x12, 0x7b, 0x0a, 0x1b, 0x47, 0x65, 0x74,
+	0x46, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x69, 0x6e, 0x67, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x44, 0x61,
+	0x79, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x12, 0x2b, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67,
+	0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x46, 0x61, 0x63,
+	0x74, 0x6f, 0x72, 0x69, 0x6e, 0x67, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x52, 0x65, 0x70, 0x6f, 0x72,
+	0x74, 0x73, 0x52, 0x65, 0x71, 0x1a, 0x2f, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53,
+	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x46, 0x61, 0x63, 0x74, 0x6f, 0x72,
+	0x69, 0x6e, 0x67, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x44, 0x61, 0x79, 0x52, 0x65, 0x70, 0x6f, 0x72,
+	0x74, 0x73, 0x52, 0x65, 0x73, 0x70, 0x12, 0x7f, 0x0a, 0x1d, 0x47, 0x65, 0x74, 0x46, 0x61, 0x63,
+	0x74, 0x6f, 0x72, 0x69, 0x6e, 0x67, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x4d, 0x6f, 0x6e, 0x74, 0x68,
+	0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x12, 0x2b, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65,
+	0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x46, 0x61, 0x63, 0x74,
+	0x6f, 0x72, 0x69, 0x6e, 0x67, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74,
+	0x73, 0x52, 0x65, 0x71, 0x1a, 0x31, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65,
+	0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x46, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x69,
+	0x6e, 0x67, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x4d, 0x6f, 0x6e, 0x74, 0x68, 0x52, 0x65, 0x70, 0x6f,
+	0x72, 0x74, 0x73, 0x52, 0x65, 0x73, 0x70, 0x12, 0x7d, 0x0a, 0x1c, 0x47, 0x65, 0x74, 0x46, 0x61,
+	0x63, 0x74, 0x6f, 0x72, 0x69, 0x6e, 0x67, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x59, 0x65, 0x61, 0x72,
+	0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x12, 0x2b, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65,
+	0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x46, 0x61, 0x63, 0x74,
+	0x6f, 0x72, 0x69, 0x6e, 0x67, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74,
+	0x73, 0x52, 0x65, 0x71, 0x1a, 0x30, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65,
+	0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x46, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x69,
+	0x6e, 0x67, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x59, 0x65, 0x61, 0x72, 0x52, 0x65, 0x70, 0x6f, 0x72,
+	0x74, 0x73, 0x52, 0x65, 0x73, 0x70, 0x12, 0x75, 0x0a, 0x19, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e,
+	0x74, 0x72, 0x61, 0x63, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x44, 0x61, 0x79, 0x52, 0x65, 0x70, 0x6f,
 	0x72, 0x74, 0x73, 0x12, 0x29, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72,
 	0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74,
-	0x50, 0x6c, 0x61, 0x6e, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x52, 0x65, 0x71, 0x1a, 0x2f,
+	0x50, 0x6c, 0x61, 0x6e, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x52, 0x65, 0x71, 0x1a, 0x2d,
 	0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e,
-	0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x4d,
-	0x6f, 0x6e, 0x74, 0x68, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x52, 0x65, 0x73, 0x70, 0x12,
-	0x77, 0x0a, 0x1a, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x50, 0x6c,
-	0x61, 0x6e, 0x59, 0x65, 0x61, 0x72, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x12, 0x29, 0x2e,
-	0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47,
-	0x65, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x52, 0x65,
-	0x70, 0x6f, 0x72, 0x74, 0x73, 0x52, 0x65, 0x71, 0x1a, 0x2e, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67,
-	0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e,
-	0x74, 0x72, 0x61, 0x63, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x59, 0x65, 0x61, 0x72, 0x52, 0x65, 0x70,
-	0x6f, 0x72, 0x74, 0x73, 0x52, 0x65, 0x73, 0x70, 0x12, 0x5f, 0x0a, 0x0e, 0x47, 0x65, 0x74, 0x43,
-	0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x53, 0x75, 0x6d, 0x12, 0x29, 0x2e, 0x4d, 0x61, 0x6e,
-	0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x43,
-	0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x52, 0x65, 0x70, 0x6f, 0x72,
-	0x74, 0x73, 0x52, 0x65, 0x71, 0x1a, 0x22, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53,
-	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61,
-	0x63, 0x74, 0x53, 0x75, 0x6d, 0x52, 0x65, 0x73, 0x70, 0x12, 0x69, 0x0a, 0x14, 0x47, 0x65, 0x74,
-	0x56, 0x61, 0x6c, 0x69, 0x64, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x49, 0x6e, 0x66,
-	0x6f, 0x12, 0x27, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69,
-	0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x56, 0x61, 0x6c, 0x69, 0x64, 0x43, 0x6f, 0x6e, 0x74, 0x72,
-	0x61, 0x63, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x71, 0x1a, 0x28, 0x2e, 0x4d, 0x61, 0x6e,
+	0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x44,
+	0x61, 0x79, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x52, 0x65, 0x73, 0x70, 0x12, 0x79, 0x0a,
+	0x1b, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x50, 0x6c, 0x61, 0x6e,
+	0x4d, 0x6f, 0x6e, 0x74, 0x68, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x12, 0x29, 0x2e, 0x4d,
+	0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65,
+	0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x52, 0x65, 0x70,
+	0x6f, 0x72, 0x74, 0x73, 0x52, 0x65, 0x71, 0x1a, 0x2f, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65,
+	0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x74,
+	0x72, 0x61, 0x63, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x4d, 0x6f, 0x6e, 0x74, 0x68, 0x52, 0x65, 0x70,
+	0x6f, 0x72, 0x74, 0x73, 0x52, 0x65, 0x73, 0x70, 0x12, 0x77, 0x0a, 0x1a, 0x47, 0x65, 0x74, 0x43,
+	0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x59, 0x65, 0x61, 0x72, 0x52,
+	0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x12, 0x29, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72,
+	0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72,
+	0x61, 0x63, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x52, 0x65,
+	0x71, 0x1a, 0x2e, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69,
+	0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x50, 0x6c,
+	0x61, 0x6e, 0x59, 0x65, 0x61, 0x72, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x52, 0x65, 0x73,
+	0x70, 0x12, 0x5f, 0x0a, 0x0e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74,
+	0x53, 0x75, 0x6d, 0x12, 0x29, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72,
+	0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74,
+	0x50, 0x6c, 0x61, 0x6e, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x52, 0x65, 0x71, 0x1a, 0x22,
+	0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e,
+	0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x53, 0x75, 0x6d, 0x52, 0x65,
+	0x73, 0x70, 0x12, 0x69, 0x0a, 0x14, 0x47, 0x65, 0x74, 0x56, 0x61, 0x6c, 0x69, 0x64, 0x43, 0x6f,
+	0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x27, 0x2e, 0x4d, 0x61, 0x6e,
 	0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x56,
 	0x61, 0x6c, 0x69, 0x64, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x49, 0x6e, 0x66, 0x6f,
-	0x52, 0x65, 0x73, 0x70, 0x12, 0x60, 0x0a, 0x11, 0x47, 0x65, 0x74, 0x43, 0x75, 0x72, 0x72, 0x65,
-	0x6e, 0x74, 0x4e, 0x65, 0x65, 0x64, 0x50, 0x61, 0x79, 0x12, 0x24, 0x2e, 0x4d, 0x61, 0x6e, 0x61,
-	0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x75,
-	0x72, 0x72, 0x65, 0x6e, 0x74, 0x4e, 0x65, 0x65, 0x64, 0x50, 0x61, 0x79, 0x52, 0x65, 0x71, 0x1a,
-	0x25, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
-	0x2e, 0x47, 0x65, 0x74, 0x43, 0x75, 0x72, 0x72, 0x65, 0x6e, 0x74, 0x4e, 0x65, 0x65, 0x64, 0x50,
-	0x61, 0x79, 0x52, 0x65, 0x73, 0x70, 0x32, 0xc7, 0x07, 0x0a, 0x0b, 0x48, 0x61, 0x73, 0x68, 0x53,
-	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x57, 0x0a, 0x0e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6d,
-	0x70, 0x61, 0x6e, 0x79, 0x48, 0x61, 0x73, 0x68, 0x12, 0x21, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67,
-	0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6d,
-	0x70, 0x61, 0x6e, 0x79, 0x48, 0x61, 0x73, 0x68, 0x52, 0x65, 0x71, 0x1a, 0x22, 0x2e, 0x4d, 0x61,
-	0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74,
-	0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x48, 0x61, 0x73, 0x68, 0x52, 0x65, 0x73, 0x70, 0x12,
-	0x48, 0x0a, 0x09, 0x47, 0x65, 0x74, 0x4d, 0x69, 0x48, 0x61, 0x73, 0x68, 0x12, 0x1c, 0x2e, 0x4d,
-	0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65,
-	0x74, 0x4d, 0x69, 0x48, 0x61, 0x73, 0x68, 0x52, 0x65, 0x71, 0x1a, 0x1d, 0x2e, 0x4d, 0x61, 0x6e,
-	0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x4d,
-	0x69, 0x48, 0x61, 0x73, 0x68, 0x52, 0x65, 0x73, 0x70, 0x12, 0x52, 0x0a, 0x0f, 0x47, 0x65, 0x74,
-	0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x48, 0x61, 0x73, 0x68, 0x12, 0x1e, 0x2e, 0x4d,
-	0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65,
-	0x74, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x1f, 0x2e, 0x4d,
-	0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65,
-	0x74, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x5a, 0x0a,
-	0x0f, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x48, 0x61, 0x73, 0x68,
-	0x12, 0x22, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63,
-	0x65, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x48, 0x61, 0x73,
-	0x68, 0x52, 0x65, 0x71, 0x1a, 0x23, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65,
-	0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63,
-	0x74, 0x48, 0x61, 0x73, 0x68, 0x52, 0x65, 0x73, 0x70, 0x12, 0x60, 0x0a, 0x11, 0x47, 0x65, 0x74,
-	0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x4d, 0x69, 0x48, 0x61, 0x73, 0x68, 0x12, 0x24,
-	0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e,
-	0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x4d, 0x69, 0x48, 0x61, 0x73,
-	0x68, 0x52, 0x65, 0x71, 0x1a, 0x25, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65,
-	0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63,
-	0x74, 0x4d, 0x69, 0x48, 0x61, 0x73, 0x68, 0x52, 0x65, 0x73, 0x70, 0x12, 0x54, 0x0a, 0x0d, 0x47,
-	0x65, 0x74, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x48, 0x61, 0x73, 0x68, 0x12, 0x20, 0x2e, 0x4d,
-	0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65,
-	0x74, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x48, 0x61, 0x73, 0x68, 0x52, 0x65, 0x71, 0x1a, 0x21,
-	0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e,
-	0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x48, 0x61, 0x73, 0x68, 0x52, 0x65, 0x73,
-	0x70, 0x12, 0x66, 0x0a, 0x13, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74,
-	0x50, 0x6c, 0x61, 0x6e, 0x48, 0x61, 0x73, 0x68, 0x12, 0x26, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67,
-	0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69,
-	0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x48, 0x61, 0x73, 0x68, 0x52, 0x65, 0x71,
-	0x1a, 0x27, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63,
-	0x65, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61,
-	0x6e, 0x48, 0x61, 0x73, 0x68, 0x52, 0x65, 0x73, 0x70, 0x12, 0x69, 0x0a, 0x14, 0x47, 0x65, 0x74,
-	0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x48, 0x61, 0x73,
-	0x68, 0x12, 0x27, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69,
-	0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72,
-	0x64, 0x65, 0x72, 0x48, 0x61, 0x73, 0x68, 0x52, 0x65, 0x71, 0x1a, 0x28, 0x2e, 0x4d, 0x61, 0x6e,
+	0x52, 0x65, 0x71, 0x1a, 0x28, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72,
+	0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x56, 0x61, 0x6c, 0x69, 0x64, 0x43, 0x6f, 0x6e,
+	0x74, 0x72, 0x61, 0x63, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x73, 0x70, 0x12, 0x60, 0x0a,
+	0x11, 0x47, 0x65, 0x74, 0x43, 0x75, 0x72, 0x72, 0x65, 0x6e, 0x74, 0x4e, 0x65, 0x65, 0x64, 0x50,
+	0x61, 0x79, 0x12, 0x24, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76,
+	0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x75, 0x72, 0x72, 0x65, 0x6e, 0x74, 0x4e, 0x65,
+	0x65, 0x64, 0x50, 0x61, 0x79, 0x52, 0x65, 0x71, 0x1a, 0x25, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67,
+	0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x75, 0x72,
+	0x72, 0x65, 0x6e, 0x74, 0x4e, 0x65, 0x65, 0x64, 0x50, 0x61, 0x79, 0x52, 0x65, 0x73, 0x70, 0x32,
+	0xc7, 0x07, 0x0a, 0x0b, 0x48, 0x61, 0x73, 0x68, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12,
+	0x57, 0x0a, 0x0e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x48, 0x61, 0x73,
+	0x68, 0x12, 0x21, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69,
+	0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x48, 0x61, 0x73,
+	0x68, 0x52, 0x65, 0x71, 0x1a, 0x22, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65,
+	0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79,
+	0x48, 0x61, 0x73, 0x68, 0x52, 0x65, 0x73, 0x70, 0x12, 0x48, 0x0a, 0x09, 0x47, 0x65, 0x74, 0x4d,
+	0x69, 0x48, 0x61, 0x73, 0x68, 0x12, 0x1c, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53,
+	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x4d, 0x69, 0x48, 0x61, 0x73, 0x68,
+	0x52, 0x65, 0x71, 0x1a, 0x1d, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72,
+	0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x4d, 0x69, 0x48, 0x61, 0x73, 0x68, 0x52, 0x65,
+	0x73, 0x70, 0x12, 0x52, 0x0a, 0x0f, 0x47, 0x65, 0x74, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e,
+	0x65, 0x48, 0x61, 0x73, 0x68, 0x12, 0x1e, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53,
+	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69,
+	0x6e, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x1f, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53,
+	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69,
+	0x6e, 0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x5a, 0x0a, 0x0f, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e,
+	0x74, 0x72, 0x61, 0x63, 0x74, 0x48, 0x61, 0x73, 0x68, 0x12, 0x22, 0x2e, 0x4d, 0x61, 0x6e, 0x61,
+	0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x6f,
+	0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x48, 0x61, 0x73, 0x68, 0x52, 0x65, 0x71, 0x1a, 0x23, 0x2e,
+	0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47,
+	0x65, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x48, 0x61, 0x73, 0x68, 0x52, 0x65,
+	0x73, 0x70, 0x12, 0x60, 0x0a, 0x11, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63,
+	0x74, 0x4d, 0x69, 0x48, 0x61, 0x73, 0x68, 0x12, 0x24, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65,
+	0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x74,
+	0x72, 0x61, 0x63, 0x74, 0x4d, 0x69, 0x48, 0x61, 0x73, 0x68, 0x52, 0x65, 0x71, 0x1a, 0x25, 0x2e,
+	0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47,
+	0x65, 0x74, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x4d, 0x69, 0x48, 0x61, 0x73, 0x68,
+	0x52, 0x65, 0x73, 0x70, 0x12, 0x54, 0x0a, 0x0d, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x66, 0x69,
+	0x67, 0x48, 0x61, 0x73, 0x68, 0x12, 0x20, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53,
+	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67,
+	0x48, 0x61, 0x73, 0x68, 0x52, 0x65, 0x71, 0x1a, 0x21, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65,
+	0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x66,
+	0x69, 0x67, 0x48, 0x61, 0x73, 0x68, 0x52, 0x65, 0x73, 0x70, 0x12, 0x66, 0x0a, 0x13, 0x47, 0x65,
+	0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x48, 0x61, 0x73,
+	0x68, 0x12, 0x26, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69,
+	0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c,
+	0x61, 0x6e, 0x48, 0x61, 0x73, 0x68, 0x52, 0x65, 0x71, 0x1a, 0x27, 0x2e, 0x4d, 0x61, 0x6e, 0x61,
+	0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x68,
+	0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x6e, 0x48, 0x61, 0x73, 0x68, 0x52, 0x65,
+	0x73, 0x70, 0x12, 0x69, 0x0a, 0x14, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e,
+	0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x48, 0x61, 0x73, 0x68, 0x12, 0x27, 0x2e, 0x4d, 0x61, 0x6e,
 	0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x53,
 	0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x48, 0x61, 0x73, 0x68,
-	0x52, 0x65, 0x73, 0x70, 0x12, 0x63, 0x0a, 0x12, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d,
-	0x65, 0x6e, 0x74, 0x50, 0x61, 0x79, 0x48, 0x61, 0x73, 0x68, 0x12, 0x25, 0x2e, 0x4d, 0x61, 0x6e,
+	0x52, 0x65, 0x71, 0x1a, 0x28, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72,
+	0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74,
+	0x4f, 0x72, 0x64, 0x65, 0x72, 0x48, 0x61, 0x73, 0x68, 0x52, 0x65, 0x73, 0x70, 0x12, 0x63, 0x0a,
+	0x12, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x61, 0x79, 0x48,
+	0x61, 0x73, 0x68, 0x12, 0x25, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72,
+	0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74,
+	0x50, 0x61, 0x79, 0x48, 0x61, 0x73, 0x68, 0x52, 0x65, 0x71, 0x1a, 0x26, 0x2e, 0x4d, 0x61, 0x6e,
 	0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x53,
 	0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x61, 0x79, 0x48, 0x61, 0x73, 0x68, 0x52, 0x65,
-	0x71, 0x1a, 0x26, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69,
-	0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x50, 0x61,
-	0x79, 0x48, 0x61, 0x73, 0x68, 0x52, 0x65, 0x73, 0x70, 0x12, 0x75, 0x0a, 0x18, 0x47, 0x65, 0x74,
+	0x73, 0x70, 0x12, 0x75, 0x0a, 0x18, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e,
+	0x74, 0x46, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x69, 0x6e, 0x67, 0x48, 0x61, 0x73, 0x68, 0x12, 0x2b,
+	0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e,
+	0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x46, 0x61, 0x63, 0x74, 0x6f,
+	0x72, 0x69, 0x6e, 0x67, 0x48, 0x61, 0x73, 0x68, 0x52, 0x65, 0x71, 0x1a, 0x2c, 0x2e, 0x4d, 0x61,
+	0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74,
 	0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x46, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x69, 0x6e,
-	0x67, 0x48, 0x61, 0x73, 0x68, 0x12, 0x2b, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53,
-	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65,
-	0x6e, 0x74, 0x46, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x69, 0x6e, 0x67, 0x48, 0x61, 0x73, 0x68, 0x52,
-	0x65, 0x71, 0x1a, 0x2c, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76,
-	0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x46,
-	0x61, 0x63, 0x74, 0x6f, 0x72, 0x69, 0x6e, 0x67, 0x48, 0x61, 0x73, 0x68, 0x52, 0x65, 0x73, 0x70,
-	0x32, 0xbb, 0x06, 0x0a, 0x0b, 0x52, 0x61, 0x6e, 0x6b, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
-	0x12, 0x8a, 0x01, 0x0a, 0x1f, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74,
-	0x52, 0x61, 0x6e, 0x6b, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x44, 0x61, 0x74, 0x61,
-	0x59, 0x65, 0x61, 0x72, 0x12, 0x32, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65,
-	0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e,
-	0x74, 0x52, 0x61, 0x6e, 0x6b, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x44, 0x61, 0x74,
-	0x61, 0x59, 0x65, 0x61, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x33, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67,
-	0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69,
-	0x70, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x61, 0x6e, 0x6b, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e,
-	0x65, 0x44, 0x61, 0x74, 0x61, 0x59, 0x65, 0x61, 0x72, 0x52, 0x65, 0x73, 0x70, 0x12, 0x87, 0x01,
-	0x0a, 0x1e, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x61, 0x6e,
-	0x6b, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x44, 0x61, 0x74, 0x61, 0x59, 0x65, 0x61, 0x72,
-	0x12, 0x31, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63,
-	0x65, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x61, 0x6e,
-	0x6b, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x44, 0x61, 0x74, 0x61, 0x59, 0x65, 0x61, 0x72,
-	0x52, 0x65, 0x71, 0x1a, 0x32, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72,
-	0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74,
-	0x52, 0x61, 0x6e, 0x6b, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x79, 0x44, 0x61, 0x74, 0x61, 0x59,
-	0x65, 0x61, 0x72, 0x52, 0x65, 0x73, 0x70, 0x12, 0x69, 0x0a, 0x14, 0x47, 0x65, 0x74, 0x52, 0x61,
-	0x6e, 0x6b, 0x4d, 0x69, 0x52, 0x65, 0x63, 0x65, 0x69, 0x76, 0x65, 0x59, 0x65, 0x61, 0x72, 0x12,
-	0x27, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
-	0x2e, 0x47, 0x65, 0x74, 0x52, 0x61, 0x6e, 0x6b, 0x4d, 0x69, 0x52, 0x65, 0x63, 0x65, 0x69, 0x76,
-	0x65, 0x59, 0x65, 0x61, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x28, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67,
+	0x67, 0x48, 0x61, 0x73, 0x68, 0x52, 0x65, 0x73, 0x70, 0x32, 0xbb, 0x06, 0x0a, 0x0b, 0x52, 0x61,
+	0x6e, 0x6b, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x8a, 0x01, 0x0a, 0x1f, 0x47, 0x65,
+	0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x61, 0x6e, 0x6b, 0x4d, 0x65, 0x64,
+	0x69, 0x63, 0x69, 0x6e, 0x65, 0x44, 0x61, 0x74, 0x61, 0x59, 0x65, 0x61, 0x72, 0x12, 0x32, 0x2e,
+	0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47,
+	0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x61, 0x6e, 0x6b, 0x4d, 0x65,
+	0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x44, 0x61, 0x74, 0x61, 0x59, 0x65, 0x61, 0x72, 0x52, 0x65,
+	0x71, 0x1a, 0x33, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69,
+	0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x61,
+	0x6e, 0x6b, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x44, 0x61, 0x74, 0x61, 0x59, 0x65,
+	0x61, 0x72, 0x52, 0x65, 0x73, 0x70, 0x12, 0x87, 0x01, 0x0a, 0x1e, 0x47, 0x65, 0x74, 0x53, 0x68,
+	0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x61, 0x6e, 0x6b, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e,
+	0x79, 0x44, 0x61, 0x74, 0x61, 0x59, 0x65, 0x61, 0x72, 0x12, 0x31, 0x2e, 0x4d, 0x61, 0x6e, 0x61,
+	0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x68,
+	0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x61, 0x6e, 0x6b, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e,
+	0x79, 0x44, 0x61, 0x74, 0x61, 0x59, 0x65, 0x61, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x32, 0x2e, 0x4d,
+	0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65,
+	0x74, 0x53, 0x68, 0x69, 0x70, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x61, 0x6e, 0x6b, 0x43, 0x6f, 0x6d,
+	0x70, 0x61, 0x6e, 0x79, 0x44, 0x61, 0x74, 0x61, 0x59, 0x65, 0x61, 0x72, 0x52, 0x65, 0x73, 0x70,
+	0x12, 0x69, 0x0a, 0x14, 0x47, 0x65, 0x74, 0x52, 0x61, 0x6e, 0x6b, 0x4d, 0x69, 0x52, 0x65, 0x63,
+	0x65, 0x69, 0x76, 0x65, 0x59, 0x65, 0x61, 0x72, 0x12, 0x27, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67,
 	0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x52, 0x61, 0x6e,
 	0x6b, 0x4d, 0x69, 0x52, 0x65, 0x63, 0x65, 0x69, 0x76, 0x65, 0x59, 0x65, 0x61, 0x72, 0x52, 0x65,
-	0x73, 0x70, 0x12, 0x6c, 0x0a, 0x15, 0x47, 0x65, 0x74, 0x52, 0x61, 0x6e, 0x6b, 0x43, 0x6f, 0x6d,
-	0x52, 0x65, 0x63, 0x65, 0x69, 0x76, 0x65, 0x59, 0x65, 0x61, 0x72, 0x12, 0x28, 0x2e, 0x4d, 0x61,
-	0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74,
-	0x52, 0x61, 0x6e, 0x6b, 0x43, 0x6f, 0x6d, 0x52, 0x65, 0x63, 0x65, 0x69, 0x76, 0x65, 0x59, 0x65,
-	0x61, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x29, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53,
-	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x52, 0x61, 0x6e, 0x6b, 0x43, 0x6f,
-	0x6d, 0x52, 0x65, 0x63, 0x65, 0x69, 0x76, 0x65, 0x59, 0x65, 0x61, 0x72, 0x52, 0x65, 0x73, 0x70,
-	0x12, 0x60, 0x0a, 0x11, 0x47, 0x65, 0x74, 0x52, 0x61, 0x6e, 0x6b, 0x4d, 0x69, 0x50, 0x61, 0x69,
-	0x64, 0x59, 0x65, 0x61, 0x72, 0x12, 0x24, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53,
-	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x52, 0x61, 0x6e, 0x6b, 0x4d, 0x69,
-	0x50, 0x61, 0x69, 0x64, 0x59, 0x65, 0x61, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x25, 0x2e, 0x4d, 0x61,
-	0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74,
-	0x52, 0x61, 0x6e, 0x6b, 0x4d, 0x69, 0x50, 0x61, 0x69, 0x64, 0x59, 0x65, 0x61, 0x72, 0x52, 0x65,
-	0x73, 0x70, 0x12, 0x66, 0x0a, 0x13, 0x47, 0x65, 0x74, 0x52, 0x61, 0x6e, 0x6b, 0x4d, 0x65, 0x64,
-	0x69, 0x63, 0x69, 0x6e, 0x65, 0x59, 0x65, 0x61, 0x72, 0x12, 0x26, 0x2e, 0x4d, 0x61, 0x6e, 0x61,
-	0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x52, 0x61,
-	0x6e, 0x6b, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x59, 0x65, 0x61, 0x72, 0x52, 0x65,
-	0x71, 0x1a, 0x27, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69,
-	0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x52, 0x61, 0x6e, 0x6b, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69,
-	0x6e, 0x65, 0x59, 0x65, 0x61, 0x72, 0x52, 0x65, 0x73, 0x70, 0x12, 0x72, 0x0a, 0x17, 0x47, 0x65,
-	0x74, 0x4d, 0x49, 0x42, 0x44, 0x61, 0x73, 0x68, 0x62, 0x6f, 0x61, 0x72, 0x64, 0x42, 0x61, 0x73,
-	0x65, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x2a, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53,
-	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x4d, 0x49, 0x42, 0x44, 0x61, 0x73,
-	0x68, 0x62, 0x6f, 0x61, 0x72, 0x64, 0x42, 0x61, 0x73, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65,
-	0x71, 0x1a, 0x2b, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69,
-	0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x4d, 0x49, 0x42, 0x44, 0x61, 0x73, 0x68, 0x62, 0x6f, 0x61,
-	0x72, 0x64, 0x42, 0x61, 0x73, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x73, 0x70, 0x42, 0x27,
-	0x5a, 0x25, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2f, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65,
-	0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x3b, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72,
-	0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x50, 0x00, 0x50, 0x01, 0x62, 0x06, 0x70, 0x72, 0x6f,
-	0x74, 0x6f, 0x33,
+	0x71, 0x1a, 0x28, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69,
+	0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x52, 0x61, 0x6e, 0x6b, 0x4d, 0x69, 0x52, 0x65, 0x63, 0x65,
+	0x69, 0x76, 0x65, 0x59, 0x65, 0x61, 0x72, 0x52, 0x65, 0x73, 0x70, 0x12, 0x6c, 0x0a, 0x15, 0x47,
+	0x65, 0x74, 0x52, 0x61, 0x6e, 0x6b, 0x43, 0x6f, 0x6d, 0x52, 0x65, 0x63, 0x65, 0x69, 0x76, 0x65,
+	0x59, 0x65, 0x61, 0x72, 0x12, 0x28, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65,
+	0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x52, 0x61, 0x6e, 0x6b, 0x43, 0x6f, 0x6d,
+	0x52, 0x65, 0x63, 0x65, 0x69, 0x76, 0x65, 0x59, 0x65, 0x61, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x29,
+	0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e,
+	0x47, 0x65, 0x74, 0x52, 0x61, 0x6e, 0x6b, 0x43, 0x6f, 0x6d, 0x52, 0x65, 0x63, 0x65, 0x69, 0x76,
+	0x65, 0x59, 0x65, 0x61, 0x72, 0x52, 0x65, 0x73, 0x70, 0x12, 0x60, 0x0a, 0x11, 0x47, 0x65, 0x74,
+	0x52, 0x61, 0x6e, 0x6b, 0x4d, 0x69, 0x50, 0x61, 0x69, 0x64, 0x59, 0x65, 0x61, 0x72, 0x12, 0x24,
+	0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e,
+	0x47, 0x65, 0x74, 0x52, 0x61, 0x6e, 0x6b, 0x4d, 0x69, 0x50, 0x61, 0x69, 0x64, 0x59, 0x65, 0x61,
+	0x72, 0x52, 0x65, 0x71, 0x1a, 0x25, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65,
+	0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x52, 0x61, 0x6e, 0x6b, 0x4d, 0x69, 0x50,
+	0x61, 0x69, 0x64, 0x59, 0x65, 0x61, 0x72, 0x52, 0x65, 0x73, 0x70, 0x12, 0x66, 0x0a, 0x13, 0x47,
+	0x65, 0x74, 0x52, 0x61, 0x6e, 0x6b, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x59, 0x65,
+	0x61, 0x72, 0x12, 0x26, 0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76,
+	0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x52, 0x61, 0x6e, 0x6b, 0x4d, 0x65, 0x64, 0x69, 0x63,
+	0x69, 0x6e, 0x65, 0x59, 0x65, 0x61, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x27, 0x2e, 0x4d, 0x61, 0x6e,
+	0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x52,
+	0x61, 0x6e, 0x6b, 0x4d, 0x65, 0x64, 0x69, 0x63, 0x69, 0x6e, 0x65, 0x59, 0x65, 0x61, 0x72, 0x52,
+	0x65, 0x73, 0x70, 0x12, 0x72, 0x0a, 0x17, 0x47, 0x65, 0x74, 0x4d, 0x49, 0x42, 0x44, 0x61, 0x73,
+	0x68, 0x62, 0x6f, 0x61, 0x72, 0x64, 0x42, 0x61, 0x73, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x2a,
+	0x2e, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e,
+	0x47, 0x65, 0x74, 0x4d, 0x49, 0x42, 0x44, 0x61, 0x73, 0x68, 0x62, 0x6f, 0x61, 0x72, 0x64, 0x42,
+	0x61, 0x73, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x71, 0x1a, 0x2b, 0x2e, 0x4d, 0x61, 0x6e,
+	0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x4d,
+	0x49, 0x42, 0x44, 0x61, 0x73, 0x68, 0x62, 0x6f, 0x61, 0x72, 0x64, 0x42, 0x61, 0x73, 0x65, 0x49,
+	0x6e, 0x66, 0x6f, 0x52, 0x65, 0x73, 0x70, 0x42, 0x27, 0x5a, 0x25, 0x73, 0x65, 0x72, 0x76, 0x69,
+	0x63, 0x65, 0x2f, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63,
+	0x65, 0x3b, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
+	0x50, 0x00, 0x50, 0x01, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -22251,7 +23902,7 @@ func file_ManagerService_proto_rawDescGZIP() []byte {
 	return file_ManagerService_proto_rawDescData
 }
 
-var file_ManagerService_proto_msgTypes = make([]protoimpl.MessageInfo, 228)
+var file_ManagerService_proto_msgTypes = make([]protoimpl.MessageInfo, 249)
 var file_ManagerService_proto_goTypes = []interface{}{
 	(*Page)(nil),                                // 0: ManagerService.Page
 	(*GetContractInfoReq)(nil),                  // 1: ManagerService.GetContractInfoReq
@@ -22481,32 +24132,53 @@ var file_ManagerService_proto_goTypes = []interface{}{
 	(*GetRankMedicineYearResp)(nil),             // 225: ManagerService.GetRankMedicineYearResp
 	(*GetMIBDashboardBaseInfoReq)(nil),          // 226: ManagerService.GetMIBDashboardBaseInfoReq
 	(*GetMIBDashboardBaseInfoResp)(nil),         // 227: ManagerService.GetMIBDashboardBaseInfoResp
-	(*timestamppb.Timestamp)(nil),               // 228: google.protobuf.Timestamp
+	(*ListCompanyBindReq)(nil),                  // 228: ManagerService.ListCompanyBindReq
+	(*ListCompanyBindResp)(nil),                 // 229: ManagerService.ListCompanyBindResp
+	(*ListCompanyBindVo)(nil),                   // 230: ManagerService.ListCompanyBindVo
+	(*ListMiBindReq)(nil),                       // 231: ManagerService.ListMiBindReq
+	(*ListMiBindResp)(nil),                      // 232: ManagerService.ListMiBindResp
+	(*ListMiBindBindVo)(nil),                    // 233: ManagerService.ListMiBindBindVo
+	(*ListMedicineBindReq)(nil),                 // 234: ManagerService.ListMedicineBindReq
+	(*ListMedicineBindResp)(nil),                // 235: ManagerService.ListMedicineBindResp
+	(*ListMedicineBindVo)(nil),                  // 236: ManagerService.ListMedicineBindVo
+	(*CompanyBindReq)(nil),                      // 237: ManagerService.CompanyBindReq
+	(*CompanyBindParam)(nil),                    // 238: ManagerService.CompanyBindParam
+	(*CompanyBindResp)(nil),                     // 239: ManagerService.CompanyBindResp
+	(*MiBindReq)(nil),                           // 240: ManagerService.MiBindReq
+	(*MiBindParam)(nil),                         // 241: ManagerService.MiBindParam
+	(*MiBindResp)(nil),                          // 242: ManagerService.MiBindResp
+	(*MedicineBindReq)(nil),                     // 243: ManagerService.MedicineBindReq
+	(*MedicineBindParam)(nil),                   // 244: ManagerService.MedicineBindParam
+	(*MedicineBindResp)(nil),                    // 245: ManagerService.MedicineBindResp
+	(*ResetContractReq)(nil),                    // 246: ManagerService.ResetContractReq
+	(*ResetContractParam)(nil),                  // 247: ManagerService.ResetContractParam
+	(*ResetContractResp)(nil),                   // 248: ManagerService.ResetContractResp
+	(*timestamppb.Timestamp)(nil),               // 249: google.protobuf.Timestamp
 }
 var file_ManagerService_proto_depIdxs = []int32{
 	7,   // 0: ManagerService.ContractDetailResp.list:type_name -> ManagerService.ContractDetailVo
-	228, // 1: ManagerService.ContractListReq.StartAt:type_name -> google.protobuf.Timestamp
-	228, // 2: ManagerService.ContractListReq.EndAt:type_name -> google.protobuf.Timestamp
+	249, // 1: ManagerService.ContractListReq.StartAt:type_name -> google.protobuf.Timestamp
+	249, // 2: ManagerService.ContractListReq.EndAt:type_name -> google.protobuf.Timestamp
 	0,   // 3: ManagerService.ContractListReq.page:type_name -> ManagerService.Page
 	10,  // 4: ManagerService.ContractListResp.list:type_name -> ManagerService.ContractListVo
-	228, // 5: ManagerService.ContractListVo.startAt:type_name -> google.protobuf.Timestamp
-	228, // 6: ManagerService.ContractListVo.endAt:type_name -> google.protobuf.Timestamp
-	228, // 7: ManagerService.ContractListVo.createdAt:type_name -> google.protobuf.Timestamp
+	249, // 5: ManagerService.ContractListVo.startAt:type_name -> google.protobuf.Timestamp
+	249, // 6: ManagerService.ContractListVo.endAt:type_name -> google.protobuf.Timestamp
+	249, // 7: ManagerService.ContractListVo.createdAt:type_name -> google.protobuf.Timestamp
 	12,  // 8: ManagerService.UpCheckContractReq.reqs:type_name -> ManagerService.CheckContractParam
-	228, // 9: ManagerService.CheckContractParam.startAt:type_name -> google.protobuf.Timestamp
-	228, // 10: ManagerService.CheckContractParam.endAt:type_name -> google.protobuf.Timestamp
+	249, // 9: ManagerService.CheckContractParam.startAt:type_name -> google.protobuf.Timestamp
+	249, // 10: ManagerService.CheckContractParam.endAt:type_name -> google.protobuf.Timestamp
 	10,  // 11: ManagerService.CheckContractListResp.list:type_name -> ManagerService.ContractListVo
 	16,  // 12: ManagerService.ContractMiListResp.list:type_name -> ManagerService.ContractMiListVo
-	228, // 13: ManagerService.ContractMiListVo.infoUploadAt:type_name -> google.protobuf.Timestamp
-	228, // 14: ManagerService.UpdateOneContractReq.startAt:type_name -> google.protobuf.Timestamp
-	228, // 15: ManagerService.UpdateOneContractReq.endAt:type_name -> google.protobuf.Timestamp
+	249, // 13: ManagerService.ContractMiListVo.infoUploadAt:type_name -> google.protobuf.Timestamp
+	249, // 14: ManagerService.UpdateOneContractReq.startAt:type_name -> google.protobuf.Timestamp
+	249, // 15: ManagerService.UpdateOneContractReq.endAt:type_name -> google.protobuf.Timestamp
 	25,  // 16: ManagerService.BatchOperateContractReq.updateParam:type_name -> ManagerService.BatchOperateContract
 	25,  // 17: ManagerService.BatchOperateContractReq.createParam:type_name -> ManagerService.BatchOperateContract
-	228, // 18: ManagerService.BatchOperateContract.startAt:type_name -> google.protobuf.Timestamp
-	228, // 19: ManagerService.BatchOperateContract.endAt:type_name -> google.protobuf.Timestamp
+	249, // 18: ManagerService.BatchOperateContract.startAt:type_name -> google.protobuf.Timestamp
+	249, // 19: ManagerService.BatchOperateContract.endAt:type_name -> google.protobuf.Timestamp
 	0,   // 20: ManagerService.MedicineListReq.page:type_name -> ManagerService.Page
 	36,  // 21: ManagerService.MedicineListResp.list:type_name -> ManagerService.MedicineListVo
-	228, // 22: ManagerService.MedicineListVo.createdAt:type_name -> google.protobuf.Timestamp
+	249, // 22: ManagerService.MedicineListVo.createdAt:type_name -> google.protobuf.Timestamp
 	0,   // 23: ManagerService.MedicineListForQueryReq.page:type_name -> ManagerService.Page
 	36,  // 24: ManagerService.MedicineListForQueryResp.list:type_name -> ManagerService.MedicineListVo
 	40,  // 25: ManagerService.CreateBatchMedicineReq.list:type_name -> ManagerService.CreateMedicineReq
@@ -22518,7 +24190,7 @@ var file_ManagerService_proto_depIdxs = []int32{
 	72,  // 31: ManagerService.CommonMedicineQueryResp.list:type_name -> ManagerService.TagMedicineVo
 	0,   // 32: ManagerService.ListMiReq.page:type_name -> ManagerService.Page
 	75,  // 33: ManagerService.ListMiResp.list:type_name -> ManagerService.ListMiVo
-	228, // 34: ManagerService.ListMiVo.createdAt:type_name -> google.protobuf.Timestamp
+	249, // 34: ManagerService.ListMiVo.createdAt:type_name -> google.protobuf.Timestamp
 	0,   // 35: ManagerService.CommonMIReq.page:type_name -> ManagerService.Page
 	78,  // 36: ManagerService.CommonMIResp.list:type_name -> ManagerService.CommonMIVo
 	0,   // 37: ManagerService.CommonCompanyReq.page:type_name -> ManagerService.Page
@@ -22526,110 +24198,110 @@ var file_ManagerService_proto_depIdxs = []int32{
 	85,  // 39: ManagerService.SelCompanyByNamesResp.list:type_name -> ManagerService.CommonCompanyVo
 	0,   // 40: ManagerService.ListCompanyReq.page:type_name -> ManagerService.Page
 	90,  // 41: ManagerService.ListCompanyResp.list:type_name -> ManagerService.ListCompanyVo
-	228, // 42: ManagerService.ListCompanyVo.createdAt:type_name -> google.protobuf.Timestamp
-	228, // 43: ManagerService.ListTpPlanErrReq.stratDate:type_name -> google.protobuf.Timestamp
-	228, // 44: ManagerService.ListTpPlanErrReq.endDate:type_name -> google.protobuf.Timestamp
+	249, // 42: ManagerService.ListCompanyVo.createdAt:type_name -> google.protobuf.Timestamp
+	249, // 43: ManagerService.ListTpPlanErrReq.stratDate:type_name -> google.protobuf.Timestamp
+	249, // 44: ManagerService.ListTpPlanErrReq.endDate:type_name -> google.protobuf.Timestamp
 	0,   // 45: ManagerService.ListTpPlanErrReq.page:type_name -> ManagerService.Page
 	97,  // 46: ManagerService.ListTpPlanErrResp.list:type_name -> ManagerService.ListTpPlanErrVo
-	228, // 47: ManagerService.ListTpPlanErrVo.createdAt:type_name -> google.protobuf.Timestamp
-	228, // 48: ManagerService.ListShipmentPlanReq.stratDate:type_name -> google.protobuf.Timestamp
-	228, // 49: ManagerService.ListShipmentPlanReq.endDate:type_name -> google.protobuf.Timestamp
+	249, // 47: ManagerService.ListTpPlanErrVo.createdAt:type_name -> google.protobuf.Timestamp
+	249, // 48: ManagerService.ListShipmentPlanReq.stratDate:type_name -> google.protobuf.Timestamp
+	249, // 49: ManagerService.ListShipmentPlanReq.endDate:type_name -> google.protobuf.Timestamp
 	0,   // 50: ManagerService.ListShipmentPlanReq.page:type_name -> ManagerService.Page
 	102, // 51: ManagerService.ListShipmentPlanResp.list:type_name -> ManagerService.ListShipmentPlanrVo
-	228, // 52: ManagerService.ListShipmentPlanrVo.tpCreatedAt:type_name -> google.protobuf.Timestamp
-	228, // 53: ManagerService.ListShipmentPlanrVo.receiveAt:type_name -> google.protobuf.Timestamp
-	228, // 54: ManagerService.ListShipmentPlanrVo.sendDeadline:type_name -> google.protobuf.Timestamp
+	249, // 52: ManagerService.ListShipmentPlanrVo.tpCreatedAt:type_name -> google.protobuf.Timestamp
+	249, // 53: ManagerService.ListShipmentPlanrVo.receiveAt:type_name -> google.protobuf.Timestamp
+	249, // 54: ManagerService.ListShipmentPlanrVo.sendDeadline:type_name -> google.protobuf.Timestamp
 	107, // 55: ManagerService.ListShipmentPlanForOrderResp.list:type_name -> ManagerService.ListShipmentPlanForOrderVo
-	228, // 56: ManagerService.ListShipmentPlanForOrderVo.tpCreatedAt:type_name -> google.protobuf.Timestamp
-	228, // 57: ManagerService.CountShipmentPlanReq.startDate:type_name -> google.protobuf.Timestamp
-	228, // 58: ManagerService.CountShipmentPlanReq.endDate:type_name -> google.protobuf.Timestamp
-	228, // 59: ManagerService.CreateShipmentOrderReq.invoiceDate:type_name -> google.protobuf.Timestamp
-	228, // 60: ManagerService.CreateShipmentOrderReq.sendOutAt:type_name -> google.protobuf.Timestamp
-	228, // 61: ManagerService.ListShipmentOrderReq.startDate:type_name -> google.protobuf.Timestamp
-	228, // 62: ManagerService.ListShipmentOrderReq.endDate:type_name -> google.protobuf.Timestamp
+	249, // 56: ManagerService.ListShipmentPlanForOrderVo.tpCreatedAt:type_name -> google.protobuf.Timestamp
+	249, // 57: ManagerService.CountShipmentPlanReq.startDate:type_name -> google.protobuf.Timestamp
+	249, // 58: ManagerService.CountShipmentPlanReq.endDate:type_name -> google.protobuf.Timestamp
+	249, // 59: ManagerService.CreateShipmentOrderReq.invoiceDate:type_name -> google.protobuf.Timestamp
+	249, // 60: ManagerService.CreateShipmentOrderReq.sendOutAt:type_name -> google.protobuf.Timestamp
+	249, // 61: ManagerService.ListShipmentOrderReq.startDate:type_name -> google.protobuf.Timestamp
+	249, // 62: ManagerService.ListShipmentOrderReq.endDate:type_name -> google.protobuf.Timestamp
 	0,   // 63: ManagerService.ListShipmentOrderReq.page:type_name -> ManagerService.Page
-	228, // 64: ManagerService.ListShipmentOrderReq.receiveDeadline:type_name -> google.protobuf.Timestamp
+	249, // 64: ManagerService.ListShipmentOrderReq.receiveDeadline:type_name -> google.protobuf.Timestamp
 	114, // 65: ManagerService.ListShipmentOrderResp.list:type_name -> ManagerService.ListShipmentOrderVo
-	228, // 66: ManagerService.ListShipmentOrderVo.sendOutAt:type_name -> google.protobuf.Timestamp
-	228, // 67: ManagerService.ListShipmentOrderVo.receiveDeadline:type_name -> google.protobuf.Timestamp
-	228, // 68: ManagerService.CountShipmentOrderReq.startDate:type_name -> google.protobuf.Timestamp
-	228, // 69: ManagerService.CountShipmentOrderReq.endDate:type_name -> google.protobuf.Timestamp
+	249, // 66: ManagerService.ListShipmentOrderVo.sendOutAt:type_name -> google.protobuf.Timestamp
+	249, // 67: ManagerService.ListShipmentOrderVo.receiveDeadline:type_name -> google.protobuf.Timestamp
+	249, // 68: ManagerService.CountShipmentOrderReq.startDate:type_name -> google.protobuf.Timestamp
+	249, // 69: ManagerService.CountShipmentOrderReq.endDate:type_name -> google.protobuf.Timestamp
 	125, // 70: ManagerService.InsertConfigsReq.configs:type_name -> ManagerService.CommonConfig
 	0,   // 71: ManagerService.GetConfigReq.page:type_name -> ManagerService.Page
-	228, // 72: ManagerService.GetConfigReq.startAt:type_name -> google.protobuf.Timestamp
-	228, // 73: ManagerService.GetConfigReq.endAt:type_name -> google.protobuf.Timestamp
-	228, // 74: ManagerService.GetConfigReq.validateTime:type_name -> google.protobuf.Timestamp
-	228, // 75: ManagerService.CommonConfig.startAt:type_name -> google.protobuf.Timestamp
-	228, // 76: ManagerService.CommonConfig.endAt:type_name -> google.protobuf.Timestamp
-	228, // 77: ManagerService.CommonConfig.created:type_name -> google.protobuf.Timestamp
+	249, // 72: ManagerService.GetConfigReq.startAt:type_name -> google.protobuf.Timestamp
+	249, // 73: ManagerService.GetConfigReq.endAt:type_name -> google.protobuf.Timestamp
+	249, // 74: ManagerService.GetConfigReq.validateTime:type_name -> google.protobuf.Timestamp
+	249, // 75: ManagerService.CommonConfig.startAt:type_name -> google.protobuf.Timestamp
+	249, // 76: ManagerService.CommonConfig.endAt:type_name -> google.protobuf.Timestamp
+	249, // 77: ManagerService.CommonConfig.created:type_name -> google.protobuf.Timestamp
 	125, // 78: ManagerService.GetConfigResp.list:type_name -> ManagerService.CommonConfig
-	228, // 79: ManagerService.GetShipmentPlanReportsReq.startAt:type_name -> google.protobuf.Timestamp
-	228, // 80: ManagerService.GetShipmentPlanReportsReq.endAt:type_name -> google.protobuf.Timestamp
+	249, // 79: ManagerService.GetShipmentPlanReportsReq.startAt:type_name -> google.protobuf.Timestamp
+	249, // 80: ManagerService.GetShipmentPlanReportsReq.endAt:type_name -> google.protobuf.Timestamp
 	131, // 81: ManagerService.GetShipmentPlanReportsReq.optionalFilterCond:type_name -> ManagerService.PlanReportGetCondition
 	130, // 82: ManagerService.GetShipmentPlanReportsReq.optionalGroupCond:type_name -> ManagerService.PlanReportGroupCondition
 	0,   // 83: ManagerService.GetShipmentPlanReportsReq.page:type_name -> ManagerService.Page
 	133, // 84: ManagerService.ShipmentPlanDayReport.companyInfo:type_name -> ManagerService.CompanyReportVo
 	134, // 85: ManagerService.ShipmentPlanDayReport.miInfo:type_name -> ManagerService.MiReportVo
 	135, // 86: ManagerService.ShipmentPlanDayReport.medicineInfo:type_name -> ManagerService.MedicineReportVo
-	228, // 87: ManagerService.ShipmentPlanDayReport.reportDate:type_name -> google.protobuf.Timestamp
+	249, // 87: ManagerService.ShipmentPlanDayReport.reportDate:type_name -> google.protobuf.Timestamp
 	133, // 88: ManagerService.ShipmentPlanMonthReport.companyInfo:type_name -> ManagerService.CompanyReportVo
 	134, // 89: ManagerService.ShipmentPlanMonthReport.miInfo:type_name -> ManagerService.MiReportVo
 	135, // 90: ManagerService.ShipmentPlanMonthReport.medicineInfo:type_name -> ManagerService.MedicineReportVo
-	228, // 91: ManagerService.ShipmentPlanMonthReport.reportDate:type_name -> google.protobuf.Timestamp
+	249, // 91: ManagerService.ShipmentPlanMonthReport.reportDate:type_name -> google.protobuf.Timestamp
 	133, // 92: ManagerService.ShipmentPlanYearReport.companyInfo:type_name -> ManagerService.CompanyReportVo
 	134, // 93: ManagerService.ShipmentPlanYearReport.miInfo:type_name -> ManagerService.MiReportVo
 	135, // 94: ManagerService.ShipmentPlanYearReport.medicineInfo:type_name -> ManagerService.MedicineReportVo
-	228, // 95: ManagerService.ShipmentPlanYearReport.reportDate:type_name -> google.protobuf.Timestamp
+	249, // 95: ManagerService.ShipmentPlanYearReport.reportDate:type_name -> google.protobuf.Timestamp
 	136, // 96: ManagerService.GetShipmentPlanDayReportsResp.list:type_name -> ManagerService.ShipmentPlanDayReport
 	137, // 97: ManagerService.GetShipmentPlanMonthReportsResp.list:type_name -> ManagerService.ShipmentPlanMonthReport
 	138, // 98: ManagerService.GetShipmentPlanYearReportsResp.list:type_name -> ManagerService.ShipmentPlanYearReport
-	228, // 99: ManagerService.GetShipmentOrderReportsReq.startAt:type_name -> google.protobuf.Timestamp
-	228, // 100: ManagerService.GetShipmentOrderReportsReq.endAt:type_name -> google.protobuf.Timestamp
+	249, // 99: ManagerService.GetShipmentOrderReportsReq.startAt:type_name -> google.protobuf.Timestamp
+	249, // 100: ManagerService.GetShipmentOrderReportsReq.endAt:type_name -> google.protobuf.Timestamp
 	143, // 101: ManagerService.GetShipmentOrderReportsReq.optionalFilterCond:type_name -> ManagerService.OrderReportGetCondition
 	142, // 102: ManagerService.GetShipmentOrderReportsReq.optionalGroupCond:type_name -> ManagerService.OrderReportGroupCondition
 	0,   // 103: ManagerService.GetShipmentOrderReportsReq.page:type_name -> ManagerService.Page
 	133, // 104: ManagerService.ShipmentOrderDayReport.companyInfo:type_name -> ManagerService.CompanyReportVo
 	134, // 105: ManagerService.ShipmentOrderDayReport.miInfo:type_name -> ManagerService.MiReportVo
-	228, // 106: ManagerService.ShipmentOrderDayReport.reportDate:type_name -> google.protobuf.Timestamp
-	228, // 107: ManagerService.ShipmentOrderMonthReport.reportDate:type_name -> google.protobuf.Timestamp
+	249, // 106: ManagerService.ShipmentOrderDayReport.reportDate:type_name -> google.protobuf.Timestamp
+	249, // 107: ManagerService.ShipmentOrderMonthReport.reportDate:type_name -> google.protobuf.Timestamp
 	133, // 108: ManagerService.ShipmentOrderMonthReport.companyInfo:type_name -> ManagerService.CompanyReportVo
 	134, // 109: ManagerService.ShipmentOrderMonthReport.miInfo:type_name -> ManagerService.MiReportVo
-	228, // 110: ManagerService.ShipmentOrderYearReport.reportDate:type_name -> google.protobuf.Timestamp
+	249, // 110: ManagerService.ShipmentOrderYearReport.reportDate:type_name -> google.protobuf.Timestamp
 	133, // 111: ManagerService.ShipmentOrderYearReport.companyInfo:type_name -> ManagerService.CompanyReportVo
 	134, // 112: ManagerService.ShipmentOrderYearReport.miInfo:type_name -> ManagerService.MiReportVo
 	145, // 113: ManagerService.GetShipmentOrderDayReportsResp.list:type_name -> ManagerService.ShipmentOrderDayReport
 	146, // 114: ManagerService.GetShipmentOrderMonthReportsResp.list:type_name -> ManagerService.ShipmentOrderMonthReport
 	147, // 115: ManagerService.GetShipmentOrderYearReportsResp.list:type_name -> ManagerService.ShipmentOrderYearReport
-	228, // 116: ManagerService.GetFactoringOrderReportsReq.startAt:type_name -> google.protobuf.Timestamp
-	228, // 117: ManagerService.GetFactoringOrderReportsReq.endAt:type_name -> google.protobuf.Timestamp
+	249, // 116: ManagerService.GetFactoringOrderReportsReq.startAt:type_name -> google.protobuf.Timestamp
+	249, // 117: ManagerService.GetFactoringOrderReportsReq.endAt:type_name -> google.protobuf.Timestamp
 	152, // 118: ManagerService.GetFactoringOrderReportsReq.optionalFilterCond:type_name -> ManagerService.FactoringReportGetCondition
 	151, // 119: ManagerService.GetFactoringOrderReportsReq.optionalGroupCond:type_name -> ManagerService.FactoringReportGroupCondition
 	0,   // 120: ManagerService.GetFactoringOrderReportsReq.page:type_name -> ManagerService.Page
 	133, // 121: ManagerService.FactoringOrderDayReport.companyInfo:type_name -> ManagerService.CompanyReportVo
 	134, // 122: ManagerService.FactoringOrderDayReport.miInfo:type_name -> ManagerService.MiReportVo
-	228, // 123: ManagerService.FactoringOrderDayReport.reportDate:type_name -> google.protobuf.Timestamp
+	249, // 123: ManagerService.FactoringOrderDayReport.reportDate:type_name -> google.protobuf.Timestamp
 	154, // 124: ManagerService.GetFactoringOrderDayReportsResp.list:type_name -> ManagerService.FactoringOrderDayReport
 	133, // 125: ManagerService.FactoringOrderMonthReport.companyInfo:type_name -> ManagerService.CompanyReportVo
 	134, // 126: ManagerService.FactoringOrderMonthReport.miInfo:type_name -> ManagerService.MiReportVo
-	228, // 127: ManagerService.FactoringOrderMonthReport.reportDate:type_name -> google.protobuf.Timestamp
+	249, // 127: ManagerService.FactoringOrderMonthReport.reportDate:type_name -> google.protobuf.Timestamp
 	156, // 128: ManagerService.GetFactoringOrderMonthReportsResp.list:type_name -> ManagerService.FactoringOrderMonthReport
-	228, // 129: ManagerService.FactoringOrderYearReport.reportDate:type_name -> google.protobuf.Timestamp
+	249, // 129: ManagerService.FactoringOrderYearReport.reportDate:type_name -> google.protobuf.Timestamp
 	133, // 130: ManagerService.FactoringOrderYearReport.companyInfo:type_name -> ManagerService.CompanyReportVo
 	134, // 131: ManagerService.FactoringOrderYearReport.miInfo:type_name -> ManagerService.MiReportVo
 	158, // 132: ManagerService.GetFactoringOrderYearReportsResp.list:type_name -> ManagerService.FactoringOrderYearReport
-	228, // 133: ManagerService.ContractPlanReportGetCondition.contractStartBegin:type_name -> google.protobuf.Timestamp
-	228, // 134: ManagerService.ContractPlanReportGetCondition.contractStartEnd:type_name -> google.protobuf.Timestamp
-	228, // 135: ManagerService.GetContractPlanReportsReq.startAt:type_name -> google.protobuf.Timestamp
-	228, // 136: ManagerService.GetContractPlanReportsReq.endAt:type_name -> google.protobuf.Timestamp
+	249, // 133: ManagerService.ContractPlanReportGetCondition.contractStartBegin:type_name -> google.protobuf.Timestamp
+	249, // 134: ManagerService.ContractPlanReportGetCondition.contractStartEnd:type_name -> google.protobuf.Timestamp
+	249, // 135: ManagerService.GetContractPlanReportsReq.startAt:type_name -> google.protobuf.Timestamp
+	249, // 136: ManagerService.GetContractPlanReportsReq.endAt:type_name -> google.protobuf.Timestamp
 	160, // 137: ManagerService.GetContractPlanReportsReq.optionalFilterCond:type_name -> ManagerService.ContractPlanReportGetCondition
 	161, // 138: ManagerService.GetContractPlanReportsReq.optionalGroupCond:type_name -> ManagerService.ContractPlanReportGroupCondition
 	0,   // 139: ManagerService.GetContractPlanReportsReq.page:type_name -> ManagerService.Page
-	228, // 140: ManagerService.ContractReportVo.startAt:type_name -> google.protobuf.Timestamp
-	228, // 141: ManagerService.ContractReportVo.endAt:type_name -> google.protobuf.Timestamp
+	249, // 140: ManagerService.ContractReportVo.startAt:type_name -> google.protobuf.Timestamp
+	249, // 141: ManagerService.ContractReportVo.endAt:type_name -> google.protobuf.Timestamp
 	133, // 142: ManagerService.ContractPlanDayReport.companyInfo:type_name -> ManagerService.CompanyReportVo
 	134, // 143: ManagerService.ContractPlanDayReport.miInfo:type_name -> ManagerService.MiReportVo
 	135, // 144: ManagerService.ContractPlanDayReport.medicineInfo:type_name -> ManagerService.MedicineReportVo
-	228, // 145: ManagerService.ContractPlanDayReport.reportDate:type_name -> google.protobuf.Timestamp
+	249, // 145: ManagerService.ContractPlanDayReport.reportDate:type_name -> google.protobuf.Timestamp
 	163, // 146: ManagerService.ContractPlanDayReport.contractInfo:type_name -> ManagerService.ContractReportVo
 	164, // 147: ManagerService.ContractPlanDayReport.contractMiInfo:type_name -> ManagerService.ContractMiReportVo
 	165, // 148: ManagerService.GetContractPlanDayReportsResp.list:type_name -> ManagerService.ContractPlanDayReport
@@ -22637,7 +24309,7 @@ var file_ManagerService_proto_depIdxs = []int32{
 	133, // 150: ManagerService.ContractPlanMonthReport.companyInfo:type_name -> ManagerService.CompanyReportVo
 	134, // 151: ManagerService.ContractPlanMonthReport.miInfo:type_name -> ManagerService.MiReportVo
 	135, // 152: ManagerService.ContractPlanMonthReport.medicineInfo:type_name -> ManagerService.MedicineReportVo
-	228, // 153: ManagerService.ContractPlanMonthReport.reportDate:type_name -> google.protobuf.Timestamp
+	249, // 153: ManagerService.ContractPlanMonthReport.reportDate:type_name -> google.protobuf.Timestamp
 	163, // 154: ManagerService.ContractPlanMonthReport.contractInfo:type_name -> ManagerService.ContractReportVo
 	167, // 155: ManagerService.GetContractPlanMonthReportsResp.list:type_name -> ManagerService.ContractPlanMonthReport
 	163, // 156: ManagerService.ContractPlanYearReport.contractInfo:type_name -> ManagerService.ContractReportVo
@@ -22645,7 +24317,7 @@ var file_ManagerService_proto_depIdxs = []int32{
 	133, // 158: ManagerService.ContractPlanYearReport.companyInfo:type_name -> ManagerService.CompanyReportVo
 	134, // 159: ManagerService.ContractPlanYearReport.miInfo:type_name -> ManagerService.MiReportVo
 	135, // 160: ManagerService.ContractPlanYearReport.medicineInfo:type_name -> ManagerService.MedicineReportVo
-	228, // 161: ManagerService.ContractPlanYearReport.reportDate:type_name -> google.protobuf.Timestamp
+	249, // 161: ManagerService.ContractPlanYearReport.reportDate:type_name -> google.protobuf.Timestamp
 	169, // 162: ManagerService.GetContractPlanYearReportsResp.list:type_name -> ManagerService.ContractPlanYearReport
 	133, // 163: ManagerService.ContractSum.companyInfo:type_name -> ManagerService.CompanyReportVo
 	134, // 164: ManagerService.ContractSum.miInfo:type_name -> ManagerService.MiReportVo
@@ -22654,40 +24326,40 @@ var file_ManagerService_proto_depIdxs = []int32{
 	164, // 167: ManagerService.ContractSum.contractMiInfo:type_name -> ManagerService.ContractMiReportVo
 	171, // 168: ManagerService.GetContractSumResp.list:type_name -> ManagerService.ContractSum
 	179, // 169: ManagerService.GetCompanyHashResp.list:type_name -> ManagerService.CompanyHash
-	228, // 170: ManagerService.CompanyHash.infoUploadAt:type_name -> google.protobuf.Timestamp
-	228, // 171: ManagerService.MiHash.infoUploadAt:type_name -> google.protobuf.Timestamp
+	249, // 170: ManagerService.CompanyHash.infoUploadAt:type_name -> google.protobuf.Timestamp
+	249, // 171: ManagerService.MiHash.infoUploadAt:type_name -> google.protobuf.Timestamp
 	181, // 172: ManagerService.GetMiHashResp.list:type_name -> ManagerService.MiHash
-	228, // 173: ManagerService.MedicineHash.infoUploadAt:type_name -> google.protobuf.Timestamp
+	249, // 173: ManagerService.MedicineHash.infoUploadAt:type_name -> google.protobuf.Timestamp
 	184, // 174: ManagerService.GetMedicineResp.list:type_name -> ManagerService.MedicineHash
-	228, // 175: ManagerService.ContractHash.infoUploadAt:type_name -> google.protobuf.Timestamp
+	249, // 175: ManagerService.ContractHash.infoUploadAt:type_name -> google.protobuf.Timestamp
 	187, // 176: ManagerService.GetContractHashResp.list:type_name -> ManagerService.ContractHash
-	228, // 177: ManagerService.ContractMiHash.infoUploadAt:type_name -> google.protobuf.Timestamp
+	249, // 177: ManagerService.ContractMiHash.infoUploadAt:type_name -> google.protobuf.Timestamp
 	190, // 178: ManagerService.GetContractMiHashResp.list:type_name -> ManagerService.ContractMiHash
-	228, // 179: ManagerService.ConfigHash.infoUploadAt:type_name -> google.protobuf.Timestamp
+	249, // 179: ManagerService.ConfigHash.infoUploadAt:type_name -> google.protobuf.Timestamp
 	193, // 180: ManagerService.GetConfigHashResp.list:type_name -> ManagerService.ConfigHash
-	228, // 181: ManagerService.ShipmentPlanHash.infoUploadAt:type_name -> google.protobuf.Timestamp
-	228, // 182: ManagerService.ShipmentPlanHash.qrCodeUploadAt:type_name -> google.protobuf.Timestamp
-	228, // 183: ManagerService.ShipmentPlanHash.shipmentStartUploadAt:type_name -> google.protobuf.Timestamp
-	228, // 184: ManagerService.ShipmentPlanHash.shipmentReceiveUploadAt:type_name -> google.protobuf.Timestamp
-	228, // 185: ManagerService.ShipmentPlanHash.shipmentEnterUploadAt:type_name -> google.protobuf.Timestamp
+	249, // 181: ManagerService.ShipmentPlanHash.infoUploadAt:type_name -> google.protobuf.Timestamp
+	249, // 182: ManagerService.ShipmentPlanHash.qrCodeUploadAt:type_name -> google.protobuf.Timestamp
+	249, // 183: ManagerService.ShipmentPlanHash.shipmentStartUploadAt:type_name -> google.protobuf.Timestamp
+	249, // 184: ManagerService.ShipmentPlanHash.shipmentReceiveUploadAt:type_name -> google.protobuf.Timestamp
+	249, // 185: ManagerService.ShipmentPlanHash.shipmentEnterUploadAt:type_name -> google.protobuf.Timestamp
 	196, // 186: ManagerService.GetShipmentPlanHashResp.list:type_name -> ManagerService.ShipmentPlanHash
-	228, // 187: ManagerService.ShipmentOrderHash.qrCodeUploadAt:type_name -> google.protobuf.Timestamp
-	228, // 188: ManagerService.ShipmentOrderHash.shipmentStartUploadAt:type_name -> google.protobuf.Timestamp
-	228, // 189: ManagerService.ShipmentOrderHash.shipmentReceiveUploadAt:type_name -> google.protobuf.Timestamp
-	228, // 190: ManagerService.ShipmentOrderHash.shipmentEnterUploadAt:type_name -> google.protobuf.Timestamp
+	249, // 187: ManagerService.ShipmentOrderHash.qrCodeUploadAt:type_name -> google.protobuf.Timestamp
+	249, // 188: ManagerService.ShipmentOrderHash.shipmentStartUploadAt:type_name -> google.protobuf.Timestamp
+	249, // 189: ManagerService.ShipmentOrderHash.shipmentReceiveUploadAt:type_name -> google.protobuf.Timestamp
+	249, // 190: ManagerService.ShipmentOrderHash.shipmentEnterUploadAt:type_name -> google.protobuf.Timestamp
 	199, // 191: ManagerService.GetShipmentOrderHashResp.list:type_name -> ManagerService.ShipmentOrderHash
-	228, // 192: ManagerService.ShipmentPayHash.infoUploadAt:type_name -> google.protobuf.Timestamp
-	228, // 193: ManagerService.ShipmentPayHash.resultUploadAt:type_name -> google.protobuf.Timestamp
+	249, // 192: ManagerService.ShipmentPayHash.infoUploadAt:type_name -> google.protobuf.Timestamp
+	249, // 193: ManagerService.ShipmentPayHash.resultUploadAt:type_name -> google.protobuf.Timestamp
 	202, // 194: ManagerService.GetShipmentPayHashResp.list:type_name -> ManagerService.ShipmentPayHash
-	228, // 195: ManagerService.ShipmentFactoringHash.applyUploadAt:type_name -> google.protobuf.Timestamp
-	228, // 196: ManagerService.ShipmentFactoringHash.resultUploadAt:type_name -> google.protobuf.Timestamp
-	228, // 197: ManagerService.ShipmentFactoringHash.payBackUploadAt:type_name -> google.protobuf.Timestamp
+	249, // 195: ManagerService.ShipmentFactoringHash.applyUploadAt:type_name -> google.protobuf.Timestamp
+	249, // 196: ManagerService.ShipmentFactoringHash.resultUploadAt:type_name -> google.protobuf.Timestamp
+	249, // 197: ManagerService.ShipmentFactoringHash.payBackUploadAt:type_name -> google.protobuf.Timestamp
 	205, // 198: ManagerService.GetShipmentFactoringHashResp.list:type_name -> ManagerService.ShipmentFactoringHash
-	228, // 199: ManagerService.GetShipmentRankMedicineDataYearReq.startAt:type_name -> google.protobuf.Timestamp
-	228, // 200: ManagerService.GetShipmentRankMedicineDataYearReq.endAt:type_name -> google.protobuf.Timestamp
+	249, // 199: ManagerService.GetShipmentRankMedicineDataYearReq.startAt:type_name -> google.protobuf.Timestamp
+	249, // 200: ManagerService.GetShipmentRankMedicineDataYearReq.endAt:type_name -> google.protobuf.Timestamp
 	208, // 201: ManagerService.GetShipmentRankMedicineDataYearResp.list:type_name -> ManagerService.ShipmentRankMedicineDataYear
-	228, // 202: ManagerService.GetShipmentRankCompanyDataYearReq.startAt:type_name -> google.protobuf.Timestamp
-	228, // 203: ManagerService.GetShipmentRankCompanyDataYearReq.endAt:type_name -> google.protobuf.Timestamp
+	249, // 202: ManagerService.GetShipmentRankCompanyDataYearReq.startAt:type_name -> google.protobuf.Timestamp
+	249, // 203: ManagerService.GetShipmentRankCompanyDataYearReq.endAt:type_name -> google.protobuf.Timestamp
 	211, // 204: ManagerService.ShipmentRankCompanyDataYear.medicines:type_name -> ManagerService.ShipmentRankCompanyMedicine
 	212, // 205: ManagerService.GetShipmentRankCompanyDataYearResp.list:type_name -> ManagerService.ShipmentRankCompanyDataYear
 	146, // 206: ManagerService.RankMiReceiveYear.shipmentOrderMonthReports:type_name -> ManagerService.ShipmentOrderMonthReport
@@ -22695,185 +24367,211 @@ var file_ManagerService_proto_depIdxs = []int32{
 	218, // 208: ManagerService.GetRankComReceiveYearResp.list:type_name -> ManagerService.RankComReceiveYear
 	221, // 209: ManagerService.GetRankMiPaidYearResp.list:type_name -> ManagerService.RankMiPaidYear
 	224, // 210: ManagerService.GetRankMedicineYearResp.list:type_name -> ManagerService.RankMedicineYear
-	8,   // 211: ManagerService.ManagerService.ListContract:input_type -> ManagerService.ContractListReq
-	14,  // 212: ManagerService.ManagerService.ListMiContract:input_type -> ManagerService.ContractMiListReq
-	17,  // 213: ManagerService.ManagerService.CreateOneContractMI:input_type -> ManagerService.CreateOneContractMIReq
-	19,  // 214: ManagerService.ManagerService.UpdateOneContractMI:input_type -> ManagerService.UpdateOneContractMIReq
-	21,  // 215: ManagerService.ManagerService.UpdateOneContract:input_type -> ManagerService.UpdateOneContractReq
-	23,  // 216: ManagerService.ManagerService.BatchOperateContract:input_type -> ManagerService.BatchOperateContractReq
-	26,  // 217: ManagerService.ManagerService.UpdateContractActive:input_type -> ManagerService.UpdateContractActiveReq
-	30,  // 218: ManagerService.ManagerService.DeleteOneContract:input_type -> ManagerService.DeleteOneContractReq
-	32,  // 219: ManagerService.ManagerService.DeleteOneContractMi:input_type -> ManagerService.DeleteOneContractMiReq
-	1,   // 220: ManagerService.ManagerService.GetContractInfo:input_type -> ManagerService.GetContractInfoReq
-	3,   // 221: ManagerService.ManagerService.CountContract:input_type -> ManagerService.CountContractReq
-	28,  // 222: ManagerService.ManagerService.RefreshContract:input_type -> ManagerService.RefreshContractReq
-	5,   // 223: ManagerService.ManagerService.ContractDetail:input_type -> ManagerService.ContractDetailReq
-	11,  // 224: ManagerService.ManagerService.CheckContractList:input_type -> ManagerService.UpCheckContractReq
-	34,  // 225: ManagerService.ManagerService.ListMedicine:input_type -> ManagerService.MedicineListReq
-	37,  // 226: ManagerService.ManagerService.MedicineListForQuery:input_type -> ManagerService.MedicineListForQueryReq
-	40,  // 227: ManagerService.ManagerService.CreateMedicine:input_type -> ManagerService.CreateMedicineReq
-	42,  // 228: ManagerService.ManagerService.CreateBatchMedicine:input_type -> ManagerService.CreateBatchMedicineReq
-	44,  // 229: ManagerService.ManagerService.UpdateMedicine:input_type -> ManagerService.UpdateMedicineReq
-	46,  // 230: ManagerService.ManagerService.UpdateMedicineActive:input_type -> ManagerService.UpdateMedicineActiveReq
-	48,  // 231: ManagerService.ManagerService.DeleteMedicine:input_type -> ManagerService.DeleteMedicineReq
-	50,  // 232: ManagerService.ManagerService.SelectTagByMedicineId:input_type -> ManagerService.SelectTagByMedicineIdReq
-	52,  // 233: ManagerService.ManagerService.SelectInfoByMedicineNames:input_type -> ManagerService.SelectInfoByMedicineNamesReq
-	54,  // 234: ManagerService.ManagerService.TagList:input_type -> ManagerService.TagListReq
-	57,  // 235: ManagerService.ManagerService.CreateTag:input_type -> ManagerService.CreateTagReq
-	59,  // 236: ManagerService.ManagerService.UpdateTag:input_type -> ManagerService.UpdateTagReq
-	61,  // 237: ManagerService.ManagerService.DeleteTag:input_type -> ManagerService.DeleteTagReq
-	63,  // 238: ManagerService.ManagerService.TagDetailList:input_type -> ManagerService.TagDetailListReq
-	66,  // 239: ManagerService.ManagerService.DeleteTagMedicine:input_type -> ManagerService.DeleteTagMedicineReq
-	68,  // 240: ManagerService.ManagerService.CreateTagMedicine:input_type -> ManagerService.CreateTagMedicineReq
-	70,  // 241: ManagerService.ManagerService.CommonMedicineQuery:input_type -> ManagerService.CommonMedicineQueryReq
-	73,  // 242: ManagerService.ManagerService.ListMi:input_type -> ManagerService.ListMiReq
-	76,  // 243: ManagerService.ManagerService.CommonMI:input_type -> ManagerService.CommonMIReq
-	79,  // 244: ManagerService.ManagerService.CreateOneMI:input_type -> ManagerService.CreateOneMIReq
-	81,  // 245: ManagerService.ManagerService.UpdateMi:input_type -> ManagerService.UpdateMiReq
-	88,  // 246: ManagerService.ManagerService.ListCompany:input_type -> ManagerService.ListCompanyReq
-	91,  // 247: ManagerService.ManagerService.CreateOneCompany:input_type -> ManagerService.CreateOneCompanyReq
-	93,  // 248: ManagerService.ManagerService.UpdateOneCompany:input_type -> ManagerService.UpdateOneCompanyReq
-	83,  // 249: ManagerService.ManagerService.CommonCompany:input_type -> ManagerService.CommonCompanyReq
-	86,  // 250: ManagerService.ManagerService.SelCompanyByNames:input_type -> ManagerService.SelCompanyByNamesReq
-	95,  // 251: ManagerService.ManagerService.ListTpPlanErr:input_type -> ManagerService.ListTpPlanErrReq
-	98,  // 252: ManagerService.ManagerService.UpdateErrShipmentPlan:input_type -> ManagerService.UpdateErrShipmentPlanReq
-	100, // 253: ManagerService.ManagerService.ListShipmentPlan:input_type -> ManagerService.ListShipmentPlanReq
-	108, // 254: ManagerService.ManagerService.CountShipmentPlan:input_type -> ManagerService.CountShipmentPlanReq
-	103, // 255: ManagerService.ManagerService.DetailShipmentOrder:input_type -> ManagerService.DetailShipmentOrderReq
-	105, // 256: ManagerService.ManagerService.ListShipmentPlanForOrder:input_type -> ManagerService.ListShipmentPlanForOrderReq
-	110, // 257: ManagerService.ManagerService.CreateShipmentOrder:input_type -> ManagerService.CreateShipmentOrderReq
-	112, // 258: ManagerService.ManagerService.ListShipmentOrder:input_type -> ManagerService.ListShipmentOrderReq
-	115, // 259: ManagerService.ManagerService.CountShipmentOrder:input_type -> ManagerService.CountShipmentOrderReq
-	117, // 260: ManagerService.ManagerService.ReceiveShipmentOrder:input_type -> ManagerService.ReceiveShipmentOrderReq
-	119, // 261: ManagerService.ManagerService.GetContractByShipmentPlanId:input_type -> ManagerService.GetContractByShipmentPlanIdReq
-	124, // 262: ManagerService.ManagerService.GetConfig:input_type -> ManagerService.GetConfigReq
-	122, // 263: ManagerService.ManagerService.UpdateConfig:input_type -> ManagerService.UpdateConfigReq
-	121, // 264: ManagerService.ManagerService.InsertConfigs:input_type -> ManagerService.InsertConfigsReq
-	123, // 265: ManagerService.ManagerService.DeleteConfigs:input_type -> ManagerService.DeleteConfigsReq
-	132, // 266: ManagerService.DataReportService.GetShipmentPlanDayReports:input_type -> ManagerService.GetShipmentPlanReportsReq
-	132, // 267: ManagerService.DataReportService.GetShipmentPlanMonthReports:input_type -> ManagerService.GetShipmentPlanReportsReq
-	132, // 268: ManagerService.DataReportService.GetShipmentPlanYearReports:input_type -> ManagerService.GetShipmentPlanReportsReq
-	144, // 269: ManagerService.DataReportService.GetShipmentOrderDayReports:input_type -> ManagerService.GetShipmentOrderReportsReq
-	144, // 270: ManagerService.DataReportService.GetShipmentOrderMonthReports:input_type -> ManagerService.GetShipmentOrderReportsReq
-	144, // 271: ManagerService.DataReportService.GetShipmentOrderYearReports:input_type -> ManagerService.GetShipmentOrderReportsReq
-	153, // 272: ManagerService.DataReportService.GetFactoringOrderDayReports:input_type -> ManagerService.GetFactoringOrderReportsReq
-	153, // 273: ManagerService.DataReportService.GetFactoringOrderMonthReports:input_type -> ManagerService.GetFactoringOrderReportsReq
-	153, // 274: ManagerService.DataReportService.GetFactoringOrderYearReports:input_type -> ManagerService.GetFactoringOrderReportsReq
-	162, // 275: ManagerService.DataReportService.GetContractPlanDayReports:input_type -> ManagerService.GetContractPlanReportsReq
-	162, // 276: ManagerService.DataReportService.GetContractPlanMonthReports:input_type -> ManagerService.GetContractPlanReportsReq
-	162, // 277: ManagerService.DataReportService.GetContractPlanYearReports:input_type -> ManagerService.GetContractPlanReportsReq
-	162, // 278: ManagerService.DataReportService.GetContractSum:input_type -> ManagerService.GetContractPlanReportsReq
-	173, // 279: ManagerService.DataReportService.GetValidContractInfo:input_type -> ManagerService.GetValidContractInfoReq
-	174, // 280: ManagerService.DataReportService.GetCurrentNeedPay:input_type -> ManagerService.GetCurrentNeedPayReq
-	177, // 281: ManagerService.HashService.GetCompanyHash:input_type -> ManagerService.GetCompanyHashReq
-	180, // 282: ManagerService.HashService.GetMiHash:input_type -> ManagerService.GetMiHashReq
-	183, // 283: ManagerService.HashService.GetMedicineHash:input_type -> ManagerService.GetMedicineReq
-	186, // 284: ManagerService.HashService.GetContractHash:input_type -> ManagerService.GetContractHashReq
-	189, // 285: ManagerService.HashService.GetContractMiHash:input_type -> ManagerService.GetContractMiHashReq
-	192, // 286: ManagerService.HashService.GetConfigHash:input_type -> ManagerService.GetConfigHashReq
-	195, // 287: ManagerService.HashService.GetShipmentPlanHash:input_type -> ManagerService.GetShipmentPlanHashReq
-	198, // 288: ManagerService.HashService.GetShipmentOrderHash:input_type -> ManagerService.GetShipmentOrderHashReq
-	201, // 289: ManagerService.HashService.GetShipmentPayHash:input_type -> ManagerService.GetShipmentPayHashReq
-	204, // 290: ManagerService.HashService.GetShipmentFactoringHash:input_type -> ManagerService.GetShipmentFactoringHashReq
-	207, // 291: ManagerService.RankService.GetShipmentRankMedicineDataYear:input_type -> ManagerService.GetShipmentRankMedicineDataYearReq
-	210, // 292: ManagerService.RankService.GetShipmentRankCompanyDataYear:input_type -> ManagerService.GetShipmentRankCompanyDataYearReq
-	214, // 293: ManagerService.RankService.GetRankMiReceiveYear:input_type -> ManagerService.GetRankMiReceiveYearReq
-	217, // 294: ManagerService.RankService.GetRankComReceiveYear:input_type -> ManagerService.GetRankComReceiveYearReq
-	220, // 295: ManagerService.RankService.GetRankMiPaidYear:input_type -> ManagerService.GetRankMiPaidYearReq
-	223, // 296: ManagerService.RankService.GetRankMedicineYear:input_type -> ManagerService.GetRankMedicineYearReq
-	226, // 297: ManagerService.RankService.GetMIBDashboardBaseInfo:input_type -> ManagerService.GetMIBDashboardBaseInfoReq
-	9,   // 298: ManagerService.ManagerService.ListContract:output_type -> ManagerService.ContractListResp
-	15,  // 299: ManagerService.ManagerService.ListMiContract:output_type -> ManagerService.ContractMiListResp
-	18,  // 300: ManagerService.ManagerService.CreateOneContractMI:output_type -> ManagerService.CreateOneContractMIResp
-	20,  // 301: ManagerService.ManagerService.UpdateOneContractMI:output_type -> ManagerService.UpdateOneContractMIResp
-	22,  // 302: ManagerService.ManagerService.UpdateOneContract:output_type -> ManagerService.UpdateOneContractResp
-	24,  // 303: ManagerService.ManagerService.BatchOperateContract:output_type -> ManagerService.BatchOperateContractResp
-	27,  // 304: ManagerService.ManagerService.UpdateContractActive:output_type -> ManagerService.UpdateContractActiveResp
-	31,  // 305: ManagerService.ManagerService.DeleteOneContract:output_type -> ManagerService.DeleteOneContractResp
-	33,  // 306: ManagerService.ManagerService.DeleteOneContractMi:output_type -> ManagerService.DeleteOneContractMiResp
-	2,   // 307: ManagerService.ManagerService.GetContractInfo:output_type -> ManagerService.GetContractInfoResp
-	4,   // 308: ManagerService.ManagerService.CountContract:output_type -> ManagerService.CountContractResp
-	29,  // 309: ManagerService.ManagerService.RefreshContract:output_type -> ManagerService.RefreshContractResp
-	6,   // 310: ManagerService.ManagerService.ContractDetail:output_type -> ManagerService.ContractDetailResp
-	13,  // 311: ManagerService.ManagerService.CheckContractList:output_type -> ManagerService.CheckContractListResp
-	35,  // 312: ManagerService.ManagerService.ListMedicine:output_type -> ManagerService.MedicineListResp
-	38,  // 313: ManagerService.ManagerService.MedicineListForQuery:output_type -> ManagerService.MedicineListForQueryResp
-	41,  // 314: ManagerService.ManagerService.CreateMedicine:output_type -> ManagerService.CreateMedicineResp
-	43,  // 315: ManagerService.ManagerService.CreateBatchMedicine:output_type -> ManagerService.CreateBatchMedicineResp
-	45,  // 316: ManagerService.ManagerService.UpdateMedicine:output_type -> ManagerService.UpdateMedicineResp
-	47,  // 317: ManagerService.ManagerService.UpdateMedicineActive:output_type -> ManagerService.UpdateMedicineActiveResp
-	49,  // 318: ManagerService.ManagerService.DeleteMedicine:output_type -> ManagerService.DeleteMedicineResp
-	51,  // 319: ManagerService.ManagerService.SelectTagByMedicineId:output_type -> ManagerService.SelectTagByMedicineIdResp
-	53,  // 320: ManagerService.ManagerService.SelectInfoByMedicineNames:output_type -> ManagerService.SelectInfoByMedicineNamesResp
-	55,  // 321: ManagerService.ManagerService.TagList:output_type -> ManagerService.TagListResp
-	58,  // 322: ManagerService.ManagerService.CreateTag:output_type -> ManagerService.CreateTagResp
-	60,  // 323: ManagerService.ManagerService.UpdateTag:output_type -> ManagerService.UpdateTagResp
-	62,  // 324: ManagerService.ManagerService.DeleteTag:output_type -> ManagerService.DeleteTagResp
-	64,  // 325: ManagerService.ManagerService.TagDetailList:output_type -> ManagerService.TagDetailListResp
-	67,  // 326: ManagerService.ManagerService.DeleteTagMedicine:output_type -> ManagerService.DeleteTagMedicineResp
-	69,  // 327: ManagerService.ManagerService.CreateTagMedicine:output_type -> ManagerService.CreateTagMedicineResp
-	71,  // 328: ManagerService.ManagerService.CommonMedicineQuery:output_type -> ManagerService.CommonMedicineQueryResp
-	74,  // 329: ManagerService.ManagerService.ListMi:output_type -> ManagerService.ListMiResp
-	77,  // 330: ManagerService.ManagerService.CommonMI:output_type -> ManagerService.CommonMIResp
-	80,  // 331: ManagerService.ManagerService.CreateOneMI:output_type -> ManagerService.CreateOneMIResp
-	82,  // 332: ManagerService.ManagerService.UpdateMi:output_type -> ManagerService.UpdateMiResp
-	89,  // 333: ManagerService.ManagerService.ListCompany:output_type -> ManagerService.ListCompanyResp
-	92,  // 334: ManagerService.ManagerService.CreateOneCompany:output_type -> ManagerService.CreateOneCompanyResp
-	94,  // 335: ManagerService.ManagerService.UpdateOneCompany:output_type -> ManagerService.UpdateOneCompanyResp
-	84,  // 336: ManagerService.ManagerService.CommonCompany:output_type -> ManagerService.CommonCompanyResp
-	87,  // 337: ManagerService.ManagerService.SelCompanyByNames:output_type -> ManagerService.SelCompanyByNamesResp
-	96,  // 338: ManagerService.ManagerService.ListTpPlanErr:output_type -> ManagerService.ListTpPlanErrResp
-	99,  // 339: ManagerService.ManagerService.UpdateErrShipmentPlan:output_type -> ManagerService.UpdateErrShipmentPlanResp
-	101, // 340: ManagerService.ManagerService.ListShipmentPlan:output_type -> ManagerService.ListShipmentPlanResp
-	109, // 341: ManagerService.ManagerService.CountShipmentPlan:output_type -> ManagerService.CountShipmentPlanResp
-	104, // 342: ManagerService.ManagerService.DetailShipmentOrder:output_type -> ManagerService.DetailShipmentOrderResp
-	106, // 343: ManagerService.ManagerService.ListShipmentPlanForOrder:output_type -> ManagerService.ListShipmentPlanForOrderResp
-	111, // 344: ManagerService.ManagerService.CreateShipmentOrder:output_type -> ManagerService.CreateShipmentOrderResp
-	113, // 345: ManagerService.ManagerService.ListShipmentOrder:output_type -> ManagerService.ListShipmentOrderResp
-	116, // 346: ManagerService.ManagerService.CountShipmentOrder:output_type -> ManagerService.CountShipmentOrderResp
-	118, // 347: ManagerService.ManagerService.ReceiveShipmentOrder:output_type -> ManagerService.ReceiveShipmentOrderResp
-	120, // 348: ManagerService.ManagerService.GetContractByShipmentPlanId:output_type -> ManagerService.GetContractByShipmentPlanIdResp
-	129, // 349: ManagerService.ManagerService.GetConfig:output_type -> ManagerService.GetConfigResp
-	126, // 350: ManagerService.ManagerService.UpdateConfig:output_type -> ManagerService.UpdateConfigResp
-	127, // 351: ManagerService.ManagerService.InsertConfigs:output_type -> ManagerService.InsertConfigsResp
-	128, // 352: ManagerService.ManagerService.DeleteConfigs:output_type -> ManagerService.DeleteConfigsResp
-	139, // 353: ManagerService.DataReportService.GetShipmentPlanDayReports:output_type -> ManagerService.GetShipmentPlanDayReportsResp
-	140, // 354: ManagerService.DataReportService.GetShipmentPlanMonthReports:output_type -> ManagerService.GetShipmentPlanMonthReportsResp
-	141, // 355: ManagerService.DataReportService.GetShipmentPlanYearReports:output_type -> ManagerService.GetShipmentPlanYearReportsResp
-	148, // 356: ManagerService.DataReportService.GetShipmentOrderDayReports:output_type -> ManagerService.GetShipmentOrderDayReportsResp
-	149, // 357: ManagerService.DataReportService.GetShipmentOrderMonthReports:output_type -> ManagerService.GetShipmentOrderMonthReportsResp
-	150, // 358: ManagerService.DataReportService.GetShipmentOrderYearReports:output_type -> ManagerService.GetShipmentOrderYearReportsResp
-	155, // 359: ManagerService.DataReportService.GetFactoringOrderDayReports:output_type -> ManagerService.GetFactoringOrderDayReportsResp
-	157, // 360: ManagerService.DataReportService.GetFactoringOrderMonthReports:output_type -> ManagerService.GetFactoringOrderMonthReportsResp
-	159, // 361: ManagerService.DataReportService.GetFactoringOrderYearReports:output_type -> ManagerService.GetFactoringOrderYearReportsResp
-	166, // 362: ManagerService.DataReportService.GetContractPlanDayReports:output_type -> ManagerService.GetContractPlanDayReportsResp
-	168, // 363: ManagerService.DataReportService.GetContractPlanMonthReports:output_type -> ManagerService.GetContractPlanMonthReportsResp
-	170, // 364: ManagerService.DataReportService.GetContractPlanYearReports:output_type -> ManagerService.GetContractPlanYearReportsResp
-	172, // 365: ManagerService.DataReportService.GetContractSum:output_type -> ManagerService.GetContractSumResp
-	175, // 366: ManagerService.DataReportService.GetValidContractInfo:output_type -> ManagerService.GetValidContractInfoResp
-	176, // 367: ManagerService.DataReportService.GetCurrentNeedPay:output_type -> ManagerService.GetCurrentNeedPayResp
-	178, // 368: ManagerService.HashService.GetCompanyHash:output_type -> ManagerService.GetCompanyHashResp
-	182, // 369: ManagerService.HashService.GetMiHash:output_type -> ManagerService.GetMiHashResp
-	185, // 370: ManagerService.HashService.GetMedicineHash:output_type -> ManagerService.GetMedicineResp
-	188, // 371: ManagerService.HashService.GetContractHash:output_type -> ManagerService.GetContractHashResp
-	191, // 372: ManagerService.HashService.GetContractMiHash:output_type -> ManagerService.GetContractMiHashResp
-	194, // 373: ManagerService.HashService.GetConfigHash:output_type -> ManagerService.GetConfigHashResp
-	197, // 374: ManagerService.HashService.GetShipmentPlanHash:output_type -> ManagerService.GetShipmentPlanHashResp
-	200, // 375: ManagerService.HashService.GetShipmentOrderHash:output_type -> ManagerService.GetShipmentOrderHashResp
-	203, // 376: ManagerService.HashService.GetShipmentPayHash:output_type -> ManagerService.GetShipmentPayHashResp
-	206, // 377: ManagerService.HashService.GetShipmentFactoringHash:output_type -> ManagerService.GetShipmentFactoringHashResp
-	209, // 378: ManagerService.RankService.GetShipmentRankMedicineDataYear:output_type -> ManagerService.GetShipmentRankMedicineDataYearResp
-	213, // 379: ManagerService.RankService.GetShipmentRankCompanyDataYear:output_type -> ManagerService.GetShipmentRankCompanyDataYearResp
-	216, // 380: ManagerService.RankService.GetRankMiReceiveYear:output_type -> ManagerService.GetRankMiReceiveYearResp
-	219, // 381: ManagerService.RankService.GetRankComReceiveYear:output_type -> ManagerService.GetRankComReceiveYearResp
-	222, // 382: ManagerService.RankService.GetRankMiPaidYear:output_type -> ManagerService.GetRankMiPaidYearResp
-	225, // 383: ManagerService.RankService.GetRankMedicineYear:output_type -> ManagerService.GetRankMedicineYearResp
-	227, // 384: ManagerService.RankService.GetMIBDashboardBaseInfo:output_type -> ManagerService.GetMIBDashboardBaseInfoResp
-	298, // [298:385] is the sub-list for method output_type
-	211, // [211:298] is the sub-list for method input_type
-	211, // [211:211] is the sub-list for extension type_name
-	211, // [211:211] is the sub-list for extension extendee
-	0,   // [0:211] is the sub-list for field type_name
+	0,   // 211: ManagerService.ListCompanyBindReq.page:type_name -> ManagerService.Page
+	230, // 212: ManagerService.ListCompanyBindResp.list:type_name -> ManagerService.ListCompanyBindVo
+	0,   // 213: ManagerService.ListMiBindReq.page:type_name -> ManagerService.Page
+	233, // 214: ManagerService.ListMiBindResp.list:type_name -> ManagerService.ListMiBindBindVo
+	0,   // 215: ManagerService.ListMedicineBindReq.page:type_name -> ManagerService.Page
+	236, // 216: ManagerService.ListMedicineBindResp.list:type_name -> ManagerService.ListMedicineBindVo
+	238, // 217: ManagerService.CompanyBindReq.param:type_name -> ManagerService.CompanyBindParam
+	241, // 218: ManagerService.MiBindReq.param:type_name -> ManagerService.MiBindParam
+	244, // 219: ManagerService.MedicineBindReq.param:type_name -> ManagerService.MedicineBindParam
+	247, // 220: ManagerService.ResetContractReq.param:type_name -> ManagerService.ResetContractParam
+	249, // 221: ManagerService.ResetContractReq.startAt:type_name -> google.protobuf.Timestamp
+	249, // 222: ManagerService.ResetContractReq.endAt:type_name -> google.protobuf.Timestamp
+	8,   // 223: ManagerService.ManagerService.ListContract:input_type -> ManagerService.ContractListReq
+	14,  // 224: ManagerService.ManagerService.ListMiContract:input_type -> ManagerService.ContractMiListReq
+	17,  // 225: ManagerService.ManagerService.CreateOneContractMI:input_type -> ManagerService.CreateOneContractMIReq
+	19,  // 226: ManagerService.ManagerService.UpdateOneContractMI:input_type -> ManagerService.UpdateOneContractMIReq
+	21,  // 227: ManagerService.ManagerService.UpdateOneContract:input_type -> ManagerService.UpdateOneContractReq
+	23,  // 228: ManagerService.ManagerService.BatchOperateContract:input_type -> ManagerService.BatchOperateContractReq
+	26,  // 229: ManagerService.ManagerService.UpdateContractActive:input_type -> ManagerService.UpdateContractActiveReq
+	30,  // 230: ManagerService.ManagerService.DeleteOneContract:input_type -> ManagerService.DeleteOneContractReq
+	32,  // 231: ManagerService.ManagerService.DeleteOneContractMi:input_type -> ManagerService.DeleteOneContractMiReq
+	1,   // 232: ManagerService.ManagerService.GetContractInfo:input_type -> ManagerService.GetContractInfoReq
+	3,   // 233: ManagerService.ManagerService.CountContract:input_type -> ManagerService.CountContractReq
+	28,  // 234: ManagerService.ManagerService.RefreshContract:input_type -> ManagerService.RefreshContractReq
+	246, // 235: ManagerService.ManagerService.ResetContract:input_type -> ManagerService.ResetContractReq
+	5,   // 236: ManagerService.ManagerService.ContractDetail:input_type -> ManagerService.ContractDetailReq
+	11,  // 237: ManagerService.ManagerService.CheckContractList:input_type -> ManagerService.UpCheckContractReq
+	34,  // 238: ManagerService.ManagerService.ListMedicine:input_type -> ManagerService.MedicineListReq
+	37,  // 239: ManagerService.ManagerService.MedicineListForQuery:input_type -> ManagerService.MedicineListForQueryReq
+	40,  // 240: ManagerService.ManagerService.CreateMedicine:input_type -> ManagerService.CreateMedicineReq
+	42,  // 241: ManagerService.ManagerService.CreateBatchMedicine:input_type -> ManagerService.CreateBatchMedicineReq
+	44,  // 242: ManagerService.ManagerService.UpdateMedicine:input_type -> ManagerService.UpdateMedicineReq
+	46,  // 243: ManagerService.ManagerService.UpdateMedicineActive:input_type -> ManagerService.UpdateMedicineActiveReq
+	48,  // 244: ManagerService.ManagerService.DeleteMedicine:input_type -> ManagerService.DeleteMedicineReq
+	50,  // 245: ManagerService.ManagerService.SelectTagByMedicineId:input_type -> ManagerService.SelectTagByMedicineIdReq
+	52,  // 246: ManagerService.ManagerService.SelectInfoByMedicineNames:input_type -> ManagerService.SelectInfoByMedicineNamesReq
+	54,  // 247: ManagerService.ManagerService.TagList:input_type -> ManagerService.TagListReq
+	57,  // 248: ManagerService.ManagerService.CreateTag:input_type -> ManagerService.CreateTagReq
+	59,  // 249: ManagerService.ManagerService.UpdateTag:input_type -> ManagerService.UpdateTagReq
+	61,  // 250: ManagerService.ManagerService.DeleteTag:input_type -> ManagerService.DeleteTagReq
+	63,  // 251: ManagerService.ManagerService.TagDetailList:input_type -> ManagerService.TagDetailListReq
+	66,  // 252: ManagerService.ManagerService.DeleteTagMedicine:input_type -> ManagerService.DeleteTagMedicineReq
+	68,  // 253: ManagerService.ManagerService.CreateTagMedicine:input_type -> ManagerService.CreateTagMedicineReq
+	70,  // 254: ManagerService.ManagerService.CommonMedicineQuery:input_type -> ManagerService.CommonMedicineQueryReq
+	73,  // 255: ManagerService.ManagerService.ListMi:input_type -> ManagerService.ListMiReq
+	76,  // 256: ManagerService.ManagerService.CommonMI:input_type -> ManagerService.CommonMIReq
+	79,  // 257: ManagerService.ManagerService.CreateOneMI:input_type -> ManagerService.CreateOneMIReq
+	81,  // 258: ManagerService.ManagerService.UpdateMi:input_type -> ManagerService.UpdateMiReq
+	88,  // 259: ManagerService.ManagerService.ListCompany:input_type -> ManagerService.ListCompanyReq
+	91,  // 260: ManagerService.ManagerService.CreateOneCompany:input_type -> ManagerService.CreateOneCompanyReq
+	93,  // 261: ManagerService.ManagerService.UpdateOneCompany:input_type -> ManagerService.UpdateOneCompanyReq
+	83,  // 262: ManagerService.ManagerService.CommonCompany:input_type -> ManagerService.CommonCompanyReq
+	86,  // 263: ManagerService.ManagerService.SelCompanyByNames:input_type -> ManagerService.SelCompanyByNamesReq
+	95,  // 264: ManagerService.ManagerService.ListTpPlanErr:input_type -> ManagerService.ListTpPlanErrReq
+	98,  // 265: ManagerService.ManagerService.UpdateErrShipmentPlan:input_type -> ManagerService.UpdateErrShipmentPlanReq
+	100, // 266: ManagerService.ManagerService.ListShipmentPlan:input_type -> ManagerService.ListShipmentPlanReq
+	108, // 267: ManagerService.ManagerService.CountShipmentPlan:input_type -> ManagerService.CountShipmentPlanReq
+	103, // 268: ManagerService.ManagerService.DetailShipmentOrder:input_type -> ManagerService.DetailShipmentOrderReq
+	105, // 269: ManagerService.ManagerService.ListShipmentPlanForOrder:input_type -> ManagerService.ListShipmentPlanForOrderReq
+	110, // 270: ManagerService.ManagerService.CreateShipmentOrder:input_type -> ManagerService.CreateShipmentOrderReq
+	112, // 271: ManagerService.ManagerService.ListShipmentOrder:input_type -> ManagerService.ListShipmentOrderReq
+	115, // 272: ManagerService.ManagerService.CountShipmentOrder:input_type -> ManagerService.CountShipmentOrderReq
+	117, // 273: ManagerService.ManagerService.ReceiveShipmentOrder:input_type -> ManagerService.ReceiveShipmentOrderReq
+	119, // 274: ManagerService.ManagerService.GetContractByShipmentPlanId:input_type -> ManagerService.GetContractByShipmentPlanIdReq
+	124, // 275: ManagerService.ManagerService.GetConfig:input_type -> ManagerService.GetConfigReq
+	122, // 276: ManagerService.ManagerService.UpdateConfig:input_type -> ManagerService.UpdateConfigReq
+	121, // 277: ManagerService.ManagerService.InsertConfigs:input_type -> ManagerService.InsertConfigsReq
+	123, // 278: ManagerService.ManagerService.DeleteConfigs:input_type -> ManagerService.DeleteConfigsReq
+	228, // 279: ManagerService.ManagerService.ListCompanyBind:input_type -> ManagerService.ListCompanyBindReq
+	237, // 280: ManagerService.ManagerService.CompanyBind:input_type -> ManagerService.CompanyBindReq
+	231, // 281: ManagerService.ManagerService.ListMiBind:input_type -> ManagerService.ListMiBindReq
+	240, // 282: ManagerService.ManagerService.MiBind:input_type -> ManagerService.MiBindReq
+	234, // 283: ManagerService.ManagerService.ListMedicineBind:input_type -> ManagerService.ListMedicineBindReq
+	243, // 284: ManagerService.ManagerService.MedicineBind:input_type -> ManagerService.MedicineBindReq
+	132, // 285: ManagerService.DataReportService.GetShipmentPlanDayReports:input_type -> ManagerService.GetShipmentPlanReportsReq
+	132, // 286: ManagerService.DataReportService.GetShipmentPlanMonthReports:input_type -> ManagerService.GetShipmentPlanReportsReq
+	132, // 287: ManagerService.DataReportService.GetShipmentPlanYearReports:input_type -> ManagerService.GetShipmentPlanReportsReq
+	144, // 288: ManagerService.DataReportService.GetShipmentOrderDayReports:input_type -> ManagerService.GetShipmentOrderReportsReq
+	144, // 289: ManagerService.DataReportService.GetShipmentOrderMonthReports:input_type -> ManagerService.GetShipmentOrderReportsReq
+	144, // 290: ManagerService.DataReportService.GetShipmentOrderYearReports:input_type -> ManagerService.GetShipmentOrderReportsReq
+	153, // 291: ManagerService.DataReportService.GetFactoringOrderDayReports:input_type -> ManagerService.GetFactoringOrderReportsReq
+	153, // 292: ManagerService.DataReportService.GetFactoringOrderMonthReports:input_type -> ManagerService.GetFactoringOrderReportsReq
+	153, // 293: ManagerService.DataReportService.GetFactoringOrderYearReports:input_type -> ManagerService.GetFactoringOrderReportsReq
+	162, // 294: ManagerService.DataReportService.GetContractPlanDayReports:input_type -> ManagerService.GetContractPlanReportsReq
+	162, // 295: ManagerService.DataReportService.GetContractPlanMonthReports:input_type -> ManagerService.GetContractPlanReportsReq
+	162, // 296: ManagerService.DataReportService.GetContractPlanYearReports:input_type -> ManagerService.GetContractPlanReportsReq
+	162, // 297: ManagerService.DataReportService.GetContractSum:input_type -> ManagerService.GetContractPlanReportsReq
+	173, // 298: ManagerService.DataReportService.GetValidContractInfo:input_type -> ManagerService.GetValidContractInfoReq
+	174, // 299: ManagerService.DataReportService.GetCurrentNeedPay:input_type -> ManagerService.GetCurrentNeedPayReq
+	177, // 300: ManagerService.HashService.GetCompanyHash:input_type -> ManagerService.GetCompanyHashReq
+	180, // 301: ManagerService.HashService.GetMiHash:input_type -> ManagerService.GetMiHashReq
+	183, // 302: ManagerService.HashService.GetMedicineHash:input_type -> ManagerService.GetMedicineReq
+	186, // 303: ManagerService.HashService.GetContractHash:input_type -> ManagerService.GetContractHashReq
+	189, // 304: ManagerService.HashService.GetContractMiHash:input_type -> ManagerService.GetContractMiHashReq
+	192, // 305: ManagerService.HashService.GetConfigHash:input_type -> ManagerService.GetConfigHashReq
+	195, // 306: ManagerService.HashService.GetShipmentPlanHash:input_type -> ManagerService.GetShipmentPlanHashReq
+	198, // 307: ManagerService.HashService.GetShipmentOrderHash:input_type -> ManagerService.GetShipmentOrderHashReq
+	201, // 308: ManagerService.HashService.GetShipmentPayHash:input_type -> ManagerService.GetShipmentPayHashReq
+	204, // 309: ManagerService.HashService.GetShipmentFactoringHash:input_type -> ManagerService.GetShipmentFactoringHashReq
+	207, // 310: ManagerService.RankService.GetShipmentRankMedicineDataYear:input_type -> ManagerService.GetShipmentRankMedicineDataYearReq
+	210, // 311: ManagerService.RankService.GetShipmentRankCompanyDataYear:input_type -> ManagerService.GetShipmentRankCompanyDataYearReq
+	214, // 312: ManagerService.RankService.GetRankMiReceiveYear:input_type -> ManagerService.GetRankMiReceiveYearReq
+	217, // 313: ManagerService.RankService.GetRankComReceiveYear:input_type -> ManagerService.GetRankComReceiveYearReq
+	220, // 314: ManagerService.RankService.GetRankMiPaidYear:input_type -> ManagerService.GetRankMiPaidYearReq
+	223, // 315: ManagerService.RankService.GetRankMedicineYear:input_type -> ManagerService.GetRankMedicineYearReq
+	226, // 316: ManagerService.RankService.GetMIBDashboardBaseInfo:input_type -> ManagerService.GetMIBDashboardBaseInfoReq
+	9,   // 317: ManagerService.ManagerService.ListContract:output_type -> ManagerService.ContractListResp
+	15,  // 318: ManagerService.ManagerService.ListMiContract:output_type -> ManagerService.ContractMiListResp
+	18,  // 319: ManagerService.ManagerService.CreateOneContractMI:output_type -> ManagerService.CreateOneContractMIResp
+	20,  // 320: ManagerService.ManagerService.UpdateOneContractMI:output_type -> ManagerService.UpdateOneContractMIResp
+	22,  // 321: ManagerService.ManagerService.UpdateOneContract:output_type -> ManagerService.UpdateOneContractResp
+	24,  // 322: ManagerService.ManagerService.BatchOperateContract:output_type -> ManagerService.BatchOperateContractResp
+	27,  // 323: ManagerService.ManagerService.UpdateContractActive:output_type -> ManagerService.UpdateContractActiveResp
+	31,  // 324: ManagerService.ManagerService.DeleteOneContract:output_type -> ManagerService.DeleteOneContractResp
+	33,  // 325: ManagerService.ManagerService.DeleteOneContractMi:output_type -> ManagerService.DeleteOneContractMiResp
+	2,   // 326: ManagerService.ManagerService.GetContractInfo:output_type -> ManagerService.GetContractInfoResp
+	4,   // 327: ManagerService.ManagerService.CountContract:output_type -> ManagerService.CountContractResp
+	29,  // 328: ManagerService.ManagerService.RefreshContract:output_type -> ManagerService.RefreshContractResp
+	248, // 329: ManagerService.ManagerService.ResetContract:output_type -> ManagerService.ResetContractResp
+	6,   // 330: ManagerService.ManagerService.ContractDetail:output_type -> ManagerService.ContractDetailResp
+	13,  // 331: ManagerService.ManagerService.CheckContractList:output_type -> ManagerService.CheckContractListResp
+	35,  // 332: ManagerService.ManagerService.ListMedicine:output_type -> ManagerService.MedicineListResp
+	38,  // 333: ManagerService.ManagerService.MedicineListForQuery:output_type -> ManagerService.MedicineListForQueryResp
+	41,  // 334: ManagerService.ManagerService.CreateMedicine:output_type -> ManagerService.CreateMedicineResp
+	43,  // 335: ManagerService.ManagerService.CreateBatchMedicine:output_type -> ManagerService.CreateBatchMedicineResp
+	45,  // 336: ManagerService.ManagerService.UpdateMedicine:output_type -> ManagerService.UpdateMedicineResp
+	47,  // 337: ManagerService.ManagerService.UpdateMedicineActive:output_type -> ManagerService.UpdateMedicineActiveResp
+	49,  // 338: ManagerService.ManagerService.DeleteMedicine:output_type -> ManagerService.DeleteMedicineResp
+	51,  // 339: ManagerService.ManagerService.SelectTagByMedicineId:output_type -> ManagerService.SelectTagByMedicineIdResp
+	53,  // 340: ManagerService.ManagerService.SelectInfoByMedicineNames:output_type -> ManagerService.SelectInfoByMedicineNamesResp
+	55,  // 341: ManagerService.ManagerService.TagList:output_type -> ManagerService.TagListResp
+	58,  // 342: ManagerService.ManagerService.CreateTag:output_type -> ManagerService.CreateTagResp
+	60,  // 343: ManagerService.ManagerService.UpdateTag:output_type -> ManagerService.UpdateTagResp
+	62,  // 344: ManagerService.ManagerService.DeleteTag:output_type -> ManagerService.DeleteTagResp
+	64,  // 345: ManagerService.ManagerService.TagDetailList:output_type -> ManagerService.TagDetailListResp
+	67,  // 346: ManagerService.ManagerService.DeleteTagMedicine:output_type -> ManagerService.DeleteTagMedicineResp
+	69,  // 347: ManagerService.ManagerService.CreateTagMedicine:output_type -> ManagerService.CreateTagMedicineResp
+	71,  // 348: ManagerService.ManagerService.CommonMedicineQuery:output_type -> ManagerService.CommonMedicineQueryResp
+	74,  // 349: ManagerService.ManagerService.ListMi:output_type -> ManagerService.ListMiResp
+	77,  // 350: ManagerService.ManagerService.CommonMI:output_type -> ManagerService.CommonMIResp
+	80,  // 351: ManagerService.ManagerService.CreateOneMI:output_type -> ManagerService.CreateOneMIResp
+	82,  // 352: ManagerService.ManagerService.UpdateMi:output_type -> ManagerService.UpdateMiResp
+	89,  // 353: ManagerService.ManagerService.ListCompany:output_type -> ManagerService.ListCompanyResp
+	92,  // 354: ManagerService.ManagerService.CreateOneCompany:output_type -> ManagerService.CreateOneCompanyResp
+	94,  // 355: ManagerService.ManagerService.UpdateOneCompany:output_type -> ManagerService.UpdateOneCompanyResp
+	84,  // 356: ManagerService.ManagerService.CommonCompany:output_type -> ManagerService.CommonCompanyResp
+	87,  // 357: ManagerService.ManagerService.SelCompanyByNames:output_type -> ManagerService.SelCompanyByNamesResp
+	96,  // 358: ManagerService.ManagerService.ListTpPlanErr:output_type -> ManagerService.ListTpPlanErrResp
+	99,  // 359: ManagerService.ManagerService.UpdateErrShipmentPlan:output_type -> ManagerService.UpdateErrShipmentPlanResp
+	101, // 360: ManagerService.ManagerService.ListShipmentPlan:output_type -> ManagerService.ListShipmentPlanResp
+	109, // 361: ManagerService.ManagerService.CountShipmentPlan:output_type -> ManagerService.CountShipmentPlanResp
+	104, // 362: ManagerService.ManagerService.DetailShipmentOrder:output_type -> ManagerService.DetailShipmentOrderResp
+	106, // 363: ManagerService.ManagerService.ListShipmentPlanForOrder:output_type -> ManagerService.ListShipmentPlanForOrderResp
+	111, // 364: ManagerService.ManagerService.CreateShipmentOrder:output_type -> ManagerService.CreateShipmentOrderResp
+	113, // 365: ManagerService.ManagerService.ListShipmentOrder:output_type -> ManagerService.ListShipmentOrderResp
+	116, // 366: ManagerService.ManagerService.CountShipmentOrder:output_type -> ManagerService.CountShipmentOrderResp
+	118, // 367: ManagerService.ManagerService.ReceiveShipmentOrder:output_type -> ManagerService.ReceiveShipmentOrderResp
+	120, // 368: ManagerService.ManagerService.GetContractByShipmentPlanId:output_type -> ManagerService.GetContractByShipmentPlanIdResp
+	129, // 369: ManagerService.ManagerService.GetConfig:output_type -> ManagerService.GetConfigResp
+	126, // 370: ManagerService.ManagerService.UpdateConfig:output_type -> ManagerService.UpdateConfigResp
+	127, // 371: ManagerService.ManagerService.InsertConfigs:output_type -> ManagerService.InsertConfigsResp
+	128, // 372: ManagerService.ManagerService.DeleteConfigs:output_type -> ManagerService.DeleteConfigsResp
+	229, // 373: ManagerService.ManagerService.ListCompanyBind:output_type -> ManagerService.ListCompanyBindResp
+	239, // 374: ManagerService.ManagerService.CompanyBind:output_type -> ManagerService.CompanyBindResp
+	232, // 375: ManagerService.ManagerService.ListMiBind:output_type -> ManagerService.ListMiBindResp
+	242, // 376: ManagerService.ManagerService.MiBind:output_type -> ManagerService.MiBindResp
+	235, // 377: ManagerService.ManagerService.ListMedicineBind:output_type -> ManagerService.ListMedicineBindResp
+	245, // 378: ManagerService.ManagerService.MedicineBind:output_type -> ManagerService.MedicineBindResp
+	139, // 379: ManagerService.DataReportService.GetShipmentPlanDayReports:output_type -> ManagerService.GetShipmentPlanDayReportsResp
+	140, // 380: ManagerService.DataReportService.GetShipmentPlanMonthReports:output_type -> ManagerService.GetShipmentPlanMonthReportsResp
+	141, // 381: ManagerService.DataReportService.GetShipmentPlanYearReports:output_type -> ManagerService.GetShipmentPlanYearReportsResp
+	148, // 382: ManagerService.DataReportService.GetShipmentOrderDayReports:output_type -> ManagerService.GetShipmentOrderDayReportsResp
+	149, // 383: ManagerService.DataReportService.GetShipmentOrderMonthReports:output_type -> ManagerService.GetShipmentOrderMonthReportsResp
+	150, // 384: ManagerService.DataReportService.GetShipmentOrderYearReports:output_type -> ManagerService.GetShipmentOrderYearReportsResp
+	155, // 385: ManagerService.DataReportService.GetFactoringOrderDayReports:output_type -> ManagerService.GetFactoringOrderDayReportsResp
+	157, // 386: ManagerService.DataReportService.GetFactoringOrderMonthReports:output_type -> ManagerService.GetFactoringOrderMonthReportsResp
+	159, // 387: ManagerService.DataReportService.GetFactoringOrderYearReports:output_type -> ManagerService.GetFactoringOrderYearReportsResp
+	166, // 388: ManagerService.DataReportService.GetContractPlanDayReports:output_type -> ManagerService.GetContractPlanDayReportsResp
+	168, // 389: ManagerService.DataReportService.GetContractPlanMonthReports:output_type -> ManagerService.GetContractPlanMonthReportsResp
+	170, // 390: ManagerService.DataReportService.GetContractPlanYearReports:output_type -> ManagerService.GetContractPlanYearReportsResp
+	172, // 391: ManagerService.DataReportService.GetContractSum:output_type -> ManagerService.GetContractSumResp
+	175, // 392: ManagerService.DataReportService.GetValidContractInfo:output_type -> ManagerService.GetValidContractInfoResp
+	176, // 393: ManagerService.DataReportService.GetCurrentNeedPay:output_type -> ManagerService.GetCurrentNeedPayResp
+	178, // 394: ManagerService.HashService.GetCompanyHash:output_type -> ManagerService.GetCompanyHashResp
+	182, // 395: ManagerService.HashService.GetMiHash:output_type -> ManagerService.GetMiHashResp
+	185, // 396: ManagerService.HashService.GetMedicineHash:output_type -> ManagerService.GetMedicineResp
+	188, // 397: ManagerService.HashService.GetContractHash:output_type -> ManagerService.GetContractHashResp
+	191, // 398: ManagerService.HashService.GetContractMiHash:output_type -> ManagerService.GetContractMiHashResp
+	194, // 399: ManagerService.HashService.GetConfigHash:output_type -> ManagerService.GetConfigHashResp
+	197, // 400: ManagerService.HashService.GetShipmentPlanHash:output_type -> ManagerService.GetShipmentPlanHashResp
+	200, // 401: ManagerService.HashService.GetShipmentOrderHash:output_type -> ManagerService.GetShipmentOrderHashResp
+	203, // 402: ManagerService.HashService.GetShipmentPayHash:output_type -> ManagerService.GetShipmentPayHashResp
+	206, // 403: ManagerService.HashService.GetShipmentFactoringHash:output_type -> ManagerService.GetShipmentFactoringHashResp
+	209, // 404: ManagerService.RankService.GetShipmentRankMedicineDataYear:output_type -> ManagerService.GetShipmentRankMedicineDataYearResp
+	213, // 405: ManagerService.RankService.GetShipmentRankCompanyDataYear:output_type -> ManagerService.GetShipmentRankCompanyDataYearResp
+	216, // 406: ManagerService.RankService.GetRankMiReceiveYear:output_type -> ManagerService.GetRankMiReceiveYearResp
+	219, // 407: ManagerService.RankService.GetRankComReceiveYear:output_type -> ManagerService.GetRankComReceiveYearResp
+	222, // 408: ManagerService.RankService.GetRankMiPaidYear:output_type -> ManagerService.GetRankMiPaidYearResp
+	225, // 409: ManagerService.RankService.GetRankMedicineYear:output_type -> ManagerService.GetRankMedicineYearResp
+	227, // 410: ManagerService.RankService.GetMIBDashboardBaseInfo:output_type -> ManagerService.GetMIBDashboardBaseInfoResp
+	317, // [317:411] is the sub-list for method output_type
+	223, // [223:317] is the sub-list for method input_type
+	223, // [223:223] is the sub-list for extension type_name
+	223, // [223:223] is the sub-list for extension extendee
+	0,   // [0:223] is the sub-list for field type_name
 }
 
 func init() { file_ManagerService_proto_init() }
@@ -25618,6 +27316,258 @@ func file_ManagerService_proto_init() {
 				return nil
 			}
 		}
+		file_ManagerService_proto_msgTypes[228].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ListCompanyBindReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_ManagerService_proto_msgTypes[229].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ListCompanyBindResp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_ManagerService_proto_msgTypes[230].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ListCompanyBindVo); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_ManagerService_proto_msgTypes[231].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ListMiBindReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_ManagerService_proto_msgTypes[232].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ListMiBindResp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_ManagerService_proto_msgTypes[233].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ListMiBindBindVo); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_ManagerService_proto_msgTypes[234].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ListMedicineBindReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_ManagerService_proto_msgTypes[235].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ListMedicineBindResp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_ManagerService_proto_msgTypes[236].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ListMedicineBindVo); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_ManagerService_proto_msgTypes[237].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CompanyBindReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_ManagerService_proto_msgTypes[238].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CompanyBindParam); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_ManagerService_proto_msgTypes[239].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CompanyBindResp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_ManagerService_proto_msgTypes[240].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MiBindReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_ManagerService_proto_msgTypes[241].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MiBindParam); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_ManagerService_proto_msgTypes[242].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MiBindResp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_ManagerService_proto_msgTypes[243].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MedicineBindReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_ManagerService_proto_msgTypes[244].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MedicineBindParam); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_ManagerService_proto_msgTypes[245].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MedicineBindResp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_ManagerService_proto_msgTypes[246].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ResetContractReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_ManagerService_proto_msgTypes[247].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ResetContractParam); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_ManagerService_proto_msgTypes[248].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ResetContractResp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -25625,7 +27575,7 @@ func file_ManagerService_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_ManagerService_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   228,
+			NumMessages:   249,
 			NumExtensions: 0,
 			NumServices:   4,
 		},

@@ -339,6 +339,7 @@ message FactoringOrder{
   google.protobuf.Timestamp   refundAt = 15;
   string   refundStatus = 16;
   string   errMsg = 17;
+  google.protobuf.Timestamp   factoringDeadline = 18;
 }
 
 message ListFactoringOrderResp {

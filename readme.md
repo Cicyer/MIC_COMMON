@@ -1,4 +1,3 @@
-
 生成protobugf
 <br>
 protoc --go-grpc_out=. *.proto
@@ -6,9 +5,9 @@ protoc --go-grpc_out=. *.proto
 protoc --go_out=. *.proto
 
 需要将 
-,omit去掉empty"
+,omitempty
 替换为 
-"
+空
 
 
 

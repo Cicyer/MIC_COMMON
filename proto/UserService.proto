@@ -16,6 +16,23 @@ message UserPassLoginReq {
   string platFormType = 3;
 }
 
+message OauthTokenReq {
+  string clientId = 1;
+  string clientSecret = 2;
+  string grantType = 3;
+  string refreshToken = 4;
+  string organizationType = 5;
+}
+message OauthTokenResp {
+  string accessToken = 1;
+  string tokenType = 2;
+  int64 expiresIn = 3;
+  string refreshToken = 4;
+  string organizationCode = 5;
+  int64 organizationId = 6;
+  string organizationType = 7;
+  repeated PermissionInfo permissions = 8;
+}
 message UserPassLoginResp {
   int64 userId = 1;
   string username = 2;
@@ -139,8 +156,70 @@ message UserInfoReq {
   int64 managerId = 2;
 }
 
+message CreateOauthAccountReq {
+  int64 organizationId = 1;
+  string organizationType = 2;
+  int64 mibId = 3;
+  int64 managerId = 4;
+}
+message CreateOauthAccountResp {
+  string clientId = 1;
+  string clientSecret = 2;
+}
+message ResetOauthAccountReq {
+  string clientId = 1;
+  int64 organizationId = 2;
+  int64 mibId = 3;
+  int64 managerId = 4;
+  string organizationType = 5;
+}
+message GetOauthAccountReq {
+  int64 organizationId = 1;
+  string organizationType = 2;
+  int64 mibId = 3;
+  int64 managerId = 4;
+  //也可以直接指定clientId
+  string clientId = 5;
+}
+
+message GetOauthAccountResp {
+  string accessToken = 1;
+  string tokenType = 2;
+  int64 expiresIn = 3;
+  string refreshToken = 4;
+  string organizationCode = 5;
+  int64 organizationId = 6;
+  repeated PermissionInfo permissions = 7;
+  string organizationType = 8;
+  int64 mibId = 9;
+  string clientId = 10;
+  google.protobuf.Timestamp tokenExpire = 11;
+  google.protobuf.Timestamp refreshTokenExpire = 12;
+}
+message GetOauthTokenReq {
+  string clientId = 1;
+  string accessToken = 2;
+  string organizationType = 3;
+}
+
+message BindOauthPermissionReq {
+  int64 organizationId = 1;
+  string organizationType = 2;
+  int64 mibId = 3;
+  int64 managerId = 4;
+  repeated string permissions = 5;
+}
 service UserService {
   rpc PassLogin(UserPassLoginReq) returns (UserPassLoginResp);
+  rpc OauthToken(OauthTokenReq) returns (OauthTokenResp);
+  rpc GetOauthToken(GetOauthTokenReq) returns (OauthTokenResp);
+  rpc CreateOauthAccount(CreateOauthAccountReq) returns (CreateOauthAccountResp);
+  //重置oauth 的secret
+  rpc ResetOauthAccountSecret(ResetOauthAccountReq) returns (CreateOauthAccountResp);
+  //获取某个指定平台组织的oauth账号信息
+  rpc GetOauthAccount(GetOauthAccountReq) returns (GetOauthAccountResp);
+  rpc BindOauthPermission(BindOauthPermissionReq) returns (OauthTokenResp);
+
   rpc CreateUser(CreateUserReq) returns (CreateUserResp);
   rpc UpdateUser(UpdateUserReq) returns (UpdateUserResp);
   rpc ListUser(ListUserReq) returns (ListUserResp);

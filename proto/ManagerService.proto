@@ -282,6 +282,7 @@ message MedicineListForQueryReq {
   string  medicineCode = 2;
   int64 managerId = 3;
   Page page = 4;
+  string activeStatus = 5;
 }
 
 message MedicineListForQueryResp {
@@ -519,6 +520,7 @@ message CommonMIReq {
   string  miCode = 2;
   int64 managerId = 3;
   Page page = 4;
+  string activeStatus = 5;
 }
 
 message CommonMIResp {
@@ -572,6 +574,7 @@ message CommonCompanyReq {
   string  companyCode = 2;
   int64 managerId = 3;
   Page page = 4;
+  string activeStatus = 5;
 }
 
 message CommonCompanyResp {
@@ -1979,6 +1982,146 @@ message GetMIBDashboardBaseInfoResp {
   int64 companyCount = 2;
 }
 
+message ListCompanyBindReq {
+  int64 managerId = 1;
+  string companyName = 2;
+  string companyCode = 3;
+  Page page = 4;
+  repeated string linkTypes = 5;
+}
+
+message ListCompanyBindResp {
+  repeated ListCompanyBindVo list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+
+message ListCompanyBindVo{
+  string companyName = 1;
+  string companyCode = 2;
+  string companyBindJson = 3;
+}
+
+message ListMiBindReq {
+  int64 managerId = 1;
+  string miName = 2;
+  string miCode = 3;
+  Page page = 4;
+  repeated string linkTypes = 5;
+}
+
+message ListMiBindResp {
+  repeated ListMiBindBindVo list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+
+message ListMiBindBindVo{
+  string miName = 1;
+  string miCode = 2;
+  string miBindJson = 3;
+}
+
+message ListMedicineBindReq {
+  int64 managerId = 1;
+  string medicineName = 2;
+  string medicineCode = 3;
+  Page page = 4;
+  repeated string linkTypes = 5;
+}
+
+message ListMedicineBindResp {
+  repeated ListMedicineBindVo list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+
+message ListMedicineBindVo{
+  string medicineName = 1;
+  string medicineCode = 2;
+  string medicineBindJson = 3;
+}
+
+message CompanyBindReq {
+  int64 managerId = 1;
+  repeated CompanyBindParam param = 2;
+}
+
+message CompanyBindParam {
+  int64 bindId = 2;
+  string companyCode = 3;
+  string companyLinkCode = 4;
+  string linkType = 5;
+}
+
+message CompanyBindResp {
+  int64 result = 1;
+}
+
+message MiBindReq {
+  int64 managerId = 1;
+  repeated MiBindParam param = 2;
+}
+
+message MiBindParam {
+  int64 bindId = 2;
+  string miCode = 3;
+  string miLinkCode = 4;
+  string linkType = 5;
+}
+
+message MiBindResp {
+  int64 result = 1;
+}
+
+message MedicineBindReq {
+  int64 managerId = 1;
+  repeated MedicineBindParam param = 2;
+}
+
+message MedicineBindParam {
+  int64 bindId = 2;
+  string medicineCode = 3;
+  string medicineLinkCode = 4;
+  string linkType = 5;
+}
+
+message MedicineBindResp {
+  int64 result = 1;
+}
+
+message ResetContractReq {
+  int64 managerId = 1;
+  repeated ResetContractParam param = 2;
+  int64        oldContractId = 3;
+  string       contractNo = 4;
+  string       tenderCompany = 5;
+  int64        medicineId = 6;
+  int64        companyId = 7;
+  int64        mibId = 8;
+  int64        medicinePrice = 9;
+  int64        medicineReceive = 10;
+  int64        totalAmount = 11;
+  google.protobuf.Timestamp    startAt = 12;
+  google.protobuf.Timestamp     endAt = 13;
+  int64        creator = 14;
+}
+
+message ResetContractParam {
+  int64 miId = 1;
+  int64 medicineAmount = 2;
+  int64 medicineSent = 3;
+  int64 medicineReceive = 4;
+}
+
+message ResetContractResp {
+  int64 result = 1;
+}
+
+
 service ManagerService {
   //合同相关
   rpc ListContract(ContractListReq) returns(ContractListResp);
@@ -1993,7 +2136,9 @@ service ManagerService {
   rpc GetContractInfo(GetContractInfoReq) returns(GetContractInfoResp);
   rpc CountContract(CountContractReq) returns(CountContractResp);
   rpc RefreshContract(RefreshContractReq) returns(RefreshContractResp);
-  //暂未使用 后期删除
+  //合同重置
+  rpc ResetContract(ResetContractReq) returns(ResetContractResp);
+  //暂未使用
   rpc ContractDetail(ContractDetailReq) returns(ContractDetailResp);
   rpc CheckContractList(UpCheckContractReq) returns(CheckContractListResp);
   //药品相关
@@ -2057,6 +2202,42 @@ service ManagerService {
   //删除配置
   rpc DeleteConfigs(DeleteConfigsReq) returns (DeleteConfigsResp);
 
+  //配送企业绑定
+  rpc ListCompanyBind(ListCompanyBindReq) returns (ListCompanyBindResp);
+  rpc CompanyBind(CompanyBindReq) returns (CompanyBindResp);
+  //医疗机构绑定
+  rpc ListMiBind(ListMiBindReq) returns (ListMiBindResp);
+  rpc MiBind(MiBindReq) returns (MiBindResp);
+  //药品绑定绑定
+  rpc ListMedicineBind(ListMedicineBindReq) returns (ListMedicineBindResp);
+  rpc MedicineBind(MedicineBindReq) returns (MedicineBindResp);
+
+}
+
+message StockSyncReq{
+  repeated StockSyncParam param = 1;
+  int64 managerId = 2;
+  int64 orgId = 3;
+  string platFormType = 4;
+}
+
+message StockSyncParam{
+  string  medicineLinkCode = 1;
+  string  medicineLinkName = 2;
+  string  warehouseCode = 3;
+  string  changeType = 4;
+  int32 stockNum = 5;
+  sint32 num = 6;
+  google.protobuf.Timestamp changeTime = 7;
+}
+
+message StockSyncResp{
+  int64 result = 1;
+}
+
+// 库存service
+service StockService{
+  rpc StockSync(StockSyncReq) returns (StockSyncResp);
 }
 
 //=========数据报表服务================
@@ -2113,6 +2294,7 @@ service HashService {
 service RankService {
   //MI端使用按年查询药品履约率排名
   rpc GetShipmentRankMedicineDataYear(GetShipmentRankMedicineDataYearReq) returns (GetShipmentRankMedicineDataYearResp);
+
   rpc GetShipmentRankCompanyDataYear(GetShipmentRankCompanyDataYearReq) returns (GetShipmentRankCompanyDataYearResp);
   //MIB端使用
   //查询医疗机构采购金额年度排名
