@@ -2340,7 +2340,16 @@ var _ManagerService_serviceDesc = grpc.ServiceDesc{
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type StockServiceClient interface {
+	//库存数据上报
 	StockSync(ctx context.Context, in *StockSyncReq, opts ...grpc.CallOption) (*StockSyncResp, error)
+	//配送企业药品绑定列表
+	ComStockMedicineBindList(ctx context.Context, in *ComStockMedicineBindListReq, opts ...grpc.CallOption) (*ComStockMedicineBindListResp, error)
+	//配送企业绑定his药品code
+	ComStockMedicineBind(ctx context.Context, in *ComStockMedicineBindReq, opts ...grpc.CallOption) (*ComStockMedicineBindResp, error)
+	//医疗机构药品绑定列表
+	MiStockMedicineBindList(ctx context.Context, in *MiStockMedicineBindListReq, opts ...grpc.CallOption) (*MiStockMedicineBindListResp, error)
+	//医疗机构绑定his药品code
+	MiStockMedicineBind(ctx context.Context, in *MiStockMedicineBindReq, opts ...grpc.CallOption) (*MiStockMedicineBindResp, error)
 }
 
 type stockServiceClient struct {
@@ -2360,11 +2369,56 @@ func (c *stockServiceClient) StockSync(ctx context.Context, in *StockSyncReq, op
 	return out, nil
 }
 
+func (c *stockServiceClient) ComStockMedicineBindList(ctx context.Context, in *ComStockMedicineBindListReq, opts ...grpc.CallOption) (*ComStockMedicineBindListResp, error) {
+	out := new(ComStockMedicineBindListResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.StockService/ComStockMedicineBindList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *stockServiceClient) ComStockMedicineBind(ctx context.Context, in *ComStockMedicineBindReq, opts ...grpc.CallOption) (*ComStockMedicineBindResp, error) {
+	out := new(ComStockMedicineBindResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.StockService/ComStockMedicineBind", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *stockServiceClient) MiStockMedicineBindList(ctx context.Context, in *MiStockMedicineBindListReq, opts ...grpc.CallOption) (*MiStockMedicineBindListResp, error) {
+	out := new(MiStockMedicineBindListResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.StockService/MiStockMedicineBindList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *stockServiceClient) MiStockMedicineBind(ctx context.Context, in *MiStockMedicineBindReq, opts ...grpc.CallOption) (*MiStockMedicineBindResp, error) {
+	out := new(MiStockMedicineBindResp)
+	err := c.cc.Invoke(ctx, "/ManagerService.StockService/MiStockMedicineBind", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // StockServiceServer is the server API for StockService service.
 // All implementations must embed UnimplementedStockServiceServer
 // for forward compatibility
 type StockServiceServer interface {
+	//库存数据上报
 	StockSync(context.Context, *StockSyncReq) (*StockSyncResp, error)
+	//配送企业药品绑定列表
+	ComStockMedicineBindList(context.Context, *ComStockMedicineBindListReq) (*ComStockMedicineBindListResp, error)
+	//配送企业绑定his药品code
+	ComStockMedicineBind(context.Context, *ComStockMedicineBindReq) (*ComStockMedicineBindResp, error)
+	//医疗机构药品绑定列表
+	MiStockMedicineBindList(context.Context, *MiStockMedicineBindListReq) (*MiStockMedicineBindListResp, error)
+	//医疗机构绑定his药品code
+	MiStockMedicineBind(context.Context, *MiStockMedicineBindReq) (*MiStockMedicineBindResp, error)
 	mustEmbedUnimplementedStockServiceServer()
 }
 
@@ -2374,6 +2428,18 @@ type UnimplementedStockServiceServer struct {
 
 func (UnimplementedStockServiceServer) StockSync(context.Context, *StockSyncReq) (*StockSyncResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StockSync not implemented")
+}
+func (UnimplementedStockServiceServer) ComStockMedicineBindList(context.Context, *ComStockMedicineBindListReq) (*ComStockMedicineBindListResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ComStockMedicineBindList not implemented")
+}
+func (UnimplementedStockServiceServer) ComStockMedicineBind(context.Context, *ComStockMedicineBindReq) (*ComStockMedicineBindResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ComStockMedicineBind not implemented")
+}
+func (UnimplementedStockServiceServer) MiStockMedicineBindList(context.Context, *MiStockMedicineBindListReq) (*MiStockMedicineBindListResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MiStockMedicineBindList not implemented")
+}
+func (UnimplementedStockServiceServer) MiStockMedicineBind(context.Context, *MiStockMedicineBindReq) (*MiStockMedicineBindResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MiStockMedicineBind not implemented")
 }
 func (UnimplementedStockServiceServer) mustEmbedUnimplementedStockServiceServer() {}
 
@@ -2406,6 +2472,78 @@ func _StockService_StockSync_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _StockService_ComStockMedicineBindList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ComStockMedicineBindListReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StockServiceServer).ComStockMedicineBindList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.StockService/ComStockMedicineBindList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StockServiceServer).ComStockMedicineBindList(ctx, req.(*ComStockMedicineBindListReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _StockService_ComStockMedicineBind_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ComStockMedicineBindReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StockServiceServer).ComStockMedicineBind(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.StockService/ComStockMedicineBind",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StockServiceServer).ComStockMedicineBind(ctx, req.(*ComStockMedicineBindReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _StockService_MiStockMedicineBindList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MiStockMedicineBindListReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StockServiceServer).MiStockMedicineBindList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.StockService/MiStockMedicineBindList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StockServiceServer).MiStockMedicineBindList(ctx, req.(*MiStockMedicineBindListReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _StockService_MiStockMedicineBind_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MiStockMedicineBindReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StockServiceServer).MiStockMedicineBind(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ManagerService.StockService/MiStockMedicineBind",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StockServiceServer).MiStockMedicineBind(ctx, req.(*MiStockMedicineBindReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _StockService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "ManagerService.StockService",
 	HandlerType: (*StockServiceServer)(nil),
@@ -2413,6 +2551,22 @@ var _StockService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "StockSync",
 			Handler:    _StockService_StockSync_Handler,
+		},
+		{
+			MethodName: "ComStockMedicineBindList",
+			Handler:    _StockService_ComStockMedicineBindList_Handler,
+		},
+		{
+			MethodName: "ComStockMedicineBind",
+			Handler:    _StockService_ComStockMedicineBind_Handler,
+		},
+		{
+			MethodName: "MiStockMedicineBindList",
+			Handler:    _StockService_MiStockMedicineBindList_Handler,
+		},
+		{
+			MethodName: "MiStockMedicineBind",
+			Handler:    _StockService_MiStockMedicineBind_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

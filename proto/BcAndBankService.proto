@@ -307,7 +307,7 @@ message UploadChainShipment {
 message UploadChainShipments {
   repeated UploadChainShipment uploadChainShipment = 1;
 }
- 
+
 message UploadChainShipmentOrder {
   UploadChainType uploadChainType = 1;
   repeated UploadChainShipment plans = 2;
