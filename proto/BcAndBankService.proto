@@ -78,11 +78,13 @@ message BcAndBankPayOrderActionRequest {
   repeated UploadChainPayOrder payOrder = 1;
   BankRequest bankRequest = 2;
   bool debug = 3;
+  bool skipBank = 4;
 }
 
 message BcAndBankFactoringActionRequest {
   UploadChainFactoringOrder factoringOrder = 1;
   BankRequest bankRequest = 2;
+  bool skipBank = 3;
 }
 
 message BcAndBankFactoringRepayActionRequest {
