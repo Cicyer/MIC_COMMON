@@ -209,6 +209,102 @@ message BindOauthPermissionReq {
   int64 managerId = 4;
   repeated string permissions = 5;
 }
+
+message GetRolesReq {
+  int64 mibId = 1;
+  int64 managerId = 2;
+  string role = 3;
+  //注意 ALL为全平台角色，必定返回
+  string platFormType = 4;
+  //ENABLE DISABLE 不填写则不限制
+  string roleStatus = 5;
+}
+
+message GetRolesResp {
+  int64 mibId = 1;
+  string role = 2;
+  string roleName = 3;
+  //注意 ALL为全平台角色，必定返回
+  string platFormType = 4;
+  //ENABLE DISABLE 不填写则不限制
+  string roleStatus = 5;
+  google.protobuf.Timestamp createdAt = 6;
+}
+
+message GetPermissionsReq {
+  int64 mibId = 1;
+  int64 managerId = 2;
+  //查询某个角色拥有的权限
+  string role = 3;
+  //注意 ALL为全平台权限，必定返回
+  string platFormType = 4;
+  //权限类别 WEB 页面权限 API 功能权限
+  string permissionType = 5;
+  //可以指定权限的父权限，只对层级权限有效
+  int64 parentId = 6;
+  //可以指定获取哪一层级的权限，只对层级权限有效
+  int64 layer = 7;
+}
+
+message GetPermissionsResp {
+  string permission = 1;
+  string permissionUrl = 2;
+  string permissionDescription = 3;
+  int64 parentId = 4;
+  int64 layer = 5;
+  //注意 ALL为全平台权限，必定即便指定了platFormType也会返回
+  string platFormType = 6;
+  //权限类别 WEB 页面权限 API 功能权限
+  string permissionType = 7;
+  google.protobuf.Timestamp createdAt = 8;
+}
+
+message CreateRoleReq {
+  int64 mibId = 1;
+  int64 managerId = 2;
+  //角色key，不能重复
+  string role = 3;
+  string roleName = 4;
+  string roleStatus = 5;
+  //注意 ALL为全平台权限，必定返回
+  string platFormType = 6;
+  //涉及的权限（注意，权限必须与角色的platFormType一致（ALL的也可以））
+  repeated string permissions = 7;
+}
+
+message CreateRoleResp {
+  int64 roleId = 1;
+  string role = 2;
+}
+
+message UpdateRoleReq {
+  int64 mibId = 1;
+  int64 managerId = 2;
+  //需要变更的角色名
+  string role = 3;
+  string roleName = 4;
+  string roleStatus = 5;
+  //涉及的权限（注意，权限必须与角色原来的platFormType一致（ALL的也可以））
+  repeated string permissions = 6;
+}
+
+message UpdateRoleResp {
+
+}
+message DeleteRoleReq {
+  int64 mibId = 1;
+  int64 managerId = 2;
+  //需要删除的角色名（软删除）
+  string role = 3;
+}
+
+message DeleteRoleResp {
+
+}
+
+
+
+
 service UserService {
   rpc PassLogin(UserPassLoginReq) returns (UserPassLoginResp);
   rpc OauthToken(OauthTokenReq) returns (OauthTokenResp);
@@ -230,5 +326,14 @@ service UserService {
 
 // 角色权限管理相关
 service RoleService {
-  //
+  //各平台角色查询
+  rpc GetRoles(GetRolesReq) returns (GetRolesResp);
+  //平台权限列表查询
+  rpc GetPermissions(GetPermissionsReq) returns (GetPermissionsResp);
+  //创建角色
+  rpc CreateRole(CreateRoleReq) returns (CreateRoleResp);
+  //修改角色信息（含权限）
+  rpc UpdateRole(UpdateRoleReq) returns (UpdateRoleResp);
+  //删除角色(需要把已经使用此权限的账户角色做变更,否则提示不可变更)
+  rpc DeleteRole(DeleteRoleReq) returns (DeleteRoleResp);
 }
