@@ -102,6 +102,7 @@ message BankRequest {
   string body = 1;
   // 请求方法 <- 按照 bankSDK 内定义的 constant opts 来
   string function = 2;
+  bool skipBank = 3;
 }
 
 // 通用银行信息返回(返回对应结构体 xml marshal)

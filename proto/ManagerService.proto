@@ -2214,13 +2214,14 @@ service ManagerService {
 
 }
 
-
-message MiStockSyncReq{
-  repeated MiStockSyncParam param = 1;
+message StockSyncReq{
+  repeated StockSyncParam param = 1;
   int64 managerId = 2;
+  int64 orgId = 3;
+  string platFormType = 4;
 }
 
-message MiStockSyncParam{
+message StockSyncParam{
   string  medicineLinkCode = 1;
   string  medicineLinkName = 2;
   string  warehouseCode = 3;
@@ -2228,37 +2229,98 @@ message MiStockSyncParam{
   int32 stockNum = 5;
   sint32 num = 6;
   google.protobuf.Timestamp changeTime = 7;
-  int64 miId = 8;
 }
 
-message MiStockSyncResp{
+message StockSyncResp{
   int64 result = 1;
 }
 
-message ComStockSyncReq{
-  repeated MiStockSyncParam param = 1;
+message ComStockMedicineBindListReq{
+  Page page = 1;
   int64 managerId = 2;
+  string medicineCode = 3;
+  string medicineName = 4;
+  int64 companyId = 5;
 }
 
-message ComStockSyncParam{
-  string  medicineLinkCode = 1;
-  string  medicineLinkName = 2;
-  string  warehouseCode = 3;
-  string  changeType = 4;
-  int32 stockNum = 5;
-  sint32 num = 6;
-  google.protobuf.Timestamp changeTime = 7;
-  int64 comId = 8;
+message ComStockMedicineBindListResp{
+  repeated ComStockMedicineBindListVo list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
 }
 
-message ComStockSyncResp{
+message ComStockMedicineBindListVo{
+  string medicineName = 1;
+  string medicineCode = 2;
+  string medicineLinkName = 3;
+  int64 bingId = 4;
+  string companyCode = 5;
+}
+
+message MiStockMedicineBindListReq{
+  Page page = 1;
+  int64 managerId = 2;
+  string medicineCode = 3;
+  string medicineName = 4;
+  int64 miId = 5;
+}
+
+message MiStockMedicineBindListResp{
+  repeated MiStockMedicineBindListVo list = 1;
+  int64 total = 2;
+  int64 pageSize = 3;
+  int64 pageNumber = 4;
+}
+
+message MiStockMedicineBindListVo{
+  string medicineName = 1;
+  string medicineCode = 2;
+  string medicineLinkName = 3;
+  int64 bingId = 4;
+  string miCode = 5;
+}
+
+message ComStockMedicineBindReq{
+  int64 managerId = 1;
+  string medicineCode = 2;
+  string medicineName = 3;
+  string medicineLinkCode = 4;
+  int64 companyId = 5;
+  int64 bindId = 6;
+}
+
+message ComStockMedicineBindResp{
   int64 result = 1;
 }
+
+message MiStockMedicineBindReq{
+  int64 managerId = 1;
+  string medicineCode = 2;
+  string medicineName = 3;
+  string medicineLinkCode = 4;
+  int64 miId = 5;
+  int64 bindId = 6;
+}
+
+message MiStockMedicineBindResp{
+  int64 result = 1;
+}
+
 
 // 库存service
 service StockService{
-  rpc MiStockSync(MiStockSyncReq) returns (MiStockSyncResp);
-  rpc ComStockSync(ComStockSyncReq) returns (ComStockSyncResp);
+  //库存数据上报
+  rpc StockSync(StockSyncReq) returns (StockSyncResp);
+  //配送企业药品绑定列表
+  rpc ComStockMedicineBindList(ComStockMedicineBindListReq) returns (ComStockMedicineBindListResp);
+  //配送企业绑定his药品code
+  rpc ComStockMedicineBind(ComStockMedicineBindReq) returns (ComStockMedicineBindResp);
+  //医疗机构药品绑定列表
+  rpc MiStockMedicineBindList(MiStockMedicineBindListReq) returns (MiStockMedicineBindListResp);
+  //医疗机构绑定his药品code
+  rpc MiStockMedicineBind(MiStockMedicineBindReq) returns (MiStockMedicineBindResp);
+
 }
 
 //=========数据报表服务================
